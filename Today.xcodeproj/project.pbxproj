@@ -15,8 +15,12 @@
 		24030AF11C1C821C004E68ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24030AEF1C1C821C004E68ED /* LaunchScreen.storyboard */; };
 		24030AFC1C1C821C004E68ED /* TodayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24030AFB1C1C821C004E68ED /* TodayTests.swift */; };
 		24030B071C1C821C004E68ED /* TodayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24030B061C1C821C004E68ED /* TodayUITests.swift */; };
-		24030B171C1C87EF004E68ED /* MagicalRecord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24030B161C1C87EF004E68ED /* MagicalRecord.framework */; };
-		24030B181C1C87EF004E68ED /* MagicalRecord.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24030B161C1C87EF004E68ED /* MagicalRecord.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2466880F1C1D187900C5E5A0 /* MagicalRecord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2466880A1C1D182200C5E5A0 /* MagicalRecord.framework */; };
+		246688101C1D187900C5E5A0 /* MagicalRecord.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2466880A1C1D182200C5E5A0 /* MagicalRecord.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2466884F1C1DB45E00C5E5A0 /* Analysis.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2466884D1C1DB45E00C5E5A0 /* Analysis.storyboard */; };
+		246688511C1DB4ED00C5E5A0 /* ScoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246688501C1DB4ED00C5E5A0 /* ScoreTableViewController.swift */; };
+		246688531C1DB55900C5E5A0 /* AnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246688521C1DB55900C5E5A0 /* AnalysisViewController.swift */; };
+		246688561C1DB61100C5E5A0 /* Score.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 246688541C1DB61100C5E5A0 /* Score.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,15 +41,25 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		24030B191C1C87EF004E68ED /* Embed Frameworks */ = {
+		246688111C1D187A00C5E5A0 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				24030B181C1C87EF004E68ED /* MagicalRecord.framework in Embed Frameworks */,
+				246688101C1D187900C5E5A0 /* MagicalRecord.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		246688231C1D189F00C5E5A0 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -65,7 +79,11 @@
 		24030B021C1C821C004E68ED /* TodayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		24030B061C1C821C004E68ED /* TodayUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayUITests.swift; sourceTree = "<group>"; };
 		24030B081C1C821C004E68ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		24030B161C1C87EF004E68ED /* MagicalRecord.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MagicalRecord.framework; path = Carthage/Build/iOS/MagicalRecord.framework; sourceTree = "<group>"; };
+		2466880A1C1D182200C5E5A0 /* MagicalRecord.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MagicalRecord.framework; path = Carthage/Build/iOS/MagicalRecord.framework; sourceTree = "<group>"; };
+		2466884E1C1DB45E00C5E5A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Analysis.storyboard; sourceTree = "<group>"; };
+		246688501C1DB4ED00C5E5A0 /* ScoreTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreTableViewController.swift; sourceTree = "<group>"; };
+		246688521C1DB55900C5E5A0 /* AnalysisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisViewController.swift; sourceTree = "<group>"; };
+		246688551C1DB61100C5E5A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Score.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,7 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24030B171C1C87EF004E68ED /* MagicalRecord.framework in Frameworks */,
+				2466880F1C1D187900C5E5A0 /* MagicalRecord.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,10 +115,10 @@
 		24030AD71C1C821C004E68ED = {
 			isa = PBXGroup;
 			children = (
-				24030B161C1C87EF004E68ED /* MagicalRecord.framework */,
 				24030AE21C1C821C004E68ED /* Today */,
 				24030AFA1C1C821C004E68ED /* TodayTests */,
 				24030B051C1C821C004E68ED /* TodayUITests */,
+				246688171C1D189F00C5E5A0 /* Frameworks */,
 				24030AE11C1C821C004E68ED /* Products */,
 			);
 			sourceTree = "<group>";
@@ -121,10 +139,14 @@
 				24030AE31C1C821C004E68ED /* AppDelegate.swift */,
 				24030AE51C1C821C004E68ED /* ViewController.swift */,
 				24030AE71C1C821C004E68ED /* Main.storyboard */,
+				246688541C1DB61100C5E5A0 /* Score.storyboard */,
+				2466884D1C1DB45E00C5E5A0 /* Analysis.storyboard */,
 				24030AED1C1C821C004E68ED /* Assets.xcassets */,
 				24030AEF1C1C821C004E68ED /* LaunchScreen.storyboard */,
 				24030AF21C1C821C004E68ED /* Info.plist */,
 				24030AEA1C1C821C004E68ED /* Today.xcdatamodeld */,
+				246688501C1DB4ED00C5E5A0 /* ScoreTableViewController.swift */,
+				246688521C1DB55900C5E5A0 /* AnalysisViewController.swift */,
 			);
 			path = Today;
 			sourceTree = "<group>";
@@ -147,6 +169,14 @@
 			path = TodayUITests;
 			sourceTree = "<group>";
 		};
+		246688171C1D189F00C5E5A0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2466880A1C1D182200C5E5A0 /* MagicalRecord.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -157,7 +187,8 @@
 				24030ADC1C1C821C004E68ED /* Sources */,
 				24030ADD1C1C821C004E68ED /* Frameworks */,
 				24030ADE1C1C821C004E68ED /* Resources */,
-				24030B191C1C87EF004E68ED /* Embed Frameworks */,
+				246688111C1D187A00C5E5A0 /* Embed Frameworks */,
+				246688231C1D189F00C5E5A0 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -255,6 +286,8 @@
 				24030AF11C1C821C004E68ED /* LaunchScreen.storyboard in Resources */,
 				24030AEE1C1C821C004E68ED /* Assets.xcassets in Resources */,
 				24030AE91C1C821C004E68ED /* Main.storyboard in Resources */,
+				246688561C1DB61100C5E5A0 /* Score.storyboard in Resources */,
+				2466884F1C1DB45E00C5E5A0 /* Analysis.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,9 +312,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				246688511C1DB4ED00C5E5A0 /* ScoreTableViewController.swift in Sources */,
 				24030AEC1C1C821C004E68ED /* Today.xcdatamodeld in Sources */,
 				24030AE61C1C821C004E68ED /* ViewController.swift in Sources */,
 				24030AE41C1C821C004E68ED /* AppDelegate.swift in Sources */,
+				246688531C1DB55900C5E5A0 /* AnalysisViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,6 +366,22 @@
 				24030AF01C1C821C004E68ED /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		2466884D1C1DB45E00C5E5A0 /* Analysis.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2466884E1C1DB45E00C5E5A0 /* Base */,
+			);
+			name = Analysis.storyboard;
+			sourceTree = "<group>";
+		};
+		246688541C1DB61100C5E5A0 /* Score.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				246688551C1DB61100C5E5A0 /* Base */,
+			);
+			name = Score.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -423,6 +474,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -438,6 +490,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -516,6 +569,7 @@
 				24030B0D1C1C821C004E68ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		24030B0E1C1C821C004E68ED /* Build configuration list for PBXNativeTarget "TodayTests" */ = {
 			isa = XCConfigurationList;
@@ -524,6 +578,7 @@
 				24030B101C1C821C004E68ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		24030B111C1C821C004E68ED /* Build configuration list for PBXNativeTarget "TodayUITests" */ = {
 			isa = XCConfigurationList;
@@ -532,6 +587,7 @@
 				24030B131C1C821C004E68ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

@@ -21,6 +21,8 @@
 		246688531C1DB55900C5E5A0 /* AnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246688521C1DB55900C5E5A0 /* AnalysisViewController.swift */; };
 		246688561C1DB61100C5E5A0 /* Score.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 246688541C1DB61100C5E5A0 /* Score.storyboard */; };
 		246688581C1EFC3900C5E5A0 /* ScoreDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246688571C1EFC3900C5E5A0 /* ScoreDetailsTableViewController.swift */; };
+		2466885E1C1F10E600C5E5A0 /* Score+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2466885C1C1F10E600C5E5A0 /* Score+CoreDataProperties.swift */; };
+		2466885F1C1F10E600C5E5A0 /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2466885D1C1F10E600C5E5A0 /* Score.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +86,8 @@
 		246688521C1DB55900C5E5A0 /* AnalysisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisViewController.swift; sourceTree = "<group>"; };
 		246688551C1DB61100C5E5A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Score.storyboard; sourceTree = "<group>"; };
 		246688571C1EFC3900C5E5A0 /* ScoreDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreDetailsTableViewController.swift; sourceTree = "<group>"; };
+		2466885C1C1F10E600C5E5A0 /* Score+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Score+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2466885D1C1F10E600C5E5A0 /* Score.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +200,8 @@
 		2466885B1C1EFD3300C5E5A0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2466885C1C1F10E600C5E5A0 /* Score+CoreDataProperties.swift */,
+				2466885D1C1F10E600C5E5A0 /* Score.swift */,
 				24030AEA1C1C821C004E68ED /* Today.xcdatamodeld */,
 			);
 			name = Model;
@@ -336,10 +342,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2466885F1C1F10E600C5E5A0 /* Score.swift in Sources */,
 				246688511C1DB4ED00C5E5A0 /* ScoresTableViewController.swift in Sources */,
 				24030AEC1C1C821C004E68ED /* Today.xcdatamodeld in Sources */,
 				24030AE41C1C821C004E68ED /* AppDelegate.swift in Sources */,
 				246688581C1EFC3900C5E5A0 /* ScoreDetailsTableViewController.swift in Sources */,
+				2466885E1C1F10E600C5E5A0 /* Score+CoreDataProperties.swift in Sources */,
 				246688531C1DB55900C5E5A0 /* AnalysisViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,5 +1,5 @@
 //
-//  ScoreTableViewController.swift
+//  ScoresTableViewController.swift
 //  Today
 //
 //  Created by UetaMasamichi on 2015/12/13.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ScoreTableViewController: UITableViewController {
+class ScoresTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +23,15 @@ class ScoreTableViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: - IBAction
+    @IBAction func cancelToScoresViewController(segue: UIStoryboardSegue) {
+        
+    }
+    
+    @IBAction func saveScoreDetailsViewController(segue: UIStoryboardSegue) {
+        
     }
 
     // MARK: - Table view data source

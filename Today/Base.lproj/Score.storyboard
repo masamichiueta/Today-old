@@ -8,7 +8,7 @@
         <!--Scores-->
         <scene sceneID="TSF-1I-Ylr">
             <objects>
-                <tableViewController id="SUI-Vy-fB2" customClass="ScoreTableViewController" customModule="Today" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="SUI-Vy-fB2" customClass="ScoresTableViewController" customModule="Today" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="5iC-Or-Y0n">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -28,12 +28,62 @@
                             <outlet property="delegate" destination="SUI-Vy-fB2" id="Wqg-cf-iaJ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Scores" id="hqx-GF-Dkr"/>
+                    <navigationItem key="navigationItem" title="Scores" id="hqx-GF-Dkr">
+                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="VJS-KM-HA8"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="4DH-jb-BqP">
+                            <connections>
+                                <segue destination="WzQ-rC-fZu" kind="popoverPresentation" popoverAnchorBarButtonItem="4DH-jb-BqP" id="Bh3-I7-xXu">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IvV-dt-m8r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1338" y="-968"/>
+        </scene>
+        <!--Add Score-->
+        <scene sceneID="NgQ-uN-hkv">
+            <objects>
+                <tableViewController id="c8q-HZ-8FD" customClass="ScoreDetailsTableViewController" customModule="Today" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="zs3-dR-ZKB">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="c8O-JH-apK">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="c8O-JH-apK" id="54C-Mu-Ini">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="c8q-HZ-8FD" id="UtP-0j-bOB"/>
+                            <outlet property="delegate" destination="c8q-HZ-8FD" id="pz4-Ec-Tzz"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Add Score" id="fj1-v4-mZv">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Ucn-bu-n7L">
+                            <connections>
+                                <segue destination="Srv-TQ-H57" kind="unwind" unwindAction="cancelToScoresViewController:" id="39r-Fz-CHb"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="65I-Vr-NEj">
+                            <connections>
+                                <segue destination="Srv-TQ-H57" kind="unwind" unwindAction="saveScoreDetailsViewController:" id="KOM-tm-AqC"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ysn-fS-zxZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Srv-TQ-H57" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2818" y="-968"/>
         </scene>
         <!--Score-->
         <scene sceneID="O48-2O-yOx">
@@ -54,6 +104,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lbc-qz-qPp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="526" y="-968"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Rof-Na-BwB">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WzQ-rC-fZu" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rBu-tX-fcj">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="c8q-HZ-8FD" kind="relationship" relationship="rootViewController" id="NXs-bg-TSJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sDN-9Q-Gco" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2126" y="-968"/>
         </scene>
     </scenes>
     <color key="tintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>

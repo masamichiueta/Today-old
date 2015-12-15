@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
-        <!--Analysis View Controller-->
+        <!--Analysis-->
         <scene sceneID="YgI-Pz-YZl">
             <objects>
                 <viewController id="m1g-Se-YlK" customClass="AnalysisViewController" customModule="Today" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="ZwI-ec-Q83"/>
+                    <navigationItem key="navigationItem" title="Analysis" id="ZwI-ec-Q83"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8sd-VF-WBF" userLabel="First Responder" sceneMemberID="firstResponder"/>

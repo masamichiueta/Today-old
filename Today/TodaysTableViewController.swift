@@ -1,5 +1,5 @@
 //
-//  ScoresTableViewController.swift
+//  TodaysTableViewController.swift
 //  Today
 //
 //  Created by UetaMasamichi on 2015/12/13.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ScoresTableViewController: UITableViewController {
+class TodaysTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

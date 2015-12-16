@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
-        <!--Scores-->
+        <!--Todays-->
         <scene sceneID="TSF-1I-Ylr">
             <objects>
-                <tableViewController id="SUI-Vy-fB2" customClass="ScoresTableViewController" customModule="Today" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="SUI-Vy-fB2" customClass="TodaysTableViewController" customModule="Today" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="5iC-Or-Y0n">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -40,13 +40,39 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScoreCell" id="CoY-Uz-nyS">
+                                <rect key="frame" x="0.0" y="136" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CoY-Uz-nyS" id="Huu-Cc-Hoe">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Anx-cF-JEX">
+                                            <rect key="frame" x="55" y="11" width="45" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kW5-np-5qE">
+                                            <rect key="frame" x="17" y="11" width="21" height="21"/>
+                                            <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2015/12/15" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WIw-lV-UUH">
+                                            <rect key="frame" x="483" y="11" width="99" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="SUI-Vy-fB2" id="5Jh-4G-Zug"/>
                             <outlet property="delegate" destination="SUI-Vy-fB2" id="Wqg-cf-iaJ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Scores" id="hqx-GF-Dkr">
+                    <navigationItem key="navigationItem" title="Todays" id="hqx-GF-Dkr">
                         <barButtonItem key="leftBarButtonItem" systemItem="edit" id="VJS-KM-HA8"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="4DH-jb-BqP">
                             <connections>
@@ -62,10 +88,10 @@
             </objects>
             <point key="canvasLocation" x="1338" y="-968"/>
         </scene>
-        <!--Add Score-->
+        <!--Add Today-->
         <scene sceneID="NgQ-uN-hkv">
             <objects>
-                <tableViewController id="c8q-HZ-8FD" customClass="ScoreDetailsTableViewController" customModule="Today" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="c8q-HZ-8FD" customClass="TodayDetailsTableViewController" customModule="Today" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="zs3-dR-ZKB">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -85,7 +111,7 @@
                             <outlet property="delegate" destination="c8q-HZ-8FD" id="pz4-Ec-Tzz"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Add Score" id="fj1-v4-mZv">
+                    <navigationItem key="navigationItem" title="Add Today" id="fj1-v4-mZv">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Ucn-bu-n7L">
                             <connections>
                                 <segue destination="Srv-TQ-H57" kind="unwind" unwindAction="cancelToScoresViewController:" id="39r-Fz-CHb"/>
@@ -103,11 +129,11 @@
             </objects>
             <point key="canvasLocation" x="2818" y="-968"/>
         </scene>
-        <!--Score-->
+        <!--Todays-->
         <scene sceneID="O48-2O-yOx">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QaR-bl-YEz" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Score" image="ScoreIcon" id="jhP-Ks-5WW"/>
+                    <tabBarItem key="tabBarItem" title="Todays" image="ScoreIcon" id="jhP-Ks-5WW"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Z5E-cO-Fxo">

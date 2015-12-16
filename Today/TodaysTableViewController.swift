@@ -14,10 +14,12 @@ class TodaysTableViewController: UITableViewController {
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        //self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 44
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,10 +45,15 @@ class TodaysTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }
-
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("TodayCell", forIndexPath: indexPath)
+        
+        let cell: UITableViewCell
+        if indexPath.row == 0 {
+            cell = tableView.dequeueReusableCellWithIdentifier("FirstTodayCell", forIndexPath: indexPath)
+        } else {
+            cell = tableView.dequeueReusableCellWithIdentifier("TodayCell", forIndexPath: indexPath)
+        }
 
         return cell
     }

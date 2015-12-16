@@ -46,7 +46,7 @@ class TodaysTableViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ScoreCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("TodayCell", forIndexPath: indexPath)
 
         return cell
     }

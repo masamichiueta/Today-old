@@ -33,10 +33,10 @@
             </objects>
             <point key="canvasLocation" x="483.5" y="-412"/>
         </scene>
-        <!--Score-->
+        <!--Today-->
         <scene sceneID="nQn-f5-XpW">
             <objects>
-                <viewControllerPlaceholder storyboardName="Score" id="B6i-nc-eqw" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Today" id="B6i-nc-eqw" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="rBk-tg-ruC"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="boI-iY-Qxt" userLabel="First Responder" sceneMemberID="firstResponder"/>

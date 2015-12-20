@@ -25,7 +25,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FGS-9k-OCK">
                                             <rect key="frame" x="126" y="45" width="348" height="110"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="80"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tyu-es-hSZ">
@@ -54,7 +54,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Anx-cF-JEX">
                                             <rect key="frame" x="55" y="11" width="45" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kW5-np-5qE">
@@ -137,7 +137,7 @@
         <scene sceneID="O48-2O-yOx">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QaR-bl-YEz" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Todays" image="ScoreIcon" id="jhP-Ks-5WW"/>
+                    <tabBarItem key="tabBarItem" title="Todays" image="today_icon" id="jhP-Ks-5WW"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Z5E-cO-Fxo">
@@ -173,7 +173,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ScoreIcon" width="30" height="30"/>
+        <image name="today_icon" width="30" height="30"/>
     </resources>
     <color key="tintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>

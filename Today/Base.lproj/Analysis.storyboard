@@ -29,7 +29,7 @@
         <scene sceneID="YOR-X2-wiq">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VQb-Wh-VQJ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Analysis" image="AnalysisIcon" id="ucM-TO-ynK"/>
+                    <tabBarItem key="tabBarItem" title="Analysis" image="analysis_icon" id="ucM-TO-ynK"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="YrW-hF-ZW1">
@@ -47,7 +47,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="AnalysisIcon" width="32" height="32"/>
+        <image name="analysis_icon" width="32" height="32"/>
     </resources>
     <color key="tintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>

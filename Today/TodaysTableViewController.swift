@@ -49,10 +49,14 @@ class TodaysTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell: UITableViewCell
-        if indexPath.row == 0 {
+        switch indexPath.row {
+        case 0:
             cell = tableView.dequeueReusableCellWithIdentifier("FirstTodayCell", forIndexPath: indexPath)
-        } else {
+        case 1:
+            cell = tableView.dequeueReusableCellWithIdentifier("FirstTodayCellNotCompleted", forIndexPath: indexPath)
+        default:
             cell = tableView.dequeueReusableCellWithIdentifier("TodayCell", forIndexPath: indexPath)
+
         }
 
         return cell

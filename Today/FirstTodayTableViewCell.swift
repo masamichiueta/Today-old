@@ -10,6 +10,9 @@ import UIKit
 
 class FirstTodayTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var circleView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

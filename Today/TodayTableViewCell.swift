@@ -10,6 +10,10 @@ import UIKit
 
 class TodayTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var colorView: UIView!
+    @IBOutlet weak var scoreLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

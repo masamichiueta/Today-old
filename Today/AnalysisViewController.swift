@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import CoreData
 
-class AnalysisViewController: UIViewController {
+class AnalysisViewController: UIViewController, ManagedObjectContextSettable {
 
+    var managedObjectContext: NSManagedObjectContext!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

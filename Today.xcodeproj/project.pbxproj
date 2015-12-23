@@ -16,6 +16,7 @@
 		240F14751C2A9CDE0003B2AF /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F14741C2A9CDE0003B2AF /* CoreDataStack.swift */; };
 		240F14781C2A9FD40003B2AF /* ManagedObjectContextSettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F14771C2A9FD40003B2AF /* ManagedObjectContextSettable.swift */; };
 		240F147C1C2AA0450003B2AF /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F147B1C2AA0450003B2AF /* RootViewController.swift */; };
+		240F147E1C2ABC000003B2AF /* SegueHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F147D1C2ABC000003B2AF /* SegueHandlerType.swift */; };
 		2466884F1C1DB45E00C5E5A0 /* Analysis.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2466884D1C1DB45E00C5E5A0 /* Analysis.storyboard */; };
 		246688511C1DB4ED00C5E5A0 /* TodaysTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246688501C1DB4ED00C5E5A0 /* TodaysTableViewController.swift */; };
 		246688531C1DB55900C5E5A0 /* AnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246688521C1DB55900C5E5A0 /* AnalysisViewController.swift */; };
@@ -114,6 +115,7 @@
 		240F14741C2A9CDE0003B2AF /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		240F14771C2A9FD40003B2AF /* ManagedObjectContextSettable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectContextSettable.swift; sourceTree = "<group>"; };
 		240F147B1C2AA0450003B2AF /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		240F147D1C2ABC000003B2AF /* SegueHandlerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueHandlerType.swift; sourceTree = "<group>"; };
 		2466884E1C1DB45E00C5E5A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Analysis.storyboard; sourceTree = "<group>"; };
 		246688501C1DB4ED00C5E5A0 /* TodaysTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodaysTableViewController.swift; sourceTree = "<group>"; };
 		246688521C1DB55900C5E5A0 /* AnalysisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisViewController.swift; sourceTree = "<group>"; };
@@ -237,7 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				240F14771C2A9FD40003B2AF /* ManagedObjectContextSettable.swift */,
-				240F147B1C2AA0450003B2AF /* RootViewController.swift */,
+				240F147D1C2ABC000003B2AF /* SegueHandlerType.swift */,
 			);
 			name = "Shared Code";
 			sourceTree = "<group>";
@@ -253,6 +255,7 @@
 		246688591C1EFC3E00C5E5A0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				240F147B1C2AA0450003B2AF /* RootViewController.swift */,
 				246688521C1DB55900C5E5A0 /* AnalysisViewController.swift */,
 				246688571C1EFC3900C5E5A0 /* TodayDetailsTableViewController.swift */,
 				246688501C1DB4ED00C5E5A0 /* TodaysTableViewController.swift */,
@@ -532,6 +535,7 @@
 				246688581C1EFC3900C5E5A0 /* TodayDetailsTableViewController.swift in Sources */,
 				240F14781C2A9FD40003B2AF /* ManagedObjectContextSettable.swift in Sources */,
 				240F147C1C2AA0450003B2AF /* RootViewController.swift in Sources */,
+				240F147E1C2ABC000003B2AF /* SegueHandlerType.swift in Sources */,
 				246688531C1DB55900C5E5A0 /* AnalysisViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

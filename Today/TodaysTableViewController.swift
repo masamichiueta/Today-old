@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import CoreData
 
-class TodaysTableViewController: UITableViewController {
+class TodaysTableViewController: UITableViewController, ManagedObjectContextSettable {
+    
+    var managedObjectContext: NSManagedObjectContext!
 
     override func viewDidLoad() {
         super.viewDidLoad()

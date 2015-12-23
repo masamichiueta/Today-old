@@ -21,7 +21,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ygr-J2-tuc">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <connections>
-                                    <segue destination="jGq-gi-jUG" kind="embed" id="b4u-8t-UaE"/>
+                                    <segue destination="jGq-gi-jUG" kind="embed" identifier="embedTabBarController" id="b4u-8t-UaE"/>
                                 </connections>
                             </containerView>
                         </subviews>

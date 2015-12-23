@@ -2,7 +2,7 @@
 //  TodayUITests.swift
 //  TodayUITests
 //
-//  Created by UetaMasamichi on 2015/12/13.
+//  Created by MasamichiUeta on 2015/12/13.
 //  Copyright © 2015年 Masamichi Ueta. All rights reserved.
 //
 

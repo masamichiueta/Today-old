@@ -1,15 +1,15 @@
 //
-//  TodayTests.swift
-//  TodayTests
+//  TodayModelTests.swift
+//  TodayModelTests
 //
-//  Created by MasamichiUeta on 2015/12/13.
+//  Created by MasamichiUeta on 2015/12/23.
 //  Copyright © 2015年 Masamichi Ueta. All rights reserved.
 //
 
 import XCTest
-@testable import Today
+@testable import TodayModel
 
-class TodayTests: XCTestCase {
+class TodayModelTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

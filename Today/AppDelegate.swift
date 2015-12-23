@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  Today
 //
-//  Created by UetaMasamichi on 2015/12/13.
+//  Created by MasamichiUeta on 2015/12/13.
 //  Copyright © 2015年 Masamichi Ueta. All rights reserved.
 //
 
@@ -46,6 +46,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
     }
+    
+    
+    // MARK: - Core Data
+    
+    
 
     // MARK: - Core Data stack
 
@@ -111,7 +116,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     
-    //MARK: - Util
+    //MARK: - Design
     func applyDesign() {
         UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.orangeColor()], forState: .Selected)
         UITabBar.appearance().tintColor = UIColor.orangeColor()

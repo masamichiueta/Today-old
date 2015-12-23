@@ -14,8 +14,6 @@
 		24030AF11C1C821C004E68ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24030AEF1C1C821C004E68ED /* LaunchScreen.storyboard */; };
 		24030AFC1C1C821C004E68ED /* TodayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24030AFB1C1C821C004E68ED /* TodayTests.swift */; };
 		24030B071C1C821C004E68ED /* TodayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24030B061C1C821C004E68ED /* TodayUITests.swift */; };
-		2466880F1C1D187900C5E5A0 /* MagicalRecord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2466880A1C1D182200C5E5A0 /* MagicalRecord.framework */; };
-		246688101C1D187900C5E5A0 /* MagicalRecord.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2466880A1C1D182200C5E5A0 /* MagicalRecord.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2466884F1C1DB45E00C5E5A0 /* Analysis.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2466884D1C1DB45E00C5E5A0 /* Analysis.storyboard */; };
 		246688511C1DB4ED00C5E5A0 /* TodaysTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246688501C1DB4ED00C5E5A0 /* TodaysTableViewController.swift */; };
 		246688531C1DB55900C5E5A0 /* AnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246688521C1DB55900C5E5A0 /* AnalysisViewController.swift */; };
@@ -23,6 +21,8 @@
 		246688581C1EFC3900C5E5A0 /* TodayDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246688571C1EFC3900C5E5A0 /* TodayDetailsTableViewController.swift */; };
 		24C6AE951C2831450048C4D1 /* FirstTodayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C6AE941C2831450048C4D1 /* FirstTodayTableViewCell.swift */; };
 		24C6AE971C2831660048C4D1 /* TodayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C6AE961C2831660048C4D1 /* TodayTableViewCell.swift */; };
+		24C77E7C1C2A887000493C13 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24C77E7B1C2A887000493C13 /* SVProgressHUD.framework */; };
+		24C77E7D1C2A887000493C13 /* SVProgressHUD.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24C77E7B1C2A887000493C13 /* SVProgressHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,7 +49,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				246688101C1D187900C5E5A0 /* MagicalRecord.framework in Embed Frameworks */,
+				24C77E7D1C2A887000493C13 /* SVProgressHUD.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -80,7 +80,6 @@
 		24030B021C1C821C004E68ED /* TodayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		24030B061C1C821C004E68ED /* TodayUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayUITests.swift; sourceTree = "<group>"; };
 		24030B081C1C821C004E68ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2466880A1C1D182200C5E5A0 /* MagicalRecord.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MagicalRecord.framework; path = Carthage/Build/iOS/MagicalRecord.framework; sourceTree = "<group>"; };
 		2466884E1C1DB45E00C5E5A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Analysis.storyboard; sourceTree = "<group>"; };
 		246688501C1DB4ED00C5E5A0 /* TodaysTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodaysTableViewController.swift; sourceTree = "<group>"; };
 		246688521C1DB55900C5E5A0 /* AnalysisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisViewController.swift; sourceTree = "<group>"; };
@@ -88,6 +87,7 @@
 		246688571C1EFC3900C5E5A0 /* TodayDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayDetailsTableViewController.swift; sourceTree = "<group>"; };
 		24C6AE941C2831450048C4D1 /* FirstTodayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstTodayTableViewCell.swift; sourceTree = "<group>"; };
 		24C6AE961C2831660048C4D1 /* TodayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayTableViewCell.swift; sourceTree = "<group>"; };
+		24C77E7B1C2A887000493C13 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = Carthage/Build/iOS/SVProgressHUD.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2466880F1C1D187900C5E5A0 /* MagicalRecord.framework in Frameworks */,
+				24C77E7C1C2A887000493C13 /* SVProgressHUD.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,7 +171,7 @@
 		246688171C1D189F00C5E5A0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2466880A1C1D182200C5E5A0 /* MagicalRecord.framework */,
+				24C77E7B1C2A887000493C13 /* SVProgressHUD.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

@@ -49,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     // MARK: - Core Data
-    
+    private let StoreURL = FileManager.fileInSharedDocumentsDirectory("Today.sqlite")
     
 
     // MARK: - Core Data stack

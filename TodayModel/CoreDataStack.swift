@@ -8,9 +8,7 @@
 
 import CoreData
 
-private let appGroupIdentifier = "group.com.uetamasamichi.todaygroup"
-
-private let StoreURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier(appGroupIdentifier)!.URLByAppendingPathComponent("Today.sqlite")
+private let StoreURL = NSURL.documentsURL.URLByAppendingPathComponent("Today.sqlite")
 
 public func createTodayMainContext() -> NSManagedObjectContext {
     let bundles = [NSBundle(forClass: Today.self)]

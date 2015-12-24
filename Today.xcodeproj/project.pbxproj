@@ -34,6 +34,7 @@
 		24C77EA21C2A8B6C00493C13 /* ManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C77EA11C2A8B6C00493C13 /* ManagedObject.swift */; };
 		24C77EA61C2A8C3400493C13 /* Today.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 24C77EA41C2A8C3400493C13 /* Today.xcdatamodeld */; };
 		24C77EA91C2A8C6F00493C13 /* Today.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C77EA81C2A8C6F00493C13 /* Today.swift */; };
+		24DBB5911C2C367100E1C042 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DBB5901C2C367100E1C042 /* Utilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +135,7 @@
 		24C77EA51C2A8C3400493C13 /* Today.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Today.xcdatamodel; sourceTree = "<group>"; };
 		24C77EA81C2A8C6F00493C13 /* Today.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Today.swift; sourceTree = "<group>"; };
 		24C77EAD1C2A937600493C13 /* Today.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Today.entitlements; sourceTree = "<group>"; };
+		24DBB5901C2C367100E1C042 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -280,11 +282,9 @@
 			isa = PBXGroup;
 			children = (
 				24C77EA71C2A8C5F00493C13 /* Model */,
-				24C77EA41C2A8C3400493C13 /* Today.xcdatamodeld */,
 				24C77EA31C2A8BF000493C13 /* Shared Code */,
 				24C77E851C2A8A3E00493C13 /* TodayModel.h */,
 				24C77E871C2A8A3E00493C13 /* Info.plist */,
-				240F14741C2A9CDE0003B2AF /* CoreDataStack.swift */,
 			);
 			path = TodayModel;
 			sourceTree = "<group>";
@@ -302,6 +302,8 @@
 			isa = PBXGroup;
 			children = (
 				24C77EA11C2A8B6C00493C13 /* ManagedObject.swift */,
+				240F14741C2A9CDE0003B2AF /* CoreDataStack.swift */,
+				24DBB5901C2C367100E1C042 /* Utilities.swift */,
 			);
 			name = "Shared Code";
 			sourceTree = "<group>";
@@ -309,6 +311,7 @@
 		24C77EA71C2A8C5F00493C13 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				24C77EA41C2A8C3400493C13 /* Today.xcdatamodeld */,
 				24C77EA81C2A8C6F00493C13 /* Today.swift */,
 			);
 			name = Model;
@@ -563,6 +566,7 @@
 				24C77EA21C2A8B6C00493C13 /* ManagedObject.swift in Sources */,
 				24C77EA91C2A8C6F00493C13 /* Today.swift in Sources */,
 				24C77EA61C2A8C3400493C13 /* Today.xcdatamodeld in Sources */,
+				24DBB5911C2C367100E1C042 /* Utilities.swift in Sources */,
 				240F14751C2A9CDE0003B2AF /* CoreDataStack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

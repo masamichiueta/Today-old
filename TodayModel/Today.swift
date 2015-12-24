@@ -10,8 +10,16 @@ import UIKit
 import CoreData
 
 public class Today: ManagedObject {
-
     @NSManaged public private(set) var date: NSDate
     @NSManaged public private(set) var score: Int64
+}
+
+extension Today: ManagedObjectType {
+    public static var entityName: String {
+        return "Today"
+    }
     
+    public static var defaultSortDescriptors: [NSSortDescriptor] {
+        return [NSSortDescriptor(key: "date", ascending: false)]
+    }
 }

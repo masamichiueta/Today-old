@@ -8,7 +8,6 @@
         <!--Root View Controller-->
         <scene sceneID="EFn-Ve-53f">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="T6C-U1-AoQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="Eny-az-Evn" customClass="RootViewController" customModule="Today" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1Je-Hx-35t"/>
@@ -34,6 +33,7 @@
                         </constraints>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T6C-U1-AoQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1216" y="-573"/>
         </scene>

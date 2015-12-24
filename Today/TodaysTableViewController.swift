@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import TodayModel
 
 class TodaysTableViewController: UITableViewController, ManagedObjectContextSettable {
     
@@ -15,14 +16,7 @@ class TodaysTableViewController: UITableViewController, ManagedObjectContextSett
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        //self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.estimatedRowHeight = 44
+        setupTableView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,6 +30,18 @@ class TodaysTableViewController: UITableViewController, ManagedObjectContextSett
     }
     
     @IBAction func saveScoreDetailsViewController(segue: UIStoryboardSegue) {
+        
+    }
+    
+    // MARK: Private
+    private func setupTableView() {
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 44
+        
+        let request = Today.sortedFetchRequest
+        request.returnsObjectsAsFaults = false
+        request.fetchBatchSize = 20
+        let frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         
     }
 

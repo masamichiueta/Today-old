@@ -219,7 +219,7 @@ You have not completed today!</string>
         <scene sceneID="O48-2O-yOx">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QaR-bl-YEz" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Todays" image="today_icon" id="jhP-Ks-5WW"/>
+                    <tabBarItem key="tabBarItem" title="Todays" image="today_outline" selectedImage="today_fill" id="jhP-Ks-5WW"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Z5E-cO-Fxo">
@@ -255,7 +255,8 @@ You have not completed today!</string>
         </scene>
     </scenes>
     <resources>
-        <image name="today_icon" width="30" height="30"/>
+        <image name="today_fill" width="30" height="30"/>
+        <image name="today_outline" width="30" height="30"/>
     </resources>
     <color key="tintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>

@@ -52,6 +52,10 @@ class TableViewDataSource<Delegate: DataSourceDelegate, Data: DataProvider, Cell
     
     // MARK: UITableViewDataSource
     
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return dataProvider.numberOfSection()
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataProvider.numberOfItemsInSection(section)
     }

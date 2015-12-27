@@ -17,6 +17,7 @@
 		240F14781C2A9FD40003B2AF /* ManagedObjectContextSettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F14771C2A9FD40003B2AF /* ManagedObjectContextSettable.swift */; };
 		240F147C1C2AA0450003B2AF /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F147B1C2AA0450003B2AF /* RootViewController.swift */; };
 		240F147E1C2ABC000003B2AF /* SegueHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F147D1C2ABC000003B2AF /* SegueHandlerType.swift */; };
+		24444A5A1C306B4B00DC1579 /* NSManagedObjectContext+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24444A591C306B4B00DC1579 /* NSManagedObjectContext+Extensions.swift */; };
 		2466884F1C1DB45E00C5E5A0 /* Analysis.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2466884D1C1DB45E00C5E5A0 /* Analysis.storyboard */; };
 		246688511C1DB4ED00C5E5A0 /* TodaysTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246688501C1DB4ED00C5E5A0 /* TodaysTableViewController.swift */; };
 		246688531C1DB55900C5E5A0 /* AnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246688521C1DB55900C5E5A0 /* AnalysisViewController.swift */; };
@@ -123,6 +124,7 @@
 		240F14771C2A9FD40003B2AF /* ManagedObjectContextSettable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectContextSettable.swift; sourceTree = "<group>"; };
 		240F147B1C2AA0450003B2AF /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		240F147D1C2ABC000003B2AF /* SegueHandlerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueHandlerType.swift; sourceTree = "<group>"; };
+		24444A591C306B4B00DC1579 /* NSManagedObjectContext+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Extensions.swift"; sourceTree = "<group>"; };
 		2466884E1C1DB45E00C5E5A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Analysis.storyboard; sourceTree = "<group>"; };
 		246688501C1DB4ED00C5E5A0 /* TodaysTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodaysTableViewController.swift; sourceTree = "<group>"; };
 		246688521C1DB55900C5E5A0 /* AnalysisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisViewController.swift; sourceTree = "<group>"; };
@@ -220,8 +222,8 @@
 		24030AE21C1C821C004E68ED /* Today */ = {
 			isa = PBXGroup;
 			children = (
-				24F9DC351C2EF9E6003A6427 /* Data Sources and Providers */,
-				240F14761C2A9FB60003B2AF /* Shared Code */,
+				24F9DC351C2EF9E6003A6427 /* Data Source and Provider */,
+				240F14761C2A9FB60003B2AF /* Protocol */,
 				24C77EAD1C2A937600493C13 /* Today.entitlements */,
 				24030AE31C1C821C004E68ED /* AppDelegate.swift */,
 				24030AED1C1C821C004E68ED /* Assets.xcassets */,
@@ -250,14 +252,14 @@
 			path = TodayUITests;
 			sourceTree = "<group>";
 		};
-		240F14761C2A9FB60003B2AF /* Shared Code */ = {
+		240F14761C2A9FB60003B2AF /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
 				240F14771C2A9FD40003B2AF /* ManagedObjectContextSettable.swift */,
 				240F147D1C2ABC000003B2AF /* SegueHandlerType.swift */,
 				24F9DC3E1C2EFD33003A6427 /* ConfigurableCell.swift */,
 			);
-			name = "Shared Code";
+			name = Protocol;
 			sourceTree = "<group>";
 		};
 		246688171C1D189F00C5E5A0 /* Frameworks */ = {
@@ -318,6 +320,7 @@
 				24C77EA11C2A8B6C00493C13 /* ManagedObject.swift */,
 				240F14741C2A9CDE0003B2AF /* CoreDataStack.swift */,
 				24DBB5901C2C367100E1C042 /* Utilities.swift */,
+				24444A591C306B4B00DC1579 /* NSManagedObjectContext+Extensions.swift */,
 			);
 			name = "Shared Code";
 			sourceTree = "<group>";
@@ -331,7 +334,7 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		24F9DC351C2EF9E6003A6427 /* Data Sources and Providers */ = {
+		24F9DC351C2EF9E6003A6427 /* Data Source and Provider */ = {
 			isa = PBXGroup;
 			children = (
 				24F194891C2FB9B8001593D8 /* AugmentedFetchedResultsDataProvider.swift */,
@@ -340,7 +343,7 @@
 				24F9DC3A1C2EFB0F003A6427 /* FetchedResultsDataProvider.swift */,
 				24F9DC3C1C2EFCD4003A6427 /* TableViewDataSource.swift */,
 			);
-			name = "Data Sources and Providers";
+			name = "Data Source and Provider";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -600,6 +603,7 @@
 				24C77EA61C2A8C3400493C13 /* Today.xcdatamodeld in Sources */,
 				24DBB5911C2C367100E1C042 /* Utilities.swift in Sources */,
 				240F14751C2A9CDE0003B2AF /* CoreDataStack.swift in Sources */,
+				24444A5A1C306B4B00DC1579 /* NSManagedObjectContext+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

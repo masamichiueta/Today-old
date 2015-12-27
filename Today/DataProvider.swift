@@ -11,6 +11,7 @@ import UIKit
 protocol DataProvider: class {
     typealias Object
     func objectAtIndexPath(indexPath: NSIndexPath) -> Object
+    func numberOfSection() -> Int
     func numberOfItemsInSection(section: Int) -> Int
 }
 

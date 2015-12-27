@@ -30,6 +30,9 @@ class TodayTableViewCell: UITableViewCell {
 
 private let dateFormatter: NSDateFormatter = {
     let formatter = NSDateFormatter()
+    formatter.dateStyle = .MediumStyle
+    formatter.timeStyle = .NoStyle
+    formatter.doesRelativeDateFormatting = true
     return formatter
 }()
 

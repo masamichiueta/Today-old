@@ -12,14 +12,17 @@ import TodayModel
 
 class TodaysTableViewController: UITableViewController, ManagedObjectContextSettable {
     
+    //MARK: Variables
     var managedObjectContext: NSManagedObjectContext!
     
     private typealias TodaysDataProvider = AugmentedFetchedResultsDataProvider<TodaysTableViewController>
     private var dataProvider: TodaysDataProvider!
     private var dataSource: TableViewDataSource<TodaysTableViewController, TodaysDataProvider, TodayTableViewCell>!
 
+    //MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupTableView()
     }
 
@@ -28,7 +31,7 @@ class TodaysTableViewController: UITableViewController, ManagedObjectContextSett
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: - IBAction
+    // MARK: IBAction
     @IBAction func cancelToScoresViewController(segue: UIStoryboardSegue) {
         
     }
@@ -41,7 +44,6 @@ class TodaysTableViewController: UITableViewController, ManagedObjectContextSett
     private func setupTableView() {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 44
-        tableView.delegate = self
         setupDataSource()
     }
     
@@ -56,12 +58,14 @@ class TodaysTableViewController: UITableViewController, ManagedObjectContextSett
 
 }
 
+//MARK: - UITableViewDelegate
 extension TodaysTableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         print("cell did select")
     }
 }
 
+//MARK: - AugmentedDataProviderDelegate
 extension TodaysTableViewController: AugmentedDataProviderDelegate {
     func numberOfAdditionalRowsInSection(section: Int) -> Int {
         return 0
@@ -81,6 +85,7 @@ extension TodaysTableViewController: AugmentedDataProviderDelegate {
     }
 }
 
+//MARK: - DataSourceDelegate
 extension TodaysTableViewController: DataSourceDelegate {
     func cellIdentifierForObject(object: Today) -> String {
         return "TodayCell"

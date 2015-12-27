@@ -9,9 +9,17 @@
 import UIKit
 import CoreData
 
-public class Today: ManagedObject {
+public final class Today: ManagedObject {
     @NSManaged public private(set) var date: NSDate
     @NSManaged public private(set) var score: Int64
+    
+    public static func insertIntoContext(moc: NSManagedObjectContext, score: Int64) -> Today {
+        let today: Today = moc.insertObject()
+        today.score = score
+        today.date = NSDate()
+        return today
+    }
+    
 }
 
 extension Today: ManagedObjectType {

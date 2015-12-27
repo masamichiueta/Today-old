@@ -173,47 +173,6 @@ You have not completed today!</string>
             </objects>
             <point key="canvasLocation" x="1338" y="-968"/>
         </scene>
-        <!--Add Today-->
-        <scene sceneID="NgQ-uN-hkv">
-            <objects>
-                <tableViewController id="c8q-HZ-8FD" customClass="TodayDetailsTableViewController" customModule="Today" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="zs3-dR-ZKB">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="c8O-JH-apK">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="c8O-JH-apK" id="54C-Mu-Ini">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="c8q-HZ-8FD" id="UtP-0j-bOB"/>
-                            <outlet property="delegate" destination="c8q-HZ-8FD" id="pz4-Ec-Tzz"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Add Today" id="fj1-v4-mZv">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Ucn-bu-n7L">
-                            <connections>
-                                <segue destination="Srv-TQ-H57" kind="unwind" unwindAction="cancelToScoresViewController:" id="39r-Fz-CHb"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="65I-Vr-NEj">
-                            <connections>
-                                <segue destination="Srv-TQ-H57" kind="unwind" unwindAction="saveScoreDetailsViewController:" id="KOM-tm-AqC"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ysn-fS-zxZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="Srv-TQ-H57" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="2818" y="-968"/>
-        </scene>
         <!--Todays-->
         <scene sceneID="O48-2O-yOx">
             <objects>
@@ -245,12 +204,59 @@ You have not completed today!</string>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="c8q-HZ-8FD" kind="relationship" relationship="rootViewController" id="NXs-bg-TSJ"/>
+                        <segue destination="9oD-AR-chY" kind="relationship" relationship="rootViewController" id="2G7-Eo-bTY"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sDN-9Q-Gco" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2126" y="-968"/>
+        </scene>
+        <!--Add Today-->
+        <scene sceneID="gEs-OF-8qy">
+            <objects>
+                <viewController id="9oD-AR-chY" customClass="AddTodayViewController" customModule="Today" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="o9X-08-kDB"/>
+                        <viewControllerLayoutGuide type="bottom" id="jMd-gE-IMc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="OuH-8s-S5r">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b24-9R-gMp">
+                                <rect key="frame" x="0.0" y="384" width="600" height="216"/>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lCS-Ky-wzA">
+                                <rect key="frame" x="276" y="133" width="45" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jMd-gE-IMc" firstAttribute="top" secondItem="b24-9R-gMp" secondAttribute="bottom" id="6cP-ds-8nb"/>
+                            <constraint firstAttribute="trailing" secondItem="b24-9R-gMp" secondAttribute="trailing" id="hRg-OR-mhD"/>
+                            <constraint firstItem="b24-9R-gMp" firstAttribute="leading" secondItem="OuH-8s-S5r" secondAttribute="leading" id="nbf-pg-lpH"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add Today" id="LTJ-Fh-X4Y">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="w4n-ao-Mmo">
+                            <connections>
+                                <segue destination="K7h-35-e15" kind="unwind" unwindAction="cancelToTodaysTableViewController:" id="2mR-yr-0Ya"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="lb9-9X-YxO">
+                            <connections>
+                                <segue destination="K7h-35-e15" kind="unwind" unwindAction="saveAddTodayViewController:" id="19u-Q1-gJf"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Egl-vH-IX5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="K7h-35-e15" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2872" y="-968"/>
         </scene>
     </scenes>
     <resources>

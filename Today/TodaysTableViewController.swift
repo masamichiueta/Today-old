@@ -37,11 +37,11 @@ class TodaysTableViewController: UITableViewController, ManagedObjectContextSett
     }
     
     // MARK: IBAction
-    @IBAction func cancelToScoresViewController(segue: UIStoryboardSegue) {
+    @IBAction func cancelToTodaysTableViewController(segue: UIStoryboardSegue) {
         
     }
     
-    @IBAction func saveScoreDetailsViewController(segue: UIStoryboardSegue) {
+    @IBAction func saveAddTodayViewController(segue: UIStoryboardSegue) {
         
     }
     

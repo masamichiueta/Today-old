@@ -8,7 +8,13 @@
 
 import UIKit
 
-class TableViewDataSource<Delegate: DataSourceDelegate, Data: DataProvider, Cell: UITableViewCell where Delegate.Object == Data.Object, Cell: ConfigurableCell, Cell.DataSource == Data.Object>: NSObject, UITableViewDataSource {
+protocol TableViewDataSourceDelegate: DataSourceDelegate {
+    func canEditRowAtIndexPath(indexPath: NSIndexPath) -> Bool
+    func didEditRowAtIndexPath(indexPath: NSIndexPath, commitEditingStyle editingStyle: UITableViewCellEditingStyle)
+}
+
+
+class TableViewDataSource<Delegate: TableViewDataSourceDelegate, Data: DataProvider, Cell: UITableViewCell where Delegate.Object == Data.Object, Cell: ConfigurableCell, Cell.DataSource == Data.Object>: NSObject, UITableViewDataSource {
     
     private let tableView: UITableView
     private let dataProvider: Data
@@ -67,5 +73,25 @@ class TableViewDataSource<Delegate: DataSourceDelegate, Data: DataProvider, Cell
             else { fatalError("Unexpected cell type at \(indexPath)") }
         cell.configureForObject(object)
         return cell
+    }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return delegate.canEditRowAtIndexPath(indexPath)
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        return delegate.didEditRowAtIndexPath(indexPath, commitEditingStyle: editingStyle)
+    }
+    
+}
+
+extension TableViewDataSourceDelegate {
+    
+    func cellIdentifierForObject(object: Object) -> String {
+        return ""
+    }
+    
+    func canEditRowAtIndexPath(indexPath: NSIndexPath) -> Bool {
+        return false
     }
 }

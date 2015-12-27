@@ -31,6 +31,11 @@ class TodaysTableViewController: UITableViewController, ManagedObjectContextSett
         // Dispose of any resources that can be recreated.
     }
     
+    override func setEditing(editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        tableView.editing = editing
+    }
+    
     // MARK: IBAction
     @IBAction func cancelToScoresViewController(segue: UIStoryboardSegue) {
         
@@ -44,6 +49,7 @@ class TodaysTableViewController: UITableViewController, ManagedObjectContextSett
     private func setupTableView() {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 44
+        self.navigationItem.leftBarButtonItem = self.editButtonItem()
         setupDataSource()
     }
     
@@ -81,13 +87,30 @@ extension TodaysTableViewController: AugmentedDataProviderDelegate {
     }
     
     func dataProviderDidUpdate(updates: [DataProviderUpdate<Today>]?) {
-        
+        dataSource.processUpdates(updates)
     }
 }
 
-//MARK: - DataSourceDelegate
-extension TodaysTableViewController: DataSourceDelegate {
+//MARK: - TableViewDataSourceDelegate
+extension TodaysTableViewController: TableViewDataSourceDelegate {
     func cellIdentifierForObject(object: Today) -> String {
         return "TodayCell"
     }
+    
+    func canEditRowAtIndexPath(indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    func didEditRowAtIndexPath(indexPath: NSIndexPath, commitEditingStyle editingStyle: UITableViewCellEditingStyle) {
+        switch editingStyle {
+        case .Delete:
+            let today: Today = dataProvider.objectAtIndexPath(indexPath)
+            managedObjectContext.performChanges {
+                today.managedObjectContext?.deleteObject(today)
+            }
+        default:
+            break
+        }
+    }
+    
 }

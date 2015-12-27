@@ -157,7 +157,6 @@ You have not completed today!</string>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Todays" id="hqx-GF-Dkr">
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="VJS-KM-HA8"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="4DH-jb-BqP">
                             <connections>
                                 <segue destination="WzQ-rC-fZu" kind="popoverPresentation" popoverAnchorBarButtonItem="4DH-jb-BqP" id="Bh3-I7-xXu">

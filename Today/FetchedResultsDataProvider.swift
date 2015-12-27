@@ -36,6 +36,11 @@ class FetchedResultsDataProvider<Delegate: DataProviderDelegate>: NSObject, NSFe
         return result
     }
     
+    func numberOfSection() -> Int {
+        guard let sec = fetchedResultsController.sections else { return 1 }
+        return sec.count
+    }
+    
     func numberOfItemsInSection(section: Int) -> Int {
         guard let sec = fetchedResultsController.sections?[section] else { return 0 }
         return sec.numberOfObjects

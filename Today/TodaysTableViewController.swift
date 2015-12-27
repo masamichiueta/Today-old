@@ -13,6 +13,10 @@ import TodayModel
 class TodaysTableViewController: UITableViewController, ManagedObjectContextSettable {
     
     var managedObjectContext: NSManagedObjectContext!
+    
+    private typealias TodaysDataProvider = AugmentedFetchedResultsDataProvider<TodaysTableViewController>
+    private var dataProvider: TodaysDataProvider!
+    private var dataSource: TableViewDataSource<TodaysTableViewController, TodaysDataProvider, TodayTableViewCell>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,79 +41,48 @@ class TodaysTableViewController: UITableViewController, ManagedObjectContextSett
     private func setupTableView() {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 44
-        
+        tableView.delegate = self
+        setupDataSource()
+    }
+    
+    private func setupDataSource() {
         let request = Today.sortedFetchRequest
         request.returnsObjectsAsFaults = false
         request.fetchBatchSize = 20
         let frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-        
+        dataProvider = AugmentedFetchedResultsDataProvider(fetchedResultsController: frc, delegate: self)
+        dataSource = TableViewDataSource(tableView: tableView, dataProvider: dataProvider, delegate: self)
     }
 
-    // MARK: - Table view data source
+}
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+extension TodaysTableViewController {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        print("cell did select")
     }
+}
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+extension TodaysTableViewController: AugmentedDataProviderDelegate {
+    func numberOfAdditionalRowsInSection(section: Int) -> Int {
+        return 0
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        let cell: UITableViewCell
+    func supplementaryObjectAtPresentedIndexPath(indexPath: NSIndexPath) -> Today? {
         switch indexPath.row {
         case 0:
-            cell = tableView.dequeueReusableCellWithIdentifier("FirstTodayCell", forIndexPath: indexPath)
-        case 1:
-            cell = tableView.dequeueReusableCellWithIdentifier("FirstTodayCellNotCompleted", forIndexPath: indexPath)
+            return nil
         default:
-            cell = tableView.dequeueReusableCellWithIdentifier("TodayCell", forIndexPath: indexPath)
-
+            return nil
         }
-
-        return cell
     }
     
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
+    func dataProviderDidUpdate(updates: [DataProviderUpdate<Today>]?) {
+        
     }
-    
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+}
+
+extension TodaysTableViewController: DataSourceDelegate {
+    func cellIdentifierForObject(object: Today) -> String {
+        return "TodayCell"
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -42,6 +42,13 @@ class TodaysTableViewController: UITableViewController, ManagedObjectContextSett
     }
     
     @IBAction func saveAddTodayViewController(segue: UIStoryboardSegue) {
+        guard let vc = segue.sourceViewController as? AddTodayViewController else {
+            fatalError("Wrong view controller type")
+        }
+        
+        self.managedObjectContext.performChanges {
+            Today.insertIntoContext(self.managedObjectContext, score: Int64(vc.score))
+        }
         
     }
     

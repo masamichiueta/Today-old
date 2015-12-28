@@ -14,11 +14,15 @@ class AddTodayViewController: UIViewController {
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var scoreLabel: UILabel!
     
+    var score: Int = 0 {
+        didSet {
+            scoreLabel.text = "\(score)"
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        scoreLabel.text = "\(Today.masterScores[0])"
-
+        score = Today.masterScores[0]
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,6 +57,6 @@ extension AddTodayViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        scoreLabel.text = "\(Today.masterScores[row])"
+        score = Today.masterScores[row]
     }
 }

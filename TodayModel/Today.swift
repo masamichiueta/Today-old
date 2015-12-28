@@ -20,7 +20,17 @@ public final class Today: ManagedObject {
         return today
     }
     
+    public static var masterScores: [Int] {
+        return scoreRange.map( {
+            $0
+        }).sort {
+            $0 > $1
+        }
+    }
+    
 }
+
+private let scoreRange = 0...10
 
 extension Today: ManagedObjectType {
     public static var entityName: String {

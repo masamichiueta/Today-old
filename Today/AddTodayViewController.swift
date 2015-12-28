@@ -7,13 +7,18 @@
 //
 
 import UIKit
+import TodayModel
 
 class AddTodayViewController: UIViewController {
 
+    @IBOutlet weak var pickerView: UIPickerView!
+    @IBOutlet weak var scoreLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        scoreLabel.text = "\(Today.masterScores[0])"
 
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,4 +37,22 @@ class AddTodayViewController: UIViewController {
     }
     */
 
+}
+
+extension AddTodayViewController: UIPickerViewDataSource, UIPickerViewDelegate {
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return Today.masterScores.count
+    }
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return "\(Today.masterScores[row])"
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        scoreLabel.text = "\(Today.masterScores[row])"
+    }
 }

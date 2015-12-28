@@ -10,7 +10,11 @@ import UIKit
 import CoreData
 import TodayModel
 
-class TodaysTableViewController: UITableViewController, ManagedObjectContextSettable {
+class TodaysTableViewController: UITableViewController, ManagedObjectContextSettable, SegueHandlerType {
+    
+    enum SegueIdentifier: String {
+        case ShowAddTodayViewController = "showAddTodayViewController"
+    }
     
     //MARK: Variables
     var managedObjectContext: NSManagedObjectContext!
@@ -18,6 +22,16 @@ class TodaysTableViewController: UITableViewController, ManagedObjectContextSett
     private typealias TodaysDataProvider = AugmentedFetchedResultsDataProvider<TodaysTableViewController>
     private var dataProvider: TodaysDataProvider!
     private var dataSource: TableViewDataSource<TodaysTableViewController, TodaysDataProvider, TodayTableViewCell>!
+    
+    private var created: Bool {
+        
+        if dataProvider.numberOfObjects() == 0 {
+            return false
+        }
+        
+        let latestToday: Today = dataProvider.objectAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))
+        return NSCalendar.currentCalendar().isDateInToday(latestToday.date)
+    }
 
     //MARK: Life Cycle
     override func viewDidLoad() {
@@ -52,6 +66,18 @@ class TodaysTableViewController: UITableViewController, ManagedObjectContextSett
         
     }
     
+    @IBAction func showAddTodayViewController(sender: AnyObject) {
+        print("Add")
+        if created {
+            let alert = UIAlertController(title: "Wow!", message: "Everything is OK. You have already created Today", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        } else {
+            performSegue(.ShowAddTodayViewController)
+        }
+    }
+    
+    
     // MARK: Private
     private func setupTableView() {
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -63,7 +89,6 @@ class TodaysTableViewController: UITableViewController, ManagedObjectContextSett
     private func setupDataSource() {
         let request = Today.sortedFetchRequest
         request.returnsObjectsAsFaults = false
-        request.fetchBatchSize = 20
         let frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         dataProvider = AugmentedFetchedResultsDataProvider(fetchedResultsController: frc, delegate: self)
         dataSource = TableViewDataSource(tableView: tableView, dataProvider: dataProvider, delegate: self)

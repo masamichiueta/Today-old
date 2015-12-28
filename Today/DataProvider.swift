@@ -13,6 +13,7 @@ protocol DataProvider: class {
     func objectAtIndexPath(indexPath: NSIndexPath) -> Object
     func numberOfSection() -> Int
     func numberOfItemsInSection(section: Int) -> Int
+    func numberOfObjects() -> Int
 }
 
 protocol DataProviderDelegate: class {

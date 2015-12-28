@@ -23,6 +23,7 @@
 		246688511C1DB4ED00C5E5A0 /* TodaysTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246688501C1DB4ED00C5E5A0 /* TodaysTableViewController.swift */; };
 		246688531C1DB55900C5E5A0 /* AnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246688521C1DB55900C5E5A0 /* AnalysisViewController.swift */; };
 		246688561C1DB61100C5E5A0 /* Today.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 246688541C1DB61100C5E5A0 /* Today.storyboard */; };
+		24716D0C1C31596C0098B01D /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24716D0B1C31596C0098B01D /* Utilities.swift */; };
 		24C6AE951C2831450048C4D1 /* FirstTodayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C6AE941C2831450048C4D1 /* FirstTodayTableViewCell.swift */; };
 		24C6AE971C2831660048C4D1 /* TodayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C6AE961C2831660048C4D1 /* TodayTableViewCell.swift */; };
 		24C77E7C1C2A887000493C13 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24C77E7B1C2A887000493C13 /* SVProgressHUD.framework */; };
@@ -130,6 +131,7 @@
 		246688501C1DB4ED00C5E5A0 /* TodaysTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodaysTableViewController.swift; sourceTree = "<group>"; };
 		246688521C1DB55900C5E5A0 /* AnalysisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisViewController.swift; sourceTree = "<group>"; };
 		246688551C1DB61100C5E5A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Today.storyboard; sourceTree = "<group>"; };
+		24716D0B1C31596C0098B01D /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		24C6AE941C2831450048C4D1 /* FirstTodayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstTodayTableViewCell.swift; sourceTree = "<group>"; };
 		24C6AE961C2831660048C4D1 /* TodayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayTableViewCell.swift; sourceTree = "<group>"; };
 		24C77E7B1C2A887000493C13 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = Carthage/Build/iOS/SVProgressHUD.framework; sourceTree = "<group>"; };
@@ -223,7 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				24F9DC351C2EF9E6003A6427 /* Data Source and Provider */,
-				240F14761C2A9FB60003B2AF /* Protocol */,
+				240F14761C2A9FB60003B2AF /* Shared Code */,
 				24C77EAD1C2A937600493C13 /* Today.entitlements */,
 				24030AE31C1C821C004E68ED /* AppDelegate.swift */,
 				24030AED1C1C821C004E68ED /* Assets.xcassets */,
@@ -252,14 +254,15 @@
 			path = TodayUITests;
 			sourceTree = "<group>";
 		};
-		240F14761C2A9FB60003B2AF /* Protocol */ = {
+		240F14761C2A9FB60003B2AF /* Shared Code */ = {
 			isa = PBXGroup;
 			children = (
 				240F14771C2A9FD40003B2AF /* ManagedObjectContextSettable.swift */,
 				240F147D1C2ABC000003B2AF /* SegueHandlerType.swift */,
 				24F9DC3E1C2EFD33003A6427 /* ConfigurableCell.swift */,
+				24716D0B1C31596C0098B01D /* Utilities.swift */,
 			);
-			name = Protocol;
+			name = "Shared Code";
 			sourceTree = "<group>";
 		};
 		246688171C1D189F00C5E5A0 /* Frameworks */ = {
@@ -566,6 +569,7 @@
 				24C6AE971C2831660048C4D1 /* TodayTableViewCell.swift in Sources */,
 				24030AE41C1C821C004E68ED /* AppDelegate.swift in Sources */,
 				24444A5E1C30A02A00DC1579 /* AddTodayViewController.swift in Sources */,
+				24716D0C1C31596C0098B01D /* Utilities.swift in Sources */,
 				24F1948A1C2FB9B8001593D8 /* AugmentedFetchedResultsDataProvider.swift in Sources */,
 				240F14781C2A9FD40003B2AF /* ManagedObjectContextSettable.swift in Sources */,
 				240F147C1C2AA0450003B2AF /* RootViewController.swift in Sources */,

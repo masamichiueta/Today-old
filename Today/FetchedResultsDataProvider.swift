@@ -46,6 +46,13 @@ class FetchedResultsDataProvider<Delegate: DataProviderDelegate>: NSObject, NSFe
         return sec.numberOfObjects
     }
     
+    func numberOfObjects() -> Int {
+        guard let count = self.fetchedResultsController.fetchedObjects?.count else {
+            return 0
+        }
+        return count
+    }
+    
     // MARK: NSFetchedResultsControllerDelegate
     
     func controllerWillChangeContent(controller: NSFetchedResultsController) {

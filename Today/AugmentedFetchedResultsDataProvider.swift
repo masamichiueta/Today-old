@@ -46,6 +46,10 @@ class AugmentedFetchedResultsDataProvider<Delegate: AugmentedDataProviderDelegat
     func numberOfItemsInSection(section: Int) -> Int {
         return frcDataProvider.numberOfItemsInSection(section) + delegate.numberOfAdditionalRowsInSection(section)
     }
+    
+    func numberOfObjects() -> Int {
+        return frcDataProvider.numberOfObjects()
+    }
 
 }
 

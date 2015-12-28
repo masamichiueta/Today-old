@@ -224,14 +224,14 @@
 		24030AE21C1C821C004E68ED /* Today */ = {
 			isa = PBXGroup;
 			children = (
+				246688591C1EFC3E00C5E5A0 /* Controller */,
 				24F9DC351C2EF9E6003A6427 /* Data Source and Provider */,
 				240F14761C2A9FB60003B2AF /* Shared Code */,
-				24C77EAD1C2A937600493C13 /* Today.entitlements */,
+				2466885A1C1EFC5600C5E5A0 /* View */,
 				24030AE31C1C821C004E68ED /* AppDelegate.swift */,
 				24030AED1C1C821C004E68ED /* Assets.xcassets */,
-				2466885A1C1EFC5600C5E5A0 /* View */,
-				246688591C1EFC3E00C5E5A0 /* Controller */,
 				24030AF21C1C821C004E68ED /* Info.plist */,
+				24C77EAD1C2A937600493C13 /* Today.entitlements */,
 			);
 			path = Today;
 			sourceTree = "<group>";
@@ -239,8 +239,8 @@
 		24030AFA1C1C821C004E68ED /* TodayTests */ = {
 			isa = PBXGroup;
 			children = (
-				24030AFB1C1C821C004E68ED /* TodayTests.swift */,
 				24030AFD1C1C821C004E68ED /* Info.plist */,
+				24030AFB1C1C821C004E68ED /* TodayTests.swift */,
 			);
 			path = TodayTests;
 			sourceTree = "<group>";
@@ -248,8 +248,8 @@
 		24030B051C1C821C004E68ED /* TodayUITests */ = {
 			isa = PBXGroup;
 			children = (
-				24030B061C1C821C004E68ED /* TodayUITests.swift */,
 				24030B081C1C821C004E68ED /* Info.plist */,
+				24030B061C1C821C004E68ED /* TodayUITests.swift */,
 			);
 			path = TodayUITests;
 			sourceTree = "<group>";
@@ -257,12 +257,12 @@
 		240F14761C2A9FB60003B2AF /* Shared Code */ = {
 			isa = PBXGroup;
 			children = (
+				24F9DC3E1C2EFD33003A6427 /* ConfigurableCell.swift */,
 				240F14771C2A9FD40003B2AF /* ManagedObjectContextSettable.swift */,
 				240F147D1C2ABC000003B2AF /* SegueHandlerType.swift */,
-				24F9DC3E1C2EFD33003A6427 /* ConfigurableCell.swift */,
 				24716D0B1C31596C0098B01D /* Utilities.swift */,
 			);
-			name = "Shared Code";
+			path = "Shared Code";
 			sourceTree = "<group>";
 		};
 		246688171C1D189F00C5E5A0 /* Frameworks */ = {
@@ -276,25 +276,25 @@
 		246688591C1EFC3E00C5E5A0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				240F147B1C2AA0450003B2AF /* RootViewController.swift */,
-				246688521C1DB55900C5E5A0 /* AnalysisViewController.swift */,
-				246688501C1DB4ED00C5E5A0 /* TodaysTableViewController.swift */,
 				24444A5D1C30A02A00DC1579 /* AddTodayViewController.swift */,
+				246688521C1DB55900C5E5A0 /* AnalysisViewController.swift */,
+				240F147B1C2AA0450003B2AF /* RootViewController.swift */,
+				246688501C1DB4ED00C5E5A0 /* TodaysTableViewController.swift */,
 			);
-			name = Controller;
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		2466885A1C1EFC5600C5E5A0 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				2466884D1C1DB45E00C5E5A0 /* Analysis.storyboard */,
+				24C6AE941C2831450048C4D1 /* FirstTodayTableViewCell.swift */,
 				24030AEF1C1C821C004E68ED /* LaunchScreen.storyboard */,
 				24030AE71C1C821C004E68ED /* Main.storyboard */,
 				246688541C1DB61100C5E5A0 /* Today.storyboard */,
-				24C6AE941C2831450048C4D1 /* FirstTodayTableViewCell.swift */,
 				24C6AE961C2831660048C4D1 /* TodayTableViewCell.swift */,
 			);
-			name = View;
+			path = View;
 			sourceTree = "<group>";
 		};
 		24C77E841C2A8A3E00493C13 /* TodayModel */ = {
@@ -302,8 +302,8 @@
 			children = (
 				24C77EA71C2A8C5F00493C13 /* Model */,
 				24C77EA31C2A8BF000493C13 /* Shared Code */,
-				24C77E851C2A8A3E00493C13 /* TodayModel.h */,
 				24C77E871C2A8A3E00493C13 /* Info.plist */,
+				24C77E851C2A8A3E00493C13 /* TodayModel.h */,
 			);
 			path = TodayModel;
 			sourceTree = "<group>";
@@ -311,8 +311,8 @@
 		24C77E921C2A8A3E00493C13 /* TodayModelTests */ = {
 			isa = PBXGroup;
 			children = (
-				24C77E931C2A8A3E00493C13 /* TodayModelTests.swift */,
 				24C77E951C2A8A3E00493C13 /* Info.plist */,
+				24C77E931C2A8A3E00493C13 /* TodayModelTests.swift */,
 			);
 			path = TodayModelTests;
 			sourceTree = "<group>";
@@ -320,21 +320,21 @@
 		24C77EA31C2A8BF000493C13 /* Shared Code */ = {
 			isa = PBXGroup;
 			children = (
-				24C77EA11C2A8B6C00493C13 /* ManagedObject.swift */,
 				240F14741C2A9CDE0003B2AF /* CoreDataStack.swift */,
-				24DBB5901C2C367100E1C042 /* Utilities.swift */,
+				24C77EA11C2A8B6C00493C13 /* ManagedObject.swift */,
 				24444A591C306B4B00DC1579 /* NSManagedObjectContext+Extensions.swift */,
+				24DBB5901C2C367100E1C042 /* Utilities.swift */,
 			);
-			name = "Shared Code";
+			path = "Shared Code";
 			sourceTree = "<group>";
 		};
 		24C77EA71C2A8C5F00493C13 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				24C77EA41C2A8C3400493C13 /* Today.xcdatamodeld */,
 				24C77EA81C2A8C6F00493C13 /* Today.swift */,
+				24C77EA41C2A8C3400493C13 /* Today.xcdatamodeld */,
 			);
-			name = Model;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		24F9DC351C2EF9E6003A6427 /* Data Source and Provider */ = {
@@ -346,7 +346,7 @@
 				24F9DC3A1C2EFB0F003A6427 /* FetchedResultsDataProvider.swift */,
 				24F9DC3C1C2EFCD4003A6427 /* TableViewDataSource.swift */,
 			);
-			name = "Data Source and Provider";
+			path = "Data Source and Provider";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -656,6 +656,7 @@
 				24030AE81C1C821C004E68ED /* Base */,
 			);
 			name = Main.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 		24030AEF1C1C821C004E68ED /* LaunchScreen.storyboard */ = {
@@ -664,6 +665,7 @@
 				24030AF01C1C821C004E68ED /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 		2466884D1C1DB45E00C5E5A0 /* Analysis.storyboard */ = {
@@ -672,6 +674,7 @@
 				2466884E1C1DB45E00C5E5A0 /* Base */,
 			);
 			name = Analysis.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 		246688541C1DB61100C5E5A0 /* Today.storyboard */ = {
@@ -680,6 +683,7 @@
 				246688551C1DB61100C5E5A0 /* Base */,
 			);
 			name = Today.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

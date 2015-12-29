@@ -8,11 +8,12 @@
 
 import UIKit
 import TodayModel
+import LTMorphingLabel
 
 class AddTodayViewController: UIViewController {
 
     @IBOutlet weak var pickerView: UIPickerView!
-    @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var scoreLabel: LTMorphingLabel!
     
     var score: Int = 0 {
         didSet {
@@ -22,6 +23,7 @@ class AddTodayViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        scoreLabel.morphingEffect = .Sparkle
         score = Today.masterScores[0]
     }
 

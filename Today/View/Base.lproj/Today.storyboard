@@ -257,11 +257,6 @@ You have not completed today!</string>
                                             <constraint firstItem="6Nz-21-ErX" firstAttribute="centerY" secondItem="YcQ-ai-atA" secondAttribute="centerY" id="dmo-pm-N6d"/>
                                             <constraint firstItem="6Nz-21-ErX" firstAttribute="centerX" secondItem="YcQ-ai-atA" secondAttribute="centerX" id="tSm-ZD-4go"/>
                                         </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Excellent :)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="thl-IL-rWS">
                                         <rect key="frame" x="47" y="219" width="84" height="21"/>

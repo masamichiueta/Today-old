@@ -23,7 +23,7 @@ class AddTodayViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        scoreLabel.morphingEffect = .Sparkle
+        scoreLabel.morphingEffect = .Evaporate
         score = Today.masterScores[0]
     }
 

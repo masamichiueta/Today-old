@@ -6,10 +6,24 @@
 //  Copyright © 2015年 Masamichi Ueta. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-extension NSDate {
+enum ScoreColorType {
+    case High
+    case Middle
+    case Low
+}
+
+extension UIColor {
     
-    
-    
+    static func scoreColor(type: ScoreColorType) -> UIColor {
+        switch type {
+        case .High:
+            return UIColor.redColor()
+        case .Middle:
+            return UIColor.greenColor()
+        case .Low:
+            return UIColor.blueColor()
+        }
+    }
 }

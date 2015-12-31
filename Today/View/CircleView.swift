@@ -18,22 +18,26 @@ import UIKit
     
     private let progressCircleLayer: CAShapeLayer = CAShapeLayer()
     private let backCircleLayer: CAShapeLayer = CAShapeLayer()
-    private var circleCenter: CGPoint!
+    private var circleCenter: CGPoint = CGPointZero
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        circleCenter = CGPoint(
-            x: (self.frame.origin.x + self.frame.size.width/2.0),
-            y: (self.frame.origin.y + self.frame.size.height/2.0))
+        self.layer.opaque = false
     }
     
     override func prepareForInterfaceBuilder() {
         drawBackCircle()
     }
-    
 
     override func drawRect(rect: CGRect) {
         drawBackCircle()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        circleCenter = CGPoint(
+            x: self.frame.size.width/2.0,
+            y: self.frame.size.height/2.0 )
     }
     
     
@@ -50,5 +54,9 @@ import UIKit
         backCircleLayer.fillColor = nil
         backCircleLayer.lineWidth = CGFloat(borderWidth)
         self.layer.addSublayer(backCircleLayer)
+    }
+    
+    func drawProgressCircle() {
+        
     }
 }

@@ -251,7 +251,6 @@ You have not completed today!</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="YcQ-ai-atA" secondAttribute="height" multiplier="1:1" id="Z5k-Lx-TXn"/>
                                             <constraint firstItem="6Nz-21-ErX" firstAttribute="centerY" secondItem="YcQ-ai-atA" secondAttribute="centerY" id="dmo-pm-N6d"/>

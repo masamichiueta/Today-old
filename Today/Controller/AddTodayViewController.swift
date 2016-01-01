@@ -19,6 +19,7 @@ class AddTodayViewController: UIViewController {
     var score: Int = 0 {
         didSet {
             scoreLabel.text = "\(score)"
+            animateRingProgressView(Double(score)/10.0, duration:Double(abs(oldValue - score))/10.0)
         }
     }
     
@@ -27,17 +28,17 @@ class AddTodayViewController: UIViewController {
         scoreLabel.morphingEffect = .Evaporate
         score = Today.masterScores[0]
     }
-    
-    override func viewDidAppear(animated: Bool) {
-        CATransaction.begin()
-        CATransaction.setAnimationDuration(1.0)
-        ringProgressView.progress = 1.0
-        CATransaction.commit()
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    private func animateRingProgressView(progress: Double, duration: Double) {
+        CATransaction.begin()
+        CATransaction.setAnimationDuration(duration)
+        ringProgressView.progress = progress
+        CATransaction.commit()
     }
     
 

@@ -242,7 +242,7 @@ You have not completed today!</string>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YcQ-ai-atA" customClass="MKRingProgressView" customModule="Today" customModuleProvider="target">
+                                    <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YcQ-ai-atA" customClass="ProgressCircleView" customModule="Today" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="40.5" width="199.5" height="199.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="3ZD-cz-KhB">
@@ -267,17 +267,6 @@ You have not completed today!</string>
                                             <constraint firstItem="3ZD-cz-KhB" firstAttribute="centerY" secondItem="YcQ-ai-atA" secondAttribute="centerY" id="i7M-HY-Q9T"/>
                                             <constraint firstItem="3ZD-cz-KhB" firstAttribute="centerX" secondItem="YcQ-ai-atA" secondAttribute="centerX" id="yH5-zq-JGj"/>
                                         </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
-                                                <color key="value" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
-                                                <color key="value" red="0.94117647059999998" green="0.74901960779999999" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="ringWidth">
-                                                <real key="value" value="40"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
                             </stackView>
@@ -306,7 +295,7 @@ You have not completed today!</string>
                     </navigationItem>
                     <connections>
                         <outlet property="pickerView" destination="b24-9R-gMp" id="Rk2-PN-Opq"/>
-                        <outlet property="ringProgressView" destination="YcQ-ai-atA" id="f8e-Xp-sdV"/>
+                        <outlet property="progressCircleView" destination="YcQ-ai-atA" id="Kex-W4-EFu"/>
                         <outlet property="scoreLabel" destination="6Nz-21-ErX" id="FWP-x0-s8O"/>
                     </connections>
                 </viewController>

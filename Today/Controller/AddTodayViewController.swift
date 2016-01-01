@@ -14,12 +14,12 @@ class AddTodayViewController: UIViewController {
 
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var scoreLabel: LTMorphingLabel!
-    @IBOutlet weak var ringProgressView: MKRingProgressView!
+    @IBOutlet weak var progressCircleView: ProgressCircleView!
     
     var score: Int = 0 {
         didSet {
             scoreLabel.text = "\(score)"
-            animateRingProgressView(Double(score)/10.0, duration:Double(abs(oldValue - score))/10.0)
+            progressCircleView.progress = CGFloat(score)/10.0
         }
     }
     
@@ -34,14 +34,7 @@ class AddTodayViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    private func animateRingProgressView(progress: Double, duration: Double) {
-        CATransaction.begin()
-        CATransaction.setAnimationDuration(duration)
-        ringProgressView.progress = progress
-        CATransaction.commit()
-    }
     
-
     /*
     // MARK: - Navigation
 

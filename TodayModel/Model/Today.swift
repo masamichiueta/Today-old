@@ -21,16 +21,30 @@ public final class Today: ManagedObject {
     }
     
     public static var masterScores: [Int] {
-        return scoreRange.map( {
-            $0
-        }).sort {
+        return scoreRange.sort {
             $0 > $1
         }
     }
     
+    public static func todayType(score: Int) -> TodayType {
+        let step = scoreRange.count / TodayType.count
+        
+        switch score {
+        case 0...step:
+            return .Poor
+        case step+1...step*2:
+            return .Fair
+        case step*2+1...step*3:
+            return .Average
+        case step*3+1...step*4:
+            return .Good
+        default:
+            return .Excellent
+        }
+    }
 }
 
-private let scoreRange = 0...10
+private let scoreRange = [Int](0...10)
 
 extension Today: ManagedObjectType {
     public static var entityName: String {

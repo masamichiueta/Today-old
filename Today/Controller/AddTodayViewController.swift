@@ -14,6 +14,7 @@ class AddTodayViewController: UIViewController {
 
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var scoreLabel: LTMorphingLabel!
+    @IBOutlet weak var ringProgressView: MKRingProgressView!
     
     var score: Int = 0 {
         didSet {
@@ -25,6 +26,13 @@ class AddTodayViewController: UIViewController {
         super.viewDidLoad()
         scoreLabel.morphingEffect = .Evaporate
         score = Today.masterScores[0]
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        CATransaction.begin()
+        CATransaction.setAnimationDuration(1.0)
+        ringProgressView.progress = 1.0
+        CATransaction.commit()
     }
 
     override func didReceiveMemoryWarning() {

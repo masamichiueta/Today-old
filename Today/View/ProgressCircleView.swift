@@ -12,18 +12,26 @@ import UIKit
 @IBDesignable class ProgressCircleView: UIView {
 
     @IBInspectable var progressCircleColor: UIColor = UIColor.clearColor()
-    @IBInspectable var backCircleColor: UIColor = UIColor.blackColor()
-    @IBInspectable var layerOpacity: Float = 0.1
-    @IBInspectable var borderWidth: CGFloat = 40.0
+    @IBInspectable var progressBorderWidth: CGFloat = 40.0
+    @IBInspectable var backgroundCircleColor: UIColor = UIColor.blackColor()
+    @IBInspectable var backgroundBorderWidth: CGFloat = 40.0
     
-    var currentProgress: CGFloat = 0.0
-    var progress: CGFloat = 0.0
+    var progress: CGFloat = 0.0 {
+        didSet {
+            animateProgress(from: oldValue, to: progress)
+        }
+    }
     
     private let progressCircleLayer: CAShapeLayer = CAShapeLayer()
     private let backCircleLayer: CAShapeLayer = CAShapeLayer()
     private var circleCenter: CGPoint = CGPointZero
-    private var radius: CGFloat {
-        return CGFloat((self.frame.size.width - borderWidth/2.0)/2.0)
+    
+    private var progressCircleRadius: CGFloat {
+        return CGFloat((self.frame.size.width - progressBorderWidth/2.0)/2.0)
+    }
+    
+    private var backgroundCircleRadius: CGFloat {
+        return CGFloat((self.frame.size.width - backgroundBorderWidth/2.0)/2.0)
     }
     
     override func awakeFromNib() {
@@ -38,7 +46,7 @@ import UIKit
     override func drawRect(rect: CGRect) {
         drawBackCircle()
         drawProgressCircle()
-        animate()
+        progress = 0.8
     }
     
     override func layoutSubviews() {
@@ -52,15 +60,14 @@ import UIKit
     func drawBackCircle() {
         let path = UIBezierPath(
             arcCenter: circleCenter,
-            radius: radius,
+            radius: backgroundCircleRadius,
             startAngle: CGFloat(0),
             endAngle: CGFloat(M_PI * 2),
             clockwise: true)
         backCircleLayer.path = path.CGPath
-        backCircleLayer.strokeColor = backCircleColor.CGColor
-        backCircleLayer.opacity = layerOpacity
+        backCircleLayer.strokeColor = backgroundCircleColor.CGColor
         backCircleLayer.fillColor = nil
-        backCircleLayer.lineWidth = borderWidth
+        backCircleLayer.lineWidth = backgroundBorderWidth
         self.layer.addSublayer(backCircleLayer)
     }
     
@@ -69,33 +76,30 @@ import UIKit
         let endAngle = CGFloat(M_PI + M_PI_2)
         let path = UIBezierPath(
             arcCenter: circleCenter,
-            radius: radius,
+            radius: progressCircleRadius,
             startAngle: startAngle,
             endAngle: endAngle,
             clockwise: true)
         progressCircleLayer.path = path.CGPath
-        progressCircleLayer.lineWidth = borderWidth
+        progressCircleLayer.lineWidth = progressBorderWidth
         progressCircleLayer.lineCap = kCALineCapRound
         progressCircleLayer.strokeColor = progressCircleColor.CGColor
         progressCircleLayer.fillColor = nil
         progressCircleLayer.strokeStart = 0.0
-        progressCircleLayer.strokeEnd = currentProgress
+        progressCircleLayer.strokeEnd = progress
         self.layer.addSublayer(progressCircleLayer)
     }
     
-    func animate() {
+    func animateProgress(from from: CGFloat, to: CGFloat) {
         CATransaction.begin()
         let animation = CABasicAnimation(keyPath: "strokeEnd")
-        animation.fromValue = currentProgress
-        animation.toValue = progress
+        animation.fromValue = from
+        animation.toValue = to
         animation.duration = NSTimeInterval(progress * 1.5)
         animation.delegate = self
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         self.progressCircleLayer.strokeEnd = progress
-        CATransaction.setCompletionBlock { [unowned self] in
-            self.currentProgress = self.progress
-        }
-        self.progressCircleLayer.addAnimation(animation, forKey: "Progress")
+        self.progressCircleLayer.addAnimation(animation, forKey: "progress")
         CATransaction.commit()
     }
 }

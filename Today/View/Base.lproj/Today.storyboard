@@ -214,7 +214,7 @@ You have not completed today!</string>
             </objects>
             <point key="canvasLocation" x="2126" y="-968"/>
         </scene>
-        <!--Add Today-->
+        <!--How about your today?-->
         <scene sceneID="gEs-OF-8qy">
             <objects>
                 <viewController id="9oD-AR-chY" customClass="AddTodayViewController" customModule="Today" customModuleProvider="target" sceneMemberID="viewController">
@@ -226,6 +226,42 @@ You have not completed today!</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YcQ-ai-atA" customClass="TodayScoreCircleView" customModule="Today" customModuleProvider="target">
+                                <rect key="frame" x="165" y="94" width="270" height="270"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="3ZD-cz-KhB">
+                                        <rect key="frame" x="79.5" y="80" width="112.5" height="110"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Nz-21-ErX" customClass="LTMorphingLabel" customModule="LTMorphingLabel">
+                                                <rect key="frame" x="22" y="0.0" width="68.5" height="72"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="60"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Excellent!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hj5-52-09C" customClass="LTMorphingLabel" customModule="LTMorphingLabel">
+                                                <rect key="frame" x="0.0" y="82" width="112.5" height="28"/>
+                                                <fontDescription key="fontDescription" name="GillSans-BoldItalic" family="Gill Sans" pointSize="24"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="YcQ-ai-atA" secondAttribute="height" multiplier="1:1" id="QiJ-F6-FWU"/>
+                                    <constraint firstAttribute="width" secondItem="YcQ-ai-atA" secondAttribute="height" multiplier="1:1" id="Z5k-Lx-TXn"/>
+                                    <constraint firstItem="3ZD-cz-KhB" firstAttribute="centerY" secondItem="YcQ-ai-atA" secondAttribute="centerY" id="i7M-HY-Q9T"/>
+                                    <constraint firstItem="3ZD-cz-KhB" firstAttribute="centerX" secondItem="YcQ-ai-atA" secondAttribute="centerX" id="yH5-zq-JGj"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="QiJ-F6-FWU"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <outlet property="scoreLabel" destination="6Nz-21-ErX" id="OSZ-jj-gte"/>
+                                    <outlet property="wordLabel" destination="hj5-52-09C" id="kyf-Tx-2wU"/>
+                                </connections>
+                            </view>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b24-9R-gMp">
                                 <rect key="frame" x="0.0" y="384" width="600" height="216"/>
                                 <connections>
@@ -233,59 +269,20 @@ You have not completed today!</string>
                                     <outlet property="delegate" destination="9oD-AR-chY" id="YLj-n8-C3j"/>
                                 </connections>
                             </pickerView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="BXG-KS-6jm">
-                                <rect key="frame" x="200.5" y="104" width="199.5" height="240"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How about your today?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lCS-Ky-wzA">
-                                        <rect key="frame" x="11" y="0.0" width="177" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
-                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YcQ-ai-atA" customClass="TodayScoreCircleView" customModule="Today" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="40.5" width="199.5" height="199.5"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="3ZD-cz-KhB">
-                                                <rect key="frame" x="62.5" y="49" width="74" height="102.5"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Nz-21-ErX" customClass="LTMorphingLabel" customModule="LTMorphingLabel">
-                                                        <rect key="frame" x="5.5" y="0.0" width="63.5" height="72"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="60"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Excellent!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hj5-52-09C" customClass="LTMorphingLabel" customModule="LTMorphingLabel">
-                                                        <rect key="frame" x="0.0" y="82" width="74" height="20.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                            </stackView>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="YcQ-ai-atA" secondAttribute="height" multiplier="1:1" id="Z5k-Lx-TXn"/>
-                                            <constraint firstItem="3ZD-cz-KhB" firstAttribute="centerY" secondItem="YcQ-ai-atA" secondAttribute="centerY" id="i7M-HY-Q9T"/>
-                                            <constraint firstItem="3ZD-cz-KhB" firstAttribute="centerX" secondItem="YcQ-ai-atA" secondAttribute="centerX" id="yH5-zq-JGj"/>
-                                        </constraints>
-                                        <connections>
-                                            <outlet property="scoreLabel" destination="6Nz-21-ErX" id="OSZ-jj-gte"/>
-                                            <outlet property="wordLabel" destination="hj5-52-09C" id="kyf-Tx-2wU"/>
-                                        </connections>
-                                    </view>
-                                </subviews>
-                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="BXG-KS-6jm" firstAttribute="centerX" secondItem="OuH-8s-S5r" secondAttribute="centerX" id="5Xw-Hb-tid"/>
                             <constraint firstItem="jMd-gE-IMc" firstAttribute="top" secondItem="b24-9R-gMp" secondAttribute="bottom" id="6cP-ds-8nb"/>
-                            <constraint firstItem="b24-9R-gMp" firstAttribute="top" secondItem="BXG-KS-6jm" secondAttribute="bottom" constant="40" id="QSP-e0-5ii"/>
+                            <constraint firstItem="YcQ-ai-atA" firstAttribute="centerX" secondItem="OuH-8s-S5r" secondAttribute="centerX" id="6rI-Ml-j68"/>
+                            <constraint firstItem="b24-9R-gMp" firstAttribute="top" secondItem="YcQ-ai-atA" secondAttribute="bottom" constant="20" id="HeQ-E6-79g"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="YcQ-ai-atA" secondAttribute="trailing" constant="20" id="aMq-fI-jwi"/>
                             <constraint firstAttribute="trailing" secondItem="b24-9R-gMp" secondAttribute="trailing" id="hRg-OR-mhD"/>
+                            <constraint firstItem="YcQ-ai-atA" firstAttribute="top" secondItem="o9X-08-kDB" secondAttribute="bottom" constant="30" id="lgb-S2-prS"/>
                             <constraint firstItem="b24-9R-gMp" firstAttribute="leading" secondItem="OuH-8s-S5r" secondAttribute="leading" id="nbf-pg-lpH"/>
-                            <constraint firstItem="BXG-KS-6jm" firstAttribute="top" secondItem="o9X-08-kDB" secondAttribute="bottom" constant="40" id="sbr-yP-EVN"/>
+                            <constraint firstItem="YcQ-ai-atA" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="OuH-8s-S5r" secondAttribute="leadingMargin" constant="20" id="xWr-Wi-uhZ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Add Today" id="LTJ-Fh-X4Y">
+                    <navigationItem key="navigationItem" title="How about your today?" id="LTJ-Fh-X4Y">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="w4n-ao-Mmo">
                             <connections>
                                 <segue destination="K7h-35-e15" kind="unwind" unwindAction="cancelToTodaysTableViewController:" id="2mR-yr-0Ya"/>

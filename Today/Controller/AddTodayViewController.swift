@@ -23,7 +23,6 @@ class AddTodayViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //scoreLabel.morphingEffect = .Evaporate
     }
 
     override func didReceiveMemoryWarning() {

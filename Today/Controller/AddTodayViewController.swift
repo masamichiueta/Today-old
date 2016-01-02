@@ -8,25 +8,22 @@
 
 import UIKit
 import TodayModel
-import LTMorphingLabel
 
 class AddTodayViewController: UIViewController {
 
     @IBOutlet weak var pickerView: UIPickerView!
-    @IBOutlet weak var scoreLabel: LTMorphingLabel!
-    @IBOutlet weak var progressCircleView: ProgressCircleView!
+
+    @IBOutlet weak var progressCircleView: TodayScoreCircleView!
     
-    var score: Int = 0 {
+    var score: Int =  Today.maxScore {
         didSet {
-            scoreLabel.text = "\(score)"
-            progressCircleView.progress = CGFloat(score)/10.0
+            progressCircleView.score = score
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        scoreLabel.morphingEffect = .Evaporate
-        score = Today.masterScores[0]
+        //scoreLabel.morphingEffect = .Evaporate
     }
 
     override func didReceiveMemoryWarning() {

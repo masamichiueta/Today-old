@@ -242,7 +242,7 @@ You have not completed today!</string>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YcQ-ai-atA" customClass="ProgressCircleView" customModule="Today" customModuleProvider="target">
+                                    <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YcQ-ai-atA" customClass="TodayScoreCircleView" customModule="Today" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="40.5" width="199.5" height="199.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="3ZD-cz-KhB">
@@ -267,6 +267,10 @@ You have not completed today!</string>
                                             <constraint firstItem="3ZD-cz-KhB" firstAttribute="centerY" secondItem="YcQ-ai-atA" secondAttribute="centerY" id="i7M-HY-Q9T"/>
                                             <constraint firstItem="3ZD-cz-KhB" firstAttribute="centerX" secondItem="YcQ-ai-atA" secondAttribute="centerX" id="yH5-zq-JGj"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="scoreLabel" destination="6Nz-21-ErX" id="OSZ-jj-gte"/>
+                                            <outlet property="wordLabel" destination="hj5-52-09C" id="kyf-Tx-2wU"/>
+                                        </connections>
                                     </view>
                                 </subviews>
                             </stackView>
@@ -296,7 +300,6 @@ You have not completed today!</string>
                     <connections>
                         <outlet property="pickerView" destination="b24-9R-gMp" id="Rk2-PN-Opq"/>
                         <outlet property="progressCircleView" destination="YcQ-ai-atA" id="Kex-W4-EFu"/>
-                        <outlet property="scoreLabel" destination="6Nz-21-ErX" id="FWP-x0-s8O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Egl-vH-IX5" userLabel="First Responder" sceneMemberID="firstResponder"/>

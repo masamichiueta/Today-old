@@ -1,5 +1,5 @@
 //
-//  ProgressCircleView.swift
+//  TodayScoreCircleView.swift
 //  Today
 //
 //  Created by UetaMasamichi on 2016/01/02.
@@ -8,11 +8,17 @@
 
 import UIKit
 import TodayModel
+import LTMorphingLabel
 
-@IBDesignable class ProgressCircleView: UIView {
+@IBDesignable class TodayScoreCircleView: UIView {
     
-    @IBInspectable var progressCircleColor: UIColor = Today.todayType(0).color() {
+    @IBOutlet weak var scoreLabel: LTMorphingLabel!
+    @IBOutlet weak var wordLabel: LTMorphingLabel!
+    
+    @IBInspectable var progressCircleColor: UIColor = Today.type(Today.masterScores.maxElement()!).color() {
         didSet {
+            scoreLabel.textColor = progressCircleColor
+            wordLabel.textColor = progressCircleColor
             setNeedsDisplay()
         }
     }
@@ -22,12 +28,14 @@ import TodayModel
         }
     }
     
-    var progress: CGFloat = 0.0 {
+    var score: Int = Today.masterScores[0] {
         didSet {
-            let color = Today.todayType(Int(progress*10)).color()
-            let prop = AnimationProperty(strokeFrom: oldValue, strokeTo: progress, colorFrom: progressCircleColor, colorTo: color)
-            animateProgress(prop, completion: { [unowned self] in
-                self.progressCircleColor = color
+            scoreLabel.text = "\(score)"
+            wordLabel.text = Today.type(score).rawValue
+            let toStrokeColor = Today.type(score).color()
+            animateProgressFromScore(oldValue, toScore: score, fromStrokeColor: progressCircleColor, toStrokeColor: toStrokeColor, completion: { [unowned self] in
+                self.progressCircleColor = toStrokeColor
+                
             })
         }
     }
@@ -42,6 +50,10 @@ import TodayModel
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        scoreLabel.morphingEffect = .Evaporate
+        scoreLabel.textColor = progressCircleColor
+        wordLabel.morphingEffect = .Evaporate
+        wordLabel.textColor = progressCircleColor
     }
     
     override func prepareForInterfaceBuilder() {
@@ -52,8 +64,6 @@ import TodayModel
     override func drawRect(rect: CGRect) {
         drawBackCircle()
         drawProgressCircle()
-        
-        print("draw rect")
     }
     
     override func layoutSubviews() {
@@ -93,31 +103,27 @@ import TodayModel
         progressCircleLayer.strokeColor = progressCircleColor.CGColor
         progressCircleLayer.fillColor = nil
         progressCircleLayer.strokeStart = 0.0
-        progressCircleLayer.strokeEnd = progress
+        progressCircleLayer.strokeEnd = CGFloat(score)/CGFloat(Today.maxScore)
         self.layer.addSublayer(progressCircleLayer)
     }
     
-    struct AnimationProperty {
-        var strokeFrom: CGFloat
-        var strokeTo: CGFloat
-        var colorFrom: UIColor
-        var colorTo: UIColor
-    }
-    
-    func animateProgress(prop: AnimationProperty, completion: () -> ()) {
+    func animateProgressFromScore(fromScore: Int, toScore:Int, fromStrokeColor: UIColor, toStrokeColor: UIColor, completion: () -> ()) {
+        let fromStrokeEnd = CGFloat(fromScore)/CGFloat(Today.maxScore)
+        let toStrokeEnd = CGFloat(toScore)/CGFloat(Today.maxScore)
+        
         CATransaction.begin()
         
-        let duration = NSTimeInterval(abs(prop.strokeTo - prop.strokeFrom))
+        let duration = NSTimeInterval(abs(toStrokeEnd - fromStrokeEnd))
         
         let strokeEndAnimation = CABasicAnimation(keyPath: "strokeEnd")
-        strokeEndAnimation.fromValue = prop.strokeFrom
-        strokeEndAnimation.toValue = prop.strokeTo
-        self.progressCircleLayer.strokeEnd = prop.strokeTo
+        strokeEndAnimation.fromValue = fromStrokeEnd
+        strokeEndAnimation.toValue = toStrokeEnd
+        self.progressCircleLayer.strokeEnd = toStrokeEnd
         
         let strokeColorAnimation = CABasicAnimation(keyPath: "strokeColor")
-        strokeColorAnimation.fromValue = prop.colorFrom.CGColor
-        strokeColorAnimation.toValue = prop.colorTo.CGColor
-        self.progressCircleLayer.strokeColor = prop.colorTo.CGColor
+        strokeColorAnimation.fromValue = fromStrokeColor.CGColor
+        strokeColorAnimation.toValue = toStrokeColor.CGColor
+        self.progressCircleLayer.strokeColor = toStrokeColor.CGColor
         
         let progressCircleAnimationGroup = CAAnimationGroup()
         progressCircleAnimationGroup.duration = duration
@@ -128,9 +134,9 @@ import TodayModel
         let backgroundStrokeColorAnimation = CABasicAnimation(keyPath: "strokeColor")
         backgroundStrokeColorAnimation.duration = duration
         backgroundStrokeColorAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-        backgroundStrokeColorAnimation.fromValue = CGColorCreateCopyWithAlpha(prop.colorFrom.CGColor, 0.15)
-        backgroundStrokeColorAnimation.toValue = CGColorCreateCopyWithAlpha(prop.colorTo.CGColor, 0.15)
-        self.backCircleLayer.strokeColor = CGColorCreateCopyWithAlpha(prop.colorTo.CGColor, 0.15)
+        backgroundStrokeColorAnimation.fromValue = CGColorCreateCopyWithAlpha(fromStrokeColor.CGColor, 0.15)
+        backgroundStrokeColorAnimation.toValue = CGColorCreateCopyWithAlpha(toStrokeColor.CGColor, 0.15)
+        self.backCircleLayer.strokeColor = CGColorCreateCopyWithAlpha(toStrokeColor.CGColor, 0.15)
         self.backCircleLayer.addAnimation(backgroundStrokeColorAnimation, forKey: "backgroundCircle")
         
         CATransaction.setCompletionBlock(completion)

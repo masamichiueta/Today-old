@@ -26,10 +26,22 @@ public final class Today: ManagedObject {
         }
     }
     
-    public static func todayType(score: Int) -> TodayType {
+    public static var maxScore: Int {
+        return Today.masterScores.first!
+    }
+    
+    public static var minScore: Int {
+        return Today.masterScores.last!
+    }
+    
+    public static func type(score: Int?) -> TodayType {
+        guard let s = score else {
+            return .Poor
+        }
+        
         let step = scoreRange.count / TodayType.count
         
-        switch score {
+        switch s {
         case 0...step:
             return .Poor
         case step+1...step*2:

@@ -13,6 +13,14 @@ public final class Today: ManagedObject {
     @NSManaged public private(set) var date: NSDate
     @NSManaged public private(set) var score: Int64
     
+    public var type: TodayType {
+        return Today.type(Int(score))
+    }
+    
+    public var color: UIColor {
+        return type.color()
+    }
+    
     public static func insertIntoContext(moc: NSManagedObjectContext, score: Int64) -> Today {
         let today: Today = moc.insertObject()
         today.score = score

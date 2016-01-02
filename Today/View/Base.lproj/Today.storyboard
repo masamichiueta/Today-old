@@ -119,14 +119,18 @@ You have not completed today!</string>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="GE4-TP-cwv">
                                             <rect key="frame" x="18" y="12" width="75" height="20"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ttm-MF-JEc">
+                                                <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ttm-MF-JEc" customClass="CircleView" customModule="Today" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
-                                                    <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="20" id="9ca-ih-Ih8"/>
                                                         <constraint firstAttribute="height" constant="20" id="Vhp-zZ-W1i"/>
                                                         <constraint firstAttribute="width" secondItem="Ttm-MF-JEc" secondAttribute="height" multiplier="1:1" id="lsd-11-Zf7"/>
                                                     </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                                            <color key="value" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zcA-zi-AZv">
                                                     <rect key="frame" x="30" y="0.0" width="45" height="20"/>
@@ -145,7 +149,7 @@ You have not completed today!</string>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="colorView" destination="Ttm-MF-JEc" id="Tsu-tA-wvs"/>
+                                    <outlet property="circleView" destination="Ttm-MF-JEc" id="kHb-cU-P5v"/>
                                     <outlet property="dateLabel" destination="929-qH-vF5" id="L8R-4G-2GR"/>
                                     <outlet property="scoreLabel" destination="zcA-zi-AZv" id="pDh-go-Klu"/>
                                 </connections>

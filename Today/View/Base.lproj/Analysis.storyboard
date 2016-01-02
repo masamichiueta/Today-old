@@ -18,7 +18,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Analysis" id="ZwI-ec-Q83"/>
+                    <navigationItem key="navigationItem" title="Analysis" id="ZwI-ec-Q83">
+                        <barButtonItem key="rightBarButtonItem" image="setting_icon" id="ELm-Mu-qcq"/>
+                    </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8sd-VF-WBF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -49,6 +51,7 @@
     <resources>
         <image name="analysis_fill" width="32" height="32"/>
         <image name="analysis_outline" width="32" height="32"/>
+        <image name="setting_icon" width="22" height="22"/>
     </resources>
     <color key="tintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>

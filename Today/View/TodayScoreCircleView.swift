@@ -66,7 +66,6 @@ import LTMorphingLabel
     override func drawRect(rect: CGRect) {
         drawBackCircle()
         drawProgressCircle()
-        print("draw rect")
     }
     
     override func layoutSubviews() {

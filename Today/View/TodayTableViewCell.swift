@@ -1,3 +1,4 @@
+
 //
 //  TodayTableViewCell.swift
 //  Today
@@ -9,7 +10,7 @@
 import UIKit
 import TodayModel
 
-class TodayTableViewCell: UITableViewCell {
+class TodayTableViewCell: TodayBaseTableViewCell {
     
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var circleView: CircleView!
@@ -37,8 +38,8 @@ private let dateFormatter: NSDateFormatter = {
 }()
 
 
-extension TodayTableViewCell: ConfigurableCell {
-    func configureForObject(today: Today) {
+extension TodayTableViewCell {
+    override func configureForObject(today: Today) {
         dateLabel.text = dateFormatter.stringFromDate(today.date)
         scoreLabel.text = "\(today.score)"
         circleView.color = today.color

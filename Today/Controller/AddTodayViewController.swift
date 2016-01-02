@@ -13,11 +13,11 @@ class AddTodayViewController: UIViewController {
 
     @IBOutlet weak var pickerView: UIPickerView!
 
-    @IBOutlet weak var progressCircleView: TodayScoreCircleView!
+    @IBOutlet weak var scoreCircleView: TodayScoreCircleView!
     
     var score: Int =  Today.maxScore {
         didSet {
-            progressCircleView.score = score
+            scoreCircleView.score = score
         }
     }
     

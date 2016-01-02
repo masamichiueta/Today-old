@@ -21,7 +21,7 @@ class TodaysTableViewController: UITableViewController, ManagedObjectContextSett
     
     private typealias TodaysDataProvider = AugmentedFetchedResultsDataProvider<TodaysTableViewController>
     private var dataProvider: TodaysDataProvider!
-    private var dataSource: TableViewDataSource<TodaysTableViewController, TodaysDataProvider, TodayTableViewCell>!
+    private var dataSource: TableViewDataSource<TodaysTableViewController, TodaysDataProvider, TodayBaseTableViewCell>!
     
     private var created: Bool {
         
@@ -67,7 +67,6 @@ class TodaysTableViewController: UITableViewController, ManagedObjectContextSett
     }
     
     @IBAction func showAddTodayViewController(sender: AnyObject) {
-        print("Add")
         if created {
             let alert = UIAlertController(title: "Wow!", message: "Everything is OK. You have already created Today", preferredStyle: .Alert)
             alert.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
@@ -126,6 +125,10 @@ extension TodaysTableViewController: AugmentedDataProviderDelegate {
 //MARK: - TableViewDataSourceDelegate
 extension TodaysTableViewController: TableViewDataSourceDelegate {
     func cellIdentifierForObject(object: Today) -> String {
+        if NSCalendar.currentCalendar().isDateInToday(object.date) {
+            return "FirstTodayCell"
+        }
+        
         return "TodayCell"
     }
     

@@ -7,15 +7,18 @@
 //
 
 import UIKit
+import TodayModel
 
-class FirstTodayTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var scoreLabel: UILabel!
-    @IBOutlet weak var circleView: UIView!
+class FirstTodayTableViewCell: TodayBaseTableViewCell {
+    
+    
+    @IBOutlet weak var scoreCircleView: TodayScoreCircleView!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        scoreCircleView.progressBorderWidth = 20.0
+        
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -23,5 +26,11 @@ class FirstTodayTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+}
 
+extension FirstTodayTableViewCell {
+    override func configureForObject(object: Today) {
+        scoreCircleView.score = Int(object.score)
+        
+    }
 }

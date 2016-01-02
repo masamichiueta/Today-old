@@ -25,6 +25,8 @@
 		246688561C1DB61100C5E5A0 /* Today.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 246688541C1DB61100C5E5A0 /* Today.storyboard */; };
 		2472E6FE1C3275C8006DC493 /* LTMorphingLabel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2472E6FD1C3275C8006DC493 /* LTMorphingLabel.framework */; };
 		2472E6FF1C3275C8006DC493 /* LTMorphingLabel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2472E6FD1C3275C8006DC493 /* LTMorphingLabel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		248BC5581C37AB0E00EFB221 /* DeviceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 248BC5571C37AB0E00EFB221 /* DeviceKit.framework */; };
+		248BC5591C37AB0E00EFB221 /* DeviceKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 248BC5571C37AB0E00EFB221 /* DeviceKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		24A1CFDD1C36D17800F0E9CE /* HEXColor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24A1CFDC1C36D17800F0E9CE /* HEXColor.framework */; };
 		24A1CFDE1C36D17800F0E9CE /* HEXColor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24A1CFDC1C36D17800F0E9CE /* HEXColor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		24A1CFDF1C36D18B00F0E9CE /* HEXColor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24A1CFDC1C36D17800F0E9CE /* HEXColor.framework */; };
@@ -98,6 +100,7 @@
 				24C77E991C2A8A3E00493C13 /* TodayModel.framework in Embed Frameworks */,
 				24C77E7D1C2A887000493C13 /* SVProgressHUD.framework in Embed Frameworks */,
 				24A1CFDE1C36D17800F0E9CE /* HEXColor.framework in Embed Frameworks */,
+				248BC5591C37AB0E00EFB221 /* DeviceKit.framework in Embed Frameworks */,
 				2472E6FF1C3275C8006DC493 /* LTMorphingLabel.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -139,6 +142,7 @@
 		246688521C1DB55900C5E5A0 /* AnalysisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisViewController.swift; sourceTree = "<group>"; };
 		246688551C1DB61100C5E5A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Today.storyboard; sourceTree = "<group>"; };
 		2472E6FD1C3275C8006DC493 /* LTMorphingLabel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LTMorphingLabel.framework; path = Carthage/Build/iOS/LTMorphingLabel.framework; sourceTree = "<group>"; };
+		248BC5571C37AB0E00EFB221 /* DeviceKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DeviceKit.framework; path = Carthage/Build/iOS/DeviceKit.framework; sourceTree = "<group>"; };
 		24A1CFDC1C36D17800F0E9CE /* HEXColor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HEXColor.framework; path = Carthage/Build/iOS/HEXColor.framework; sourceTree = "<group>"; };
 		24A1CFE01C36D8FA00F0E9CE /* TodayScoreCircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayScoreCircleView.swift; sourceTree = "<group>"; };
 		24C6AE941C2831450048C4D1 /* FirstTodayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstTodayTableViewCell.swift; sourceTree = "<group>"; };
@@ -171,6 +175,7 @@
 				24C77E981C2A8A3E00493C13 /* TodayModel.framework in Frameworks */,
 				24C77E7C1C2A887000493C13 /* SVProgressHUD.framework in Frameworks */,
 				24A1CFDD1C36D17800F0E9CE /* HEXColor.framework in Frameworks */,
+				248BC5581C37AB0E00EFB221 /* DeviceKit.framework in Frameworks */,
 				2472E6FE1C3275C8006DC493 /* LTMorphingLabel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -279,6 +284,7 @@
 		246688171C1D189F00C5E5A0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				248BC5571C37AB0E00EFB221 /* DeviceKit.framework */,
 				24A1CFDC1C36D17800F0E9CE /* HEXColor.framework */,
 				2472E6FD1C3275C8006DC493 /* LTMorphingLabel.framework */,
 				24C77E7B1C2A887000493C13 /* SVProgressHUD.framework */,

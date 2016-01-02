@@ -1,3 +1,4 @@
 github "TransitApp/SVProgressHUD"
 github "lexrus/LTMorphingLabel"
 github "yeahdongcn/UIColor-Hex-Swift" >= 1.8
+github "dennisweissmann/DeviceKit" ~> 0.1.0

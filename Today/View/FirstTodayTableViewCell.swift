@@ -18,7 +18,7 @@ class FirstTodayTableViewCell: TodayBaseTableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         scoreCircleView.progressBorderWidth = 20.0
-        
+        scoreCircleView.animated = false
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

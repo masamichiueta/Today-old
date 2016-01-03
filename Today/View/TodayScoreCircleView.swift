@@ -33,9 +33,24 @@ import LTMorphingLabel
             scoreLabel.text = "\(score)"
             wordLabel.text = Today.type(score).rawValue
             let toStrokeColor = Today.type(score).color()
-            animateProgressFromScore(oldValue, toScore: score, fromStrokeColor: progressCircleColor, toStrokeColor: toStrokeColor, completion: { [unowned self] in
-                self.progressCircleColor = toStrokeColor
-                })
+            
+            if animated {
+                animateProgressFromScore(oldValue, toScore: score, fromStrokeColor: progressCircleColor, toStrokeColor: toStrokeColor, completion: { [unowned self] in
+                    self.progressCircleColor = toStrokeColor
+                    })
+            } else {
+                progressCircleLayer.strokeEnd = CGFloat(score)/CGFloat(Today.maxScore)
+                progressCircleLayer.strokeColor = toStrokeColor.CGColor
+                backCircleLayer.strokeColor = CGColorCreateCopyWithAlpha(toStrokeColor.CGColor, backgroundOpacity)
+                progressCircleColor = toStrokeColor
+            }
+        }
+    }
+    
+    var animated: Bool = true {
+        didSet {
+            scoreLabel.morphingEnabled = animated
+            wordLabel.morphingEnabled = animated
         }
     }
     

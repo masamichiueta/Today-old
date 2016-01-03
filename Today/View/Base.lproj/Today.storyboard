@@ -13,31 +13,31 @@
             <objects>
                 <tableViewController id="SUI-Vy-fB2" customClass="TodaysTableViewController" customModule="Today" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="5iC-Or-Y0n">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="1000"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FirstTodayCell" rowHeight="500" id="9Ig-yz-Rqk" customClass="FirstTodayTableViewCell" customModule="Today" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="500"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FirstTodayCell" rowHeight="300" id="9Ig-yz-Rqk" customClass="FirstTodayTableViewCell" customModule="Today" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="300"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9Ig-yz-Rqk" id="mdp-dt-zMD">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="499.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="299.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="xVc-7g-xOv">
-                                            <rect key="frame" x="0.0" y="28" width="600" height="434"/>
+                                            <rect key="frame" x="0.0" y="28" width="600" height="234"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Today" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mcJ-Nl-lAK">
-                                                    <rect key="frame" x="277" y="0.0" width="46" height="20"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mcJ-Nl-lAK">
+                                                    <rect key="frame" x="277" y="0.0" width="46" height="14"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="loV-lK-6cP" customClass="TodayScoreCircleView" customModule="Today" customModuleProvider="target">
-                                                    <rect key="frame" x="200" y="234" width="200" height="200"/>
+                                                <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="loV-lK-6cP" customClass="TodayScoreCircleView" customModule="Today" customModuleProvider="target">
+                                                    <rect key="frame" x="200" y="34" width="200" height="200"/>
                                                     <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="equalSpacing" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="n1S-Bw-j10">
-                                                            <rect key="frame" x="140" y="159" width="121" height="83"/>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="n1S-Bw-j10">
+                                                            <rect key="frame" x="40" y="59" width="121" height="83"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FGS-9k-OCK" customClass="LTMorphingLabel" customModule="LTMorphingLabel">
                                                                     <rect key="frame" x="0.0" y="0.0" width="121" height="53"/>
@@ -45,9 +45,9 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KWy-J0-ABs" customClass="LTMorphingLabel" customModule="LTMorphingLabel">
-                                                                    <rect key="frame" x="39" y="63" width="45" height="20"/>
+                                                                    <rect key="frame" x="38.5" y="63" width="44.5" height="20"/>
                                                                     <fontDescription key="fontDescription" name="GillSans-BoldItalic" family="Gill Sans" pointSize="17"/>
-                                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
@@ -87,43 +87,8 @@
                                     <outlet property="scoreCircleView" destination="loV-lK-6cP" id="YCb-g4-ADr"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FirstTodayCellNotCompleted" rowHeight="350" id="Aes-ak-8mq" customClass="TodayTableViewCell" customModule="Today" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="592" width="600" height="350"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Aes-ak-8mq" id="YZo-Bx-7zU">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="349.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="QU4-FI-3fR">
-                                            <rect key="frame" x="8" y="38" width="584" height="273"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="et9-MN-pFk">
-                                                    <rect key="frame" x="273" y="0.0" width="39" height="17"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FdL-mb-XEy">
-                                                    <rect key="frame" x="159" y="230" width="267" height="43"/>
-                                                    <string key="text">Ooops x(
-You have not completed today!</string>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </stackView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="QU4-FI-3fR" secondAttribute="trailing" id="Hku-wg-6Fe"/>
-                                        <constraint firstItem="QU4-FI-3fR" firstAttribute="leading" secondItem="YZo-Bx-7zU" secondAttribute="leadingMargin" id="Qj6-Mx-3UN"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="QU4-FI-3fR" secondAttribute="bottom" constant="30" id="m28-fl-JFe"/>
-                                        <constraint firstItem="QU4-FI-3fR" firstAttribute="top" secondItem="YZo-Bx-7zU" secondAttribute="topMargin" constant="30" id="yGH-hU-8Yq"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                            </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TodayCell" id="EQP-hK-U12" customClass="TodayTableViewCell" customModule="Today" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="942" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="392" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EQP-hK-U12" id="8k5-Vl-Sqi">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -187,8 +152,6 @@ You have not completed today!</string>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="600" height="1000"/>
                     <connections>
                         <segue destination="WzQ-rC-fZu" kind="popoverPresentation" identifier="showAddTodayViewController" popoverAnchorBarButtonItem="4DH-jb-BqP" id="SAh-zK-3hH">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>

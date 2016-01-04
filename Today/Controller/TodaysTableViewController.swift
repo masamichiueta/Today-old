@@ -19,9 +19,9 @@ class TodaysTableViewController: UITableViewController, ManagedObjectContextSett
     //MARK: Variables
     var managedObjectContext: NSManagedObjectContext!
     
-    private typealias TodaysDataProvider = AugmentedFetchedResultsDataProvider<TodaysTableViewController>
+    private typealias TodaysDataProvider = FetchedResultsDataProvider<TodaysTableViewController>
     private var dataProvider: TodaysDataProvider!
-    private var dataSource: TableViewDataSource<TodaysTableViewController, TodaysDataProvider, TodayBaseTableViewCell>!
+    private var dataSource: TableViewDataSource<TodaysTableViewController, TodaysDataProvider, TodayTableViewCell>!
     
     private var created: Bool {
         
@@ -48,6 +48,7 @@ class TodaysTableViewController: UITableViewController, ManagedObjectContextSett
     override func setEditing(editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         tableView.editing = editing
+        self.navigationItem.rightBarButtonItem?.enabled = !editing
     }
     
     // MARK: IBAction
@@ -89,8 +90,16 @@ class TodaysTableViewController: UITableViewController, ManagedObjectContextSett
         let request = Today.sortedFetchRequest
         request.returnsObjectsAsFaults = false
         let frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-        dataProvider = AugmentedFetchedResultsDataProvider(fetchedResultsController: frc, delegate: self)
+        dataProvider = FetchedResultsDataProvider(fetchedResultsController: frc, delegate: self)
         dataSource = TableViewDataSource(tableView: tableView, dataProvider: dataProvider, delegate: self)
+    
+        let noDataLabel = TodayPaddingLabel(frame: CGRect(origin: tableView.bounds.origin, size: tableView.bounds.size))
+        noDataLabel.text = "Oops, you haven't created Today."
+        noDataLabel.textColor = UIColor.grayColor()
+        noDataLabel.font = UIFont.systemFontOfSize(28)
+        noDataLabel.textAlignment = .Center
+        noDataLabel.numberOfLines = 2
+        dataSource.noDataView = noDataLabel
     }
 
 }
@@ -103,20 +112,7 @@ extension TodaysTableViewController {
 }
 
 //MARK: - AugmentedDataProviderDelegate
-extension TodaysTableViewController: AugmentedDataProviderDelegate {
-    func numberOfAdditionalRowsInSection(section: Int) -> Int {
-        return 0
-    }
-    
-    func supplementaryObjectAtPresentedIndexPath(indexPath: NSIndexPath) -> Today? {
-        switch indexPath.row {
-        case 0:
-            return nil
-        default:
-            return nil
-        }
-    }
-    
+extension TodaysTableViewController: DataProviderDelegate {
     func dataProviderDidUpdate(updates: [DataProviderUpdate<Today>]?) {
         dataSource.processUpdates(updates)
     }
@@ -125,10 +121,6 @@ extension TodaysTableViewController: AugmentedDataProviderDelegate {
 //MARK: - TableViewDataSourceDelegate
 extension TodaysTableViewController: TableViewDataSourceDelegate {
     func cellIdentifierForObject(object: Today) -> String {
-        if NSCalendar.currentCalendar().isDateInToday(object.date) {
-            return "FirstTodayCell"
-        }
-        
         return "TodayCell"
     }
     

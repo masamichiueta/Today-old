@@ -19,6 +19,7 @@
 		240F147E1C2ABC000003B2AF /* SegueHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F147D1C2ABC000003B2AF /* SegueHandlerType.swift */; };
 		24444A5A1C306B4B00DC1579 /* NSManagedObjectContext+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24444A591C306B4B00DC1579 /* NSManagedObjectContext+Extensions.swift */; };
 		24444A5E1C30A02A00DC1579 /* AddTodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24444A5D1C30A02A00DC1579 /* AddTodayViewController.swift */; };
+		244631451C3AB8BA002BBD06 /* TodayPaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244631441C3AB8BA002BBD06 /* TodayPaddingLabel.swift */; };
 		2466884F1C1DB45E00C5E5A0 /* Analysis.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2466884D1C1DB45E00C5E5A0 /* Analysis.storyboard */; };
 		246688511C1DB4ED00C5E5A0 /* TodaysTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246688501C1DB4ED00C5E5A0 /* TodaysTableViewController.swift */; };
 		246688531C1DB55900C5E5A0 /* AnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246688521C1DB55900C5E5A0 /* AnalysisViewController.swift */; };
@@ -28,12 +29,10 @@
 		248BC5581C37AB0E00EFB221 /* DeviceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 248BC5571C37AB0E00EFB221 /* DeviceKit.framework */; };
 		248BC5591C37AB0E00EFB221 /* DeviceKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 248BC5571C37AB0E00EFB221 /* DeviceKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		248BC55B1C37B3AA00EFB221 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248BC55A1C37B3AA00EFB221 /* CircleView.swift */; };
-		248BC59C1C382F4600EFB221 /* TodayBaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248BC59B1C382F4600EFB221 /* TodayBaseTableViewCell.swift */; };
 		24A1CFDD1C36D17800F0E9CE /* HEXColor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24A1CFDC1C36D17800F0E9CE /* HEXColor.framework */; };
 		24A1CFDE1C36D17800F0E9CE /* HEXColor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24A1CFDC1C36D17800F0E9CE /* HEXColor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		24A1CFDF1C36D18B00F0E9CE /* HEXColor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24A1CFDC1C36D17800F0E9CE /* HEXColor.framework */; };
 		24A1CFE11C36D8FA00F0E9CE /* TodayScoreCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A1CFE01C36D8FA00F0E9CE /* TodayScoreCircleView.swift */; };
-		24C6AE951C2831450048C4D1 /* FirstTodayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C6AE941C2831450048C4D1 /* FirstTodayTableViewCell.swift */; };
 		24C6AE971C2831660048C4D1 /* TodayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C6AE961C2831660048C4D1 /* TodayTableViewCell.swift */; };
 		24C77E7C1C2A887000493C13 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24C77E7B1C2A887000493C13 /* SVProgressHUD.framework */; };
 		24C77E7D1C2A887000493C13 /* SVProgressHUD.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24C77E7B1C2A887000493C13 /* SVProgressHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -139,6 +138,7 @@
 		240F147D1C2ABC000003B2AF /* SegueHandlerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueHandlerType.swift; sourceTree = "<group>"; };
 		24444A591C306B4B00DC1579 /* NSManagedObjectContext+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Extensions.swift"; sourceTree = "<group>"; };
 		24444A5D1C30A02A00DC1579 /* AddTodayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTodayViewController.swift; sourceTree = "<group>"; };
+		244631441C3AB8BA002BBD06 /* TodayPaddingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayPaddingLabel.swift; sourceTree = "<group>"; };
 		2466884E1C1DB45E00C5E5A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Analysis.storyboard; sourceTree = "<group>"; };
 		246688501C1DB4ED00C5E5A0 /* TodaysTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodaysTableViewController.swift; sourceTree = "<group>"; };
 		246688521C1DB55900C5E5A0 /* AnalysisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisViewController.swift; sourceTree = "<group>"; };
@@ -146,10 +146,8 @@
 		2472E6FD1C3275C8006DC493 /* LTMorphingLabel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LTMorphingLabel.framework; path = Carthage/Build/iOS/LTMorphingLabel.framework; sourceTree = "<group>"; };
 		248BC5571C37AB0E00EFB221 /* DeviceKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DeviceKit.framework; path = Carthage/Build/iOS/DeviceKit.framework; sourceTree = "<group>"; };
 		248BC55A1C37B3AA00EFB221 /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
-		248BC59B1C382F4600EFB221 /* TodayBaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayBaseTableViewCell.swift; sourceTree = "<group>"; };
 		24A1CFDC1C36D17800F0E9CE /* HEXColor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HEXColor.framework; path = Carthage/Build/iOS/HEXColor.framework; sourceTree = "<group>"; };
 		24A1CFE01C36D8FA00F0E9CE /* TodayScoreCircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayScoreCircleView.swift; sourceTree = "<group>"; };
-		24C6AE941C2831450048C4D1 /* FirstTodayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstTodayTableViewCell.swift; sourceTree = "<group>"; };
 		24C6AE961C2831660048C4D1 /* TodayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayTableViewCell.swift; sourceTree = "<group>"; };
 		24C77E7B1C2A887000493C13 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = Carthage/Build/iOS/SVProgressHUD.framework; sourceTree = "<group>"; };
 		24C77E831C2A8A3E00493C13 /* TodayModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TodayModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -311,14 +309,13 @@
 			isa = PBXGroup;
 			children = (
 				248BC55A1C37B3AA00EFB221 /* CircleView.swift */,
-				24C6AE941C2831450048C4D1 /* FirstTodayTableViewCell.swift */,
 				24A1CFE01C36D8FA00F0E9CE /* TodayScoreCircleView.swift */,
 				24C6AE961C2831660048C4D1 /* TodayTableViewCell.swift */,
 				2466884D1C1DB45E00C5E5A0 /* Analysis.storyboard */,
 				24030AEF1C1C821C004E68ED /* LaunchScreen.storyboard */,
 				24030AE71C1C821C004E68ED /* Main.storyboard */,
 				246688541C1DB61100C5E5A0 /* Today.storyboard */,
-				248BC59B1C382F4600EFB221 /* TodayBaseTableViewCell.swift */,
+				244631441C3AB8BA002BBD06 /* TodayPaddingLabel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -590,7 +587,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				246688511C1DB4ED00C5E5A0 /* TodaysTableViewController.swift in Sources */,
-				24C6AE951C2831450048C4D1 /* FirstTodayTableViewCell.swift in Sources */,
+				244631451C3AB8BA002BBD06 /* TodayPaddingLabel.swift in Sources */,
 				24F9DC371C2EF9F9003A6427 /* DataProvider.swift in Sources */,
 				24C6AE971C2831660048C4D1 /* TodayTableViewCell.swift in Sources */,
 				24030AE41C1C821C004E68ED /* AppDelegate.swift in Sources */,
@@ -601,7 +598,6 @@
 				24A1CFE11C36D8FA00F0E9CE /* TodayScoreCircleView.swift in Sources */,
 				240F147E1C2ABC000003B2AF /* SegueHandlerType.swift in Sources */,
 				248BC55B1C37B3AA00EFB221 /* CircleView.swift in Sources */,
-				248BC59C1C382F4600EFB221 /* TodayBaseTableViewCell.swift in Sources */,
 				24F9DC391C2EFAC5003A6427 /* DataSource.swift in Sources */,
 				24F9DC3F1C2EFD33003A6427 /* ConfigurableCell.swift in Sources */,
 				24F9DC3D1C2EFCD4003A6427 /* TableViewDataSource.swift in Sources */,

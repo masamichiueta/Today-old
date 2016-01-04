@@ -20,6 +20,8 @@ class TableViewDataSource<Delegate: TableViewDataSourceDelegate, Data: DataProvi
     private let dataProvider: Data
     private weak var delegate: Delegate!
     
+    var noDataView: UIView?
+    
     var selectedObject: Data.Object? {
         guard let indexPath = tableView.indexPathForSelectedRow else { return nil }
         return dataProvider.objectAtIndexPath(indexPath)
@@ -59,6 +61,15 @@ class TableViewDataSource<Delegate: TableViewDataSourceDelegate, Data: DataProvi
     // MARK: UITableViewDataSource
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        
+        if dataProvider.numberOfObjects() == 0 && noDataView != nil {
+            tableView.backgroundView = noDataView
+            tableView.separatorStyle = .None
+        } else {
+            tableView.backgroundView = nil
+            tableView.separatorStyle = .SingleLine
+        }
+        
         return dataProvider.numberOfSection()
     }
     

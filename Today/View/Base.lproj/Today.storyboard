@@ -5,7 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Todays-->
@@ -17,119 +16,73 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FirstTodayCell" rowHeight="300" id="9Ig-yz-Rqk" customClass="FirstTodayTableViewCell" customModule="Today" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="300"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9Ig-yz-Rqk" id="mdp-dt-zMD">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="299.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="xVc-7g-xOv">
-                                            <rect key="frame" x="0.0" y="28" width="600" height="234"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mcJ-Nl-lAK">
-                                                    <rect key="frame" x="277" y="0.0" width="46" height="14"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="loV-lK-6cP" customClass="TodayScoreCircleView" customModule="Today" customModuleProvider="target">
-                                                    <rect key="frame" x="200" y="34" width="200" height="200"/>
-                                                    <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="n1S-Bw-j10">
-                                                            <rect key="frame" x="40" y="59" width="121" height="83"/>
-                                                            <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FGS-9k-OCK" customClass="LTMorphingLabel" customModule="LTMorphingLabel">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="121" height="53"/>
-                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="44"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KWy-J0-ABs" customClass="LTMorphingLabel" customModule="LTMorphingLabel">
-                                                                    <rect key="frame" x="38.5" y="63" width="44.5" height="20"/>
-                                                                    <fontDescription key="fontDescription" name="GillSans-BoldItalic" family="Gill Sans" pointSize="17"/>
-                                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                            </subviews>
-                                                        </stackView>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="200" id="ISu-FE-c6O"/>
-                                                        <constraint firstAttribute="width" secondItem="loV-lK-6cP" secondAttribute="height" multiplier="1:1" id="NnF-CC-yaa"/>
-                                                        <constraint firstItem="n1S-Bw-j10" firstAttribute="centerX" secondItem="loV-lK-6cP" secondAttribute="centerX" id="o0F-V6-eLp"/>
-                                                        <constraint firstItem="n1S-Bw-j10" firstAttribute="centerY" secondItem="loV-lK-6cP" secondAttribute="centerY" id="x4g-6u-MCa"/>
-                                                    </constraints>
-                                                    <connections>
-                                                        <outlet property="scoreLabel" destination="FGS-9k-OCK" id="STd-Ka-sqw"/>
-                                                        <outlet property="wordLabel" destination="KWy-J0-ABs" id="0Uk-xU-kDT"/>
-                                                    </connections>
-                                                </view>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="150" id="TyV-CW-FGC"/>
-                                                <constraint firstItem="loV-lK-6cP" firstAttribute="width" secondItem="xVc-7g-xOv" secondAttribute="width" multiplier="2/3" id="kMD-C1-OKH"/>
-                                            </constraints>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="kMD-C1-OKH"/>
-                                                </mask>
-                                            </variation>
-                                        </stackView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="bottomMargin" secondItem="xVc-7g-xOv" secondAttribute="bottom" constant="30" id="TUW-bD-M7C"/>
-                                        <constraint firstItem="xVc-7g-xOv" firstAttribute="top" secondItem="mdp-dt-zMD" secondAttribute="topMargin" constant="20" id="cuZ-Yl-nqi"/>
-                                        <constraint firstAttribute="trailing" secondItem="xVc-7g-xOv" secondAttribute="trailing" id="dhM-xn-z98"/>
-                                        <constraint firstItem="xVc-7g-xOv" firstAttribute="leading" secondItem="mdp-dt-zMD" secondAttribute="leading" id="fpT-8R-fXf"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="scoreCircleView" destination="loV-lK-6cP" id="YCb-g4-ADr"/>
-                                </connections>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TodayCell" id="EQP-hK-U12" customClass="TodayTableViewCell" customModule="Today" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="392" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TodayCell" rowHeight="44" id="EQP-hK-U12" customClass="TodayTableViewCell" customModule="Today" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EQP-hK-U12" id="8k5-Vl-Sqi">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2015/12/15" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="929-qH-vF5">
-                                            <rect key="frame" x="498" y="11" width="84" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="GE4-TP-cwv">
-                                            <rect key="frame" x="18" y="12" width="75" height="20"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="di8-Bb-vtQ">
+                                            <rect key="frame" x="18" y="12" width="564" height="20"/>
                                             <subviews>
-                                                <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ttm-MF-JEc" customClass="CircleView" customModule="Today" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="GE4-TP-cwv">
+                                                    <rect key="frame" x="0.0" y="0.0" width="282" height="20"/>
+                                                    <subviews>
+                                                        <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ttm-MF-JEc" customClass="CircleView" customModule="Today" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="20" id="9ca-ih-Ih8"/>
+                                                                <constraint firstAttribute="height" constant="20" id="Vhp-zZ-W1i"/>
+                                                                <constraint firstAttribute="width" secondItem="Ttm-MF-JEc" secondAttribute="height" multiplier="1:1" id="lsd-11-Zf7"/>
+                                                            </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                                                    <color key="value" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </view>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zcA-zi-AZv">
+                                                            <rect key="frame" x="30" y="0.0" width="252" height="20"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2015/12/15" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="929-qH-vF5">
+                                                    <rect key="frame" x="282" y="0.0" width="282" height="20"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="20" id="9ca-ih-Ih8"/>
-                                                        <constraint firstAttribute="height" constant="20" id="Vhp-zZ-W1i"/>
-                                                        <constraint firstAttribute="width" secondItem="Ttm-MF-JEc" secondAttribute="height" multiplier="1:1" id="lsd-11-Zf7"/>
+                                                        <constraint firstAttribute="width" constant="84" id="pZm-Gb-CIX"/>
                                                     </constraints>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="color">
-                                                            <color key="value" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zcA-zi-AZv">
-                                                    <rect key="frame" x="30" y="0.0" width="45" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="pZm-Gb-CIX"/>
+                                                        </mask>
+                                                    </variation>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="GE4-TP-cwv" firstAttribute="width" secondItem="929-qH-vF5" secondAttribute="width" id="7f3-WT-49N"/>
+                                                <constraint firstAttribute="trailing" secondItem="GE4-TP-cwv" secondAttribute="trailing" constant="84" id="UGF-2c-o4Z"/>
+                                                <constraint firstAttribute="trailing" secondItem="929-qH-vF5" secondAttribute="trailing" id="wUE-fW-ikQ"/>
+                                                <constraint firstItem="GE4-TP-cwv" firstAttribute="leading" secondItem="di8-Bb-vtQ" secondAttribute="leading" id="xgM-C0-uLd"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="UGF-2c-o4Z"/>
+                                                    <exclude reference="xgM-C0-uLd"/>
+                                                </mask>
+                                            </variation>
                                         </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="929-qH-vF5" secondAttribute="trailing" constant="10" id="2Yy-xp-PyO"/>
-                                        <constraint firstItem="GE4-TP-cwv" firstAttribute="centerY" secondItem="8k5-Vl-Sqi" secondAttribute="centerY" id="9Z6-e4-EBj"/>
-                                        <constraint firstItem="929-qH-vF5" firstAttribute="centerY" secondItem="8k5-Vl-Sqi" secondAttribute="centerY" id="h0L-XN-Aq1"/>
-                                        <constraint firstItem="GE4-TP-cwv" firstAttribute="leading" secondItem="8k5-Vl-Sqi" secondAttribute="leadingMargin" constant="10" id="m8S-fo-Qhj"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="di8-Bb-vtQ" secondAttribute="trailing" constant="10" id="0Br-Mh-bIs"/>
+                                        <constraint firstItem="di8-Bb-vtQ" firstAttribute="leading" secondItem="8k5-Vl-Sqi" secondAttribute="leadingMargin" constant="10" id="mtz-sj-Vds"/>
+                                        <constraint firstItem="di8-Bb-vtQ" firstAttribute="centerY" secondItem="8k5-Vl-Sqi" secondAttribute="centerY" id="oHV-zz-NUk"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>

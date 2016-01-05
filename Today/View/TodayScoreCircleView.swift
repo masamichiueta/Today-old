@@ -12,13 +12,8 @@ import LTMorphingLabel
 
 @IBDesignable class TodayScoreCircleView: UIView {
     
-    @IBOutlet weak var scoreLabel: LTMorphingLabel!
-    @IBOutlet weak var wordLabel: LTMorphingLabel!
-    
     @IBInspectable var progressCircleColor: UIColor = Today.type(Today.masterScores.maxElement()!).color() {
         didSet {
-            scoreLabel.textColor = progressCircleColor
-            wordLabel.textColor = progressCircleColor
             setNeedsDisplay()
         }
     }
@@ -30,10 +25,7 @@ import LTMorphingLabel
     
     var score: Int = Today.masterScores[0] {
         didSet {
-            scoreLabel.text = "\(score)"
-            wordLabel.text = Today.type(score).rawValue
             let toStrokeColor = Today.type(score).color()
-            
             if animated {
                 animateProgressFromScore(oldValue, toScore: score, fromStrokeColor: progressCircleColor, toStrokeColor: toStrokeColor, completion: { [unowned self] in
                     self.progressCircleColor = toStrokeColor
@@ -47,12 +39,11 @@ import LTMorphingLabel
         }
     }
     
-    var animated: Bool = true {
-        didSet {
-            scoreLabel.morphingEnabled = animated
-            wordLabel.morphingEnabled = animated
-        }
-    }
+    var animated: Bool = true
+    var animationDuration = 0.2
+    
+    private let minDuration = 0.2
+    private let backgroundOpacity: CGFloat = 0.15
     
     private let progressCircleLayer: CAShapeLayer = CAShapeLayer()
     private let backCircleLayer: CAShapeLayer = CAShapeLayer()
@@ -60,20 +51,18 @@ import LTMorphingLabel
     private var radius: CGFloat {
         return CGFloat((self.frame.size.width - progressBorderWidth/2.0)/2.0)
     }
-    private let minDuration = 0.2
-    private let backgroundOpacity: CGFloat = 0.15
+    
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.layer.addSublayer(backCircleLayer)
         self.layer.addSublayer(progressCircleLayer)
-        scoreLabel.morphingEffect = .Evaporate
-        scoreLabel.textColor = progressCircleColor
-        wordLabel.morphingEffect = .Evaporate
-        wordLabel.textColor = progressCircleColor
     }
     
     override func prepareForInterfaceBuilder() {
+        self.layer.addSublayer(backCircleLayer)
+        self.layer.addSublayer(progressCircleLayer)
         drawBackCircle()
         drawProgressCircle()
     }
@@ -129,31 +118,31 @@ import LTMorphingLabel
         
         CATransaction.begin()
         
-        let duration = max(NSTimeInterval(abs(toStrokeEnd - fromStrokeEnd)), minDuration)
+        animationDuration = max(NSTimeInterval(abs(toStrokeEnd - fromStrokeEnd)), minDuration)
         
         let strokeEndAnimation = CABasicAnimation(keyPath: "strokeEnd")
         strokeEndAnimation.fromValue = fromStrokeEnd
         strokeEndAnimation.toValue = toStrokeEnd
-        self.progressCircleLayer.strokeEnd = toStrokeEnd
+        progressCircleLayer.strokeEnd = toStrokeEnd
         
         let strokeColorAnimation = CABasicAnimation(keyPath: "strokeColor")
         strokeColorAnimation.fromValue = fromStrokeColor.CGColor
         strokeColorAnimation.toValue = toStrokeColor.CGColor
-        self.progressCircleLayer.strokeColor = toStrokeColor.CGColor
+        progressCircleLayer.strokeColor = toStrokeColor.CGColor
         
         let progressCircleAnimationGroup = CAAnimationGroup()
-        progressCircleAnimationGroup.duration = duration
+        progressCircleAnimationGroup.duration = animationDuration
         progressCircleAnimationGroup.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         progressCircleAnimationGroup.animations = [strokeEndAnimation, strokeColorAnimation]
-        self.progressCircleLayer.addAnimation(progressCircleAnimationGroup, forKey: "progressCircle")
+        progressCircleLayer.addAnimation(progressCircleAnimationGroup, forKey: "progressCircle")
         
         let backgroundStrokeColorAnimation = CABasicAnimation(keyPath: "strokeColor")
-        backgroundStrokeColorAnimation.duration = duration
+        backgroundStrokeColorAnimation.duration = animationDuration
         backgroundStrokeColorAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         backgroundStrokeColorAnimation.fromValue = CGColorCreateCopyWithAlpha(fromStrokeColor.CGColor, backgroundOpacity)
         backgroundStrokeColorAnimation.toValue = CGColorCreateCopyWithAlpha(toStrokeColor.CGColor, backgroundOpacity)
-        self.backCircleLayer.strokeColor = CGColorCreateCopyWithAlpha(toStrokeColor.CGColor, backgroundOpacity)
-        self.backCircleLayer.addAnimation(backgroundStrokeColorAnimation, forKey: "backgroundCircle")
+        backCircleLayer.strokeColor = CGColorCreateCopyWithAlpha(toStrokeColor.CGColor, backgroundOpacity)
+        backCircleLayer.addAnimation(backgroundStrokeColorAnimation, forKey: "backgroundCircle")
         
         CATransaction.setCompletionBlock(completion)
         CATransaction.commit()

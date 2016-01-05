@@ -8,23 +8,56 @@
 
 import UIKit
 import TodayModel
+import LTMorphingLabel
 
 class AddTodayViewController: UIViewController {
-
+    
     @IBOutlet weak var pickerView: UIPickerView!
-
+    
     @IBOutlet weak var scoreCircleView: TodayScoreCircleView!
+    
+    @IBOutlet weak var scoreLabel: LTMorphingLabel!
+    
+    @IBOutlet weak var wordLabel: LTMorphingLabel!
+    
+    @IBOutlet weak var iconImageView: UIImageView!
     
     var score: Int =  Today.maxScore {
         didSet {
             scoreCircleView.score = score
+            scoreLabel.morphingDuration = Float(scoreCircleView.animationDuration)
+            wordLabel.morphingDuration = Float(scoreCircleView.animationDuration)
+            scoreLabel.text = "\(score)"
+            wordLabel.text = Today.type(score).rawValue
+            let toStrokeColor = Today.type(score).color()
+            self.scoreLabel.textColor = toStrokeColor
+            self.wordLabel.textColor = toStrokeColor
+            UIView.transitionWithView(iconImageView,
+                duration: scoreCircleView.animationDuration,
+                options: UIViewAnimationOptions.TransitionCrossDissolve,
+                animations: { [unowned self] in
+                    self.iconImageView.tintColor = toStrokeColor
+                    self.iconImageView.image = Today.type(self.score).icon()
+                    self.view.layoutIfNeeded()
+                },
+                completion: { finished in
+                    
+            })
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        scoreLabel.morphingEffect = .Evaporate
+        scoreLabel.textColor = scoreCircleView.progressCircleColor
+        wordLabel.morphingEffect = .Evaporate
+        wordLabel.textColor = scoreCircleView.progressCircleColor
+        
+        iconImageView.image = Today.type(score).icon()
+        iconImageView.tintColor = scoreCircleView.progressCircleColor
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -33,14 +66,14 @@ class AddTodayViewController: UIViewController {
     
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
-
+    
 }
 
 extension AddTodayViewController: UIPickerViewDataSource, UIPickerViewDelegate {

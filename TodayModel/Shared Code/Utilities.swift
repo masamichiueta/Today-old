@@ -20,35 +20,3 @@ extension NSURL {
     }
     
 }
-
-private let redColor = "#FF3830"
-private let orangeColor = "#FF7F00"
-private let yellowColor = "#FFCC00"
-private let greenColor = "#4CD964"
-private let blueColor = "#34AADC"
-
-
-public enum TodayType: String {
-    case Excellent
-    case Good
-    case Average
-    case Fair
-    case Poor
-    
-    static let count = 5
-    
-    public func color() -> UIColor {
-        switch self {
-        case .Excellent:
-            return UIColor(rgba: redColor)
-        case .Good:
-            return UIColor(rgba: orangeColor)
-        case .Average:
-            return UIColor(rgba: yellowColor)
-        case .Fair:
-            return UIColor(rgba: greenColor)
-        case .Poor:
-            return UIColor(rgba: blueColor)
-        }
-    }
-}

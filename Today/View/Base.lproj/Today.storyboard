@@ -166,21 +166,35 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YcQ-ai-atA" customClass="TodayScoreCircleView" customModule="Today" customModuleProvider="target">
-                                <rect key="frame" x="165" y="94" width="270" height="270"/>
+                                <rect key="frame" x="170" y="104" width="260" height="260"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="3ZD-cz-KhB">
-                                        <rect key="frame" x="79.5" y="80" width="112.5" height="110"/>
+                                        <rect key="frame" x="63.5" y="75" width="133" height="110"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Nz-21-ErX" customClass="LTMorphingLabel" customModule="LTMorphingLabel">
-                                                <rect key="frame" x="22" y="0.0" width="68.5" height="72"/>
+                                                <rect key="frame" x="32.5" y="0.0" width="68.5" height="72"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="60"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Excellent!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hj5-52-09C" customClass="LTMorphingLabel" customModule="LTMorphingLabel">
-                                                <rect key="frame" x="0.0" y="82" width="112.5" height="28"/>
-                                                <fontDescription key="fontDescription" name="GillSans-BoldItalic" family="Gill Sans" pointSize="24"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="C7r-Br-IqF">
+                                                <rect key="frame" x="0.0" y="82" width="133" height="28"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Excellent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hj5-52-09C" customClass="LTMorphingLabel" customModule="LTMorphingLabel">
+                                                        <rect key="frame" x="0.0" y="0.0" width="105" height="28"/>
+                                                        <fontDescription key="fontDescription" name="GillSans-BoldItalic" family="Gill Sans" pointSize="24"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MxE-lK-Ef9">
+                                                        <rect key="frame" x="105" y="0.0" width="28" height="28"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="MxE-lK-Ef9" secondAttribute="height" multiplier="1:1" id="69i-Sm-vyq"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="MxE-lK-Ef9" firstAttribute="height" secondItem="hj5-52-09C" secondAttribute="height" id="1jU-q4-wN7"/>
+                                                </constraints>
+                                            </stackView>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -190,15 +204,16 @@
                                     <constraint firstItem="3ZD-cz-KhB" firstAttribute="centerY" secondItem="YcQ-ai-atA" secondAttribute="centerY" id="i7M-HY-Q9T"/>
                                     <constraint firstItem="3ZD-cz-KhB" firstAttribute="centerX" secondItem="YcQ-ai-atA" secondAttribute="centerX" id="yH5-zq-JGj"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="progressBorderWidth">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="QiJ-F6-FWU"/>
                                     </mask>
                                 </variation>
-                                <connections>
-                                    <outlet property="scoreLabel" destination="6Nz-21-ErX" id="OSZ-jj-gte"/>
-                                    <outlet property="wordLabel" destination="hj5-52-09C" id="kyf-Tx-2wU"/>
-                                </connections>
                             </view>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b24-9R-gMp">
                                 <rect key="frame" x="0.0" y="384" width="600" height="216"/>
@@ -215,7 +230,7 @@
                             <constraint firstItem="b24-9R-gMp" firstAttribute="top" secondItem="YcQ-ai-atA" secondAttribute="bottom" constant="20" id="HeQ-E6-79g"/>
                             <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="YcQ-ai-atA" secondAttribute="trailing" constant="30" id="aMq-fI-jwi"/>
                             <constraint firstAttribute="trailing" secondItem="b24-9R-gMp" secondAttribute="trailing" id="hRg-OR-mhD"/>
-                            <constraint firstItem="YcQ-ai-atA" firstAttribute="top" secondItem="o9X-08-kDB" secondAttribute="bottom" constant="30" id="lgb-S2-prS"/>
+                            <constraint firstItem="YcQ-ai-atA" firstAttribute="top" secondItem="o9X-08-kDB" secondAttribute="bottom" constant="40" id="lgb-S2-prS"/>
                             <constraint firstItem="b24-9R-gMp" firstAttribute="leading" secondItem="OuH-8s-S5r" secondAttribute="leading" id="nbf-pg-lpH"/>
                             <constraint firstItem="YcQ-ai-atA" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="OuH-8s-S5r" secondAttribute="leadingMargin" constant="30" id="xWr-Wi-uhZ"/>
                         </constraints>
@@ -233,8 +248,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="iconImageView" destination="MxE-lK-Ef9" id="ZD0-WO-Z5p"/>
                         <outlet property="pickerView" destination="b24-9R-gMp" id="Rk2-PN-Opq"/>
                         <outlet property="scoreCircleView" destination="YcQ-ai-atA" id="fgl-Eb-r41"/>
+                        <outlet property="scoreLabel" destination="6Nz-21-ErX" id="FcB-Nn-jLX"/>
+                        <outlet property="wordLabel" destination="hj5-52-09C" id="tnk-pZ-d4h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Egl-vH-IX5" userLabel="First Responder" sceneMemberID="firstResponder"/>

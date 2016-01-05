@@ -62,37 +62,6 @@ public final class Today: ManagedObject {
             return .Excellent
         }
     }
-    
-    public static func animationImages(from: Int, to: Int) -> [UIImage] {
-        
-        guard let goodImage = UIImage(named: goodIconImageName), let averageImage = UIImage(named: averageIconImageName), let poorImage = UIImage(named: poorIconImageName) else {
-            fatalError("Wrong image name")
-        }
-        
-        let fromType = Today.type(from)
-        let toType = Today.type(to)
-        
-        switch (fromType, toType) {
-        case (.Excellent, .Excellent), (.Excellent, .Good), (.Good, .Excellent), (.Good, .Good):
-            return [goodImage]
-        case (.Excellent, .Average), (.Excellent, .Fair), (.Good, .Average), (.Good, .Fair):
-            return [averageImage, goodImage]
-        case (.Excellent, .Poor), (.Good, .Poor):
-            return [poorImage, averageImage, goodImage]
-        case (.Average, .Excellent), (.Average, .Good), (.Fair, .Excellent), (.Fair, .Good):
-            return [averageImage, goodImage]
-        case (.Average, .Average), (.Average, .Fair), (.Fair, .Fair), (.Fair, .Average):
-            return [averageImage]
-        case (.Average, .Poor), (.Fair, .Poor):
-            return [averageImage, poorImage]
-        case (.Poor, .Poor):
-            return [poorImage]
-        case (.Poor, .Average), (.Poor, .Fair):
-            return [poorImage, averageImage]
-        case (.Poor, .Good), (.Poor, .Excellent):
-            return [poorImage, averageImage, goodImage]
-        }
-    }
 }
 
 private let scoreRange = [Int](0...10)

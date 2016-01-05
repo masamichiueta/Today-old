@@ -25,8 +25,8 @@ class AddTodayViewController: UIViewController {
     var score: Int =  Today.maxScore {
         didSet {
             scoreCircleView.score = score
-            scoreLabel.morphingDuration = Float(scoreCircleView.animationDuration)
-            wordLabel.morphingDuration = Float(scoreCircleView.animationDuration)
+            scoreLabel.morphingDuration = Float(scoreCircleView.animationDuration + 0.15)
+            wordLabel.morphingDuration = Float(scoreCircleView.animationDuration + 0.15)
             scoreLabel.text = "\(score)"
             wordLabel.text = Today.type(score).rawValue
             let toStrokeColor = Today.type(score).color()

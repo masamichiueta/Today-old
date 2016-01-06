@@ -1,5 +1,5 @@
 //
-//  AnalysisViewController.swift
+//  ActivityViewController.swift
 //  Today
 //
 //  Created by MasamichiUeta on 2015/12/13.
@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class AnalysisViewController: UIViewController, ManagedObjectContextSettable {
+class ActivityViewController: UIViewController, ManagedObjectContextSettable {
 
     var managedObjectContext: NSManagedObjectContext!
     

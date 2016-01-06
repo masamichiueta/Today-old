@@ -55,10 +55,10 @@
             </objects>
             <point key="canvasLocation" x="-517" y="-573"/>
         </scene>
-        <!--Analysis-->
+        <!--Activity-->
         <scene sceneID="FjR-jD-SGb">
             <objects>
-                <viewControllerPlaceholder storyboardName="Analysis" id="RMO-4r-U4T" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Activity" id="RMO-4r-U4T" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="sBL-TV-J12"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hj0-Es-u2R" userLabel="First Responder" sceneMemberID="firstResponder"/>

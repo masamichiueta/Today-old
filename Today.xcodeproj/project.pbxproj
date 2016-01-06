@@ -28,7 +28,6 @@
 		2472E6FF1C3275C8006DC493 /* LTMorphingLabel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2472E6FD1C3275C8006DC493 /* LTMorphingLabel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		248BC5581C37AB0E00EFB221 /* DeviceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 248BC5571C37AB0E00EFB221 /* DeviceKit.framework */; };
 		248BC5591C37AB0E00EFB221 /* DeviceKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 248BC5571C37AB0E00EFB221 /* DeviceKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		248BC55B1C37B3AA00EFB221 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248BC55A1C37B3AA00EFB221 /* CircleView.swift */; };
 		24A1CFDD1C36D17800F0E9CE /* HEXColor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24A1CFDC1C36D17800F0E9CE /* HEXColor.framework */; };
 		24A1CFDE1C36D17800F0E9CE /* HEXColor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24A1CFDC1C36D17800F0E9CE /* HEXColor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		24A1CFDF1C36D18B00F0E9CE /* HEXColor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24A1CFDC1C36D17800F0E9CE /* HEXColor.framework */; };
@@ -145,7 +144,6 @@
 		246688551C1DB61100C5E5A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Today.storyboard; sourceTree = "<group>"; };
 		2472E6FD1C3275C8006DC493 /* LTMorphingLabel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LTMorphingLabel.framework; path = Carthage/Build/iOS/LTMorphingLabel.framework; sourceTree = "<group>"; };
 		248BC5571C37AB0E00EFB221 /* DeviceKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DeviceKit.framework; path = Carthage/Build/iOS/DeviceKit.framework; sourceTree = "<group>"; };
-		248BC55A1C37B3AA00EFB221 /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		24A1CFDC1C36D17800F0E9CE /* HEXColor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HEXColor.framework; path = Carthage/Build/iOS/HEXColor.framework; sourceTree = "<group>"; };
 		24A1CFE01C36D8FA00F0E9CE /* TodayScoreCircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayScoreCircleView.swift; sourceTree = "<group>"; };
 		24C6AE961C2831660048C4D1 /* TodayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayTableViewCell.swift; sourceTree = "<group>"; };
@@ -308,7 +306,6 @@
 		2466885A1C1EFC5600C5E5A0 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				248BC55A1C37B3AA00EFB221 /* CircleView.swift */,
 				24A1CFE01C36D8FA00F0E9CE /* TodayScoreCircleView.swift */,
 				24C6AE961C2831660048C4D1 /* TodayTableViewCell.swift */,
 				2466884D1C1DB45E00C5E5A0 /* Analysis.storyboard */,
@@ -597,7 +594,6 @@
 				240F147C1C2AA0450003B2AF /* RootViewController.swift in Sources */,
 				24A1CFE11C36D8FA00F0E9CE /* TodayScoreCircleView.swift in Sources */,
 				240F147E1C2ABC000003B2AF /* SegueHandlerType.swift in Sources */,
-				248BC55B1C37B3AA00EFB221 /* CircleView.swift in Sources */,
 				24F9DC391C2EFAC5003A6427 /* DataSource.swift in Sources */,
 				24F9DC3F1C2EFD33003A6427 /* ConfigurableCell.swift in Sources */,
 				24F9DC3D1C2EFCD4003A6427 /* TableViewDataSource.swift in Sources */,

@@ -82,9 +82,9 @@ private let yellowColor = "#FFCC00"
 private let greenColor = "#4CD964"
 private let blueColor = "#34AADC"
 
-private let goodIconImageName = "good_face_icon"
-private let averageIconImageName = "average_face_icon"
-private let poorIconImageName = "poor_face_icon"
+private let goodIconImageName = "good_face_icon_"
+private let averageIconImageName = "average_face_icon_"
+private let poorIconImageName = "poor_face_icon_"
 
 
 public enum TodayType: String {
@@ -111,20 +111,20 @@ public enum TodayType: String {
         }
     }
     
-    public func icon() -> UIImage {
+    public func icon(size: String) -> UIImage {
         switch self {
         case .Excellent, .Good:
-            guard let image = UIImage(named: goodIconImageName) else {
+            guard let image = UIImage(named: goodIconImageName + size) else {
                 fatalError("Wrong image name for good")
             }
             return image.imageWithRenderingMode(.AlwaysTemplate)
         case .Average, .Fair:
-            guard let image = UIImage(named: averageIconImageName) else {
+            guard let image = UIImage(named: averageIconImageName + size) else {
                 fatalError("Wrong image name for average")
             }
             return image.imageWithRenderingMode(.AlwaysTemplate)
         case .Poor:
-            guard let image = UIImage(named: poorIconImageName) else {
+            guard let image = UIImage(named: poorIconImageName + size) else {
                 fatalError("Wrong image name for poor")
             }
             return image.imageWithRenderingMode(.AlwaysTemplate)

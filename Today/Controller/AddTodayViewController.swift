@@ -37,7 +37,7 @@ class AddTodayViewController: UIViewController {
                 options: UIViewAnimationOptions.TransitionCrossDissolve,
                 animations: { [unowned self] in
                     self.iconImageView.tintColor = toStrokeColor
-                    self.iconImageView.image = Today.type(self.score).icon()
+                    self.iconImageView.image = Today.type(self.score).icon("40")
                     self.view.layoutIfNeeded()
                 },
                 completion: { finished in
@@ -54,7 +54,7 @@ class AddTodayViewController: UIViewController {
         wordLabel.morphingEffect = .Evaporate
         wordLabel.textColor = scoreCircleView.progressCircleColor
         
-        iconImageView.image = Today.type(score).icon()
+        iconImageView.image = Today.type(score).icon("40")
         iconImageView.tintColor = scoreCircleView.progressCircleColor
     }
     

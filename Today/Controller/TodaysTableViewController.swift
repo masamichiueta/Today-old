@@ -68,13 +68,15 @@ class TodaysTableViewController: UITableViewController, ManagedObjectContextSett
     }
     
     @IBAction func showAddTodayViewController(sender: AnyObject) {
-        if created {
-            let alert = UIAlertController(title: "Wow!", message: "Everything is OK. You have already created Today", preferredStyle: .Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
-        } else {
-            performSegue(.ShowAddTodayViewController)
-        }
+//        if created {
+//            let alert = UIAlertController(title: "Wow!", message: "Everything is OK. You have already created Today", preferredStyle: .Alert)
+//            alert.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
+//            self.presentViewController(alert, animated: true, completion: nil)
+//        } else {
+//            performSegue(.ShowAddTodayViewController)
+//        }
+        
+        performSegue(.ShowAddTodayViewController)
     }
     
     

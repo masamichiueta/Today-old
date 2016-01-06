@@ -22,8 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        applyDesign()
-        
         guard let vc = window?.rootViewController as? ManagedObjectContextSettable else {
             fatalError("Wrong view controller type")
         }
@@ -55,12 +53,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         
     }
-    
-    
-    //MARK: - Design
-    func applyDesign() {
-        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.orangeColor()], forState: .Selected)
-        UITabBar.appearance().tintColor = UIColor.orangeColor()
-    }
-
 }

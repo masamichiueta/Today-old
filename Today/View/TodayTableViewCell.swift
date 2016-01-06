@@ -13,18 +13,17 @@ import TodayModel
 class TodayTableViewCell: UITableViewCell {
     
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var circleView: CircleView!
-    @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var scoreCircleView: TodayScoreCircleView!
+    @IBOutlet weak var wordLabel: UILabel!
+    @IBOutlet weak var iconImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        scoreCircleView.animated = false
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
     }
     
 }
@@ -41,7 +40,10 @@ private let dateFormatter: NSDateFormatter = {
 extension TodayTableViewCell: ConfigurableCell {
     func configureForObject(today: Today) {
         dateLabel.text = dateFormatter.stringFromDate(today.date)
-        scoreLabel.text = "\(today.score)"
-        circleView.color = today.color
+        scoreCircleView.score = Int(today.score)
+        wordLabel.text = today.type.rawValue
+        wordLabel.textColor = today.type.color()
+        iconImageView.image = today.type.icon("28")
+        iconImageView.tintColor = today.type.color()
     }
 }

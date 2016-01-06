@@ -77,7 +77,7 @@ extension Today: ManagedObjectType {
 }
 
 private let redColor = "#FF3830"
-private let orangeColor = "#FF7F00"
+private let orangeColor = "#FF9500"
 private let yellowColor = "#FFCC00"
 private let greenColor = "#4CD964"
 private let blueColor = "#34AADC"

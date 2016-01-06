@@ -17,7 +17,7 @@ import LTMorphingLabel
             setNeedsDisplay()
         }
     }
-    @IBInspectable var progressBorderWidth: CGFloat = 40.0 {
+    @IBInspectable var progressBorderWidth: CGFloat = 20.0 {
         didSet {
             setNeedsDisplay()
         }

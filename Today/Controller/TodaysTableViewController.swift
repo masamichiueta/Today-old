@@ -68,15 +68,13 @@ class TodaysTableViewController: UITableViewController, ManagedObjectContextSett
     }
     
     @IBAction func showAddTodayViewController(sender: AnyObject) {
-//        if created {
-//            let alert = UIAlertController(title: "Wow!", message: "Everything is OK. You have already created Today", preferredStyle: .Alert)
-//            alert.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
-//            self.presentViewController(alert, animated: true, completion: nil)
-//        } else {
-//            performSegue(.ShowAddTodayViewController)
-//        }
-        
-        performSegue(.ShowAddTodayViewController)
+        if created {
+            let alert = UIAlertController(title: "Wow!", message: "Everything is OK. You have already created Today", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        } else {
+            performSegue(.ShowAddTodayViewController)
+        }
     }
     
     
@@ -96,7 +94,7 @@ class TodaysTableViewController: UITableViewController, ManagedObjectContextSett
         dataSource = TableViewDataSource(tableView: tableView, dataProvider: dataProvider, delegate: self)
     
         let noDataLabel = TodayPaddingLabel(frame: CGRect(origin: tableView.bounds.origin, size: tableView.bounds.size))
-        noDataLabel.text = "Oops, you haven't created Today."
+        noDataLabel.text = "Let's start Today!"
         noDataLabel.textColor = UIColor.grayColor()
         noDataLabel.font = UIFont.systemFontOfSize(28)
         noDataLabel.textAlignment = .Center

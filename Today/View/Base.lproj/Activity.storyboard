@@ -56,9 +56,16 @@
                             <outlet property="delegate" destination="UgH-7l-hqd" id="64N-aA-6qu"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="ebB-KV-Dz9"/>
+                    <navigationItem key="navigationItem" id="ebB-KV-Dz9">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="zEw-WI-kiF">
+                            <connections>
+                                <segue destination="ACK-nn-jxR" kind="unwind" unwindAction="doneSettingTableViewController:" id="NGS-6S-vVb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aaZ-b3-x7J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="ACK-nn-jxR" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2796" y="-86"/>
         </scene>

@@ -24,6 +24,12 @@ class ActivityViewController: UIViewController, ManagedObjectContextSettable {
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: IBAction
+    @IBAction func doneSettingTableViewController(segue: UIStoryboardSegue) {
+        
+    }
+
+    
 
     /*
     // MARK: - Navigation

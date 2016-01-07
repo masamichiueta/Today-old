@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AverageCell" rowHeight="300" id="oTf-zP-7j9">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AverageCell" rowHeight="300" id="oTf-zP-7j9" customClass="TodayAverageTableViewCell" customModule="Today" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="300"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oTf-zP-7j9" id="sMC-fC-cLA">
@@ -24,7 +24,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="X1J-kd-lLT">
-                                            <rect key="frame" x="186" y="18" width="228.5" height="264"/>
+                                            <rect key="frame" x="186.5" y="18" width="228.5" height="264"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Average of todays" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rQh-AE-cJI">
                                                     <rect key="frame" x="45.5" y="0.0" width="137.5" height="20.5"/>
@@ -36,7 +36,7 @@
                                                     <rect key="frame" x="0.0" y="35.5" width="228.5" height="228.5"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="eul-gW-MGD">
-                                                            <rect key="frame" x="80" y="58.5" width="68.5" height="112"/>
+                                                            <rect key="frame" x="80" y="58" width="68.5" height="112"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sAD-7x-lBX">
                                                                     <rect key="frame" x="0.0" y="0.0" width="68.5" height="72"/>
@@ -56,6 +56,7 @@
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstItem="eul-gW-MGD" firstAttribute="centerY" secondItem="6Aw-Sa-3Mw" secondAttribute="centerY" id="0Pv-eF-Tbg"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="2y8-2n-cGJ"/>
                                                         <constraint firstAttribute="width" secondItem="6Aw-Sa-3Mw" secondAttribute="height" multiplier="1:1" id="Ttf-fL-yKl"/>
                                                         <constraint firstItem="eul-gW-MGD" firstAttribute="centerX" secondItem="6Aw-Sa-3Mw" secondAttribute="centerX" id="YX3-w7-AKf"/>
                                                     </constraints>
@@ -69,8 +70,14 @@
                                         <constraint firstItem="X1J-kd-lLT" firstAttribute="centerX" secondItem="sMC-fC-cLA" secondAttribute="centerX" id="USt-Ss-oWf"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="iconImageView" destination="bgG-MA-8Bw" id="ySc-QP-Krt"/>
+                                    <outlet property="scoreCircleView" destination="6Aw-Sa-3Mw" id="WbM-Eo-tas"/>
+                                    <outlet property="scoreLabel" destination="sAD-7x-lBX" id="QPW-Ey-jiZ"/>
+                                    <outlet property="titleLabel" destination="rQh-AE-cJI" id="oFn-K0-ddt"/>
+                                </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TotalCell" id="FwC-2h-9O5">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TotalCell" id="FwC-2h-9O5" customClass="TodayTotalTableViewCell" customModule="Today" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="392" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FwC-2h-9O5" id="z15-r7-K5y">
@@ -108,8 +115,13 @@
                                         <constraint firstItem="FL6-l1-p5g" firstAttribute="centerY" secondItem="z15-r7-K5y" secondAttribute="centerY" id="pBe-7Y-ZRD"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="titleLabel" destination="FL6-l1-p5g" id="DKH-Ye-TIS"/>
+                                    <outlet property="totalLabel" destination="i1m-tA-bfu" id="nIn-Hv-EN9"/>
+                                    <outlet property="unitLabel" destination="hLv-Zq-HHO" id="wPt-aR-jRQ"/>
+                                </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="h6x-Mv-kg5">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LongestStreakCell" id="h6x-Mv-kg5" customClass="TodayLongestStreakTableViewCell" customModule="Today" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="436" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="h6x-Mv-kg5" id="fi6-cB-ltM">
@@ -147,8 +159,13 @@
                                         <constraint firstAttribute="trailingMargin" secondItem="9kw-xk-fkO" secondAttribute="trailing" constant="10" id="ggv-I1-4ec"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="longestStreakLabel" destination="uLz-cJ-VnX" id="tKg-Th-Lre"/>
+                                    <outlet property="titleLabel" destination="fC1-Ul-7XT" id="mrp-pz-QPW"/>
+                                    <outlet property="unitLabel" destination="r7m-y2-7Wq" id="5V2-Q5-k6i"/>
+                                </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Ndj-1b-ACw">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CurrentStreakCell" id="Ndj-1b-ACw" customClass="TodayCurrentStreakTableViewCell" customModule="Today" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="480" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ndj-1b-ACw" id="TJ2-mc-DpU">
@@ -186,6 +203,11 @@
                                         <constraint firstItem="q7d-pQ-VC0" firstAttribute="centerY" secondItem="TJ2-mc-DpU" secondAttribute="centerY" id="vyH-la-zOp"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="currentStreakLabel" destination="itG-0Y-nbn" id="fK9-SA-bao"/>
+                                    <outlet property="titleLabel" destination="6ae-zW-duw" id="wla-H9-OJ9"/>
+                                    <outlet property="unitLabel" destination="yjV-YQ-Dr0" id="Sef-hG-HX5"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>

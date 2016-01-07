@@ -32,14 +32,14 @@ class TodaysTableViewController: UITableViewController, ManagedObjectContextSett
         let latestToday: Today = dataProvider.objectAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))
         return NSCalendar.currentCalendar().isDateInToday(latestToday.date)
     }
-
+    
     //MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupTableView()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -68,14 +68,21 @@ class TodaysTableViewController: UITableViewController, ManagedObjectContextSett
     }
     
     @IBAction func showAddTodayViewController(sender: AnyObject) {
-//        if created {
-//            let alert = UIAlertController(title: "Wow!", message: "Everything is OK. You have already created Today", preferredStyle: .Alert)
-//            alert.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
-//            self.presentViewController(alert, animated: true, completion: nil)
-//        } else {
-//            performSegue(.ShowAddTodayViewController)
-//        }
-        performSegue(.ShowAddTodayViewController)
+        #if DEBUG
+            
+            performSegue(.ShowAddTodayViewController)
+            
+        #else
+            
+            if created {
+                let alert = UIAlertController(title: "Wow!", message: "Everything is OK. You have already created Today", preferredStyle: .Alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
+            } else {
+                performSegue(.ShowAddTodayViewController)
+            }
+            
+        #endif
     }
     
     
@@ -93,7 +100,7 @@ class TodaysTableViewController: UITableViewController, ManagedObjectContextSett
         let frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         dataProvider = FetchedResultsDataProvider(fetchedResultsController: frc, delegate: self)
         dataSource = TableViewDataSource(tableView: tableView, dataProvider: dataProvider, delegate: self)
-    
+        
         let noDataLabel = TodayPaddingLabel(frame: CGRect(origin: tableView.bounds.origin, size: tableView.bounds.size))
         noDataLabel.text = "Let's start Today!"
         noDataLabel.textColor = UIColor.grayColor()
@@ -102,7 +109,7 @@ class TodaysTableViewController: UITableViewController, ManagedObjectContextSett
         noDataLabel.numberOfLines = 2
         dataSource.noDataView = noDataLabel
     }
-
+    
 }
 
 //MARK: - UITableViewDelegate

@@ -18,6 +18,7 @@ class TodayAverageTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        scoreCircleView.animated = false
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

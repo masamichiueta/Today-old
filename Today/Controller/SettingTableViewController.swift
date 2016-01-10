@@ -95,6 +95,7 @@ class SettingTableViewController: UITableViewController {
         case (1, 0):
             let cell = UITableViewCell(style: .Value1, reuseIdentifier: "cell")
             cell.textLabel?.text = "Rate today app"
+            cell.accessoryType = .DisclosureIndicator
             return cell
         case (1, 1):
             let cell = UITableViewCell(style: .Value1, reuseIdentifier: "cell")
@@ -122,6 +123,9 @@ class SettingTableViewController: UITableViewController {
 
 extension SettingTableViewController: TodayPickerTableViewCellDelegate {
     func dateDidChange(date: NSDate) {
+        print("date did change")
         
+        let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: pickerIndexPath.row - 1, inSection: pickerIndexPath.section))
+        cell?.detailTextLabel?.text = dateFormatter.stringFromDate(date)
     }
 }

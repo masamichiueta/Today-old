@@ -54,6 +54,7 @@
 		24F9DC3D1C2EFCD4003A6427 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F9DC3C1C2EFCD4003A6427 /* TableViewDataSource.swift */; };
 		24F9DC3F1C2EFD33003A6427 /* ConfigurableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F9DC3E1C2EFD33003A6427 /* ConfigurableCell.swift */; };
 		24FE71311C3FFB8700A14B9D /* TodayPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FE71301C3FFB8700A14B9D /* TodayPickerTableViewCell.swift */; };
+		24FE71331C4245D500A14B9D /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FE71321C4245D400A14B9D /* Setting.swift */; };
 		24FFBB971C3D6AFA0053E261 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FFBB961C3D6AFA0053E261 /* SettingTableViewController.swift */; };
 		24FFBB991C3D7AE50053E261 /* ActivityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FFBB981C3D7AE50053E261 /* ActivityTableViewController.swift */; };
 /* End PBXBuildFile section */
@@ -175,6 +176,7 @@
 		24F9DC3C1C2EFCD4003A6427 /* TableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		24F9DC3E1C2EFD33003A6427 /* ConfigurableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurableCell.swift; sourceTree = "<group>"; };
 		24FE71301C3FFB8700A14B9D /* TodayPickerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayPickerTableViewCell.swift; sourceTree = "<group>"; };
+		24FE71321C4245D400A14B9D /* Setting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		24FFBB961C3D6AFA0053E261 /* SettingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		24FFBB981C3D7AE50053E261 /* ActivityTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -371,6 +373,7 @@
 			children = (
 				24C77EA81C2A8C6F00493C13 /* Today.swift */,
 				24C77EA41C2A8C3400493C13 /* Today.xcdatamodeld */,
+				24FE71321C4245D400A14B9D /* Setting.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -650,6 +653,7 @@
 				24C77EA91C2A8C6F00493C13 /* Today.swift in Sources */,
 				24C77EA61C2A8C3400493C13 /* Today.xcdatamodeld in Sources */,
 				24DBB5911C2C367100E1C042 /* Utilities.swift in Sources */,
+				24FE71331C4245D500A14B9D /* Setting.swift in Sources */,
 				240F14751C2A9CDE0003B2AF /* CoreDataStack.swift in Sources */,
 				24444A5A1C306B4B00DC1579 /* NSManagedObjectContext+Extensions.swift in Sources */,
 			);

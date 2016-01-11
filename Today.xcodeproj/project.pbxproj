@@ -45,6 +45,8 @@
 		24C77EA21C2A8B6C00493C13 /* ManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C77EA11C2A8B6C00493C13 /* ManagedObject.swift */; };
 		24C77EA61C2A8C3400493C13 /* Today.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 24C77EA41C2A8C3400493C13 /* Today.xcdatamodeld */; };
 		24C77EA91C2A8C6F00493C13 /* Today.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C77EA81C2A8C6F00493C13 /* Today.swift */; };
+		24D4E3471C43E1D900F6DA6A /* Setting.plist in Resources */ = {isa = PBXBuildFile; fileRef = 24D4E3461C43E1D900F6DA6A /* Setting.plist */; };
+		24D4E3491C43ED6E00F6DA6A /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D4E3481C43ED6E00F6DA6A /* Utilities.swift */; };
 		24D67C851C3EB54600A33DB7 /* TodayAverageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D67C841C3EB54600A33DB7 /* TodayAverageTableViewCell.swift */; };
 		24DBB5911C2C367100E1C042 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DBB5901C2C367100E1C042 /* Utilities.swift */; };
 		24F1948A1C2FB9B8001593D8 /* AugmentedFetchedResultsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F194891C2FB9B8001593D8 /* AugmentedFetchedResultsDataProvider.swift */; };
@@ -167,6 +169,8 @@
 		24C77EA51C2A8C3400493C13 /* Today.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Today.xcdatamodel; sourceTree = "<group>"; };
 		24C77EA81C2A8C6F00493C13 /* Today.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Today.swift; sourceTree = "<group>"; };
 		24C77EAD1C2A937600493C13 /* Today.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Today.entitlements; sourceTree = "<group>"; };
+		24D4E3461C43E1D900F6DA6A /* Setting.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Setting.plist; sourceTree = "<group>"; };
+		24D4E3481C43ED6E00F6DA6A /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		24D67C841C3EB54600A33DB7 /* TodayAverageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayAverageTableViewCell.swift; sourceTree = "<group>"; };
 		24DBB5901C2C367100E1C042 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		24F194891C2FB9B8001593D8 /* AugmentedFetchedResultsDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AugmentedFetchedResultsDataProvider.swift; sourceTree = "<group>"; };
@@ -291,6 +295,7 @@
 				24F9DC3E1C2EFD33003A6427 /* ConfigurableCell.swift */,
 				240F14771C2A9FD40003B2AF /* ManagedObjectContextSettable.swift */,
 				240F147D1C2ABC000003B2AF /* SegueHandlerType.swift */,
+				24D4E3481C43ED6E00F6DA6A /* Utilities.swift */,
 			);
 			path = "Shared Code";
 			sourceTree = "<group>";
@@ -374,6 +379,7 @@
 				24C77EA81C2A8C6F00493C13 /* Today.swift */,
 				24C77EA41C2A8C3400493C13 /* Today.xcdatamodeld */,
 				24FE71321C4245D400A14B9D /* Setting.swift */,
+				24D4E3461C43E1D900F6DA6A /* Setting.plist */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -587,6 +593,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24D4E3471C43E1D900F6DA6A /* Setting.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -616,6 +623,7 @@
 				240F147C1C2AA0450003B2AF /* RootViewController.swift in Sources */,
 				24D67C851C3EB54600A33DB7 /* TodayAverageTableViewCell.swift in Sources */,
 				2484ED621C3EB65000E1438B /* TodayTotalTableViewCell.swift in Sources */,
+				24D4E3491C43ED6E00F6DA6A /* Utilities.swift in Sources */,
 				24FFBB991C3D7AE50053E261 /* ActivityTableViewController.swift in Sources */,
 				24A1CFE11C36D8FA00F0E9CE /* TodayScoreCircleView.swift in Sources */,
 				240F147E1C2ABC000003B2AF /* SegueHandlerType.swift in Sources */,

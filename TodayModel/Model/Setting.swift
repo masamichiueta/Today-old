@@ -8,9 +8,12 @@
 
 import Foundation
 
-struct Setting {
+public struct Setting {
     
-    var notificationEnabled: Bool
-    var notificationTime: NSDate
+    public var notificationEnabled: Bool
+    public var notificationTime: NSDate
+    
+    public static let notificationEnabledKey = "NotificationEnabled"
+    public static let notificationTimeKey = "NotificationTime"
     
 }

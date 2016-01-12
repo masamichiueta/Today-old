@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TodayModel
 
 class SettingTableViewController: UITableViewController {
     
@@ -73,17 +74,26 @@ class SettingTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
         switch (indexPath.section, indexPath.row) {
         case (0, 0):
             let cell = tableView.dequeueReusableCellWithIdentifier("SwitchCell", forIndexPath: indexPath)
             cell.textLabel?.text = "Notification Setting"
             let sw = UISwitch()
             cell.accessoryView = sw
+            sw.on = defaults.boolForKey(Setting.notificationEnabledKey)
             return cell
         case (0, 1):
             let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
             cell.textLabel?.text = "Notification Time"
-            cell.detailTextLabel?.text = dateFormatter.stringFromDate(NSDate())
+            
+            let comps = NSDateComponents()
+            comps.hour = defaults.integerForKey(Setting.notificationHourKey)
+            comps.minute = defaults.integerForKey(Setting.notificationMinuteKey)
+            let calendar = NSCalendar.currentCalendar()
+            let notificationTime = calendar.dateFromComponents(comps)
+            cell.detailTextLabel?.text = dateFormatter.stringFromDate(notificationTime!)
             return cell
         case (pickerIndexPath.section, pickerIndexPath.row):
             guard let cell = tableView.dequeueReusableCellWithIdentifier("PickerCell") as? TodayPickerTableViewCell else {

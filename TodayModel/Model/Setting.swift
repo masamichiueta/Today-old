@@ -11,9 +11,11 @@ import Foundation
 public struct Setting {
     
     public var notificationEnabled: Bool
-    public var notificationTime: NSDate
+    public var notificationHour: NSNumber
+    public var notificationMinute: NSNumber
     
     public static let notificationEnabledKey = "NotificationEnabled"
-    public static let notificationTimeKey = "NotificationTime"
+    public static let notificationHourKey = "NotificationHour"
+    public static let notificationMinuteKey = "NotificationMinute"
     
 }

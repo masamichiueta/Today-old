@@ -2,8 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NotificationTime</key>
-	<date>2016-01-01T12:00:00Z</date>
+	<key>NotificationHour</key>
+	<integer>21</integer>
+	<key>NotificationMinute</key>
+	<integer>0</integer>
 	<key>NotificationEnabled</key>
 	<true/>
 </dict>

@@ -134,7 +134,7 @@ class SettingTableViewController: UITableViewController {
             return cell
         case (1, 0):
             let cell = UITableViewCell(style: .Value1, reuseIdentifier: "cell")
-            cell.textLabel?.text = "Rate today app"
+            cell.textLabel?.text = "Rate Today app"
             cell.accessoryType = .DisclosureIndicator
             return cell
         default:
@@ -155,6 +155,10 @@ class SettingTableViewController: UITableViewController {
             cell?.detailTextLabel?.textColor = pickerHidden ? defaultDetailTextColor : tableView.tintColor
             
             togglePickerCell(pickerHidden)
+        case (1, 0):
+            //TODO: Replace URL
+            let reviewUrl = "URL for Today App"
+            UIApplication.sharedApplication().openURL(NSURL(string: reviewUrl)!)
         default:
             break
         }

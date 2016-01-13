@@ -11,11 +11,20 @@ import Foundation
 public struct Setting {
     
     public var notificationEnabled: Bool
-    public var notificationHour: NSNumber
-    public var notificationMinute: NSNumber
+    public var notificationHour: Int
+    public var notificationMinute: Int
+    public var version: String
     
     public static let notificationEnabledKey = "NotificationEnabled"
     public static let notificationHourKey = "NotificationHour"
     public static let notificationMinuteKey = "NotificationMinute"
+    
+    public init() {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        notificationEnabled = defaults.boolForKey(Setting.notificationEnabledKey)
+        notificationHour = defaults.integerForKey(Setting.notificationHourKey)
+        notificationMinute = defaults.integerForKey(Setting.notificationMinuteKey)
+        version = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as! String
+    }
     
 }

@@ -34,6 +34,8 @@ class SettingTableViewController: UITableViewController {
             
         }
     }
+    
+    private var setting: Setting = Setting()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +49,12 @@ class SettingTableViewController: UITableViewController {
     func setupTableView() {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 44
+        
+        let versionLabel = UILabel(frame: CGRect(origin: CGPointZero, size: CGSize(width: tableView.frame.size.width, height: 20)))
+        versionLabel.textAlignment = .Center
+        versionLabel.textColor = UIColor.lightGrayColor()
+        versionLabel.text = "Today Version \(setting.version)"
+        tableView.tableFooterView = versionLabel
     }
 
     // MARK: - Table view data source
@@ -63,7 +71,7 @@ class SettingTableViewController: UITableViewController {
             }
             return 3
         case 1:
-            return 2
+            return 1
         default:
             break
         }
@@ -74,7 +82,13 @@ class SettingTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let defaults = NSUserDefaults.standardUserDefaults()
+        let comps = NSDateComponents()
+        comps.hour = setting.notificationHour
+        comps.minute = setting.notificationMinute
+        let calendar = NSCalendar.currentCalendar()
+        guard let notificationTime = calendar.dateFromComponents(comps) else {
+            fatalError("Wrong date component")
+        }
         
         switch (indexPath.section, indexPath.row) {
         case (0, 0):
@@ -82,35 +96,25 @@ class SettingTableViewController: UITableViewController {
             cell.textLabel?.text = "Notification Setting"
             let sw = UISwitch()
             cell.accessoryView = sw
-            sw.on = defaults.boolForKey(Setting.notificationEnabledKey)
+            cell.selectionStyle = .None
+            sw.on = setting.notificationEnabled
             return cell
         case (0, 1):
             let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
             cell.textLabel?.text = "Notification Time"
-            
-            let comps = NSDateComponents()
-            comps.hour = defaults.integerForKey(Setting.notificationHourKey)
-            comps.minute = defaults.integerForKey(Setting.notificationMinuteKey)
-            let calendar = NSCalendar.currentCalendar()
-            let notificationTime = calendar.dateFromComponents(comps)
-            cell.detailTextLabel?.text = dateFormatter.stringFromDate(notificationTime!)
+            cell.detailTextLabel?.text = dateFormatter.stringFromDate(notificationTime)
             return cell
         case (pickerIndexPath.section, pickerIndexPath.row):
             guard let cell = tableView.dequeueReusableCellWithIdentifier("PickerCell") as? TodayPickerTableViewCell else {
                 fatalError("Wrong cell type")
             }
-            cell.datePicker.date = NSDate()
+            cell.datePicker.date = notificationTime
             cell.delegate = self
             return cell
         case (1, 0):
             let cell = UITableViewCell(style: .Value1, reuseIdentifier: "cell")
             cell.textLabel?.text = "Rate today app"
             cell.accessoryType = .DisclosureIndicator
-            return cell
-        case (1, 1):
-            let cell = UITableViewCell(style: .Value1, reuseIdentifier: "cell")
-            cell.textLabel?.text = "Version"
-            cell.detailTextLabel?.text = "1.0"
             return cell
         default:
             break
@@ -128,14 +132,26 @@ class SettingTableViewController: UITableViewController {
         default:
             break
         }
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
 }
 
 extension SettingTableViewController: TodayPickerTableViewCellDelegate {
     func dateDidChange(date: NSDate) {
-        print("date did change")
+        let calendar = NSCalendar.currentCalendar()
+        let comps = calendar.components([.Hour, .Minute], fromDate: date)
+        let notificationTime = calendar.dateFromComponents(comps)!
         
+        //Set value to cell
         let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: pickerIndexPath.row - 1, inSection: pickerIndexPath.section))
-        cell?.detailTextLabel?.text = dateFormatter.stringFromDate(date)
+        cell?.detailTextLabel?.text = dateFormatter.stringFromDate(notificationTime)
+        
+        //Save to user defaults
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setInteger(comps.hour, forKey: Setting.notificationHourKey)
+        defaults.setInteger(comps.minute, forKey: Setting.notificationMinuteKey)
+        
+        //TODO: create new setting
     }
 }

@@ -10,21 +10,49 @@ import Foundation
 
 public struct Setting {
     
-    public var notificationEnabled: Bool
-    public var notificationHour: Int
-    public var notificationMinute: Int
+    private let defaults = NSUserDefaults.standardUserDefaults()
+    
+    public var notificationEnabled: Bool {
+        didSet {
+            defaults.setBool(notificationEnabled, forKey: Setting.notificationEnabledKey)
+        }
+    }
+    
+    public var notificationHour: Int {
+        didSet {
+            defaults.setInteger(notificationHour, forKey: Setting.notificationHourKey)
+        }
+    }
+    
+    public var notificationMinute: Int {
+        didSet {
+            defaults.setInteger(notificationMinute, forKey: Setting.notificationMinuteKey)
+        }
+    }
+    
     public var version: String
     
+    //Defined in Setting.plist
     public static let notificationEnabledKey = "NotificationEnabled"
     public static let notificationHourKey = "NotificationHour"
     public static let notificationMinuteKey = "NotificationMinute"
     
+    //Defined by System
+    public static let versionKey = "CFBundleShortVersionString"
+    
     public init() {
-        let defaults = NSUserDefaults.standardUserDefaults()
         notificationEnabled = defaults.boolForKey(Setting.notificationEnabledKey)
         notificationHour = defaults.integerForKey(Setting.notificationHourKey)
         notificationMinute = defaults.integerForKey(Setting.notificationMinuteKey)
-        version = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as! String
+        version = NSBundle.mainBundle().objectForInfoDictionaryKey(Setting.versionKey) as! String
+    }
+    
+    public var notificationTime: NSDate {
+        let comps = NSDateComponents()
+        comps.hour = notificationHour
+        comps.minute = notificationMinute
+        let calendar = NSCalendar.currentCalendar()
+        return calendar.dateFromComponents(comps)!
     }
     
 }

@@ -314,11 +314,11 @@
 		246688591C1EFC3E00C5E5A0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				24FFBB981C3D7AE50053E261 /* ActivityTableViewController.swift */,
 				24444A5D1C30A02A00DC1579 /* AddTodayViewController.swift */,
 				240F147B1C2AA0450003B2AF /* RootViewController.swift */,
-				246688501C1DB4ED00C5E5A0 /* TodaysTableViewController.swift */,
 				24FFBB961C3D6AFA0053E261 /* SettingTableViewController.swift */,
-				24FFBB981C3D7AE50053E261 /* ActivityTableViewController.swift */,
+				246688501C1DB4ED00C5E5A0 /* TodaysTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

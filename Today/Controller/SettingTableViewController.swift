@@ -20,22 +20,14 @@ class SettingTableViewController: UITableViewController {
     
     private let pickerIndexPath = NSIndexPath(forRow: 2, inSection: 0)
     
-    private var pickerHidden: Bool = true {
-        didSet {
-            if pickerHidden {
-                tableView.beginUpdates()
-                tableView.deleteRowsAtIndexPaths([pickerIndexPath], withRowAnimation: .Fade)
-                tableView.endUpdates()
-            } else {
-                tableView.beginUpdates()
-                tableView.insertRowsAtIndexPaths([pickerIndexPath], withRowAnimation: .Fade)
-                tableView.endUpdates()
-            }
-            
-        }
-    }
+    private var pickerHidden: Bool = true
     
     private var setting: Setting = Setting()
+    
+    private var defaultDetailTextColor: UIColor? {
+        let sampleCell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "sample")
+        return sampleCell.detailTextLabel?.textColor
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +38,7 @@ class SettingTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
     }
     
-    func setupTableView() {
+    private func setupTableView() {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 44
         
@@ -66,6 +58,10 @@ class SettingTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
+            if !setting.notificationEnabled {
+                return 1
+            }
+            
             if pickerHidden {
                 return 2
             }
@@ -82,19 +78,13 @@ class SettingTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let comps = NSDateComponents()
-        comps.hour = setting.notificationHour
-        comps.minute = setting.notificationMinute
-        let calendar = NSCalendar.currentCalendar()
-        guard let notificationTime = calendar.dateFromComponents(comps) else {
-            fatalError("Wrong date component")
-        }
-        
         switch (indexPath.section, indexPath.row) {
         case (0, 0):
             let cell = tableView.dequeueReusableCellWithIdentifier("SwitchCell", forIndexPath: indexPath)
             cell.textLabel?.text = "Notification Setting"
             let sw = UISwitch()
+            sw.on = setting.notificationEnabled
+            sw.addTarget(self, action: "switchValueDidChange:", forControlEvents: .ValueChanged)
             cell.accessoryView = sw
             cell.selectionStyle = .None
             sw.on = setting.notificationEnabled
@@ -102,13 +92,14 @@ class SettingTableViewController: UITableViewController {
         case (0, 1):
             let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
             cell.textLabel?.text = "Notification Time"
-            cell.detailTextLabel?.text = dateFormatter.stringFromDate(notificationTime)
+            cell.detailTextLabel?.text = dateFormatter.stringFromDate(setting.notificationTime)
+            cell.detailTextLabel?.textColor = pickerHidden ? defaultDetailTextColor : tableView.tintColor
             return cell
         case (pickerIndexPath.section, pickerIndexPath.row):
             guard let cell = tableView.dequeueReusableCellWithIdentifier("PickerCell") as? TodayPickerTableViewCell else {
                 fatalError("Wrong cell type")
             }
-            cell.datePicker.date = notificationTime
+            cell.datePicker.date = setting.notificationTime
             cell.delegate = self
             return cell
         case (1, 0):
@@ -127,14 +118,49 @@ class SettingTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         switch (indexPath.section, indexPath.row) {
-        case (pickerIndexPath.section, pickerIndexPath.row - 1):
+        case (pickerIndexPath.section, pickerIndexPath.row - 1), (pickerIndexPath.section, pickerIndexPath.row):
             pickerHidden = !pickerHidden
+            
+            let cell = tableView.cellForRowAtIndexPath(indexPath)
+            cell?.detailTextLabel?.textColor = pickerHidden ? defaultDetailTextColor : tableView.tintColor
+            
+            togglePickerCell(pickerHidden)
         default:
             break
         }
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
+    
+    func switchValueDidChange(sender: UISwitch) {
+        setting.notificationEnabled = sender.on
+
+        let indexPaths = pickerHidden ? [NSIndexPath(forRow: pickerIndexPath.row - 1, inSection: pickerIndexPath.section)] : [NSIndexPath(forRow: pickerIndexPath.row - 1, inSection: pickerIndexPath.section), pickerIndexPath]
+        
+        tableView.beginUpdates()
+        if sender.on {
+            tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Fade)
+        } else {
+            tableView.deleteRowsAtIndexPaths(indexPaths, withRowAnimation: .Fade)
+            pickerHidden = true
+        }
+        
+        tableView.endUpdates()
+    }
+    
+    private func togglePickerCell(pickerHidden: Bool) {
+        
+        //Update tableView
+        tableView.beginUpdates()
+        if pickerHidden {
+            tableView.deleteRowsAtIndexPaths([pickerIndexPath], withRowAnimation: .Fade)
+        } else {
+            tableView.insertRowsAtIndexPaths([pickerIndexPath], withRowAnimation: .Fade)
+        }
+        
+        tableView.endUpdates()
+    }
+    
 }
 
 extension SettingTableViewController: TodayPickerTableViewCellDelegate {
@@ -143,15 +169,13 @@ extension SettingTableViewController: TodayPickerTableViewCellDelegate {
         let comps = calendar.components([.Hour, .Minute], fromDate: date)
         let notificationTime = calendar.dateFromComponents(comps)!
         
-        //Set value to cell
-        let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: pickerIndexPath.row - 1, inSection: pickerIndexPath.section))
-        cell?.detailTextLabel?.text = dateFormatter.stringFromDate(notificationTime)
+        //Update setting ans save
+        setting.notificationHour = comps.hour
+        setting.notificationMinute = comps.minute
         
-        //Save to user defaults
-        let defaults = NSUserDefaults.standardUserDefaults()
-        defaults.setInteger(comps.hour, forKey: Setting.notificationHourKey)
-        defaults.setInteger(comps.minute, forKey: Setting.notificationMinuteKey)
+        //Update text label
+        let timeCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: pickerIndexPath.row - 1, inSection: pickerIndexPath.section))
+        timeCell?.detailTextLabel?.text = dateFormatter.stringFromDate(notificationTime)
         
-        //TODO: create new setting
     }
 }

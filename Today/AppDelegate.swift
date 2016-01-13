@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         setupDefaultSetting()
+        setupLocalNotification()
         
         guard let vc = window?.rootViewController as? ManagedObjectContextSettable else {
             fatalError("Wrong view controller type")
@@ -55,6 +56,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
+    func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
+        print("Notification Registered")
+    }
+    
     private func setupDefaultSetting() {
         guard let settingBundle = frameworkBundle("TodayModel.framework") else {
             fatalError("Wrong framework name")
@@ -67,5 +72,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let defaultSettingDic = NSDictionary(contentsOfURL: fileURL) as! [String : AnyObject]
         
         NSUserDefaults.standardUserDefaults().registerDefaults(defaultSettingDic)
+    }
+    
+    private func setupLocalNotification() {
+        let types: UIUserNotificationType = [UIUserNotificationType.Badge, UIUserNotificationType.Alert, UIUserNotificationType.Sound]
+        let mySettings = UIUserNotificationSettings(forTypes: types, categories: nil)
+        UIApplication.sharedApplication().registerUserNotificationSettings(mySettings)
     }
 }

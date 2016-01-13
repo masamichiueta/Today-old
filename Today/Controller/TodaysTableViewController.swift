@@ -86,7 +86,7 @@ class TodaysTableViewController: UITableViewController, ManagedObjectContextSett
     }
     
     
-    // MARK: Private
+    // MARK: Helper
     private func setupTableView() {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 44

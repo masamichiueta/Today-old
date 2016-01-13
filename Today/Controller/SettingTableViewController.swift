@@ -38,6 +38,7 @@ class SettingTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
     }
     
+    //MARK: Helper
     private func setupTableView() {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 44
@@ -47,6 +48,35 @@ class SettingTableViewController: UITableViewController {
         versionLabel.textColor = UIColor.lightGrayColor()
         versionLabel.text = "Today Version \(setting.version)"
         tableView.tableFooterView = versionLabel
+    }
+    
+    private func togglePickerCell(pickerHidden: Bool) {
+        
+        //Update tableView
+        tableView.beginUpdates()
+        if pickerHidden {
+            tableView.deleteRowsAtIndexPaths([pickerIndexPath], withRowAnimation: .Fade)
+        } else {
+            tableView.insertRowsAtIndexPaths([pickerIndexPath], withRowAnimation: .Fade)
+        }
+        
+        tableView.endUpdates()
+    }
+    
+    func switchValueDidChange(sender: UISwitch) {
+        setting.notificationEnabled = sender.on
+        
+        let indexPaths = pickerHidden ? [NSIndexPath(forRow: pickerIndexPath.row - 1, inSection: pickerIndexPath.section)] : [NSIndexPath(forRow: pickerIndexPath.row - 1, inSection: pickerIndexPath.section), pickerIndexPath]
+        
+        tableView.beginUpdates()
+        if sender.on {
+            tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Fade)
+        } else {
+            tableView.deleteRowsAtIndexPaths(indexPaths, withRowAnimation: .Fade)
+            pickerHidden = true
+        }
+        
+        tableView.endUpdates()
     }
 
     // MARK: - Table view data source
@@ -131,36 +161,6 @@ class SettingTableViewController: UITableViewController {
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
-    
-    func switchValueDidChange(sender: UISwitch) {
-        setting.notificationEnabled = sender.on
-
-        let indexPaths = pickerHidden ? [NSIndexPath(forRow: pickerIndexPath.row - 1, inSection: pickerIndexPath.section)] : [NSIndexPath(forRow: pickerIndexPath.row - 1, inSection: pickerIndexPath.section), pickerIndexPath]
-        
-        tableView.beginUpdates()
-        if sender.on {
-            tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Fade)
-        } else {
-            tableView.deleteRowsAtIndexPaths(indexPaths, withRowAnimation: .Fade)
-            pickerHidden = true
-        }
-        
-        tableView.endUpdates()
-    }
-    
-    private func togglePickerCell(pickerHidden: Bool) {
-        
-        //Update tableView
-        tableView.beginUpdates()
-        if pickerHidden {
-            tableView.deleteRowsAtIndexPaths([pickerIndexPath], withRowAnimation: .Fade)
-        } else {
-            tableView.insertRowsAtIndexPaths([pickerIndexPath], withRowAnimation: .Fade)
-        }
-        
-        tableView.endUpdates()
-    }
-    
 }
 
 extension SettingTableViewController: TodayPickerTableViewCellDelegate {

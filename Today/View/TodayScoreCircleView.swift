@@ -80,7 +80,7 @@ import LTMorphingLabel
     }
     
     
-    func drawBackCircle() {
+    private func drawBackCircle() {
         let path = UIBezierPath(
             arcCenter: circleCenter,
             radius: radius,
@@ -94,7 +94,7 @@ import LTMorphingLabel
         
     }
     
-    func drawProgressCircle() {
+    private func drawProgressCircle() {
         let startAngle = CGFloat(-M_PI_2)
         let endAngle = CGFloat(M_PI + M_PI_2)
         let path = UIBezierPath(
@@ -112,7 +112,7 @@ import LTMorphingLabel
         progressCircleLayer.strokeEnd = CGFloat(score)/CGFloat(Today.maxScore)
     }
     
-    func animateProgressFromScore(fromScore: Int, toScore:Int, fromStrokeColor: UIColor, toStrokeColor: UIColor, completion: () -> ()) {
+    private func animateProgressFromScore(fromScore: Int, toScore:Int, fromStrokeColor: UIColor, toStrokeColor: UIColor, completion: () -> ()) {
         let fromStrokeEnd = CGFloat(fromScore)/CGFloat(Today.maxScore)
         let toStrokeEnd = CGFloat(toScore)/CGFloat(Today.maxScore)
         

@@ -23,10 +23,10 @@ class ActivityTableViewController: UITableViewController, ManagedObjectContextSe
         super.didReceiveMemoryWarning()
     }
     
-    func setupTableView() {
+    private func setupTableView() {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 44
-
+        tableView.tableFooterView = UIView()
     }
     
     // MARK: - IBAction
@@ -58,22 +58,38 @@ class ActivityTableViewController: UITableViewController, ManagedObjectContextSe
                 fatalError("Wrong cell type")
             }
             cell.configureForObject(230)
+            cell.selectionStyle = .None
             return cell
         case 2:
             guard let cell = tableView.dequeueReusableCellWithIdentifier("LongestStreakCell", forIndexPath: indexPath) as? TodayLongestStreakTableViewCell else {
                 fatalError("Wrong cell type")
             }
             cell.configureForObject(32)
+            cell.selectionStyle = .None
             return cell
         case 3:
             guard let cell = tableView.dequeueReusableCellWithIdentifier("CurrentStreakCell", forIndexPath: indexPath) as? TodayCurrentStreakTableViewCell else {
                 fatalError("Wrong cell type")
             }
             cell.configureForObject(10)
+            cell.selectionStyle = .None
             return cell
         default:
             let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
             return cell
         }
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//        switch indexPath.row {
+//        case 0:
+//            guard let cell = tableView.dequeueReusableCellWithIdentifier("AverageCell", forIndexPath: indexPath) as? TodayAverageTableViewCell else {
+//                fatalError("Wrong cell type")
+//            }
+//        default:
+//            break
+//        }
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
 }

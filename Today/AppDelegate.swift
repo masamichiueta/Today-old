@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         setupDefaultSetting()
-        setupLocalNotification()
+        setupLocalNotificationSetting()
         
         guard let vc = window?.rootViewController as? ManagedObjectContextSettable else {
             fatalError("Wrong view controller type")
@@ -57,7 +57,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
-        print("Notification Registered")
+        
+        if !NotificationManager.scheduledLocalNotificationExistsForName(Setting.localNotificationKey) {
+            let setting = Setting()
+            let localNotificationFireDate = setting.notificationTime
+            NotificationManager.scheduleLocalNotification(localNotificationFireDate, withName: Setting.localNotificationKey)
+        }
     }
     
     private func setupDefaultSetting() {
@@ -74,7 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NSUserDefaults.standardUserDefaults().registerDefaults(defaultSettingDic)
     }
     
-    private func setupLocalNotification() {
+    private func setupLocalNotificationSetting() {
         let types: UIUserNotificationType = [UIUserNotificationType.Badge, UIUserNotificationType.Alert, UIUserNotificationType.Sound]
         let mySettings = UIUserNotificationSettings(forTypes: types, categories: nil)
         UIApplication.sharedApplication().registerUserNotificationSettings(mySettings)

@@ -54,23 +54,23 @@ class ActivityTableViewController: UITableViewController, ManagedObjectContextSe
             cell.configureForObject(3)
             return cell
         case 1:
-            guard let cell = tableView.dequeueReusableCellWithIdentifier("TotalCell", forIndexPath: indexPath) as? TodayTotalTableViewCell else {
-                fatalError("Wrong cell type")
-            }
-            cell.configureForObject(230)
+            let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+            cell.textLabel?.text = "Total"
+            let totalTodays = 120
+            cell.detailTextLabel?.text = "\(totalTodays) todays"
             return cell
         case 2:
-            guard let cell = tableView.dequeueReusableCellWithIdentifier("LongestStreakCell", forIndexPath: indexPath) as? TodayLongestStreakTableViewCell else {
-                fatalError("Wrong cell type")
-            }
-            cell.configureForObject(32)
+            let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+            cell.textLabel?.text = "Longest streak"
+            let longestStreak = 32
+            cell.detailTextLabel?.text = "\(longestStreak) todays"
             return cell
         case 3:
-            guard let cell = tableView.dequeueReusableCellWithIdentifier("CurrentStreakCell", forIndexPath: indexPath) as? TodayCurrentStreakTableViewCell else {
-                fatalError("Wrong cell type")
-            }
-            cell.configureForObject(10)
-            return cell
+           let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+           cell.textLabel?.text = "Current streak"
+           let currentStreak = 20
+           cell.detailTextLabel?.text = "\(currentStreak) todays"
+           return cell
         default:
             let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
             return cell

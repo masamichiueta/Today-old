@@ -71,11 +71,11 @@ class SettingTableViewController: UITableViewController {
         tableView.beginUpdates()
         if sender.on {
             tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Fade)
-            NotificationManager.scheduleLocalNotification(setting.notificationTime, withName: Setting.localNotificationKey)
+            NotificationManager.scheduleLocalNotification(setting.notificationTime, withName: NotificationManager.addTodayNotificationName)
         } else {
             tableView.deleteRowsAtIndexPaths(indexPaths, withRowAnimation: .Fade)
             pickerHidden = true
-            NotificationManager.cancelScheduledLocalNotificationForName(Setting.localNotificationKey)
+            NotificationManager.cancelScheduledLocalNotificationForName(NotificationManager.addTodayNotificationName)
         }
         tableView.endUpdates()
     }
@@ -183,7 +183,7 @@ extension SettingTableViewController: TodayPickerTableViewCellDelegate {
         timeCell?.detailTextLabel?.text = dateFormatter.stringFromDate(notificationTime)
         
         //Update notification
-        NotificationManager.cancelScheduledLocalNotificationForName(Setting.localNotificationKey)
-        NotificationManager.scheduleLocalNotification(setting.notificationTime, withName: Setting.localNotificationKey)
+        NotificationManager.cancelScheduledLocalNotificationForName(NotificationManager.addTodayNotificationName)
+        NotificationManager.scheduleLocalNotification(setting.notificationTime, withName: NotificationManager.addTodayNotificationName)
     }
 }

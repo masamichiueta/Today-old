@@ -40,9 +40,6 @@ public struct Setting {
     //Defined by System
     public static let versionKey = "CFBundleShortVersionString"
     
-    //For local notification
-    public static let localNotificationKey = "reminder"
-    
     public init() {
         notificationEnabled = defaults.boolForKey(Setting.notificationEnabledKey)
         notificationHour = defaults.integerForKey(Setting.notificationHourKey)

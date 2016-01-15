@@ -10,6 +10,10 @@ import UIKit
 
 class NotificationManager {
     
+    static let addTodayActionName = "AddTodayAction"
+    static let addTodayCategoryName = "AddTodayCategory"
+    static let addTodayNotificationName = "AddTodayNotification"
+    
     private static let notificationKey = "notificationKey"
     
     static func scheduleLocalNotification(fireDate: NSDate, withName name: String) {
@@ -22,6 +26,7 @@ class NotificationManager {
         notification.soundName = UILocalNotificationDefaultSoundName
         notification.applicationIconBadgeNumber = 1
         notification.repeatInterval = NSCalendarUnit.Day
+        notification.category = addTodayCategoryName
         
         var info = [NSObject: AnyObject]()
         info[notificationKey] = name

@@ -25,7 +25,6 @@ class RootViewController: UIViewController, ManagedObjectContextSettable {
     }
     
     
-    
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         for child in segue.destinationViewController.childViewControllers {

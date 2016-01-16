@@ -47,6 +47,7 @@
 		24D4E3491C43ED6E00F6DA6A /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D4E3481C43ED6E00F6DA6A /* Utilities.swift */; };
 		24D67C851C3EB54600A33DB7 /* TodayAverageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D67C841C3EB54600A33DB7 /* TodayAverageTableViewCell.swift */; };
 		24DBB5911C2C367100E1C042 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DBB5901C2C367100E1C042 /* Utilities.swift */; };
+		24E538D91C49E22900B781D8 /* Streak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E538D81C49E22900B781D8 /* Streak.swift */; };
 		24F1948A1C2FB9B8001593D8 /* AugmentedFetchedResultsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F194891C2FB9B8001593D8 /* AugmentedFetchedResultsDataProvider.swift */; };
 		24F9DC371C2EF9F9003A6427 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F9DC361C2EF9F9003A6427 /* DataProvider.swift */; };
 		24F9DC391C2EFAC5003A6427 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F9DC381C2EFAC5003A6427 /* DataSource.swift */; };
@@ -169,6 +170,7 @@
 		24D4E3481C43ED6E00F6DA6A /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		24D67C841C3EB54600A33DB7 /* TodayAverageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayAverageTableViewCell.swift; sourceTree = "<group>"; };
 		24DBB5901C2C367100E1C042 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		24E538D81C49E22900B781D8 /* Streak.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Streak.swift; sourceTree = "<group>"; };
 		24F194891C2FB9B8001593D8 /* AugmentedFetchedResultsDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AugmentedFetchedResultsDataProvider.swift; sourceTree = "<group>"; };
 		24F9DC361C2EF9F9003A6427 /* DataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		24F9DC381C2EFAC5003A6427 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
@@ -374,6 +376,7 @@
 				24C77EA41C2A8C3400493C13 /* Today.xcdatamodeld */,
 				24FE71321C4245D400A14B9D /* Setting.swift */,
 				24D4E3461C43E1D900F6DA6A /* Setting.plist */,
+				24E538D81C49E22900B781D8 /* Streak.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -650,6 +653,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				24C77EA21C2A8B6C00493C13 /* ManagedObject.swift in Sources */,
+				24E538D91C49E22900B781D8 /* Streak.swift in Sources */,
 				24C77EA91C2A8C6F00493C13 /* Today.swift in Sources */,
 				24C77EA61C2A8C3400493C13 /* Today.xcdatamodeld in Sources */,
 				24DBB5911C2C367100E1C042 /* Utilities.swift in Sources */,
@@ -829,6 +833,7 @@
 				CODE_SIGN_ENTITLEMENTS = Today/Today.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

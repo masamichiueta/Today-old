@@ -14,3 +14,7 @@ public func frameworkBundle(name: String) -> NSBundle? {
     let frameworkBundle = NSBundle(path: frameworkBundlePath)
     return frameworkBundle
 }
+
+public func localize(key: String) -> String {
+    return NSLocalizedString(key, comment: "")
+}

@@ -19,7 +19,7 @@ public final class Today: ManagedObject {
     
     public var color: UIColor {
         return type.color()
-    }
+    }
     
     public static var masterScores: [Int] {
         return scoreRange.sort {

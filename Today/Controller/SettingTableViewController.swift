@@ -135,7 +135,7 @@ class SettingTableViewController: UITableViewController {
             return cell
         case (1, 0):
             let cell = UITableViewCell(style: .Value1, reuseIdentifier: "cell")
-            cell.textLabel?.text = "Rate Today app"
+            cell.textLabel?.text = "Rate Today"
             cell.accessoryType = .DisclosureIndicator
             return cell
         default:

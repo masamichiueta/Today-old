@@ -61,8 +61,20 @@ class TodaysTableViewController: UITableViewController, ManagedObjectContextSett
             fatalError("Wrong view controller type")
         }
         
-        self.managedObjectContext.performChanges {
-            Today.insertIntoContext(self.managedObjectContext, score: Int64(vc.score))
+        managedObjectContext.performChanges {
+            
+            //Create today
+            let today = Today.insertIntoContext(self.managedObjectContext, score: Int64(vc.score))
+            
+            //Update current streak or create a new streak
+            if let currentStreak = Streak.currentStreak(self.managedObjectContext) {
+                if !NSCalendar.currentCalendar().isDateInToday(currentStreak.to) {
+                    currentStreak.to = today.date
+                    currentStreak.streakNumber++
+                }
+            } else {
+                Streak.insertIntoContext(self.managedObjectContext, from: today.date, to: today.date, streakNumber: 1)
+            }
         }
         
     }
@@ -141,8 +153,11 @@ extension TodaysTableViewController: TableViewDataSourceDelegate {
         case .Delete:
             let today: Today = dataProvider.objectAtIndexPath(indexPath)
             managedObjectContext.performChanges {
-                today.managedObjectContext?.deleteObject(today)
+                self.managedObjectContext.deleteObject(today)
             }
+            
+            Streak.deleteStreak(managedObjectContext, forDate: today.date)
+            
         default:
             break
         }

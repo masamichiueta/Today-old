@@ -53,6 +53,14 @@ public final class Streak: ManagedObject {
         
         return streaks[0]
     }
+    
+    public static func deleteStreak(moc: NSManagedObjectContext, forDate date: NSDate) {
+        if let streakContainsToday = Streak.findOrFetchInContext(moc, matchingPredicate: NSPredicate(format: "from <= %@", date, date)) {
+            moc.performChanges {
+                moc.deleteObject(streakContainsToday)
+            }
+        }
+    }
 }
 
 extension Streak: ManagedObjectType {

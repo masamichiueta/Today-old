@@ -292,9 +292,9 @@
 			children = (
 				24F9DC3E1C2EFD33003A6427 /* ConfigurableCell.swift */,
 				240F14771C2A9FD40003B2AF /* ManagedObjectContextSettable.swift */,
+				242F984A1C49282200DBC64B /* NotificationManager.swift */,
 				240F147D1C2ABC000003B2AF /* SegueHandlerType.swift */,
 				24D4E3481C43ED6E00F6DA6A /* Utilities.swift */,
-				242F984A1C49282200DBC64B /* NotificationManager.swift */,
 			);
 			path = "Shared Code";
 			sourceTree = "<group>";
@@ -325,15 +325,15 @@
 		2466885A1C1EFC5600C5E5A0 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				24A1CFE01C36D8FA00F0E9CE /* TodayScoreCircleView.swift */,
-				24C6AE961C2831660048C4D1 /* TodayTableViewCell.swift */,
 				2466884D1C1DB45E00C5E5A0 /* Activity.storyboard */,
 				24030AEF1C1C821C004E68ED /* LaunchScreen.storyboard */,
 				24030AE71C1C821C004E68ED /* Main.storyboard */,
 				246688541C1DB61100C5E5A0 /* Today.storyboard */,
-				244631441C3AB8BA002BBD06 /* TodayPaddingLabel.swift */,
 				24D67C841C3EB54600A33DB7 /* TodayAverageTableViewCell.swift */,
+				244631441C3AB8BA002BBD06 /* TodayPaddingLabel.swift */,
 				24FE71301C3FFB8700A14B9D /* TodayPickerTableViewCell.swift */,
+				24A1CFE01C36D8FA00F0E9CE /* TodayScoreCircleView.swift */,
+				24C6AE961C2831660048C4D1 /* TodayTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -341,9 +341,9 @@
 		24C77E841C2A8A3E00493C13 /* TodayModel */ = {
 			isa = PBXGroup;
 			children = (
+				24C77E871C2A8A3E00493C13 /* Info.plist */,
 				24C77EA71C2A8C5F00493C13 /* Model */,
 				24C77EA31C2A8BF000493C13 /* Shared Code */,
-				24C77E871C2A8A3E00493C13 /* Info.plist */,
 				24C77E851C2A8A3E00493C13 /* TodayModel.h */,
 			);
 			path = TodayModel;
@@ -372,11 +372,11 @@
 		24C77EA71C2A8C5F00493C13 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				24D4E3461C43E1D900F6DA6A /* Setting.plist */,
+				24FE71321C4245D400A14B9D /* Setting.swift */,
+				24E538D81C49E22900B781D8 /* Streak.swift */,
 				24C77EA81C2A8C6F00493C13 /* Today.swift */,
 				24C77EA41C2A8C3400493C13 /* Today.xcdatamodeld */,
-				24FE71321C4245D400A14B9D /* Setting.swift */,
-				24D4E3461C43E1D900F6DA6A /* Setting.plist */,
-				24E538D81C49E22900B781D8 /* Streak.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

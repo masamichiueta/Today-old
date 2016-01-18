@@ -19,14 +19,7 @@ public final class Today: ManagedObject {
     
     public var color: UIColor {
         return type.color()
-    }
-    
-    public static func insertIntoContext(moc: NSManagedObjectContext, score: Int64) -> Today {
-        let today: Today = moc.insertObject()
-        today.score = score
-        today.date = NSDate()
-        return today
-    }
+    }
     
     public static var masterScores: [Int] {
         return scoreRange.sort {
@@ -40,6 +33,28 @@ public final class Today: ManagedObject {
     
     public static var minScore: Int {
         return Today.masterScores.last!
+    }
+    
+    public static func average(moc: NSManagedObjectContext) -> Int {
+        let request = NSFetchRequest(entityName: Today.entityName)
+        request.resultType = .DictionaryResultType
+        
+        let keyPathExpression = NSExpression(forKeyPath: "score")
+        let averageExpression = NSExpression(forFunction: "average:", arguments: [keyPathExpression])
+        let expressionDescription = NSExpressionDescription()
+        expressionDescription.name = "averageScore"
+        expressionDescription.expression = averageExpression
+        expressionDescription.expressionResultType = .Integer64AttributeType
+        
+        request.propertiesToFetch = [expressionDescription]
+        
+        do {
+            let objects = try moc.executeFetchRequest(request)
+            let averageScore = objects[0]["averageScore"] as! Int
+            return averageScore
+        } catch {
+            return 0
+        }
     }
     
     public static func type(score: Int?) -> TodayType {
@@ -61,6 +76,13 @@ public final class Today: ManagedObject {
         default:
             return .Excellent
         }
+    }
+    
+    public static func insertIntoContext(moc: NSManagedObjectContext, score: Int64) -> Today {
+        let today: Today = moc.insertObject()
+        today.score = score
+        today.date = NSDate()
+        return today
     }
 }
 

@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import TodayModel
 
 class ActivityTableViewController: UITableViewController, ManagedObjectContextSettable {
     
@@ -51,7 +52,8 @@ class ActivityTableViewController: UITableViewController, ManagedObjectContextSe
             guard let cell = tableView.dequeueReusableCellWithIdentifier("AverageCell", forIndexPath: indexPath) as? TodayAverageTableViewCell else {
                 fatalError("Wrong cell type")
             }
-            cell.configureForObject(3)
+            let average = Today.average(managedObjectContext)
+            cell.configureForObject(average)
             return cell
         case 1:
             let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)

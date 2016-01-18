@@ -3,6 +3,7 @@ disabled_rules:
   - trailing_whitespace
   - todo
   - variable_name_min_length
+  - function_body_length
 included: # paths to include during linting. `--path` is ignored if present.
   - Today
   - TodayModel

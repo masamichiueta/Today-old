@@ -20,6 +20,10 @@ class ActivityTableViewController: UITableViewController, ManagedObjectContextSe
         setupTableView()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        tableView.reloadData()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -58,21 +62,31 @@ class ActivityTableViewController: UITableViewController, ManagedObjectContextSe
         case 1:
             let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
             cell.textLabel?.text = "Total"
-            let totalTodays = 120
-            cell.detailTextLabel?.text = "\(totalTodays) todays"
+            let totalTodays = Today.countInContext(managedObjectContext)
+            cell.detailTextLabel?.text = "\(totalTodays) total"
             return cell
         case 2:
             let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
             cell.textLabel?.text = "Longest streak"
-            let longestStreak = 32
-            cell.detailTextLabel?.text = "\(longestStreak) todays"
+            let number: Int
+            if let longestStreak = Streak.longestStreak(managedObjectContext) {
+                number = Int(longestStreak.streakNumber)
+            } else {
+                number = 0
+            }
+            cell.detailTextLabel?.text = "\(number) days"
             return cell
         case 3:
-           let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
-           cell.textLabel?.text = "Current streak"
-           let currentStreak = 20
-           cell.detailTextLabel?.text = "\(currentStreak) todays"
-           return cell
+            let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+            cell.textLabel?.text = "Current streak"
+            let number: Int
+            if let currentStreak = Streak.currentStreak(managedObjectContext) {
+                number = Int(currentStreak.streakNumber)
+            } else {
+                number = 0
+            }
+            cell.detailTextLabel?.text = "\(number) days"
+            return cell
         default:
             let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
             return cell

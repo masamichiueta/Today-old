@@ -22,6 +22,37 @@ public final class Streak: ManagedObject {
         return streak
     }
     
+    public static func currentStreak(moc: NSManagedObjectContext) -> Streak? {
+        let streaks = Streak.fetchInContext(moc, configurationBlock: {
+            request in
+            request.sortDescriptors = Streak.defaultSortDescriptors
+        })
+        
+        if streaks.count == 0 {
+            return nil
+        }
+        
+        if NSCalendar.currentCalendar().isDateInYesterday(streaks[0].to) ||  NSCalendar.currentCalendar().isDateInToday(streaks[0].to) {
+            return streaks[0]
+        }
+        
+        return nil
+    }
+    
+    public static func longestStreak(moc: NSManagedObjectContext) -> Streak? {
+        let streaks = Streak.fetchInContext(moc, configurationBlock: {
+            request in
+            let numberSortDescriptor = NSSortDescriptor(key: "streakNumber", ascending: false)
+            let toSortDescriptor = NSSortDescriptor(key: "to", ascending: false)
+            request.sortDescriptors = [numberSortDescriptor, toSortDescriptor]
+        })
+        
+        if streaks.count == 0 {
+            return nil
+        }
+        
+        return streaks[0]
+    }
 }
 
 extension Streak: ManagedObjectType {

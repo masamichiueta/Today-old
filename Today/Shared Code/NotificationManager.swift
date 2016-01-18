@@ -69,4 +69,3 @@ class NotificationManager {
         return false
     }
 }
-

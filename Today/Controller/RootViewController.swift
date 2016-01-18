@@ -30,7 +30,9 @@ class RootViewController: UIViewController, ManagedObjectContextSettable {
         for child in segue.destinationViewController.childViewControllers {
             switch child {
             case is UINavigationController:
-                let nc = child as! UINavigationController
+                guard let nc = child as? UINavigationController else {
+                    fatalError("Wrong view controller type")
+                }
                 guard let vc = nc.viewControllers.first as? ManagedObjectContextSettable else {
                     fatalError("expected managed object settable")
                 }

@@ -147,5 +147,4 @@ extension TodaysTableViewController: TableViewDataSourceDelegate {
             break
         }
     }
-    
 }

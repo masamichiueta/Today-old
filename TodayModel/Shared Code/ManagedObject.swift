@@ -61,8 +61,15 @@ extension ManagedObjectType where Self: ManagedObject {
     public static func fetchInContext(moc: NSManagedObjectContext, @noescape configurationBlock: NSFetchRequest -> () = { _ in }) -> [Self] {
         let request = NSFetchRequest(entityName: Self.entityName)
         configurationBlock(request)
-        guard let result = try! moc.executeFetchRequest(request) as? [Self] else { fatalError("Fetched objects have wrong type") }
-        return result
+        
+        do {
+            guard let result = try moc.executeFetchRequest(request) as? [Self] else {
+                fatalError("Fetched objects have wrong type")
+            }
+            return result
+        } catch {
+            fatalError("Fail to fetch")
+        }
     }
     
     public static func countInContext(moc: NSManagedObjectContext, @noescape configurationBlock: NSFetchRequest -> () = { _ in }) -> Int {
@@ -81,5 +88,4 @@ extension ManagedObjectType where Self: ManagedObject {
         }
         return nil
     }
-    
 }

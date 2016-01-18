@@ -8,7 +8,7 @@
 
 import CoreData
 
-private let StoreURL = NSURL.documentsURL.URLByAppendingPathComponent("Today.sqlite")
+private let storeURL = NSURL.documentsURL.URLByAppendingPathComponent("Today.sqlite")
 
 public func createTodayMainContext() -> NSManagedObjectContext {
     let bundles = [NSBundle(forClass: Today.self)]
@@ -18,7 +18,11 @@ public func createTodayMainContext() -> NSManagedObjectContext {
     
     let psc = NSPersistentStoreCoordinator(managedObjectModel: model)
     
-    try! psc.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: StoreURL, options: nil)
+    do {
+        try psc.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: nil)
+    } catch {
+        fatalError("Wrong store")
+    }
     let context = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
     context.persistentStoreCoordinator = psc
     return context

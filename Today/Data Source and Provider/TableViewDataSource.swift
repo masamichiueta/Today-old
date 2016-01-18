@@ -80,8 +80,9 @@ class TableViewDataSource<Delegate: TableViewDataSourceDelegate, Data: DataProvi
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let object = dataProvider.objectAtIndexPath(indexPath)
         let identifier = delegate.cellIdentifierForObject(object)
-        guard let cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) as? Cell
-            else { fatalError("Unexpected cell type at \(indexPath)") }
+        guard let cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) as? Cell else {
+                fatalError("Unexpected cell type at \(indexPath)")
+        }
         cell.configureForObject(object)
         return cell
     }

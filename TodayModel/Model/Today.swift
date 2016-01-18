@@ -50,7 +50,9 @@ public final class Today: ManagedObject {
         
         do {
             let objects = try moc.executeFetchRequest(request)
-            let averageScore = objects[0]["averageScore"] as! Int
+            guard let averageScore = objects[0]["averageScore"] as? Int else {
+                fatalError("Invalid key")
+            }
             return averageScore
         } catch {
             return 0

@@ -21,7 +21,11 @@ class FetchedResultsDataProvider<Delegate: DataProviderDelegate>: NSObject, NSFe
         self.delegate = delegate
         super.init()
         fetchedResultsController.delegate = self
-        try! self.fetchedResultsController.performFetch()
+        do {
+            try self.fetchedResultsController.performFetch()
+        } catch {
+            fatalError("Fail to fetch")
+        }
     }
     
     func reconfigureFetchRequest(@noescape block: NSFetchRequest -> ()) {
@@ -81,5 +85,4 @@ class FetchedResultsDataProvider<Delegate: DataProviderDelegate>: NSObject, NSFe
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         delegate.dataProviderDidUpdate(updates)
     }
-    
 }

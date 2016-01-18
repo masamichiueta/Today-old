@@ -44,7 +44,10 @@ public struct Setting {
         notificationEnabled = defaults.boolForKey(Setting.notificationEnabledKey)
         notificationHour = defaults.integerForKey(Setting.notificationHourKey)
         notificationMinute = defaults.integerForKey(Setting.notificationMinuteKey)
-        version = NSBundle.mainBundle().objectForInfoDictionaryKey(Setting.versionKey) as! String
+        guard let settingVersion = NSBundle.mainBundle().objectForInfoDictionaryKey(Setting.versionKey) as? String else {
+            fatalError("Invalid setting")
+        }
+        version = settingVersion
     }
     
     public var notificationTime: NSDate {
@@ -54,5 +57,4 @@ public struct Setting {
         let calendar = NSCalendar.currentCalendar()
         return calendar.dateFromComponents(comps)!
     }
-    
 }

@@ -47,7 +47,7 @@ import LTMorphingLabel
     
     private let progressCircleLayer: CAShapeLayer = CAShapeLayer()
     private let backCircleLayer: CAShapeLayer = CAShapeLayer()
-    private var circleCenter: CGPoint = CGPointZero
+    private var circleCenter: CGPoint = CGPoint(x: 0, y: 0)
     private var radius: CGFloat {
         return CGFloat((self.frame.size.width - progressBorderWidth/2.0)/2.0)
     }
@@ -112,7 +112,7 @@ import LTMorphingLabel
         progressCircleLayer.strokeEnd = CGFloat(score)/CGFloat(Today.maxScore)
     }
     
-    private func animateProgressFromScore(fromScore: Int, toScore:Int, fromStrokeColor: UIColor, toStrokeColor: UIColor, completion: () -> ()) {
+    private func animateProgressFromScore(fromScore: Int, toScore: Int, fromStrokeColor: UIColor, toStrokeColor: UIColor, completion: () -> ()) {
         let fromStrokeEnd = CGFloat(fromScore)/CGFloat(Today.maxScore)
         let toStrokeEnd = CGFloat(toScore)/CGFloat(Today.maxScore)
         
@@ -147,5 +147,4 @@ import LTMorphingLabel
         CATransaction.setCompletionBlock(completion)
         CATransaction.commit()
     }
-    
 }

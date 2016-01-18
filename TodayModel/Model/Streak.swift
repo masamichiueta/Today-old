@@ -14,7 +14,7 @@ public final class Streak: ManagedObject {
     @NSManaged public var to: NSDate
     @NSManaged public var streakNumber: Int64
     
-    public static func insertIntoContext(moc: NSManagedObjectContext, from: NSDate, to:NSDate, streakNumber: Int64) -> Streak {
+    public static func insertIntoContext(moc: NSManagedObjectContext, from: NSDate, to: NSDate, streakNumber: Int64) -> Streak {
         let streak: Streak = moc.insertObject()
         streak.from = from
         streak.to = to
@@ -33,6 +33,4 @@ extension Streak: ManagedObjectType {
     public static var defaultSortDescriptors: [NSSortDescriptor] {
         return [NSSortDescriptor(key: "to", ascending: false)]
     }
-    
-
 }

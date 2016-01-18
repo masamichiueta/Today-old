@@ -1,0 +1,10 @@
+disabled_rules:
+  - line_length
+  - trailing_whitespace
+  - todo
+  - variable_name_min_length
+included: # paths to include during linting. `--path` is ignored if present.
+  - Today
+  - TodayModel
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - Carthage

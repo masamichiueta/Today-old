@@ -43,7 +43,7 @@ class SettingTableViewController: UITableViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 44
         
-        let versionLabel = UILabel(frame: CGRect(origin: CGPointZero, size: CGSize(width: tableView.frame.size.width, height: 20)))
+        let versionLabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 20))
         versionLabel.textAlignment = .Center
         versionLabel.textColor = UIColor.lightGrayColor()
         versionLabel.text = "Today Version \(setting.version)"

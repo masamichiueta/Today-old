@@ -80,11 +80,24 @@ public final class Today: ManagedObject {
         }
     }
     
-    public static func insertIntoContext(moc: NSManagedObjectContext, score: Int64) -> Today {
+    public static func insertIntoContext(moc: NSManagedObjectContext, score: Int64, date: NSDate) -> Today {
         let today: Today = moc.insertObject()
         today.score = score
-        today.date = NSDate()
+        today.date = date
         return today
+    }
+    
+    public static func created(moc: NSManagedObjectContext, forDate date: NSDate) -> Bool {
+        
+        let todays = Today.fetchInContext(moc, configurationBlock: {
+            request in
+            request.sortDescriptors = Today.defaultSortDescriptors
+            request.fetchLimit = 1
+        })
+        if todays.count == 0 {
+            return false
+        }
+        return NSCalendar.currentCalendar().isDate(date, inSameDayAsDate: todays[0].date)
     }
 }
 

@@ -10,7 +10,7 @@
         <attribute name="score" optional="YES" attributeType="Integer 64" minValueString="0" maxValueString="10" defaultValueString="0" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Today" positionX="-63" positionY="-18" width="128" height="75"/>
         <element name="Streak" positionX="-63" positionY="0" width="128" height="90"/>
+        <element name="Today" positionX="-63" positionY="-18" width="128" height="75"/>
     </elements>
 </model>

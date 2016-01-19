@@ -23,16 +23,6 @@ class TodaysTableViewController: UITableViewController, ManagedObjectContextSett
     private var dataProvider: TodaysDataProvider!
     private var dataSource: TableViewDataSource<TodaysTableViewController, TodaysDataProvider, TodayTableViewCell>!
     
-    private var created: Bool {
-        
-        if dataProvider.numberOfObjects() == 0 {
-            return false
-        }
-        
-        let latestToday: Today = dataProvider.objectAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))
-        return NSCalendar.currentCalendar().isDateInToday(latestToday.date)
-    }
-    
     //MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,42 +51,35 @@ class TodaysTableViewController: UITableViewController, ManagedObjectContextSett
             fatalError("Wrong view controller type")
         }
         
+        let date = NSDate()
+        
+        if Today.created(managedObjectContext, forDate: date) {
+            showAddAlert(nil)
+            return
+        }
+        
         managedObjectContext.performChanges {
             
             //Create today
-            let today = Today.insertIntoContext(self.managedObjectContext, score: Int64(vc.score))
+            Today.insertIntoContext(self.managedObjectContext, score: Int64(vc.score), date: date)
             
             //Update current streak or create a new streak
             if let currentStreak = Streak.currentStreak(self.managedObjectContext) {
-                if !NSCalendar.currentCalendar().isDateInToday(currentStreak.to) {
-                    currentStreak.to = today.date
-                    currentStreak.streakNumber++
-                }
+                currentStreak.to = date
             } else {
-                Streak.insertIntoContext(self.managedObjectContext, from: today.date, to: today.date, streakNumber: 1)
+                Streak.insertIntoContext(self.managedObjectContext, from: date, to: date)
             }
         }
         
     }
     
     @IBAction func showAddTodayViewController(sender: AnyObject) {
-        #if DEBUG
-            
+        if Today.created(managedObjectContext, forDate: NSDate()) {
+            showAddAlert(nil)
+        } else {
             performSegue(.ShowAddTodayViewController)
-            
-        #else
-            
-            if created {
-                let alert = UIAlertController(title: "Wow!", message: "Everything is OK. You have already created Today", preferredStyle: .Alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
-                self.presentViewController(alert, animated: true, completion: nil)
-            } else {
-                performSegue(.ShowAddTodayViewController)
-            }
-            
-        #endif
+        }
     }
-    
     
     // MARK: Helper
     private func setupTableView() {
@@ -120,6 +103,12 @@ class TodaysTableViewController: UITableViewController, ManagedObjectContextSett
         noDataLabel.textAlignment = .Center
         noDataLabel.numberOfLines = 2
         dataSource.noDataView = noDataLabel
+    }
+    
+    private func showAddAlert(completion: (() -> Void)?) {
+        let alert = UIAlertController(title: "Wow!", message: "Everything is OK. \nYou have already created Today.", preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
+        self.presentViewController(alert, animated: true, completion: completion)
     }
     
 }
@@ -155,9 +144,7 @@ extension TodaysTableViewController: TableViewDataSourceDelegate {
             managedObjectContext.performChanges {
                 self.managedObjectContext.deleteObject(today)
             }
-            
-            Streak.deleteStreak(managedObjectContext, forDate: today.date)
-            
+            Streak.updateStreak(managedObjectContext, forDate: today.date)
         default:
             break
         }

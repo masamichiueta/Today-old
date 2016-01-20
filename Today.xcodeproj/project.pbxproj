@@ -49,6 +49,8 @@
 		24DBB5911C2C367100E1C042 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DBB5901C2C367100E1C042 /* Utilities.swift */; };
 		24E538D91C49E22900B781D8 /* Streak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E538D81C49E22900B781D8 /* Streak.swift */; };
 		24F1948A1C2FB9B8001593D8 /* AugmentedFetchedResultsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F194891C2FB9B8001593D8 /* AugmentedFetchedResultsDataProvider.swift */; };
+		24F21AA91C4FB4B100396A38 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24F21AA81C4FB4B100396A38 /* Charts.framework */; };
+		24F21AAA1C4FB4B100396A38 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24F21AA81C4FB4B100396A38 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		24F9DC371C2EF9F9003A6427 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F9DC361C2EF9F9003A6427 /* DataProvider.swift */; };
 		24F9DC391C2EFAC5003A6427 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F9DC381C2EFAC5003A6427 /* DataSource.swift */; };
 		24F9DC3B1C2EFB0F003A6427 /* FetchedResultsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F9DC3A1C2EFB0F003A6427 /* FetchedResultsDataProvider.swift */; };
@@ -108,6 +110,7 @@
 				24C77E991C2A8A3E00493C13 /* TodayModel.framework in Embed Frameworks */,
 				24C77E7D1C2A887000493C13 /* SVProgressHUD.framework in Embed Frameworks */,
 				24A1CFDE1C36D17800F0E9CE /* HEXColor.framework in Embed Frameworks */,
+				24F21AAA1C4FB4B100396A38 /* Charts.framework in Embed Frameworks */,
 				248BC5591C37AB0E00EFB221 /* DeviceKit.framework in Embed Frameworks */,
 				2472E6FF1C3275C8006DC493 /* LTMorphingLabel.framework in Embed Frameworks */,
 			);
@@ -172,6 +175,7 @@
 		24DBB5901C2C367100E1C042 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		24E538D81C49E22900B781D8 /* Streak.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Streak.swift; sourceTree = "<group>"; };
 		24F194891C2FB9B8001593D8 /* AugmentedFetchedResultsDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AugmentedFetchedResultsDataProvider.swift; sourceTree = "<group>"; };
+		24F21AA81C4FB4B100396A38 /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = Carthage/Build/iOS/Charts.framework; sourceTree = "<group>"; };
 		24F9DC361C2EF9F9003A6427 /* DataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		24F9DC381C2EFAC5003A6427 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		24F9DC3A1C2EFB0F003A6427 /* FetchedResultsDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedResultsDataProvider.swift; sourceTree = "<group>"; };
@@ -191,6 +195,7 @@
 				24C77E981C2A8A3E00493C13 /* TodayModel.framework in Frameworks */,
 				24C77E7C1C2A887000493C13 /* SVProgressHUD.framework in Frameworks */,
 				24A1CFDD1C36D17800F0E9CE /* HEXColor.framework in Frameworks */,
+				24F21AA91C4FB4B100396A38 /* Charts.framework in Frameworks */,
 				248BC5581C37AB0E00EFB221 /* DeviceKit.framework in Frameworks */,
 				2472E6FE1C3275C8006DC493 /* LTMorphingLabel.framework in Frameworks */,
 			);
@@ -302,6 +307,7 @@
 		246688171C1D189F00C5E5A0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				24F21AA81C4FB4B100396A38 /* Charts.framework */,
 				248BC5571C37AB0E00EFB221 /* DeviceKit.framework */,
 				24A1CFDC1C36D17800F0E9CE /* HEXColor.framework */,
 				2472E6FD1C3275C8006DC493 /* LTMorphingLabel.framework */,

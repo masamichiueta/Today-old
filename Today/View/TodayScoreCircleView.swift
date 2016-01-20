@@ -17,6 +17,7 @@ import LTMorphingLabel
             setNeedsDisplay()
         }
     }
+    
     @IBInspectable var progressBorderWidth: CGFloat = 20.0 {
         didSet {
             setNeedsDisplay()
@@ -78,7 +79,6 @@ import LTMorphingLabel
             x: self.frame.size.width/2.0,
             y: self.frame.size.height/2.0 )
     }
-    
     
     private func drawBackCircle() {
         let path = UIBezierPath(

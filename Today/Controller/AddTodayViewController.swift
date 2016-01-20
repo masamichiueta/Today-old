@@ -9,6 +9,7 @@
 import UIKit
 import TodayModel
 import LTMorphingLabel
+import DeviceKit
 
 class AddTodayViewController: UIViewController {
     
@@ -38,8 +39,16 @@ class AddTodayViewController: UIViewController {
         }
     }
     
+    private let thinProgressBorderGroup: [Device] = [.iPhone4, .iPhone4s, .Simulator(.iPhone4), .Simulator(.iPhone4s)]
+    private let device = Device()
+    private let thinProgressBorderWidth: CGFloat = 10.0
+    private let defaultProgressBorderWidth: CGFloat = 20.0
+    private let smallScoreFont = UIFont.systemFontOfSize(30, weight: UIFontWeightBold)
+    private let defaultScoreFont = UIFont.systemFontOfSize(60, weight: UIFontWeightBold)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupProgressBorderWidth()
         scoreLabel.morphingEffect = .Evaporate
         scoreLabel.textColor = scoreCircleView.progressCircleColor
         iconImageView.image = Today.type(score).icon("40")
@@ -48,6 +57,26 @@ class AddTodayViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    private func setupProgressBorderWidth() {
+        let compactHeightCollection = UITraitCollection(verticalSizeClass: .Compact)
+        if traitCollection.containsTraitsInCollection(compactHeightCollection) || device.isOneOf(thinProgressBorderGroup) {
+            scoreCircleView.progressBorderWidth = thinProgressBorderWidth
+            scoreLabel.font = defaultScoreFont
+        }
+    }
+    
+    override func traitCollectionDidChange(previousTraitCollection: UITraitCollection?) {
+        let compactHeightCollection = UITraitCollection(verticalSizeClass: .Compact)
+        
+        if traitCollection.containsTraitsInCollection(compactHeightCollection) || device.isOneOf(thinProgressBorderGroup) {
+            scoreCircleView.progressBorderWidth = thinProgressBorderWidth
+            scoreLabel.font = smallScoreFont
+        } else {
+            scoreCircleView.progressBorderWidth = defaultProgressBorderWidth
+            scoreLabel.font = defaultScoreFont
+        }
     }
 }
 

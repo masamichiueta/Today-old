@@ -9,8 +9,11 @@
 import UIKit
 import CoreData
 import TodayModel
+import WatchConnectivity
 
-class TodaysTableViewController: UITableViewController, ManagedObjectContextSettable, SegueHandlerType {
+class TodaysTableViewController: UITableViewController, ManagedObjectContextSettable, SegueHandlerType, WCSessionDelegate {
+    
+    var session: WCSession!
     
     enum SegueIdentifier: String {
         case ShowAddTodayViewController = "showAddTodayViewController"
@@ -28,6 +31,12 @@ class TodaysTableViewController: UITableViewController, ManagedObjectContextSett
         super.viewDidLoad()
         
         setupTableView()
+        
+        if WCSession.isSupported() {
+            session = WCSession.defaultSession()
+            session.delegate = self
+            session.activateSession()
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -148,5 +157,19 @@ extension TodaysTableViewController: TableViewDataSourceDelegate {
         default:
             break
         }
+    }
+}
+
+//MARK: - WCSessionDelegate
+extension TodaysTableViewController {
+    func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
+        if let score = message["score"] as? Int {
+            //Create today
+            managedObjectContext.performChanges {
+                Today.insertIntoContext(self.managedObjectContext, score: Int64(score), date: NSDate())
+            }
+
+        }
+       
     }
 }

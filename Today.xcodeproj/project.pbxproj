@@ -51,6 +51,19 @@
 		24F1948A1C2FB9B8001593D8 /* AugmentedFetchedResultsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F194891C2FB9B8001593D8 /* AugmentedFetchedResultsDataProvider.swift */; };
 		24F21AA91C4FB4B100396A38 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24F21AA81C4FB4B100396A38 /* Charts.framework */; };
 		24F21AAA1C4FB4B100396A38 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24F21AA81C4FB4B100396A38 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		24F21AB11C4FCFE900396A38 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24F21AB01C4FCFE900396A38 /* NotificationCenter.framework */; };
+		24F21AB41C4FCFE900396A38 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F21AB31C4FCFE900396A38 /* TodayViewController.swift */; };
+		24F21AB71C4FCFE900396A38 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24F21AB51C4FCFE900396A38 /* MainInterface.storyboard */; };
+		24F21ABB1C4FCFE900396A38 /* TodayExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 24F21AAF1C4FCFE900396A38 /* TodayExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		24F21AC51C4FD73C00396A38 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24F21AC31C4FD73C00396A38 /* Interface.storyboard */; };
+		24F21AC71C4FD73C00396A38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24F21AC61C4FD73C00396A38 /* Assets.xcassets */; };
+		24F21ACE1C4FD73C00396A38 /* TodayWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 24F21ACD1C4FD73C00396A38 /* TodayWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		24F21AD51C4FD73C00396A38 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F21AD41C4FD73C00396A38 /* InterfaceController.swift */; };
+		24F21AD71C4FD73C00396A38 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F21AD61C4FD73C00396A38 /* ExtensionDelegate.swift */; };
+		24F21AD91C4FD73C00396A38 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F21AD81C4FD73C00396A38 /* NotificationController.swift */; };
+		24F21ADB1C4FD73C00396A38 /* GlanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F21ADA1C4FD73C00396A38 /* GlanceController.swift */; };
+		24F21ADD1C4FD73C00396A38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24F21ADC1C4FD73C00396A38 /* Assets.xcassets */; };
+		24F21AE11C4FD73C00396A38 /* TodayWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 24F21AC11C4FD73C00396A38 /* TodayWatch.app */; };
 		24F9DC371C2EF9F9003A6427 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F9DC361C2EF9F9003A6427 /* DataProvider.swift */; };
 		24F9DC391C2EFAC5003A6427 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F9DC381C2EFAC5003A6427 /* DataSource.swift */; };
 		24F9DC3B1C2EFB0F003A6427 /* FetchedResultsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F9DC3A1C2EFB0F003A6427 /* FetchedResultsDataProvider.swift */; };
@@ -98,6 +111,27 @@
 			remoteGlobalIDString = 24C77E821C2A8A3E00493C13;
 			remoteInfo = TodayModel;
 		};
+		24F21AB91C4FCFE900396A38 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 24030AD81C1C821C004E68ED /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 24F21AAE1C4FCFE900396A38;
+			remoteInfo = TodayExtension;
+		};
+		24F21ACF1C4FD73C00396A38 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 24030AD81C1C821C004E68ED /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 24F21ACC1C4FD73C00396A38;
+			remoteInfo = "TodayWatch Extension";
+		};
+		24F21ADF1C4FD73C00396A38 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 24030AD81C1C821C004E68ED /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 24F21AC01C4FD73C00396A38;
+			remoteInfo = TodayWatch;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -123,8 +157,31 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				24F21ABB1C4FCFE900396A38 /* TodayExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		24F21AE51C4FD73E00396A38 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				24F21ACE1C4FD73C00396A38 /* TodayWatch Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		24F21AE91C4FD73E00396A38 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				24F21AE11C4FD73C00396A38 /* TodayWatch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -176,6 +233,23 @@
 		24E538D81C49E22900B781D8 /* Streak.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Streak.swift; sourceTree = "<group>"; };
 		24F194891C2FB9B8001593D8 /* AugmentedFetchedResultsDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AugmentedFetchedResultsDataProvider.swift; sourceTree = "<group>"; };
 		24F21AA81C4FB4B100396A38 /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = Carthage/Build/iOS/Charts.framework; sourceTree = "<group>"; };
+		24F21AAF1C4FCFE900396A38 /* TodayExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TodayExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		24F21AB01C4FCFE900396A38 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		24F21AB31C4FCFE900396A38 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		24F21AB61C4FCFE900396A38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		24F21AB81C4FCFE900396A38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24F21AC11C4FD73C00396A38 /* TodayWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodayWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		24F21AC41C4FD73C00396A38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		24F21AC61C4FD73C00396A38 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		24F21AC81C4FD73C00396A38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24F21ACD1C4FD73C00396A38 /* TodayWatch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "TodayWatch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		24F21AD31C4FD73C00396A38 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		24F21AD41C4FD73C00396A38 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		24F21AD61C4FD73C00396A38 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		24F21AD81C4FD73C00396A38 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		24F21ADA1C4FD73C00396A38 /* GlanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlanceController.swift; sourceTree = "<group>"; };
+		24F21ADC1C4FD73C00396A38 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		24F21ADE1C4FD73C00396A38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24F9DC361C2EF9F9003A6427 /* DataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		24F9DC381C2EFAC5003A6427 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		24F9DC3A1C2EFB0F003A6427 /* FetchedResultsDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedResultsDataProvider.swift; sourceTree = "<group>"; };
@@ -231,6 +305,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		24F21AAC1C4FCFE900396A38 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24F21AB11C4FCFE900396A38 /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		24F21ACA1C4FD73C00396A38 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -242,6 +331,9 @@
 				24030B051C1C821C004E68ED /* TodayUITests */,
 				24C77E841C2A8A3E00493C13 /* TodayModel */,
 				24C77E921C2A8A3E00493C13 /* TodayModelTests */,
+				24F21AB21C4FCFE900396A38 /* TodayExtension */,
+				24F21AC21C4FD73C00396A38 /* TodayWatch */,
+				24F21AD11C4FD73C00396A38 /* TodayWatch Extension */,
 				246688171C1D189F00C5E5A0 /* Frameworks */,
 				24030AE11C1C821C004E68ED /* Products */,
 			);
@@ -255,6 +347,9 @@
 				24030B021C1C821C004E68ED /* TodayUITests.xctest */,
 				24C77E831C2A8A3E00493C13 /* TodayModel.framework */,
 				24C77E8C1C2A8A3E00493C13 /* TodayModelTests.xctest */,
+				24F21AAF1C4FCFE900396A38 /* TodayExtension.appex */,
+				24F21AC11C4FD73C00396A38 /* TodayWatch.app */,
+				24F21ACD1C4FD73C00396A38 /* TodayWatch Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -312,6 +407,7 @@
 				24A1CFDC1C36D17800F0E9CE /* HEXColor.framework */,
 				2472E6FD1C3275C8006DC493 /* LTMorphingLabel.framework */,
 				24C77E7B1C2A887000493C13 /* SVProgressHUD.framework */,
+				24F21AB01C4FCFE900396A38 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -387,6 +483,48 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		24F21AB21C4FCFE900396A38 /* TodayExtension */ = {
+			isa = PBXGroup;
+			children = (
+				24F21AB31C4FCFE900396A38 /* TodayViewController.swift */,
+				24F21AB51C4FCFE900396A38 /* MainInterface.storyboard */,
+				24F21AB81C4FCFE900396A38 /* Info.plist */,
+			);
+			path = TodayExtension;
+			sourceTree = "<group>";
+		};
+		24F21AC21C4FD73C00396A38 /* TodayWatch */ = {
+			isa = PBXGroup;
+			children = (
+				24F21AC31C4FD73C00396A38 /* Interface.storyboard */,
+				24F21AC61C4FD73C00396A38 /* Assets.xcassets */,
+				24F21AC81C4FD73C00396A38 /* Info.plist */,
+			);
+			path = TodayWatch;
+			sourceTree = "<group>";
+		};
+		24F21AD11C4FD73C00396A38 /* TodayWatch Extension */ = {
+			isa = PBXGroup;
+			children = (
+				24F21AD41C4FD73C00396A38 /* InterfaceController.swift */,
+				24F21AD61C4FD73C00396A38 /* ExtensionDelegate.swift */,
+				24F21AD81C4FD73C00396A38 /* NotificationController.swift */,
+				24F21ADA1C4FD73C00396A38 /* GlanceController.swift */,
+				24F21ADC1C4FD73C00396A38 /* Assets.xcassets */,
+				24F21ADE1C4FD73C00396A38 /* Info.plist */,
+				24F21AD21C4FD73C00396A38 /* Supporting Files */,
+			);
+			path = "TodayWatch Extension";
+			sourceTree = "<group>";
+		};
+		24F21AD21C4FD73C00396A38 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				24F21AD31C4FD73C00396A38 /* PushNotificationPayload.apns */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		24F9DC351C2EF9E6003A6427 /* Data Source and Provider */ = {
 			isa = PBXGroup;
 			children = (
@@ -423,11 +561,14 @@
 				246688111C1D187A00C5E5A0 /* Embed Frameworks */,
 				246688231C1D189F00C5E5A0 /* Embed App Extensions */,
 				240B06301C4D2E3B00C7C0B5 /* ShellScript */,
+				24F21AE91C4FD73E00396A38 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				24C77E971C2A8A3E00493C13 /* PBXTargetDependency */,
+				24F21ABA1C4FCFE900396A38 /* PBXTargetDependency */,
+				24F21AE01C4FD73C00396A38 /* PBXTargetDependency */,
 			);
 			name = Today;
 			productName = Today;
@@ -507,6 +648,57 @@
 			productReference = 24C77E8C1C2A8A3E00493C13 /* TodayModelTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		24F21AAE1C4FCFE900396A38 /* TodayExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 24F21ABC1C4FCFEB00396A38 /* Build configuration list for PBXNativeTarget "TodayExtension" */;
+			buildPhases = (
+				24F21AAB1C4FCFE900396A38 /* Sources */,
+				24F21AAC1C4FCFE900396A38 /* Frameworks */,
+				24F21AAD1C4FCFE900396A38 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TodayExtension;
+			productName = TodayExtension;
+			productReference = 24F21AAF1C4FCFE900396A38 /* TodayExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		24F21AC01C4FD73C00396A38 /* TodayWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 24F21AE61C4FD73E00396A38 /* Build configuration list for PBXNativeTarget "TodayWatch" */;
+			buildPhases = (
+				24F21ABF1C4FD73C00396A38 /* Resources */,
+				24F21AE51C4FD73E00396A38 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				24F21AD01C4FD73C00396A38 /* PBXTargetDependency */,
+			);
+			name = TodayWatch;
+			productName = TodayWatch;
+			productReference = 24F21AC11C4FD73C00396A38 /* TodayWatch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		24F21ACC1C4FD73C00396A38 /* TodayWatch Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 24F21AE21C4FD73E00396A38 /* Build configuration list for PBXNativeTarget "TodayWatch Extension" */;
+			buildPhases = (
+				24F21AC91C4FD73C00396A38 /* Sources */,
+				24F21ACA1C4FD73C00396A38 /* Frameworks */,
+				24F21ACB1C4FD73C00396A38 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "TodayWatch Extension";
+			productName = "TodayWatch Extension";
+			productReference = 24F21ACD1C4FD73C00396A38 /* TodayWatch Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -542,6 +734,17 @@
 						CreatedOnToolsVersion = 7.2;
 						TestTargetID = 24030ADF1C1C821C004E68ED;
 					};
+					24F21AAE1C4FCFE900396A38 = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = A9WB53K8XM;
+					};
+					24F21AC01C4FD73C00396A38 = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = A9WB53K8XM;
+					};
+					24F21ACC1C4FD73C00396A38 = {
+						CreatedOnToolsVersion = 7.2;
+					};
 				};
 			};
 			buildConfigurationList = 24030ADB1C1C821C004E68ED /* Build configuration list for PBXProject "Today" */;
@@ -562,6 +765,9 @@
 				24030B011C1C821C004E68ED /* TodayUITests */,
 				24C77E821C2A8A3E00493C13 /* TodayModel */,
 				24C77E8B1C2A8A3E00493C13 /* TodayModelTests */,
+				24F21AAE1C4FCFE900396A38 /* TodayExtension */,
+				24F21AC01C4FD73C00396A38 /* TodayWatch */,
+				24F21ACC1C4FD73C00396A38 /* TodayWatch Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -605,6 +811,31 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		24F21AAD1C4FCFE900396A38 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24F21AB71C4FCFE900396A38 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		24F21ABF1C4FD73C00396A38 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24F21AC71C4FD73C00396A38 /* Assets.xcassets in Resources */,
+				24F21AC51C4FD73C00396A38 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		24F21ACB1C4FD73C00396A38 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24F21ADD1C4FD73C00396A38 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -694,6 +925,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		24F21AAB1C4FCFE900396A38 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24F21AB41C4FCFE900396A38 /* TodayViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		24F21AC91C4FD73C00396A38 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24F21AD91C4FD73C00396A38 /* NotificationController.swift in Sources */,
+				24F21AD71C4FD73C00396A38 /* ExtensionDelegate.swift in Sources */,
+				24F21AD51C4FD73C00396A38 /* InterfaceController.swift in Sources */,
+				24F21ADB1C4FD73C00396A38 /* GlanceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -721,6 +971,21 @@
 			isa = PBXTargetDependency;
 			target = 24C77E821C2A8A3E00493C13 /* TodayModel */;
 			targetProxy = 24C77E961C2A8A3E00493C13 /* PBXContainerItemProxy */;
+		};
+		24F21ABA1C4FCFE900396A38 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 24F21AAE1C4FCFE900396A38 /* TodayExtension */;
+			targetProxy = 24F21AB91C4FCFE900396A38 /* PBXContainerItemProxy */;
+		};
+		24F21AD01C4FD73C00396A38 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 24F21ACC1C4FD73C00396A38 /* TodayWatch Extension */;
+			targetProxy = 24F21ACF1C4FD73C00396A38 /* PBXContainerItemProxy */;
+		};
+		24F21AE01C4FD73C00396A38 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 24F21AC01C4FD73C00396A38 /* TodayWatch */;
+			targetProxy = 24F21ADF1C4FD73C00396A38 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -759,6 +1024,22 @@
 			);
 			name = Today.storyboard;
 			path = .;
+			sourceTree = "<group>";
+		};
+		24F21AB51C4FCFE900396A38 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				24F21AB61C4FCFE900396A38 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+		24F21AC31C4FD73C00396A38 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				24F21AC41C4FD73C00396A38 /* Base */,
+			);
+			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1014,6 +1295,96 @@
 			};
 			name = Release;
 		};
+		24F21ABD1C4FCFEB00396A38 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = TodayExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.Today.TodayExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		24F21ABE1C4FCFEB00396A38 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = TodayExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.Today.TodayExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		24F21AE31C4FD73E00396A38 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "TodayWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.Today.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.1;
+			};
+			name = Debug;
+		};
+		24F21AE41C4FD73E00396A38 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "TodayWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.Today.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.1;
+			};
+			name = Release;
+		};
+		24F21AE71C4FD73E00396A38 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = app_icon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				IBSC_MODULE = TodayWatch_Extension;
+				INFOPLIST_FILE = TodayWatch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.Today.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.1;
+			};
+			name = Debug;
+		};
+		24F21AE81C4FD73E00396A38 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = app_icon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				IBSC_MODULE = TodayWatch_Extension;
+				INFOPLIST_FILE = TodayWatch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.Today.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.1;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1070,6 +1441,30 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		24F21ABC1C4FCFEB00396A38 /* Build configuration list for PBXNativeTarget "TodayExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				24F21ABD1C4FCFEB00396A38 /* Debug */,
+				24F21ABE1C4FCFEB00396A38 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		24F21AE21C4FD73E00396A38 /* Build configuration list for PBXNativeTarget "TodayWatch Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				24F21AE31C4FD73E00396A38 /* Debug */,
+				24F21AE41C4FD73E00396A38 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		24F21AE61C4FD73E00396A38 /* Build configuration list for PBXNativeTarget "TodayWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				24F21AE71C4FD73E00396A38 /* Debug */,
+				24F21AE81C4FD73E00396A38 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 

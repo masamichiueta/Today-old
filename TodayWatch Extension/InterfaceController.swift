@@ -36,19 +36,19 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         super.didDeactivate()
     }
     
-    @IBAction func addToday() {
-        
-        if session.reachable {
-            session.sendMessage(["score": 10],
-                replyHandler: {
-                    (content: [String: AnyObject]) -> Void in
-                    print("Our counterpart sent something back. This is optional")
-                },
-                errorHandler: {
-                    (error) -> Void in
-                    print("We got an error from our paired device : " + error.domain)
-            })
-        }
-        
-    }
+//    @IBAction func addToday() {
+//        
+//        if session.reachable {
+//            session.sendMessage(["score": 10],
+//                replyHandler: {
+//                    (content: [String: AnyObject]) -> Void in
+//                    print("Our counterpart sent something back. This is optional")
+//                },
+//                errorHandler: {
+//                    (error) -> Void in
+//                    print("We got an error from our paired device : " + error.domain)
+//            })
+//        }
+//        
+//    }
 }

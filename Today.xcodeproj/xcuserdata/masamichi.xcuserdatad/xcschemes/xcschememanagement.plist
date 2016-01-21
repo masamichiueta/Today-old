@@ -4,32 +4,32 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Glance - TodayWatch.xcscheme</key>
+		<key>Glance - TodayWatch.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>5</integer>
 		</dict>
-		<key>Notification - TodayWatch.xcscheme</key>
+		<key>Notification - TodayWatch.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>4</integer>
 		</dict>
-		<key>Today.xcscheme</key>
+		<key>Today.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-		<key>TodayExtension.xcscheme</key>
+		<key>TodayExtension.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
-		<key>TodayModel.xcscheme</key>
+		<key>TodayModel.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
-		<key>TodayWatch.xcscheme</key>
+		<key>TodayWatch.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>3</integer>

@@ -8,7 +8,6 @@
 
 import UIKit
 import TodayModel
-import LTMorphingLabel
 
 @IBDesignable class TodayScoreCircleView: UIView {
     

@@ -5,28 +5,27 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="9515"/>
     </dependencies>
     <scenes>
-        <!--Interface Controller-->
+        <!--Today-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="TodayWatch" customModuleProvider="target">
+                <controller title="Today" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="TodayWatch" customModuleProvider="target">
                     <items>
-                        <group width="1" alignment="left" verticalAlignment="center" layout="vertical" id="AeO-EP-h7j">
+                        <group width="1" alignment="left" verticalAlignment="center" layout="vertical" spacing="14" id="AeO-EP-h7j">
                             <items>
                                 <label alignment="center" text="How is your today?" textAlignment="center" numberOfLines="2" id="Cr9-rb-U2l">
                                     <fontDescription key="font" type="system" pointSize="14"/>
                                 </label>
-                                <imageView alignment="left" id="evE-5H-35D"/>
                                 <button width="1" alignment="left" title="Add Today" id="vUb-ir-9sA">
                                     <connections>
                                         <segue destination="NgC-EH-V7w" kind="modal" id="AcI-Sr-HCe"/>
                                     </connections>
                                 </button>
-                                <group width="1" alignment="left" layout="vertical" id="dPv-TN-vgx">
-                                    <items>
-                                        <label alignment="center" text="Score" id="mt2-0g-nab"/>
-                                        <imageView alignment="left" id="k1s-gC-GYU"/>
-                                    </items>
-                                </group>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" verticalAlignment="center" hidden="YES" layout="vertical" id="dPv-TN-vgx">
+                            <items>
+                                <label alignment="center" text="Score" id="mt2-0g-nab"/>
+                                <imageView alignment="left" id="k1s-gC-GYU"/>
                             </items>
                         </group>
                     </items>
@@ -41,10 +40,14 @@
                     <items>
                         <group width="1" alignment="left" layout="vertical" id="BS3-QW-Dnn">
                             <items>
+                                <picker height="100" alignment="left" focusStyle="stack" id="Es8-JK-8dc"/>
                                 <imageView alignment="left" id="aPj-Yd-wS3"/>
                             </items>
                         </group>
                     </items>
+                    <connections>
+                        <outlet property="scorePicker" destination="Es8-JK-8dc" id="y8D-7L-XIq"/>
+                    </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="475" y="347"/>
@@ -86,4 +89,5 @@
             <point key="canvasLocation" x="553" y="1001"/>
         </scene>
     </scenes>
+    <color key="tintColor" red="1" green="0.21960784310000001" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
 </document>

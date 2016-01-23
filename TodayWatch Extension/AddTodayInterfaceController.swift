@@ -9,9 +9,10 @@
 import WatchKit
 import Foundation
 
-
 class AddTodayInterfaceController: WKInterfaceController {
 
+    @IBOutlet var scorePicker: WKInterfacePicker!
+    
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
         

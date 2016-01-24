@@ -38,10 +38,9 @@
             <objects>
                 <controller id="NgC-EH-V7w" customClass="AddTodayInterfaceController" customModule="Today_Watch_Extension">
                     <items>
-                        <group width="1" alignment="left" layout="vertical" id="BS3-QW-Dnn">
+                        <group width="132" height="132" alignment="center" verticalAlignment="center" backgroundImage="score_circle_38_1" layout="vertical" id="BS3-QW-Dnn">
                             <items>
-                                <picker height="100" alignment="left" focusStyle="stack" id="Es8-JK-8dc"/>
-                                <imageView alignment="left" id="aPj-Yd-wS3"/>
+                                <picker width="40" height="40" alignment="center" verticalAlignment="center" hidden="YES" focusStyle="stack" id="Es8-JK-8dc"/>
                             </items>
                         </group>
                     </items>

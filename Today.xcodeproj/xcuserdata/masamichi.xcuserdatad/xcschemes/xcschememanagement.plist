@@ -29,6 +29,11 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>TodayKit (watchOS).xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
 		<key>TodayKit.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
@@ -68,6 +73,11 @@
 			<true/>
 		</dict>
 		<key>246688351C1D18C400C5E5A0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>24A487ED1C5503C50015DB05</key>
 		<dict>
 			<key>primary</key>
 			<true/>

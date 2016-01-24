@@ -113,12 +113,6 @@ extension Today: ManagedObjectType {
     }
 }
 
-private let redColor = "#FF3830"
-private let orangeColor = "#FF9500"
-private let yellowColor = "#FFCC00"
-private let greenColor = "#4CD964"
-private let blueColor = "#34AADC"
-
 private let goodIconImageName = "good_face_icon_"
 private let averageIconImageName = "average_face_icon_"
 private let poorIconImageName = "poor_face_icon_"
@@ -136,15 +130,15 @@ public enum TodayType: String {
     public func color() -> UIColor {
         switch self {
         case .Excellent:
-            return UIColor(rgba: redColor)
+            return UIColor(red: 255.0/255.0, green: 56.0/255.0, blue: 48.0/255.0, alpha: 1.0)
         case .Good:
-            return UIColor(rgba: orangeColor)
+            return UIColor(red: 255.0/255.0, green: 149.0/255.0, blue: 0/255.0, alpha: 1.0)
         case .Average:
-            return UIColor(rgba: yellowColor)
+            return UIColor(red: 255.0/255.0, green: 204.0/255.0, blue: 0/255.0, alpha: 1.0)
         case .Fair:
-            return UIColor(rgba: greenColor)
+            return UIColor(red: 76.0/255.0, green: 217.0/255.0, blue: 100.0/255.0, alpha: 1.0)
         case .Poor:
-            return UIColor(rgba: blueColor)
+            return UIColor(red: 52.0/255.0, green: 170.0/255.0, blue: 220.0/255.0, alpha: 1.0)
         }
     }
     

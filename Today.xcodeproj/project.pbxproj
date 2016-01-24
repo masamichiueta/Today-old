@@ -28,11 +28,17 @@
 		247E4D611C54FCB800C134DB /* Setting.plist in Resources */ = {isa = PBXBuildFile; fileRef = 24D4E3461C43E1D900F6DA6A /* Setting.plist */; };
 		248BC5581C37AB0E00EFB221 /* DeviceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 248BC5571C37AB0E00EFB221 /* DeviceKit.framework */; };
 		248BC5591C37AB0E00EFB221 /* DeviceKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 248BC5571C37AB0E00EFB221 /* DeviceKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		24A1CFDD1C36D17800F0E9CE /* HEXColor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24A1CFDC1C36D17800F0E9CE /* HEXColor.framework */; };
-		24A1CFDE1C36D17800F0E9CE /* HEXColor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24A1CFDC1C36D17800F0E9CE /* HEXColor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		24A1CFE11C36D8FA00F0E9CE /* TodayScoreCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A1CFE01C36D8FA00F0E9CE /* TodayScoreCircleView.swift */; };
+		24A487F51C5503C50015DB05 /* TodayWatchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24A487EE1C5503C50015DB05 /* TodayWatchKit.framework */; };
+		24A487F61C5503C50015DB05 /* TodayWatchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24A487EE1C5503C50015DB05 /* TodayWatchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		24A487FA1C55045D0015DB05 /* Today.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C77EA81C2A8C6F00493C13 /* Today.swift */; };
+		24A487FB1C5505490015DB05 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FE71321C4245D400A14B9D /* Setting.swift */; };
+		24A487FC1C55054C0015DB05 /* Streak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E538D81C49E22900B781D8 /* Streak.swift */; };
+		24A487FD1C5505500015DB05 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F14741C2A9CDE0003B2AF /* CoreDataStack.swift */; };
+		24A487FE1C5505530015DB05 /* ManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C77EA11C2A8B6C00493C13 /* ManagedObject.swift */; };
+		24A487FF1C5505560015DB05 /* NSManagedObjectContext+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24444A591C306B4B00DC1579 /* NSManagedObjectContext+Extensions.swift */; };
+		24A488031C5505AF0015DB05 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DBB5901C2C367100E1C042 /* Utilities.swift */; };
 		24C6AE971C2831660048C4D1 /* TodayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C6AE961C2831660048C4D1 /* TodayTableViewCell.swift */; };
-		24C6C1A81C54F9970041C31F /* TodayKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 24C6C1A71C54F9970041C31F /* TodayKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		24C6C1AF1C54F9970041C31F /* TodayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24C6C1A51C54F9970041C31F /* TodayKit.framework */; };
 		24C6C1B61C54F9970041C31F /* TodayKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C6C1B51C54F9970041C31F /* TodayKitTests.swift */; };
 		24C6C1C21C54F9DB0041C31F /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FE71321C4245D400A14B9D /* Setting.swift */; };
@@ -43,9 +49,6 @@
 		24C6C1C81C54FA050041C31F /* ManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C77EA11C2A8B6C00493C13 /* ManagedObject.swift */; };
 		24C6C1C91C54FA080041C31F /* NSManagedObjectContext+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24444A591C306B4B00DC1579 /* NSManagedObjectContext+Extensions.swift */; };
 		24C6C1CA1C54FA0A0041C31F /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DBB5901C2C367100E1C042 /* Utilities.swift */; };
-		24C6C1CD1C54FAEE0041C31F /* HEXColor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24A1CFDC1C36D17800F0E9CE /* HEXColor.framework */; };
-		24C77E7C1C2A887000493C13 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24C77E7B1C2A887000493C13 /* SVProgressHUD.framework */; };
-		24C77E7D1C2A887000493C13 /* SVProgressHUD.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24C77E7B1C2A887000493C13 /* SVProgressHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		24D4E3491C43ED6E00F6DA6A /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D4E3481C43ED6E00F6DA6A /* Utilities.swift */; };
 		24D67C851C3EB54600A33DB7 /* TodayAverageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D67C841C3EB54600A33DB7 /* TodayAverageTableViewCell.swift */; };
 		24D8E3DC1C54FC4F005BA35B /* TodayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24C6C1A51C54F9970041C31F /* TodayKit.framework */; };
@@ -90,6 +93,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 24030ADF1C1C821C004E68ED;
 			remoteInfo = Today;
+		};
+		24A487F31C5503C50015DB05 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 24030AD81C1C821C004E68ED /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 24A487ED1C5503C50015DB05;
+			remoteInfo = "TodayKit (watchOS)";
 		};
 		24C6C1B01C54F9970041C31F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -142,6 +152,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				24A487F61C5503C50015DB05 /* TodayWatchKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -152,8 +163,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				24C77E7D1C2A887000493C13 /* SVProgressHUD.framework in Embed Frameworks */,
-				24A1CFDE1C36D17800F0E9CE /* HEXColor.framework in Embed Frameworks */,
 				24F21AAA1C4FB4B100396A38 /* Charts.framework in Embed Frameworks */,
 				24D8E3DD1C54FC4F005BA35B /* TodayKit.framework in Embed Frameworks */,
 				248BC5591C37AB0E00EFB221 /* DeviceKit.framework in Embed Frameworks */,
@@ -224,16 +233,15 @@
 		246AC1801C5120FF0047AAE7 /* AddTodayInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTodayInterfaceController.swift; sourceTree = "<group>"; };
 		2472E6FD1C3275C8006DC493 /* LTMorphingLabel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LTMorphingLabel.framework; path = Carthage/Build/iOS/LTMorphingLabel.framework; sourceTree = "<group>"; };
 		248BC5571C37AB0E00EFB221 /* DeviceKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DeviceKit.framework; path = Carthage/Build/iOS/DeviceKit.framework; sourceTree = "<group>"; };
-		24A1CFDC1C36D17800F0E9CE /* HEXColor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HEXColor.framework; path = Carthage/Build/iOS/HEXColor.framework; sourceTree = "<group>"; };
 		24A1CFE01C36D8FA00F0E9CE /* TodayScoreCircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayScoreCircleView.swift; sourceTree = "<group>"; };
+		24A487EE1C5503C50015DB05 /* TodayWatchKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TodayWatchKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		24A487F21C5503C50015DB05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24C6AE961C2831660048C4D1 /* TodayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayTableViewCell.swift; sourceTree = "<group>"; };
 		24C6C1A51C54F9970041C31F /* TodayKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TodayKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		24C6C1A71C54F9970041C31F /* TodayKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayKit.h; sourceTree = "<group>"; };
 		24C6C1A91C54F9970041C31F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24C6C1AE1C54F9970041C31F /* TodayKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodayKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		24C6C1B51C54F9970041C31F /* TodayKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayKitTests.swift; sourceTree = "<group>"; };
 		24C6C1B71C54F9970041C31F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		24C77E7B1C2A887000493C13 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = Carthage/Build/iOS/SVProgressHUD.framework; sourceTree = "<group>"; };
 		24C77EA11C2A8B6C00493C13 /* ManagedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObject.swift; sourceTree = "<group>"; };
 		24C77EA51C2A8C3400493C13 /* Today.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Today.xcdatamodel; sourceTree = "<group>"; };
 		24C77EA81C2A8C6F00493C13 /* Today.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Today.swift; sourceTree = "<group>"; };
@@ -278,8 +286,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24C77E7C1C2A887000493C13 /* SVProgressHUD.framework in Frameworks */,
-				24A1CFDD1C36D17800F0E9CE /* HEXColor.framework in Frameworks */,
 				24F21AA91C4FB4B100396A38 /* Charts.framework in Frameworks */,
 				24D8E3DC1C54FC4F005BA35B /* TodayKit.framework in Frameworks */,
 				248BC5581C37AB0E00EFB221 /* DeviceKit.framework in Frameworks */,
@@ -301,11 +307,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		24A487EA1C5503C50015DB05 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		24C6C1A11C54F9970041C31F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24C6C1CD1C54FAEE0041C31F /* HEXColor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,6 +341,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24A487F51C5503C50015DB05 /* TodayWatchKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,11 +353,9 @@
 			children = (
 				246688171C1D189F00C5E5A0 /* Frameworks */,
 				24030AE11C1C821C004E68ED /* Products */,
-				24030AE21C1C821C004E68ED /* Today */,
-				24F21AB21C4FCFE900396A38 /* Today Today Extension */,
 				24F21AC21C4FD73C00396A38 /* Today Watch App */,
-				24F21AD11C4FD73C00396A38 /* Today Watch Extension */,
-				24C6C1A61C54F9970041C31F /* TodayKit */,
+				24030AE21C1C821C004E68ED /* Today iOS */,
+				24C6C1A61C54F9970041C31F /* TodayKit Shared Code */,
 				24C6C1B41C54F9970041C31F /* TodayKitTests */,
 				24030AFA1C1C821C004E68ED /* TodayTests */,
 				24030B051C1C821C004E68ED /* TodayUITests */,
@@ -362,23 +373,19 @@
 				24F21ACD1C4FD73C00396A38 /* Today Watch Extension.appex */,
 				24C6C1A51C54F9970041C31F /* TodayKit.framework */,
 				24C6C1AE1C54F9970041C31F /* TodayKitTests.xctest */,
+				24A487EE1C5503C50015DB05 /* TodayWatchKit.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		24030AE21C1C821C004E68ED /* Today */ = {
+		24030AE21C1C821C004E68ED /* Today iOS */ = {
 			isa = PBXGroup;
 			children = (
-				246688591C1EFC3E00C5E5A0 /* Controller */,
-				24F9DC351C2EF9E6003A6427 /* Data Source and Provider */,
-				240F14761C2A9FB60003B2AF /* Shared Code */,
-				2466885A1C1EFC5600C5E5A0 /* View */,
-				24030AE31C1C821C004E68ED /* AppDelegate.swift */,
-				24030AED1C1C821C004E68ED /* Assets.xcassets */,
-				24030AF21C1C821C004E68ED /* Info.plist */,
-				24C77EAD1C2A937600493C13 /* Today.entitlements */,
+				24A487E51C55032E0015DB05 /* Main App */,
+				24F21AB21C4FCFE900396A38 /* Today Extension */,
+				24A487E71C5503A10015DB05 /* TodayKit iOS */,
 			);
-			path = Today;
+			path = "Today iOS";
 			sourceTree = "<group>";
 		};
 		24030AFA1C1C821C004E68ED /* TodayTests */ = {
@@ -416,9 +423,7 @@
 			children = (
 				24F21AA81C4FB4B100396A38 /* Charts.framework */,
 				248BC5571C37AB0E00EFB221 /* DeviceKit.framework */,
-				24A1CFDC1C36D17800F0E9CE /* HEXColor.framework */,
 				2472E6FD1C3275C8006DC493 /* LTMorphingLabel.framework */,
-				24C77E7B1C2A887000493C13 /* SVProgressHUD.framework */,
 				24F21AB01C4FCFE900396A38 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
@@ -452,15 +457,54 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		24C6C1A61C54F9970041C31F /* TodayKit */ = {
+		24A487E51C55032E0015DB05 /* Main App */ = {
+			isa = PBXGroup;
+			children = (
+				246688591C1EFC3E00C5E5A0 /* Controller */,
+				24F9DC351C2EF9E6003A6427 /* Data Source and Provider */,
+				240F14761C2A9FB60003B2AF /* Shared Code */,
+				2466885A1C1EFC5600C5E5A0 /* View */,
+				24030AE31C1C821C004E68ED /* AppDelegate.swift */,
+				24030AED1C1C821C004E68ED /* Assets.xcassets */,
+				24030AF21C1C821C004E68ED /* Info.plist */,
+				24C77EAD1C2A937600493C13 /* Today.entitlements */,
+			);
+			path = "Main App";
+			sourceTree = "<group>";
+		};
+		24A487E61C5503600015DB05 /* Today Watch App */ = {
+			isa = PBXGroup;
+			children = (
+				24F21AC61C4FD73C00396A38 /* Assets.xcassets */,
+				24F21AC81C4FD73C00396A38 /* Info.plist */,
+				24F21AC31C4FD73C00396A38 /* Interface.storyboard */,
+			);
+			path = "Today Watch App";
+			sourceTree = "<group>";
+		};
+		24A487E71C5503A10015DB05 /* TodayKit iOS */ = {
+			isa = PBXGroup;
+			children = (
+				24C6C1A91C54F9970041C31F /* Info.plist */,
+			);
+			path = "TodayKit iOS";
+			sourceTree = "<group>";
+		};
+		24A487E81C5503AD0015DB05 /* TodayKit watchOS */ = {
+			isa = PBXGroup;
+			children = (
+				24A487F21C5503C50015DB05 /* Info.plist */,
+			);
+			path = "TodayKit watchOS";
+			sourceTree = "<group>";
+		};
+		24C6C1A61C54F9970041C31F /* TodayKit Shared Code */ = {
 			isa = PBXGroup;
 			children = (
 				24C77EA71C2A8C5F00493C13 /* Model */,
 				24C77EA31C2A8BF000493C13 /* Shared Code */,
-				24C6C1A91C54F9970041C31F /* Info.plist */,
-				24C6C1A71C54F9970041C31F /* TodayKit.h */,
 			);
-			path = TodayKit;
+			path = "TodayKit Shared Code";
 			sourceTree = "<group>";
 		};
 		24C6C1B41C54F9970041C31F /* TodayKitTests */ = {
@@ -495,22 +539,22 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		24F21AB21C4FCFE900396A38 /* Today Today Extension */ = {
+		24F21AB21C4FCFE900396A38 /* Today Extension */ = {
 			isa = PBXGroup;
 			children = (
 				24F21AB81C4FCFE900396A38 /* Info.plist */,
 				24F21AB51C4FCFE900396A38 /* MainInterface.storyboard */,
 				24F21AB31C4FCFE900396A38 /* TodayViewController.swift */,
 			);
-			path = "Today Today Extension";
+			path = "Today Extension";
 			sourceTree = "<group>";
 		};
 		24F21AC21C4FD73C00396A38 /* Today Watch App */ = {
 			isa = PBXGroup;
 			children = (
-				24F21AC61C4FD73C00396A38 /* Assets.xcassets */,
-				24F21AC81C4FD73C00396A38 /* Info.plist */,
-				24F21AC31C4FD73C00396A38 /* Interface.storyboard */,
+				24A487E61C5503600015DB05 /* Today Watch App */,
+				24F21AD11C4FD73C00396A38 /* Today Watch Extension */,
+				24A487E81C5503AD0015DB05 /* TodayKit watchOS */,
 			);
 			path = "Today Watch App";
 			sourceTree = "<group>";
@@ -553,11 +597,17 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		24A487EB1C5503C50015DB05 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		24C6C1A21C54F9970041C31F /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24C6C1A81C54F9970041C31F /* TodayKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -623,6 +673,24 @@
 			productName = TodayUITests;
 			productReference = 24030B021C1C821C004E68ED /* TodayUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		24A487ED1C5503C50015DB05 /* TodayKit (watchOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 24A487F71C5503C50015DB05 /* Build configuration list for PBXNativeTarget "TodayKit (watchOS)" */;
+			buildPhases = (
+				24A487E91C5503C50015DB05 /* Sources */,
+				24A487EA1C5503C50015DB05 /* Frameworks */,
+				24A487EB1C5503C50015DB05 /* Headers */,
+				24A487EC1C5503C50015DB05 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "TodayKit (watchOS)";
+			productName = "TodayKit (watchOS)";
+			productReference = 24A487EE1C5503C50015DB05 /* TodayWatchKit.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 		24C6C1A41C54F9970041C31F /* TodayKit */ = {
 			isa = PBXNativeTarget;
@@ -707,6 +775,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				24A487F41C5503C50015DB05 /* PBXTargetDependency */,
 			);
 			name = "Today Watch Extension";
 			productName = "TodayWatch Extension";
@@ -739,6 +808,9 @@
 					24030B011C1C821C004E68ED = {
 						CreatedOnToolsVersion = 7.2;
 						TestTargetID = 24030ADF1C1C821C004E68ED;
+					};
+					24A487ED1C5503C50015DB05 = {
+						CreatedOnToolsVersion = 7.2;
 					};
 					24C6C1A41C54F9970041C31F = {
 						CreatedOnToolsVersion = 7.2;
@@ -782,6 +854,7 @@
 				24F21ACC1C4FD73C00396A38 /* Today Watch Extension */,
 				24C6C1A41C54F9970041C31F /* TodayKit */,
 				24C6C1AD1C54F9970041C31F /* TodayKitTests */,
+				24A487ED1C5503C50015DB05 /* TodayKit (watchOS) */,
 			);
 		};
 /* End PBXProject section */
@@ -807,6 +880,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		24030B001C1C821C004E68ED /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		24A487EC1C5503C50015DB05 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -916,6 +996,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		24A487E91C5503C50015DB05 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24A487FB1C5505490015DB05 /* Setting.swift in Sources */,
+				24A487FC1C55054C0015DB05 /* Streak.swift in Sources */,
+				24A488031C5505AF0015DB05 /* Utilities.swift in Sources */,
+				24A487FE1C5505530015DB05 /* ManagedObject.swift in Sources */,
+				24A487FA1C55045D0015DB05 /* Today.swift in Sources */,
+				24A487FD1C5505500015DB05 /* CoreDataStack.swift in Sources */,
+				24A487FF1C5505560015DB05 /* NSManagedObjectContext+Extensions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		24C6C1A01C54F9970041C31F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -971,6 +1065,11 @@
 			isa = PBXTargetDependency;
 			target = 24030ADF1C1C821C004E68ED /* Today */;
 			targetProxy = 24030B031C1C821C004E68ED /* PBXContainerItemProxy */;
+		};
+		24A487F41C5503C50015DB05 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 24A487ED1C5503C50015DB05 /* TodayKit (watchOS) */;
+			targetProxy = 24A487F31C5503C50015DB05 /* PBXContainerItemProxy */;
 		};
 		24C6C1B11C54F9970041C31F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1151,7 +1250,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = app_icon;
-				CODE_SIGN_ENTITLEMENTS = Today/Today.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "Today iOS/Main App/Today.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -1160,7 +1259,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Today/Info.plist;
+				INFOPLIST_FILE = "Today iOS/Main App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.Today;
@@ -1173,7 +1272,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = app_icon;
-				CODE_SIGN_ENTITLEMENTS = Today/Today.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "Today iOS/Main App/Today.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
@@ -1181,7 +1280,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Today/Info.plist;
+				INFOPLIST_FILE = "Today iOS/Main App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.Today;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1237,6 +1336,54 @@
 			};
 			name = Release;
 		};
+		24A487F81C5503C50015DB05 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Today Watch App/TodayKit watchOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.uetamasamichi.TodayKit--watchOS-";
+				PRODUCT_NAME = TodayWatchKit;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 2.1;
+			};
+			name = Debug;
+		};
+		24A487F91C5503C50015DB05 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Today Watch App/TodayKit watchOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.uetamasamichi.TodayKit--watchOS-";
+				PRODUCT_NAME = TodayWatchKit;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 2.1;
+			};
+			name = Release;
+		};
 		24C6C1BD1C54F99A0041C31F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1251,7 +1398,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = TodayKit/Info.plist;
+				INFOPLIST_FILE = "Today iOS/TodayKit iOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.TodayKit;
@@ -1276,7 +1423,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = TodayKit/Info.plist;
+				INFOPLIST_FILE = "Today iOS/TodayKit iOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.TodayKit;
@@ -1314,7 +1461,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = "Today Today Extension/Info.plist";
+				INFOPLIST_FILE = "Today iOS/Today Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.Today.TodayExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1327,7 +1474,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = "Today Today Extension/Info.plist";
+				INFOPLIST_FILE = "Today iOS/Today Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.Today.TodayExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1339,7 +1486,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				INFOPLIST_FILE = "Today Watch Extension/Info.plist";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = "Today Watch App/Today Watch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.Today.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
@@ -1354,7 +1506,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				INFOPLIST_FILE = "Today Watch Extension/Info.plist";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = "Today Watch App/Today Watch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.Today.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
@@ -1373,7 +1530,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				IBSC_MODULE = TodayWatch_Extension;
-				INFOPLIST_FILE = "Today Watch App/Info.plist";
+				INFOPLIST_FILE = "Today Watch App/Today Watch App/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.Today.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1391,7 +1548,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				IBSC_MODULE = TodayWatch_Extension;
-				INFOPLIST_FILE = "Today Watch App/Info.plist";
+				INFOPLIST_FILE = "Today Watch App/Today Watch App/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.Today.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1436,6 +1593,15 @@
 			buildConfigurations = (
 				24030B121C1C821C004E68ED /* Debug */,
 				24030B131C1C821C004E68ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		24A487F71C5503C50015DB05 /* Build configuration list for PBXNativeTarget "TodayKit (watchOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				24A487F81C5503C50015DB05 /* Debug */,
+				24A487F91C5503C50015DB05 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

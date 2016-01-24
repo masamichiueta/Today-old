@@ -5,7 +5,8 @@ disabled_rules:
   - variable_name_min_length
   - function_body_length
 included: # paths to include during linting. `--path` is ignored if present.
-  - Today
-  - TodayModel
+  - Today iOS
+  - Today Watch App
+  - TodayKit Shared Code
 excluded: # paths to ignore during linting. Takes precedence over `included`.
   - Carthage

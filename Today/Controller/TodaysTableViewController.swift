@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-import TodayModel
+import TodayKit
 import WatchConnectivity
 
 class TodaysTableViewController: UITableViewController, ManagedObjectContextSettable, SegueHandlerType, WCSessionDelegate {

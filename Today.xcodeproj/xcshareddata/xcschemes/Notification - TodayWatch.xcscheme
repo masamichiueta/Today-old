@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "24F21AC01C4FD73C00396A38"
-               BuildableName = "TodayWatch.app"
-               BlueprintName = "TodayWatch"
+               BuildableName = "Today Watch App.app"
+               BlueprintName = "Today Watch App"
                ReferencedContainer = "container:Today.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,8 +29,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "24F21ACC1C4FD73C00396A38"
-               BuildableName = "TodayWatch Extension.appex"
-               BlueprintName = "TodayWatch Extension"
+               BuildableName = "Today Watch Extension.appex"
+               BlueprintName = "Today Watch Extension"
                ReferencedContainer = "container:Today.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -56,13 +56,23 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "24C6C1AD1C54F9970041C31F"
+               BuildableName = "TodayKitTests.xctest"
+               BlueprintName = "TodayKitTests"
+               ReferencedContainer = "container:Today.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "24F21AC01C4FD73C00396A38"
-            BuildableName = "TodayWatch.app"
-            BlueprintName = "TodayWatch"
+            BuildableName = "Today Watch App.app"
+            BlueprintName = "Today Watch App"
             ReferencedContainer = "container:Today.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -88,8 +98,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "24F21AC01C4FD73C00396A38"
-            BuildableName = "TodayWatch.app"
-            BlueprintName = "TodayWatch"
+            BuildableName = "Today Watch App.app"
+            BlueprintName = "Today Watch App"
             ReferencedContainer = "container:Today.xcodeproj">
          </BuildableReference>
       </RemoteRunnable>
@@ -97,8 +107,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "24F21AC01C4FD73C00396A38"
-            BuildableName = "TodayWatch.app"
-            BlueprintName = "TodayWatch"
+            BuildableName = "Today Watch App.app"
+            BlueprintName = "Today Watch App"
             ReferencedContainer = "container:Today.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -120,8 +130,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "24F21AC01C4FD73C00396A38"
-            BuildableName = "TodayWatch.app"
-            BlueprintName = "TodayWatch"
+            BuildableName = "Today Watch App.app"
+            BlueprintName = "Today Watch App"
             ReferencedContainer = "container:Today.xcodeproj">
          </BuildableReference>
       </RemoteRunnable>
@@ -129,8 +139,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "24F21AC01C4FD73C00396A38"
-            BuildableName = "TodayWatch.app"
-            BlueprintName = "TodayWatch"
+            BuildableName = "Today Watch App.app"
+            BlueprintName = "Today Watch App"
             ReferencedContainer = "container:Today.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

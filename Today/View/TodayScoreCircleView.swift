@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import TodayModel
+import TodayKit
 
 @IBDesignable class TodayScoreCircleView: UIView {
     

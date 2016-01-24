@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import TodayModel
+import TodayKit
 import LTMorphingLabel
 import DeviceKit
 

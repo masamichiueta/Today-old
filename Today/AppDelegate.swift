@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-import TodayModel
+import TodayKit
 
 
 @UIApplicationMain
@@ -87,7 +87,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func setupDefaultSetting() {
-        guard let settingBundle = frameworkBundle("TodayModel.framework") else {
+        guard let settingBundle = frameworkBundle("TodayKit.framework") else {
             fatalError("Wrong framework name")
         }
         

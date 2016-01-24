@@ -13,12 +13,10 @@
 		24030AF11C1C821C004E68ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24030AEF1C1C821C004E68ED /* LaunchScreen.storyboard */; };
 		24030AFC1C1C821C004E68ED /* TodayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24030AFB1C1C821C004E68ED /* TodayTests.swift */; };
 		24030B071C1C821C004E68ED /* TodayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24030B061C1C821C004E68ED /* TodayUITests.swift */; };
-		240F14751C2A9CDE0003B2AF /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F14741C2A9CDE0003B2AF /* CoreDataStack.swift */; };
 		240F14781C2A9FD40003B2AF /* ManagedObjectContextSettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F14771C2A9FD40003B2AF /* ManagedObjectContextSettable.swift */; };
 		240F147C1C2AA0450003B2AF /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F147B1C2AA0450003B2AF /* RootViewController.swift */; };
 		240F147E1C2ABC000003B2AF /* SegueHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F147D1C2ABC000003B2AF /* SegueHandlerType.swift */; };
 		242F984B1C49282200DBC64B /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F984A1C49282200DBC64B /* NotificationManager.swift */; };
-		24444A5A1C306B4B00DC1579 /* NSManagedObjectContext+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24444A591C306B4B00DC1579 /* NSManagedObjectContext+Extensions.swift */; };
 		24444A5E1C30A02A00DC1579 /* AddTodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24444A5D1C30A02A00DC1579 /* AddTodayViewController.swift */; };
 		244631451C3AB8BA002BBD06 /* TodayPaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244631441C3AB8BA002BBD06 /* TodayPaddingLabel.swift */; };
 		2466884F1C1DB45E00C5E5A0 /* Activity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2466884D1C1DB45E00C5E5A0 /* Activity.storyboard */; };
@@ -27,52 +25,53 @@
 		246AC1811C5120FF0047AAE7 /* AddTodayInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246AC1801C5120FF0047AAE7 /* AddTodayInterfaceController.swift */; };
 		2472E6FE1C3275C8006DC493 /* LTMorphingLabel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2472E6FD1C3275C8006DC493 /* LTMorphingLabel.framework */; };
 		2472E6FF1C3275C8006DC493 /* LTMorphingLabel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2472E6FD1C3275C8006DC493 /* LTMorphingLabel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		247E4D611C54FCB800C134DB /* Setting.plist in Resources */ = {isa = PBXBuildFile; fileRef = 24D4E3461C43E1D900F6DA6A /* Setting.plist */; };
 		248BC5581C37AB0E00EFB221 /* DeviceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 248BC5571C37AB0E00EFB221 /* DeviceKit.framework */; };
 		248BC5591C37AB0E00EFB221 /* DeviceKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 248BC5571C37AB0E00EFB221 /* DeviceKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		24A1CFDD1C36D17800F0E9CE /* HEXColor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24A1CFDC1C36D17800F0E9CE /* HEXColor.framework */; };
 		24A1CFDE1C36D17800F0E9CE /* HEXColor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24A1CFDC1C36D17800F0E9CE /* HEXColor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		24A1CFDF1C36D18B00F0E9CE /* HEXColor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24A1CFDC1C36D17800F0E9CE /* HEXColor.framework */; };
 		24A1CFE11C36D8FA00F0E9CE /* TodayScoreCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A1CFE01C36D8FA00F0E9CE /* TodayScoreCircleView.swift */; };
 		24C6AE971C2831660048C4D1 /* TodayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C6AE961C2831660048C4D1 /* TodayTableViewCell.swift */; };
-		24C6C19A1C53CA7C0041C31F /* TodayModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24C77E831C2A8A3E00493C13 /* TodayModel.framework */; };
+		24C6C1A81C54F9970041C31F /* TodayKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 24C6C1A71C54F9970041C31F /* TodayKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		24C6C1AF1C54F9970041C31F /* TodayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24C6C1A51C54F9970041C31F /* TodayKit.framework */; };
+		24C6C1B61C54F9970041C31F /* TodayKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C6C1B51C54F9970041C31F /* TodayKitTests.swift */; };
+		24C6C1C21C54F9DB0041C31F /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FE71321C4245D400A14B9D /* Setting.swift */; };
+		24C6C1C41C54F9F60041C31F /* Streak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E538D81C49E22900B781D8 /* Streak.swift */; };
+		24C6C1C51C54F9F90041C31F /* Today.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C77EA81C2A8C6F00493C13 /* Today.swift */; };
+		24C6C1C61C54F9FD0041C31F /* Today.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 24C77EA41C2A8C3400493C13 /* Today.xcdatamodeld */; };
+		24C6C1C71C54FA010041C31F /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F14741C2A9CDE0003B2AF /* CoreDataStack.swift */; };
+		24C6C1C81C54FA050041C31F /* ManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C77EA11C2A8B6C00493C13 /* ManagedObject.swift */; };
+		24C6C1C91C54FA080041C31F /* NSManagedObjectContext+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24444A591C306B4B00DC1579 /* NSManagedObjectContext+Extensions.swift */; };
+		24C6C1CA1C54FA0A0041C31F /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DBB5901C2C367100E1C042 /* Utilities.swift */; };
+		24C6C1CD1C54FAEE0041C31F /* HEXColor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24A1CFDC1C36D17800F0E9CE /* HEXColor.framework */; };
 		24C77E7C1C2A887000493C13 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24C77E7B1C2A887000493C13 /* SVProgressHUD.framework */; };
 		24C77E7D1C2A887000493C13 /* SVProgressHUD.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24C77E7B1C2A887000493C13 /* SVProgressHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		24C77E861C2A8A3E00493C13 /* TodayModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 24C77E851C2A8A3E00493C13 /* TodayModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		24C77E8D1C2A8A3E00493C13 /* TodayModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24C77E831C2A8A3E00493C13 /* TodayModel.framework */; };
-		24C77E941C2A8A3E00493C13 /* TodayModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C77E931C2A8A3E00493C13 /* TodayModelTests.swift */; };
-		24C77E981C2A8A3E00493C13 /* TodayModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24C77E831C2A8A3E00493C13 /* TodayModel.framework */; };
-		24C77E991C2A8A3E00493C13 /* TodayModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24C77E831C2A8A3E00493C13 /* TodayModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		24C77EA21C2A8B6C00493C13 /* ManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C77EA11C2A8B6C00493C13 /* ManagedObject.swift */; };
-		24C77EA61C2A8C3400493C13 /* Today.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 24C77EA41C2A8C3400493C13 /* Today.xcdatamodeld */; };
-		24C77EA91C2A8C6F00493C13 /* Today.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C77EA81C2A8C6F00493C13 /* Today.swift */; };
-		24D4E3471C43E1D900F6DA6A /* Setting.plist in Resources */ = {isa = PBXBuildFile; fileRef = 24D4E3461C43E1D900F6DA6A /* Setting.plist */; };
 		24D4E3491C43ED6E00F6DA6A /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D4E3481C43ED6E00F6DA6A /* Utilities.swift */; };
 		24D67C851C3EB54600A33DB7 /* TodayAverageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D67C841C3EB54600A33DB7 /* TodayAverageTableViewCell.swift */; };
-		24DBB5911C2C367100E1C042 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DBB5901C2C367100E1C042 /* Utilities.swift */; };
-		24E538D91C49E22900B781D8 /* Streak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E538D81C49E22900B781D8 /* Streak.swift */; };
+		24D8E3DC1C54FC4F005BA35B /* TodayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24C6C1A51C54F9970041C31F /* TodayKit.framework */; };
+		24D8E3DD1C54FC4F005BA35B /* TodayKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24C6C1A51C54F9970041C31F /* TodayKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		24F1948A1C2FB9B8001593D8 /* AugmentedFetchedResultsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F194891C2FB9B8001593D8 /* AugmentedFetchedResultsDataProvider.swift */; };
 		24F21AA91C4FB4B100396A38 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24F21AA81C4FB4B100396A38 /* Charts.framework */; };
 		24F21AAA1C4FB4B100396A38 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24F21AA81C4FB4B100396A38 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		24F21AB11C4FCFE900396A38 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24F21AB01C4FCFE900396A38 /* NotificationCenter.framework */; };
 		24F21AB41C4FCFE900396A38 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F21AB31C4FCFE900396A38 /* TodayViewController.swift */; };
 		24F21AB71C4FCFE900396A38 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24F21AB51C4FCFE900396A38 /* MainInterface.storyboard */; };
-		24F21ABB1C4FCFE900396A38 /* TodayExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 24F21AAF1C4FCFE900396A38 /* TodayExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		24F21ABB1C4FCFE900396A38 /* Today Today Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 24F21AAF1C4FCFE900396A38 /* Today Today Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		24F21AC51C4FD73C00396A38 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24F21AC31C4FD73C00396A38 /* Interface.storyboard */; };
 		24F21AC71C4FD73C00396A38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24F21AC61C4FD73C00396A38 /* Assets.xcassets */; };
-		24F21ACE1C4FD73C00396A38 /* TodayWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 24F21ACD1C4FD73C00396A38 /* TodayWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		24F21ACE1C4FD73C00396A38 /* Today Watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 24F21ACD1C4FD73C00396A38 /* Today Watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		24F21AD51C4FD73C00396A38 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F21AD41C4FD73C00396A38 /* InterfaceController.swift */; };
 		24F21AD71C4FD73C00396A38 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F21AD61C4FD73C00396A38 /* ExtensionDelegate.swift */; };
 		24F21AD91C4FD73C00396A38 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F21AD81C4FD73C00396A38 /* NotificationController.swift */; };
 		24F21ADB1C4FD73C00396A38 /* GlanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F21ADA1C4FD73C00396A38 /* GlanceController.swift */; };
 		24F21ADD1C4FD73C00396A38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24F21ADC1C4FD73C00396A38 /* Assets.xcassets */; };
-		24F21AE11C4FD73C00396A38 /* TodayWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 24F21AC11C4FD73C00396A38 /* TodayWatch.app */; };
+		24F21AE11C4FD73C00396A38 /* Today Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 24F21AC11C4FD73C00396A38 /* Today Watch App.app */; };
 		24F9DC371C2EF9F9003A6427 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F9DC361C2EF9F9003A6427 /* DataProvider.swift */; };
 		24F9DC391C2EFAC5003A6427 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F9DC381C2EFAC5003A6427 /* DataSource.swift */; };
 		24F9DC3B1C2EFB0F003A6427 /* FetchedResultsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F9DC3A1C2EFB0F003A6427 /* FetchedResultsDataProvider.swift */; };
 		24F9DC3D1C2EFCD4003A6427 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F9DC3C1C2EFCD4003A6427 /* TableViewDataSource.swift */; };
 		24F9DC3F1C2EFD33003A6427 /* ConfigurableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F9DC3E1C2EFD33003A6427 /* ConfigurableCell.swift */; };
 		24FE71311C3FFB8700A14B9D /* TodayPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FE71301C3FFB8700A14B9D /* TodayPickerTableViewCell.swift */; };
-		24FE71331C4245D500A14B9D /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FE71321C4245D400A14B9D /* Setting.swift */; };
 		24FFBB971C3D6AFA0053E261 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FFBB961C3D6AFA0053E261 /* SettingTableViewController.swift */; };
 		24FFBB991C3D7AE50053E261 /* ActivityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FFBB981C3D7AE50053E261 /* ActivityTableViewController.swift */; };
 /* End PBXBuildFile section */
@@ -92,26 +91,26 @@
 			remoteGlobalIDString = 24030ADF1C1C821C004E68ED;
 			remoteInfo = Today;
 		};
-		24C77E8E1C2A8A3E00493C13 /* PBXContainerItemProxy */ = {
+		24C6C1B01C54F9970041C31F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 24030AD81C1C821C004E68ED /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 24C77E821C2A8A3E00493C13;
-			remoteInfo = TodayModel;
+			remoteGlobalIDString = 24C6C1A41C54F9970041C31F;
+			remoteInfo = TodayKit;
 		};
-		24C77E901C2A8A3E00493C13 /* PBXContainerItemProxy */ = {
+		24C6C1B21C54F9970041C31F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 24030AD81C1C821C004E68ED /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 24030ADF1C1C821C004E68ED;
 			remoteInfo = Today;
 		};
-		24C77E961C2A8A3E00493C13 /* PBXContainerItemProxy */ = {
+		24D8E3DE1C54FC50005BA35B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 24030AD81C1C821C004E68ED /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 24C77E821C2A8A3E00493C13;
-			remoteInfo = TodayModel;
+			remoteGlobalIDString = 24C6C1A41C54F9970041C31F;
+			remoteInfo = TodayKit;
 		};
 		24F21AB91C4FCFE900396A38 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -137,16 +136,26 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		2451ED851C54FDFC00E7181B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		246688111C1D187A00C5E5A0 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				24C77E991C2A8A3E00493C13 /* TodayModel.framework in Embed Frameworks */,
 				24C77E7D1C2A887000493C13 /* SVProgressHUD.framework in Embed Frameworks */,
 				24A1CFDE1C36D17800F0E9CE /* HEXColor.framework in Embed Frameworks */,
 				24F21AAA1C4FB4B100396A38 /* Charts.framework in Embed Frameworks */,
+				24D8E3DD1C54FC4F005BA35B /* TodayKit.framework in Embed Frameworks */,
 				248BC5591C37AB0E00EFB221 /* DeviceKit.framework in Embed Frameworks */,
 				2472E6FF1C3275C8006DC493 /* LTMorphingLabel.framework in Embed Frameworks */,
 			);
@@ -159,7 +168,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				24F21ABB1C4FCFE900396A38 /* TodayExtension.appex in Embed App Extensions */,
+				24F21ABB1C4FCFE900396A38 /* Today Today Extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -170,7 +179,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				24F21ACE1C4FD73C00396A38 /* TodayWatch Extension.appex in Embed App Extensions */,
+				24F21ACE1C4FD73C00396A38 /* Today Watch Extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -181,7 +190,7 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				24F21AE11C4FD73C00396A38 /* TodayWatch.app in Embed Watch Content */,
+				24F21AE11C4FD73C00396A38 /* Today Watch App.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -218,13 +227,13 @@
 		24A1CFDC1C36D17800F0E9CE /* HEXColor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HEXColor.framework; path = Carthage/Build/iOS/HEXColor.framework; sourceTree = "<group>"; };
 		24A1CFE01C36D8FA00F0E9CE /* TodayScoreCircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayScoreCircleView.swift; sourceTree = "<group>"; };
 		24C6AE961C2831660048C4D1 /* TodayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayTableViewCell.swift; sourceTree = "<group>"; };
+		24C6C1A51C54F9970041C31F /* TodayKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TodayKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		24C6C1A71C54F9970041C31F /* TodayKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayKit.h; sourceTree = "<group>"; };
+		24C6C1A91C54F9970041C31F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24C6C1AE1C54F9970041C31F /* TodayKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodayKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		24C6C1B51C54F9970041C31F /* TodayKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayKitTests.swift; sourceTree = "<group>"; };
+		24C6C1B71C54F9970041C31F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24C77E7B1C2A887000493C13 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = Carthage/Build/iOS/SVProgressHUD.framework; sourceTree = "<group>"; };
-		24C77E831C2A8A3E00493C13 /* TodayModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TodayModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		24C77E851C2A8A3E00493C13 /* TodayModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayModel.h; sourceTree = "<group>"; };
-		24C77E871C2A8A3E00493C13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		24C77E8C1C2A8A3E00493C13 /* TodayModelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodayModelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		24C77E931C2A8A3E00493C13 /* TodayModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayModelTests.swift; sourceTree = "<group>"; };
-		24C77E951C2A8A3E00493C13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24C77EA11C2A8B6C00493C13 /* ManagedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObject.swift; sourceTree = "<group>"; };
 		24C77EA51C2A8C3400493C13 /* Today.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Today.xcdatamodel; sourceTree = "<group>"; };
 		24C77EA81C2A8C6F00493C13 /* Today.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Today.swift; sourceTree = "<group>"; };
@@ -236,16 +245,16 @@
 		24E538D81C49E22900B781D8 /* Streak.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Streak.swift; sourceTree = "<group>"; };
 		24F194891C2FB9B8001593D8 /* AugmentedFetchedResultsDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AugmentedFetchedResultsDataProvider.swift; sourceTree = "<group>"; };
 		24F21AA81C4FB4B100396A38 /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = Carthage/Build/iOS/Charts.framework; sourceTree = "<group>"; };
-		24F21AAF1C4FCFE900396A38 /* TodayExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TodayExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		24F21AAF1C4FCFE900396A38 /* Today Today Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Today Today Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		24F21AB01C4FCFE900396A38 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		24F21AB31C4FCFE900396A38 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		24F21AB61C4FCFE900396A38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		24F21AB81C4FCFE900396A38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		24F21AC11C4FD73C00396A38 /* TodayWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodayWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		24F21AC11C4FD73C00396A38 /* Today Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Today Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		24F21AC41C4FD73C00396A38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		24F21AC61C4FD73C00396A38 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		24F21AC81C4FD73C00396A38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		24F21ACD1C4FD73C00396A38 /* TodayWatch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "TodayWatch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		24F21ACD1C4FD73C00396A38 /* Today Watch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Today Watch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		24F21AD31C4FD73C00396A38 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		24F21AD41C4FD73C00396A38 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
 		24F21AD61C4FD73C00396A38 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
@@ -269,10 +278,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24C77E981C2A8A3E00493C13 /* TodayModel.framework in Frameworks */,
 				24C77E7C1C2A887000493C13 /* SVProgressHUD.framework in Frameworks */,
 				24A1CFDD1C36D17800F0E9CE /* HEXColor.framework in Frameworks */,
 				24F21AA91C4FB4B100396A38 /* Charts.framework in Frameworks */,
+				24D8E3DC1C54FC4F005BA35B /* TodayKit.framework in Frameworks */,
 				248BC5581C37AB0E00EFB221 /* DeviceKit.framework in Frameworks */,
 				2472E6FE1C3275C8006DC493 /* LTMorphingLabel.framework in Frameworks */,
 			);
@@ -292,19 +301,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		24C77E7F1C2A8A3E00493C13 /* Frameworks */ = {
+		24C6C1A11C54F9970041C31F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24A1CFDF1C36D18B00F0E9CE /* HEXColor.framework in Frameworks */,
+				24C6C1CD1C54FAEE0041C31F /* HEXColor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		24C77E891C2A8A3E00493C13 /* Frameworks */ = {
+		24C6C1AB1C54F9970041C31F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24C77E8D1C2A8A3E00493C13 /* TodayModel.framework in Frameworks */,
+				24C6C1AF1C54F9970041C31F /* TodayKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,7 +321,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24C6C19A1C53CA7C0041C31F /* TodayModel.framework in Frameworks */,
 				24F21AB11C4FCFE900396A38 /* NotificationCenter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -330,16 +338,16 @@
 		24030AD71C1C821C004E68ED = {
 			isa = PBXGroup;
 			children = (
-				24030AE21C1C821C004E68ED /* Today */,
-				24030AFA1C1C821C004E68ED /* TodayTests */,
-				24030B051C1C821C004E68ED /* TodayUITests */,
-				24C77E841C2A8A3E00493C13 /* TodayModel */,
-				24C77E921C2A8A3E00493C13 /* TodayModelTests */,
-				24F21AB21C4FCFE900396A38 /* TodayExtension */,
-				24F21AC21C4FD73C00396A38 /* TodayWatch */,
-				24F21AD11C4FD73C00396A38 /* TodayWatch Extension */,
 				246688171C1D189F00C5E5A0 /* Frameworks */,
 				24030AE11C1C821C004E68ED /* Products */,
+				24030AE21C1C821C004E68ED /* Today */,
+				24F21AB21C4FCFE900396A38 /* Today Today Extension */,
+				24F21AC21C4FD73C00396A38 /* Today Watch App */,
+				24F21AD11C4FD73C00396A38 /* Today Watch Extension */,
+				24C6C1A61C54F9970041C31F /* TodayKit */,
+				24C6C1B41C54F9970041C31F /* TodayKitTests */,
+				24030AFA1C1C821C004E68ED /* TodayTests */,
+				24030B051C1C821C004E68ED /* TodayUITests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -349,11 +357,11 @@
 				24030AE01C1C821C004E68ED /* Today.app */,
 				24030AF71C1C821C004E68ED /* TodayTests.xctest */,
 				24030B021C1C821C004E68ED /* TodayUITests.xctest */,
-				24C77E831C2A8A3E00493C13 /* TodayModel.framework */,
-				24C77E8C1C2A8A3E00493C13 /* TodayModelTests.xctest */,
-				24F21AAF1C4FCFE900396A38 /* TodayExtension.appex */,
-				24F21AC11C4FD73C00396A38 /* TodayWatch.app */,
-				24F21ACD1C4FD73C00396A38 /* TodayWatch Extension.appex */,
+				24F21AAF1C4FCFE900396A38 /* Today Today Extension.appex */,
+				24F21AC11C4FD73C00396A38 /* Today Watch App.app */,
+				24F21ACD1C4FD73C00396A38 /* Today Watch Extension.appex */,
+				24C6C1A51C54F9970041C31F /* TodayKit.framework */,
+				24C6C1AE1C54F9970041C31F /* TodayKitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -361,14 +369,14 @@
 		24030AE21C1C821C004E68ED /* Today */ = {
 			isa = PBXGroup;
 			children = (
-				24C77EAD1C2A937600493C13 /* Today.entitlements */,
-				24030AF21C1C821C004E68ED /* Info.plist */,
-				24030AE31C1C821C004E68ED /* AppDelegate.swift */,
-				24030AED1C1C821C004E68ED /* Assets.xcassets */,
 				246688591C1EFC3E00C5E5A0 /* Controller */,
 				24F9DC351C2EF9E6003A6427 /* Data Source and Provider */,
 				240F14761C2A9FB60003B2AF /* Shared Code */,
 				2466885A1C1EFC5600C5E5A0 /* View */,
+				24030AE31C1C821C004E68ED /* AppDelegate.swift */,
+				24030AED1C1C821C004E68ED /* Assets.xcassets */,
+				24030AF21C1C821C004E68ED /* Info.plist */,
+				24C77EAD1C2A937600493C13 /* Today.entitlements */,
 			);
 			path = Today;
 			sourceTree = "<group>";
@@ -444,24 +452,24 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		24C77E841C2A8A3E00493C13 /* TodayModel */ = {
+		24C6C1A61C54F9970041C31F /* TodayKit */ = {
 			isa = PBXGroup;
 			children = (
-				24C77E871C2A8A3E00493C13 /* Info.plist */,
 				24C77EA71C2A8C5F00493C13 /* Model */,
 				24C77EA31C2A8BF000493C13 /* Shared Code */,
-				24C77E851C2A8A3E00493C13 /* TodayModel.h */,
+				24C6C1A91C54F9970041C31F /* Info.plist */,
+				24C6C1A71C54F9970041C31F /* TodayKit.h */,
 			);
-			path = TodayModel;
+			path = TodayKit;
 			sourceTree = "<group>";
 		};
-		24C77E921C2A8A3E00493C13 /* TodayModelTests */ = {
+		24C6C1B41C54F9970041C31F /* TodayKitTests */ = {
 			isa = PBXGroup;
 			children = (
-				24C77E951C2A8A3E00493C13 /* Info.plist */,
-				24C77E931C2A8A3E00493C13 /* TodayModelTests.swift */,
+				24C6C1B71C54F9970041C31F /* Info.plist */,
+				24C6C1B51C54F9970041C31F /* TodayKitTests.swift */,
 			);
-			path = TodayModelTests;
+			path = TodayKitTests;
 			sourceTree = "<group>";
 		};
 		24C77EA31C2A8BF000493C13 /* Shared Code */ = {
@@ -487,39 +495,39 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		24F21AB21C4FCFE900396A38 /* TodayExtension */ = {
+		24F21AB21C4FCFE900396A38 /* Today Today Extension */ = {
 			isa = PBXGroup;
 			children = (
-				24F21AB31C4FCFE900396A38 /* TodayViewController.swift */,
-				24F21AB51C4FCFE900396A38 /* MainInterface.storyboard */,
 				24F21AB81C4FCFE900396A38 /* Info.plist */,
+				24F21AB51C4FCFE900396A38 /* MainInterface.storyboard */,
+				24F21AB31C4FCFE900396A38 /* TodayViewController.swift */,
 			);
-			path = TodayExtension;
+			path = "Today Today Extension";
 			sourceTree = "<group>";
 		};
-		24F21AC21C4FD73C00396A38 /* TodayWatch */ = {
+		24F21AC21C4FD73C00396A38 /* Today Watch App */ = {
 			isa = PBXGroup;
 			children = (
-				24F21AC31C4FD73C00396A38 /* Interface.storyboard */,
 				24F21AC61C4FD73C00396A38 /* Assets.xcassets */,
 				24F21AC81C4FD73C00396A38 /* Info.plist */,
+				24F21AC31C4FD73C00396A38 /* Interface.storyboard */,
 			);
-			path = TodayWatch;
+			path = "Today Watch App";
 			sourceTree = "<group>";
 		};
-		24F21AD11C4FD73C00396A38 /* TodayWatch Extension */ = {
+		24F21AD11C4FD73C00396A38 /* Today Watch Extension */ = {
 			isa = PBXGroup;
 			children = (
-				246AC1801C5120FF0047AAE7 /* AddTodayInterfaceController.swift */,
-				24F21AD41C4FD73C00396A38 /* InterfaceController.swift */,
-				24F21AD61C4FD73C00396A38 /* ExtensionDelegate.swift */,
-				24F21AD81C4FD73C00396A38 /* NotificationController.swift */,
-				24F21ADA1C4FD73C00396A38 /* GlanceController.swift */,
-				24F21ADC1C4FD73C00396A38 /* Assets.xcassets */,
-				24F21ADE1C4FD73C00396A38 /* Info.plist */,
 				24F21AD21C4FD73C00396A38 /* Supporting Files */,
+				246AC1801C5120FF0047AAE7 /* AddTodayInterfaceController.swift */,
+				24F21ADC1C4FD73C00396A38 /* Assets.xcassets */,
+				24F21AD61C4FD73C00396A38 /* ExtensionDelegate.swift */,
+				24F21ADA1C4FD73C00396A38 /* GlanceController.swift */,
+				24F21ADE1C4FD73C00396A38 /* Info.plist */,
+				24F21AD41C4FD73C00396A38 /* InterfaceController.swift */,
+				24F21AD81C4FD73C00396A38 /* NotificationController.swift */,
 			);
-			path = "TodayWatch Extension";
+			path = "Today Watch Extension";
 			sourceTree = "<group>";
 		};
 		24F21AD21C4FD73C00396A38 /* Supporting Files */ = {
@@ -527,7 +535,7 @@
 			children = (
 				24F21AD31C4FD73C00396A38 /* PushNotificationPayload.apns */,
 			);
-			name = "Supporting Files";
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		24F9DC351C2EF9E6003A6427 /* Data Source and Provider */ = {
@@ -545,11 +553,11 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		24C77E801C2A8A3E00493C13 /* Headers */ = {
+		24C6C1A21C54F9970041C31F /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24C77E861C2A8A3E00493C13 /* TodayModel.h in Headers */,
+				24C6C1A81C54F9970041C31F /* TodayKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -571,9 +579,9 @@
 			buildRules = (
 			);
 			dependencies = (
-				24C77E971C2A8A3E00493C13 /* PBXTargetDependency */,
 				24F21ABA1C4FCFE900396A38 /* PBXTargetDependency */,
 				24F21AE01C4FD73C00396A38 /* PBXTargetDependency */,
+				24D8E3DF1C54FC50005BA35B /* PBXTargetDependency */,
 			);
 			name = Today;
 			productName = Today;
@@ -616,46 +624,46 @@
 			productReference = 24030B021C1C821C004E68ED /* TodayUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
-		24C77E821C2A8A3E00493C13 /* TodayModel */ = {
+		24C6C1A41C54F9970041C31F /* TodayKit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 24C77E9A1C2A8A4000493C13 /* Build configuration list for PBXNativeTarget "TodayModel" */;
+			buildConfigurationList = 24C6C1BC1C54F99A0041C31F /* Build configuration list for PBXNativeTarget "TodayKit" */;
 			buildPhases = (
-				24C77E7E1C2A8A3E00493C13 /* Sources */,
-				24C77E7F1C2A8A3E00493C13 /* Frameworks */,
-				24C77E801C2A8A3E00493C13 /* Headers */,
-				24C77E811C2A8A3E00493C13 /* Resources */,
+				24C6C1A01C54F9970041C31F /* Sources */,
+				24C6C1A11C54F9970041C31F /* Frameworks */,
+				24C6C1A21C54F9970041C31F /* Headers */,
+				24C6C1A31C54F9970041C31F /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = TodayModel;
-			productName = TodayModel;
-			productReference = 24C77E831C2A8A3E00493C13 /* TodayModel.framework */;
+			name = TodayKit;
+			productName = TodayKit;
+			productReference = 24C6C1A51C54F9970041C31F /* TodayKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		24C77E8B1C2A8A3E00493C13 /* TodayModelTests */ = {
+		24C6C1AD1C54F9970041C31F /* TodayKitTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 24C77E9D1C2A8A4000493C13 /* Build configuration list for PBXNativeTarget "TodayModelTests" */;
+			buildConfigurationList = 24C6C1BF1C54F99A0041C31F /* Build configuration list for PBXNativeTarget "TodayKitTests" */;
 			buildPhases = (
-				24C77E881C2A8A3E00493C13 /* Sources */,
-				24C77E891C2A8A3E00493C13 /* Frameworks */,
-				24C77E8A1C2A8A3E00493C13 /* Resources */,
+				24C6C1AA1C54F9970041C31F /* Sources */,
+				24C6C1AB1C54F9970041C31F /* Frameworks */,
+				24C6C1AC1C54F9970041C31F /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				24C77E8F1C2A8A3E00493C13 /* PBXTargetDependency */,
-				24C77E911C2A8A3E00493C13 /* PBXTargetDependency */,
+				24C6C1B11C54F9970041C31F /* PBXTargetDependency */,
+				24C6C1B31C54F9970041C31F /* PBXTargetDependency */,
 			);
-			name = TodayModelTests;
-			productName = TodayModelTests;
-			productReference = 24C77E8C1C2A8A3E00493C13 /* TodayModelTests.xctest */;
+			name = TodayKitTests;
+			productName = TodayKitTests;
+			productReference = 24C6C1AE1C54F9970041C31F /* TodayKitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		24F21AAE1C4FCFE900396A38 /* TodayExtension */ = {
+		24F21AAE1C4FCFE900396A38 /* Today Today Extension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 24F21ABC1C4FCFEB00396A38 /* Build configuration list for PBXNativeTarget "TodayExtension" */;
+			buildConfigurationList = 24F21ABC1C4FCFEB00396A38 /* Build configuration list for PBXNativeTarget "Today Today Extension" */;
 			buildPhases = (
 				24F21AAB1C4FCFE900396A38 /* Sources */,
 				24F21AAC1C4FCFE900396A38 /* Frameworks */,
@@ -665,14 +673,14 @@
 			);
 			dependencies = (
 			);
-			name = TodayExtension;
+			name = "Today Today Extension";
 			productName = TodayExtension;
-			productReference = 24F21AAF1C4FCFE900396A38 /* TodayExtension.appex */;
+			productReference = 24F21AAF1C4FCFE900396A38 /* Today Today Extension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		24F21AC01C4FD73C00396A38 /* TodayWatch */ = {
+		24F21AC01C4FD73C00396A38 /* Today Watch App */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 24F21AE61C4FD73E00396A38 /* Build configuration list for PBXNativeTarget "TodayWatch" */;
+			buildConfigurationList = 24F21AE61C4FD73E00396A38 /* Build configuration list for PBXNativeTarget "Today Watch App" */;
 			buildPhases = (
 				24F21ABF1C4FD73C00396A38 /* Resources */,
 				24F21AE51C4FD73E00396A38 /* Embed App Extensions */,
@@ -682,26 +690,27 @@
 			dependencies = (
 				24F21AD01C4FD73C00396A38 /* PBXTargetDependency */,
 			);
-			name = TodayWatch;
+			name = "Today Watch App";
 			productName = TodayWatch;
-			productReference = 24F21AC11C4FD73C00396A38 /* TodayWatch.app */;
+			productReference = 24F21AC11C4FD73C00396A38 /* Today Watch App.app */;
 			productType = "com.apple.product-type.application.watchapp2";
 		};
-		24F21ACC1C4FD73C00396A38 /* TodayWatch Extension */ = {
+		24F21ACC1C4FD73C00396A38 /* Today Watch Extension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 24F21AE21C4FD73E00396A38 /* Build configuration list for PBXNativeTarget "TodayWatch Extension" */;
+			buildConfigurationList = 24F21AE21C4FD73E00396A38 /* Build configuration list for PBXNativeTarget "Today Watch Extension" */;
 			buildPhases = (
 				24F21AC91C4FD73C00396A38 /* Sources */,
 				24F21ACA1C4FD73C00396A38 /* Frameworks */,
 				24F21ACB1C4FD73C00396A38 /* Resources */,
+				2451ED851C54FDFC00E7181B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "TodayWatch Extension";
+			name = "Today Watch Extension";
 			productName = "TodayWatch Extension";
-			productReference = 24F21ACD1C4FD73C00396A38 /* TodayWatch Extension.appex */;
+			productReference = 24F21ACD1C4FD73C00396A38 /* Today Watch Extension.appex */;
 			productType = "com.apple.product-type.watchkit2-extension";
 		};
 /* End PBXNativeTarget section */
@@ -731,10 +740,11 @@
 						CreatedOnToolsVersion = 7.2;
 						TestTargetID = 24030ADF1C1C821C004E68ED;
 					};
-					24C77E821C2A8A3E00493C13 = {
+					24C6C1A41C54F9970041C31F = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = A9WB53K8XM;
 					};
-					24C77E8B1C2A8A3E00493C13 = {
+					24C6C1AD1C54F9970041C31F = {
 						CreatedOnToolsVersion = 7.2;
 						TestTargetID = 24030ADF1C1C821C004E68ED;
 					};
@@ -767,11 +777,11 @@
 				24030ADF1C1C821C004E68ED /* Today */,
 				24030AF61C1C821C004E68ED /* TodayTests */,
 				24030B011C1C821C004E68ED /* TodayUITests */,
-				24C77E821C2A8A3E00493C13 /* TodayModel */,
-				24C77E8B1C2A8A3E00493C13 /* TodayModelTests */,
-				24F21AAE1C4FCFE900396A38 /* TodayExtension */,
-				24F21AC01C4FD73C00396A38 /* TodayWatch */,
-				24F21ACC1C4FD73C00396A38 /* TodayWatch Extension */,
+				24F21AAE1C4FCFE900396A38 /* Today Today Extension */,
+				24F21AC01C4FD73C00396A38 /* Today Watch App */,
+				24F21ACC1C4FD73C00396A38 /* Today Watch Extension */,
+				24C6C1A41C54F9970041C31F /* TodayKit */,
+				24C6C1AD1C54F9970041C31F /* TodayKitTests */,
 			);
 		};
 /* End PBXProject section */
@@ -803,15 +813,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		24C77E811C2A8A3E00493C13 /* Resources */ = {
+		24C6C1A31C54F9970041C31F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24D4E3471C43E1D900F6DA6A /* Setting.plist in Resources */,
+				247E4D611C54FCB800C134DB /* Setting.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		24C77E8A1C2A8A3E00493C13 /* Resources */ = {
+		24C6C1AC1C54F9970041C31F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -906,26 +916,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		24C77E7E1C2A8A3E00493C13 /* Sources */ = {
+		24C6C1A01C54F9970041C31F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24C77EA21C2A8B6C00493C13 /* ManagedObject.swift in Sources */,
-				24E538D91C49E22900B781D8 /* Streak.swift in Sources */,
-				24C77EA91C2A8C6F00493C13 /* Today.swift in Sources */,
-				24C77EA61C2A8C3400493C13 /* Today.xcdatamodeld in Sources */,
-				24DBB5911C2C367100E1C042 /* Utilities.swift in Sources */,
-				24FE71331C4245D500A14B9D /* Setting.swift in Sources */,
-				240F14751C2A9CDE0003B2AF /* CoreDataStack.swift in Sources */,
-				24444A5A1C306B4B00DC1579 /* NSManagedObjectContext+Extensions.swift in Sources */,
+				24C6C1C71C54FA010041C31F /* CoreDataStack.swift in Sources */,
+				24C6C1C91C54FA080041C31F /* NSManagedObjectContext+Extensions.swift in Sources */,
+				24C6C1C21C54F9DB0041C31F /* Setting.swift in Sources */,
+				24C6C1C81C54FA050041C31F /* ManagedObject.swift in Sources */,
+				24C6C1C51C54F9F90041C31F /* Today.swift in Sources */,
+				24C6C1C41C54F9F60041C31F /* Streak.swift in Sources */,
+				24C6C1CA1C54FA0A0041C31F /* Utilities.swift in Sources */,
+				24C6C1C61C54F9FD0041C31F /* Today.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		24C77E881C2A8A3E00493C13 /* Sources */ = {
+		24C6C1AA1C54F9970041C31F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24C77E941C2A8A3E00493C13 /* TodayModelTests.swift in Sources */,
+				24C6C1B61C54F9970041C31F /* TodayKitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -962,34 +972,34 @@
 			target = 24030ADF1C1C821C004E68ED /* Today */;
 			targetProxy = 24030B031C1C821C004E68ED /* PBXContainerItemProxy */;
 		};
-		24C77E8F1C2A8A3E00493C13 /* PBXTargetDependency */ = {
+		24C6C1B11C54F9970041C31F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 24C77E821C2A8A3E00493C13 /* TodayModel */;
-			targetProxy = 24C77E8E1C2A8A3E00493C13 /* PBXContainerItemProxy */;
+			target = 24C6C1A41C54F9970041C31F /* TodayKit */;
+			targetProxy = 24C6C1B01C54F9970041C31F /* PBXContainerItemProxy */;
 		};
-		24C77E911C2A8A3E00493C13 /* PBXTargetDependency */ = {
+		24C6C1B31C54F9970041C31F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 24030ADF1C1C821C004E68ED /* Today */;
-			targetProxy = 24C77E901C2A8A3E00493C13 /* PBXContainerItemProxy */;
+			targetProxy = 24C6C1B21C54F9970041C31F /* PBXContainerItemProxy */;
 		};
-		24C77E971C2A8A3E00493C13 /* PBXTargetDependency */ = {
+		24D8E3DF1C54FC50005BA35B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 24C77E821C2A8A3E00493C13 /* TodayModel */;
-			targetProxy = 24C77E961C2A8A3E00493C13 /* PBXContainerItemProxy */;
+			target = 24C6C1A41C54F9970041C31F /* TodayKit */;
+			targetProxy = 24D8E3DE1C54FC50005BA35B /* PBXContainerItemProxy */;
 		};
 		24F21ABA1C4FCFE900396A38 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 24F21AAE1C4FCFE900396A38 /* TodayExtension */;
+			target = 24F21AAE1C4FCFE900396A38 /* Today Today Extension */;
 			targetProxy = 24F21AB91C4FCFE900396A38 /* PBXContainerItemProxy */;
 		};
 		24F21AD01C4FD73C00396A38 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 24F21ACC1C4FD73C00396A38 /* TodayWatch Extension */;
+			target = 24F21ACC1C4FD73C00396A38 /* Today Watch Extension */;
 			targetProxy = 24F21ACF1C4FD73C00396A38 /* PBXContainerItemProxy */;
 		};
 		24F21AE01C4FD73C00396A38 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 24F21AC01C4FD73C00396A38 /* TodayWatch */;
+			target = 24F21AC01C4FD73C00396A38 /* Today Watch App */;
 			targetProxy = 24F21ADF1C4FD73C00396A38 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1037,6 +1047,7 @@
 				24F21AB61C4FCFE900396A38 /* Base */,
 			);
 			name = MainInterface.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 		24F21AC31C4FD73C00396A38 /* Interface.storyboard */ = {
@@ -1045,6 +1056,7 @@
 				24F21AC41C4FD73C00396A38 /* Base */,
 			);
 			name = Interface.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1225,11 +1237,9 @@
 			};
 			name = Release;
 		};
-		24C77E9B1C2A8A4000493C13 /* Debug */ = {
+		24C6C1BD1C54F99A0041C31F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1241,23 +1251,20 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = TodayModel/Info.plist;
+				INFOPLIST_FILE = TodayKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.TodayModel;
+				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.TodayKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		24C77E9C1C2A8A4000493C13 /* Release */ = {
+		24C6C1BE1C54F99A0041C31F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1269,10 +1276,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = TodayModel/Info.plist;
+				INFOPLIST_FILE = TodayKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.TodayModel;
+				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.TodayKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1280,23 +1287,23 @@
 			};
 			name = Release;
 		};
-		24C77E9E1C2A8A4000493C13 /* Debug */ = {
+		24C6C1C01C54F99A0041C31F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = TodayModelTests/Info.plist;
+				INFOPLIST_FILE = TodayKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.TodayModelTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.TodayKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Today.app/Today";
 			};
 			name = Debug;
 		};
-		24C77E9F1C2A8A4000493C13 /* Release */ = {
+		24C6C1C11C54F99A0041C31F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = TodayModelTests/Info.plist;
+				INFOPLIST_FILE = TodayKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.TodayModelTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.TodayKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Today.app/Today";
 			};
@@ -1307,7 +1314,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = TodayExtension/Info.plist;
+				INFOPLIST_FILE = "Today Today Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.Today.TodayExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1320,7 +1327,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = TodayExtension/Info.plist;
+				INFOPLIST_FILE = "Today Today Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.Today.TodayExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1332,7 +1339,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				INFOPLIST_FILE = "TodayWatch Extension/Info.plist";
+				INFOPLIST_FILE = "Today Watch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.Today.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
@@ -1347,7 +1354,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				INFOPLIST_FILE = "TodayWatch Extension/Info.plist";
+				INFOPLIST_FILE = "Today Watch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.Today.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
@@ -1366,7 +1373,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				IBSC_MODULE = TodayWatch_Extension;
-				INFOPLIST_FILE = TodayWatch/Info.plist;
+				INFOPLIST_FILE = "Today Watch App/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.Today.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1384,7 +1391,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				IBSC_MODULE = TodayWatch_Extension;
-				INFOPLIST_FILE = TodayWatch/Info.plist;
+				INFOPLIST_FILE = "Today Watch App/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.Today.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1433,25 +1440,25 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		24C77E9A1C2A8A4000493C13 /* Build configuration list for PBXNativeTarget "TodayModel" */ = {
+		24C6C1BC1C54F99A0041C31F /* Build configuration list for PBXNativeTarget "TodayKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				24C77E9B1C2A8A4000493C13 /* Debug */,
-				24C77E9C1C2A8A4000493C13 /* Release */,
+				24C6C1BD1C54F99A0041C31F /* Debug */,
+				24C6C1BE1C54F99A0041C31F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		24C77E9D1C2A8A4000493C13 /* Build configuration list for PBXNativeTarget "TodayModelTests" */ = {
+		24C6C1BF1C54F99A0041C31F /* Build configuration list for PBXNativeTarget "TodayKitTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				24C77E9E1C2A8A4000493C13 /* Debug */,
-				24C77E9F1C2A8A4000493C13 /* Release */,
+				24C6C1C01C54F99A0041C31F /* Debug */,
+				24C6C1C11C54F99A0041C31F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		24F21ABC1C4FCFEB00396A38 /* Build configuration list for PBXNativeTarget "TodayExtension" */ = {
+		24F21ABC1C4FCFEB00396A38 /* Build configuration list for PBXNativeTarget "Today Today Extension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				24F21ABD1C4FCFEB00396A38 /* Debug */,
@@ -1460,7 +1467,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		24F21AE21C4FD73E00396A38 /* Build configuration list for PBXNativeTarget "TodayWatch Extension" */ = {
+		24F21AE21C4FD73E00396A38 /* Build configuration list for PBXNativeTarget "Today Watch Extension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				24F21AE31C4FD73E00396A38 /* Debug */,
@@ -1469,7 +1476,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		24F21AE61C4FD73E00396A38 /* Build configuration list for PBXNativeTarget "TodayWatch" */ = {
+		24F21AE61C4FD73E00396A38 /* Build configuration list for PBXNativeTarget "Today Watch App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				24F21AE71C4FD73E00396A38 /* Debug */,

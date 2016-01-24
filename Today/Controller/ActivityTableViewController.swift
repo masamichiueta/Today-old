@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-import TodayModel
+import TodayKit
 
 class ActivityTableViewController: UITableViewController, ManagedObjectContextSettable {
     

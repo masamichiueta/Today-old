@@ -38,11 +38,20 @@
             <objects>
                 <controller id="NgC-EH-V7w" customClass="AddTodayInterfaceController" customModule="Today_Watch_Extension">
                     <items>
-                        <group width="132" height="132" alignment="center" verticalAlignment="center" backgroundImage="score_circle_38_1" layout="vertical" id="BS3-QW-Dnn">
+                        <group width="1" alignment="left" layout="vertical" id="qeL-ud-2Sz">
                             <items>
-                                <picker width="40" height="40" alignment="center" verticalAlignment="center" hidden="YES" focusStyle="stack" id="Es8-JK-8dc"/>
+                                <group width="132" height="132" alignment="center" backgroundImage="score_circle_38_1" layout="vertical" id="BS3-QW-Dnn">
+                                    <items>
+                                        <picker width="40" height="40" alignment="center" verticalAlignment="center" focusStyle="stack" id="Es8-JK-8dc">
+                                            <connections>
+                                                <action selector="pickerItemDidChange:" destination="NgC-EH-V7w" id="XOC-EO-jjs"/>
+                                            </connections>
+                                        </picker>
+                                    </items>
+                                </group>
                             </items>
                         </group>
+                        <button width="1" alignment="center" title="Add" id="aZP-Wh-NM7"/>
                     </items>
                     <connections>
                         <outlet property="scorePicker" destination="Es8-JK-8dc" id="y8D-7L-XIq"/>

@@ -8,6 +8,7 @@
 
 import WatchKit
 import Foundation
+import TodayWatchKit
 
 class AddTodayInterfaceController: WKInterfaceController {
 
@@ -16,7 +17,14 @@ class AddTodayInterfaceController: WKInterfaceController {
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
         
-        // Configure interface objects here.
+        let pickerItems: [WKPickerItem] = Today.masterScores.map {
+            let pickerItem = WKPickerItem()
+            pickerItem.title = "\($0)"
+            return pickerItem
+        }
+        
+        scorePicker.setItems(pickerItems)
+        
     }
 
     override func willActivate() {
@@ -29,4 +37,7 @@ class AddTodayInterfaceController: WKInterfaceController {
         super.didDeactivate()
     }
 
+    @IBAction func pickerItemDidChange(value: Int) {
+        print(value)
+    }
 }

@@ -40,7 +40,7 @@
                     <items>
                         <group width="1" alignment="left" layout="vertical" id="qeL-ud-2Sz">
                             <items>
-                                <group width="132" height="132" alignment="center" backgroundImage="score_circle_38_1" layout="vertical" id="BS3-QW-Dnn">
+                                <group width="132" height="132" alignment="center" backgroundImage="score_circle_38_60" layout="vertical" id="BS3-QW-Dnn">
                                     <items>
                                         <picker width="40" height="40" alignment="center" verticalAlignment="center" focusStyle="stack" id="Es8-JK-8dc">
                                             <connections>
@@ -51,9 +51,14 @@
                                 </group>
                             </items>
                         </group>
-                        <button width="1" alignment="center" title="Add" id="aZP-Wh-NM7"/>
+                        <button width="1" alignment="center" title="Add" id="aZP-Wh-NM7">
+                            <connections>
+                                <action selector="addToday" destination="NgC-EH-V7w" id="wHu-jy-XDU"/>
+                            </connections>
+                        </button>
                     </items>
                     <connections>
+                        <outlet property="scoreCircleGroup" destination="BS3-QW-Dnn" id="InQ-k7-JJf"/>
                         <outlet property="scorePicker" destination="Es8-JK-8dc" id="y8D-7L-XIq"/>
                     </connections>
                 </controller>

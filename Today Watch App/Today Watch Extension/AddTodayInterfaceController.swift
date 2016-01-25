@@ -11,8 +11,31 @@ import Foundation
 import TodayWatchKit
 
 class AddTodayInterfaceController: WKInterfaceController {
+    
+    var score: Int = Today.maxScore {
+        didSet {
+            let watchSize = getWatchSize()
+            
+            switch watchSize {
+            case .ThirtyEight:
+                scoreCircleGroup.setBackgroundImageNamed("score_circle_38_")
+            case .FourtyTwo:
+                scoreCircleGroup.setBackgroundImageNamed("score_circle_42_")
+            }
+            
+            let duration = NSTimeInterval(score - oldValue) / 10.0
+            
+            if score < oldValue {
+                scoreCircleGroup.startAnimatingWithImagesInRange(NSRange(location: 6*score, length: 6), duration: duration, repeatCount: 1)
+            } else {
+                scoreCircleGroup.startAnimatingWithImagesInRange(NSRange(location: 6*oldValue + 1, length: 6), duration: duration, repeatCount: 1)
+            }
+        }
+    }
 
     @IBOutlet var scorePicker: WKInterfacePicker!
+    
+    @IBOutlet var scoreCircleGroup: WKInterfaceGroup!
     
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
@@ -36,8 +59,12 @@ class AddTodayInterfaceController: WKInterfaceController {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
     }
+    
+    @IBAction func addToday() {
+        
+    }
 
     @IBAction func pickerItemDidChange(value: Int) {
-        print(value)
+        score = Today.masterScores[value]
     }
 }

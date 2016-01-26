@@ -17,18 +17,37 @@
                                 </label>
                                 <button width="1" alignment="left" title="Add Today" id="vUb-ir-9sA">
                                     <connections>
-                                        <segue destination="NgC-EH-V7w" kind="modal" id="AcI-Sr-HCe"/>
+                                        <segue destination="NgC-EH-V7w" kind="modal" id="jN9-em-Pai"/>
                                     </connections>
                                 </button>
                             </items>
                         </group>
-                        <group width="1" alignment="left" verticalAlignment="center" hidden="YES" layout="vertical" id="dPv-TN-vgx">
+                        <group width="108" height="108" alignment="center" verticalAlignment="center" backgroundImage="score_circle_38_60" layout="vertical" id="dPv-TN-vgx">
                             <items>
-                                <label alignment="center" text="Score" id="mt2-0g-nab"/>
-                                <imageView alignment="left" id="k1s-gC-GYU"/>
+                                <label alignment="center" verticalAlignment="center" text="10" id="mt2-0g-nab"/>
+                                <imageView alignment="center" verticalAlignment="center" image="good_face_icon_28" id="k1s-gC-GYU">
+                                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </imageView>
+                            </items>
+                            <variation key="device=watch42mm" backgroundImage="score_circle_42_60" height="132" width="132"/>
+                        </group>
+                        <group width="1" alignment="left" verticalAlignment="center" layout="vertical" id="nuT-2S-kN1">
+                            <items>
+                                <label alignment="center" textAlignment="center" numberOfLines="3" id="lKS-Rw-kpR">
+                                    <string key="text">Wow!
+Your iPhone is not connected!</string>
+                                </label>
+                                <imageView alignment="center" image="poor_face_icon_28" id="Qow-jD-EKx">
+                                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </imageView>
                             </items>
                         </group>
                     </items>
+                    <connections>
+                        <outlet property="addGroup" destination="AeO-EP-h7j" id="STk-SR-EgB"/>
+                        <outlet property="scoreGroup" destination="dPv-TN-vgx" id="Wsa-hp-xAO"/>
+                        <outlet property="unreachableGroup" destination="nuT-2S-kN1" id="HCP-Gn-V7b"/>
+                    </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="235" y="347"/>

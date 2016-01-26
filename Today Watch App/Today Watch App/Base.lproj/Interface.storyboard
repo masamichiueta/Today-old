@@ -38,9 +38,9 @@
             <objects>
                 <controller id="NgC-EH-V7w" customClass="AddTodayInterfaceController" customModule="Today_Watch_Extension">
                     <items>
-                        <group width="1" alignment="left" layout="vertical" id="qeL-ud-2Sz">
+                        <group width="1" height="1" alignment="left" layout="vertical" id="qeL-ud-2Sz">
                             <items>
-                                <group width="132" height="132" alignment="center" backgroundImage="score_circle_38_60" layout="vertical" id="BS3-QW-Dnn">
+                                <group width="108" height="108" alignment="center" backgroundImage="score_circle_38_60" layout="vertical" id="BS3-QW-Dnn">
                                     <items>
                                         <picker width="40" height="40" alignment="center" verticalAlignment="center" focusStyle="stack" id="Es8-JK-8dc">
                                             <connections>
@@ -48,14 +48,16 @@
                                             </connections>
                                         </picker>
                                     </items>
+                                    <variation key="device=watch42mm" backgroundImage="score_circle_42_60" height="132" width="132"/>
                                 </group>
+                                <button width="1" height="38" alignment="center" verticalAlignment="bottom" title="Add" id="aZP-Wh-NM7">
+                                    <fontDescription key="font" type="system" pointSize="15"/>
+                                    <connections>
+                                        <action selector="addToday" destination="NgC-EH-V7w" id="wHu-jy-XDU"/>
+                                    </connections>
+                                </button>
                             </items>
                         </group>
-                        <button width="1" alignment="center" title="Add" id="aZP-Wh-NM7">
-                            <connections>
-                                <action selector="addToday" destination="NgC-EH-V7w" id="wHu-jy-XDU"/>
-                            </connections>
-                        </button>
                     </items>
                     <connections>
                         <outlet property="scoreCircleGroup" destination="BS3-QW-Dnn" id="InQ-k7-JJf"/>

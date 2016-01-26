@@ -47,7 +47,6 @@ class AddTodayInterfaceController: WKInterfaceController {
         }
         
         scorePicker.setItems(pickerItems)
-        
     }
 
     override func willActivate() {

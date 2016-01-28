@@ -52,6 +52,7 @@
 		24C7ACD01C5656D8002B203C /* WatchUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C7ACCF1C5656D8002B203C /* WatchUtilities.swift */; };
 		24D4E3491C43ED6E00F6DA6A /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D4E3481C43ED6E00F6DA6A /* Utilities.swift */; };
 		24D67C851C3EB54600A33DB7 /* TodayAverageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D67C841C3EB54600A33DB7 /* TodayAverageTableViewCell.swift */; };
+		24D82C2F1C5A5D880095FA47 /* TodayChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D82C2E1C5A5D880095FA47 /* TodayChartTableViewCell.swift */; };
 		24D8E3DC1C54FC4F005BA35B /* TodayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24C6C1A51C54F9970041C31F /* TodayKit.framework */; };
 		24D8E3DD1C54FC4F005BA35B /* TodayKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24C6C1A51C54F9970041C31F /* TodayKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		24F1948A1C2FB9B8001593D8 /* AugmentedFetchedResultsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F194891C2FB9B8001593D8 /* AugmentedFetchedResultsDataProvider.swift */; };
@@ -250,6 +251,7 @@
 		24D4E3461C43E1D900F6DA6A /* Setting.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Setting.plist; sourceTree = "<group>"; };
 		24D4E3481C43ED6E00F6DA6A /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		24D67C841C3EB54600A33DB7 /* TodayAverageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayAverageTableViewCell.swift; sourceTree = "<group>"; };
+		24D82C2E1C5A5D880095FA47 /* TodayChartTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayChartTableViewCell.swift; sourceTree = "<group>"; };
 		24DBB5901C2C367100E1C042 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		24E538D81C49E22900B781D8 /* Streak.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Streak.swift; sourceTree = "<group>"; };
 		24F194891C2FB9B8001593D8 /* AugmentedFetchedResultsDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AugmentedFetchedResultsDataProvider.swift; sourceTree = "<group>"; };
@@ -453,6 +455,7 @@
 				24FE71301C3FFB8700A14B9D /* TodayPickerTableViewCell.swift */,
 				24A1CFE01C36D8FA00F0E9CE /* TodayScoreCircleView.swift */,
 				24C6AE961C2831660048C4D1 /* TodayTableViewCell.swift */,
+				24D82C2E1C5A5D880095FA47 /* TodayChartTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -967,6 +970,7 @@
 				240F147C1C2AA0450003B2AF /* RootViewController.swift in Sources */,
 				24D67C851C3EB54600A33DB7 /* TodayAverageTableViewCell.swift in Sources */,
 				24D4E3491C43ED6E00F6DA6A /* Utilities.swift in Sources */,
+				24D82C2F1C5A5D880095FA47 /* TodayChartTableViewCell.swift in Sources */,
 				24FFBB991C3D7AE50053E261 /* ActivityTableViewController.swift in Sources */,
 				24A1CFE11C36D8FA00F0E9CE /* TodayScoreCircleView.swift in Sources */,
 				240F147E1C2ABC000003B2AF /* SegueHandlerType.swift in Sources */,

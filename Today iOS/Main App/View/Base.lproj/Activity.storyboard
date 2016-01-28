@@ -12,12 +12,34 @@
             <objects>
                 <tableViewController id="bf9-cA-znK" customClass="ActivityTableViewController" customModule="Today" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="LH7-MZ-suK">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AverageCell" rowHeight="300" id="oTf-zP-7j9" customClass="TodayAverageTableViewCell" customModule="Today" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChartCell" rowHeight="300" id="uCX-ox-VGa" customClass="TodayChartTableViewCell" customModule="Today" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="300"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uCX-ox-VGa" id="04S-o8-u6p">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="299.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O75-7B-Pia" customClass="LineChartView" customModule="Charts">
+                                            <rect key="frame" x="8" y="8" width="584" height="283.5"/>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="O75-7B-Pia" secondAttribute="trailing" id="Mtm-Fm-RK3"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="O75-7B-Pia" secondAttribute="bottom" id="UpE-Xl-U2f"/>
+                                        <constraint firstItem="O75-7B-Pia" firstAttribute="top" secondItem="04S-o8-u6p" secondAttribute="topMargin" id="nEM-hM-ogi"/>
+                                        <constraint firstItem="O75-7B-Pia" firstAttribute="leading" secondItem="04S-o8-u6p" secondAttribute="leadingMargin" id="uFW-Ov-peE"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="lineChartView" destination="O75-7B-Pia" id="EIo-b6-o5A"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AverageCell" rowHeight="300" id="oTf-zP-7j9" customClass="TodayAverageTableViewCell" customModule="Today" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="392" width="600" height="300"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oTf-zP-7j9" id="sMC-fC-cLA">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="299.5"/>
@@ -78,7 +100,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="wCp-aw-awf" detailTextLabel="BBl-re-RVY" style="IBUITableViewCellStyleValue1" id="oXr-su-nb7">
-                                <rect key="frame" x="0.0" y="392" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="692" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oXr-su-nb7" id="FTG-CW-FzD">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -88,7 +110,7 @@
                                             <rect key="frame" x="15" y="12" width="31.5" height="19.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BBl-re-RVY">
@@ -117,6 +139,8 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="800"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qtk-ed-qfI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

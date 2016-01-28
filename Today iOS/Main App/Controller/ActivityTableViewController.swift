@@ -46,26 +46,31 @@ class ActivityTableViewController: UITableViewController, ManagedObjectContextSe
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 5
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         switch indexPath.row {
         case 0:
+            guard let cell = tableView.dequeueReusableCellWithIdentifier("ChartCell", forIndexPath: indexPath) as? TodayChartTableViewCell else {
+                fatalError("Wrong cell type")
+            }
+            return cell
+        case 1:
             guard let cell = tableView.dequeueReusableCellWithIdentifier("AverageCell", forIndexPath: indexPath) as? TodayAverageTableViewCell else {
                 fatalError("Wrong cell type")
             }
             let average = Today.average(managedObjectContext)
             cell.configureForObject(average)
             return cell
-        case 1:
+        case 2:
             let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
             cell.textLabel?.text = "Total"
             let totalTodays = Today.countInContext(managedObjectContext)
             cell.detailTextLabel?.text = "\(totalTodays) total"
             return cell
-        case 2:
+        case 3:
             let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
             cell.textLabel?.text = "Longest streak"
             let number: Int
@@ -76,7 +81,7 @@ class ActivityTableViewController: UITableViewController, ManagedObjectContextSe
             }
             cell.detailTextLabel?.text = "\(number) days"
             return cell
-        case 3:
+        case 4:
             let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
             cell.textLabel?.text = "Current streak"
             let number: Int

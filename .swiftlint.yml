@@ -4,6 +4,8 @@ disabled_rules:
   - todo
   - variable_name_min_length
   - function_body_length
+  - cyclomatic_complexity
+  - variable_name
 included: # paths to include during linting. `--path` is ignored if present.
   - Today iOS
   - Today Watch App

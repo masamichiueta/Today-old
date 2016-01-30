@@ -56,6 +56,7 @@ class ActivityTableViewController: UITableViewController, ManagedObjectContextSe
             guard let cell = tableView.dequeueReusableCellWithIdentifier("ChartCell", forIndexPath: indexPath) as? TodayChartTableViewCell else {
                 fatalError("Wrong cell type")
             }
+            cell.configureForObject(Today.todaysInWeek(managedObjectContext))
             return cell
         case 1:
             guard let cell = tableView.dequeueReusableCellWithIdentifier("AverageCell", forIndexPath: indexPath) as? TodayAverageTableViewCell else {

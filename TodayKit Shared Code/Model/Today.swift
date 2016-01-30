@@ -80,13 +80,6 @@ public final class Today: ManagedObject {
         }
     }
     
-    public static func insertIntoContext(moc: NSManagedObjectContext, score: Int64, date: NSDate) -> Today {
-        let today: Today = moc.insertObject()
-        today.score = score
-        today.date = date
-        return today
-    }
-    
     public static func created(moc: NSManagedObjectContext, forDate date: NSDate) -> Bool {
         
         let todays = Today.fetchInContext(moc, configurationBlock: {
@@ -98,6 +91,26 @@ public final class Today: ManagedObject {
             return false
         }
         return NSCalendar.currentCalendar().isDate(date, inSameDayAsDate: todays[0].date)
+    }
+    
+    public static func todaysInWeek(moc: NSManagedObjectContext) -> [Today] {
+        let todays = Today.fetchInContext(moc, configurationBlock: {
+            request in
+            request.fetchLimit = 7
+            request.sortDescriptors = Today.defaultSortDescriptors
+            let today = NSDate()
+            let dayOneWeekAgo = NSDate(timeInterval: -(7 * 24 * 60 * 60), sinceDate: today)
+            request.predicate = NSPredicate(format: "date => %@ && date <= %@", dayOneWeekAgo, today)
+        })
+        
+        return todays
+    }
+    
+    public static func insertIntoContext(moc: NSManagedObjectContext, score: Int64, date: NSDate) -> Today {
+        let today: Today = moc.insertObject()
+        today.score = score
+        today.date = date
+        return today
     }
 }
 

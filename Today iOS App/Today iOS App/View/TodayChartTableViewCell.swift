@@ -29,6 +29,6 @@ class TodayChartTableViewCell: UITableViewCell {
 
 extension TodayChartTableViewCell: ConfigurableCell {
     func configureForObject(todays: [Today]) {
-        
+        print("todays count = \(todays.count)")
     }
 }

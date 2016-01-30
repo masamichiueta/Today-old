@@ -356,7 +356,7 @@
 				246688171C1D189F00C5E5A0 /* Frameworks */,
 				24030AE11C1C821C004E68ED /* Products */,
 				24F21AC21C4FD73C00396A38 /* Today Watch App */,
-				24030AE21C1C821C004E68ED /* Today iOS */,
+				24030AE21C1C821C004E68ED /* Today iOS App */,
 				24C6C1A61C54F9970041C31F /* TodayKit Shared Code */,
 				24C6C1B41C54F9970041C31F /* TodayKitTests */,
 				24030AFA1C1C821C004E68ED /* TodayTests */,
@@ -380,14 +380,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		24030AE21C1C821C004E68ED /* Today iOS */ = {
+		24030AE21C1C821C004E68ED /* Today iOS App */ = {
 			isa = PBXGroup;
 			children = (
-				24A487E51C55032E0015DB05 /* Main App */,
 				24F21AB21C4FCFE900396A38 /* Today Extension */,
+				24A487E51C55032E0015DB05 /* Today iOS App */,
 				24A487E71C5503A10015DB05 /* TodayKit iOS */,
 			);
-			path = "Today iOS";
+			path = "Today iOS App";
 			sourceTree = "<group>";
 		};
 		24030AFA1C1C821C004E68ED /* TodayTests */ = {
@@ -451,16 +451,16 @@
 				24030AE71C1C821C004E68ED /* Main.storyboard */,
 				246688541C1DB61100C5E5A0 /* Today.storyboard */,
 				24D67C841C3EB54600A33DB7 /* TodayAverageTableViewCell.swift */,
+				24D82C2E1C5A5D880095FA47 /* TodayChartTableViewCell.swift */,
 				244631441C3AB8BA002BBD06 /* TodayPaddingLabel.swift */,
 				24FE71301C3FFB8700A14B9D /* TodayPickerTableViewCell.swift */,
 				24A1CFE01C36D8FA00F0E9CE /* TodayScoreCircleView.swift */,
 				24C6AE961C2831660048C4D1 /* TodayTableViewCell.swift */,
-				24D82C2E1C5A5D880095FA47 /* TodayChartTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		24A487E51C55032E0015DB05 /* Main App */ = {
+		24A487E51C55032E0015DB05 /* Today iOS App */ = {
 			isa = PBXGroup;
 			children = (
 				246688591C1EFC3E00C5E5A0 /* Controller */,
@@ -472,7 +472,7 @@
 				24030AF21C1C821C004E68ED /* Info.plist */,
 				24C77EAD1C2A937600493C13 /* Today.entitlements */,
 			);
-			path = "Main App";
+			path = "Today iOS App";
 			sourceTree = "<group>";
 		};
 		24A487E61C5503600015DB05 /* Today Watch App */ = {
@@ -1254,7 +1254,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = app_icon;
-				CODE_SIGN_ENTITLEMENTS = "Today iOS/Main App/Today.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Today iOS App/Today iOS App/Today.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -1263,7 +1263,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = "Today iOS/Main App/Info.plist";
+				INFOPLIST_FILE = "Today iOS App/Today iOS App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.Today;
@@ -1276,7 +1276,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = app_icon;
-				CODE_SIGN_ENTITLEMENTS = "Today iOS/Main App/Today.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Today iOS App/Today iOS App/Today.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
@@ -1284,7 +1284,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = "Today iOS/Main App/Info.plist";
+				INFOPLIST_FILE = "Today iOS App/Today iOS App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.Today;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1402,7 +1402,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = "Today iOS/TodayKit iOS/Info.plist";
+				INFOPLIST_FILE = "Today iOS App/TodayKit iOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.TodayKit;
@@ -1427,7 +1427,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = "Today iOS/TodayKit iOS/Info.plist";
+				INFOPLIST_FILE = "Today iOS App/TodayKit iOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.TodayKit;
@@ -1465,7 +1465,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = "Today iOS/Today Extension/Info.plist";
+				INFOPLIST_FILE = "Today iOS App/Today Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.Today.TodayExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1478,7 +1478,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = "Today iOS/Today Extension/Info.plist";
+				INFOPLIST_FILE = "Today iOS App/Today Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.Today.TodayExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";

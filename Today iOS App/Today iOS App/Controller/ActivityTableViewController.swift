@@ -46,7 +46,7 @@ class ActivityTableViewController: UITableViewController, ManagedObjectContextSe
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 3
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -59,39 +59,30 @@ class ActivityTableViewController: UITableViewController, ManagedObjectContextSe
             cell.configureForObject(Today.todaysInWeek(managedObjectContext))
             return cell
         case 1:
-            guard let cell = tableView.dequeueReusableCellWithIdentifier("AverageCell", forIndexPath: indexPath) as? TodayAverageTableViewCell else {
+            guard let cell = tableView.dequeueReusableCellWithIdentifier("AverageTotalCell", forIndexPath: indexPath) as? TodayAverageTotalTableViewCell else {
                 fatalError("Wrong cell type")
             }
             let average = Today.average(managedObjectContext)
-            cell.configureForObject(average)
+            let total = Today.countInContext(managedObjectContext)
+            cell.configureForObject((average, total))
             return cell
         case 2:
-            let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
-            cell.textLabel?.text = "Total"
-            let totalTodays = Today.countInContext(managedObjectContext)
-            cell.detailTextLabel?.text = "\(totalTodays) total"
-            return cell
-        case 3:
-            let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
-            cell.textLabel?.text = "Longest streak"
-            let number: Int
+            guard let cell = tableView.dequeueReusableCellWithIdentifier("StreakCell", forIndexPath: indexPath) as? TodayStreakTableViewCell else {
+                fatalError("Wrong cell type")
+            }
+            let longestStreakNumber: Int
             if let longestStreak = Streak.longestStreak(managedObjectContext) {
-                number = Int(longestStreak.streakNumber)
+                longestStreakNumber = Int(longestStreak.streakNumber)
             } else {
-                number = 0
+                longestStreakNumber = 0
             }
-            cell.detailTextLabel?.text = "\(number) days"
-            return cell
-        case 4:
-            let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
-            cell.textLabel?.text = "Current streak"
-            let number: Int
+            let currentSterakNumber: Int
             if let currentStreak = Streak.currentStreak(managedObjectContext) {
-                number = Int(currentStreak.streakNumber)
+                currentSterakNumber = Int(currentStreak.streakNumber)
             } else {
-                number = 0
+                currentSterakNumber = 0
             }
-            cell.detailTextLabel?.text = "\(number) days"
+            cell.configureForObject((longestStreakNumber, currentSterakNumber))
             return cell
         default:
             let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)

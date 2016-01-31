@@ -1,5 +1,5 @@
 //
-//  TodayAverageTableViewCell.swift
+//  TodayAverageTotalTableViewCell.swift
 //  Today
 //
 //  Created by UetaMasamichi on 2016/01/08.
@@ -9,12 +9,13 @@
 import UIKit
 import TodayKit
 
-class TodayAverageTableViewCell: UITableViewCell {
+class TodayAverageTotalTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var scoreCircleView: TodayScoreCircleView!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet weak var totalLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,12 +30,15 @@ class TodayAverageTableViewCell: UITableViewCell {
 
 }
 
-extension TodayAverageTableViewCell: ConfigurableCell {
-    func configureForObject(average: Int) {
+extension TodayAverageTotalTableViewCell: ConfigurableCell {
+    func configureForObject(averageAndTotal: (Int, Int)) {
+        let (average, total) = averageAndTotal
         scoreCircleView.score = average
         scoreLabel.text = "\(average)"
         scoreLabel.textColor = Today.type(average).color()
         iconImageView.image = Today.type(average).icon("40")
         iconImageView.tintColor = Today.type(average).color()
+        
+        totalLabel.text = "\(total)"
     }
 }

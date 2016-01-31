@@ -1,3 +1,2 @@
 github "lexrus/LTMorphingLabel"
 github "dennisweissmann/DeviceKit" ~> 0.1.0
-github "danielgindi/ios-charts" ~> 2.1.6

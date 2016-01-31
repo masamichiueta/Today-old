@@ -27,11 +27,11 @@ public final class Today: ManagedObject {
         }
     }
     
-    public static var maxScore: Int {
+    public static var maxMasterScore: Int {
         return Today.masterScores.first!
     }
     
-    public static var minScore: Int {
+    public static var minMasterScore: Int {
         return Today.masterScores.last!
     }
     

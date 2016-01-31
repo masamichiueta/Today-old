@@ -31,7 +31,7 @@ import TodayKit
                     self.progressCircleColor = toStrokeColor
                     })
             } else {
-                progressCircleLayer.strokeEnd = CGFloat(score)/CGFloat(Today.maxScore)
+                progressCircleLayer.strokeEnd = CGFloat(score)/CGFloat(Today.maxMasterScore)
                 progressCircleLayer.strokeColor = toStrokeColor.CGColor
                 backCircleLayer.strokeColor = CGColorCreateCopyWithAlpha(toStrokeColor.CGColor, backgroundOpacity)
                 progressCircleColor = toStrokeColor
@@ -108,12 +108,12 @@ import TodayKit
         progressCircleLayer.strokeColor = progressCircleColor.CGColor
         progressCircleLayer.fillColor = nil
         progressCircleLayer.strokeStart = 0.0
-        progressCircleLayer.strokeEnd = CGFloat(score)/CGFloat(Today.maxScore)
+        progressCircleLayer.strokeEnd = CGFloat(score)/CGFloat(Today.maxMasterScore)
     }
     
     private func animateProgressFromScore(fromScore: Int, toScore: Int, fromStrokeColor: UIColor, toStrokeColor: UIColor, completion: () -> ()) {
-        let fromStrokeEnd = CGFloat(fromScore)/CGFloat(Today.maxScore)
-        let toStrokeEnd = CGFloat(toScore)/CGFloat(Today.maxScore)
+        let fromStrokeEnd = CGFloat(fromScore)/CGFloat(Today.maxMasterScore)
+        let toStrokeEnd = CGFloat(toScore)/CGFloat(Today.maxMasterScore)
         
         CATransaction.begin()
         

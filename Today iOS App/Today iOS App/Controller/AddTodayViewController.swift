@@ -18,7 +18,7 @@ class AddTodayViewController: UIViewController {
     @IBOutlet weak var scoreLabel: LTMorphingLabel!
     @IBOutlet weak var iconImageView: UIImageView!
     
-    var score: Int =  Today.maxScore {
+    var score: Int =  Today.maxMasterScore {
         didSet {
             scoreCircleView.score = score
             scoreLabel.morphingDuration = Float(scoreCircleView.animationDuration + 0.15)

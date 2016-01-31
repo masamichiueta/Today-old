@@ -7,16 +7,12 @@
 //
 
 import UIKit
-import Charts
 import TodayKit
 
 class TodayChartTableViewCell: UITableViewCell {
-    
-    @IBOutlet weak var lineChartView: LineChartView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

@@ -12,7 +12,7 @@ import TodayWatchKit
 
 class AddTodayInterfaceController: WKInterfaceController {
     
-    var score: Int = Today.maxScore {
+    var score: Int = Today.maxMasterScore {
         didSet {
             let watchSize = getWatchSize()
             

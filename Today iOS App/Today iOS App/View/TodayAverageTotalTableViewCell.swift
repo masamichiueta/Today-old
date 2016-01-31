@@ -11,7 +11,6 @@ import TodayKit
 
 class TodayAverageTotalTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var scoreCircleView: TodayScoreCircleView!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!

@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 
+private let scoreRange = [Int](0...10)
+
 public final class Today: ManagedObject {
     @NSManaged public private(set) var date: NSDate
     @NSManaged public private(set) var score: Int64
@@ -114,8 +116,6 @@ public final class Today: ManagedObject {
     }
 }
 
-private let scoreRange = [Int](0...10)
-
 extension Today: ManagedObjectType {
     public static var entityName: String {
         return "Today"
@@ -143,15 +143,15 @@ public enum TodayType: String {
     public func color() -> UIColor {
         switch self {
         case .Excellent:
-            return UIColor(red: 255.0/255.0, green: 56.0/255.0, blue: 48.0/255.0, alpha: 1.0)
+            return UIColor.todayRedColor()
         case .Good:
-            return UIColor(red: 255.0/255.0, green: 149.0/255.0, blue: 0/255.0, alpha: 1.0)
+            return UIColor.todayOrangeColor()
         case .Average:
-            return UIColor(red: 255.0/255.0, green: 204.0/255.0, blue: 0/255.0, alpha: 1.0)
+            return UIColor.todayYellowColor()
         case .Fair:
-            return UIColor(red: 76.0/255.0, green: 217.0/255.0, blue: 100.0/255.0, alpha: 1.0)
+            return UIColor.todayGreenColor()
         case .Poor:
-            return UIColor(red: 52.0/255.0, green: 170.0/255.0, blue: 220.0/255.0, alpha: 1.0)
+            return UIColor.todayBlueColor()
         }
     }
     

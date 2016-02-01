@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TodayKit
 
 class TodayChartView: UIView {
     
@@ -16,6 +17,8 @@ class TodayChartView: UIView {
     
     @IBOutlet weak var summaryStackViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var summaryStackViewLeadingConstraint: NSLayoutConstraint!
+    
+    weak var dataSource: ChartViewDataSource?
     
     var gradient: CGGradientRef = {
         

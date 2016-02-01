@@ -12,6 +12,7 @@ import TodayKit
 
 class ActivityTableViewController: UITableViewController, ManagedObjectContextSettable {
     
+    
     //MARK: Variables
     var managedObjectContext: NSManagedObjectContext!
     

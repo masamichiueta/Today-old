@@ -1,5 +1,5 @@
 //
-//  TodayChartTableViewCell.swift
+//  ChartTableViewCell.swift
 //  Today
 //
 //  Created by UetaMasamichi on 2016/01/28.
@@ -9,7 +9,7 @@
 import UIKit
 import TodayKit
 
-class TodayChartTableViewCell: UITableViewCell {
+class ChartTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,7 +23,7 @@ class TodayChartTableViewCell: UITableViewCell {
 
 }
 
-extension TodayChartTableViewCell: ConfigurableCell {
+extension ChartTableViewCell: ConfigurableCell {
     func configureForObject(todays: [Today]) {
         print("todays count = \(todays.count)")
     }

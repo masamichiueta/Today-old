@@ -1,5 +1,5 @@
 //
-//  TodayChartView.swift
+//  ChartView.swift
 //  Today
 //
 //  Created by UetaMasamichi on 2016/01/31.
@@ -9,7 +9,7 @@
 import UIKit
 import TodayKit
 
-class TodayChartView: UIView {
+class ChartView: UIView {
     
     @IBOutlet weak var summaryStackView: UIStackView!
     @IBOutlet weak var highScoreNumberLabel: UILabel!

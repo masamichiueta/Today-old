@@ -1,5 +1,5 @@
 //
-//  TodayPaddingLabel.swift
+//  PaddingLabel.swift
 //  Today
 //
 //  Created by UetaMasamichi on 2016/01/04.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TodayPaddingLabel: UILabel {
+class PaddingLabel: UILabel {
     
     var insets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 20.0, bottom: 0, right: 20.0)
     

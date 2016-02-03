@@ -1,5 +1,5 @@
 //
-//  TodayStreakTableViewCell.swift
+//  StreakTableViewCell.swift
 //  Today
 //
 //  Created by UetaMasamichi on 2016/01/31.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TodayStreakTableViewCell: UITableViewCell {
+class StreakTableViewCell: UITableViewCell {
 
     @IBOutlet weak var longestStreakLabel: UILabel!
     
@@ -28,7 +28,7 @@ class TodayStreakTableViewCell: UITableViewCell {
 
 }
 
-extension TodayStreakTableViewCell: ConfigurableCell {
+extension StreakTableViewCell: ConfigurableCell {
     func configureForObject(longestAndCurrentStreaks: (Int, Int)) {
         let (longestStreak, currentStreak) = longestAndCurrentStreaks
         longestStreakLabel.text = "\(longestStreak)"

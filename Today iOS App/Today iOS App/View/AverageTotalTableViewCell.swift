@@ -1,5 +1,5 @@
 //
-//  TodayAverageTotalTableViewCell.swift
+//  AverageTotalTableViewCell.swift
 //  Today
 //
 //  Created by UetaMasamichi on 2016/01/08.
@@ -9,9 +9,9 @@
 import UIKit
 import TodayKit
 
-class TodayAverageTotalTableViewCell: UITableViewCell {
+class AverageTotalTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var scoreCircleView: TodayScoreCircleView!
+    @IBOutlet weak var scoreCircleView: ScoreCircleView!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var totalLabel: UILabel!
@@ -29,7 +29,7 @@ class TodayAverageTotalTableViewCell: UITableViewCell {
 
 }
 
-extension TodayAverageTotalTableViewCell: ConfigurableCell {
+extension AverageTotalTableViewCell: ConfigurableCell {
     func configureForObject(averageAndTotal: (Int, Int)) {
         let (average, total) = averageAndTotal
         scoreCircleView.score = average

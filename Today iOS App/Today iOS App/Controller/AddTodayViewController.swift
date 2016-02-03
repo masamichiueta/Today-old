@@ -14,7 +14,7 @@ import DeviceKit
 class AddTodayViewController: UIViewController {
     
     @IBOutlet weak var pickerView: UIPickerView!
-    @IBOutlet weak var scoreCircleView: TodayScoreCircleView!
+    @IBOutlet weak var scoreCircleView: ScoreCircleView!
     @IBOutlet weak var scoreLabel: LTMorphingLabel!
     @IBOutlet weak var iconImageView: UIImageView!
     

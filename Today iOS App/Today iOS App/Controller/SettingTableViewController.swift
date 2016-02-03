@@ -127,7 +127,7 @@ class SettingTableViewController: UITableViewController {
             cell.detailTextLabel?.textColor = pickerHidden ? defaultDetailTextColor : tableView.tintColor
             return cell
         case (pickerIndexPath.section, pickerIndexPath.row):
-            guard let cell = tableView.dequeueReusableCellWithIdentifier("PickerCell") as? TodayPickerTableViewCell else {
+            guard let cell = tableView.dequeueReusableCellWithIdentifier("PickerCell") as? PickerTableViewCell else {
                 fatalError("Wrong cell type")
             }
             cell.datePicker.date = setting.notificationTime
@@ -168,7 +168,7 @@ class SettingTableViewController: UITableViewController {
     }
 }
 
-extension SettingTableViewController: TodayPickerTableViewCellDelegate {
+extension SettingTableViewController: PickerTableViewCellDelegate {
     func dateDidChange(date: NSDate) {
         let calendar = NSCalendar.currentCalendar()
         let comps = calendar.components([.Hour, .Minute], fromDate: date)

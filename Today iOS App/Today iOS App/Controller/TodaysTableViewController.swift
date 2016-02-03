@@ -24,7 +24,7 @@ class TodaysTableViewController: UITableViewController, ManagedObjectContextSett
     
     private typealias TodaysDataProvider = FetchedResultsDataProvider<TodaysTableViewController>
     private var dataProvider: TodaysDataProvider!
-    private var dataSource: TableViewDataSource<TodaysTableViewController, TodaysDataProvider, TodayTableViewCell>!
+    private var dataSource: TableViewDataSource<TodaysTableViewController, TodaysDataProvider, TableViewCell>!
     
     //MARK: Life Cycle
     override func viewDidLoad() {
@@ -105,7 +105,7 @@ class TodaysTableViewController: UITableViewController, ManagedObjectContextSett
         dataProvider = FetchedResultsDataProvider(fetchedResultsController: frc, delegate: self)
         dataSource = TableViewDataSource(tableView: tableView, dataProvider: dataProvider, delegate: self)
         
-        let noDataLabel = TodayPaddingLabel(frame: CGRect(origin: tableView.bounds.origin, size: tableView.bounds.size))
+        let noDataLabel = PaddingLabel(frame: CGRect(origin: tableView.bounds.origin, size: tableView.bounds.size))
         noDataLabel.text = "Let's start Today!"
         noDataLabel.textColor = UIColor.grayColor()
         noDataLabel.font = UIFont.systemFontOfSize(28)

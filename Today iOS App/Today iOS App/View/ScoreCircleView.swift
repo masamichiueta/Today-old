@@ -1,5 +1,5 @@
 //
-//  TodayScoreCircleView.swift
+//  ScoreCircleView.swift
 //  Today
 //
 //  Created by UetaMasamichi on 2016/01/02.
@@ -9,7 +9,7 @@
 import UIKit
 import TodayKit
 
-@IBDesignable class TodayScoreCircleView: UIView {
+@IBDesignable class ScoreCircleView: UIView {
     
     @IBInspectable var progressCircleColor: UIColor = Today.type(Today.masterScores.maxElement()!).color() {
         didSet {

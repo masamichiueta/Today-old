@@ -54,13 +54,13 @@ class ActivityTableViewController: UITableViewController, ManagedObjectContextSe
         
         switch indexPath.row {
         case 0:
-            guard let cell = tableView.dequeueReusableCellWithIdentifier("ChartCell", forIndexPath: indexPath) as? TodayChartTableViewCell else {
+            guard let cell = tableView.dequeueReusableCellWithIdentifier("ChartCell", forIndexPath: indexPath) as? ChartTableViewCell else {
                 fatalError("Wrong cell type")
             }
             cell.configureForObject(Today.todaysInWeek(managedObjectContext))
             return cell
         case 1:
-            guard let cell = tableView.dequeueReusableCellWithIdentifier("AverageTotalCell", forIndexPath: indexPath) as? TodayAverageTotalTableViewCell else {
+            guard let cell = tableView.dequeueReusableCellWithIdentifier("AverageTotalCell", forIndexPath: indexPath) as? AverageTotalTableViewCell else {
                 fatalError("Wrong cell type")
             }
             let average = Today.average(managedObjectContext)
@@ -68,7 +68,7 @@ class ActivityTableViewController: UITableViewController, ManagedObjectContextSe
             cell.configureForObject((average, total))
             return cell
         case 2:
-            guard let cell = tableView.dequeueReusableCellWithIdentifier("StreakCell", forIndexPath: indexPath) as? TodayStreakTableViewCell else {
+            guard let cell = tableView.dequeueReusableCellWithIdentifier("StreakCell", forIndexPath: indexPath) as? StreakTableViewCell else {
                 fatalError("Wrong cell type")
             }
             let longestStreakNumber: Int

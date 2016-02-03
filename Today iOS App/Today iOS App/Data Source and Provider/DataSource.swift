@@ -14,7 +14,7 @@ protocol DataSourceDelegate: class {
 }
 
 protocol ChartViewDataSource: class {
-   // typealias Object
+    //typealias Object
     func objectAtXIndex(index: Int) -> Int
     func numberOfObjects() -> Int
 }

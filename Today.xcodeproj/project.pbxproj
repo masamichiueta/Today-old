@@ -16,10 +16,10 @@
 		240F14781C2A9FD40003B2AF /* ManagedObjectContextSettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F14771C2A9FD40003B2AF /* ManagedObjectContextSettable.swift */; };
 		240F147C1C2AA0450003B2AF /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F147B1C2AA0450003B2AF /* RootViewController.swift */; };
 		240F147E1C2ABC000003B2AF /* SegueHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F147D1C2ABC000003B2AF /* SegueHandlerType.swift */; };
-		2425BBA91C5E3A0E008AD9A4 /* TodayStreakTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2425BBA81C5E3A0E008AD9A4 /* TodayStreakTableViewCell.swift */; };
+		2425BBA91C5E3A0E008AD9A4 /* StreakTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2425BBA81C5E3A0E008AD9A4 /* StreakTableViewCell.swift */; };
 		242F984B1C49282200DBC64B /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F984A1C49282200DBC64B /* NotificationManager.swift */; };
 		24444A5E1C30A02A00DC1579 /* AddTodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24444A5D1C30A02A00DC1579 /* AddTodayViewController.swift */; };
-		244631451C3AB8BA002BBD06 /* TodayPaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244631441C3AB8BA002BBD06 /* TodayPaddingLabel.swift */; };
+		244631451C3AB8BA002BBD06 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244631441C3AB8BA002BBD06 /* PaddingLabel.swift */; };
 		2466884F1C1DB45E00C5E5A0 /* Activity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2466884D1C1DB45E00C5E5A0 /* Activity.storyboard */; };
 		246688511C1DB4ED00C5E5A0 /* TodaysTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246688501C1DB4ED00C5E5A0 /* TodaysTableViewController.swift */; };
 		246688561C1DB61100C5E5A0 /* Today.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 246688541C1DB61100C5E5A0 /* Today.storyboard */; };
@@ -30,7 +30,7 @@
 		247E4D611C54FCB800C134DB /* Setting.plist in Resources */ = {isa = PBXBuildFile; fileRef = 24D4E3461C43E1D900F6DA6A /* Setting.plist */; };
 		248BC5581C37AB0E00EFB221 /* DeviceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 248BC5571C37AB0E00EFB221 /* DeviceKit.framework */; };
 		248BC5591C37AB0E00EFB221 /* DeviceKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 248BC5571C37AB0E00EFB221 /* DeviceKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		24A1CFE11C36D8FA00F0E9CE /* TodayScoreCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A1CFE01C36D8FA00F0E9CE /* TodayScoreCircleView.swift */; };
+		24A1CFE11C36D8FA00F0E9CE /* ScoreCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A1CFE01C36D8FA00F0E9CE /* ScoreCircleView.swift */; };
 		24A487F51C5503C50015DB05 /* TodayWatchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24A487EE1C5503C50015DB05 /* TodayWatchKit.framework */; };
 		24A487F61C5503C50015DB05 /* TodayWatchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24A487EE1C5503C50015DB05 /* TodayWatchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		24A487FA1C55045D0015DB05 /* Today.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C77EA81C2A8C6F00493C13 /* Today.swift */; };
@@ -40,7 +40,7 @@
 		24A487FE1C5505530015DB05 /* ManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C77EA11C2A8B6C00493C13 /* ManagedObject.swift */; };
 		24A487FF1C5505560015DB05 /* NSManagedObjectContext+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24444A591C306B4B00DC1579 /* NSManagedObjectContext+Extensions.swift */; };
 		24A488031C5505AF0015DB05 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DBB5901C2C367100E1C042 /* Utilities.swift */; };
-		24C6AE971C2831660048C4D1 /* TodayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C6AE961C2831660048C4D1 /* TodayTableViewCell.swift */; };
+		24C6AE971C2831660048C4D1 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C6AE961C2831660048C4D1 /* TableViewCell.swift */; };
 		24C6C1AF1C54F9970041C31F /* TodayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24C6C1A51C54F9970041C31F /* TodayKit.framework */; };
 		24C6C1B61C54F9970041C31F /* TodayKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C6C1B51C54F9970041C31F /* TodayKitTests.swift */; };
 		24C6C1C21C54F9DB0041C31F /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FE71321C4245D400A14B9D /* Setting.swift */; };
@@ -53,7 +53,7 @@
 		24C6C1CA1C54FA0A0041C31F /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DBB5901C2C367100E1C042 /* Utilities.swift */; };
 		24C7ACD01C5656D8002B203C /* WatchUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C7ACCF1C5656D8002B203C /* WatchUtilities.swift */; };
 		24D4E3491C43ED6E00F6DA6A /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D4E3481C43ED6E00F6DA6A /* Utilities.swift */; };
-		24D67C851C3EB54600A33DB7 /* TodayAverageTotalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D67C841C3EB54600A33DB7 /* TodayAverageTotalTableViewCell.swift */; };
+		24D67C851C3EB54600A33DB7 /* AverageTotalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D67C841C3EB54600A33DB7 /* AverageTotalTableViewCell.swift */; };
 		24D82C2F1C5A5D880095FA47 /* TodayChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D82C2E1C5A5D880095FA47 /* TodayChartTableViewCell.swift */; };
 		24D8E3DC1C54FC4F005BA35B /* TodayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24C6C1A51C54F9970041C31F /* TodayKit.framework */; };
 		24D8E3DD1C54FC4F005BA35B /* TodayKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24C6C1A51C54F9970041C31F /* TodayKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -75,7 +75,7 @@
 		24F9DC3B1C2EFB0F003A6427 /* FetchedResultsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F9DC3A1C2EFB0F003A6427 /* FetchedResultsDataProvider.swift */; };
 		24F9DC3D1C2EFCD4003A6427 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F9DC3C1C2EFCD4003A6427 /* TableViewDataSource.swift */; };
 		24F9DC3F1C2EFD33003A6427 /* ConfigurableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F9DC3E1C2EFD33003A6427 /* ConfigurableCell.swift */; };
-		24FE71311C3FFB8700A14B9D /* TodayPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FE71301C3FFB8700A14B9D /* TodayPickerTableViewCell.swift */; };
+		24FE71311C3FFB8700A14B9D /* PickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FE71301C3FFB8700A14B9D /* PickerTableViewCell.swift */; };
 		24FFBB971C3D6AFA0053E261 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FFBB961C3D6AFA0053E261 /* SettingTableViewController.swift */; };
 		24FFBB991C3D7AE50053E261 /* ActivityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FFBB981C3D7AE50053E261 /* ActivityTableViewController.swift */; };
 /* End PBXBuildFile section */
@@ -223,11 +223,11 @@
 		240F14771C2A9FD40003B2AF /* ManagedObjectContextSettable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectContextSettable.swift; sourceTree = "<group>"; };
 		240F147B1C2AA0450003B2AF /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		240F147D1C2ABC000003B2AF /* SegueHandlerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueHandlerType.swift; sourceTree = "<group>"; };
-		2425BBA81C5E3A0E008AD9A4 /* TodayStreakTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayStreakTableViewCell.swift; sourceTree = "<group>"; };
+		2425BBA81C5E3A0E008AD9A4 /* StreakTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreakTableViewCell.swift; sourceTree = "<group>"; };
 		242F984A1C49282200DBC64B /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		24444A591C306B4B00DC1579 /* NSManagedObjectContext+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Extensions.swift"; sourceTree = "<group>"; };
 		24444A5D1C30A02A00DC1579 /* AddTodayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTodayViewController.swift; sourceTree = "<group>"; };
-		244631441C3AB8BA002BBD06 /* TodayPaddingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayPaddingLabel.swift; sourceTree = "<group>"; };
+		244631441C3AB8BA002BBD06 /* PaddingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		2466884E1C1DB45E00C5E5A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Activity.storyboard; sourceTree = "<group>"; };
 		246688501C1DB4ED00C5E5A0 /* TodaysTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodaysTableViewController.swift; sourceTree = "<group>"; };
 		246688551C1DB61100C5E5A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Today.storyboard; sourceTree = "<group>"; };
@@ -235,10 +235,10 @@
 		2472E6FD1C3275C8006DC493 /* LTMorphingLabel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LTMorphingLabel.framework; path = Carthage/Build/iOS/LTMorphingLabel.framework; sourceTree = "<group>"; };
 		24732F4A1C5E4F8600655994 /* TodayChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayChartView.swift; sourceTree = "<group>"; };
 		248BC5571C37AB0E00EFB221 /* DeviceKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DeviceKit.framework; path = Carthage/Build/iOS/DeviceKit.framework; sourceTree = "<group>"; };
-		24A1CFE01C36D8FA00F0E9CE /* TodayScoreCircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayScoreCircleView.swift; sourceTree = "<group>"; };
+		24A1CFE01C36D8FA00F0E9CE /* ScoreCircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreCircleView.swift; sourceTree = "<group>"; };
 		24A487EE1C5503C50015DB05 /* TodayWatchKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TodayWatchKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		24A487F21C5503C50015DB05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		24C6AE961C2831660048C4D1 /* TodayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayTableViewCell.swift; sourceTree = "<group>"; };
+		24C6AE961C2831660048C4D1 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		24C6C1A51C54F9970041C31F /* TodayKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TodayKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		24C6C1A91C54F9970041C31F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24C6C1AE1C54F9970041C31F /* TodayKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodayKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -251,7 +251,7 @@
 		24C7ACCF1C5656D8002B203C /* WatchUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchUtilities.swift; sourceTree = "<group>"; };
 		24D4E3461C43E1D900F6DA6A /* Setting.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Setting.plist; sourceTree = "<group>"; };
 		24D4E3481C43ED6E00F6DA6A /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
-		24D67C841C3EB54600A33DB7 /* TodayAverageTotalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayAverageTotalTableViewCell.swift; sourceTree = "<group>"; };
+		24D67C841C3EB54600A33DB7 /* AverageTotalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AverageTotalTableViewCell.swift; sourceTree = "<group>"; };
 		24D82C2E1C5A5D880095FA47 /* TodayChartTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayChartTableViewCell.swift; sourceTree = "<group>"; };
 		24DBB5901C2C367100E1C042 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		24E538D81C49E22900B781D8 /* Streak.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Streak.swift; sourceTree = "<group>"; };
@@ -277,7 +277,7 @@
 		24F9DC3A1C2EFB0F003A6427 /* FetchedResultsDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedResultsDataProvider.swift; sourceTree = "<group>"; };
 		24F9DC3C1C2EFCD4003A6427 /* TableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		24F9DC3E1C2EFD33003A6427 /* ConfigurableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurableCell.swift; sourceTree = "<group>"; };
-		24FE71301C3FFB8700A14B9D /* TodayPickerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayPickerTableViewCell.swift; sourceTree = "<group>"; };
+		24FE71301C3FFB8700A14B9D /* PickerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerTableViewCell.swift; sourceTree = "<group>"; };
 		24FE71321C4245D400A14B9D /* Setting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		24FFBB961C3D6AFA0053E261 /* SettingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		24FFBB981C3D7AE50053E261 /* ActivityTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityTableViewController.swift; sourceTree = "<group>"; };
@@ -448,13 +448,13 @@
 				24030AEF1C1C821C004E68ED /* LaunchScreen.storyboard */,
 				24030AE71C1C821C004E68ED /* Main.storyboard */,
 				246688541C1DB61100C5E5A0 /* Today.storyboard */,
-				24D67C841C3EB54600A33DB7 /* TodayAverageTotalTableViewCell.swift */,
+				24D67C841C3EB54600A33DB7 /* AverageTotalTableViewCell.swift */,
 				24D82C2E1C5A5D880095FA47 /* TodayChartTableViewCell.swift */,
-				244631441C3AB8BA002BBD06 /* TodayPaddingLabel.swift */,
-				24FE71301C3FFB8700A14B9D /* TodayPickerTableViewCell.swift */,
-				24A1CFE01C36D8FA00F0E9CE /* TodayScoreCircleView.swift */,
-				24C6AE961C2831660048C4D1 /* TodayTableViewCell.swift */,
-				2425BBA81C5E3A0E008AD9A4 /* TodayStreakTableViewCell.swift */,
+				244631441C3AB8BA002BBD06 /* PaddingLabel.swift */,
+				24FE71301C3FFB8700A14B9D /* PickerTableViewCell.swift */,
+				24A1CFE01C36D8FA00F0E9CE /* ScoreCircleView.swift */,
+				24C6AE961C2831660048C4D1 /* TableViewCell.swift */,
+				2425BBA81C5E3A0E008AD9A4 /* StreakTableViewCell.swift */,
 				24732F4A1C5E4F8600655994 /* TodayChartView.swift */,
 			);
 			path = View;
@@ -959,26 +959,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				246688511C1DB4ED00C5E5A0 /* TodaysTableViewController.swift in Sources */,
-				244631451C3AB8BA002BBD06 /* TodayPaddingLabel.swift in Sources */,
+				244631451C3AB8BA002BBD06 /* PaddingLabel.swift in Sources */,
 				24F9DC371C2EF9F9003A6427 /* DataProvider.swift in Sources */,
-				24C6AE971C2831660048C4D1 /* TodayTableViewCell.swift in Sources */,
+				24C6AE971C2831660048C4D1 /* TableViewCell.swift in Sources */,
 				24030AE41C1C821C004E68ED /* AppDelegate.swift in Sources */,
 				242F984B1C49282200DBC64B /* NotificationManager.swift in Sources */,
 				24444A5E1C30A02A00DC1579 /* AddTodayViewController.swift in Sources */,
 				24F1948A1C2FB9B8001593D8 /* AugmentedFetchedResultsDataProvider.swift in Sources */,
-				2425BBA91C5E3A0E008AD9A4 /* TodayStreakTableViewCell.swift in Sources */,
+				2425BBA91C5E3A0E008AD9A4 /* StreakTableViewCell.swift in Sources */,
 				240F14781C2A9FD40003B2AF /* ManagedObjectContextSettable.swift in Sources */,
 				240F147C1C2AA0450003B2AF /* RootViewController.swift in Sources */,
-				24D67C851C3EB54600A33DB7 /* TodayAverageTotalTableViewCell.swift in Sources */,
+				24D67C851C3EB54600A33DB7 /* AverageTotalTableViewCell.swift in Sources */,
 				24D4E3491C43ED6E00F6DA6A /* Utilities.swift in Sources */,
 				24D82C2F1C5A5D880095FA47 /* TodayChartTableViewCell.swift in Sources */,
 				24FFBB991C3D7AE50053E261 /* ActivityTableViewController.swift in Sources */,
-				24A1CFE11C36D8FA00F0E9CE /* TodayScoreCircleView.swift in Sources */,
+				24A1CFE11C36D8FA00F0E9CE /* ScoreCircleView.swift in Sources */,
 				240F147E1C2ABC000003B2AF /* SegueHandlerType.swift in Sources */,
 				24F9DC391C2EFAC5003A6427 /* DataSource.swift in Sources */,
 				24F9DC3F1C2EFD33003A6427 /* ConfigurableCell.swift in Sources */,
 				24FFBB971C3D6AFA0053E261 /* SettingTableViewController.swift in Sources */,
-				24FE71311C3FFB8700A14B9D /* TodayPickerTableViewCell.swift in Sources */,
+				24FE71311C3FFB8700A14B9D /* PickerTableViewCell.swift in Sources */,
 				24732F4B1C5E4F8600655994 /* TodayChartView.swift in Sources */,
 				24F9DC3D1C2EFCD4003A6427 /* TableViewDataSource.swift in Sources */,
 				24F9DC3B1C2EFB0F003A6427 /* FetchedResultsDataProvider.swift in Sources */,

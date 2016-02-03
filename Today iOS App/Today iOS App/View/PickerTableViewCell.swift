@@ -1,5 +1,5 @@
 //
-//  TodayPickerTableViewCell.swift
+//  PickerTableViewCell.swift
 //  Today
 //
 //  Created by UetaMasamichi on 2016/01/08.
@@ -8,13 +8,13 @@
 
 import UIKit
 
-protocol TodayPickerTableViewCellDelegate: class {
+protocol PickerTableViewCellDelegate: class {
     func dateDidChange(date: NSDate)
 }
 
-class TodayPickerTableViewCell: UITableViewCell {
+class PickerTableViewCell: UITableViewCell {
     
-    weak var delegate: TodayPickerTableViewCellDelegate?
+    weak var delegate: PickerTableViewCellDelegate?
     @IBOutlet weak var datePicker: UIDatePicker!
     
     override func awakeFromNib() {

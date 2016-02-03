@@ -11,6 +11,9 @@ import TodayKit
 
 class ChartTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var scoreChartView: ScoreChartView!
+    var scoreChartViewDataSource: ScoreChartViewDataSource?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -26,5 +29,7 @@ class ChartTableViewCell: UITableViewCell {
 extension ChartTableViewCell: ConfigurableCell {
     func configureForObject(todays: [Today]) {
         print("todays count = \(todays.count)")
+        scoreChartViewDataSource = ScoreChartViewDataSource(data: todays)
+        scoreChartView.dataSource = scoreChartViewDataSource
     }
 }

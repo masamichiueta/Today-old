@@ -1,5 +1,5 @@
 //
-//  ChartView.swift
+//  ScoreChartView.swift
 //  Today
 //
 //  Created by UetaMasamichi on 2016/01/31.
@@ -9,7 +9,7 @@
 import UIKit
 import TodayKit
 
-class ChartView: UIView {
+class ScoreChartView: ChartViewBase {
     
     @IBOutlet weak var summaryStackView: UIStackView!
     @IBOutlet weak var highScoreNumberLabel: UILabel!
@@ -18,7 +18,6 @@ class ChartView: UIView {
     @IBOutlet weak var summaryStackViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var summaryStackViewLeadingConstraint: NSLayoutConstraint!
     
-    weak var dataSource: ChartViewDataSource?
     
     var gradient: CGGradientRef = {
         
@@ -36,8 +35,8 @@ class ChartView: UIView {
         
         drawBackgroundGradient()
         
-        let xLabelHeight: CGFloat = 20.0
-        let dataRect = CGRect(
+        let xLabelHeight: CGFloat = 40.0
+        let chartRect = CGRect(
             origin: CGPoint(
                 x: CGRectGetMinX(summaryStackView.frame),
                 y: CGRectGetMaxY(summaryStackView.frame) + summaryStackViewTopConstraint.constant
@@ -48,8 +47,17 @@ class ChartView: UIView {
             )
         )
         
-        drawHorizontalLineInRect(dataRect, xLabelHeight: xLabelHeight)
+        drawHorizontalLineInRect(chartRect)
         
+        let datelabelRect = CGRect(
+            origin: CGPoint(
+                x: CGRectGetMinX(chartRect),
+                y: CGRectGetMaxY(chartRect)),
+            size: CGSize(
+                width: CGRectGetWidth(chartRect),
+                height: xLabelHeight))
+        
+        drawDateLabelInRect(datelabelRect)
         
     }
     
@@ -66,7 +74,7 @@ class ChartView: UIView {
         CGContextRestoreGState(ctx)
     }
     
-    private func drawHorizontalLineInRect(rect: CGRect, xLabelHeight: CGFloat) {
+    private func drawHorizontalLineInRect(rect: CGRect) {
         let ctx = UIGraphicsGetCurrentContext()
         CGContextSaveGState(ctx)
         UIColor.whiteColor().setStroke()
@@ -76,17 +84,27 @@ class ChartView: UIView {
         horizontalLine.addLineToPoint(CGPoint(x: rint(CGRectGetMaxX(rect)), y: CGRectGetMinY(rect)))
         CGContextSaveGState(ctx)
         horizontalLine.stroke()
-        CGContextTranslateCTM(ctx, 0.0, rint(CGRectGetHeight(rect) - xLabelHeight))
+        CGContextTranslateCTM(ctx, 0.0, CGRectGetHeight(rect))
         horizontalLine.stroke()
         CGContextRestoreGState(ctx)
         CGContextRestoreGState(ctx)
     }
     
-    private func drawDateLabelInRect(rect: CGRect, xLabelHeight: CGFloat) {
+    private func drawDateLabelInRect(rect: CGRect) {
+        guard let dataSource = dataSource else {
+            return
+        }
         let ctx = UIGraphicsGetCurrentContext()
         CGContextSaveGState(ctx)
-        UIColor.whiteColor().setStroke()
-        
+        let font = UIFont.systemFontOfSize(12.0)
+        let labelSpace = (CGRectGetWidth(rect) / CGFloat(dataSource.numberOfObjects()))
+        CGContextTranslateCTM(ctx, CGRectGetMinX(rect), CGRectGetMinY(rect))
+        for i in 0..<dataSource.numberOfObjects() {
+            CGContextTranslateCTM(ctx, labelSpace * CGFloat(i), 0)
+            let label = dataSource.chartView(self, xLabelForAtXIndex: i)
+            let labelSize = label.sizeWithAttributes([NSFontAttributeName: font])
+            label.drawInRect(CGRect(x: 0.0, y: 0.0, width: labelSize.width, height: labelSize.height), withAttributes: [NSFontAttributeName: font, NSForegroundColorAttributeName: UIColor.whiteColor()])
+        }
         CGContextRestoreGState(ctx)
     }
 }

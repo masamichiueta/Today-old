@@ -12,9 +12,3 @@ protocol DataSourceDelegate: class {
     typealias Object
     func cellIdentifierForObject(object: Object) -> String
 }
-
-protocol ChartViewDataSource: class {
-    //typealias Object
-    func objectAtXIndex(index: Int) -> Int
-    func numberOfObjects() -> Int
-}

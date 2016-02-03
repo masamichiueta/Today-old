@@ -49,6 +49,8 @@ class ChartView: UIView {
         )
         
         drawHorizontalLineInRect(dataRect, xLabelHeight: xLabelHeight)
+        
+        
     }
     
     override func traitCollectionDidChange(previousTraitCollection: UITraitCollection?) {
@@ -77,6 +79,14 @@ class ChartView: UIView {
         CGContextTranslateCTM(ctx, 0.0, rint(CGRectGetHeight(rect) - xLabelHeight))
         horizontalLine.stroke()
         CGContextRestoreGState(ctx)
+        CGContextRestoreGState(ctx)
+    }
+    
+    private func drawDateLabelInRect(rect: CGRect, xLabelHeight: CGFloat) {
+        let ctx = UIGraphicsGetCurrentContext()
+        CGContextSaveGState(ctx)
+        UIColor.whiteColor().setStroke()
+        
         CGContextRestoreGState(ctx)
     }
 }

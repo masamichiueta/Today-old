@@ -63,13 +63,13 @@ class ActivityTableViewController: UITableViewController, ManagedObjectContextSe
                 let previousWeekChartData = previousWeekDaysFromToday.map {date -> ChartData in
                     let todayAtDate = todaysInWeek.filter {
                         NSCalendar.currentCalendar().isDate(date, inSameDayAsDate: $0.date)
-                    }.first
+                        }.first
                     let comp = NSCalendar.currentCalendar().components([.Year, .Month, .Day, .Weekday], fromDate: date)
-                    let data:ChartData
+                    let data: ChartData
                     if let todayAtDate = todayAtDate {
-                        data = ChartData(xLabel: "\(comp.day)", yLabel: "\(todayAtDate.score)")
+                        data = ChartData(xValue: "\(comp.day)", yValue: Int(todayAtDate.score))
                     } else {
-                        data = ChartData(xLabel: "\(comp.day)", yLabel: nil)
+                        data = ChartData(xValue: "\(comp.day)", yValue: nil)
                     }
                     
                     return data

@@ -9,7 +9,7 @@
 import UIKit
 
 class StreakTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var longestStreakLabel: UILabel!
     
     @IBOutlet weak var currentStreakLabel: UILabel!
@@ -19,13 +19,13 @@ class StreakTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
+    
 }
 
 extension StreakTableViewCell: ConfigurableCell {

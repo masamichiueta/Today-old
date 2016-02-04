@@ -19,7 +19,7 @@ class ChartTableViewCell: UITableViewCell {
     @IBOutlet weak var scoreChartView: ScoreChartView!
     var scoreChartViewDataSource: ScoreChartViewDataSource?
     var chartViewPeriodType: ChartViewPeriodType = .Week
-
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -10,12 +10,11 @@ import Foundation
 
 struct ChartData {
     
-    var xLabel: String?
-    var yLabel: String?
+    var xValue: String?
+    var yValue: Int?
     
-    init(xLabel: String?, yLabel: String?) {
-        self.xLabel = xLabel
-        self.yLabel = yLabel
+    init(xValue: String?, yValue: Int?) {
+        self.xValue = xValue
+        self.yValue = yValue
     }
-    
 }

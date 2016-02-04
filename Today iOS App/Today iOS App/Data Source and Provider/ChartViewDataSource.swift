@@ -10,31 +10,39 @@ import UIKit
 import TodayKit
 
 protocol ChartViewDataSource: class {
-    func chartView(chartView: ChartViewBase, yLabelForAtXIndex index: Int) -> String?
-    func chartView(chartView: ChartViewBase, xLabelForAtXIndex index: Int) -> String?
+    func chartView(chartView: ChartViewBase, xValueForAtXIndex index: Int) -> String?
+    func chartView(chartView: ChartViewBase, yValueForAtXIndex index: Int) -> Int?
+    func maxYValue() -> Int?
+    func minYValue() -> Int?
     func numberOfObjects() -> Int
 }
 
 class ScoreChartViewDataSource: ChartViewDataSource {
     
-    var data: [ChartData]
+    private var data: [ChartData]
     
     init(data: [ChartData]) {
         self.data = data
     }
     
-    func chartView(chartView: ChartViewBase, xLabelForAtXIndex index: Int) -> String? {
-        return data[index].xLabel
-//        let today = data[index]
-//        let calendar = NSCalendar.currentCalendar()
-//        let comps = calendar.components([.Day], fromDate: today.date)
-//        return "\(comps.day)"
+    func chartView(chartView: ChartViewBase, xValueForAtXIndex index: Int) -> String? {
+        return data[index].xValue
     }
     
-    func chartView(chartView: ChartViewBase, yLabelForAtXIndex index: Int) -> String? {
-        return data[index].yLabel
-//        let today = data[index]
-//        return "\(today.score)"
+    func chartView(chartView: ChartViewBase, yValueForAtXIndex index: Int) -> Int? {
+        return data[index].yValue
+    }
+    
+    func maxYValue() -> Int? {
+        return data.flatMap({
+            $0.yValue
+        }).maxElement()
+    }
+    
+    func minYValue() -> Int? {
+        return data.flatMap({
+            $0.yValue
+        }).minElement()
     }
     
     func numberOfObjects() -> Int {

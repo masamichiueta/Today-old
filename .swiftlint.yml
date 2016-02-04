@@ -7,7 +7,7 @@ disabled_rules:
   - cyclomatic_complexity
   - variable_name
 included: # paths to include during linting. `--path` is ignored if present.
-  - Today iOS
+  - Today iOS App
   - Today Watch App
   - TodayKit Shared Code
 excluded: # paths to ignore during linting. Takes precedence over `included`.

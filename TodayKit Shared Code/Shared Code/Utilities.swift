@@ -42,6 +42,22 @@ extension NSDate {
         let difference = calendar.components(.Day, fromDate: fromDate!, toDate: toDate!, options: [])
         return difference.day
     }
+    
+    public static func nextWeekDatesFromDate(date: NSDate) -> [NSDate] {
+        return [Int](0..<7).map { i -> NSDate in
+            let comp =  NSCalendar.currentCalendar().components([.Year, .Month, .Day, .Weekday, .Hour, .Minute], fromDate: date)
+            comp.day = comp.day + i
+            return NSCalendar.currentCalendar().dateFromComponents(comp)!
+        }
+    }
+    
+    public static func previousWeekDatesFromDate(date: NSDate) -> [NSDate] {
+        return [Int](1...7).map { i -> NSDate in
+            let comp =  NSCalendar.currentCalendar().components([.Year, .Month, .Day, .Weekday, .Hour, .Minute], fromDate: date)
+            comp.day = comp.day - 7 + i
+            return NSCalendar.currentCalendar().dateFromComponents(comp)!
+        }
+    }
 }
 
 extension UIColor {

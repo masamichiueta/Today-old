@@ -10,29 +10,31 @@ import UIKit
 import TodayKit
 
 protocol ChartViewDataSource: class {
-    func chartView(chartView: ChartViewBase, yLabelForAtXIndex index: Int) -> String
-    func chartView(chartView: ChartViewBase, xLabelForAtXIndex index: Int) -> String
+    func chartView(chartView: ChartViewBase, yLabelForAtXIndex index: Int) -> String?
+    func chartView(chartView: ChartViewBase, xLabelForAtXIndex index: Int) -> String?
     func numberOfObjects() -> Int
 }
 
 class ScoreChartViewDataSource: ChartViewDataSource {
     
-    var data: [Today]
+    var data: [ChartData]
     
-    init(data: [Today]) {
+    init(data: [ChartData]) {
         self.data = data
     }
     
-    func chartView(chartView: ChartViewBase, xLabelForAtXIndex index: Int) -> String {
-        let today = data[index]
-        let calendar = NSCalendar.currentCalendar()
-        let comps = calendar.components([.Day], fromDate: today.date)
-        return "\(comps.day)"
+    func chartView(chartView: ChartViewBase, xLabelForAtXIndex index: Int) -> String? {
+        return data[index].xLabel
+//        let today = data[index]
+//        let calendar = NSCalendar.currentCalendar()
+//        let comps = calendar.components([.Day], fromDate: today.date)
+//        return "\(comps.day)"
     }
     
-    func chartView(chartView: ChartViewBase, yLabelForAtXIndex index: Int) -> String {
-        let today = data[index]
-        return "\(today.score)"
+    func chartView(chartView: ChartViewBase, yLabelForAtXIndex index: Int) -> String? {
+        return data[index].yLabel
+//        let today = data[index]
+//        return "\(today.score)"
     }
     
     func numberOfObjects() -> Int {

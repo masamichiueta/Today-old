@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2401ACCA1C63854100E0691F /* ChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2401ACC91C63854100E0691F /* ChartData.swift */; };
 		24030AE41C1C821C004E68ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24030AE31C1C821C004E68ED /* AppDelegate.swift */; };
 		24030AE91C1C821C004E68ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24030AE71C1C821C004E68ED /* Main.storyboard */; };
 		24030AEE1C1C821C004E68ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24030AED1C1C821C004E68ED /* Assets.xcassets */; };
@@ -209,6 +210,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2401ACC91C63854100E0691F /* ChartData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartData.swift; sourceTree = "<group>"; };
 		24030AE01C1C821C004E68ED /* Today.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Today.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24030AE31C1C821C004E68ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		24030AE81C1C821C004E68ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -599,6 +601,7 @@
 				24F9DC3A1C2EFB0F003A6427 /* FetchedResultsDataProvider.swift */,
 				24F9DC3C1C2EFCD4003A6427 /* TableViewDataSource.swift */,
 				244BF08F1C623DF600A9543A /* ChartViewDataSource.swift */,
+				2401ACC91C63854100E0691F /* ChartData.swift */,
 			);
 			path = "Data Source and Provider";
 			sourceTree = "<group>";
@@ -977,6 +980,7 @@
 				2425BBA91C5E3A0E008AD9A4 /* StreakTableViewCell.swift in Sources */,
 				240F14781C2A9FD40003B2AF /* ManagedObjectContextSettable.swift in Sources */,
 				240F147C1C2AA0450003B2AF /* RootViewController.swift in Sources */,
+				2401ACCA1C63854100E0691F /* ChartData.swift in Sources */,
 				24D67C851C3EB54600A33DB7 /* AverageTotalTableViewCell.swift in Sources */,
 				24D4E3491C43ED6E00F6DA6A /* Utilities.swift in Sources */,
 				24D82C2F1C5A5D880095FA47 /* ChartTableViewCell.swift in Sources */,

@@ -57,7 +57,27 @@ class ActivityTableViewController: UITableViewController, ManagedObjectContextSe
             guard let cell = tableView.dequeueReusableCellWithIdentifier("ChartCell", forIndexPath: indexPath) as? ChartTableViewCell else {
                 fatalError("Wrong cell type")
             }
-            cell.configureForObject(Today.todaysInWeek(managedObjectContext))
+            if cell.chartViewPeriodType == .Week {
+                let todaysInWeek = Today.todaysInWeek(managedObjectContext)
+                let previousWeekDaysFromToday = NSDate.previousWeekDatesFromDate(NSDate())
+                let previousWeekChartData = previousWeekDaysFromToday.map {date -> ChartData in
+                    let todayAtDate = todaysInWeek.filter {
+                        NSCalendar.currentCalendar().isDate(date, inSameDayAsDate: $0.date)
+                    }.first
+                    let comp = NSCalendar.currentCalendar().components([.Year, .Month, .Day, .Weekday], fromDate: date)
+                    let data:ChartData
+                    if let todayAtDate = todayAtDate {
+                        data = ChartData(xLabel: "\(comp.day)", yLabel: "\(todayAtDate.score)")
+                    } else {
+                        data = ChartData(xLabel: "\(comp.day)", yLabel: nil)
+                    }
+                    
+                    return data
+                }
+                let dataSource = ScoreChartViewDataSource(data: previousWeekChartData)
+                cell.configureForObject(dataSource)
+            }
+            
             return cell
         case 1:
             guard let cell = tableView.dequeueReusableCellWithIdentifier("AverageTotalCell", forIndexPath: indexPath) as? AverageTotalTableViewCell else {

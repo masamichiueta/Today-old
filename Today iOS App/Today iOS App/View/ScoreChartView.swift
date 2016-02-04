@@ -12,12 +12,12 @@ import TodayKit
 class ScoreChartView: ChartViewBase {
     
     @IBOutlet weak var summaryStackView: UIStackView!
+    @IBOutlet weak var ChartTitleLabel: UILabel!
     @IBOutlet weak var highScoreNumberLabel: UILabel!
     @IBOutlet weak var lowScoreNumberLabel: UILabel!
     
     @IBOutlet weak var summaryStackViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var summaryStackViewLeadingConstraint: NSLayoutConstraint!
-    
     
     var gradient: CGGradientRef = {
         
@@ -36,9 +36,9 @@ class ScoreChartView: ChartViewBase {
         drawBackgroundGradient()
         
         let xLabelHeight: CGFloat = 40.0
-        let chartRect = CGRect(
+        let borderRect = CGRect(
             origin: CGPoint(
-                x: CGRectGetMinX(summaryStackView.frame),
+                x: summaryStackViewLeadingConstraint.constant,
                 y: CGRectGetMaxY(summaryStackView.frame) + summaryStackViewTopConstraint.constant
             ),
             size: CGSize(
@@ -47,17 +47,20 @@ class ScoreChartView: ChartViewBase {
             )
         )
         
-        drawHorizontalLineInRect(chartRect)
+        drawHorizontalLineInRect(borderRect)
         
+        let chartHorizontalMargin: CGFloat = 16.0
         let datelabelRect = CGRect(
             origin: CGPoint(
-                x: CGRectGetMinX(chartRect),
-                y: CGRectGetMaxY(chartRect)),
+                x: CGRectGetMinX(borderRect) + chartHorizontalMargin,
+                y: CGRectGetMaxY(borderRect)),
             size: CGSize(
-                width: CGRectGetWidth(chartRect),
+                width: CGRectGetWidth(borderRect) - chartHorizontalMargin * 2,
                 height: xLabelHeight))
         
-        drawDateLabelInRect(datelabelRect)
+        drawXLabelInRect(datelabelRect)
+        
+        
         
     }
     
@@ -90,20 +93,22 @@ class ScoreChartView: ChartViewBase {
         CGContextRestoreGState(ctx)
     }
     
-    private func drawDateLabelInRect(rect: CGRect) {
+    private func drawXLabelInRect(rect: CGRect) {
         guard let dataSource = dataSource else {
             return
         }
         let ctx = UIGraphicsGetCurrentContext()
         CGContextSaveGState(ctx)
         let font = UIFont.systemFontOfSize(12.0)
-        let labelSpace = (CGRectGetWidth(rect) / CGFloat(dataSource.numberOfObjects()))
+        let labelSpace = (CGRectGetWidth(rect) / CGFloat(dataSource.numberOfObjects() - 1))
         CGContextTranslateCTM(ctx, CGRectGetMinX(rect), CGRectGetMinY(rect))
+        
         for i in 0..<dataSource.numberOfObjects() {
-            CGContextTranslateCTM(ctx, labelSpace * CGFloat(i), 0)
-            let label = dataSource.chartView(self, xLabelForAtXIndex: i)
+            guard let label = dataSource.chartView(self, xLabelForAtXIndex: i) else {
+                continue
+            }
             let labelSize = label.sizeWithAttributes([NSFontAttributeName: font])
-            label.drawInRect(CGRect(x: 0.0, y: 0.0, width: labelSize.width, height: labelSize.height), withAttributes: [NSFontAttributeName: font, NSForegroundColorAttributeName: UIColor.whiteColor()])
+            label.drawInRect(CGRect(x: labelSpace * CGFloat(i) - labelSize.width / 2.0, y: 0.0, width: labelSize.width, height: labelSize.height), withAttributes: [NSFontAttributeName: font, NSForegroundColorAttributeName: UIColor.whiteColor()])
         }
         CGContextRestoreGState(ctx)
     }

@@ -43,7 +43,7 @@ extension NSDate {
         return difference.day
     }
     
-    public static func nextWeekDatesFromDate(date: NSDate) -> [NSDate] {
+    public static func datesToNextWeekDateFromDate(date: NSDate) -> [NSDate] {
         return [Int](0..<7).map { i -> NSDate in
             let comp =  NSCalendar.currentCalendar().components([.Year, .Month, .Day, .Weekday, .Hour, .Minute], fromDate: date)
             comp.day = comp.day + i
@@ -51,13 +51,39 @@ extension NSDate {
         }
     }
     
-    public static func previousWeekDatesFromDate(date: NSDate) -> [NSDate] {
+    public static func datesFromPreviousWeekDateToDate(date: NSDate) -> [NSDate] {
         return [Int](1...7).map { i -> NSDate in
             let comp =  NSCalendar.currentCalendar().components([.Year, .Month, .Day, .Weekday, .Hour, .Minute], fromDate: date)
             comp.day = comp.day - 7 + i
             return NSCalendar.currentCalendar().dateFromComponents(comp)!
         }
     }
+    
+    public static func datesToNextMonthDateFromDate(date: NSDate) -> [NSDate] {
+        let comp = NSCalendar.currentCalendar().components([.Year, .Month, .Day, .Weekday, .Hour, .Minute], fromDate: date)
+        comp.month = comp.month + 1
+        let numberOfDaysToNextMonth = date.numberOfDaysUntilDateTime(NSCalendar.currentCalendar().dateFromComponents(comp)!)
+        
+        return [Int](0..<numberOfDaysToNextMonth).map { i -> NSDate in
+            let comp =  NSCalendar.currentCalendar().components([.Year, .Month, .Day, .Weekday, .Hour, .Minute], fromDate: date)
+            comp.day = comp.day + i
+            return NSCalendar.currentCalendar().dateFromComponents(comp)!
+        }
+    }
+    
+    public static func datesFromPreviousMonthDateToDate(date: NSDate) -> [NSDate] {
+        let comp = NSCalendar.currentCalendar().components([.Year, .Month, .Day, .Weekday, .Hour, .Minute], fromDate: date)
+        comp.month = comp.month - 1
+        let numberOfDaysFromLastMonth = NSCalendar.currentCalendar().dateFromComponents(comp)!.numberOfDaysUntilDateTime(date)
+
+        
+        return [Int](1...numberOfDaysFromLastMonth).map { i -> NSDate in
+            let comp =  NSCalendar.currentCalendar().components([.Year, .Month, .Day, .Weekday, .Hour, .Minute], fromDate: date)
+            comp.day = comp.day - numberOfDaysFromLastMonth + i
+            return NSCalendar.currentCalendar().dateFromComponents(comp)!
+        }
+    }
+
 }
 
 extension UIColor {

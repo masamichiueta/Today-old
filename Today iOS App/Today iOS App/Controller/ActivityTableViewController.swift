@@ -38,9 +38,9 @@ class ActivityTableViewController: UITableViewController, ManagedObjectContextSe
     func createChartViewDataSource(periodType: ChartViewPeriodType) -> ScoreChartViewDataSource {
         switch periodType {
         case .Week:
-            let todaysInWeek = Today.todaysInWeek(managedObjectContext)
-            let previousWeekDaysFromToday = NSDate.previousWeekDatesFromDate(NSDate())
-            let previousWeekChartData = previousWeekDaysFromToday.map {date -> ChartData in
+            let datesFromLastWeekToNow = NSDate.datesFromPreviousWeekDateToDate(NSDate())
+            let todaysInWeek = Today.todays(managedObjectContext, from: datesFromLastWeekToNow.first!, to: datesFromLastWeekToNow.last!)
+            let chartData = datesFromLastWeekToNow.map {date -> ChartData in
                 let todayAtDate = todaysInWeek.filter {
                     NSCalendar.currentCalendar().isDate(date, inSameDayAsDate: $0.date)
                     }.first
@@ -53,24 +53,25 @@ class ActivityTableViewController: UITableViewController, ManagedObjectContextSe
                 }
                 return data
             }
-            return ScoreChartViewDataSource(data: previousWeekChartData)
+            return ScoreChartViewDataSource(data: chartData)
         case .Month:
-            let todaysInWeek = Today.todaysInWeek(managedObjectContext)
-            let previousWeekDaysFromToday = NSDate.previousWeekDatesFromDate(NSDate())
-            let previousWeekChartData = previousWeekDaysFromToday.map {date -> ChartData in
-                let todayAtDate = todaysInWeek.filter {
+            let datesFromLastMonthToNow = NSDate.datesFromPreviousMonthDateToDate(NSDate())
+            let todaysInMonth = Today.todays(managedObjectContext, from: datesFromLastMonthToNow.first!, to: datesFromLastMonthToNow.last!)
+            let chartData = datesFromLastMonthToNow.enumerate().map {(index, date) -> ChartData in
+                let todayAtDate = todaysInMonth.filter {
                     NSCalendar.currentCalendar().isDate(date, inSameDayAsDate: $0.date)
                     }.first
                 let comp = NSCalendar.currentCalendar().components([.Year, .Month, .Day, .Weekday], fromDate: date)
                 let data: ChartData
+                let xValue = index % 6 == 0 ? "\(comp.day)" : ""
                 if let todayAtDate = todayAtDate {
-                    data = ChartData(xValue: "\(comp.day)", yValue: Int(todayAtDate.score))
+                    data = ChartData(xValue: xValue, yValue: Int(todayAtDate.score))
                 } else {
-                    data = ChartData(xValue: "\(comp.day)", yValue: nil)
+                    data = ChartData(xValue: xValue, yValue: nil)
                 }
                 return data
             }
-            return ScoreChartViewDataSource(data: previousWeekChartData)
+            return ScoreChartViewDataSource(data: chartData)
         }
     }
     

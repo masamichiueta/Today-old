@@ -95,14 +95,11 @@ public final class Today: ManagedObject {
         return NSCalendar.currentCalendar().isDate(date, inSameDayAsDate: todays[0].date)
     }
     
-    public static func todaysInWeek(moc: NSManagedObjectContext) -> [Today] {
+    public static func todays(moc: NSManagedObjectContext, from: NSDate, to: NSDate) -> [Today] {
         let todays = Today.fetchInContext(moc, configurationBlock: {
             request in
-            request.fetchLimit = 7
             request.sortDescriptors = Today.defaultSortDescriptors
-            let today = NSDate()
-            let dayOneWeekAgo = NSDate(timeInterval: -(7 * 24 * 60 * 60), sinceDate: today)
-            request.predicate = NSPredicate(format: "date => %@ && date <= %@", dayOneWeekAgo, today)
+            request.predicate = NSPredicate(format: "date => %@ && date <= %@", from, to)
         })
         
         return todays

@@ -7,18 +7,28 @@
 //
 
 import UIKit
-import TodayKit
 
-enum ChartViewPeriodType {
+enum ChartViewPeriodType: Int {
     case Week
     case Month
 }
 
+protocol ChartTableViewCellDelegate: class {
+    func periodTypeDidChanged(type: ChartViewPeriodType)
+}
+
+
 class ChartTableViewCell: UITableViewCell {
     
     @IBOutlet weak var scoreChartView: ScoreChartView!
+    @IBOutlet weak var periodSegmentedControl: UISegmentedControl!
+    weak var delegate: ChartTableViewCellDelegate?
     var scoreChartViewDataSource: ScoreChartViewDataSource?
-    var chartViewPeriodType: ChartViewPeriodType = .Week
+    var periodType: ChartViewPeriodType = .Week {
+        didSet {
+            delegate?.periodTypeDidChanged(periodType)
+        }
+    }
     
     
     override func awakeFromNib() {
@@ -31,11 +41,15 @@ class ChartTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBAction func periodDidChange(sender: UISegmentedControl) {
+        periodType = ChartViewPeriodType(rawValue: sender.selectedSegmentIndex)!
+    }
 }
 
 extension ChartTableViewCell: ConfigurableCell {
     func configureForObject(dataSource: ScoreChartViewDataSource) {
         scoreChartViewDataSource = dataSource
         scoreChartView.dataSource = scoreChartViewDataSource
+        scoreChartView.setNeedsDisplay()
     }
 }

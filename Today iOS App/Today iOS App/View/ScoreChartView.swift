@@ -12,7 +12,7 @@ import TodayKit
 class ScoreChartView: ChartViewBase {
     
     @IBOutlet weak var summaryStackView: UIStackView!
-    @IBOutlet weak var ChartTitleLabel: UILabel!
+    @IBOutlet weak var chartTitleLabel: UILabel!
     @IBOutlet weak var highScoreNumberLabel: UILabel!
     @IBOutlet weak var lowScoreNumberLabel: UILabel!
     @IBOutlet weak var summaryStackViewTopConstraint: NSLayoutConstraint!
@@ -72,10 +72,7 @@ class ScoreChartView: ChartViewBase {
                 width: yValueWidth,
                 height: CGRectGetHeight(borderRect) - chartVerticalMargin * 2))
         drawYLabelInRect(yLabelRect)
-        
-        print(borderRect)
-        print(xLabelRect)
-        print(yLabelRect)
+   
     }
     
     override func traitCollectionDidChange(previousTraitCollection: UITraitCollection?) {

@@ -162,4 +162,14 @@ class ScoreChartView: ChartViewBase {
         
         CGContextRestoreGState(ctx)
     }
+    
+    private func drawDataInRect(rect: CGRect) {
+        let ctx = UIGraphicsGetCurrentContext()
+        CGContextSaveGState(ctx)
+        UIColor.whiteColor().setFill()
+        UIColor.whiteColor().setStroke()
+        //TODO: Draw data point circles and lines
+        
+        CGContextRestoreGState(ctx)
+    }
 }

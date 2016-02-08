@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TodayKit
 
 enum ChartViewPeriodType: Int {
     case Week
@@ -50,6 +51,8 @@ extension ChartTableViewCell: ConfigurableCell {
     func configureForObject(dataSource: ScoreChartViewDataSource) {
         scoreChartViewDataSource = dataSource
         scoreChartView.dataSource = scoreChartViewDataSource
+        scoreChartView.customMaxYValue = Today.maxMasterScore
+        scoreChartView.customMinYValue = Today.minMasterScore
         scoreChartView.setNeedsDisplay()
     }
 }

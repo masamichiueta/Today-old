@@ -18,8 +18,8 @@ class ScoreChartView: ChartViewBase {
     @IBOutlet weak var summaryStackViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var summaryStackViewLeadingConstraint: NSLayoutConstraint!
     
-    var customMaxYValue: Double?
-    var customMinYValue: Double?
+    var customMaxYValue: Int?
+    var customMinYValue: Int?
     var axisFont = UIFont.systemFontOfSize(12.0)
     
     var gradient: CGGradientRef = {
@@ -72,7 +72,16 @@ class ScoreChartView: ChartViewBase {
                 width: yValueWidth,
                 height: CGRectGetHeight(borderRect) - chartVerticalMargin * 2))
         drawYLabelInRect(yLabelRect)
-   
+        
+        let dataRect = CGRect(
+            origin: CGPoint(
+                x: CGRectGetMinX(borderRect) + chartHorizontalMargin,
+                y: CGRectGetMinY(borderRect) + chartVerticalMargin),
+            size: CGSize(
+                width: CGRectGetWidth(xLabelRect),
+                height: CGRectGetHeight(yLabelRect)))
+        
+        drawDataInRect(dataRect)
     }
     
     override func traitCollectionDidChange(previousTraitCollection: UITraitCollection?) {
@@ -93,9 +102,9 @@ class ScoreChartView: ChartViewBase {
         CGContextSaveGState(ctx)
         UIColor.whiteColor().setStroke()
         let horizontalLine = UIBezierPath()
-        horizontalLine.lineWidth = 1.0
-        horizontalLine.moveToPoint(CGPoint(x: rint(CGRectGetMinX(rect)), y: CGRectGetMinY(rect)))
-        horizontalLine.addLineToPoint(CGPoint(x: rint(CGRectGetMaxX(rect)), y: CGRectGetMinY(rect)))
+        horizontalLine.lineWidth = 0.5
+        horizontalLine.moveToPoint(CGPoint(x: CGRectGetMinX(rect), y: CGRectGetMinY(rect)))
+        horizontalLine.addLineToPoint(CGPoint(x: CGRectGetMaxX(rect), y: CGRectGetMinY(rect)))
         CGContextSaveGState(ctx)
         horizontalLine.stroke()
         CGContextTranslateCTM(ctx, 0.0, CGRectGetHeight(rect))
@@ -164,11 +173,55 @@ class ScoreChartView: ChartViewBase {
     }
     
     private func drawDataInRect(rect: CGRect) {
+        guard let dataSource = dataSource else {
+            return
+        }
         let ctx = UIGraphicsGetCurrentContext()
         CGContextSaveGState(ctx)
         UIColor.whiteColor().setFill()
         UIColor.whiteColor().setStroke()
-        //TODO: Draw data point circles and lines
+        
+        let path = UIBezierPath()
+        let lineWidth: CGFloat = 1.0
+        path.lineWidth = lineWidth
+        path.lineJoinStyle = .Round
+        path.lineCapStyle = .Round
+        
+        CGContextTranslateCTM(ctx, CGRectGetMinX(rect), CGRectGetMinY(rect))
+        let maxYValue: Int
+        if let customMaxYValue = customMaxYValue {
+            maxYValue = customMaxYValue
+        } else if let _maxYValue = dataSource.maxYValue() {
+            maxYValue = _maxYValue
+        } else {
+            maxYValue = 1
+        }
+        
+        let minYValue: Int
+        if let customMinYValue = customMinYValue {
+            minYValue = customMinYValue
+        } else if let _minYValue = dataSource.minYValue() {
+            minYValue = _minYValue
+        } else {
+            minYValue = 0
+        }
+        
+        let horizontalSpace = (CGRectGetWidth(rect) / CGFloat(dataSource.numberOfObjects() - 1))
+        let verticalSpace = CGRectGetHeight(rect) / CGFloat(maxYValue - minYValue)
+        
+        let initialDataPoint = CGPoint(x: -lineWidth / 2.0, y: CGRectGetHeight(rect))
+        path.moveToPoint(initialDataPoint)
+        
+        for i in 0..<dataSource.numberOfObjects() {
+            guard let yValue = dataSource.chartView(self, yValueForAtXIndex: i) else {
+                //Move x
+                path.moveToPoint(CGPoint(x: horizontalSpace * CGFloat(i + 1), y: CGRectGetHeight(rect)))
+                continue
+            }
+            path.addLineToPoint(CGPoint(x: horizontalSpace * CGFloat(i + 1), y: CGRectGetHeight(rect) - verticalSpace * CGFloat(yValue)))
+            path.stroke()
+        }
+        
         
         CGContextRestoreGState(ctx)
     }

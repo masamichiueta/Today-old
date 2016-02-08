@@ -88,11 +88,13 @@ class ScoreChartView: ChartViewBase {
         setNeedsDisplay()
     }
     
+    //MARK: - Draiwng
     private func drawBackgroundGradient() {
         let ctx = UIGraphicsGetCurrentContext()
         CGContextSaveGState(ctx)
         let startPoint = CGPoint(x: CGRectGetMidX(self.bounds), y: 0)
         let endPoint = CGPoint(x: CGRectGetMidX(self.bounds), y: CGRectGetMaxY(self.bounds))
+        gradient = createBackgroundGradient()
         CGContextDrawLinearGradient(ctx, gradient, startPoint, endPoint, [])
         CGContextRestoreGState(ctx)
     }
@@ -115,7 +117,7 @@ class ScoreChartView: ChartViewBase {
     
     private func drawXLabelInRect(rect: CGRect) {
         guard let dataSource = dataSource else {
-            return
+            fatalError("No data source")
         }
         let ctx = UIGraphicsGetCurrentContext()
         CGContextSaveGState(ctx)
@@ -134,7 +136,7 @@ class ScoreChartView: ChartViewBase {
     
     private func drawYLabelInRect(rect: CGRect) {
         guard let dataSource = dataSource else {
-            return
+            fatalError("No data source")
         }
         let ctx = UIGraphicsGetCurrentContext()
         CGContextSaveGState(ctx)
@@ -174,7 +176,7 @@ class ScoreChartView: ChartViewBase {
     
     private func drawDataInRect(rect: CGRect) {
         guard let dataSource = dataSource else {
-            return
+            fatalError("No data source")
         }
         let ctx = UIGraphicsGetCurrentContext()
         CGContextSaveGState(ctx)
@@ -210,19 +212,134 @@ class ScoreChartView: ChartViewBase {
         let verticalSpace = CGRectGetHeight(rect) / CGFloat(maxYValue - minYValue)
         
         let initialDataPoint = CGPoint(x: -lineWidth / 2.0, y: CGRectGetHeight(rect))
+        var previousYValue: Int?
         path.moveToPoint(initialDataPoint)
-        
         for i in 0..<dataSource.numberOfObjects() {
             guard let yValue = dataSource.chartView(self, yValueForAtXIndex: i) else {
                 //Move x
                 path.moveToPoint(CGPoint(x: horizontalSpace * CGFloat(i + 1), y: CGRectGetHeight(rect)))
+                previousYValue = nil
                 continue
             }
-            path.addLineToPoint(CGPoint(x: horizontalSpace * CGFloat(i + 1), y: CGRectGetHeight(rect) - verticalSpace * CGFloat(yValue)))
-            path.stroke()
+            if previousYValue != nil {
+                path.addLineToPoint(CGPoint(x: horizontalSpace * CGFloat(i + 1), y: CGRectGetHeight(rect) - verticalSpace * CGFloat(yValue)))
+                path.stroke()
+            } else {
+                path.moveToPoint(CGPoint(x: horizontalSpace * CGFloat(i + 1), y: CGRectGetHeight(rect) - verticalSpace * CGFloat(yValue)))
+            }
+            previousYValue = yValue
         }
-        
-        
         CGContextRestoreGState(ctx)
     }
+    
+    private func pathFromDataInRect(rect: CGRect) -> UIBezierPath {
+        guard let dataSource = dataSource else {
+            fatalError("No data source")
+        }
+        let path = UIBezierPath()
+        let lineWidth: CGFloat = 1.0
+        path.lineWidth = lineWidth
+        path.lineJoinStyle = .Round
+        path.lineCapStyle = .Round
+        
+        let maxYValue: Int
+        if let customMaxYValue = customMaxYValue {
+            maxYValue = customMaxYValue
+        } else if let _maxYValue = dataSource.maxYValue() {
+            maxYValue = _maxYValue
+        } else {
+            maxYValue = 1
+        }
+        
+        let minYValue: Int
+        if let customMinYValue = customMinYValue {
+            minYValue = customMinYValue
+        } else if let _minYValue = dataSource.minYValue() {
+            minYValue = _minYValue
+        } else {
+            minYValue = 0
+        }
+        
+        let horizontalSpace = (CGRectGetWidth(rect) / CGFloat(dataSource.numberOfObjects() - 1))
+        let verticalSpace = CGRectGetHeight(rect) / CGFloat(maxYValue - minYValue)
+        
+        let initialDataPoint = CGPoint(x: CGRectGetMinX(rect) - lineWidth / 2.0, y: CGRectGetMinY(rect) + CGRectGetHeight(rect))
+        var previousYValue: Int?
+        path.moveToPoint(initialDataPoint)
+        for i in 0..<dataSource.numberOfObjects() {
+            guard let yValue = dataSource.chartView(self, yValueForAtXIndex: i) else {
+                //Move x
+                path.moveToPoint(CGPoint(x: horizontalSpace * CGFloat(i + 1), y: CGRectGetHeight(rect)))
+                previousYValue = nil
+                continue
+            }
+            if previousYValue != nil {
+                path.addLineToPoint(CGPoint(x: horizontalSpace * CGFloat(i + 1), y: CGRectGetHeight(rect) - verticalSpace * CGFloat(yValue)))
+                path.stroke()
+            } else {
+                path.moveToPoint(CGPoint(x: horizontalSpace * CGFloat(i + 1), y: CGRectGetHeight(rect) - verticalSpace * CGFloat(yValue)))
+            }
+            previousYValue = yValue
+        }
+        return path
+    }
+    
+    //MARK: - Clipping Path
+    private func bottomClipPathFromDataInRect(rect: CGRect) -> UIBezierPath {
+        let path = UIBezierPath()
+        path.appendPath(pathFromDataInRect(rect))
+        let currentPoint = path.currentPoint
+        path.addLineToPoint(CGPoint(x: CGRectGetMaxX(rect), y: currentPoint.y))
+        path.addLineToPoint(CGPoint(x: CGRectGetMaxX(rect), y: CGRectGetMinY(rect)))
+        path.addLineToPoint(CGPoint(x: CGRectGetMinX(rect), y: CGRectGetMinY(rect)))
+        //path.addLineToPoint(CGPoint(x: CGRectGetMinX(rect), y: <#T##Double#>))
+        //[path addLineToPoint:CGPointMake(CGRectGetMinX(rect), initialDataPoint_.y)];
+        //[path addLineToPoint:CGPointMake(initialDataPoint_.x, initialDataPoint_.y)];
+        path.closePath()
+        return path
+    }
+    
+    
+    //MARK: - Helper
+    private func createBackgroundGradient() -> CGGradientRef {
+        let locations: [CGFloat] = [0.0, 1.0]
+        let colors: [CGColor]
+        guard let lastValue = dataSource?.lastValue() else {
+            colors = [
+                UIColor.todayGradientBlueStartColor().CGColor,
+                UIColor.todayGradientBlueEndColor().CGColor
+            ]
+            return CGGradientCreateWithColors(CGColorSpaceCreateDeviceRGB(), colors, locations)!
+        }
+        
+        switch Today.type(lastValue) {
+        case .Excellent:
+            colors = [
+                UIColor.todayGradientRedStartColor().CGColor,
+                UIColor.todayGradientRedEndColor().CGColor
+            ]
+        case .Good:
+            colors = [
+                UIColor.todayGradientOrangeStartColor().CGColor,
+                UIColor.todayGradientOrangeEndColor().CGColor
+            ]
+        case .Average:
+            colors = [
+                UIColor.todayGradientYellowStartColor().CGColor,
+                UIColor.todayGradientYellowEndColor().CGColor
+            ]
+        case .Fair:
+            colors = [
+                UIColor.todayGradientGreenStartColor().CGColor,
+                UIColor.todayGradientGreenEndColor().CGColor
+            ]
+        case .Poor:
+            colors = [
+                UIColor.todayGradientBlueStartColor().CGColor,
+                UIColor.todayGradientBlueEndColor().CGColor
+            ]
+        }
+        return CGGradientCreateWithColors(CGColorSpaceCreateDeviceRGB(), colors, locations)!
+    }
+    
 }

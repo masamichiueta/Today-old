@@ -14,6 +14,7 @@ protocol ChartViewDataSource: class {
     func chartView(chartView: ChartViewBase, yValueForAtXIndex index: Int) -> Int?
     func maxYValue() -> Int?
     func minYValue() -> Int?
+    func lastValue() -> Int?
     func numberOfObjects() -> Int
 }
 
@@ -43,6 +44,10 @@ class ScoreChartViewDataSource: ChartViewDataSource {
         return data.flatMap({
             $0.yValue
         }).minElement()
+    }
+    
+    func lastValue() -> Int? {
+        return data.last?.yValue
     }
     
     func numberOfObjects() -> Int {

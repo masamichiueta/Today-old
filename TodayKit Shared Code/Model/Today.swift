@@ -152,6 +152,39 @@ public enum TodayType: String {
         }
     }
     
+    public func gradientColor() -> CGGradientRef {
+        let locations: [CGFloat] = [0.0, 1.0]
+        let colors: [CGColor]
+        switch self {
+        case .Excellent:
+            colors = [
+                UIColor.todayGradientRedStartColor().CGColor,
+                UIColor.todayGradientRedEndColor().CGColor
+            ]
+        case .Good:
+            colors = [
+                UIColor.todayGradientOrangeStartColor().CGColor,
+                UIColor.todayGradientOrangeEndColor().CGColor
+            ]
+        case .Average:
+            colors = [
+                UIColor.todayGradientYellowStartColor().CGColor,
+                UIColor.todayGradientYellowEndColor().CGColor
+            ]
+        case .Fair:
+            colors = [
+                UIColor.todayGradientGreenStartColor().CGColor,
+                UIColor.todayGradientGreenEndColor().CGColor
+            ]
+        case .Poor:
+            colors = [
+                UIColor.todayGradientBlueStartColor().CGColor,
+                UIColor.todayGradientBlueEndColor().CGColor
+            ]
+        }
+        return CGGradientCreateWithColors(CGColorSpaceCreateDeviceRGB(), colors, locations)!
+    }
+    
     public func icon(size: String) -> UIImage {
         switch self {
         case .Excellent, .Good:

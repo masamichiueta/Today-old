@@ -146,5 +146,4 @@ extension UIColor {
     public class func todayGradientBlueEndColor() -> UIColor {
         return UIColor(red: 29.0/255.0, green: 98.0/255.0, blue: 240.0/255.0, alpha: 1.0)
     }
-    
 }

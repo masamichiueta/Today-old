@@ -94,7 +94,11 @@ class ScoreChartView: ChartViewBase {
         CGContextSaveGState(ctx)
         let startPoint = CGPoint(x: CGRectGetMidX(self.bounds), y: 0)
         let endPoint = CGPoint(x: CGRectGetMidX(self.bounds), y: CGRectGetMaxY(self.bounds))
-        gradient = createBackgroundGradient()
+        if let lastValue = dataSource?.lastValue() {
+            gradient = Today.type(lastValue).gradientColor()
+        } else {
+            gradient = TodayType.Poor.gradientColor()
+        }
         CGContextDrawLinearGradient(ctx, gradient, startPoint, endPoint, [])
         CGContextRestoreGState(ctx)
     }
@@ -183,11 +187,8 @@ class ScoreChartView: ChartViewBase {
         UIColor.whiteColor().setFill()
         UIColor.whiteColor().setStroke()
         
-        let path = UIBezierPath()
+        
         let lineWidth: CGFloat = 1.0
-        path.lineWidth = lineWidth
-        path.lineJoinStyle = .Round
-        path.lineCapStyle = .Round
         
         CGContextTranslateCTM(ctx, CGRectGetMinX(rect), CGRectGetMinY(rect))
         let maxYValue: Int
@@ -212,22 +213,26 @@ class ScoreChartView: ChartViewBase {
         let verticalSpace = CGRectGetHeight(rect) / CGFloat(maxYValue - minYValue)
         
         let initialDataPoint = CGPoint(x: -lineWidth / 2.0, y: CGRectGetHeight(rect))
-        var previousYValue: Int?
-        path.moveToPoint(initialDataPoint)
+        var lastPointAndIndex: (point: CGPoint, index: Int) = (initialDataPoint, 0)
         for i in 0..<dataSource.numberOfObjects() {
+            CGContextSaveGState(ctx)
+            let path = UIBezierPath()
+            path.lineWidth = lineWidth
+            path.lineJoinStyle = .Round
+            path.lineCapStyle = .Round
+            path.moveToPoint(lastPointAndIndex.point)
             guard let yValue = dataSource.chartView(self, yValueForAtXIndex: i) else {
-                //Move x
-                path.moveToPoint(CGPoint(x: horizontalSpace * CGFloat(i + 1), y: CGRectGetHeight(rect)))
-                previousYValue = nil
                 continue
             }
-            if previousYValue != nil {
-                path.addLineToPoint(CGPoint(x: horizontalSpace * CGFloat(i + 1), y: CGRectGetHeight(rect) - verticalSpace * CGFloat(yValue)))
-                path.stroke()
-            } else {
-                path.moveToPoint(CGPoint(x: horizontalSpace * CGFloat(i + 1), y: CGRectGetHeight(rect) - verticalSpace * CGFloat(yValue)))
+            if lastPointAndIndex.index != i - 1 {
+                let pattern: [CGFloat] = [3.0, 6.0]
+                path.setLineDash(pattern, count: pattern.count, phase: 0)
             }
-            previousYValue = yValue
+            let currentPoint = CGPoint(x: horizontalSpace * CGFloat(i), y: CGRectGetHeight(rect) - verticalSpace * CGFloat(yValue))
+            path.addLineToPoint(currentPoint)
+            path.stroke()
+            CGContextRestoreGState(ctx)
+            lastPointAndIndex = (currentPoint, i)
         }
         CGContextRestoreGState(ctx)
     }
@@ -298,48 +303,4 @@ class ScoreChartView: ChartViewBase {
         path.closePath()
         return path
     }
-    
-    
-    //MARK: - Helper
-    private func createBackgroundGradient() -> CGGradientRef {
-        let locations: [CGFloat] = [0.0, 1.0]
-        let colors: [CGColor]
-        guard let lastValue = dataSource?.lastValue() else {
-            colors = [
-                UIColor.todayGradientBlueStartColor().CGColor,
-                UIColor.todayGradientBlueEndColor().CGColor
-            ]
-            return CGGradientCreateWithColors(CGColorSpaceCreateDeviceRGB(), colors, locations)!
-        }
-        
-        switch Today.type(lastValue) {
-        case .Excellent:
-            colors = [
-                UIColor.todayGradientRedStartColor().CGColor,
-                UIColor.todayGradientRedEndColor().CGColor
-            ]
-        case .Good:
-            colors = [
-                UIColor.todayGradientOrangeStartColor().CGColor,
-                UIColor.todayGradientOrangeEndColor().CGColor
-            ]
-        case .Average:
-            colors = [
-                UIColor.todayGradientYellowStartColor().CGColor,
-                UIColor.todayGradientYellowEndColor().CGColor
-            ]
-        case .Fair:
-            colors = [
-                UIColor.todayGradientGreenStartColor().CGColor,
-                UIColor.todayGradientGreenEndColor().CGColor
-            ]
-        case .Poor:
-            colors = [
-                UIColor.todayGradientBlueStartColor().CGColor,
-                UIColor.todayGradientBlueEndColor().CGColor
-            ]
-        }
-        return CGGradientCreateWithColors(CGColorSpaceCreateDeviceRGB(), colors, locations)!
-    }
-    
 }

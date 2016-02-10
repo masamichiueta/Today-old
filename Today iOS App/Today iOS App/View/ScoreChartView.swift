@@ -222,6 +222,8 @@ class ScoreChartView: ChartViewBase {
             let circle = UIBezierPath(arcCenter: currentPoint, radius: 2.0, startAngle: 0.0, endAngle: CGFloat(2 * M_PI), clockwise: true)
             circle.lineWidth = 2.0
             circle.stroke()
+            
+            //TODO: subtract circle from path
             if lastPointAndIndex.index != i - 1 {
                 let pattern: [CGFloat] = [3.0, 6.0]
                 path.setLineDash(pattern, count: pattern.count, phase: 0)
@@ -233,23 +235,4 @@ class ScoreChartView: ChartViewBase {
         }
         CGContextRestoreGState(ctx)
     }
-    
-//    private func pathsFromDataInRect(rect: CGRect) -> [UIBezierPath] {
-//    
-//    }
-//    
-//    //MARK: - Clipping Path
-//    private func bottomClipPathFromDataInRect(rect: CGRect) -> UIBezierPath {
-//        let path = UIBezierPath()
-//        path.appendPath(pathFromDataInRect(rect))
-//        let currentPoint = path.currentPoint
-//        path.addLineToPoint(CGPoint(x: CGRectGetMaxX(rect), y: currentPoint.y))
-//        path.addLineToPoint(CGPoint(x: CGRectGetMaxX(rect), y: CGRectGetMinY(rect)))
-//        path.addLineToPoint(CGPoint(x: CGRectGetMinX(rect), y: CGRectGetMinY(rect)))
-//        //path.addLineToPoint(CGPoint(x: CGRectGetMinX(rect), y: <#T##Double#>))
-//        //[path addLineToPoint:CGPointMake(CGRectGetMinX(rect), initialDataPoint_.y)];
-//        //[path addLineToPoint:CGPointMake(initialDataPoint_.x, initialDataPoint_.y)];
-//        path.closePath()
-//        return path
-//    }
 }

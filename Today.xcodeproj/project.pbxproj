@@ -39,10 +39,10 @@
 		24A487FA1C55045D0015DB05 /* Today.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C77EA81C2A8C6F00493C13 /* Today.swift */; };
 		24A487FB1C5505490015DB05 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FE71321C4245D400A14B9D /* Setting.swift */; };
 		24A487FC1C55054C0015DB05 /* Streak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E538D81C49E22900B781D8 /* Streak.swift */; };
-		24A487FD1C5505500015DB05 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F14741C2A9CDE0003B2AF /* CoreDataStack.swift */; };
-		24A487FE1C5505530015DB05 /* ManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C77EA11C2A8B6C00493C13 /* ManagedObject.swift */; };
-		24A487FF1C5505560015DB05 /* NSManagedObjectContext+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24444A591C306B4B00DC1579 /* NSManagedObjectContext+Extensions.swift */; };
 		24A488031C5505AF0015DB05 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DBB5901C2C367100E1C042 /* Utilities.swift */; };
+		24A9E9791C6CDC3F00739226 /* ManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C77EA11C2A8B6C00493C13 /* ManagedObject.swift */; };
+		24A9E9831C6CE2A600739226 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F14741C2A9CDE0003B2AF /* CoreDataStack.swift */; };
+		24A9E9841C6CE2EB00739226 /* NSManagedObjectContext+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24444A591C306B4B00DC1579 /* NSManagedObjectContext+Extensions.swift */; };
 		24C6AE971C2831660048C4D1 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C6AE961C2831660048C4D1 /* TableViewCell.swift */; };
 		24C6C1AF1C54F9970041C31F /* TodayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24C6C1A51C54F9970041C31F /* TodayKit.framework */; };
 		24C6C1B61C54F9970041C31F /* TodayKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C6C1B51C54F9970041C31F /* TodayKitTests.swift */; };
@@ -244,6 +244,7 @@
 		24A1CFE01C36D8FA00F0E9CE /* ScoreCircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreCircleView.swift; sourceTree = "<group>"; };
 		24A487EE1C5503C50015DB05 /* TodayWatchKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TodayWatchKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		24A487F21C5503C50015DB05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24A9E9781C6CBDE700739226 /* Today Today Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "Today Today Extension.entitlements"; path = "../../Today Today Extension.entitlements"; sourceTree = "<group>"; };
 		24C6AE961C2831660048C4D1 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		24C6C1A51C54F9970041C31F /* TodayKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TodayKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		24C6C1A91C54F9970041C31F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -530,8 +531,8 @@
 		24C77EA31C2A8BF000493C13 /* Shared Code */ = {
 			isa = PBXGroup;
 			children = (
-				240F14741C2A9CDE0003B2AF /* CoreDataStack.swift */,
 				24C77EA11C2A8B6C00493C13 /* ManagedObject.swift */,
+				240F14741C2A9CDE0003B2AF /* CoreDataStack.swift */,
 				24444A591C306B4B00DC1579 /* NSManagedObjectContext+Extensions.swift */,
 				24DBB5901C2C367100E1C042 /* Utilities.swift */,
 			);
@@ -553,6 +554,7 @@
 		24F21AB21C4FCFE900396A38 /* Today Extension */ = {
 			isa = PBXGroup;
 			children = (
+				24A9E9781C6CBDE700739226 /* Today Today Extension.entitlements */,
 				24F21AB81C4FCFE900396A38 /* Info.plist */,
 				24F21AB51C4FCFE900396A38 /* MainInterface.storyboard */,
 				24F21AB31C4FCFE900396A38 /* TodayViewController.swift */,
@@ -811,6 +813,9 @@
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
 							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
 						};
 					};
 					24030AF61C1C821C004E68ED = {
@@ -835,6 +840,11 @@
 					24F21AAE1C4FCFE900396A38 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = A9WB53K8XM;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					24F21AC01C4FD73C00396A38 = {
 						CreatedOnToolsVersion = 7.2;
@@ -1017,14 +1027,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24A9E9831C6CE2A600739226 /* CoreDataStack.swift in Sources */,
 				24A487FB1C5505490015DB05 /* Setting.swift in Sources */,
 				24A487FC1C55054C0015DB05 /* Streak.swift in Sources */,
+				24A9E9791C6CDC3F00739226 /* ManagedObject.swift in Sources */,
 				24A488031C5505AF0015DB05 /* Utilities.swift in Sources */,
 				24C7ACD01C5656D8002B203C /* WatchUtilities.swift in Sources */,
-				24A487FE1C5505530015DB05 /* ManagedObject.swift in Sources */,
 				24A487FA1C55045D0015DB05 /* Today.swift in Sources */,
-				24A487FD1C5505500015DB05 /* CoreDataStack.swift in Sources */,
-				24A487FF1C5505560015DB05 /* NSManagedObjectContext+Extensions.swift in Sources */,
+				24A9E9841C6CE2EB00739226 /* NSManagedObjectContext+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1477,12 +1487,14 @@
 		24F21ABD1C4FCFEB00396A38 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Today Today Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Today iOS App/Today Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.Today.TodayExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -1490,12 +1502,14 @@
 		24F21ABE1C4FCFEB00396A38 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Today Today Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Today iOS App/Today Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.Today.TodayExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;

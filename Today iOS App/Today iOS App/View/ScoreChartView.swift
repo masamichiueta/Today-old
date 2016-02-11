@@ -41,7 +41,7 @@ class ScoreChartView: ChartViewBase {
         drawBackgroundGradient()
         
         let xValueHeight: CGFloat = 40.0
-        let yValueWidth: CGFloat = 40.0
+        let yValueWidth: CGFloat = 20.0
         let chartHorizontalMargin: CGFloat = 16.0
         let chartVerticalMargin: CGFloat = 16.0
         
@@ -210,11 +210,10 @@ class ScoreChartView: ChartViewBase {
         
         let initialDataPoint: CGPoint
         if let initialValue = dataSource.first?.yValue {
-            initialDataPoint = CGPoint(x: -lineWidth / 2.0, y: rect.height - verticalSpace * CGFloat(initialValue))
+            initialDataPoint = CGPoint(x: 0, y: rect.height - verticalSpace * CGFloat(initialValue))
         } else {
-            initialDataPoint = CGPoint(x: -lineWidth / 2.0, y: rect.height)
+            initialDataPoint = CGPoint(x: 0, y: rect.height)
         }
-        
         var lastPointAndIndex: (point: CGPoint, index: Int) = (initialDataPoint, 0)
         for i in 0..<dataSource.numberOfObjects() {
             CGContextSaveGState(ctx)
@@ -233,6 +232,7 @@ class ScoreChartView: ChartViewBase {
             //At first point, just draw a circle
             if i == 0 {
                 CGContextRestoreGState(ctx)
+                lastPointAndIndex = (currentPoint, i)
                 continue
             }
             

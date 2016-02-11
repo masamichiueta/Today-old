@@ -82,6 +82,8 @@ public final class Today: ManagedObject {
         }
     }
     
+    //MARK: - CoreData
+    #if os(iOS)
     public static func created(moc: NSManagedObjectContext, forDate date: NSDate) -> Bool {
         
         let todays = Today.fetchInContext(moc, configurationBlock: {
@@ -111,6 +113,7 @@ public final class Today: ManagedObject {
         today.date = date
         return today
     }
+    #endif
 }
 
 extension Today: ManagedObjectType {

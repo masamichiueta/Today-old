@@ -8,6 +8,7 @@
 
 import CoreData
 
+#if os(iOS)
 private let storeURL = NSURL.documentsURL.URLByAppendingPathComponent("Today.sqlite")
 
 public func createTodayMainContext() -> NSManagedObjectContext {
@@ -19,7 +20,13 @@ public func createTodayMainContext() -> NSManagedObjectContext {
     let psc = NSPersistentStoreCoordinator(managedObjectModel: model)
     
     do {
-        try psc.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: nil)
+        let iCloudOptions: Dictionary<NSObject, AnyObject> = [
+            NSPersistentStoreUbiquitousContentNameKey: "TodayCloudStore",
+            NSMigratePersistentStoresAutomaticallyOption: true,
+            NSInferMappingModelAutomaticallyOption: true
+        ]
+        
+        try psc.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: iCloudOptions)
     } catch {
         fatalError("Wrong store")
     }
@@ -27,3 +34,4 @@ public func createTodayMainContext() -> NSManagedObjectContext {
     context.persistentStoreCoordinator = psc
     return context
 }
+#endif

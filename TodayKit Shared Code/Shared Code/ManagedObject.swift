@@ -36,6 +36,7 @@ extension ManagedObjectType {
     
 }
 
+#if os(iOS)
 extension ManagedObjectType where Self: ManagedObject {
     
     public static func findOrCreateInContext(moc: NSManagedObjectContext, matchingPredicate predicate: NSPredicate, configure: Self -> ()) -> Self {
@@ -89,3 +90,4 @@ extension ManagedObjectType where Self: ManagedObject {
         return nil
     }
 }
+#endif

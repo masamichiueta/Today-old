@@ -18,8 +18,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let managedObjectContext = createTodayMainContext()
     
+    private let ubiquityIdentityTokenKey = "com.uetamasamichi.Today.UbiquityIdentityToken"
+    private let firstLaunchWithiCloudAvailableKey = "firstLaunchWithiCloudAvailable"
+    
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+//        let firstLaunchWithiCloudAvailable = NSUserDefaults.standardUserDefaults().boolForKey(firstLaunchWithiCloudAvailableKey)
+//        if let currentiCloudToken = NSFileManager.defaultManager().ubiquityIdentityToken {
+//            let newTokenData = NSKeyedArchiver.archivedDataWithRootObject(currentiCloudToken)
+//            NSUserDefaults.standardUserDefaults().setObject(newTokenData, forKey: ubiquityIdentityTokenKey)
+//        } else {
+//            NSUserDefaults.standardUserDefaults().removeObjectForKey(ubiquityIdentityTokenKey)
+//        }
         
         setupDefaultSetting()
         setupLocalNotificationSetting()

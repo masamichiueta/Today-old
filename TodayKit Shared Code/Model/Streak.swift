@@ -26,6 +26,8 @@ public final class Streak: ManagedObject {
         self.setPrimitiveValue(NSNumber(longLong: from.numberOfDaysUntilDateTime(to) + 1), forKey: "streakNumber")
     }
     
+    //MARK: - CoreData
+    #if os(iOS)
     public static func insertIntoContext(moc: NSManagedObjectContext, from: NSDate, to: NSDate) -> Streak {
         let streak: Streak = moc.insertObject()
         streak.from = from
@@ -100,6 +102,7 @@ public final class Streak: ManagedObject {
             }
         }
     }
+    #endif
 }
 
 extension Streak: ManagedObjectType {

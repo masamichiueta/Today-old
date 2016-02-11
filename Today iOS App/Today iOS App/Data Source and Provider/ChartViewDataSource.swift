@@ -7,14 +7,13 @@
 //
 
 import UIKit
-import TodayKit
 
 protocol ChartViewDataSource: class {
-    func chartView(chartView: ChartViewBase, xValueForAtXIndex index: Int) -> String?
-    func chartView(chartView: ChartViewBase, yValueForAtXIndex index: Int) -> Int?
+    func chartView(chartView: ChartViewBase, dataAtIndex index: Int) -> ChartData?
+    var first: ChartData? { get }
+    var last: ChartData? { get }
     func maxYValue() -> Int?
     func minYValue() -> Int?
-    func lastValue() -> Int?
     func numberOfObjects() -> Int
 }
 
@@ -26,13 +25,17 @@ class ScoreChartViewDataSource: ChartViewDataSource {
         self.data = data
     }
     
-    func chartView(chartView: ChartViewBase, xValueForAtXIndex index: Int) -> String? {
-        return data[index].xValue
+    func chartView(chartView: ChartViewBase, dataAtIndex index: Int) -> ChartData? {
+        if index < data.count {
+            return data[index]
+        } else {
+            return nil
+        }
     }
     
-    func chartView(chartView: ChartViewBase, yValueForAtXIndex index: Int) -> Int? {
-        return data[index].yValue
-    }
+    var first: ChartData? { get { return data.first } }
+    
+    var last: ChartData? { get { return data.last } }
     
     func maxYValue() -> Int? {
         return data.flatMap({
@@ -44,10 +47,6 @@ class ScoreChartViewDataSource: ChartViewDataSource {
         return data.flatMap({
             $0.yValue
         }).minElement()
-    }
-    
-    func lastValue() -> Int? {
-        return data.last?.yValue
     }
     
     func numberOfObjects() -> Int {

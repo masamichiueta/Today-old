@@ -6,7 +6,7 @@
 //  Copyright © 2016年 Masamichi Ueta. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 public func frameworkBundle(name: String) -> NSBundle? {
     let frameworkDirPath = NSBundle.mainBundle().privateFrameworksPath! as NSString
@@ -17,4 +17,8 @@ public func frameworkBundle(name: String) -> NSBundle? {
 
 public func localize(key: String) -> String {
     return NSLocalizedString(key, comment: "")
+}
+
+public func distanceBetween(p1: CGPoint, p2: CGPoint) -> CGFloat {
+    return sqrt(pow((p1.x - p2.x), 2) + pow((p1.y - p2.y), 2))
 }

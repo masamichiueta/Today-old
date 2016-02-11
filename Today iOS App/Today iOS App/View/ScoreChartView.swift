@@ -35,7 +35,7 @@ class ScoreChartView: ChartViewBase {
     
     
     override func drawRect(rect: CGRect) {
-        let clipPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: 10.0)
+        let clipPath = UIBezierPath(roundedRect: bounds, cornerRadius: 10.0)
         clipPath.addClip()
         
         drawBackgroundGradient()
@@ -51,8 +51,8 @@ class ScoreChartView: ChartViewBase {
                 y: summaryStackView.frame.maxY + summaryStackViewTopConstraint.constant
             ),
             size: CGSize(
-                width: self.frame.width - summaryStackViewLeadingConstraint.constant * 2,
-                height: self.frame.height - summaryStackView.frame.height - summaryStackViewTopConstraint.constant - xValueHeight))
+                width: frame.width - summaryStackViewLeadingConstraint.constant * 2,
+                height: frame.height - summaryStackView.frame.height - summaryStackViewTopConstraint.constant - xValueHeight))
         drawHorizontalLineInRect(borderRect)
         
         let xLabelRect = CGRect(
@@ -92,10 +92,10 @@ class ScoreChartView: ChartViewBase {
     private func drawBackgroundGradient() {
         let ctx = UIGraphicsGetCurrentContext()
         CGContextSaveGState(ctx)
-        let startPoint = CGPoint(x: self.bounds.midX, y: 0)
-        let endPoint = CGPoint(x: self.bounds.midX, y: self.bounds.maxX)
-        if let lastValue = dataSource?.lastValue() {
-            gradient = Today.type(lastValue).gradientColor()
+        let startPoint = CGPoint(x: bounds.midX, y: 0)
+        let endPoint = CGPoint(x: bounds.midX, y: bounds.maxX)
+        if let last = dataSource?.last {
+            gradient = Today.type(last.yValue).gradientColor()
         } else {
             gradient = TodayType.Poor.gradientColor()
         }
@@ -129,8 +129,9 @@ class ScoreChartView: ChartViewBase {
         CGContextTranslateCTM(ctx, rect.minX, rect.minY)
         
         for i in 0..<dataSource.numberOfObjects() {
-            guard let label = dataSource.chartView(self, xValueForAtXIndex: i) else {
-                continue
+            guard let data = dataSource.chartView(self, dataAtIndex: i),
+                let label = data.xValue else {
+                    continue
             }
             let labelSize = label.sizeWithAttributes([NSFontAttributeName: axisFont])
             label.drawInRect(CGRect(x: labelSpace * CGFloat(i) - labelSize.width / 2.0, y: 0.0, width: labelSize.width, height: labelSize.height), withAttributes: [NSFontAttributeName: axisFont, NSForegroundColorAttributeName: UIColor.whiteColor()])
@@ -206,29 +207,58 @@ class ScoreChartView: ChartViewBase {
         }
         let horizontalSpace = (rect.width / CGFloat(dataSource.numberOfObjects() - 1))
         let verticalSpace = rect.height / CGFloat(maxYValue - minYValue)
-        let initialDataPoint = CGPoint(x: -lineWidth / 2.0, y: rect.height)
+        
+        let initialDataPoint: CGPoint
+        if let initialValue = dataSource.first?.yValue {
+            initialDataPoint = CGPoint(x: -lineWidth / 2.0, y: rect.height - verticalSpace * CGFloat(initialValue))
+        } else {
+            initialDataPoint = CGPoint(x: -lineWidth / 2.0, y: rect.height)
+        }
+        
         var lastPointAndIndex: (point: CGPoint, index: Int) = (initialDataPoint, 0)
         for i in 0..<dataSource.numberOfObjects() {
             CGContextSaveGState(ctx)
+            guard let data = dataSource.chartView(self, dataAtIndex: i),
+                let yValue = data.yValue else {
+                continue
+            }
+            let currentPoint = CGPoint(x: horizontalSpace * CGFloat(i), y: rect.height - verticalSpace * CGFloat(yValue))
+            
+            //Draw data point circle
+            let circleRadius: CGFloat = 2.0
+            let circle = UIBezierPath(arcCenter: currentPoint, radius: circleRadius, startAngle: 0.0, endAngle: CGFloat(2 * M_PI), clockwise: true)
+            circle.lineWidth = 2.0
+            circle.stroke()
+            
+            //At first point, just draw a circle
+            if i == 0 {
+                CGContextRestoreGState(ctx)
+                continue
+            }
+            
+            //Draw chart line
             let path = UIBezierPath()
             path.lineWidth = lineWidth
             path.lineJoinStyle = .Round
             path.lineCapStyle = .Round
-            path.moveToPoint(lastPointAndIndex.point)
-            guard let yValue = dataSource.chartView(self, yValueForAtXIndex: i) else {
-                continue
-            }
-            let currentPoint = CGPoint(x: horizontalSpace * CGFloat(i), y: rect.height - verticalSpace * CGFloat(yValue))
-            let circle = UIBezierPath(arcCenter: currentPoint, radius: 2.0, startAngle: 0.0, endAngle: CGFloat(2 * M_PI), clockwise: true)
-            circle.lineWidth = 2.0
-            circle.stroke()
             
-            //TODO: subtract circle from path
+            //Calculate intersection between line and circle
+            let rate = circleRadius / distanceBetween(lastPointAndIndex.point, p2: currentPoint)
+            let startIntersection = CGPoint(
+                x: lastPointAndIndex.point.x + rate * (currentPoint.x - lastPointAndIndex.point.x),
+                y: lastPointAndIndex.point.y + rate * (currentPoint.y - lastPointAndIndex.point.y))
+            
+            let endIntersection = CGPoint(
+                x: currentPoint.x - rate * (currentPoint.x - lastPointAndIndex.point.x),
+                y: currentPoint.y - rate * (currentPoint.y - lastPointAndIndex.point.y))
+            
+            path.moveToPoint(startIntersection)
+            
             if lastPointAndIndex.index != i - 1 {
                 let pattern: [CGFloat] = [3.0, 6.0]
                 path.setLineDash(pattern, count: pattern.count, phase: 0)
             }
-            path.addLineToPoint(currentPoint)
+            path.addLineToPoint(endIntersection)
             path.stroke()
             CGContextRestoreGState(ctx)
             lastPointAndIndex = (currentPoint, i)

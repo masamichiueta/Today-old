@@ -12,8 +12,9 @@ protocol ChartViewDataSource: class {
     func chartView(chartView: ChartViewBase, dataAtIndex index: Int) -> ChartData?
     var first: ChartData? { get }
     var last: ChartData? { get }
-    func maxYValue() -> Int?
-    func minYValue() -> Int?
+    var latestYValue: Int? { get }
+    var maxYValue: Int? { get }
+    var minYValue: Int? { get }
     func numberOfObjects() -> Int
 }
 
@@ -37,17 +38,11 @@ class ScoreChartViewDataSource: ChartViewDataSource {
     
     var last: ChartData? { get { return data.last } }
     
-    func maxYValue() -> Int? {
-        return data.flatMap({
-            $0.yValue
-        }).maxElement()
-    }
+    var latestYValue: Int? { get { return data.flatMap( { $0.yValue }).last } }
     
-    func minYValue() -> Int? {
-        return data.flatMap({
-            $0.yValue
-        }).minElement()
-    }
+    var maxYValue: Int? { get { return data.flatMap({ $0.yValue }).maxElement()} }
+    
+    var minYValue: Int? { get { return data.flatMap({ $0.yValue }).minElement()} }
     
     func numberOfObjects() -> Int {
         return data.count

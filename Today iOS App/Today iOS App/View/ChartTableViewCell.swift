@@ -25,6 +25,7 @@ class ChartTableViewCell: UITableViewCell {
     @IBOutlet weak var periodSegmentedControl: UISegmentedControl!
     weak var delegate: ChartTableViewCellDelegate?
     var scoreChartViewDataSource: ScoreChartViewDataSource?
+    
     var periodType: ChartViewPeriodType = .Week {
         didSet {
             delegate?.periodTypeDidChanged(periodType)
@@ -53,6 +54,25 @@ extension ChartTableViewCell: ConfigurableCell {
         scoreChartView.dataSource = scoreChartViewDataSource
         scoreChartView.customMaxYValue = Today.maxMasterScore
         scoreChartView.customMinYValue = Today.minMasterScore
+        
+        switch periodType {
+        case .Week:
+            scoreChartView.chartTitleLabel.text = "Weekly Summary"
+        case .Month:
+            scoreChartView.chartTitleLabel.text = "Monthly Summary"
+        }
+        if let maxYValue = dataSource.maxYValue {
+            scoreChartView.highScoreNumberLabel.text = "\(maxYValue)"
+        } else {
+            scoreChartView.highScoreNumberLabel.text = "\(Today.minMasterScore)"
+        }
+        
+        if let minYValue = dataSource.minYValue {
+            scoreChartView.lowScoreNumberLabel.text = "\(minYValue)"
+        } else {
+            scoreChartView.lowScoreNumberLabel.text = "\(Today.minMasterScore)"
+        }
+        
         scoreChartView.setNeedsDisplay()
     }
 }

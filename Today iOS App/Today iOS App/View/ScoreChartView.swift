@@ -94,8 +94,8 @@ class ScoreChartView: ChartViewBase {
         CGContextSaveGState(ctx)
         let startPoint = CGPoint(x: bounds.midX, y: 0)
         let endPoint = CGPoint(x: bounds.midX, y: bounds.maxX)
-        if let last = dataSource?.last {
-            gradient = Today.type(last.yValue).gradientColor()
+        if let latestYValue = dataSource?.latestYValue {
+            gradient = Today.type(latestYValue).gradientColor()
         } else {
             gradient = TodayType.Poor.gradientColor()
         }
@@ -155,7 +155,7 @@ class ScoreChartView: ChartViewBase {
         let maxYLabel: String
         if let customMaxYValue = customMaxYValue {
             maxYLabel = "\(customMaxYValue)"
-        } else if let maxYValue = dataSource.maxYValue() {
+        } else if let maxYValue = dataSource.maxYValue {
             maxYLabel = "\(maxYValue)"
         } else {
             maxYLabel = ""
@@ -167,7 +167,7 @@ class ScoreChartView: ChartViewBase {
         let minYLabel: String
         if let customMinYValue = customMinYValue {
             minYLabel = "\(customMinYValue)"
-        } else if let minYValue = dataSource.minYValue() {
+        } else if let minYValue = dataSource.minYValue {
             minYLabel = "\(minYValue)"
         } else {
             minYLabel = ""
@@ -192,7 +192,7 @@ class ScoreChartView: ChartViewBase {
         let maxYValue: Int
         if let customMaxYValue = customMaxYValue {
             maxYValue = customMaxYValue
-        } else if let _maxYValue = dataSource.maxYValue() {
+        } else if let _maxYValue = dataSource.maxYValue {
             maxYValue = _maxYValue
         } else {
             maxYValue = 1
@@ -200,7 +200,7 @@ class ScoreChartView: ChartViewBase {
         let minYValue: Int
         if let customMinYValue = customMinYValue {
             minYValue = customMinYValue
-        } else if let _minYValue = dataSource.minYValue() {
+        } else if let _minYValue = dataSource.minYValue {
             minYValue = _minYValue
         } else {
             minYValue = 0

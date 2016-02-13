@@ -8,20 +8,20 @@
 
 import UIKit
 import TodayKit
-import LTMorphingLabel
+//import LTMorphingLabel
 import DeviceKit
 
 class AddTodayViewController: UIViewController {
     
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var scoreCircleView: ScoreCircleView!
-    @IBOutlet weak var scoreLabel: LTMorphingLabel!
+    @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
     
     var score: Int =  Today.maxMasterScore {
         didSet {
             scoreCircleView.score = score
-            scoreLabel.morphingDuration = Float(scoreCircleView.animationDuration + 0.15)
+            //scoreLabel.morphingDuration = Float(scoreCircleView.animationDuration + 0.15)
             scoreLabel.text = "\(score)"
             let toStrokeColor = Today.type(score).color()
             scoreLabel.textColor = toStrokeColor
@@ -41,15 +41,15 @@ class AddTodayViewController: UIViewController {
     
     private let thinProgressBorderGroup: [Device] = [.iPhone4, .iPhone4s, .Simulator(.iPhone4), .Simulator(.iPhone4s)]
     private let device = Device()
-    private let thinProgressBorderWidth: CGFloat = 10.0
-    private let defaultProgressBorderWidth: CGFloat = 20.0
-    private let smallScoreFont = UIFont.systemFontOfSize(30, weight: UIFontWeightBold)
-    private let defaultScoreFont = UIFont.systemFontOfSize(60, weight: UIFontWeightBold)
+    private let thinProgressBorderWidth: CGFloat = 5.0
+    private let defaultProgressBorderWidth: CGFloat = 10.0
+    private let smallScoreFont = UIFont.systemFontOfSize(50, weight: UIFontWeightThin)
+    private let defaultScoreFont = UIFont.systemFontOfSize(100, weight: UIFontWeightThin)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupProgressBorderWidth()
-        scoreLabel.morphingEffect = .Evaporate
+        //scoreLabel.morphingEffect = .Evaporate
         scoreLabel.textColor = scoreCircleView.progressCircleColor
         iconImageView.image = Today.type(score).icon("40")
         iconImageView.tintColor = scoreCircleView.progressCircleColor

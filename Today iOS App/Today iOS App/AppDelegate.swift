@@ -24,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        
 //        let firstLaunchWithiCloudAvailable = NSUserDefaults.standardUserDefaults().boolForKey(firstLaunchWithiCloudAvailableKey)
 //        if let currentiCloudToken = NSFileManager.defaultManager().ubiquityIdentityToken {
 //            let newTokenData = NSKeyedArchiver.archivedDataWithRootObject(currentiCloudToken)
@@ -31,15 +32,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        } else {
 //            NSUserDefaults.standardUserDefaults().removeObjectForKey(ubiquityIdentityTokenKey)
 //        }
+      
         
-        setupDefaultSetting()
-        setupLocalNotificationSetting()
         
-        guard let vc = window?.rootViewController as? ManagedObjectContextSettable else {
-            fatalError("Wrong view controller type")
-        }
+        navigate()
         
-        vc.managedObjectContext = managedObjectContext
+//        setupDefaultSetting()
+//        setupLocalNotificationSetting()
+//        
+//        guard let vc = window?.rootViewController as? ManagedObjectContextSettable else {
+//            fatalError("Wrong view controller type")
+//        }
+//        
+//        vc.managedObjectContext = managedObjectContext
+        
         
         return true
     }
@@ -95,6 +101,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let todaysTVC = navBarVC?.childViewControllers.first as? TodaysTableViewController
             todaysTVC?.showAddTodayViewController(self)
         }
+    }
+    
+    private func navigate() {
+        let startStoryboard = UIStoryboard(name: "GetStarted", bundle: nil)
+        let vc = startStoryboard.instantiateInitialViewController()
+        self.window?.rootViewController = vc
     }
     
     private func setupDefaultSetting() {

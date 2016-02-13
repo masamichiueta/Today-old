@@ -1,27 +1,141 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="u9d-cx-WY0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="W0b-i4-9oa">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="JgA-aa-QVR">
+        <!--Get Started View Controller-->
+        <scene sceneID="r6J-2P-Pet">
             <objects>
-                <viewController id="u9d-cx-WY0" sceneMemberID="viewController">
+                <viewController id="W0b-i4-9oa" customClass="GetStartedViewController" customModule="Today" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="YvT-nt-8Ma"/>
-                        <viewControllerLayoutGuide type="bottom" id="BWV-uD-r33"/>
+                        <viewControllerLayoutGuide type="top" id="YGp-Tt-79X"/>
+                        <viewControllerLayoutGuide type="bottom" id="NBG-Oi-D3j"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="hnJ-Xv-oz0">
+                    <view key="view" contentMode="scaleToFill" id="yFc-du-cf3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch_icon" translatesAutoresizingMaskIntoConstraints="NO" id="TQk-3o-abu">
+                                <rect key="frame" x="175" y="261" width="250" height="78"/>
+                            </imageView>
+                            <stackView hidden="YES" opaque="NO" alpha="0.0" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="44" translatesAutoresizingMaskIntoConstraints="NO" id="kmD-Lf-PDB">
+                                <rect key="frame" x="20" y="203.5" width="560" height="193"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6YF-xv-SKH">
+                                        <rect key="frame" x="128.5" y="0.0" width="303" height="74.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Today reminds you to add your today." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VAG-dr-CFQ">
+                                                <rect key="frame" x="0.0" y="0.0" width="303" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yVX-z9-hPM" customClass="BorderButton" customModule="Today" customModuleProvider="target">
+                                                <rect key="frame" x="26.5" y="30.5" width="250" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="FsO-Tm-ODg"/>
+                                                    <constraint firstAttribute="width" constant="250" id="bet-ah-tmc"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <state key="normal" title="Enable Notification"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="3"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="YPJ-g9-V4m">
+                                        <rect key="frame" x="100" y="118.5" width="360.5" height="74.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2. iCloud sync todays across all of your devices" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j3b-Kt-Tm0">
+                                                <rect key="frame" x="0.0" y="0.0" width="360.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5XZ-il-eA8" customClass="BorderButton" customModule="Today" customModuleProvider="target">
+                                                <rect key="frame" x="55" y="30.5" width="250" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="250" id="Q2O-TN-n0J"/>
+                                                    <constraint firstAttribute="height" constant="44" id="uqm-Pb-bXJ"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <state key="normal" title="Use iCloud to save today"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="3"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <button hidden="YES" opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ApV-rO-Sxo" customClass="BorderButton" customModule="Today" customModuleProvider="target">
+                                <rect key="frame" x="175" y="506" width="250" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="UC1-1N-776"/>
+                                    <constraint firstAttribute="height" constant="44" id="l3o-lG-bY0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                <state key="normal" title="Start Today"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="TQk-3o-abu" firstAttribute="centerY" secondItem="yFc-du-cf3" secondAttribute="centerY" id="0cJ-2L-zaj"/>
+                            <constraint firstItem="NBG-Oi-D3j" firstAttribute="top" secondItem="ApV-rO-Sxo" secondAttribute="bottom" constant="50" id="3G1-z8-D3q"/>
+                            <constraint firstItem="kmD-Lf-PDB" firstAttribute="centerY" secondItem="yFc-du-cf3" secondAttribute="centerY" id="DOc-bp-CL4"/>
+                            <constraint firstItem="kmD-Lf-PDB" firstAttribute="top" secondItem="TQk-3o-abu" secondAttribute="bottom" constant="100" id="EWh-Vh-bjx"/>
+                            <constraint firstItem="TQk-3o-abu" firstAttribute="centerX" secondItem="yFc-du-cf3" secondAttribute="centerX" id="J8s-y9-pmU"/>
+                            <constraint firstItem="kmD-Lf-PDB" firstAttribute="leading" secondItem="yFc-du-cf3" secondAttribute="leadingMargin" id="JHs-Hi-OPO"/>
+                            <constraint firstItem="ApV-rO-Sxo" firstAttribute="centerX" secondItem="yFc-du-cf3" secondAttribute="centerX" id="UG6-A7-NsB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="kmD-Lf-PDB" secondAttribute="trailing" id="orF-I7-IrI"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="EWh-Vh-bjx"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="iCloudButton" destination="5XZ-il-eA8" id="J2V-FF-LOh"/>
+                        <outlet property="launchIcon" destination="TQk-3o-abu" id="H0Q-GS-9Rm"/>
+                        <outlet property="launchIconCenterXConstraint" destination="J8s-y9-pmU" id="cMl-oh-4KI"/>
+                        <outlet property="launchIconCenterYConstraint" destination="0cJ-2L-zaj" id="P5z-hK-LN4"/>
+                        <outlet property="notificationButton" destination="yVX-z9-hPM" id="rjK-W5-qLp"/>
+                        <outlet property="permissionStackView" destination="kmD-Lf-PDB" id="zwS-4e-i21"/>
+                        <outlet property="startButton" destination="ApV-rO-Sxo" id="KOh-32-ral"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Sx6-Gn-f1n" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rzH-5j-LYM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="302" y="130"/>
+            <point key="canvasLocation" x="130" y="205"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="launch_icon" width="250" height="78"/>
+    </resources>
 </document>

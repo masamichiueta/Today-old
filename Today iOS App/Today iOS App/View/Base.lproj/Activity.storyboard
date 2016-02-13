@@ -161,17 +161,17 @@
                                                                 <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Aw-Sa-3Mw" customClass="ScoreCircleView" customModule="Today" customModuleProvider="target">
                                                                     <rect key="frame" x="96" y="0.0" width="100" height="100"/>
                                                                     <subviews>
-                                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="eul-gW-MGD">
-                                                                            <rect key="frame" x="30" y="12" width="40" height="76"/>
+                                                                        <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="eul-gW-MGD">
+                                                                            <rect key="frame" x="30" y="12" width="250" height="286"/>
                                                                             <subviews>
-                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="sAD-7x-lBX">
-                                                                                    <rect key="frame" x="5" y="0.0" width="30" height="36"/>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="sAD-7x-lBX">
+                                                                                    <rect key="frame" x="110" y="0.0" width="30" height="36"/>
                                                                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="30"/>
                                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
-                                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="good_face_icon_40" translatesAutoresizingMaskIntoConstraints="NO" id="bgG-MA-8Bw">
-                                                                                    <rect key="frame" x="0.0" y="36" width="40" height="40"/>
+                                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="good_face_icon_40" translatesAutoresizingMaskIntoConstraints="NO" id="bgG-MA-8Bw">
+                                                                                    <rect key="frame" x="0.0" y="36" width="250" height="250"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="width" secondItem="bgG-MA-8Bw" secondAttribute="height" multiplier="1:1" id="H3l-l9-9OV"/>
                                                                                     </constraints>

@@ -23,13 +23,15 @@
 		244631451C3AB8BA002BBD06 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244631441C3AB8BA002BBD06 /* PaddingLabel.swift */; };
 		244BF0901C623DF600A9543A /* ChartViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244BF08F1C623DF600A9543A /* ChartViewDataSource.swift */; };
 		244BF0951C624EF400A9543A /* ChartViewBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244BF0941C624EF400A9543A /* ChartViewBase.swift */; };
+		24561EA51C6F71E900022222 /* GetStarted.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24561EA41C6F71E900022222 /* GetStarted.storyboard */; };
+		24561EA71C6F77D500022222 /* GetStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24561EA61C6F77D500022222 /* GetStartedViewController.swift */; };
 		2466884F1C1DB45E00C5E5A0 /* Activity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2466884D1C1DB45E00C5E5A0 /* Activity.storyboard */; };
 		246688511C1DB4ED00C5E5A0 /* TodaysTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246688501C1DB4ED00C5E5A0 /* TodaysTableViewController.swift */; };
 		246688561C1DB61100C5E5A0 /* Today.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 246688541C1DB61100C5E5A0 /* Today.storyboard */; };
 		246AC1811C5120FF0047AAE7 /* AddTodayInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246AC1801C5120FF0047AAE7 /* AddTodayInterfaceController.swift */; };
 		24732F4B1C5E4F8600655994 /* ScoreChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24732F4A1C5E4F8600655994 /* ScoreChartView.swift */; };
 		247E4D611C54FCB800C134DB /* Setting.plist in Resources */ = {isa = PBXBuildFile; fileRef = 24D4E3461C43E1D900F6DA6A /* Setting.plist */; };
-		2488C7071C6F4C5F00EF8F45 /* GetStarted.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2488C7061C6F4C5F00EF8F45 /* GetStarted.storyboard */; };
+		2488C7091C6F686D00EF8F45 /* BorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2488C7081C6F686D00EF8F45 /* BorderButton.swift */; };
 		248BC5581C37AB0E00EFB221 /* DeviceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 248BC5571C37AB0E00EFB221 /* DeviceKit.framework */; };
 		248BC5591C37AB0E00EFB221 /* DeviceKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 248BC5571C37AB0E00EFB221 /* DeviceKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		24A1CFE11C36D8FA00F0E9CE /* ScoreCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A1CFE01C36D8FA00F0E9CE /* ScoreCircleView.swift */; };
@@ -232,13 +234,15 @@
 		244631441C3AB8BA002BBD06 /* PaddingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		244BF08F1C623DF600A9543A /* ChartViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewDataSource.swift; sourceTree = "<group>"; };
 		244BF0941C624EF400A9543A /* ChartViewBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewBase.swift; sourceTree = "<group>"; };
+		24561EA41C6F71E900022222 /* GetStarted.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GetStarted.storyboard; sourceTree = "<group>"; };
+		24561EA61C6F77D500022222 /* GetStartedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStartedViewController.swift; sourceTree = "<group>"; };
 		2466884E1C1DB45E00C5E5A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Activity.storyboard; sourceTree = "<group>"; };
 		246688501C1DB4ED00C5E5A0 /* TodaysTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodaysTableViewController.swift; sourceTree = "<group>"; };
 		246688551C1DB61100C5E5A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Today.storyboard; sourceTree = "<group>"; };
 		246AC1801C5120FF0047AAE7 /* AddTodayInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTodayInterfaceController.swift; sourceTree = "<group>"; };
 		2472E6FD1C3275C8006DC493 /* LTMorphingLabel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LTMorphingLabel.framework; path = Carthage/Build/iOS/LTMorphingLabel.framework; sourceTree = "<group>"; };
 		24732F4A1C5E4F8600655994 /* ScoreChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreChartView.swift; sourceTree = "<group>"; };
-		2488C7061C6F4C5F00EF8F45 /* GetStarted.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GetStarted.storyboard; sourceTree = "<group>"; };
+		2488C7081C6F686D00EF8F45 /* BorderButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderButton.swift; sourceTree = "<group>"; };
 		248BC5571C37AB0E00EFB221 /* DeviceKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DeviceKit.framework; path = Carthage/Build/iOS/DeviceKit.framework; sourceTree = "<group>"; };
 		24A1CFE01C36D8FA00F0E9CE /* ScoreCircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreCircleView.swift; sourceTree = "<group>"; };
 		24A487EE1C5503C50015DB05 /* TodayWatchKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TodayWatchKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -442,6 +446,7 @@
 				240F147B1C2AA0450003B2AF /* RootViewController.swift */,
 				24FFBB961C3D6AFA0053E261 /* SettingTableViewController.swift */,
 				246688501C1DB4ED00C5E5A0 /* TodaysTableViewController.swift */,
+				24561EA61C6F77D500022222 /* GetStartedViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -453,7 +458,7 @@
 				24D67C841C3EB54600A33DB7 /* AverageTotalTableViewCell.swift */,
 				24D82C2E1C5A5D880095FA47 /* ChartTableViewCell.swift */,
 				244BF0941C624EF400A9543A /* ChartViewBase.swift */,
-				2488C7061C6F4C5F00EF8F45 /* GetStarted.storyboard */,
+				24561EA41C6F71E900022222 /* GetStarted.storyboard */,
 				24030AEF1C1C821C004E68ED /* LaunchScreen.storyboard */,
 				24030AE71C1C821C004E68ED /* Main.storyboard */,
 				244631441C3AB8BA002BBD06 /* PaddingLabel.swift */,
@@ -463,6 +468,7 @@
 				2425BBA81C5E3A0E008AD9A4 /* StreakTableViewCell.swift */,
 				24C6AE961C2831660048C4D1 /* TableViewCell.swift */,
 				246688541C1DB61100C5E5A0 /* Today.storyboard */,
+				2488C7081C6F686D00EF8F45 /* BorderButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -890,7 +896,7 @@
 				24030AE91C1C821C004E68ED /* Main.storyboard in Resources */,
 				246688561C1DB61100C5E5A0 /* Today.storyboard in Resources */,
 				2466884F1C1DB45E00C5E5A0 /* Activity.storyboard in Resources */,
-				2488C7071C6F4C5F00EF8F45 /* GetStarted.storyboard in Resources */,
+				24561EA51C6F71E900022222 /* GetStarted.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -984,6 +990,7 @@
 				24C6AE971C2831660048C4D1 /* TableViewCell.swift in Sources */,
 				24030AE41C1C821C004E68ED /* AppDelegate.swift in Sources */,
 				242F984B1C49282200DBC64B /* NotificationManager.swift in Sources */,
+				24561EA71C6F77D500022222 /* GetStartedViewController.swift in Sources */,
 				24444A5E1C30A02A00DC1579 /* AddTodayViewController.swift in Sources */,
 				244BF0901C623DF600A9543A /* ChartViewDataSource.swift in Sources */,
 				24F1948A1C2FB9B8001593D8 /* AugmentedFetchedResultsDataProvider.swift in Sources */,
@@ -1004,6 +1011,7 @@
 				24732F4B1C5E4F8600655994 /* ScoreChartView.swift in Sources */,
 				24F9DC3D1C2EFCD4003A6427 /* TableViewDataSource.swift in Sources */,
 				24F9DC3B1C2EFB0F003A6427 /* FetchedResultsDataProvider.swift in Sources */,
+				2488C7091C6F686D00EF8F45 /* BorderButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -3,8 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -19,62 +17,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xHo-wy-5aS" userLabel="redView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="120"/>
-                                <color key="backgroundColor" red="1" green="0.2196078431372549" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cap-as-CUv" userLabel="orangeView">
-                                <rect key="frame" x="0.0" y="120" width="600" height="120"/>
-                                <color key="backgroundColor" red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RCY-TK-O3u" userLabel="yellowView">
-                                <rect key="frame" x="0.0" y="240" width="600" height="120"/>
-                                <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dvK-W5-TdE" userLabel="greenView">
-                                <rect key="frame" x="0.0" y="360" width="600" height="120"/>
-                                <color key="backgroundColor" red="0.29803921568627451" green="0.85098039215686272" blue="0.39215686274509803" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z6o-p7-sLA" userLabel="blueView">
-                                <rect key="frame" x="0.0" y="480" width="600" height="120"/>
-                                <color key="backgroundColor" red="0.20392156862745098" green="0.66666666666666663" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch_icon" translatesAutoresizingMaskIntoConstraints="NO" id="yrC-ic-dhW">
                                 <rect key="frame" x="175" y="261" width="250" height="78"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="dvK-W5-TdE" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" multiplier="1:5" id="2Rk-Mo-dbL"/>
-                            <constraint firstItem="RCY-TK-O3u" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="5lQ-GN-609"/>
-                            <constraint firstItem="Cap-as-CUv" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" multiplier="1:5" id="6G1-5b-lrb"/>
-                            <constraint firstItem="Cap-as-CUv" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="JWH-0h-MgF"/>
-                            <constraint firstItem="Cap-as-CUv" firstAttribute="top" secondItem="xHo-wy-5aS" secondAttribute="bottom" id="KFw-9X-5LF"/>
-                            <constraint firstItem="z6o-p7-sLA" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" multiplier="1:5" id="M7i-LD-768"/>
-                            <constraint firstAttribute="trailing" secondItem="z6o-p7-sLA" secondAttribute="trailing" id="NfS-rv-Cpu"/>
-                            <constraint firstAttribute="trailing" secondItem="Cap-as-CUv" secondAttribute="trailing" id="O4x-9s-yaG"/>
-                            <constraint firstAttribute="trailing" secondItem="RCY-TK-O3u" secondAttribute="trailing" id="Q9L-1P-TTe"/>
-                            <constraint firstAttribute="trailing" secondItem="xHo-wy-5aS" secondAttribute="trailing" id="RE7-zv-2FL"/>
-                            <constraint firstItem="xHo-wy-5aS" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="topMargin" id="TVY-z7-Wwo"/>
-                            <constraint firstItem="z6o-p7-sLA" firstAttribute="top" secondItem="dvK-W5-TdE" secondAttribute="bottom" id="UNm-jK-DuU"/>
-                            <constraint firstItem="RCY-TK-O3u" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" multiplier="1:5" id="Xqh-Tr-MHL"/>
-                            <constraint firstItem="RCY-TK-O3u" firstAttribute="top" secondItem="Cap-as-CUv" secondAttribute="bottom" id="ZMJ-Td-i0d"/>
-                            <constraint firstItem="xHo-wy-5aS" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="aKb-qg-Zvx"/>
                             <constraint firstItem="yrC-ic-dhW" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="ecF-tI-G71"/>
-                            <constraint firstAttribute="trailing" secondItem="dvK-W5-TdE" secondAttribute="trailing" id="isC-l2-f3U"/>
-                            <constraint firstItem="z6o-p7-sLA" firstAttribute="bottom" secondItem="Ze5-6b-2t3" secondAttribute="bottomMargin" id="k6N-Gm-V5Z"/>
-                            <constraint firstItem="xHo-wy-5aS" firstAttribute="leading" secondItem="Cap-as-CUv" secondAttribute="trailing" constant="-240" id="oHT-Pk-z0O"/>
-                            <constraint firstItem="z6o-p7-sLA" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="sSl-CQ-ERZ"/>
                             <constraint firstItem="yrC-ic-dhW" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="u1E-6A-PuP"/>
-                            <constraint firstItem="dvK-W5-TdE" firstAttribute="top" secondItem="RCY-TK-O3u" secondAttribute="bottom" id="yRr-v1-NU2"/>
-                            <constraint firstItem="dvK-W5-TdE" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="yi9-11-cyJ"/>
-                            <constraint firstItem="xHo-wy-5aS" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" multiplier="1:5" id="yj3-lv-8d1"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="oHT-Pk-z0O"/>
-                            </mask>
-                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>

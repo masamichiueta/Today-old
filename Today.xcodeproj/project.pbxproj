@@ -29,6 +29,7 @@
 		246AC1811C5120FF0047AAE7 /* AddTodayInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246AC1801C5120FF0047AAE7 /* AddTodayInterfaceController.swift */; };
 		24732F4B1C5E4F8600655994 /* ScoreChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24732F4A1C5E4F8600655994 /* ScoreChartView.swift */; };
 		247E4D611C54FCB800C134DB /* Setting.plist in Resources */ = {isa = PBXBuildFile; fileRef = 24D4E3461C43E1D900F6DA6A /* Setting.plist */; };
+		2488C7071C6F4C5F00EF8F45 /* GetStarted.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2488C7061C6F4C5F00EF8F45 /* GetStarted.storyboard */; };
 		248BC5581C37AB0E00EFB221 /* DeviceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 248BC5571C37AB0E00EFB221 /* DeviceKit.framework */; };
 		248BC5591C37AB0E00EFB221 /* DeviceKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 248BC5571C37AB0E00EFB221 /* DeviceKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		24A1CFE11C36D8FA00F0E9CE /* ScoreCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A1CFE01C36D8FA00F0E9CE /* ScoreCircleView.swift */; };
@@ -237,6 +238,7 @@
 		246AC1801C5120FF0047AAE7 /* AddTodayInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTodayInterfaceController.swift; sourceTree = "<group>"; };
 		2472E6FD1C3275C8006DC493 /* LTMorphingLabel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LTMorphingLabel.framework; path = Carthage/Build/iOS/LTMorphingLabel.framework; sourceTree = "<group>"; };
 		24732F4A1C5E4F8600655994 /* ScoreChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreChartView.swift; sourceTree = "<group>"; };
+		2488C7061C6F4C5F00EF8F45 /* GetStarted.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GetStarted.storyboard; sourceTree = "<group>"; };
 		248BC5571C37AB0E00EFB221 /* DeviceKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DeviceKit.framework; path = Carthage/Build/iOS/DeviceKit.framework; sourceTree = "<group>"; };
 		24A1CFE01C36D8FA00F0E9CE /* ScoreCircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreCircleView.swift; sourceTree = "<group>"; };
 		24A487EE1C5503C50015DB05 /* TodayWatchKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TodayWatchKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -448,18 +450,19 @@
 			isa = PBXGroup;
 			children = (
 				2466884D1C1DB45E00C5E5A0 /* Activity.storyboard */,
-				24030AEF1C1C821C004E68ED /* LaunchScreen.storyboard */,
-				24030AE71C1C821C004E68ED /* Main.storyboard */,
-				246688541C1DB61100C5E5A0 /* Today.storyboard */,
 				24D67C841C3EB54600A33DB7 /* AverageTotalTableViewCell.swift */,
 				24D82C2E1C5A5D880095FA47 /* ChartTableViewCell.swift */,
 				244BF0941C624EF400A9543A /* ChartViewBase.swift */,
+				2488C7061C6F4C5F00EF8F45 /* GetStarted.storyboard */,
+				24030AEF1C1C821C004E68ED /* LaunchScreen.storyboard */,
+				24030AE71C1C821C004E68ED /* Main.storyboard */,
 				244631441C3AB8BA002BBD06 /* PaddingLabel.swift */,
 				24FE71301C3FFB8700A14B9D /* PickerTableViewCell.swift */,
-				24A1CFE01C36D8FA00F0E9CE /* ScoreCircleView.swift */,
-				24C6AE961C2831660048C4D1 /* TableViewCell.swift */,
-				2425BBA81C5E3A0E008AD9A4 /* StreakTableViewCell.swift */,
 				24732F4A1C5E4F8600655994 /* ScoreChartView.swift */,
+				24A1CFE01C36D8FA00F0E9CE /* ScoreCircleView.swift */,
+				2425BBA81C5E3A0E008AD9A4 /* StreakTableViewCell.swift */,
+				24C6AE961C2831660048C4D1 /* TableViewCell.swift */,
+				246688541C1DB61100C5E5A0 /* Today.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -887,6 +890,7 @@
 				24030AE91C1C821C004E68ED /* Main.storyboard in Resources */,
 				246688561C1DB61100C5E5A0 /* Today.storyboard in Resources */,
 				2466884F1C1DB45E00C5E5A0 /* Activity.storyboard in Resources */,
+				2488C7071C6F4C5F00EF8F45 /* GetStarted.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

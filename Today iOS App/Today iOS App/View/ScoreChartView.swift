@@ -21,7 +21,7 @@ class ScoreChartView: ChartViewBase {
     var customMaxYValue: Int?
     var customMinYValue: Int?
     var axisFont = UIFont.systemFontOfSize(12.0)
-    
+
     var gradient: CGGradientRef = {
         
         let colors: [CGColor] = [

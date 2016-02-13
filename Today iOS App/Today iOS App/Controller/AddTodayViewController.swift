@@ -8,7 +8,6 @@
 
 import UIKit
 import TodayKit
-//import LTMorphingLabel
 import DeviceKit
 
 class AddTodayViewController: UIViewController {
@@ -21,8 +20,11 @@ class AddTodayViewController: UIViewController {
     var score: Int =  Today.maxMasterScore {
         didSet {
             scoreCircleView.score = score
-            //scoreLabel.morphingDuration = Float(scoreCircleView.animationDuration + 0.15)
-            scoreLabel.text = "\(score)"
+            let animation = CATransition()
+            animation.type = kCATransitionFade
+            animation.duration = scoreCircleView.animationDuration
+            scoreLabel.layer.addAnimation(animation, forKey: nil)
+            self.scoreLabel.text = "\(self.score)"
             let toStrokeColor = Today.type(score).color()
             scoreLabel.textColor = toStrokeColor
             iconImageView.tintColor = toStrokeColor
@@ -49,7 +51,6 @@ class AddTodayViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupProgressBorderWidth()
-        //scoreLabel.morphingEffect = .Evaporate
         scoreLabel.textColor = scoreCircleView.progressCircleColor
         iconImageView.image = Today.type(score).icon("40")
         iconImageView.tintColor = scoreCircleView.progressCircleColor

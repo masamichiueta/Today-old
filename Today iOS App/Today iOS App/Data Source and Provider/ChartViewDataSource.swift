@@ -38,7 +38,7 @@ class ScoreChartViewDataSource: ChartViewDataSource {
     
     var last: ChartData? { get { return data.last } }
     
-    var latestYValue: Int? { get { return data.flatMap( { $0.yValue }).last } }
+    var latestYValue: Int? { get { return data.flatMap({ $0.yValue }).last } }
     
     var maxYValue: Int? { get { return data.flatMap({ $0.yValue }).maxElement()} }
     

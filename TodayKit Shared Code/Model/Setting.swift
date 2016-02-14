@@ -30,12 +30,23 @@ public struct Setting {
         }
     }
     
+    public var firstLaunch: Bool {
+        didSet {
+            defaults.setBool(firstLaunch, forKey: Setting.firstLaunchKey)
+        }
+    }
+    
     public var version: String
     
     //Defined in Setting.plist
     public static let notificationEnabledKey = "NotificationEnabled"
     public static let notificationHourKey = "NotificationHour"
     public static let notificationMinuteKey = "NotificationMinute"
+    public static let firstLaunchKey = "FirstLaunch"
+    
+    public static let ubiquityIdentityTokenKey = "com.uetamasamichi.Today.UbiquityIdentityToken"
+    public static let firstLaunchWithiCloudAvailableKey = "firstLaunchWithiCloudAvailable"
+
     
     //Defined by System
     public static let versionKey = "CFBundleShortVersionString"
@@ -44,6 +55,7 @@ public struct Setting {
         notificationEnabled = defaults.boolForKey(Setting.notificationEnabledKey)
         notificationHour = defaults.integerForKey(Setting.notificationHourKey)
         notificationMinute = defaults.integerForKey(Setting.notificationMinuteKey)
+        firstLaunch = defaults.boolForKey(Setting.firstLaunchKey)
         guard let settingVersion = NSBundle.mainBundle().objectForInfoDictionaryKey(Setting.versionKey) as? String else {
             fatalError("Invalid setting")
         }

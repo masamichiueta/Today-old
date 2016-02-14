@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TodayKit
 
 class GetStartedViewController: UIViewController {
     
@@ -20,8 +21,25 @@ class GetStartedViewController: UIViewController {
     @IBOutlet weak var iCloudButton: BorderButton!
     @IBOutlet weak var startButton: BorderButton!
     
+    var notificationSet: Bool = false {
+        didSet {
+            if notificationSet && iCloudSet {
+                startButton.enabled = true
+            }
+        }
+    }
+    var iCloudSet: Bool = false {
+        didSet {
+            if notificationSet && iCloudSet {
+                startButton.enabled = true
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        startButton.enabled = false
         
     }
     
@@ -51,6 +69,63 @@ class GetStartedViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func showNotificationPermission(sender: AnyObject) {
+        NotificationManager.setupLocalNotificationSetting()
+        notificationButton.backgroundColor = UIColor.defaultTintColor()
+        notificationButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        notificationButton.userInteractionEnabled = false
+        notificationSet = true
+    }
+    
+    @IBAction func showiCloudPermission(sender: AnyObject) {
+        
+        let firstLaunchWithiCloudAvailable = NSUserDefaults.standardUserDefaults().boolForKey(Setting.firstLaunchWithiCloudAvailableKey)
+        if let currentiCloudToken = NSFileManager.defaultManager().ubiquityIdentityToken {
+            let newTokenData = NSKeyedArchiver.archivedDataWithRootObject(currentiCloudToken)
+            NSUserDefaults.standardUserDefaults().setObject(newTokenData, forKey: Setting.ubiquityIdentityTokenKey)
+        } else {
+            NSUserDefaults.standardUserDefaults().removeObjectForKey(Setting.ubiquityIdentityTokenKey)
+        }
+        
+        iCloudButton.backgroundColor = UIColor.defaultTintColor()
+        iCloudButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        iCloudButton.userInteractionEnabled = false
+        iCloudSet = true
+        
+    }
+    
+    @IBAction func startToday(sender: AnyObject) {
+        guard let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate else {
+            fatalError("Wrong appdelegate type")
+        }
+        //appDelegate.setting.firstLaunch = false
+        
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let vc = mainStoryboard.instantiateInitialViewController() else {
+            fatalError("InitialViewController not found")
+        }
+        guard let managedObjectContextSettable = vc as? ManagedObjectContextSettable else {
+            fatalError("Wrong view controller type")
+        }
+        managedObjectContextSettable.managedObjectContext = appDelegate.managedObjectContext
+        
+        guard let overlayView = appDelegate.window?.snapshotViewAfterScreenUpdates(false) else {
+            appDelegate.window?.rootViewController = vc
+            return
+        }
+        vc.view.addSubview(overlayView)
+        appDelegate.window?.rootViewController = vc
+        
+        UIView.animateWithDuration(0.5,
+            delay: 0,
+            options: .TransitionCrossDissolve,
+            animations: {
+                overlayView.alpha = 0
+            },
+            completion: { finished in
+                overlayView.removeFromSuperview()
+        })
+    }
     
     /*
     // MARK: - Navigation

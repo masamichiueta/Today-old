@@ -8,5 +8,7 @@
 	<integer>0</integer>
 	<key>NotificationEnabled</key>
 	<true/>
+	<key>FirstLaunch</key>
+	<true/>
 </dict>
 </plist>

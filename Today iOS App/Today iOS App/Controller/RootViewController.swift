@@ -24,7 +24,6 @@ class RootViewController: UIViewController, ManagedObjectContextSettable {
         // Dispose of any resources that can be recreated.
     }
     
-    
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         for child in segue.destinationViewController.childViewControllers {

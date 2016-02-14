@@ -18,34 +18,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let managedObjectContext = createTodayMainContext()
     
-    private let ubiquityIdentityTokenKey = "com.uetamasamichi.Today.UbiquityIdentityToken"
-    private let firstLaunchWithiCloudAvailableKey = "firstLaunchWithiCloudAvailable"
-    
+    var setting: Setting!
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        //        let firstLaunchWithiCloudAvailable = NSUserDefaults.standardUserDefaults().boolForKey(firstLaunchWithiCloudAvailableKey)
+        //        if let currentiCloudToken = NSFileManager.defaultManager().ubiquityIdentityToken {
+        //            let newTokenData = NSKeyedArchiver.archivedDataWithRootObject(currentiCloudToken)
+        //            NSUserDefaults.standardUserDefaults().setObject(newTokenData, forKey: ubiquityIdentityTokenKey)
+        //        } else {
+        //            NSUserDefaults.standardUserDefaults().removeObjectForKey(ubiquityIdentityTokenKey)
+        //        }
+        setupDefaultSetting()
         
-//        let firstLaunchWithiCloudAvailable = NSUserDefaults.standardUserDefaults().boolForKey(firstLaunchWithiCloudAvailableKey)
-//        if let currentiCloudToken = NSFileManager.defaultManager().ubiquityIdentityToken {
-//            let newTokenData = NSKeyedArchiver.archivedDataWithRootObject(currentiCloudToken)
-//            NSUserDefaults.standardUserDefaults().setObject(newTokenData, forKey: ubiquityIdentityTokenKey)
-//        } else {
-//            NSUserDefaults.standardUserDefaults().removeObjectForKey(ubiquityIdentityTokenKey)
-//        }
-      
-        
-        
-        navigate()
-        
-//        setupDefaultSetting()
-//        setupLocalNotificationSetting()
-//        
-//        guard let vc = window?.rootViewController as? ManagedObjectContextSettable else {
-//            fatalError("Wrong view controller type")
-//        }
-//        
-//        vc.managedObjectContext = managedObjectContext
-        
+        if setting.firstLaunch {
+            let startStoryboard = UIStoryboard(name: "GetStarted", bundle: nil)
+            guard let vc = startStoryboard.instantiateInitialViewController() else {
+                fatalError("InitialViewController not found")
+            }
+            window?.rootViewController = vc
+        } else {
+            NotificationManager.setupLocalNotificationSetting()
+            let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            guard let vc = mainStoryboard.instantiateInitialViewController() else {
+                fatalError("InitialViewController not found")
+            }
+            guard let managedObjectContextSettable = vc as? ManagedObjectContextSettable else {
+                fatalError("Wrong view controller type")
+            }
+            managedObjectContextSettable.managedObjectContext = managedObjectContext
+            window?.rootViewController = vc
+        }
         
         return true
     }
@@ -102,13 +105,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             todaysTVC?.showAddTodayViewController(self)
         }
     }
-    
-    private func navigate() {
-        let startStoryboard = UIStoryboard(name: "GetStarted", bundle: nil)
-        let vc = startStoryboard.instantiateInitialViewController()
-        self.window?.rootViewController = vc
-    }
-    
+
     private func setupDefaultSetting() {
         guard let settingBundle = frameworkBundle("TodayKit.framework") else {
             fatalError("Wrong framework name")
@@ -123,26 +120,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         NSUserDefaults.standardUserDefaults().registerDefaults(defaultSettingDic)
-    }
-    
-    private func setupLocalNotificationSetting() {
         
-        let addTodayAction = UIMutableUserNotificationAction()
-        addTodayAction.identifier = NotificationManager.addTodayActionName
-        addTodayAction.title = "Add Today"
-        addTodayAction.activationMode = .Foreground
-        addTodayAction.destructive = false
-        addTodayAction.authenticationRequired = false
-        
-        let addTodayCategory = UIMutableUserNotificationCategory()
-        addTodayCategory.identifier = NotificationManager.addTodayCategoryName
-        addTodayCategory.setActions([addTodayAction], forContext: .Default)
-        addTodayCategory.setActions([addTodayAction], forContext: .Minimal)
-        
-        let categories = Set<UIUserNotificationCategory>(arrayLiteral: addTodayCategory)
-        
-        let types: UIUserNotificationType = [UIUserNotificationType.Badge, UIUserNotificationType.Alert, UIUserNotificationType.Sound]
-        let mySettings = UIUserNotificationSettings(forTypes: types, categories: categories)
-        UIApplication.sharedApplication().registerUserNotificationSettings(mySettings)
+        setting = Setting()
     }
 }

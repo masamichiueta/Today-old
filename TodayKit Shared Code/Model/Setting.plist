@@ -10,5 +10,7 @@
 	<true/>
 	<key>FirstLaunch</key>
 	<true/>
+	<key>iCloudEnabled</key>
+	<false/>
 </dict>
 </plist>

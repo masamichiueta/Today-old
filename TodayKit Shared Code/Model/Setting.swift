@@ -36,6 +36,12 @@ public struct Setting {
         }
     }
     
+    public var iCloudEnabled: Bool {
+        didSet {
+            defaults.setBool(iCloudEnabled, forKey: Setting.iCloudEnabledKey)
+        }
+    }
+    
     public var version: String
     
     //Defined in Setting.plist
@@ -43,19 +49,21 @@ public struct Setting {
     public static let notificationHourKey = "NotificationHour"
     public static let notificationMinuteKey = "NotificationMinute"
     public static let firstLaunchKey = "FirstLaunch"
-    
-    public static let ubiquityIdentityTokenKey = "com.uetamasamichi.Today.UbiquityIdentityToken"
-    public static let firstLaunchWithiCloudAvailableKey = "firstLaunchWithiCloudAvailable"
-
+    public static let iCloudEnabledKey = "iCloudEnabled"
     
     //Defined by System
     public static let versionKey = "CFBundleShortVersionString"
+    
+    //Others
+    public static let ubiquityIdentityTokenKey = "com.uetamasamichi.Today.UbiquityIdentityToken"
+    
     
     public init() {
         notificationEnabled = defaults.boolForKey(Setting.notificationEnabledKey)
         notificationHour = defaults.integerForKey(Setting.notificationHourKey)
         notificationMinute = defaults.integerForKey(Setting.notificationMinuteKey)
         firstLaunch = defaults.boolForKey(Setting.firstLaunchKey)
+        iCloudEnabled = defaults.boolForKey(Setting.iCloudEnabledKey)
         guard let settingVersion = NSBundle.mainBundle().objectForInfoDictionaryKey(Setting.versionKey) as? String else {
             fatalError("Invalid setting")
         }

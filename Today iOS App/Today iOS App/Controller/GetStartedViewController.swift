@@ -14,21 +14,19 @@ class GetStartedViewController: UIViewController {
     @IBOutlet weak var launchIcon: UIImageView!
     @IBOutlet weak var launchIconCenterXConstraint: NSLayoutConstraint!
     @IBOutlet weak var launchIconCenterYConstraint: NSLayoutConstraint!
-    
     @IBOutlet weak var permissionStackView: UIStackView!
-    
     @IBOutlet weak var notificationButton: BorderButton!
     @IBOutlet weak var iCloudButton: BorderButton!
     @IBOutlet weak var startButton: BorderButton!
     
-    var notificationSet: Bool = false {
+    private var notificationSet: Bool = false {
         didSet {
             if notificationSet && iCloudSet {
                 startButton.enabled = true
             }
         }
     }
-    var iCloudSet: Bool = false {
+    private var iCloudSet: Bool = false {
         didSet {
             if notificationSet && iCloudSet {
                 startButton.enabled = true
@@ -38,16 +36,12 @@ class GetStartedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         startButton.enabled = false
-        
     }
     
     override func viewDidAppear(animated: Bool) {
-        
         launchIconCenterYConstraint.active = false
         NSLayoutConstraint(item: launchIcon, attribute: .CenterY, relatedBy: .Equal, toItem: view, attribute: .CenterY, multiplier: 0.3, constant: 0).active = true
-        
         UIView.animateWithDuration(1.0,
             delay: 0.0,
             options: .CurveEaseInOut,
@@ -78,17 +72,19 @@ class GetStartedViewController: UIViewController {
     }
     
     @IBAction func showiCloudPermission(sender: AnyObject) {
-        
+        guard let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate else {
+            fatalError("Wrong appdelegate type")
+        }
+
         if let currentiCloudToken = NSFileManager.defaultManager().ubiquityIdentityToken {
             let alertController = UIAlertController(title: "Choose Storage Option", message: "Should documents be stored in iCloud and available on all your devices?", preferredStyle: .Alert)
             alertController.addAction(UIAlertAction(title: "Local Only", style: .Cancel, handler: { action in
                 self.iCloudButton.setTitle("Use local storage", forState: .Normal)
-                
             }))
             alertController.addAction(UIAlertAction(title: "Use iCloud", style: .Default, handler: { action in
                 let newTokenData = NSKeyedArchiver.archivedDataWithRootObject(currentiCloudToken)
-                NSUserDefaults.standardUserDefaults().setObject(newTokenData, forKey: Setting.ubiquityIdentityTokenKey)
-                NSUserDefaults.standardUserDefaults().setBool(true, forKey: Setting.iCloudEnabledKey)
+                appDelegate.setting.ubiquityIdentityToken = newTokenData
+                appDelegate.setting.iCloudEnabled = true
             }))
             self.presentViewController(alertController, animated: true, completion: { finished in
                 self.iCloudButton.backgroundColor = UIColor.defaultTintColor()
@@ -104,11 +100,9 @@ class GetStartedViewController: UIViewController {
                 self.iCloudButton.borderColor = self.iCloudButton.currentTitleColor
             }))
             self.presentViewController(alertController, animated: true, completion: nil)
-             NSUserDefaults.standardUserDefaults().removeObjectForKey(Setting.ubiquityIdentityTokenKey)
+            appDelegate.setting.ubiquityIdentityToken = nil
         }
-        
         iCloudSet = true
-        
     }
     
     @IBAction func startToday(sender: AnyObject) {
@@ -116,6 +110,9 @@ class GetStartedViewController: UIViewController {
             fatalError("Wrong appdelegate type")
         }
         appDelegate.setting.firstLaunch = false
+        
+        let storageType: StorageType = appDelegate.setting.iCloudEnabled ? .ICloud : .Local
+        appDelegate.managedObjectContext = createTodayMainContext(storageType)
         
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         guard let vc = mainStoryboard.instantiateInitialViewController() else {
@@ -132,7 +129,6 @@ class GetStartedViewController: UIViewController {
         }
         vc.view.addSubview(overlayView)
         appDelegate.window?.rootViewController = vc
-        
         UIView.animateWithDuration(0.5,
             delay: 0,
             options: .TransitionCrossDissolve,

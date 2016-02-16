@@ -9,29 +9,35 @@
 import CoreData
 
 #if os(iOS)
-private let storeURL = NSURL.documentsURL.URLByAppendingPathComponent("Today.sqlite")
-
-public func createTodayMainContext() -> NSManagedObjectContext {
-    let bundles = [NSBundle(forClass: Today.self)]
-    guard let model = NSManagedObjectModel.mergedModelFromBundles(bundles) else {
-        fatalError("model not found")
+    private let storeURL = NSURL.documentsURL.URLByAppendingPathComponent("Today.sqlite")
+    
+    public enum StorageType {
+        case Local
+        case ICloud
     }
     
-    let psc = NSPersistentStoreCoordinator(managedObjectModel: model)
-    
-    do {
-        let iCloudOptions: Dictionary<NSObject, AnyObject> = [
-            NSPersistentStoreUbiquitousContentNameKey: "TodayCloudStore",
-            NSMigratePersistentStoresAutomaticallyOption: true,
-            NSInferMappingModelAutomaticallyOption: true
-        ]
+    public func createTodayMainContext(storageType: StorageType) -> NSManagedObjectContext {
+        let bundles = [NSBundle(forClass: Today.self)]
+        guard let model = NSManagedObjectModel.mergedModelFromBundles(bundles) else {
+            fatalError("model not found")
+        }
         
-        try psc.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: iCloudOptions)
-    } catch {
-        fatalError("Wrong store")
+        let psc = NSPersistentStoreCoordinator(managedObjectModel: model)
+        
+        do {
+            let options: Dictionary<NSObject, AnyObject>?
+            switch storageType {
+            case .Local:
+                options = nil
+            case .ICloud:
+                options = [NSPersistentStoreUbiquitousContentNameKey: "TodayCloudStore"]
+            }
+            try psc.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: options)
+        } catch {
+            fatalError("Wrong store")
+        }
+        let context = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
+        context.persistentStoreCoordinator = psc
+        return context
     }
-    let context = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
-    context.persistentStoreCoordinator = psc
-    return context
-}
 #endif

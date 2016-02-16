@@ -22,15 +22,20 @@ class SettingTableViewController: UITableViewController {
     
     private var pickerHidden: Bool = true
     
-    private var setting: Setting = Setting()
-    
     private var defaultDetailTextColor: UIColor? {
         let sampleCell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "sample")
         return sampleCell.detailTextLabel?.textColor
     }
+    
+    private var setting: Setting!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate else {
+            fatalError("Wrong appdelegate type")
+        }
+        setting = appDelegate.setting
         setupTableView()
     }
 
@@ -42,7 +47,6 @@ class SettingTableViewController: UITableViewController {
     private func setupTableView() {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 44
-        
         let versionLabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 20))
         versionLabel.textAlignment = .Center
         versionLabel.textColor = UIColor.lightGrayColor()
@@ -51,7 +55,6 @@ class SettingTableViewController: UITableViewController {
     }
     
     private func togglePickerCell(pickerHidden: Bool) {
-        
         //Update tableView
         tableView.beginUpdates()
         if pickerHidden {
@@ -63,7 +66,7 @@ class SettingTableViewController: UITableViewController {
         tableView.endUpdates()
     }
     
-    func switchValueDidChange(sender: UISwitch) {
+    func notificationSwitchValueDidChange(sender: UISwitch) {
         setting.notificationEnabled = sender.on
         
         let indexPaths = pickerHidden ? [NSIndexPath(forRow: pickerIndexPath.row - 1, inSection: pickerIndexPath.section)] : [NSIndexPath(forRow: pickerIndexPath.row - 1, inSection: pickerIndexPath.section), pickerIndexPath]
@@ -78,10 +81,18 @@ class SettingTableViewController: UITableViewController {
             NotificationManager.cancelScheduledLocalNotificationForName(NotificationManager.addTodayNotificationName)
         }
         tableView.endUpdates()
+        
+        if sender.on {
+            let alertController = UIAlertController(title: "Check iOS Setting", message: "Please allow today to access notifications in setting app.", preferredStyle: .Alert)
+            alertController.addAction(UIAlertAction(title: "Check Later", style: .Default, handler: nil))
+            alertController.addAction(UIAlertAction(title: "Go Setting", style: .Default, handler: { action in
+                UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
+            }))
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }
     }
 
     // MARK: - Table view data source
-
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 2
     }
@@ -115,10 +126,9 @@ class SettingTableViewController: UITableViewController {
             cell.textLabel?.text = "Notification Setting"
             let sw = UISwitch()
             sw.on = setting.notificationEnabled
-            sw.addTarget(self, action: "switchValueDidChange:", forControlEvents: .ValueChanged)
+            sw.addTarget(self, action: "notificationSwitchValueDidChange:", forControlEvents: .ValueChanged)
             cell.accessoryView = sw
             cell.selectionStyle = .None
-            sw.on = setting.notificationEnabled
             return cell
         case (0, 1):
             let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
@@ -126,7 +136,7 @@ class SettingTableViewController: UITableViewController {
             cell.detailTextLabel?.text = dateFormatter.stringFromDate(setting.notificationTime)
             cell.detailTextLabel?.textColor = pickerHidden ? defaultDetailTextColor : tableView.tintColor
             return cell
-        case (pickerIndexPath.section, pickerIndexPath.row):
+        case (pickerIndexPath.section, pickerIndexPath.row): //(0, 2)
             guard let cell = tableView.dequeueReusableCellWithIdentifier("PickerCell") as? PickerTableViewCell else {
                 fatalError("Wrong cell type")
             }

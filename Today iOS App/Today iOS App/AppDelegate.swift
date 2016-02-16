@@ -15,20 +15,11 @@ import TodayKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    
-    let managedObjectContext = createTodayMainContext()
-    
+    var managedObjectContext: NSManagedObjectContext!
     var setting: Setting!
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        //        let firstLaunchWithiCloudAvailable = NSUserDefaults.standardUserDefaults().boolForKey(firstLaunchWithiCloudAvailableKey)
-        //        if let currentiCloudToken = NSFileManager.defaultManager().ubiquityIdentityToken {
-        //            let newTokenData = NSKeyedArchiver.archivedDataWithRootObject(currentiCloudToken)
-        //            NSUserDefaults.standardUserDefaults().setObject(newTokenData, forKey: ubiquityIdentityTokenKey)
-        //        } else {
-        //            NSUserDefaults.standardUserDefaults().removeObjectForKey(ubiquityIdentityTokenKey)
-        //        }
         setupDefaultSetting()
         
         if setting.firstLaunch {
@@ -37,18 +28,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 fatalError("InitialViewController not found")
             }
             window?.rootViewController = vc
-        } else {
-            NotificationManager.setupLocalNotificationSetting()
-            let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            guard let vc = mainStoryboard.instantiateInitialViewController() else {
-                fatalError("InitialViewController not found")
-            }
-            guard let managedObjectContextSettable = vc as? ManagedObjectContextSettable else {
-                fatalError("Wrong view controller type")
-            }
-            managedObjectContextSettable.managedObjectContext = managedObjectContext
-            window?.rootViewController = vc
+            return true
         }
+        
+        let storageType: StorageType = setting.iCloudEnabled ? .ICloud : .Local
+        managedObjectContext = createTodayMainContext(storageType)
+        
+        NotificationManager.setupLocalNotificationSetting()
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let vc = mainStoryboard.instantiateInitialViewController() else {
+            fatalError("InitialViewController not found")
+        }
+        guard let managedObjectContextSettable = vc as? ManagedObjectContextSettable else {
+            fatalError("Wrong view controller type")
+        }
+        managedObjectContextSettable.managedObjectContext = managedObjectContext
+        window?.rootViewController = vc
         
         return true
     }
@@ -80,8 +75,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
         
+        //Notification off
+        if notificationSettings.types == [.None] {
+            setting.notificationEnabled = false
+        }
+        
         if !NotificationManager.scheduledLocalNotificationExistsForName(NotificationManager.addTodayNotificationName) {
-            let setting = Setting()
             let localNotificationFireDate = setting.notificationTime
             NotificationManager.scheduleLocalNotification(localNotificationFireDate, withName: NotificationManager.addTodayNotificationName)
         }
@@ -105,7 +104,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             todaysTVC?.showAddTodayViewController(self)
         }
     }
-
+    
+    //MARK: Helper
     private func setupDefaultSetting() {
         guard let settingBundle = frameworkBundle("TodayKit.framework") else {
             fatalError("Wrong framework name")

@@ -111,16 +111,11 @@ class GetStartedViewController: UIViewController {
         var setting = Setting()
         setting.firstLaunch = false
         
-        let storageType: StorageType
-        if setting.iCloudEnabled {
-            appDelegate.registerForiCloudNotifications()
-            storageType = .ICloud
-        } else {
-            storageType = .Local
-        }
+        let storageType: StorageType = setting.iCloudEnabled ? .ICloud : .Local
         appDelegate.managedObjectContext = createTodayMainContext(storageType)
+        appDelegate.registerForiCloudNotifications()
         
-        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainStoryboard = UIStoryboard.storyboard(.Main)
         guard let vc = mainStoryboard.instantiateInitialViewController() else {
             fatalError("InitialViewController not found")
         }
@@ -145,15 +140,4 @@ class GetStartedViewController: UIViewController {
                 overlayView.removeFromSuperview()
         })
     }
-    
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-    }
-    */
-    
 }

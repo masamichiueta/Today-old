@@ -37,6 +37,41 @@ class TodaysTableViewController: UITableViewController, ManagedObjectContextSett
             session.delegate = self
             session.activateSession()
         }
+        
+        NSNotificationCenter.defaultCenter().addObserverForName(NSPersistentStoreCoordinatorStoresWillChangeNotification,
+            object: managedObjectContext.persistentStoreCoordinator,
+            queue: NSOperationQueue.mainQueue(),
+            usingBlock: { [unowned self] note in
+                self.managedObjectContext.performBlockAndWait({ [unowned self] in
+                    if self.managedObjectContext.hasChanges {
+                        self.managedObjectContext.saveOrRollback()
+                    }
+                    self.managedObjectContext.reset()
+                    })
+                print("***********\nstore will change\n***********")
+            })
+        
+        NSNotificationCenter.defaultCenter().addObserverForName(NSPersistentStoreCoordinatorStoresDidChangeNotification,
+            object: managedObjectContext.persistentStoreCoordinator,
+            queue: NSOperationQueue.mainQueue(),
+            usingBlock: { [unowned self] note in
+                // Refresh UI
+                print("***********\nstore did change\n***********")
+                self.setupTableView()
+                self.tableView.reloadData()
+            })
+        
+        
+        NSNotificationCenter.defaultCenter().addObserverForName(NSPersistentStoreDidImportUbiquitousContentChangesNotification,
+            object: managedObjectContext.persistentStoreCoordinator,
+            queue: NSOperationQueue.mainQueue(),
+            usingBlock: { [unowned self] note in
+                self.managedObjectContext.performBlock({ [unowned self] in
+                    self.managedObjectContext.mergeChangesFromContextDidSaveNotification(note)
+                    })
+                print("**********\ndidImportUbiquitousContentChanges\n*********")
+                self.tableView.reloadData()
+            })
     }
     
     override func didReceiveMemoryWarning() {

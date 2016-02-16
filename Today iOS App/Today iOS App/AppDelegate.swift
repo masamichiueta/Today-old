@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let setting = Setting()
         
         if setting.firstLaunch {
-            let startStoryboard = UIStoryboard(name: "GetStarted", bundle: nil)
+            let startStoryboard = UIStoryboard.storyboard(.GetStarted)
             guard let vc = startStoryboard.instantiateInitialViewController() else {
                 fatalError("InitialViewController not found")
             }
@@ -32,18 +32,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return true
         }
         
-        let storageType: StorageType
-        if setting.iCloudEnabled {
-            registerForiCloudNotifications()
-            storageType = .ICloud
-        } else {
-            storageType = .Local
-        }
+        let storageType: StorageType = setting.iCloudEnabled ? .ICloud : .Local
         managedObjectContext = createTodayMainContext(storageType)
         
+        registerForiCloudNotifications()
         NotificationManager.setupLocalNotificationSetting()
 
-        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainStoryboard = UIStoryboard.storyboard(.Main)
         guard let vc = mainStoryboard.instantiateInitialViewController() else {
             fatalError("InitialViewController not found")
         }

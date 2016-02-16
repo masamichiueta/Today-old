@@ -16,11 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     var managedObjectContext: NSManagedObjectContext!
-    var setting: Setting!
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         setupDefaultSetting()
+        
+        let setting = Setting()
         
         if setting.firstLaunch {
             let startStoryboard = UIStoryboard(name: "GetStarted", bundle: nil)
@@ -31,10 +32,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return true
         }
         
-        let storageType: StorageType = setting.iCloudEnabled ? .ICloud : .Local
+        let storageType: StorageType
+        if setting.iCloudEnabled {
+            registerForiCloudNotifications()
+            storageType = .ICloud
+        } else {
+            storageType = .Local
+        }
         managedObjectContext = createTodayMainContext(storageType)
         
         NotificationManager.setupLocalNotificationSetting()
+
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         guard let vc = mainStoryboard.instantiateInitialViewController() else {
             fatalError("InitialViewController not found")
@@ -75,6 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
         
+        var setting = Setting()
         //Notification off
         if notificationSettings.types == [.None] {
             setting.notificationEnabled = false
@@ -120,7 +129,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         NSUserDefaults.standardUserDefaults().registerDefaults(defaultSettingDic)
+    }
+    
+    // MARK: - Notifications
+    func registerForiCloudNotifications() {
+            
+        NSNotificationCenter.defaultCenter().addObserverForName(NSPersistentStoreCoordinatorStoresWillChangeNotification,
+            object: managedObjectContext.persistentStoreCoordinator,
+            queue: NSOperationQueue.mainQueue(),
+            usingBlock: { [unowned self] note in
+                self.managedObjectContext.performBlockAndWait({ [unowned self] in
+                    if self.managedObjectContext.hasChanges {
+                        self.managedObjectContext.saveOrRollback()
+                    }
+                    self.managedObjectContext.reset()
+                    })
+                print("***********\nstore will change***********")
+            })
         
-        setting = Setting()
+        NSNotificationCenter.defaultCenter().addObserverForName(NSPersistentStoreCoordinatorStoresDidChangeNotification,
+            object: managedObjectContext.persistentStoreCoordinator,
+            queue: NSOperationQueue.mainQueue(),
+            usingBlock: { [unowned self] note in
+                // Refresh UI
+                print("***********\nstore did change***********")
+            })
+        
+        NSNotificationCenter.defaultCenter().addObserverForName(NSPersistentStoreDidImportUbiquitousContentChangesNotification,
+            object: managedObjectContext.persistentStoreCoordinator,
+            queue: NSOperationQueue.mainQueue(),
+            usingBlock: { [unowned self] note in
+                self.managedObjectContext.performBlock({ [unowned self] in
+                    self.managedObjectContext.mergeChangesFromContextDidSaveNotification(note)
+                    })
+                print("**********\ndidImportUbiquitousContentChanges*********")
+            })
     }
 }

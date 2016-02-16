@@ -26,16 +26,9 @@ class SettingTableViewController: UITableViewController {
         let sampleCell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "sample")
         return sampleCell.detailTextLabel?.textColor
     }
-    
-    private var setting: Setting!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        guard let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate else {
-            fatalError("Wrong appdelegate type")
-        }
-        setting = appDelegate.setting
         setupTableView()
     }
 
@@ -50,6 +43,7 @@ class SettingTableViewController: UITableViewController {
         let versionLabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 20))
         versionLabel.textAlignment = .Center
         versionLabel.textColor = UIColor.lightGrayColor()
+        let setting = Setting()
         versionLabel.text = "Today Version \(setting.version)"
         tableView.tableFooterView = versionLabel
     }
@@ -67,6 +61,7 @@ class SettingTableViewController: UITableViewController {
     }
     
     func notificationSwitchValueDidChange(sender: UISwitch) {
+        var setting = Setting()
         setting.notificationEnabled = sender.on
         
         let indexPaths = pickerHidden ? [NSIndexPath(forRow: pickerIndexPath.row - 1, inSection: pickerIndexPath.section)] : [NSIndexPath(forRow: pickerIndexPath.row - 1, inSection: pickerIndexPath.section), pickerIndexPath]
@@ -98,6 +93,7 @@ class SettingTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let setting = Setting()
         switch section {
         case 0:
             if !setting.notificationEnabled {
@@ -120,6 +116,7 @@ class SettingTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
+        let setting = Setting()
         switch (indexPath.section, indexPath.row) {
         case (0, 0):
             let cell = tableView.dequeueReusableCellWithIdentifier("SwitchCell", forIndexPath: indexPath)
@@ -185,6 +182,7 @@ extension SettingTableViewController: PickerTableViewCellDelegate {
         let notificationTime = calendar.dateFromComponents(comps)!
         
         //Update setting ans save
+        var setting = Setting()
         setting.notificationHour = comps.hour
         setting.notificationMinute = comps.minute
         

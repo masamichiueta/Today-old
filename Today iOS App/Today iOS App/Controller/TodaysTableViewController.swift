@@ -11,7 +11,7 @@ import CoreData
 import TodayKit
 import WatchConnectivity
 
-class TodaysTableViewController: UITableViewController, ManagedObjectContextSettable, SegueHandlerType, iCloudRegistable, WCSessionDelegate {
+class TodaysTableViewController: UITableViewController, ManagedObjectContextSettable, SegueHandlerType {
     
     var session: WCSession!
     
@@ -159,7 +159,7 @@ extension TodaysTableViewController: TableViewDataSourceDelegate {
 }
 
 //MARK: - iCloudRegistable
-extension TodaysTableViewController {
+extension TodaysTableViewController: iCloudRegistable {
     func storesWillChange(notification: NSNotification) {
         
     }
@@ -175,7 +175,7 @@ extension TodaysTableViewController {
 }
 
 //MARK: - WCSessionDelegate
-extension TodaysTableViewController {
+extension TodaysTableViewController: WCSessionDelegate {
     func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
         if let score = message["score"] as? Int {
             //Create today

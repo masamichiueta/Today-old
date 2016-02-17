@@ -214,9 +214,10 @@ class ScoreChartView: ChartViewBase {
         } else {
             initialDataPoint = CGPoint(x: 0, y: rect.height)
         }
-        var lastPointAndIndex: (point: CGPoint, index: Int) = (initialDataPoint, 0)
+        var lastPointAndIndex: (point: CGPoint, index: Int) = (initialDataPoint, -1)
         for i in 0..<dataSource.numberOfObjects() {
             CGContextSaveGState(ctx)
+            
             guard let data = dataSource.chartView(self, dataAtIndex: i),
                 let yValue = data.yValue else {
                 continue
@@ -232,7 +233,7 @@ class ScoreChartView: ChartViewBase {
             //At first point, just draw a circle
             if i == 0 {
                 CGContextRestoreGState(ctx)
-                lastPointAndIndex = (currentPoint, i)
+                lastPointAndIndex = (currentPoint, 0)
                 continue
             }
             

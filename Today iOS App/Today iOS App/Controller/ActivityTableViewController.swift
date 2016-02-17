@@ -19,6 +19,7 @@ class ActivityTableViewController: UITableViewController, ManagedObjectContextSe
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        registerForiCloudNotifications()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -131,6 +132,20 @@ class ActivityTableViewController: UITableViewController, ManagedObjectContextSe
             let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
             return cell
         }
+    }
+}
+
+extension ActivityTableViewController: iCloudRegistable {
+    func storesWillChange(notification: NSNotification) {
+        
+    }
+    
+    func storesDidChange(notification: NSNotification) {
+        tableView.reloadData()
+    }
+    
+    func persistentStoreDidImportUbiquitousContentChanges(notification: NSNotification) {
+        
     }
 }
 

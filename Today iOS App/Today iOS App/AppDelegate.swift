@@ -126,38 +126,51 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NSUserDefaults.standardUserDefaults().registerDefaults(defaultSettingDic)
     }
     
-    // MARK: - Notifications
+    // MARK: - iCloud
     func registerForiCloudNotifications() {
-            
-        NSNotificationCenter.defaultCenter().addObserverForName(NSPersistentStoreCoordinatorStoresWillChangeNotification,
-            object: managedObjectContext.persistentStoreCoordinator,
-            queue: NSOperationQueue.mainQueue(),
-            usingBlock: { [unowned self] note in
-                self.managedObjectContext.performBlockAndWait({ [unowned self] in
-                    if self.managedObjectContext.hasChanges {
-                        self.managedObjectContext.saveOrRollback()
-                    }
-                    self.managedObjectContext.reset()
-                    })
-                print("***********\nstore will change***********")
-            })
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "iCloudAccountAvailabilityDidChange:", name: NSUbiquityIdentityDidChangeNotification, object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserverForName(NSPersistentStoreCoordinatorStoresDidChangeNotification,
-            object: managedObjectContext.persistentStoreCoordinator,
-            queue: NSOperationQueue.mainQueue(),
-            usingBlock: { [unowned self] note in
-                // Refresh UI
-                print("***********\nstore did change***********")
-            })
-        
-        NSNotificationCenter.defaultCenter().addObserverForName(NSPersistentStoreDidImportUbiquitousContentChangesNotification,
-            object: managedObjectContext.persistentStoreCoordinator,
-            queue: NSOperationQueue.mainQueue(),
-            usingBlock: { [unowned self] note in
-                self.managedObjectContext.performBlock({ [unowned self] in
-                    self.managedObjectContext.mergeChangesFromContextDidSaveNotification(note)
-                    })
-                print("**********\ndidImportUbiquitousContentChanges*********")
-            })
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "storesWillChange:", name: NSPersistentStoreCoordinatorStoresWillChangeNotification, object: managedObjectContext.persistentStoreCoordinator)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "storesDidChange:", name: NSPersistentStoreCoordinatorStoresDidChangeNotification, object: managedObjectContext.persistentStoreCoordinator)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "persistentStoreDidImportUbiquitousContentChanges:", name: NSPersistentStoreDidImportUbiquitousContentChangesNotification, object: managedObjectContext.persistentStoreCoordinator)
     }
+    
+    func iCloudAccountAvailabilityDidChange(notification: NSNotification) {
+        print("***********\n account did change \n***********")
+        var setting = Setting()
+        if let currentiCloudToken = NSFileManager.defaultManager().ubiquityIdentityToken {
+            let newTokenData =  NSKeyedArchiver.archivedDataWithRootObject(currentiCloudToken)
+            if let currentTokenData = setting.ubiquityIdentityToken where !currentTokenData.isEqualToData(newTokenData) {
+                //Account is different
+                setting.ubiquityIdentityToken = newTokenData
+            }
+        } else {
+            setting.ubiquityIdentityToken = nil
+        }
+    }
+    
+    func storesWillChange(notification: NSNotification) {
+        print("***********\n storesWillChange \n***********")
+        managedObjectContext.performBlockAndWait({ [unowned self] in
+            if self.managedObjectContext.hasChanges {
+                self.managedObjectContext.saveOrRollback()
+            }
+            self.managedObjectContext.reset()
+        })
+        NSNotificationCenter.defaultCenter().postNotificationName(StoresWillChangeNotificationName, object: nil)
+    }
+    
+    func storesDidChange(notification: NSNotification) {
+        print("***********\n storesDidChange \n***********")
+        NSNotificationCenter.defaultCenter().postNotificationName(StoresDidChangeNotificationName, object: nil)
+    }
+    
+    func persistentStoreDidImportUbiquitousContentChanges(notification: NSNotification) {
+        print("***********\n persistentStoreDidImportUbiquitousContentChanges \n***********")
+        managedObjectContext.performBlock({ [unowned self] in
+            self.managedObjectContext.mergeChangesFromContextDidSaveNotification(notification)
+        })
+        NSNotificationCenter.defaultCenter().postNotificationName(PersistentStoreDidImportUbiquitousContentChangesNotificationName, object: nil)
+    }
+
 }

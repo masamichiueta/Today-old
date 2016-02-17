@@ -72,35 +72,33 @@ class GetStartedViewController: UIViewController {
     }
     
     @IBAction func showiCloudPermission(sender: AnyObject) {
-        
-        if let currentiCloudToken = NSFileManager.defaultManager().ubiquityIdentityToken {
-            let alertController = UIAlertController(title: "Choose Storage Option", message: "Should documents be stored in iCloud and available on all your devices?", preferredStyle: .Alert)
-            alertController.addAction(UIAlertAction(title: "Local Only", style: .Cancel, handler: { action in
-                self.iCloudButton.setTitle("Use local storage", forState: .Normal)
-            }))
-            alertController.addAction(UIAlertAction(title: "Use iCloud", style: .Default, handler: { action in
-                let newTokenData = NSKeyedArchiver.archivedDataWithRootObject(currentiCloudToken)
-                var setting = Setting()
-                setting.ubiquityIdentityToken = newTokenData
-                setting.iCloudEnabled = true
-            }))
-            self.presentViewController(alertController, animated: true, completion: { finished in
-                self.iCloudButton.backgroundColor = UIColor.defaultTintColor()
-                self.iCloudButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-                self.iCloudButton.userInteractionEnabled = false
-            })
-        } else {
-            let alertController = UIAlertController(title: "iCloud is Disabled", message: "Your iCloud account is disabled. Please sign in from setting.", preferredStyle: .Alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: { action in
-                self.iCloudButton.enabled = false
-                self.iCloudButton.userInteractionEnabled = false
-                self.iCloudButton.setTitle("Please sign in iCloud", forState: .Normal)
-                self.iCloudButton.borderColor = self.iCloudButton.currentTitleColor
-            }))
-            self.presentViewController(alertController, animated: true, completion: nil)
+        let alertController = UIAlertController(title: "Choose Storage Option", message: "Should documents be stored in iCloud and available on all your devices?", preferredStyle: .Alert)
+        alertController.addAction(UIAlertAction(title: "Local Only", style: .Cancel, handler: { action in
+            self.iCloudButton.setTitle("Use local storage", forState: .Normal)
+        }))
+        alertController.addAction(UIAlertAction(title: "Use iCloud", style: .Default, handler: { action in
             var setting = Setting()
-            setting.ubiquityIdentityToken = nil
-        }
+            setting.iCloudEnabled = true
+            if let currentiCloudToken = NSFileManager.defaultManager().ubiquityIdentityToken {
+                let newTokenData = NSKeyedArchiver.archivedDataWithRootObject(currentiCloudToken)
+                 setting.ubiquityIdentityToken = newTokenData
+            } else {
+                let alertController = UIAlertController(title: "iCloud is Disabled", message: "Your iCloud account is disabled. Please sign in from setting.", preferredStyle: .Alert)
+                alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: { action in
+                    self.iCloudButton.enabled = false
+                    self.iCloudButton.userInteractionEnabled = false
+                    self.iCloudButton.setTitle("Please sign in iCloud", forState: .Normal)
+                    self.iCloudButton.borderColor = self.iCloudButton.currentTitleColor
+                }))
+                self.presentViewController(alertController, animated: true, completion: nil)
+                setting.ubiquityIdentityToken = nil
+            }
+        }))
+        self.presentViewController(alertController, animated: true, completion: { finished in
+            self.iCloudButton.backgroundColor = UIColor.defaultTintColor()
+            self.iCloudButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+            self.iCloudButton.userInteractionEnabled = false
+        })
         iCloudSet = true
     }
     

@@ -11,7 +11,7 @@ import CoreData
 import TodayKit
 import WatchConnectivity
 
-class TodaysTableViewController: UITableViewController, ManagedObjectContextSettable, SegueHandlerType, WCSessionDelegate {
+class TodaysTableViewController: UITableViewController, ManagedObjectContextSettable, SegueHandlerType, iCloudRegistable, WCSessionDelegate {
     
     var session: WCSession!
     
@@ -29,49 +29,13 @@ class TodaysTableViewController: UITableViewController, ManagedObjectContextSett
     //MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupTableView()
-        
         if WCSession.isSupported() {
             session = WCSession.defaultSession()
             session.delegate = self
             session.activateSession()
         }
-        
-        NSNotificationCenter.defaultCenter().addObserverForName(NSPersistentStoreCoordinatorStoresWillChangeNotification,
-            object: managedObjectContext.persistentStoreCoordinator,
-            queue: NSOperationQueue.mainQueue(),
-            usingBlock: { [unowned self] note in
-                self.managedObjectContext.performBlockAndWait({ [unowned self] in
-                    if self.managedObjectContext.hasChanges {
-                        self.managedObjectContext.saveOrRollback()
-                    }
-                    self.managedObjectContext.reset()
-                    })
-                print("***********\nstore will change\n***********")
-            })
-        
-        NSNotificationCenter.defaultCenter().addObserverForName(NSPersistentStoreCoordinatorStoresDidChangeNotification,
-            object: managedObjectContext.persistentStoreCoordinator,
-            queue: NSOperationQueue.mainQueue(),
-            usingBlock: { [unowned self] note in
-                // Refresh UI
-                print("***********\nstore did change\n***********")
-                self.setupTableView()
-                self.tableView.reloadData()
-            })
-        
-        
-        NSNotificationCenter.defaultCenter().addObserverForName(NSPersistentStoreDidImportUbiquitousContentChangesNotification,
-            object: managedObjectContext.persistentStoreCoordinator,
-            queue: NSOperationQueue.mainQueue(),
-            usingBlock: { [unowned self] note in
-                self.managedObjectContext.performBlock({ [unowned self] in
-                    self.managedObjectContext.mergeChangesFromContextDidSaveNotification(note)
-                    })
-                print("**********\ndidImportUbiquitousContentChanges\n*********")
-                self.tableView.reloadData()
-            })
+        registerForiCloudNotifications()
     }
     
     override func didReceiveMemoryWarning() {
@@ -154,7 +118,6 @@ class TodaysTableViewController: UITableViewController, ManagedObjectContextSett
         alert.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
         self.presentViewController(alert, animated: true, completion: completion)
     }
-    
 }
 
 //MARK: - UITableViewDelegate
@@ -192,6 +155,22 @@ extension TodaysTableViewController: TableViewDataSourceDelegate {
         default:
             break
         }
+    }
+}
+
+//MARK: - iCloudRegistable
+extension TodaysTableViewController {
+    func storesWillChange(notification: NSNotification) {
+        
+    }
+    
+    func storesDidChange(notification: NSNotification) {
+        setupTableView()
+        tableView.reloadData()
+    }
+    
+    func persistentStoreDidImportUbiquitousContentChanges(notification: NSNotification) {
+        
     }
 }
 

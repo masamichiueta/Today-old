@@ -111,7 +111,10 @@ class GetStartedViewController: UIViewController {
         
         let storageType: StorageType = setting.iCloudEnabled ? .ICloud : .Local
         appDelegate.managedObjectContext = createTodayMainContext(storageType)
-        appDelegate.registerForiCloudNotifications()
+        
+        if setting.iCloudEnabled {
+            appDelegate.registerForiCloudNotifications()
+        }
         
         let mainStoryboard = UIStoryboard.storyboard(.Main)
         guard let vc = mainStoryboard.instantiateInitialViewController() else {

@@ -12,6 +12,21 @@ public struct Setting {
     
     private let defaults = NSUserDefaults.standardUserDefaults()
     
+    //MARK: - Keys
+    //Setting.plist
+    public static let notificationEnabledKey = "NotificationEnabled"
+    public static let notificationHourKey = "NotificationHour"
+    public static let notificationMinuteKey = "NotificationMinute"
+    public static let firstLaunchKey = "FirstLaunch"
+    public static let iCloudEnabledKey = "iCloudEnabled"
+    
+    //iCloud
+    public static let ubiquityIdentityTokenKey = "com.uetamasamichi.Today.UbiquityIdentityToken"
+    
+    //System
+    public static let versionKey = "CFBundleShortVersionString"
+    
+    //MARK: - Values
     public var notificationEnabled: Bool {
         didSet {
             defaults.setBool(notificationEnabled, forKey: Setting.notificationEnabledKey)
@@ -50,20 +65,7 @@ public struct Setting {
     
     public var version: String
     
-    //Defined in Setting.plist
-    public static let notificationEnabledKey = "NotificationEnabled"
-    public static let notificationHourKey = "NotificationHour"
-    public static let notificationMinuteKey = "NotificationMinute"
-    public static let firstLaunchKey = "FirstLaunch"
-    public static let iCloudEnabledKey = "iCloudEnabled"
-    
-    //Defined by System
-    public static let versionKey = "CFBundleShortVersionString"
-    
-    //Others
-    public static let ubiquityIdentityTokenKey = "com.uetamasamichi.Today.UbiquityIdentityToken"
-    
-    
+    //MARK: -
     public init() {
         notificationEnabled = defaults.boolForKey(Setting.notificationEnabledKey)
         notificationHour = defaults.integerForKey(Setting.notificationHourKey)
@@ -83,5 +85,19 @@ public struct Setting {
         comps.minute = notificationMinute
         let calendar = NSCalendar.currentCalendar()
         return calendar.dateFromComponents(comps)!
+    }
+    
+    public var dictionaryRepresentation: [String : AnyObject?] {
+        get {
+            return [
+                Setting.notificationEnabledKey: notificationEnabled,
+                Setting.notificationHourKey: notificationHour,
+                Setting.notificationMinuteKey: notificationMinute,
+                Setting.firstLaunchKey: firstLaunch,
+                Setting.iCloudEnabledKey: iCloudEnabled,
+                Setting.ubiquityIdentityTokenKey: ubiquityIdentityToken,
+                Setting.versionKey: version
+            ]
+        }
     }
 }

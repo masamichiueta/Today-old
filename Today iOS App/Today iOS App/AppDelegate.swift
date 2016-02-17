@@ -35,7 +35,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let storageType: StorageType = setting.iCloudEnabled ? .ICloud : .Local
         managedObjectContext = createTodayMainContext(storageType)
         
-        registerForiCloudNotifications()
+        if setting.iCloudEnabled {
+            registerForiCloudNotifications()
+        }
         NotificationManager.setupLocalNotificationSetting()
 
         let mainStoryboard = UIStoryboard.storyboard(.Main)
@@ -128,15 +130,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: - iCloud
     func registerForiCloudNotifications() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "iCloudAccountAvailabilityDidChange:", name: NSUbiquityIdentityDidChangeNotification, object: nil)
+        let iCloudStore = NSUbiquitousKeyValueStore.defaultStore()
+        let dict = iCloudStore.dictionaryRepresentation
+
+        //Reset iCloud Data
+        #if DEBUG
+            for (key, _) in dict {
+                iCloudStore.removeObjectForKey(key)
+            }
+        #endif
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateFromiCloud:", name: NSUbiquitousKeyValueStoreDidChangeExternallyNotification, object: iCloudStore)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateToiCloud:", name: NSUserDefaultsDidChangeNotification, object: nil)
+        iCloudStore.synchronize()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "iCloudAccountAvailabilityDidChange:", name: NSUbiquityIdentityDidChangeNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "storesWillChange:", name: NSPersistentStoreCoordinatorStoresWillChangeNotification, object: managedObjectContext.persistentStoreCoordinator)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "storesDidChange:", name: NSPersistentStoreCoordinatorStoresDidChangeNotification, object: managedObjectContext.persistentStoreCoordinator)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "persistentStoreDidImportUbiquitousContentChanges:", name: NSPersistentStoreDidImportUbiquitousContentChangesNotification, object: managedObjectContext.persistentStoreCoordinator)
     }
     
     func iCloudAccountAvailabilityDidChange(notification: NSNotification) {
-        print("***********\n account did change \n***********")
         var setting = Setting()
         if let currentiCloudToken = NSFileManager.defaultManager().ubiquityIdentityToken {
             let newTokenData =  NSKeyedArchiver.archivedDataWithRootObject(currentiCloudToken)
@@ -149,8 +163,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    func updateFromiCloud(notification: NSNotification) {
+        let iCloudStore = NSUbiquitousKeyValueStore.defaultStore()
+        let dict = iCloudStore.dictionaryRepresentation
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: NSUserDefaultsDidChangeNotification, object: nil)
+        for (key, value) in dict {
+            NSUserDefaults.standardUserDefaults().setObject(value, forKey: key)
+        }
+        
+        NSUserDefaults.standardUserDefaults().synchronize()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateToiCloud:", name: NSUserDefaultsDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName(UbiquitousKeyValueStoreDidChangeExternallyNotificationName, object: nil)
+        
+    }
+    
+    func updateToiCloud(notification: NSNotification) {
+        let iCloudStore = NSUbiquitousKeyValueStore.defaultStore()
+        let dict = NSUserDefaults.standardUserDefaults().dictionaryRepresentation()
+        for (key, value) in dict {
+            iCloudStore.setObject(value, forKey: key)
+        }
+        iCloudStore.synchronize()
+    }
+    
     func storesWillChange(notification: NSNotification) {
-        print("***********\n storesWillChange \n***********")
         managedObjectContext.performBlockAndWait({ [unowned self] in
             if self.managedObjectContext.hasChanges {
                 self.managedObjectContext.saveOrRollback()
@@ -161,12 +197,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func storesDidChange(notification: NSNotification) {
-        print("***********\n storesDidChange \n***********")
         NSNotificationCenter.defaultCenter().postNotificationName(StoresDidChangeNotificationName, object: nil)
     }
     
     func persistentStoreDidImportUbiquitousContentChanges(notification: NSNotification) {
-        print("***********\n persistentStoreDidImportUbiquitousContentChanges \n***********")
         managedObjectContext.performBlock({ [unowned self] in
             self.managedObjectContext.mergeChangesFromContextDidSaveNotification(notification)
         })

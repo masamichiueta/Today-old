@@ -136,17 +136,15 @@ class ActivityTableViewController: UITableViewController, ManagedObjectContextSe
 }
 
 extension ActivityTableViewController: iCloudRegistable {
-    func storesWillChange(notification: NSNotification) {
-        
-    }
+    func ubiquitousKeyValueStoreDidChangeExternally(notification: NSNotification) { }
+    
+    func storesWillChange(notification: NSNotification) { }
     
     func storesDidChange(notification: NSNotification) {
         tableView.reloadData()
     }
     
-    func persistentStoreDidImportUbiquitousContentChanges(notification: NSNotification) {
-        
-    }
+    func persistentStoreDidImportUbiquitousContentChanges(notification: NSNotification) { }
 }
 
 extension ActivityTableViewController: ChartTableViewCellDelegate {

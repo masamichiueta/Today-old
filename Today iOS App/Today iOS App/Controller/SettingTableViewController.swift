@@ -30,6 +30,7 @@ class SettingTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        registerForiCloudNotifications()
     }
 
     override func didReceiveMemoryWarning() {
@@ -173,6 +174,16 @@ class SettingTableViewController: UITableViewController {
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
+}
+
+extension SettingTableViewController: iCloudRegistable {
+    func ubiquitousKeyValueStoreDidChangeExternally(notification: NSNotification) {
+        tableView.reloadData()
+    }
+    
+    func storesWillChange(notification: NSNotification) { }
+    func storesDidChange(notification: NSNotification) { }
+    func persistentStoreDidImportUbiquitousContentChanges(notification: NSNotification) { }
 }
 
 extension SettingTableViewController: PickerTableViewCellDelegate {

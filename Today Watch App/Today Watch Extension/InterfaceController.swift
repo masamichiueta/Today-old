@@ -9,18 +9,35 @@
 import WatchKit
 import Foundation
 import WatchConnectivity
-
+import TodayWatchKit
 
 class InterfaceController: WKInterfaceController, WCSessionDelegate {
     
-    
     var session: WCSession!
     
-    @IBOutlet var addGroup: WKInterfaceGroup!
+    var todayScore: Int = 0 {
+        didSet {
+            let watchSize = getWatchSize()
+            
+            switch watchSize {
+            case .ThirtyEight:
+                scoreGroup.setBackgroundImageNamed("score_circle_38_")
+            case .FourtyTwo:
+                scoreGroup.setBackgroundImageNamed("score_circle_42_")
+            }
+            
+            let duration = 0.5
+            scoreGroup.startAnimatingWithImagesInRange(NSRange(location: 0, length: 6 * todayScore + 1), duration: duration, repeatCount: 1)
+            
+            scoreLabel.setText("\(todayScore)")
+            scoreIcon.setImageNamed(Today.type(todayScore).iconName("28"))
+        }
+    }
     
     @IBOutlet var scoreGroup: WKInterfaceGroup!
-    
     @IBOutlet var unreachableGroup: WKInterfaceGroup!
+    @IBOutlet var scoreLabel: WKInterfaceLabel!
+    @IBOutlet var scoreIcon: WKInterfaceImage!
     
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
@@ -30,6 +47,8 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
             session.delegate = self
             session.activateSession()
         }
+        
+        unreachableGroup.setHidden(true)
     }
     
     override func willActivate() {
@@ -37,33 +56,35 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         super.willActivate()
         
         if session.reachable {
-            unreachableGroup.setHidden(true)
+            if session.reachable {
+                session.sendMessage([watchConnectivityActionTypeKey: WatchConnectivityActionType.GetTodaysToday.rawValue],
+                    replyHandler: {
+                        (content: [String: AnyObject]) -> Void in
+                        guard let todayScore = content[WatchConnectivityContentType.TodaysToday.rawValue] as? Int else {
+                            return
+                        }
+                        self.todayScore  = todayScore
+                    },
+                    errorHandler: nil)
+            }
         } else {
-            addGroup.setHidden(true)
-            scoreGroup.setHidden(true)
-
+            unreachableGroup.setHidden(false)
         }
     }
     
+    @IBAction func addToday() {
+        presentControllerWithName("AddTodayInterfaceController", context: self)
+        
+    }
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
     }
     
-    @IBAction func addToday() {
-        
-        if session.reachable {
-//            session.sendMessage(["score": 10],
-//                replyHandler: {
-//                    (content: [String: AnyObject]) -> Void in
-//                    print("Our counterpart sent something back. This is optional")
-//                },
-//                errorHandler: {
-//                    (error) -> Void in
-//                    print("We got an error from our paired device : " + error.domain)
-//            })
-            presentController([(name: "test", context: self)])
-        }
-        
+}
+
+extension InterfaceController: AddTodayInterfaceControllerDelegate {
+    func todayDidAdd(score: Int) {
+        todayScore = score
     }
 }

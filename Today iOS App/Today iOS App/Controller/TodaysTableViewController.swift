@@ -13,8 +13,6 @@ import WatchConnectivity
 
 class TodaysTableViewController: UITableViewController, ManagedObjectContextSettable, SegueHandlerType {
     
-    var session: WCSession!
-    
     enum SegueIdentifier: String {
         case ShowAddTodayViewController = "showAddTodayViewController"
     }
@@ -30,11 +28,6 @@ class TodaysTableViewController: UITableViewController, ManagedObjectContextSett
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        if WCSession.isSupported() {
-            session = WCSession.defaultSession()
-            session.delegate = self
-            session.activateSession()
-        }
         registerForiCloudNotifications()
     }
     
@@ -179,19 +172,5 @@ extension TodaysTableViewController: iCloudRegistable {
     
     func persistentStoreDidImportUbiquitousContentChanges(notification: NSNotification) {
         
-    }
-}
-
-//MARK: - WCSessionDelegate
-extension TodaysTableViewController: WCSessionDelegate {
-    func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
-        if let score = message["score"] as? Int {
-            //Create today
-            managedObjectContext.performChanges {
-                Today.insertIntoContext(self.managedObjectContext, score: Int64(score), date: NSDate())
-            }
-
-        }
-       
     }
 }

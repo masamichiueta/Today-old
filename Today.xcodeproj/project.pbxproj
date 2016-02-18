@@ -25,6 +25,8 @@
 		244631451C3AB8BA002BBD06 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244631441C3AB8BA002BBD06 /* PaddingLabel.swift */; };
 		244BF0901C623DF600A9543A /* ChartViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244BF08F1C623DF600A9543A /* ChartViewDataSource.swift */; };
 		244BF0951C624EF400A9543A /* ChartViewBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244BF0941C624EF400A9543A /* ChartViewBase.swift */; };
+		245464671C75FFEF0030EF82 /* WatchConnectivityActionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245464661C75FFEF0030EF82 /* WatchConnectivityActionType.swift */; };
+		245464681C75FFEF0030EF82 /* WatchConnectivityActionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245464661C75FFEF0030EF82 /* WatchConnectivityActionType.swift */; };
 		24561EA51C6F71E900022222 /* GetStarted.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24561EA41C6F71E900022222 /* GetStarted.storyboard */; };
 		24561EA71C6F77D500022222 /* GetStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24561EA61C6F77D500022222 /* GetStartedViewController.swift */; };
 		2466884F1C1DB45E00C5E5A0 /* Activity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2466884D1C1DB45E00C5E5A0 /* Activity.storyboard */; };
@@ -238,6 +240,7 @@
 		244631441C3AB8BA002BBD06 /* PaddingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		244BF08F1C623DF600A9543A /* ChartViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewDataSource.swift; sourceTree = "<group>"; };
 		244BF0941C624EF400A9543A /* ChartViewBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewBase.swift; sourceTree = "<group>"; };
+		245464661C75FFEF0030EF82 /* WatchConnectivityActionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchConnectivityActionType.swift; sourceTree = "<group>"; };
 		24561EA41C6F71E900022222 /* GetStarted.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GetStarted.storyboard; sourceTree = "<group>"; };
 		24561EA61C6F77D500022222 /* GetStartedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStartedViewController.swift; sourceTree = "<group>"; };
 		2466884E1C1DB45E00C5E5A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Activity.storyboard; sourceTree = "<group>"; };
@@ -546,6 +549,7 @@
 				240F14741C2A9CDE0003B2AF /* CoreDataStack.swift */,
 				24444A591C306B4B00DC1579 /* NSManagedObjectContext+Extensions.swift */,
 				24DBB5901C2C367100E1C042 /* Utilities.swift */,
+				245464661C75FFEF0030EF82 /* WatchConnectivityActionType.swift */,
 			);
 			path = "Shared Code";
 			sourceTree = "<group>";
@@ -1047,6 +1051,7 @@
 				24A487FB1C5505490015DB05 /* Setting.swift in Sources */,
 				24A487FC1C55054C0015DB05 /* Streak.swift in Sources */,
 				24A9E9791C6CDC3F00739226 /* ManagedObject.swift in Sources */,
+				245464681C75FFEF0030EF82 /* WatchConnectivityActionType.swift in Sources */,
 				24A488031C5505AF0015DB05 /* Utilities.swift in Sources */,
 				24C7ACD01C5656D8002B203C /* WatchUtilities.swift in Sources */,
 				24A487FA1C55045D0015DB05 /* Today.swift in Sources */,
@@ -1062,6 +1067,7 @@
 				24C6C1C91C54FA080041C31F /* NSManagedObjectContext+Extensions.swift in Sources */,
 				24C6C1C21C54F9DB0041C31F /* Setting.swift in Sources */,
 				24C6C1C81C54FA050041C31F /* ManagedObject.swift in Sources */,
+				245464671C75FFEF0030EF82 /* WatchConnectivityActionType.swift in Sources */,
 				24C6C1C51C54F9F90041C31F /* Today.swift in Sources */,
 				24C6C1C41C54F9F60041C31F /* Streak.swift in Sources */,
 				24C6C1CA1C54FA0A0041C31F /* Utilities.swift in Sources */,

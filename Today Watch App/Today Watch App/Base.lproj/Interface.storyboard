@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="9515"/>
     </dependencies>
     <scenes>
@@ -10,26 +10,14 @@
             <objects>
                 <controller title="Today" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Today_Watch_Extension">
                     <items>
-                        <group width="1" alignment="left" verticalAlignment="center" layout="vertical" spacing="14" id="AeO-EP-h7j">
+                        <group width="108" height="108" alignment="center" verticalAlignment="center" backgroundImage="score_circle_38_0" layout="vertical" id="dPv-TN-vgx">
                             <items>
-                                <label alignment="center" text="How is your today?" textAlignment="center" numberOfLines="2" id="Cr9-rb-U2l">
-                                    <fontDescription key="font" type="system" pointSize="14"/>
-                                </label>
-                                <button width="1" alignment="left" title="Add Today" id="vUb-ir-9sA">
-                                    <connections>
-                                        <segue destination="NgC-EH-V7w" kind="modal" id="jN9-em-Pai"/>
-                                    </connections>
-                                </button>
-                            </items>
-                        </group>
-                        <group width="108" height="108" alignment="center" verticalAlignment="center" backgroundImage="score_circle_38_60" layout="vertical" id="dPv-TN-vgx">
-                            <items>
-                                <label alignment="center" verticalAlignment="center" text="10" id="mt2-0g-nab"/>
-                                <imageView alignment="center" verticalAlignment="center" image="good_face_icon_28" id="k1s-gC-GYU">
+                                <label alignment="center" verticalAlignment="center" text="0" id="mt2-0g-nab"/>
+                                <imageView alignment="center" verticalAlignment="center" image="poor_face_icon_28" id="k1s-gC-GYU">
                                     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </imageView>
                             </items>
-                            <variation key="device=watch42mm" backgroundImage="score_circle_42_60" height="132" width="132"/>
+                            <variation key="device=watch42mm" backgroundImage="score_circle_42_0" height="132" width="132"/>
                         </group>
                         <group width="1" alignment="left" verticalAlignment="center" layout="vertical" id="nuT-2S-kN1">
                             <items>
@@ -43,31 +31,41 @@ Your iPhone is not connected!</string>
                             </items>
                         </group>
                     </items>
+                    <menu key="menu" id="3EJ-As-Kzd">
+                        <items>
+                            <menuItem title="Add Today" icon="add" id="oCc-as-hCB">
+                                <connections>
+                                    <action selector="addToday" destination="AgC-eL-Hgc" id="rVu-f1-TiX"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
                     <connections>
-                        <outlet property="addGroup" destination="AeO-EP-h7j" id="STk-SR-EgB"/>
                         <outlet property="scoreGroup" destination="dPv-TN-vgx" id="Wsa-hp-xAO"/>
+                        <outlet property="scoreIcon" destination="k1s-gC-GYU" id="UU0-Zw-NU1"/>
+                        <outlet property="scoreLabel" destination="mt2-0g-nab" id="sRF-Tr-SX0"/>
                         <outlet property="unreachableGroup" destination="nuT-2S-kN1" id="HCP-Gn-V7b"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="235" y="347"/>
+            <point key="canvasLocation" x="257" y="346.25"/>
         </scene>
-        <!--Add Today Interface Controller-->
+        <!--AddTodayInterfaceController-->
         <scene sceneID="Kbm-6W-QBQ">
             <objects>
-                <controller id="NgC-EH-V7w" customClass="AddTodayInterfaceController" customModule="Today_Watch_Extension">
+                <controller identifier="AddTodayInterfaceController" id="NgC-EH-V7w" customClass="AddTodayInterfaceController" customModule="Today_Watch_Extension">
                     <items>
                         <group width="1" height="1" alignment="left" layout="vertical" id="qeL-ud-2Sz">
                             <items>
-                                <group width="108" height="108" alignment="center" backgroundImage="score_circle_38_60" layout="vertical" id="BS3-QW-Dnn">
+                                <group width="108" height="108" alignment="center" id="1t7-ac-7J0">
                                     <items>
-                                        <picker width="40" height="40" alignment="center" verticalAlignment="center" focusStyle="stack" id="Es8-JK-8dc">
+                                        <picker width="1" height="1" alignment="center" verticalAlignment="center" style="sequence" focusStyle="stack" id="O4m-uM-wST">
                                             <connections>
-                                                <action selector="pickerItemDidChange:" destination="NgC-EH-V7w" id="XOC-EO-jjs"/>
+                                                <action selector="pickerItemDidChange:" destination="NgC-EH-V7w" id="QdD-Of-tdb"/>
                                             </connections>
                                         </picker>
                                     </items>
-                                    <variation key="device=watch42mm" backgroundImage="score_circle_42_60" height="132" width="132"/>
+                                    <variation key="device=watch42mm" height="132" width="132"/>
                                 </group>
                                 <button width="1" height="38" alignment="center" verticalAlignment="bottom" title="Add" id="aZP-Wh-NM7">
                                     <fontDescription key="font" type="system" pointSize="15"/>
@@ -79,8 +77,7 @@ Your iPhone is not connected!</string>
                         </group>
                     </items>
                     <connections>
-                        <outlet property="scoreCircleGroup" destination="BS3-QW-Dnn" id="InQ-k7-JJf"/>
-                        <outlet property="scorePicker" destination="Es8-JK-8dc" id="y8D-7L-XIq"/>
+                        <outlet property="scorePicker" destination="O4m-uM-wST" id="haX-ZM-y1N"/>
                     </connections>
                 </controller>
             </objects>

@@ -207,4 +207,15 @@ public enum TodayType: String {
             return image.imageWithRenderingMode(.AlwaysTemplate)
         }
     }
+    
+    public func iconName(size: String) -> String {
+        switch self {
+        case .Excellent, .Good:
+            return goodIconImageName + size
+        case .Average, .Fair:
+            return averageIconImageName + size
+        case .Poor:
+            return poorIconImageName + size
+        }
+    }
 }

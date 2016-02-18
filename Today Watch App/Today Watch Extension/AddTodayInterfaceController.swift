@@ -7,62 +7,79 @@
 //
 
 import WatchKit
+import WatchConnectivity
 import Foundation
 import TodayWatchKit
 
-class AddTodayInterfaceController: WKInterfaceController {
-    
-    var score: Int = Today.maxMasterScore {
-        didSet {
-            let watchSize = getWatchSize()
-            
-            switch watchSize {
-            case .ThirtyEight:
-                scoreCircleGroup.setBackgroundImageNamed("score_circle_38_")
-            case .FourtyTwo:
-                scoreCircleGroup.setBackgroundImageNamed("score_circle_42_")
-            }
-            
-            let duration = NSTimeInterval(score - oldValue) / 10.0
-            
-            if score < oldValue {
-                scoreCircleGroup.startAnimatingWithImagesInRange(NSRange(location: 6*score, length: 6), duration: duration, repeatCount: 1)
-            } else {
-                scoreCircleGroup.startAnimatingWithImagesInRange(NSRange(location: 6*oldValue + 1, length: 6), duration: duration, repeatCount: 1)
-            }
-        }
-    }
+protocol AddTodayInterfaceControllerDelegate: class {
+    func todayDidAdd(score: Int)
+}
 
+class AddTodayInterfaceController: WKInterfaceController, WCSessionDelegate {
+    
+    var session: WCSession!
+    
     @IBOutlet var scorePicker: WKInterfacePicker!
     
-    @IBOutlet var scoreCircleGroup: WKInterfaceGroup!
+    var score: Int = Today.maxMasterScore
+    weak var delegate: InterfaceController?
     
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
         
+        if WCSession.isSupported() {
+            session = WCSession.defaultSession()
+            session.delegate = self
+            session.activateSession()
+        }
+        
+        delegate = context as? InterfaceController
+        
         let pickerItems: [WKPickerItem] = Today.masterScores.map {
             let pickerItem = WKPickerItem()
-            pickerItem.title = "\($0)"
+            
+            let watchSize = getWatchSize()
+            
+            switch watchSize {
+            case .ThirtyEight:
+                pickerItem.contentImage = WKImage(imageName: "score_select_circle_38_\($0).png")
+            case .FourtyTwo:
+                pickerItem.contentImage = WKImage(imageName: "score_select_circle_42_\($0).png")
+            }
+            
             return pickerItem
         }
         
         scorePicker.setItems(pickerItems)
     }
-
+    
     override func willActivate() {
-        // This method is called when watch view controller is about to be visible to user
         super.willActivate()
     }
-
+    
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
     }
     
     @IBAction func addToday() {
+        if session.reachable {
+            session.sendMessage([watchConnectivityActionTypeKey: WatchConnectivityActionType.AddToday.rawValue, WatchConnectivityContentType.Score.rawValue: score],
+                replyHandler: {
+                    (content: [String: AnyObject]) -> Void in
+                    self.delegate?.todayDidAdd(self.score)
+                    self.dismissController()
+                },
+                errorHandler: {
+                    (error) -> Void in
+                    self.dismissController()
+            })
+        } else {
+            self.dismissController()
+        }
         
     }
-
+    
     @IBAction func pickerItemDidChange(value: Int) {
         score = Today.masterScores[value]
     }

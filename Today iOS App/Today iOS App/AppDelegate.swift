@@ -7,22 +7,24 @@
 //
 
 import UIKit
+import WatchConnectivity
 import CoreData
 import TodayKit
-
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     var managedObjectContext: NSManagedObjectContext!
+    var session: WCSession!
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        //Default Setting
         setupDefaultSetting()
         
+        //Navigation
         let setting = Setting()
-        
         if setting.firstLaunch {
             let startStoryboard = UIStoryboard.storyboard(.GetStarted)
             guard let vc = startStoryboard.instantiateInitialViewController() else {
@@ -32,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return true
         }
         
+        //iCloud
         if setting.iCloudEnabled {
             managedObjectContext = createTodayMainContext(.ICloud)
             registerForiCloudNotifications()
@@ -39,8 +42,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             managedObjectContext = createTodayMainContext(.Local)
         }
         
+        //Notification
         NotificationManager.setupLocalNotificationSetting()
-
+        
+        //CoreData
         let mainStoryboard = UIStoryboard.storyboard(.Main)
         guard let vc = mainStoryboard.instantiateInitialViewController() else {
             fatalError("InitialViewController not found")
@@ -50,6 +55,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         managedObjectContextSettable.managedObjectContext = managedObjectContext
         window?.rootViewController = vc
+        
+        //WatchConnectivity
+        if WCSession.isSupported() {
+            session = WCSession.defaultSession()
+            session.delegate = self
+            session.activateSession()
+        }
         
         return true
     }
@@ -184,7 +196,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.managedObjectContext.saveOrRollback()
             }
             self.managedObjectContext.reset()
-        })
+            })
         NSNotificationCenter.defaultCenter().postNotificationName(StoresWillChangeNotificationName, object: nil)
     }
     
@@ -195,8 +207,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func persistentStoreDidImportUbiquitousContentChanges(notification: NSNotification) {
         managedObjectContext.performBlock({ [unowned self] in
             self.managedObjectContext.mergeChangesFromContextDidSaveNotification(notification)
-        })
+            })
         NSNotificationCenter.defaultCenter().postNotificationName(PersistentStoreDidImportUbiquitousContentChangesNotificationName, object: nil)
     }
+}
 
+extension AppDelegate: WCSessionDelegate {
+    func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
+        
+        guard let watchConnectivityActionTypeRawValue = message[watchConnectivityActionTypeKey] as? String else {
+            return
+        }
+        
+        guard let watchConnectivityActionType = WatchConnectivityActionType(rawValue: watchConnectivityActionTypeRawValue) else {
+            return
+        }
+        
+        switch watchConnectivityActionType {
+        case .AddToday:
+            guard let score = message[WatchConnectivityContentType.Score.rawValue] as? Int else {
+                return
+            }
+            
+            //Create today
+            if !Today.created(managedObjectContext, forDate: NSDate()) {
+                managedObjectContext.performChanges {
+                    Today.insertIntoContext(self.managedObjectContext, score: Int64(score), date: NSDate())
+                }
+                replyHandler(["finished": true])
+            }
+        case .GetTodaysToday:
+            let now = NSDate()
+            guard let startDate =  NSCalendar.currentCalendar().dateBySettingHour(0, minute: 0, second: 0, ofDate: now, options: []) else {
+                return
+            }
+            guard let endDate = NSCalendar.currentCalendar().dateByAddingUnit(NSCalendarUnit.Day, value: 1, toDate: startDate, options: []) else {
+                return
+            }
+            guard let today = Today.todays(managedObjectContext, from: startDate, to: endDate).first else {
+                return
+            }
+            replyHandler([WatchConnectivityContentType.TodaysToday.rawValue: Int(today.score)])
+        }
+    }
 }

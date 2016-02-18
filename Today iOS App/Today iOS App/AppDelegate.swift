@@ -32,12 +32,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return true
         }
         
-        let storageType: StorageType = setting.iCloudEnabled ? .ICloud : .Local
-        managedObjectContext = createTodayMainContext(storageType)
-        
         if setting.iCloudEnabled {
+            managedObjectContext = createTodayMainContext(.ICloud)
             registerForiCloudNotifications()
+        } else {
+            managedObjectContext = createTodayMainContext(.Local)
         }
+        
         NotificationManager.setupLocalNotificationSetting()
 
         let mainStoryboard = UIStoryboard.storyboard(.Main)
@@ -131,15 +132,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - iCloud
     func registerForiCloudNotifications() {
         let iCloudStore = NSUbiquitousKeyValueStore.defaultStore()
-        let dict = iCloudStore.dictionaryRepresentation
-
-        //Reset iCloud Data
-        #if DEBUG
-            for (key, _) in dict {
-                iCloudStore.removeObjectForKey(key)
-            }
-        #endif
-        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateFromiCloud:", name: NSUbiquitousKeyValueStoreDidChangeExternallyNotification, object: iCloudStore)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateToiCloud:", name: NSUserDefaultsDidChangeNotification, object: nil)
         iCloudStore.synchronize()

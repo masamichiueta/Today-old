@@ -72,18 +72,29 @@ class GetStartedViewController: UIViewController {
     }
     
     @IBAction func showiCloudPermission(sender: AnyObject) {
+        
+        guard let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate else {
+            fatalError("Wrong appdelegate type")
+        }
+        
         let alertController = UIAlertController(title: "Choose Storage Option", message: "Should documents be stored in iCloud and available on all your devices?", preferredStyle: .Alert)
+        
         alertController.addAction(UIAlertAction(title: "Local Only", style: .Cancel, handler: { action in
+            appDelegate.managedObjectContext = createTodayMainContext(.Local)
             self.iCloudButton.setTitle("Use local storage", forState: .Normal)
         }))
+        
         alertController.addAction(UIAlertAction(title: "Use iCloud", style: .Default, handler: { action in
+            
             var setting = Setting()
             setting.iCloudEnabled = true
+        
             if let currentiCloudToken = NSFileManager.defaultManager().ubiquityIdentityToken {
                 let newTokenData = NSKeyedArchiver.archivedDataWithRootObject(currentiCloudToken)
-                 setting.ubiquityIdentityToken = newTokenData
+                setting.ubiquityIdentityToken = newTokenData
             } else {
                 let alertController = UIAlertController(title: "iCloud is Disabled", message: "Your iCloud account is disabled. Please sign in from setting.", preferredStyle: .Alert)
+                
                 alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: { action in
                     self.iCloudButton.enabled = false
                     self.iCloudButton.userInteractionEnabled = false
@@ -93,6 +104,8 @@ class GetStartedViewController: UIViewController {
                 self.presentViewController(alertController, animated: true, completion: nil)
                 setting.ubiquityIdentityToken = nil
             }
+            appDelegate.managedObjectContext = createTodayMainContext(.ICloud)
+            appDelegate.registerForiCloudNotifications()
         }))
         self.presentViewController(alertController, animated: true, completion: { finished in
             self.iCloudButton.backgroundColor = UIColor.defaultTintColor()
@@ -108,13 +121,6 @@ class GetStartedViewController: UIViewController {
         }
         var setting = Setting()
         setting.firstLaunch = false
-        
-        let storageType: StorageType = setting.iCloudEnabled ? .ICloud : .Local
-        appDelegate.managedObjectContext = createTodayMainContext(storageType)
-        
-        if setting.iCloudEnabled {
-            appDelegate.registerForiCloudNotifications()
-        }
         
         let mainStoryboard = UIStoryboard.storyboard(.Main)
         guard let vc = mainStoryboard.instantiateInitialViewController() else {

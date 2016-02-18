@@ -36,6 +36,10 @@ class ActivityTableViewController: UITableViewController, ManagedObjectContextSe
         tableView.tableFooterView = UIView()
     }
     
+    deinit {
+        unregisterForiCloudNotifications()
+    }
+    
     func createChartViewDataSource(periodType: ChartViewPeriodType) -> ScoreChartViewDataSource {
         switch periodType {
         case .Week:

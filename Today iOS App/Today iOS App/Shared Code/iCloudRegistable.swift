@@ -23,11 +23,19 @@ protocol iCloudRegistable: class {
 
 extension iCloudRegistable {
     func registerForiCloudNotifications() {
-        NSNotificationCenter.defaultCenter().addObserver(self as AnyObject, selector: "ubiquitousKeyValueStoreDidChangeExternally:", name: UbiquitousKeyValueStoreDidChangeExternallyNotificationName, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self as AnyObject, selector: "storesWillChange:", name: StoresWillChangeNotificationName, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self as AnyObject, selector: "storesDidChange:", name: StoresDidChangeNotificationName, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self as AnyObject, selector: "persistentStoreDidImportUbiquitousContentChanges:", name:PersistentStoreDidImportUbiquitousContentChangesNotificationName, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "ubiquitousKeyValueStoreDidChangeExternally:", name: UbiquitousKeyValueStoreDidChangeExternallyNotificationName, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "storesWillChange:", name: StoresWillChangeNotificationName, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "storesDidChange:", name: StoresDidChangeNotificationName, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "persistentStoreDidImportUbiquitousContentChanges:", name:PersistentStoreDidImportUbiquitousContentChangesNotificationName, object: nil)
     }
+    
+    func unregisterForiCloudNotifications() {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UbiquitousKeyValueStoreDidChangeExternallyNotificationName, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: StoresWillChangeNotificationName, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: StoresDidChangeNotificationName, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: PersistentStoreDidImportUbiquitousContentChangesNotificationName, object: nil)
+    }
+    
     
     //AddObserver does not support protocol extensions for default implementation.
     

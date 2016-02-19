@@ -75,8 +75,6 @@
 		24F21ACE1C4FD73C00396A38 /* Today Watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 24F21ACD1C4FD73C00396A38 /* Today Watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		24F21AD51C4FD73C00396A38 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F21AD41C4FD73C00396A38 /* InterfaceController.swift */; };
 		24F21AD71C4FD73C00396A38 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F21AD61C4FD73C00396A38 /* ExtensionDelegate.swift */; };
-		24F21AD91C4FD73C00396A38 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F21AD81C4FD73C00396A38 /* NotificationController.swift */; };
-		24F21ADB1C4FD73C00396A38 /* GlanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F21ADA1C4FD73C00396A38 /* GlanceController.swift */; };
 		24F21AE11C4FD73C00396A38 /* Today Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 24F21AC11C4FD73C00396A38 /* Today Watch App.app */; };
 		24F9DC371C2EF9F9003A6427 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F9DC361C2EF9F9003A6427 /* DataProvider.swift */; };
 		24F9DC391C2EFAC5003A6427 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F9DC381C2EFAC5003A6427 /* DataSource.swift */; };
@@ -286,8 +284,6 @@
 		24F21AD31C4FD73C00396A38 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		24F21AD41C4FD73C00396A38 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
 		24F21AD61C4FD73C00396A38 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
-		24F21AD81C4FD73C00396A38 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
-		24F21ADA1C4FD73C00396A38 /* GlanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlanceController.swift; sourceTree = "<group>"; };
 		24F21ADE1C4FD73C00396A38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24F9DC361C2EF9F9003A6427 /* DataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		24F9DC381C2EFAC5003A6427 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
@@ -593,10 +589,8 @@
 				24F21AD21C4FD73C00396A38 /* Supporting Files */,
 				246AC1801C5120FF0047AAE7 /* AddTodayInterfaceController.swift */,
 				24F21AD61C4FD73C00396A38 /* ExtensionDelegate.swift */,
-				24F21ADA1C4FD73C00396A38 /* GlanceController.swift */,
 				24F21ADE1C4FD73C00396A38 /* Info.plist */,
 				24F21AD41C4FD73C00396A38 /* InterfaceController.swift */,
-				24F21AD81C4FD73C00396A38 /* NotificationController.swift */,
 			);
 			path = "Today Watch Extension";
 			sourceTree = "<group>";
@@ -1095,11 +1089,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24F21AD91C4FD73C00396A38 /* NotificationController.swift in Sources */,
 				246AC1811C5120FF0047AAE7 /* AddTodayInterfaceController.swift in Sources */,
 				24F21AD71C4FD73C00396A38 /* ExtensionDelegate.swift in Sources */,
 				24F21AD51C4FD73C00396A38 /* InterfaceController.swift in Sources */,
-				24F21ADB1C4FD73C00396A38 /* GlanceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

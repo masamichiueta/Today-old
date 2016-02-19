@@ -67,7 +67,7 @@
 		24D8E3DD1C54FC4F005BA35B /* TodayKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24C6C1A51C54F9970041C31F /* TodayKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		24F1948A1C2FB9B8001593D8 /* AugmentedFetchedResultsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F194891C2FB9B8001593D8 /* AugmentedFetchedResultsDataProvider.swift */; };
 		24F21AB11C4FCFE900396A38 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24F21AB01C4FCFE900396A38 /* NotificationCenter.framework */; };
-		24F21AB41C4FCFE900396A38 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F21AB31C4FCFE900396A38 /* TodayViewController.swift */; };
+		24F21AB41C4FCFE900396A38 /* TodayExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F21AB31C4FCFE900396A38 /* TodayExtensionViewController.swift */; };
 		24F21AB71C4FCFE900396A38 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24F21AB51C4FCFE900396A38 /* MainInterface.storyboard */; };
 		24F21ABB1C4FCFE900396A38 /* Today Today Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 24F21AAF1C4FCFE900396A38 /* Today Today Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		24F21AC51C4FD73C00396A38 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24F21AC31C4FD73C00396A38 /* Interface.storyboard */; };
@@ -273,7 +273,7 @@
 		24F194891C2FB9B8001593D8 /* AugmentedFetchedResultsDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AugmentedFetchedResultsDataProvider.swift; sourceTree = "<group>"; };
 		24F21AAF1C4FCFE900396A38 /* Today Today Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Today Today Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		24F21AB01C4FCFE900396A38 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
-		24F21AB31C4FCFE900396A38 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		24F21AB31C4FCFE900396A38 /* TodayExtensionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayExtensionViewController.swift; sourceTree = "<group>"; };
 		24F21AB61C4FCFE900396A38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		24F21AB81C4FCFE900396A38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24F21AC11C4FD73C00396A38 /* Today Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Today Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -568,7 +568,7 @@
 				24A9E9781C6CBDE700739226 /* Today Today Extension.entitlements */,
 				24F21AB81C4FCFE900396A38 /* Info.plist */,
 				24F21AB51C4FCFE900396A38 /* MainInterface.storyboard */,
-				24F21AB31C4FCFE900396A38 /* TodayViewController.swift */,
+				24F21AB31C4FCFE900396A38 /* TodayExtensionViewController.swift */,
 			);
 			path = "Today Extension";
 			sourceTree = "<group>";
@@ -850,8 +850,11 @@
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = A9WB53K8XM;
 						SystemCapabilities = {
-							com.apple.iCloud = {
+							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 0;
 							};
 						};
 					};
@@ -1081,7 +1084,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24F21AB41C4FCFE900396A38 /* TodayViewController.swift in Sources */,
+				24F21AB41C4FCFE900396A38 /* TodayExtensionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

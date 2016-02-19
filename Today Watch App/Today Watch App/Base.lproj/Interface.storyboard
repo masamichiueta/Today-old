@@ -10,6 +10,10 @@
             <objects>
                 <controller title="Today" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Today_Watch_Extension">
                     <items>
+                        <label alignment="center" hidden="YES" alpha="0.0" text="You have already created today!" textAlignment="center" numberOfLines="2" id="dt0-zJ-CNk">
+                            <color key="textColor" red="1" green="0.21960784310000001" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="font" style="UICTFontTextStyleCaption1"/>
+                        </label>
                         <group width="108" height="108" alignment="center" verticalAlignment="center" backgroundImage="score_circle_38_0" layout="vertical" id="dPv-TN-vgx">
                             <items>
                                 <label alignment="center" verticalAlignment="center" text="0" id="mt2-0g-nab"/>
@@ -41,6 +45,7 @@ Your iPhone is not connected!</string>
                         </items>
                     </menu>
                     <connections>
+                        <outlet property="cautionLabel" destination="dt0-zJ-CNk" id="w5z-Gf-8TD"/>
                         <outlet property="scoreGroup" destination="dPv-TN-vgx" id="Wsa-hp-xAO"/>
                         <outlet property="scoreIcon" destination="k1s-gC-GYU" id="UU0-Zw-NU1"/>
                         <outlet property="scoreLabel" destination="mt2-0g-nab" id="sRF-Tr-SX0"/>

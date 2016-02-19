@@ -15,7 +15,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     
     var session: WCSession!
     
-    var todayScore: Int = 0 {
+    var todayScore: Int? {
         didSet {
             let watchSize = getWatchSize()
             
@@ -27,6 +27,10 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
             }
             
             let duration = 0.5
+            guard let todayScore = todayScore else {
+                return
+            }
+            
             scoreGroup.startAnimatingWithImagesInRange(NSRange(location: 0, length: 6 * todayScore + 1), duration: duration, repeatCount: 1)
             
             scoreLabel.setText("\(todayScore)")
@@ -38,6 +42,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     @IBOutlet var unreachableGroup: WKInterfaceGroup!
     @IBOutlet var scoreLabel: WKInterfaceLabel!
     @IBOutlet var scoreIcon: WKInterfaceImage!
+    @IBOutlet var cautionLabel: WKInterfaceLabel!
     
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
@@ -48,39 +53,67 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
             session.activateSession()
         }
         
-        unreachableGroup.setHidden(true)
-    }
-    
-    override func willActivate() {
-        // This method is called when watch view controller is about to be visible to user
-        super.willActivate()
-        
         if session.reachable {
-            if session.reachable {
-                session.sendMessage([watchConnectivityActionTypeKey: WatchConnectivityActionType.GetTodaysToday.rawValue],
-                    replyHandler: {
-                        (content: [String: AnyObject]) -> Void in
-                        guard let todayScore = content[WatchConnectivityContentType.TodaysToday.rawValue] as? Int else {
-                            return
-                        }
-                        self.todayScore  = todayScore
-                    },
-                    errorHandler: nil)
-            }
+            scoreGroup.setHidden(false)
+            unreachableGroup.setHidden(true)
+            sendMessageToGetToday()
         } else {
+            scoreGroup.setHidden(true)
             unreachableGroup.setHidden(false)
         }
     }
     
-    @IBAction func addToday() {
-        presentControllerWithName("AddTodayInterfaceController", context: self)
-        
+    override func willActivate() {
+        super.willActivate()
     }
+    
+    @IBAction func addToday() {
+        
+        if todayScore == nil {
+            presentControllerWithName("AddTodayInterfaceController", context: self)
+        } else {
+            cautionLabel.setHidden(false)
+            animateWithDuration(0.5, animations: {
+                self.cautionLabel.setAlpha(1.0)
+                NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: "hideCautionLabel", userInfo: nil, repeats: false)
+            })
+        }
+    }
+    
+    func hideCautionLabel() {
+        animateWithDuration(0.5, animations: { [unowned self] in
+            self.cautionLabel.setAlpha(0.0)
+            self.cautionLabel.setHidden(true)
+        })
+    }
+    
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
     }
     
+    func sessionReachabilityDidChange(session: WCSession) {
+        if session.reachable {
+            scoreGroup.setHidden(false)
+            unreachableGroup.setHidden(true)
+            sendMessageToGetToday()
+        } else {
+            scoreGroup.setHidden(true)
+            unreachableGroup.setHidden(false)
+        }
+    }
+    
+    private func sendMessageToGetToday() {
+        session.sendMessage([watchConnectivityActionTypeKey: WatchConnectivityActionType.GetTodaysToday.rawValue],
+            replyHandler: {
+                (content: [String: AnyObject]) -> Void in
+                guard let todayScore = content[WatchConnectivityContentType.TodaysToday.rawValue] as? Int else {
+                    return
+                }
+                self.todayScore  = todayScore
+            },
+            errorHandler: nil)
+    }
 }
 
 extension InterfaceController: AddTodayInterfaceControllerDelegate {

@@ -23,17 +23,6 @@
                             </items>
                             <variation key="device=watch42mm" backgroundImage="score_circle_42_0" height="144" width="144"/>
                         </group>
-                        <group width="1" alignment="left" verticalAlignment="center" layout="vertical" id="nuT-2S-kN1">
-                            <items>
-                                <label alignment="center" textAlignment="center" numberOfLines="3" id="lKS-Rw-kpR">
-                                    <string key="text">Wow!
-Your iPhone is not connected!</string>
-                                </label>
-                                <imageView alignment="center" image="poor_face_icon_28" id="Qow-jD-EKx">
-                                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </imageView>
-                            </items>
-                        </group>
                     </items>
                     <menu key="menu" id="3EJ-As-Kzd">
                         <items>
@@ -49,7 +38,6 @@ Your iPhone is not connected!</string>
                         <outlet property="scoreGroup" destination="dPv-TN-vgx" id="Wsa-hp-xAO"/>
                         <outlet property="scoreIcon" destination="k1s-gC-GYU" id="UU0-Zw-NU1"/>
                         <outlet property="scoreLabel" destination="mt2-0g-nab" id="sRF-Tr-SX0"/>
-                        <outlet property="unreachableGroup" destination="nuT-2S-kN1" id="HCP-Gn-V7b"/>
                         <segue destination="Mww-RZ-ABu" kind="relationship" relationship="nextPage" id="6sl-b6-BUg"/>
                     </connections>
                 </controller>

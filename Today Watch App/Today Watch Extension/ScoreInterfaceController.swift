@@ -17,7 +17,15 @@ class ScoreInterfaceController: WKInterfaceController, WCSessionDelegate {
     
     var todayScore: Int? {
         didSet {
+            let watchSize = getWatchSize()
+            
             guard let todayScore = todayScore else {
+                switch watchSize {
+                case .ThirtyEight:
+                    scoreGroup.setBackgroundImageNamed("score_circle_38_0")
+                case .FourtyTwo:
+                    scoreGroup.setBackgroundImageNamed("score_circle_42_0")
+                }
                 scoreLabel.setText("0")
                 scoreIcon.setImageNamed(Today.type(0).iconName("28"))
                 return
@@ -26,8 +34,6 @@ class ScoreInterfaceController: WKInterfaceController, WCSessionDelegate {
             if todayScore == oldValue {
                 return
             }
-            
-            let watchSize = getWatchSize()
             
             switch watchSize {
             case .ThirtyEight:
@@ -45,7 +51,6 @@ class ScoreInterfaceController: WKInterfaceController, WCSessionDelegate {
     }
     
     @IBOutlet var scoreGroup: WKInterfaceGroup!
-    @IBOutlet var unreachableGroup: WKInterfaceGroup!
     @IBOutlet var scoreLabel: WKInterfaceLabel!
     @IBOutlet var scoreIcon: WKInterfaceImage!
     @IBOutlet var cautionLabel: WKInterfaceLabel!
@@ -64,13 +69,9 @@ class ScoreInterfaceController: WKInterfaceController, WCSessionDelegate {
         super.willActivate()
         
         if session.reachable {
-            scoreGroup.setHidden(false)
-            unreachableGroup.setHidden(true)
             sendMessageToGetToday()
         } else {
             todayScore = nil
-            scoreGroup.setHidden(true)
-            unreachableGroup.setHidden(false)
         }
     }
     
@@ -101,13 +102,9 @@ class ScoreInterfaceController: WKInterfaceController, WCSessionDelegate {
     
     func sessionReachabilityDidChange(session: WCSession) {
         if session.reachable {
-            scoreGroup.setHidden(false)
-            unreachableGroup.setHidden(true)
             sendMessageToGetToday()
         } else {
             todayScore = nil
-            scoreGroup.setHidden(true)
-            unreachableGroup.setHidden(false)
         }
     }
     

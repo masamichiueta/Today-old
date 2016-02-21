@@ -253,7 +253,7 @@
 		24A1CFE01C36D8FA00F0E9CE /* ScoreCircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreCircleView.swift; sourceTree = "<group>"; };
 		24A487EE1C5503C50015DB05 /* TodayWatchKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TodayWatchKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		24A487F21C5503C50015DB05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		24A9E9781C6CBDE700739226 /* Today Today Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "Today Today Extension.entitlements"; path = "../../Today Today Extension.entitlements"; sourceTree = "<group>"; };
+		24A9E9781C6CBDE700739226 /* Today Today Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Today Today Extension.entitlements"; sourceTree = "<group>"; };
 		24C6AE961C2831660048C4D1 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		24C6C1A51C54F9970041C31F /* TodayKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TodayKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		24C6C1A91C54F9970041C31F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -428,8 +428,8 @@
 				240F14771C2A9FD40003B2AF /* ManagedObjectContextSettable.swift */,
 				242F984A1C49282200DBC64B /* NotificationManager.swift */,
 				240F147D1C2ABC000003B2AF /* SegueHandlerType.swift */,
-				24D4E3481C43ED6E00F6DA6A /* Utilities.swift */,
 				242D5A6E1C7374C500789616 /* StoryboardHandlerType.swift */,
+				24D4E3481C43ED6E00F6DA6A /* Utilities.swift */,
 				242DD1171C74BFFA00A8A760 /* iCloudRegistable.swift */,
 			);
 			path = "Shared Code";
@@ -450,10 +450,10 @@
 			children = (
 				24FFBB981C3D7AE50053E261 /* ActivityTableViewController.swift */,
 				24444A5D1C30A02A00DC1579 /* AddTodayViewController.swift */,
+				24561EA61C6F77D500022222 /* GetStartedViewController.swift */,
 				240F147B1C2AA0450003B2AF /* RootViewController.swift */,
 				24FFBB961C3D6AFA0053E261 /* SettingTableViewController.swift */,
 				246688501C1DB4ED00C5E5A0 /* TodaysTableViewController.swift */,
-				24561EA61C6F77D500022222 /* GetStartedViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -463,6 +463,7 @@
 			children = (
 				2466884D1C1DB45E00C5E5A0 /* Activity.storyboard */,
 				24D67C841C3EB54600A33DB7 /* AverageTotalTableViewCell.swift */,
+				2488C7081C6F686D00EF8F45 /* BorderButton.swift */,
 				24D82C2E1C5A5D880095FA47 /* ChartTableViewCell.swift */,
 				244BF0941C624EF400A9543A /* ChartViewBase.swift */,
 				24561EA41C6F71E900022222 /* GetStarted.storyboard */,
@@ -475,7 +476,6 @@
 				2425BBA81C5E3A0E008AD9A4 /* StreakTableViewCell.swift */,
 				24C6AE961C2831660048C4D1 /* TableViewCell.swift */,
 				246688541C1DB61100C5E5A0 /* Today.storyboard */,
-				2488C7081C6F686D00EF8F45 /* BorderButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -543,8 +543,8 @@
 		24C77EA31C2A8BF000493C13 /* Shared Code */ = {
 			isa = PBXGroup;
 			children = (
-				24C77EA11C2A8B6C00493C13 /* ManagedObject.swift */,
 				240F14741C2A9CDE0003B2AF /* CoreDataStack.swift */,
+				24C77EA11C2A8B6C00493C13 /* ManagedObject.swift */,
 				24444A591C306B4B00DC1579 /* NSManagedObjectContext+Extensions.swift */,
 				24DBB5901C2C367100E1C042 /* Utilities.swift */,
 				245464661C75FFEF0030EF82 /* WatchConnectivityActionType.swift */,
@@ -567,9 +567,9 @@
 		24F21AB21C4FCFE900396A38 /* Today Extension */ = {
 			isa = PBXGroup;
 			children = (
-				24A9E9781C6CBDE700739226 /* Today Today Extension.entitlements */,
 				24F21AB81C4FCFE900396A38 /* Info.plist */,
 				24F21AB51C4FCFE900396A38 /* MainInterface.storyboard */,
+				24A9E9781C6CBDE700739226 /* Today Today Extension.entitlements */,
 				24F21AB31C4FCFE900396A38 /* TodayExtensionViewController.swift */,
 			);
 			path = "Today Extension";
@@ -590,10 +590,10 @@
 			children = (
 				24F21AD21C4FD73C00396A38 /* Supporting Files */,
 				246AC1801C5120FF0047AAE7 /* AddTodayInterfaceController.swift */,
+				24D210321C79EE2F00F69478 /* CurrentStreakInterfaceController.swift */,
 				24F21AD61C4FD73C00396A38 /* ExtensionDelegate.swift */,
 				24F21ADE1C4FD73C00396A38 /* Info.plist */,
 				24F21AD41C4FD73C00396A38 /* ScoreInterfaceController.swift */,
-				24D210321C79EE2F00F69478 /* CurrentStreakInterfaceController.swift */,
 			);
 			path = "Today Watch Extension";
 			sourceTree = "<group>";
@@ -610,12 +610,12 @@
 			isa = PBXGroup;
 			children = (
 				24F194891C2FB9B8001593D8 /* AugmentedFetchedResultsDataProvider.swift */,
+				2401ACC91C63854100E0691F /* ChartData.swift */,
+				244BF08F1C623DF600A9543A /* ChartViewDataSource.swift */,
 				24F9DC361C2EF9F9003A6427 /* DataProvider.swift */,
 				24F9DC381C2EFAC5003A6427 /* DataSource.swift */,
 				24F9DC3A1C2EFB0F003A6427 /* FetchedResultsDataProvider.swift */,
 				24F9DC3C1C2EFCD4003A6427 /* TableViewDataSource.swift */,
-				244BF08F1C623DF600A9543A /* ChartViewDataSource.swift */,
-				2401ACC91C63854100E0691F /* ChartData.swift */,
 			);
 			path = "Data Source and Provider";
 			sourceTree = "<group>";
@@ -1508,7 +1508,7 @@
 		24F21ABD1C4FCFEB00396A38 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "Today Today Extension.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Today iOS App/Today Extension/Today Today Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Today iOS App/Today Extension/Info.plist";
@@ -1523,7 +1523,7 @@
 		24F21ABE1C4FCFEB00396A38 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "Today Today Extension.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Today iOS App/Today Extension/Today Today Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Today iOS App/Today Extension/Info.plist";

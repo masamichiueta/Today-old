@@ -60,6 +60,7 @@
 		24C6C1C91C54FA080041C31F /* NSManagedObjectContext+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24444A591C306B4B00DC1579 /* NSManagedObjectContext+Extensions.swift */; };
 		24C6C1CA1C54FA0A0041C31F /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DBB5901C2C367100E1C042 /* Utilities.swift */; };
 		24C7ACD01C5656D8002B203C /* WatchUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C7ACCF1C5656D8002B203C /* WatchUtilities.swift */; };
+		24D210331C79EE2F00F69478 /* CurrentStreakInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D210321C79EE2F00F69478 /* CurrentStreakInterfaceController.swift */; };
 		24D4E3491C43ED6E00F6DA6A /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D4E3481C43ED6E00F6DA6A /* Utilities.swift */; };
 		24D67C851C3EB54600A33DB7 /* AverageTotalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D67C841C3EB54600A33DB7 /* AverageTotalTableViewCell.swift */; };
 		24D82C2F1C5A5D880095FA47 /* ChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D82C2E1C5A5D880095FA47 /* ChartTableViewCell.swift */; };
@@ -73,7 +74,7 @@
 		24F21AC51C4FD73C00396A38 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24F21AC31C4FD73C00396A38 /* Interface.storyboard */; };
 		24F21AC71C4FD73C00396A38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24F21AC61C4FD73C00396A38 /* Assets.xcassets */; };
 		24F21ACE1C4FD73C00396A38 /* Today Watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 24F21ACD1C4FD73C00396A38 /* Today Watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		24F21AD51C4FD73C00396A38 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F21AD41C4FD73C00396A38 /* InterfaceController.swift */; };
+		24F21AD51C4FD73C00396A38 /* ScoreInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F21AD41C4FD73C00396A38 /* ScoreInterfaceController.swift */; };
 		24F21AD71C4FD73C00396A38 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F21AD61C4FD73C00396A38 /* ExtensionDelegate.swift */; };
 		24F21AE11C4FD73C00396A38 /* Today Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 24F21AC11C4FD73C00396A38 /* Today Watch App.app */; };
 		24F9DC371C2EF9F9003A6427 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F9DC361C2EF9F9003A6427 /* DataProvider.swift */; };
@@ -264,6 +265,7 @@
 		24C77EA81C2A8C6F00493C13 /* Today.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Today.swift; sourceTree = "<group>"; };
 		24C77EAD1C2A937600493C13 /* Today.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Today.entitlements; sourceTree = "<group>"; };
 		24C7ACCF1C5656D8002B203C /* WatchUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchUtilities.swift; sourceTree = "<group>"; };
+		24D210321C79EE2F00F69478 /* CurrentStreakInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentStreakInterfaceController.swift; sourceTree = "<group>"; };
 		24D4E3461C43E1D900F6DA6A /* Setting.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Setting.plist; sourceTree = "<group>"; };
 		24D4E3481C43ED6E00F6DA6A /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		24D67C841C3EB54600A33DB7 /* AverageTotalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AverageTotalTableViewCell.swift; sourceTree = "<group>"; };
@@ -282,7 +284,7 @@
 		24F21AC81C4FD73C00396A38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24F21ACD1C4FD73C00396A38 /* Today Watch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Today Watch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		24F21AD31C4FD73C00396A38 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
-		24F21AD41C4FD73C00396A38 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		24F21AD41C4FD73C00396A38 /* ScoreInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreInterfaceController.swift; sourceTree = "<group>"; };
 		24F21AD61C4FD73C00396A38 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		24F21ADE1C4FD73C00396A38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24F9DC361C2EF9F9003A6427 /* DataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
@@ -590,7 +592,8 @@
 				246AC1801C5120FF0047AAE7 /* AddTodayInterfaceController.swift */,
 				24F21AD61C4FD73C00396A38 /* ExtensionDelegate.swift */,
 				24F21ADE1C4FD73C00396A38 /* Info.plist */,
-				24F21AD41C4FD73C00396A38 /* InterfaceController.swift */,
+				24F21AD41C4FD73C00396A38 /* ScoreInterfaceController.swift */,
+				24D210321C79EE2F00F69478 /* CurrentStreakInterfaceController.swift */,
 			);
 			path = "Today Watch Extension";
 			sourceTree = "<group>";
@@ -1094,7 +1097,8 @@
 			files = (
 				246AC1811C5120FF0047AAE7 /* AddTodayInterfaceController.swift in Sources */,
 				24F21AD71C4FD73C00396A38 /* ExtensionDelegate.swift in Sources */,
-				24F21AD51C4FD73C00396A38 /* InterfaceController.swift in Sources */,
+				24F21AD51C4FD73C00396A38 /* ScoreInterfaceController.swift in Sources */,
+				24D210331C79EE2F00F69478 /* CurrentStreakInterfaceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

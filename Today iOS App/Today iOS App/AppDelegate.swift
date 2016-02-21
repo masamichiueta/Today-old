@@ -232,7 +232,16 @@ extension AppDelegate: WCSessionDelegate {
             //Create today
             if !Today.created(managedObjectContext, forDate: NSDate()) {
                 managedObjectContext.performChanges {
-                    Today.insertIntoContext(self.managedObjectContext, score: Int64(score), date: NSDate())
+                    let now = NSDate()
+                    //Add today
+                    Today.insertIntoContext(self.managedObjectContext, score: Int64(score), date: now)
+                    
+                    //Update current streak or create a new streak
+                    if let currentStreak = Streak.currentStreak(self.managedObjectContext) {
+                        currentStreak.to = now
+                    } else {
+                        Streak.insertIntoContext(self.managedObjectContext, from: now, to: now)
+                    }
                 }
                 replyHandler(["finished": true])
             }
@@ -248,6 +257,11 @@ extension AppDelegate: WCSessionDelegate {
                 return
             }
             replyHandler([WatchConnectivityContentType.TodaysToday.rawValue: Int(today.score)])
+        case .GetCurrentStreak:
+            guard let currentStreak = Streak.currentStreak(managedObjectContext) else {
+                return
+            }
+            replyHandler([WatchConnectivityContentType.CurrentStreak.rawValue: Int(currentStreak.streakNumber)])
         }
     }
 }

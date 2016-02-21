@@ -1,5 +1,5 @@
 //
-//  InterfaceController.swift
+//  ScoreInterfaceController.swift
 //  TodayWatch Extension
 //
 //  Created by UetaMasamichi on 2016/01/20.
@@ -11,12 +11,22 @@ import Foundation
 import WatchConnectivity
 import TodayWatchKit
 
-class InterfaceController: WKInterfaceController, WCSessionDelegate {
+class ScoreInterfaceController: WKInterfaceController, WCSessionDelegate {
     
     var session: WCSession!
     
     var todayScore: Int? {
         didSet {
+            guard let todayScore = todayScore else {
+                scoreLabel.setText("0")
+                scoreIcon.setImageNamed(Today.type(0).iconName("28"))
+                return
+            }
+            
+            if todayScore == oldValue {
+                return
+            }
+            
             let watchSize = getWatchSize()
             
             switch watchSize {
@@ -27,14 +37,10 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
             }
             
             let duration = 0.5
-            guard let todayScore = todayScore else {
-                return
-            }
-            
             scoreGroup.startAnimatingWithImagesInRange(NSRange(location: 0, length: 6 * todayScore + 1), duration: duration, repeatCount: 1)
-            
             scoreLabel.setText("\(todayScore)")
             scoreIcon.setImageNamed(Today.type(todayScore).iconName("28"))
+
         }
     }
     
@@ -52,19 +58,20 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
             session.delegate = self
             session.activateSession()
         }
+    }
+    
+    override func willActivate() {
+        super.willActivate()
         
         if session.reachable {
             scoreGroup.setHidden(false)
             unreachableGroup.setHidden(true)
             sendMessageToGetToday()
         } else {
+            todayScore = nil
             scoreGroup.setHidden(true)
             unreachableGroup.setHidden(false)
         }
-    }
-    
-    override func willActivate() {
-        super.willActivate()
     }
     
     @IBAction func addToday() {
@@ -98,6 +105,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
             unreachableGroup.setHidden(true)
             sendMessageToGetToday()
         } else {
+            todayScore = nil
             scoreGroup.setHidden(true)
             unreachableGroup.setHidden(false)
         }
@@ -116,7 +124,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     }
 }
 
-extension InterfaceController: AddTodayInterfaceControllerDelegate {
+extension ScoreInterfaceController: AddTodayInterfaceControllerDelegate {
     func todayDidAdd(score: Int) {
         todayScore = score
     }

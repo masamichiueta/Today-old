@@ -8,20 +8,20 @@
         <!--Today-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller title="Today" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Today_Watch_Extension">
+                <controller title="Today" id="AgC-eL-Hgc" customClass="ScoreInterfaceController" customModule="Today_Watch_Extension">
                     <items>
                         <label alignment="center" hidden="YES" alpha="0.0" text="You have already created today!" textAlignment="center" numberOfLines="2" id="dt0-zJ-CNk">
                             <color key="textColor" red="1" green="0.21960784310000001" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="font" style="UICTFontTextStyleCaption1"/>
                         </label>
-                        <group width="108" height="108" alignment="center" verticalAlignment="center" backgroundImage="score_circle_38_0" layout="vertical" id="dPv-TN-vgx">
+                        <group width="120" height="120" alignment="center" verticalAlignment="center" backgroundImage="score_circle_38_0" layout="vertical" id="dPv-TN-vgx">
                             <items>
                                 <label alignment="center" verticalAlignment="center" text="0" id="mt2-0g-nab"/>
                                 <imageView alignment="center" verticalAlignment="center" image="poor_face_icon_28" id="k1s-gC-GYU">
                                     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </imageView>
                             </items>
-                            <variation key="device=watch42mm" backgroundImage="score_circle_42_0" height="132" width="132"/>
+                            <variation key="device=watch42mm" backgroundImage="score_circle_42_0" height="144" width="144"/>
                         </group>
                         <group width="1" alignment="left" verticalAlignment="center" layout="vertical" id="nuT-2S-kN1">
                             <items>
@@ -50,10 +50,30 @@ Your iPhone is not connected!</string>
                         <outlet property="scoreIcon" destination="k1s-gC-GYU" id="UU0-Zw-NU1"/>
                         <outlet property="scoreLabel" destination="mt2-0g-nab" id="sRF-Tr-SX0"/>
                         <outlet property="unreachableGroup" destination="nuT-2S-kN1" id="HCP-Gn-V7b"/>
+                        <segue destination="Mww-RZ-ABu" kind="relationship" relationship="nextPage" id="6sl-b6-BUg"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="257" y="346.25"/>
+            <point key="canvasLocation" x="239" y="346"/>
+        </scene>
+        <!--Current Streak-->
+        <scene sceneID="3K9-3T-sUT">
+            <objects>
+                <controller title="Current Streak" id="Mww-RZ-ABu" customClass="CurrentStreakInterfaceController" customModule="Today_Watch_Extension">
+                    <items>
+                        <label alignment="center" verticalAlignment="center" text="0" id="oCW-ni-WRM">
+                            <fontDescription key="font" type="system" pointSize="80"/>
+                        </label>
+                        <label alignment="center" verticalAlignment="center" text="days" id="mXW-PE-n6U">
+                            <fontDescription key="font" type="system" pointSize="16"/>
+                        </label>
+                    </items>
+                    <connections>
+                        <outlet property="currentStreakLabel" destination="oCW-ni-WRM" id="NUl-Vx-Ck1"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="473" y="341"/>
         </scene>
         <!--AddTodayInterfaceController-->
         <scene sceneID="Kbm-6W-QBQ">
@@ -86,7 +106,7 @@ Your iPhone is not connected!</string>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="475" y="347"/>
+            <point key="canvasLocation" x="700" y="333"/>
         </scene>
     </scenes>
     <color key="tintColor" red="1" green="0.21960784310000001" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>

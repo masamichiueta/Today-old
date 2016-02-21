@@ -13,9 +13,11 @@ public let watchConnectivityActionTypeKey = "WatchConnectivityActionType"
 public enum WatchConnectivityActionType: String {
     case AddToday
     case GetTodaysToday
+    case GetCurrentStreak
 }
 
 public enum WatchConnectivityContentType: String {
     case TodaysToday
     case Score
+    case CurrentStreak
 }

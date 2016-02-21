@@ -22,7 +22,7 @@ class AddTodayInterfaceController: WKInterfaceController, WCSessionDelegate {
     @IBOutlet var scorePicker: WKInterfacePicker!
     
     var score: Int = Today.maxMasterScore
-    weak var delegate: InterfaceController?
+    weak var delegate: ScoreInterfaceController?
     
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
@@ -33,7 +33,7 @@ class AddTodayInterfaceController: WKInterfaceController, WCSessionDelegate {
             session.activateSession()
         }
         
-        delegate = context as? InterfaceController
+        delegate = context as? ScoreInterfaceController
         
         let pickerItems: [WKPickerItem] = Today.masterScores.map {
             let pickerItem = WKPickerItem()

@@ -99,7 +99,7 @@ class ActivityTableViewController: UITableViewController, ManagedObjectContextSe
         
         switch indexPath.row {
         case 0:
-            guard let cell = tableView.dequeueReusableCellWithIdentifier("ChartCell", forIndexPath: indexPath) as? ChartTableViewCell else {
+            guard let cell = tableView.dequeueReusableCellWithCellIdentifier(.ActivityChartCell, forIndexPath: indexPath) as? ChartTableViewCell else {
                 fatalError("Wrong cell type")
             }
             cell.delegate = self
@@ -107,7 +107,7 @@ class ActivityTableViewController: UITableViewController, ManagedObjectContextSe
             cell.configureForObject(dataSource)
             return cell
         case 1:
-            guard let cell = tableView.dequeueReusableCellWithIdentifier("AverageTotalCell", forIndexPath: indexPath) as? AverageTotalTableViewCell else {
+            guard let cell = tableView.dequeueReusableCellWithCellIdentifier(.ActivityAverageTotalCell, forIndexPath: indexPath) as? AverageTotalTableViewCell else {
                 fatalError("Wrong cell type")
             }
             let average = Today.average(managedObjectContext)
@@ -115,7 +115,7 @@ class ActivityTableViewController: UITableViewController, ManagedObjectContextSe
             cell.configureForObject((average, total))
             return cell
         case 2:
-            guard let cell = tableView.dequeueReusableCellWithIdentifier("StreakCell", forIndexPath: indexPath) as? StreakTableViewCell else {
+            guard let cell = tableView.dequeueReusableCellWithCellIdentifier(.ActivityStreakCell, forIndexPath: indexPath) as? StreakTableViewCell else {
                 fatalError("Wrong cell type")
             }
             let longestStreakNumber: Int
@@ -133,7 +133,7 @@ class ActivityTableViewController: UITableViewController, ManagedObjectContextSe
             cell.configureForObject((longestStreakNumber, currentSterakNumber))
             return cell
         default:
-            let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+            let cell = tableView.dequeueReusableCellWithCellIdentifier(.Cell, forIndexPath: indexPath)
             return cell
         }
     }

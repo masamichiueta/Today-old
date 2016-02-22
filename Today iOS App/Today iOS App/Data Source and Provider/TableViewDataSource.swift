@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TodayKit
 
 protocol TableViewDataSourceDelegate: DataSourceDelegate {
     func canEditRowAtIndexPath(indexPath: NSIndexPath) -> Bool

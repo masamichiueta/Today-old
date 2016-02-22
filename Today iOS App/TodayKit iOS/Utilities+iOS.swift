@@ -1,5 +1,5 @@
 //
-//  Utilities.swift
+//  Utilities+iOS.swift
 //  Today
 //
 //  Created by UetaMasamichi on 2016/01/11.
@@ -24,7 +24,7 @@ public func distanceBetween(p1: CGPoint, p2: CGPoint) -> CGFloat {
 }
 
 extension UIColor {
-    class func defaultTintColor() -> UIColor {
+    public class func defaultTintColor() -> UIColor {
         return UIColor(red: 0.0, green: 122.0/255.0, blue: 1.0, alpha: 1.0)
     }
 }

@@ -119,7 +119,7 @@ class SettingTableViewController: UITableViewController {
         let setting = Setting()
         switch (indexPath.section, indexPath.row) {
         case (0, 0):
-            let cell = tableView.dequeueReusableCellWithIdentifier("SwitchCell", forIndexPath: indexPath)
+            let cell = tableView.dequeueReusableCellWithCellIdentifier(.SettingSwitchCell, forIndexPath: indexPath)
             cell.textLabel?.text = "Notification Setting"
             let sw = UISwitch()
             sw.on = setting.notificationEnabled
@@ -128,13 +128,13 @@ class SettingTableViewController: UITableViewController {
             cell.selectionStyle = .None
             return cell
         case (0, 1):
-            let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+            let cell = tableView.dequeueReusableCellWithCellIdentifier(.SettingCell, forIndexPath: indexPath)
             cell.textLabel?.text = "Notification Time"
             cell.detailTextLabel?.text = dateFormatter.stringFromDate(setting.notificationTime)
             cell.detailTextLabel?.textColor = pickerHidden ? defaultDetailTextColor : tableView.tintColor
             return cell
         case (pickerIndexPath.section, pickerIndexPath.row): //(0, 2)
-            guard let cell = tableView.dequeueReusableCellWithIdentifier("PickerCell") as? PickerTableViewCell else {
+            guard let cell = tableView.dequeueReusableCellWithCellIdentifier(.SettingPickerCell, forIndexPath: indexPath) as? PickerTableViewCell else {
                 fatalError("Wrong cell type")
             }
             cell.datePicker.date = setting.notificationTime

@@ -7,24 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2401ACCA1C63854100E0691F /* ChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2401ACC91C63854100E0691F /* ChartData.swift */; };
 		24030AE41C1C821C004E68ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24030AE31C1C821C004E68ED /* AppDelegate.swift */; };
 		24030AE91C1C821C004E68ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24030AE71C1C821C004E68ED /* Main.storyboard */; };
 		24030AEE1C1C821C004E68ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24030AED1C1C821C004E68ED /* Assets.xcassets */; };
 		24030AF11C1C821C004E68ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24030AEF1C1C821C004E68ED /* LaunchScreen.storyboard */; };
 		24030AFC1C1C821C004E68ED /* TodayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24030AFB1C1C821C004E68ED /* TodayTests.swift */; };
 		24030B071C1C821C004E68ED /* TodayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24030B061C1C821C004E68ED /* TodayUITests.swift */; };
-		240F14781C2A9FD40003B2AF /* ManagedObjectContextSettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F14771C2A9FD40003B2AF /* ManagedObjectContextSettable.swift */; };
 		240F147C1C2AA0450003B2AF /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F147B1C2AA0450003B2AF /* RootViewController.swift */; };
-		240F147E1C2ABC000003B2AF /* SegueHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F147D1C2ABC000003B2AF /* SegueHandlerType.swift */; };
+		241D65AC1C7B3E0E00938CE8 /* BorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2488C7081C6F686D00EF8F45 /* BorderButton.swift */; };
+		241D65AF1C7B43AC00938CE8 /* TodayExtensionTodayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D65AE1C7B43AC00938CE8 /* TodayExtensionTodayTableViewCell.swift */; };
+		241D65B11C7B43E600938CE8 /* TodayExtensionAddTodayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D65B01C7B43E600938CE8 /* TodayExtensionAddTodayTableViewCell.swift */; };
 		2425BBA91C5E3A0E008AD9A4 /* StreakTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2425BBA81C5E3A0E008AD9A4 /* StreakTableViewCell.swift */; };
-		242D5A6F1C7374C500789616 /* StoryboardHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242D5A6E1C7374C500789616 /* StoryboardHandlerType.swift */; };
-		242DD1181C74BFFA00A8A760 /* iCloudRegistable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242DD1171C74BFFA00A8A760 /* iCloudRegistable.swift */; };
-		242F984B1C49282200DBC64B /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F984A1C49282200DBC64B /* NotificationManager.swift */; };
+		243535191C7B50380044D13A /* ChartViewBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244BF0941C624EF400A9543A /* ChartViewBase.swift */; };
+		2435351A1C7B50570044D13A /* ChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2401ACC91C63854100E0691F /* ChartData.swift */; };
+		2435351B1C7B50570044D13A /* ChartViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244BF08F1C623DF600A9543A /* ChartViewDataSource.swift */; };
+		2435351C1C7B50570044D13A /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F9DC361C2EF9F9003A6427 /* DataProvider.swift */; };
+		2435351D1C7B50570044D13A /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F9DC381C2EFAC5003A6427 /* DataSource.swift */; };
+		2435351E1C7B50570044D13A /* FetchedResultsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F9DC3A1C2EFB0F003A6427 /* FetchedResultsDataProvider.swift */; };
+		2435351F1C7B50570044D13A /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F9DC3C1C2EFCD4003A6427 /* TableViewDataSource.swift */; };
 		24444A5E1C30A02A00DC1579 /* AddTodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24444A5D1C30A02A00DC1579 /* AddTodayViewController.swift */; };
 		244631451C3AB8BA002BBD06 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244631441C3AB8BA002BBD06 /* PaddingLabel.swift */; };
-		244BF0901C623DF600A9543A /* ChartViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244BF08F1C623DF600A9543A /* ChartViewDataSource.swift */; };
-		244BF0951C624EF400A9543A /* ChartViewBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244BF0941C624EF400A9543A /* ChartViewBase.swift */; };
+		244B9A671C7B50FA004AF2DC /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F984A1C49282200DBC64B /* NotificationManager.swift */; };
+		244B9A6B1C7B50FA004AF2DC /* iCloudRegistable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242DD1171C74BFFA00A8A760 /* iCloudRegistable.swift */; };
+		244B9A701C7B51F6004AF2DC /* ManagedObjectContextSettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F14771C2A9FD40003B2AF /* ManagedObjectContextSettable.swift */; };
+		244B9A721C7B5208004AF2DC /* ConfigurableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F9DC3E1C2EFD33003A6427 /* ConfigurableCell.swift */; };
+		244B9A731C7B529F004AF2DC /* SegueHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F147D1C2ABC000003B2AF /* SegueHandlerType.swift */; };
+		244B9A741C7B52B3004AF2DC /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242D5A6E1C7374C500789616 /* Identifiable.swift */; };
+		244B9A751C7B52D6004AF2DC /* Utilities+iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D4E3481C43ED6E00F6DA6A /* Utilities+iOS.swift */; };
 		245464671C75FFEF0030EF82 /* WatchConnectivityActionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245464661C75FFEF0030EF82 /* WatchConnectivityActionType.swift */; };
 		245464681C75FFEF0030EF82 /* WatchConnectivityActionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245464661C75FFEF0030EF82 /* WatchConnectivityActionType.swift */; };
 		24561EA51C6F71E900022222 /* GetStarted.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24561EA41C6F71E900022222 /* GetStarted.storyboard */; };
@@ -61,12 +70,10 @@
 		24C6C1CA1C54FA0A0041C31F /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DBB5901C2C367100E1C042 /* Utilities.swift */; };
 		24C7ACD01C5656D8002B203C /* WatchUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C7ACCF1C5656D8002B203C /* WatchUtilities.swift */; };
 		24D210331C79EE2F00F69478 /* CurrentStreakInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D210321C79EE2F00F69478 /* CurrentStreakInterfaceController.swift */; };
-		24D4E3491C43ED6E00F6DA6A /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D4E3481C43ED6E00F6DA6A /* Utilities.swift */; };
 		24D67C851C3EB54600A33DB7 /* AverageTotalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D67C841C3EB54600A33DB7 /* AverageTotalTableViewCell.swift */; };
 		24D82C2F1C5A5D880095FA47 /* ChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D82C2E1C5A5D880095FA47 /* ChartTableViewCell.swift */; };
 		24D8E3DC1C54FC4F005BA35B /* TodayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24C6C1A51C54F9970041C31F /* TodayKit.framework */; };
 		24D8E3DD1C54FC4F005BA35B /* TodayKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24C6C1A51C54F9970041C31F /* TodayKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		24F1948A1C2FB9B8001593D8 /* AugmentedFetchedResultsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F194891C2FB9B8001593D8 /* AugmentedFetchedResultsDataProvider.swift */; };
 		24F21AB11C4FCFE900396A38 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24F21AB01C4FCFE900396A38 /* NotificationCenter.framework */; };
 		24F21AB41C4FCFE900396A38 /* TodayExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F21AB31C4FCFE900396A38 /* TodayExtensionViewController.swift */; };
 		24F21AB71C4FCFE900396A38 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24F21AB51C4FCFE900396A38 /* MainInterface.storyboard */; };
@@ -77,11 +84,6 @@
 		24F21AD51C4FD73C00396A38 /* ScoreInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F21AD41C4FD73C00396A38 /* ScoreInterfaceController.swift */; };
 		24F21AD71C4FD73C00396A38 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F21AD61C4FD73C00396A38 /* ExtensionDelegate.swift */; };
 		24F21AE11C4FD73C00396A38 /* Today Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 24F21AC11C4FD73C00396A38 /* Today Watch App.app */; };
-		24F9DC371C2EF9F9003A6427 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F9DC361C2EF9F9003A6427 /* DataProvider.swift */; };
-		24F9DC391C2EFAC5003A6427 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F9DC381C2EFAC5003A6427 /* DataSource.swift */; };
-		24F9DC3B1C2EFB0F003A6427 /* FetchedResultsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F9DC3A1C2EFB0F003A6427 /* FetchedResultsDataProvider.swift */; };
-		24F9DC3D1C2EFCD4003A6427 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F9DC3C1C2EFCD4003A6427 /* TableViewDataSource.swift */; };
-		24F9DC3F1C2EFD33003A6427 /* ConfigurableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F9DC3E1C2EFD33003A6427 /* ConfigurableCell.swift */; };
 		24FE71311C3FFB8700A14B9D /* PickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FE71301C3FFB8700A14B9D /* PickerTableViewCell.swift */; };
 		24FFBB971C3D6AFA0053E261 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FFBB961C3D6AFA0053E261 /* SettingTableViewController.swift */; };
 		24FFBB991C3D7AE50053E261 /* ActivityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FFBB981C3D7AE50053E261 /* ActivityTableViewController.swift */; };
@@ -230,8 +232,10 @@
 		240F14771C2A9FD40003B2AF /* ManagedObjectContextSettable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectContextSettable.swift; sourceTree = "<group>"; };
 		240F147B1C2AA0450003B2AF /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		240F147D1C2ABC000003B2AF /* SegueHandlerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueHandlerType.swift; sourceTree = "<group>"; };
+		241D65AE1C7B43AC00938CE8 /* TodayExtensionTodayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayExtensionTodayTableViewCell.swift; sourceTree = "<group>"; };
+		241D65B01C7B43E600938CE8 /* TodayExtensionAddTodayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayExtensionAddTodayTableViewCell.swift; sourceTree = "<group>"; };
 		2425BBA81C5E3A0E008AD9A4 /* StreakTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreakTableViewCell.swift; sourceTree = "<group>"; };
-		242D5A6E1C7374C500789616 /* StoryboardHandlerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardHandlerType.swift; sourceTree = "<group>"; };
+		242D5A6E1C7374C500789616 /* Identifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
 		242DD1171C74BFFA00A8A760 /* iCloudRegistable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iCloudRegistable.swift; sourceTree = "<group>"; };
 		242F984A1C49282200DBC64B /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		24444A591C306B4B00DC1579 /* NSManagedObjectContext+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Extensions.swift"; sourceTree = "<group>"; };
@@ -267,12 +271,11 @@
 		24C7ACCF1C5656D8002B203C /* WatchUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchUtilities.swift; sourceTree = "<group>"; };
 		24D210321C79EE2F00F69478 /* CurrentStreakInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentStreakInterfaceController.swift; sourceTree = "<group>"; };
 		24D4E3461C43E1D900F6DA6A /* Setting.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Setting.plist; sourceTree = "<group>"; };
-		24D4E3481C43ED6E00F6DA6A /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		24D4E3481C43ED6E00F6DA6A /* Utilities+iOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Utilities+iOS.swift"; sourceTree = "<group>"; };
 		24D67C841C3EB54600A33DB7 /* AverageTotalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AverageTotalTableViewCell.swift; sourceTree = "<group>"; };
 		24D82C2E1C5A5D880095FA47 /* ChartTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartTableViewCell.swift; sourceTree = "<group>"; };
 		24DBB5901C2C367100E1C042 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		24E538D81C49E22900B781D8 /* Streak.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Streak.swift; sourceTree = "<group>"; };
-		24F194891C2FB9B8001593D8 /* AugmentedFetchedResultsDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AugmentedFetchedResultsDataProvider.swift; sourceTree = "<group>"; };
 		24F21AAF1C4FCFE900396A38 /* Today Today Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Today Today Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		24F21AB01C4FCFE900396A38 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		24F21AB31C4FCFE900396A38 /* TodayExtensionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayExtensionViewController.swift; sourceTree = "<group>"; };
@@ -424,12 +427,8 @@
 		240F14761C2A9FB60003B2AF /* Shared Code */ = {
 			isa = PBXGroup;
 			children = (
-				24F9DC3E1C2EFD33003A6427 /* ConfigurableCell.swift */,
 				240F14771C2A9FD40003B2AF /* ManagedObjectContextSettable.swift */,
 				242F984A1C49282200DBC64B /* NotificationManager.swift */,
-				240F147D1C2ABC000003B2AF /* SegueHandlerType.swift */,
-				242D5A6E1C7374C500789616 /* StoryboardHandlerType.swift */,
-				24D4E3481C43ED6E00F6DA6A /* Utilities.swift */,
 				242DD1171C74BFFA00A8A760 /* iCloudRegistable.swift */,
 			);
 			path = "Shared Code";
@@ -508,7 +507,11 @@
 		24A487E71C5503A10015DB05 /* TodayKit iOS */ = {
 			isa = PBXGroup;
 			children = (
+				24F9DC3E1C2EFD33003A6427 /* ConfigurableCell.swift */,
+				242D5A6E1C7374C500789616 /* Identifiable.swift */,
 				24C6C1A91C54F9970041C31F /* Info.plist */,
+				240F147D1C2ABC000003B2AF /* SegueHandlerType.swift */,
+				24D4E3481C43ED6E00F6DA6A /* Utilities+iOS.swift */,
 			);
 			path = "TodayKit iOS";
 			sourceTree = "<group>";
@@ -570,6 +573,8 @@
 				24F21AB81C4FCFE900396A38 /* Info.plist */,
 				24F21AB51C4FCFE900396A38 /* MainInterface.storyboard */,
 				24A9E9781C6CBDE700739226 /* Today Today Extension.entitlements */,
+				241D65B01C7B43E600938CE8 /* TodayExtensionAddTodayTableViewCell.swift */,
+				241D65AE1C7B43AC00938CE8 /* TodayExtensionTodayTableViewCell.swift */,
 				24F21AB31C4FCFE900396A38 /* TodayExtensionViewController.swift */,
 			);
 			path = "Today Extension";
@@ -609,7 +614,6 @@
 		24F9DC351C2EF9E6003A6427 /* Data Source and Provider */ = {
 			isa = PBXGroup;
 			children = (
-				24F194891C2FB9B8001593D8 /* AugmentedFetchedResultsDataProvider.swift */,
 				2401ACC91C63854100E0691F /* ChartData.swift */,
 				244BF08F1C623DF600A9543A /* ChartViewDataSource.swift */,
 				24F9DC361C2EF9F9003A6427 /* DataProvider.swift */,
@@ -993,36 +997,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2435351D1C7B50570044D13A /* DataSource.swift in Sources */,
 				246688511C1DB4ED00C5E5A0 /* TodaysTableViewController.swift in Sources */,
 				244631451C3AB8BA002BBD06 /* PaddingLabel.swift in Sources */,
-				244BF0951C624EF400A9543A /* ChartViewBase.swift in Sources */,
-				24F9DC371C2EF9F9003A6427 /* DataProvider.swift in Sources */,
+				244B9A6B1C7B50FA004AF2DC /* iCloudRegistable.swift in Sources */,
+				2435351C1C7B50570044D13A /* DataProvider.swift in Sources */,
 				24C6AE971C2831660048C4D1 /* TableViewCell.swift in Sources */,
 				24030AE41C1C821C004E68ED /* AppDelegate.swift in Sources */,
-				242F984B1C49282200DBC64B /* NotificationManager.swift in Sources */,
+				244B9A671C7B50FA004AF2DC /* NotificationManager.swift in Sources */,
+				2435351A1C7B50570044D13A /* ChartData.swift in Sources */,
 				24561EA71C6F77D500022222 /* GetStartedViewController.swift in Sources */,
 				24444A5E1C30A02A00DC1579 /* AddTodayViewController.swift in Sources */,
-				244BF0901C623DF600A9543A /* ChartViewDataSource.swift in Sources */,
-				24F1948A1C2FB9B8001593D8 /* AugmentedFetchedResultsDataProvider.swift in Sources */,
 				2425BBA91C5E3A0E008AD9A4 /* StreakTableViewCell.swift in Sources */,
-				240F14781C2A9FD40003B2AF /* ManagedObjectContextSettable.swift in Sources */,
+				2435351E1C7B50570044D13A /* FetchedResultsDataProvider.swift in Sources */,
+				243535191C7B50380044D13A /* ChartViewBase.swift in Sources */,
+				244B9A701C7B51F6004AF2DC /* ManagedObjectContextSettable.swift in Sources */,
+				2435351B1C7B50570044D13A /* ChartViewDataSource.swift in Sources */,
 				240F147C1C2AA0450003B2AF /* RootViewController.swift in Sources */,
-				2401ACCA1C63854100E0691F /* ChartData.swift in Sources */,
 				24D67C851C3EB54600A33DB7 /* AverageTotalTableViewCell.swift in Sources */,
-				242DD1181C74BFFA00A8A760 /* iCloudRegistable.swift in Sources */,
-				24D4E3491C43ED6E00F6DA6A /* Utilities.swift in Sources */,
+				2435351F1C7B50570044D13A /* TableViewDataSource.swift in Sources */,
 				24D82C2F1C5A5D880095FA47 /* ChartTableViewCell.swift in Sources */,
 				24FFBB991C3D7AE50053E261 /* ActivityTableViewController.swift in Sources */,
-				242D5A6F1C7374C500789616 /* StoryboardHandlerType.swift in Sources */,
 				24A1CFE11C36D8FA00F0E9CE /* ScoreCircleView.swift in Sources */,
-				240F147E1C2ABC000003B2AF /* SegueHandlerType.swift in Sources */,
-				24F9DC391C2EFAC5003A6427 /* DataSource.swift in Sources */,
-				24F9DC3F1C2EFD33003A6427 /* ConfigurableCell.swift in Sources */,
 				24FFBB971C3D6AFA0053E261 /* SettingTableViewController.swift in Sources */,
 				24FE71311C3FFB8700A14B9D /* PickerTableViewCell.swift in Sources */,
 				24732F4B1C5E4F8600655994 /* ScoreChartView.swift in Sources */,
-				24F9DC3D1C2EFCD4003A6427 /* TableViewDataSource.swift in Sources */,
-				24F9DC3B1C2EFB0F003A6427 /* FetchedResultsDataProvider.swift in Sources */,
 				2488C7091C6F686D00EF8F45 /* BorderButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1063,9 +1062,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				244B9A721C7B5208004AF2DC /* ConfigurableCell.swift in Sources */,
+				244B9A741C7B52B3004AF2DC /* Identifiable.swift in Sources */,
 				24C6C1C71C54FA010041C31F /* CoreDataStack.swift in Sources */,
 				24C6C1C91C54FA080041C31F /* NSManagedObjectContext+Extensions.swift in Sources */,
+				244B9A751C7B52D6004AF2DC /* Utilities+iOS.swift in Sources */,
 				24C6C1C21C54F9DB0041C31F /* Setting.swift in Sources */,
+				244B9A731C7B529F004AF2DC /* SegueHandlerType.swift in Sources */,
 				24C6C1C81C54FA050041C31F /* ManagedObject.swift in Sources */,
 				245464671C75FFEF0030EF82 /* WatchConnectivityActionType.swift in Sources */,
 				24C6C1C51C54F9F90041C31F /* Today.swift in Sources */,
@@ -1088,6 +1091,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				24F21AB41C4FCFE900396A38 /* TodayExtensionViewController.swift in Sources */,
+				241D65AF1C7B43AC00938CE8 /* TodayExtensionTodayTableViewCell.swift in Sources */,
+				241D65AC1C7B3E0E00938CE8 /* BorderButton.swift in Sources */,
+				241D65B11C7B43E600938CE8 /* TodayExtensionAddTodayTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

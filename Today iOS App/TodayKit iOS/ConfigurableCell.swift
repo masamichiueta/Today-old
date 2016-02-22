@@ -6,7 +6,7 @@
 //  Copyright © 2015年 Masamichi Ueta. All rights reserved.
 //
 
-protocol ConfigurableCell {
+public protocol ConfigurableCell {
     typealias DataSource
     func configureForObject(object: DataSource)
 }

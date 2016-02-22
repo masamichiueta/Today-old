@@ -16,7 +16,6 @@
 		240F147C1C2AA0450003B2AF /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F147B1C2AA0450003B2AF /* RootViewController.swift */; };
 		241D65AC1C7B3E0E00938CE8 /* BorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2488C7081C6F686D00EF8F45 /* BorderButton.swift */; };
 		241D65AF1C7B43AC00938CE8 /* TodayExtensionTodayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D65AE1C7B43AC00938CE8 /* TodayExtensionTodayTableViewCell.swift */; };
-		241D65B11C7B43E600938CE8 /* TodayExtensionAddTodayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D65B01C7B43E600938CE8 /* TodayExtensionAddTodayTableViewCell.swift */; };
 		2425BBA91C5E3A0E008AD9A4 /* StreakTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2425BBA81C5E3A0E008AD9A4 /* StreakTableViewCell.swift */; };
 		243535191C7B50380044D13A /* ChartViewBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244BF0941C624EF400A9543A /* ChartViewBase.swift */; };
 		2435351A1C7B50570044D13A /* ChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2401ACC91C63854100E0691F /* ChartData.swift */; };
@@ -34,6 +33,7 @@
 		244B9A731C7B529F004AF2DC /* SegueHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F147D1C2ABC000003B2AF /* SegueHandlerType.swift */; };
 		244B9A741C7B52B3004AF2DC /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242D5A6E1C7374C500789616 /* Identifiable.swift */; };
 		244B9A751C7B52D6004AF2DC /* Utilities+iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D4E3481C43ED6E00F6DA6A /* Utilities+iOS.swift */; };
+		244B9A771C7B5910004AF2DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 244B9A761C7B5910004AF2DC /* Assets.xcassets */; };
 		245464671C75FFEF0030EF82 /* WatchConnectivityActionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245464661C75FFEF0030EF82 /* WatchConnectivityActionType.swift */; };
 		245464681C75FFEF0030EF82 /* WatchConnectivityActionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245464661C75FFEF0030EF82 /* WatchConnectivityActionType.swift */; };
 		24561EA51C6F71E900022222 /* GetStarted.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24561EA41C6F71E900022222 /* GetStarted.storyboard */; };
@@ -233,7 +233,6 @@
 		240F147B1C2AA0450003B2AF /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		240F147D1C2ABC000003B2AF /* SegueHandlerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueHandlerType.swift; sourceTree = "<group>"; };
 		241D65AE1C7B43AC00938CE8 /* TodayExtensionTodayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayExtensionTodayTableViewCell.swift; sourceTree = "<group>"; };
-		241D65B01C7B43E600938CE8 /* TodayExtensionAddTodayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayExtensionAddTodayTableViewCell.swift; sourceTree = "<group>"; };
 		2425BBA81C5E3A0E008AD9A4 /* StreakTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreakTableViewCell.swift; sourceTree = "<group>"; };
 		242D5A6E1C7374C500789616 /* Identifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
 		242DD1171C74BFFA00A8A760 /* iCloudRegistable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iCloudRegistable.swift; sourceTree = "<group>"; };
@@ -241,6 +240,7 @@
 		24444A591C306B4B00DC1579 /* NSManagedObjectContext+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Extensions.swift"; sourceTree = "<group>"; };
 		24444A5D1C30A02A00DC1579 /* AddTodayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTodayViewController.swift; sourceTree = "<group>"; };
 		244631441C3AB8BA002BBD06 /* PaddingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
+		244B9A761C7B5910004AF2DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		244BF08F1C623DF600A9543A /* ChartViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewDataSource.swift; sourceTree = "<group>"; };
 		244BF0941C624EF400A9543A /* ChartViewBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewBase.swift; sourceTree = "<group>"; };
 		245464661C75FFEF0030EF82 /* WatchConnectivityActionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchConnectivityActionType.swift; sourceTree = "<group>"; };
@@ -573,9 +573,9 @@
 				24F21AB81C4FCFE900396A38 /* Info.plist */,
 				24F21AB51C4FCFE900396A38 /* MainInterface.storyboard */,
 				24A9E9781C6CBDE700739226 /* Today Today Extension.entitlements */,
-				241D65B01C7B43E600938CE8 /* TodayExtensionAddTodayTableViewCell.swift */,
 				241D65AE1C7B43AC00938CE8 /* TodayExtensionTodayTableViewCell.swift */,
 				24F21AB31C4FCFE900396A38 /* TodayExtensionViewController.swift */,
+				244B9A761C7B5910004AF2DC /* Assets.xcassets */,
 			);
 			path = "Today Extension";
 			sourceTree = "<group>";
@@ -954,6 +954,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				244B9A771C7B5910004AF2DC /* Assets.xcassets in Resources */,
 				24F21AB71C4FCFE900396A38 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1093,7 +1094,6 @@
 				24F21AB41C4FCFE900396A38 /* TodayExtensionViewController.swift in Sources */,
 				241D65AF1C7B43AC00938CE8 /* TodayExtensionTodayTableViewCell.swift in Sources */,
 				241D65AC1C7B3E0E00938CE8 /* BorderButton.swift in Sources */,
-				241D65B11C7B43E600938CE8 /* TodayExtensionAddTodayTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -54,7 +54,6 @@ extension UITableView {
         
         //Today Extension
         case TodayExtensionCell
-        case TodayExtensionAddTodayCell
         case TodayExtensionKeyValueExtensionCell
         
     }

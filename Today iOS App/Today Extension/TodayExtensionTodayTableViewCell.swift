@@ -27,7 +27,7 @@ class TodayExtensionTodayTableViewCell: UITableViewCell, ConfigurableCell {
     
     func configureForObject(score: Int) {
         scoreLabel.text = "\(score)"
-        icon.image = Today.type(score).icon("28")
+        //icon.image = Today.type(score).icon("28")
     }
 
 }

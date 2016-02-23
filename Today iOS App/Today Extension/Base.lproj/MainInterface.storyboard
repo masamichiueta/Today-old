@@ -19,14 +19,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ikM-JB-mZ3">
-                                <rect key="frame" x="16" y="0.0" width="288" height="150"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TodayExtensionCell" id="g0e-SB-CSl" customClass="TodayExtensionTodayTableViewCell" customModule="Today_Today_Extension" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="288" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="g0e-SB-CSl" id="3Je-6c-VIN">
-                                            <rect key="frame" x="0.0" y="0.0" width="288" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ap1-s6-pGc">
@@ -36,7 +36,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="zU6-k3-1Vg">
-                                                    <rect key="frame" x="230" y="8" width="43.5" height="28"/>
+                                                    <rect key="frame" x="262.5" y="8" width="43.5" height="28"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6bF-ET-Nny">
                                                             <rect key="frame" x="0.0" y="0.0" width="10.5" height="28"/>
@@ -45,7 +45,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="good_face_icon_28" translatesAutoresizingMaskIntoConstraints="NO" id="ciY-k8-brG">
-                                                            <rect key="frame" x="15" y="0.0" width="28" height="28"/>
+                                                            <rect key="frame" x="15.5" y="0.0" width="28" height="28"/>
                                                         </imageView>
                                                     </subviews>
                                                 </stackView>
@@ -64,10 +64,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TodayExtensionKeyValueExtensionCell" textLabel="9Wc-bp-O3u" detailTextLabel="gcH-qr-crW" style="IBUITableViewCellStyleValue1" id="co2-ir-ImC">
-                                        <rect key="frame" x="0.0" y="72" width="288" height="44"/>
+                                        <rect key="frame" x="0.0" y="72" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="co2-ir-ImC" id="FmS-fD-VVc">
-                                            <rect key="frame" x="0.0" y="0.0" width="288" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9Wc-bp-O3u">
@@ -78,7 +78,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gcH-qr-crW">
-                                                    <rect key="frame" x="217" y="12" width="56" height="19.5"/>
+                                                    <rect key="frame" x="249" y="12" width="56" height="19.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -149,9 +149,9 @@
                             <constraint firstItem="ikM-JB-mZ3" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" id="GZr-Mm-2QQ"/>
                             <constraint firstItem="1BO-FY-r0h" firstAttribute="top" secondItem="ikM-JB-mZ3" secondAttribute="bottom" constant="10" id="KOA-1m-2Gt"/>
                             <constraint firstItem="1BO-FY-r0h" firstAttribute="centerX" secondItem="S3S-Oj-5AN" secondAttribute="centerX" id="Mgz-v3-lXQ"/>
-                            <constraint firstItem="ikM-JB-mZ3" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" id="Ur7-Lj-Zuj"/>
+                            <constraint firstItem="ikM-JB-mZ3" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leading" id="Ur7-Lj-Zuj"/>
                             <constraint firstItem="FKl-LY-JtV" firstAttribute="top" secondItem="1BO-FY-r0h" secondAttribute="bottom" constant="10" id="YjC-To-RTn"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ikM-JB-mZ3" secondAttribute="trailing" id="gew-Go-Agi"/>
+                            <constraint firstAttribute="trailing" secondItem="ikM-JB-mZ3" secondAttribute="trailing" id="gew-Go-Agi"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>

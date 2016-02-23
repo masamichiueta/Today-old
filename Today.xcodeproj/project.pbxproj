@@ -17,6 +17,7 @@
 		241D65AC1C7B3E0E00938CE8 /* BorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2488C7081C6F686D00EF8F45 /* BorderButton.swift */; };
 		241D65AF1C7B43AC00938CE8 /* TodayExtensionTodayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D65AE1C7B43AC00938CE8 /* TodayExtensionTodayTableViewCell.swift */; };
 		2425BBA91C5E3A0E008AD9A4 /* StreakTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2425BBA81C5E3A0E008AD9A4 /* StreakTableViewCell.swift */; };
+		24338CF01C7BEBD9007FCAD1 /* TodayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24C6C1A51C54F9970041C31F /* TodayKit.framework */; };
 		243535191C7B50380044D13A /* ChartViewBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244BF0941C624EF400A9543A /* ChartViewBase.swift */; };
 		2435351A1C7B50570044D13A /* ChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2401ACC91C63854100E0691F /* ChartData.swift */; };
 		2435351B1C7B50570044D13A /* ChartViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244BF08F1C623DF600A9543A /* ChartViewDataSource.swift */; };
@@ -351,6 +352,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24338CF01C7BEBD9007FCAD1 /* TodayKit.framework in Frameworks */,
 				24F21AB11C4FCFE900396A38 /* NotificationCenter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1442,6 +1444,7 @@
 		24C6C1BD1C54F99A0041C31F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1467,6 +1470,7 @@
 		24C6C1BE1C54F99A0041C31F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;

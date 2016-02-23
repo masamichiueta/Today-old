@@ -63,16 +63,17 @@ class ScoreInterfaceController: WKInterfaceController, WCSessionDelegate {
             session.delegate = self
             session.activateSession()
         }
-    }
-    
-    override func willActivate() {
-        super.willActivate()
         
         if session.reachable {
             sendMessageToGetToday()
         } else {
             todayScore = nil
         }
+    }
+    
+    override func willActivate() {
+        super.willActivate()
+        
     }
     
     @IBAction func addToday() {

@@ -74,6 +74,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        
+        updateAppGroupSharedData()
     }
     
     func applicationWillEnterForeground(application: UIApplication) {
@@ -103,6 +105,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let localNotificationFireDate = setting.notificationTime
             NotificationManager.scheduleLocalNotification(localNotificationFireDate, withName: NotificationManager.addTodayNotificationName)
         }
+    }
+    
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        
+        if url.scheme == appGroupURLScheme {
+            guard let host = url.host else {
+                return true
+            }
+            
+            if host == AppGroupURLHost.AddToday.rawValue {
+                let rootVC = window?.rootViewController
+                let tabBarVC = rootVC?.childViewControllers.first as? UITabBarController
+                let navBarVC = tabBarVC?.childViewControllers.first as? UINavigationController
+                let todaysTVC = navBarVC?.childViewControllers.first as? TodaysTableViewController
+                todaysTVC?.showAddTodayViewController(self)
+            }
+            return true
+        }
+        return false
     }
     
     func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: () -> Void) {
@@ -139,6 +161,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         NSUserDefaults.standardUserDefaults().registerDefaults(defaultSettingDic)
+    }
+    
+    private func updateAppGroupSharedData() {
+        var appGroupSharedData = AppGroupSharedData()
+        let now = NSDate()
+        
+        if !NSCalendar.currentCalendar().isDate(appGroupSharedData.todayDate, inSameDayAsDate: now) {
+            appGroupSharedData.todayScore = 0
+            appGroupSharedData.todayDate = now
+        } else {
+            let now = NSDate()
+            if let startDate =  NSCalendar.currentCalendar().dateBySettingHour(0, minute: 0, second: 0, ofDate: now, options: []),
+                let endDate = NSCalendar.currentCalendar().dateByAddingUnit(NSCalendarUnit.Day, value: 1, toDate: startDate, options: []),
+                let today = Today.todays(managedObjectContext, from: startDate, to: endDate).first {
+                    appGroupSharedData.todayScore = Int(today.score)
+                    appGroupSharedData.todayDate = today.date
+            } else {
+                appGroupSharedData.todayScore = 0
+                appGroupSharedData.todayDate = now
+            }
+        }
+        
+        appGroupSharedData.total = Today.countInContext(managedObjectContext)
+        appGroupSharedData.longestStreak = Int(Streak.longestStreak(managedObjectContext)?.streakNumber ?? 0)
+        appGroupSharedData.currentStreak = Int(Streak.currentStreak(managedObjectContext)?.streakNumber ?? 0)
     }
     
     // MARK: - iCloud
@@ -182,6 +229,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func updateToiCloud(notification: NSNotification) {
+       
         let iCloudStore = NSUbiquitousKeyValueStore.defaultStore()
         let dict = NSUserDefaults.standardUserDefaults().dictionaryRepresentation()
         for (key, value) in dict {
@@ -243,22 +291,21 @@ extension AppDelegate: WCSessionDelegate {
                         Streak.insertIntoContext(self.managedObjectContext, from: now, to: now)
                     }
                 }
-                replyHandler(["finished": true])
+                replyHandler([WatchConnectivityContentType.Finished.rawValue: true])
             }
         case .GetTodaysToday:
             let now = NSDate()
-            guard let startDate =  NSCalendar.currentCalendar().dateBySettingHour(0, minute: 0, second: 0, ofDate: now, options: []) else {
-                return
+            
+            if let startDate =  NSCalendar.currentCalendar().dateBySettingHour(0, minute: 0, second: 0, ofDate: now, options: []),
+                let endDate = NSCalendar.currentCalendar().dateByAddingUnit(NSCalendarUnit.Day, value: 1, toDate: startDate, options: []),
+                let today = Today.todays(managedObjectContext, from: startDate, to: endDate).first {
+                    replyHandler([WatchConnectivityContentType.TodaysToday.rawValue: Int(today.score)])
+            } else {
+                replyHandler([WatchConnectivityContentType.TodaysToday.rawValue: 0])
             }
-            guard let endDate = NSCalendar.currentCalendar().dateByAddingUnit(NSCalendarUnit.Day, value: 1, toDate: startDate, options: []) else {
-                return
-            }
-            guard let today = Today.todays(managedObjectContext, from: startDate, to: endDate).first else {
-                return
-            }
-            replyHandler([WatchConnectivityContentType.TodaysToday.rawValue: Int(today.score)])
         case .GetCurrentStreak:
             guard let currentStreak = Streak.currentStreak(managedObjectContext) else {
+                replyHandler([WatchConnectivityContentType.CurrentStreak.rawValue: 0])
                 return
             }
             replyHandler([WatchConnectivityContentType.CurrentStreak.rawValue: Int(currentStreak.streakNumber)])

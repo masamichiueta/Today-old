@@ -20,4 +20,5 @@ public enum WatchConnectivityContentType: String {
     case TodaysToday
     case Score
     case CurrentStreak
+    case Finished
 }

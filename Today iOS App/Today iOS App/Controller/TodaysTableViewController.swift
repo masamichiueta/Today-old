@@ -56,9 +56,9 @@ class TodaysTableViewController: UITableViewController, ManagedObjectContextSett
             fatalError("Wrong view controller type")
         }
         
-        let date = NSDate()
+        let now = NSDate()
         
-        if Today.created(managedObjectContext, forDate: date) {
+        if Today.created(managedObjectContext, forDate: now) {
             showAddAlert(nil)
             return
         }
@@ -66,13 +66,13 @@ class TodaysTableViewController: UITableViewController, ManagedObjectContextSett
         managedObjectContext.performChanges {
             
             //Create today
-            Today.insertIntoContext(self.managedObjectContext, score: Int64(vc.score), date: date)
+            Today.insertIntoContext(self.managedObjectContext, score: Int64(vc.score), date: now)
             
             //Update current streak or create a new streak
             if let currentStreak = Streak.currentStreak(self.managedObjectContext) {
-                currentStreak.to = date
+                currentStreak.to = now
             } else {
-                Streak.insertIntoContext(self.managedObjectContext, from: date, to: date)
+                Streak.insertIntoContext(self.managedObjectContext, from: now, to: now)
             }
         }
         

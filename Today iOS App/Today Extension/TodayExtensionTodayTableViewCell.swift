@@ -9,10 +9,10 @@
 import UIKit
 import TodayKit
 
-class TodayExtensionTodayTableViewCell: UITableViewCell, ConfigurableCell {
+class TodayExtensionTodayTableViewCell: UITableViewCell {
     
     @IBOutlet weak var scoreLabel: UILabel!
-    @IBOutlet weak var icon: UIImageView!
+    @IBOutlet weak var iconImageView: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,10 +24,12 @@ class TodayExtensionTodayTableViewCell: UITableViewCell, ConfigurableCell {
 
         // Configure the view for the selected state
     }
-    
+}
+
+extension TodayExtensionTodayTableViewCell: ConfigurableCell {
     func configureForObject(score: Int) {
         scoreLabel.text = "\(score)"
-        //icon.image = Today.type(score).icon("28")
+        iconImageView.tintColor = UIColor.whiteColor()
+        iconImageView.image = Today.type(score).icon("28")
     }
-
 }

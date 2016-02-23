@@ -35,17 +35,23 @@ class CurrentStreakInterfaceController: WKInterfaceController, WCSessionDelegate
             session.delegate = self
             session.activateSession()
         }
-    }
-
-    override func willActivate() {
-        super.willActivate()
         
         if session.reachable {
             sendMessageToGetCurrentStreak()
         } else {
             currentStreakLabel.setText("0")
         }
+    }
+
+    override func willActivate() {
+        super.willActivate()
         
+        guard let currentStreak = currentStreak else {
+            currentStreakLabel.setText("0")
+            return
+        }
+        
+        currentStreakLabel.setText("\(currentStreak)")
     }
     
     func sessionReachabilityDidChange(session: WCSession) {

@@ -60,30 +60,37 @@ class TodayExtensionViewController: UIViewController, NCWidgetProviding, UITable
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
+        let sharedData = AppGroupSharedData()
+        
         switch indexPath.row {
         case 0:
             guard let cell = tableView.dequeueReusableCellWithCellIdentifier(.TodayExtensionCell, forIndexPath: indexPath) as? TodayExtensionTodayTableViewCell else {
                 fatalError("Wrong cell type")
             }
-            cell.configureForObject(10)
+            cell.configureForObject(sharedData.todayScore)
+            //For tap bug
+            cell.backgroundView = UILabel()
             return cell
         case 1:
             let cell = tableView.dequeueReusableCellWithCellIdentifier(.TodayExtensionKeyValueExtensionCell, forIndexPath: indexPath)
             cell.textLabel?.text = "Total"
-            let total = 10
-            cell.detailTextLabel?.text = "\(total) Todays"
+            cell.detailTextLabel?.text = "\(sharedData.total) total"
+            //For tap bug
+            cell.backgroundView = UILabel()
             return cell
         case 2:
             let cell = tableView.dequeueReusableCellWithCellIdentifier(.TodayExtensionKeyValueExtensionCell, forIndexPath: indexPath)
             cell.textLabel?.text = "Longest streak"
-            let longestStreak = 10
-            cell.detailTextLabel?.text = "\(longestStreak) days"
+            cell.detailTextLabel?.text = "\(sharedData.longestStreak) days"
+            //For tap bug
+            cell.backgroundView = UILabel()
             return cell
         case 3:
             let cell = tableView.dequeueReusableCellWithCellIdentifier(.TodayExtensionKeyValueExtensionCell, forIndexPath: indexPath)
             cell.textLabel?.text = "Current streak"
-            let currentStreak = 20
-            cell.detailTextLabel?.text = "\(currentStreak) days"
+            cell.detailTextLabel?.text = "\(sharedData.currentStreak) days"
+            //For tap bug
+            cell.backgroundView = UILabel()
             return cell
         default:
             fatalError("Wront cell number")
@@ -95,6 +102,18 @@ class TodayExtensionViewController: UIViewController, NCWidgetProviding, UITable
         return cell
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        guard let url = NSURL(string: appGroupURLScheme + "://") else {
+            return
+        }
+        extensionContext?.openURL(url,
+            completionHandler: nil)
+    }
+    
     @IBAction func addToday(sender: AnyObject) {
+        guard let url = NSURL(string: appGroupURLScheme + "://" + AppGroupURLHost.AddToday.rawValue) else {
+            return
+        }
+        extensionContext?.openURL(url, completionHandler: nil)
     }
 }

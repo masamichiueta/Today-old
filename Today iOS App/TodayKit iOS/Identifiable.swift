@@ -42,7 +42,7 @@ extension UIStoryboard {
 }
 
 extension UITableView {
-    public enum TableViewCell: String {
+    public enum TableViewCellIdentifier: String {
         //iOS App
         case Cell
         case ActivityChartCell
@@ -58,7 +58,7 @@ extension UITableView {
         
     }
     
-    public func dequeueReusableCellWithCellIdentifier(cell: TableViewCell, forIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    public func dequeueReusableCellWithCellIdentifier(cell: TableViewCellIdentifier, forIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         return self.dequeueReusableCellWithIdentifier(cell.rawValue, forIndexPath: indexPath)
     }
 

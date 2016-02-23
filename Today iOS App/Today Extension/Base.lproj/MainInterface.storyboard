@@ -18,8 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ikM-JB-mZ3">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ikM-JB-mZ3">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="145"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TodayExtensionCell" id="g0e-SB-CSl" customClass="TodayExtensionTodayTableViewCell" customModule="Today_Today_Extension" customModuleProvider="target">
@@ -59,8 +59,8 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
+                                            <outlet property="iconImageView" destination="ciY-k8-brG" id="g5j-0y-TEK"/>
                                             <outlet property="scoreLabel" destination="6bF-ET-Nny" id="Sy2-vS-6Tr"/>
-                                            <outlet property="selectedBackgroundView" destination="ciY-k8-brG" id="a5r-dO-ub9"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TodayExtensionKeyValueExtensionCell" textLabel="9Wc-bp-O3u" detailTextLabel="gcH-qr-crW" style="IBUITableViewCellStyleValue1" id="co2-ir-ImC">
@@ -147,10 +147,10 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="ikM-JB-mZ3" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" id="GZr-Mm-2QQ"/>
-                            <constraint firstItem="1BO-FY-r0h" firstAttribute="top" secondItem="ikM-JB-mZ3" secondAttribute="bottom" constant="10" id="KOA-1m-2Gt"/>
+                            <constraint firstItem="1BO-FY-r0h" firstAttribute="top" secondItem="ikM-JB-mZ3" secondAttribute="bottom" constant="15" id="KOA-1m-2Gt"/>
                             <constraint firstItem="1BO-FY-r0h" firstAttribute="centerX" secondItem="S3S-Oj-5AN" secondAttribute="centerX" id="Mgz-v3-lXQ"/>
                             <constraint firstItem="ikM-JB-mZ3" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leading" id="Ur7-Lj-Zuj"/>
-                            <constraint firstItem="FKl-LY-JtV" firstAttribute="top" secondItem="1BO-FY-r0h" secondAttribute="bottom" constant="10" id="YjC-To-RTn"/>
+                            <constraint firstItem="FKl-LY-JtV" firstAttribute="top" secondItem="1BO-FY-r0h" secondAttribute="bottom" priority="750" constant="10" id="YjC-To-RTn"/>
                             <constraint firstAttribute="trailing" secondItem="ikM-JB-mZ3" secondAttribute="trailing" id="gew-Go-Agi"/>
                         </constraints>
                     </view>

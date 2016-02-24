@@ -21,10 +21,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         //Default Setting
-        setupDefaultSetting()
+        setupUserDefaultSetting()
         
         //Navigation
         let setting = Setting()
+        
+        //FirstLaunch
         if setting.firstLaunch {
             let startStoryboard = UIStoryboard.storyboard(.GetStarted)
             guard let vc = startStoryboard.instantiateInitialViewController() else {
@@ -34,16 +36,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return true
         }
         
-        //iCloud
-        if setting.iCloudEnabled {
-            managedObjectContext = createTodayMainContext(.ICloud)
-            registerForiCloudNotifications()
-        } else {
-            managedObjectContext = createTodayMainContext(.Local)
-        }
-        
         //Notification
         NotificationManager.setupLocalNotificationSetting()
+        
+        //iCloud
+        setupiCloudAndManagedObjectContext()
         
         //CoreData
         let mainStoryboard = UIStoryboard.storyboard(.Main)
@@ -147,7 +144,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     //MARK: Helper
-    private func setupDefaultSetting() {
+    private func setupUserDefaultSetting() {
         guard let settingBundle = frameworkBundle("TodayKit.framework") else {
             fatalError("Wrong framework name")
         }
@@ -189,6 +186,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     // MARK: - iCloud
+    func setupiCloudAndManagedObjectContext() {
+        
+        var setting = Setting()
+        
+        //Check Account Change
+        if let currentiCloudToken = NSFileManager.defaultManager().ubiquityIdentityToken,
+            ubiquityIdentityToken = setting.ubiquityIdentityToken {
+                let newTokenData = NSKeyedArchiver.archivedDataWithRootObject(currentiCloudToken)
+                if !newTokenData.isEqualToData(ubiquityIdentityToken) {
+                    setting.ubiquityIdentityToken = newTokenData
+                }
+        }
+        
+        //Check sign out
+        if NSFileManager.defaultManager().ubiquityIdentityToken == nil  && setting.iCloudEnabled {
+            //Fix setting
+            setting.iCloudEnabled = false
+            setting.ubiquityIdentityToken = nil
+        }
+        
+        //Setup moc
+        if setting.iCloudEnabled {
+            managedObjectContext = createTodayMainContext(.ICloud)
+            registerForiCloudNotifications()
+        } else {
+            managedObjectContext = createTodayMainContext(.Local)
+        }
+    }
+    
     func registerForiCloudNotifications() {
         let iCloudStore = NSUbiquitousKeyValueStore.defaultStore()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateFromiCloud:", name: NSUbiquitousKeyValueStoreDidChangeExternallyNotification, object: iCloudStore)
@@ -210,38 +236,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func updateFromiCloud(notification: NSNotification) {
-        
-        //TODO:
-        if let changeReasonKey = notification.userInfo?[NSUbiquitousKeyValueStoreChangeReasonKey] as? NSNumber {
-            
-            //When iCloud Account is changed
-            if changeReasonKey.integerValue == NSUbiquitousKeyValueStoreAccountChange {
-                
-                var setting = Setting()
-                
-                if let currentiCloudToken = NSFileManager.defaultManager().ubiquityIdentityToken {
-                    
-                    let newTokenData =  NSKeyedArchiver.archivedDataWithRootObject(currentiCloudToken)
-                    
-                    if let currentTokenData = setting.ubiquityIdentityToken where !currentTokenData.isEqualToData(newTokenData) {
-                        //Account is different
-                        setting.ubiquityIdentityToken = newTokenData
-                        setting.iCloudEnabled = true
-                        managedObjectContext = createTodayMainContext(.ICloud)
-                        registerForiCloudNotifications()
-                    }
-                    
-                } else {
-                    
-                    setting.ubiquityIdentityToken = nil
-                    setting.iCloudEnabled = false
-                    managedObjectContext = createTodayMainContext(.Local)
-                    unregisterForiCloudNotifications()
-                    
-                }
-            }
-        }
-        
         
         let iCloudStore = NSUbiquitousKeyValueStore.defaultStore()
         let dict = iCloudStore.dictionaryRepresentation

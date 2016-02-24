@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="launch_icon" translatesAutoresizingMaskIntoConstraints="NO" id="TQk-3o-abu">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch_icon" translatesAutoresizingMaskIntoConstraints="NO" id="TQk-3o-abu">
                                 <rect key="frame" x="175" y="261" width="250" height="78"/>
                             </imageView>
                             <stackView hidden="YES" opaque="NO" alpha="0.0" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="44" translatesAutoresizingMaskIntoConstraints="NO" id="kmD-Lf-PDB">

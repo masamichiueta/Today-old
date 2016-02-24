@@ -105,9 +105,10 @@ class SettingTableViewController: UITableViewController {
                 NSNotificationCenter.defaultCenter().postNotificationName(StoresDidChangeNotificationName, object: nil)
             } else {
                 let alertController = UIAlertController(title: "iCloud is Disabled", message: "Your iCloud account is disabled. Please sign in from setting.", preferredStyle: .Alert)
-                alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+                alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: { action in
+                    sender.on = false
+                }))
                 self.presentViewController(alertController, animated: true, completion: nil)
-                sender.on = false
             }
         } else {
             //Change to Local Storage

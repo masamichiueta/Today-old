@@ -173,8 +173,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             let now = NSDate()
             if let startDate =  NSCalendar.currentCalendar().dateBySettingHour(0, minute: 0, second: 0, ofDate: now, options: []),
-                let endDate = NSCalendar.currentCalendar().dateByAddingUnit(NSCalendarUnit.Day, value: 1, toDate: startDate, options: []),
-                let today = Today.todays(managedObjectContext, from: startDate, to: endDate).first {
+                endDate = NSCalendar.currentCalendar().dateByAddingUnit(NSCalendarUnit.Day, value: 1, toDate: startDate, options: []),
+                today = Today.todays(managedObjectContext, from: startDate, to: endDate).first {
                     appGroupSharedData.todayScore = Int(today.score)
                     appGroupSharedData.todayDate = today.date
             } else {
@@ -195,26 +195,54 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateToiCloud:", name: NSUserDefaultsDidChangeNotification, object: nil)
         iCloudStore.synchronize()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "iCloudAccountAvailabilityDidChange:", name: NSUbiquityIdentityDidChangeNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "storesWillChange:", name: NSPersistentStoreCoordinatorStoresWillChangeNotification, object: managedObjectContext.persistentStoreCoordinator)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "storesDidChange:", name: NSPersistentStoreCoordinatorStoresDidChangeNotification, object: managedObjectContext.persistentStoreCoordinator)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "persistentStoreDidImportUbiquitousContentChanges:", name: NSPersistentStoreDidImportUbiquitousContentChangesNotification, object: managedObjectContext.persistentStoreCoordinator)
     }
     
-    func iCloudAccountAvailabilityDidChange(notification: NSNotification) {
-        var setting = Setting()
-        if let currentiCloudToken = NSFileManager.defaultManager().ubiquityIdentityToken {
-            let newTokenData =  NSKeyedArchiver.archivedDataWithRootObject(currentiCloudToken)
-            if let currentTokenData = setting.ubiquityIdentityToken where !currentTokenData.isEqualToData(newTokenData) {
-                //Account is different
-                setting.ubiquityIdentityToken = newTokenData
-            }
-        } else {
-            setting.ubiquityIdentityToken = nil
-        }
+    func unregisterForiCloudNotifications() {
+        let iCloudStore = NSUbiquitousKeyValueStore.defaultStore()
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: NSUbiquitousKeyValueStoreDidChangeExternallyNotification, object: iCloudStore)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: NSUserDefaultsDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: NSPersistentStoreCoordinatorStoresWillChangeNotification, object: managedObjectContext.persistentStoreCoordinator)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: NSPersistentStoreCoordinatorStoresDidChangeNotification, object: managedObjectContext.persistentStoreCoordinator)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: NSPersistentStoreDidImportUbiquitousContentChangesNotification, object: managedObjectContext.persistentStoreCoordinator)
     }
     
     func updateFromiCloud(notification: NSNotification) {
+        
+        //TODO:
+        if let changeReasonKey = notification.userInfo?[NSUbiquitousKeyValueStoreChangeReasonKey] as? NSNumber {
+            
+            //When iCloud Account is changed
+            if changeReasonKey.integerValue == NSUbiquitousKeyValueStoreAccountChange {
+                
+                var setting = Setting()
+                
+                if let currentiCloudToken = NSFileManager.defaultManager().ubiquityIdentityToken {
+                    
+                    let newTokenData =  NSKeyedArchiver.archivedDataWithRootObject(currentiCloudToken)
+                    
+                    if let currentTokenData = setting.ubiquityIdentityToken where !currentTokenData.isEqualToData(newTokenData) {
+                        //Account is different
+                        setting.ubiquityIdentityToken = newTokenData
+                        setting.iCloudEnabled = true
+                        managedObjectContext = createTodayMainContext(.ICloud)
+                        registerForiCloudNotifications()
+                    }
+                    
+                } else {
+                    
+                    setting.ubiquityIdentityToken = nil
+                    setting.iCloudEnabled = false
+                    managedObjectContext = createTodayMainContext(.Local)
+                    unregisterForiCloudNotifications()
+                    
+                }
+            }
+        }
+        
+        
         let iCloudStore = NSUbiquitousKeyValueStore.defaultStore()
         let dict = iCloudStore.dictionaryRepresentation
         NSNotificationCenter.defaultCenter().removeObserver(self, name: NSUserDefaultsDidChangeNotification, object: nil)
@@ -229,7 +257,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func updateToiCloud(notification: NSNotification) {
-       
+        
         let iCloudStore = NSUbiquitousKeyValueStore.defaultStore()
         let dict = NSUserDefaults.standardUserDefaults().dictionaryRepresentation()
         for (key, value) in dict {
@@ -297,8 +325,8 @@ extension AppDelegate: WCSessionDelegate {
             let now = NSDate()
             
             if let startDate =  NSCalendar.currentCalendar().dateBySettingHour(0, minute: 0, second: 0, ofDate: now, options: []),
-                let endDate = NSCalendar.currentCalendar().dateByAddingUnit(NSCalendarUnit.Day, value: 1, toDate: startDate, options: []),
-                let today = Today.todays(managedObjectContext, from: startDate, to: endDate).first {
+                endDate = NSCalendar.currentCalendar().dateByAddingUnit(NSCalendarUnit.Day, value: 1, toDate: startDate, options: []),
+                today = Today.todays(managedObjectContext, from: startDate, to: endDate).first {
                     replyHandler([WatchConnectivityContentType.TodaysToday.rawValue: Int(today.score)])
             } else {
                 replyHandler([WatchConnectivityContentType.TodaysToday.rawValue: 0])

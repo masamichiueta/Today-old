@@ -87,11 +87,13 @@ class GetStartedViewController: UIViewController {
         alertController.addAction(UIAlertAction(title: "Use iCloud", style: .Default, handler: { action in
             
             var setting = Setting()
-            setting.iCloudEnabled = true
         
             if let currentiCloudToken = NSFileManager.defaultManager().ubiquityIdentityToken {
                 let newTokenData = NSKeyedArchiver.archivedDataWithRootObject(currentiCloudToken)
                 setting.ubiquityIdentityToken = newTokenData
+                setting.iCloudEnabled = true
+                appDelegate.managedObjectContext = createTodayMainContext(.ICloud)
+                appDelegate.registerForiCloudNotifications()
             } else {
                 let alertController = UIAlertController(title: "iCloud is Disabled", message: "Your iCloud account is disabled. Please sign in from setting.", preferredStyle: .Alert)
                 
@@ -103,9 +105,8 @@ class GetStartedViewController: UIViewController {
                 }))
                 self.presentViewController(alertController, animated: true, completion: nil)
                 setting.ubiquityIdentityToken = nil
+                appDelegate.managedObjectContext = createTodayMainContext(.Local)
             }
-            appDelegate.managedObjectContext = createTodayMainContext(.ICloud)
-            appDelegate.registerForiCloudNotifications()
         }))
         self.presentViewController(alertController, animated: true, completion: { finished in
             self.iCloudButton.backgroundColor = UIColor.defaultTintColor()

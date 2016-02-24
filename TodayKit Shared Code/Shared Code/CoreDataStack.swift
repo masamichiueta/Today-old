@@ -30,7 +30,9 @@ import CoreData
             case .Local:
                 options = nil
             case .ICloud:
-                options = [NSPersistentStoreUbiquitousContentNameKey: "TodayCloudStore"]
+                options = [NSPersistentStoreUbiquitousContentNameKey: "TodayCloudStore",
+                    NSMigratePersistentStoresAutomaticallyOption: true,
+                    NSInferMappingModelAutomaticallyOption: true]
             }
             try psc.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: options)
         } catch {

@@ -86,10 +86,43 @@ class SettingTableViewController: UITableViewController {
             self.presentViewController(alertController, animated: true, completion: nil)
         }
     }
+    
+    func iCloudSwitchValueDidChange(sender: UISwitch) {
+        //TODO:
+        
+        var setting = Setting()
+        let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
+        
+        if sender.on {
+            if let currentiCloudToken = NSFileManager.defaultManager().ubiquityIdentityToken {
+                //Chagnet to iCloud Storage
+                NSNotificationCenter.defaultCenter().postNotificationName(StoresWillChangeNotificationName, object: nil)
+                setting.iCloudEnabled = true
+                let newTokenData = NSKeyedArchiver.archivedDataWithRootObject(currentiCloudToken)
+                setting.ubiquityIdentityToken = newTokenData
+                appDelegate?.managedObjectContext = createTodayMainContext(.ICloud)
+                appDelegate?.registerForiCloudNotifications()
+                NSNotificationCenter.defaultCenter().postNotificationName(StoresDidChangeNotificationName, object: nil)
+            } else {
+                let alertController = UIAlertController(title: "iCloud is Disabled", message: "Your iCloud account is disabled. Please sign in from setting.", preferredStyle: .Alert)
+                alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+                self.presentViewController(alertController, animated: true, completion: nil)
+                sender.on = false
+            }
+        } else {
+            //Change to Local Storage
+            NSNotificationCenter.defaultCenter().postNotificationName(StoresWillChangeNotificationName, object: nil)
+            setting.iCloudEnabled = false
+            setting.ubiquityIdentityToken = nil
+            appDelegate?.managedObjectContext = createTodayMainContext(.Local)
+            appDelegate?.unregisterForiCloudNotifications()
+            NSNotificationCenter.defaultCenter().postNotificationName(StoresDidChangeNotificationName, object: nil)
+        }
+    }
 
     // MARK: - Table view data source
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -104,7 +137,7 @@ class SettingTableViewController: UITableViewController {
                 return 2
             }
             return 3
-        case 1:
+        case 1, 2:
             return 1
         default:
             break
@@ -141,6 +174,15 @@ class SettingTableViewController: UITableViewController {
             cell.delegate = self
             return cell
         case (1, 0):
+            let cell = tableView.dequeueReusableCellWithCellIdentifier(.SettingSwitchCell, forIndexPath: indexPath)
+            cell.textLabel?.text = "iCloud sync"
+            let sw = UISwitch()
+            sw.on = setting.iCloudEnabled
+            sw.addTarget(self, action: "iCloudSwitchValueDidChange:", forControlEvents: .ValueChanged)
+            cell.accessoryView = sw
+            cell.selectionStyle = .None
+            return cell
+        case (2, 0):
             let cell = UITableViewCell(style: .Value1, reuseIdentifier: "cell")
             cell.textLabel?.text = "Rate Today"
             cell.accessoryType = .DisclosureIndicator
@@ -163,7 +205,7 @@ class SettingTableViewController: UITableViewController {
             cell?.detailTextLabel?.textColor = pickerHidden ? defaultDetailTextColor : tableView.tintColor
             
             togglePickerCell(pickerHidden)
-        case (1, 0):
+        case (2, 0):
             //TODO: Replace URL
             let reviewUrl = "URL for Today App"
             UIApplication.sharedApplication().openURL(NSURL(string: reviewUrl)!)

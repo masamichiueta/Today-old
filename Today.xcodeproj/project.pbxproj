@@ -231,13 +231,13 @@
 		24030B061C1C821C004E68ED /* TodayUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayUITests.swift; sourceTree = "<group>"; };
 		24030B081C1C821C004E68ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24095BD51C7C92F800CC970E /* AppGroupSharedData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppGroupSharedData.swift; sourceTree = "<group>"; };
-		240F14741C2A9CDE0003B2AF /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = "../../TodayKit Shared Code/Shared Code/CoreDataStack.swift"; sourceTree = "<group>"; };
+		240F14741C2A9CDE0003B2AF /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		240F14771C2A9FD40003B2AF /* ManagedObjectContextSettable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectContextSettable.swift; sourceTree = "<group>"; };
 		240F147D1C2ABC000003B2AF /* SegueHandlerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueHandlerType.swift; sourceTree = "<group>"; };
 		241D65AE1C7B43AC00938CE8 /* TodayExtensionTodayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayExtensionTodayTableViewCell.swift; sourceTree = "<group>"; };
 		2425BBA81C5E3A0E008AD9A4 /* StreakTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreakTableViewCell.swift; sourceTree = "<group>"; };
 		242D5A6E1C7374C500789616 /* Identifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
-		242DD1171C74BFFA00A8A760 /* iCloudRegistable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = iCloudRegistable.swift; path = "../Today iOS App/Shared Code/iCloudRegistable.swift"; sourceTree = "<group>"; };
+		242DD1171C74BFFA00A8A760 /* iCloudRegistable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iCloudRegistable.swift; sourceTree = "<group>"; };
 		242F984A1C49282200DBC64B /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		24444A591C306B4B00DC1579 /* NSManagedObjectContext+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Extensions.swift"; sourceTree = "<group>"; };
 		24444A5D1C30A02A00DC1579 /* AddTodayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTodayViewController.swift; sourceTree = "<group>"; };
@@ -432,13 +432,12 @@
 		240F14761C2A9FB60003B2AF /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				24FE13501C7F4AAF00A573B8 /* DelegateHandler.swift */,
 				240F14771C2A9FD40003B2AF /* ManagedObjectContextSettable.swift */,
 				242F984A1C49282200DBC64B /* NotificationManager.swift */,
 				24FE134E1C7F49A700A573B8 /* TodayWCSessionHandler.swift */,
-				24FE13501C7F4AAF00A573B8 /* DelegateHandler.swift */,
 			);
-			name = Helper;
-			path = "Shared Code";
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		246688171C1D189F00C5E5A0 /* Frameworks */ = {
@@ -517,10 +516,10 @@
 				24F9DC3E1C2EFD33003A6427 /* ConfigurableCell.swift */,
 				240F14741C2A9CDE0003B2AF /* CoreDataStack.swift */,
 				242D5A6E1C7374C500789616 /* Identifiable.swift */,
-				242DD1171C74BFFA00A8A760 /* iCloudRegistable.swift */,
 				24C6C1A91C54F9970041C31F /* Info.plist */,
 				240F147D1C2ABC000003B2AF /* SegueHandlerType.swift */,
 				24D4E3481C43ED6E00F6DA6A /* Utilities+iOS.swift */,
+				242DD1171C74BFFA00A8A760 /* iCloudRegistable.swift */,
 			);
 			path = "TodayKit iOS";
 			sourceTree = "<group>";
@@ -537,8 +536,8 @@
 		24C6C1A61C54F9970041C31F /* TodayKit Shared Code */ = {
 			isa = PBXGroup;
 			children = (
-				24C77EA71C2A8C5F00493C13 /* Model */,
 				24C77EA31C2A8BF000493C13 /* Helper */,
+				24C77EA71C2A8C5F00493C13 /* Model */,
 			);
 			path = "TodayKit Shared Code";
 			sourceTree = "<group>";
@@ -560,8 +559,7 @@
 				24DBB5901C2C367100E1C042 /* Utilities.swift */,
 				245464661C75FFEF0030EF82 /* WatchConnectivityActionType.swift */,
 			);
-			name = Helper;
-			path = "Shared Code";
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		24C77EA71C2A8C5F00493C13 /* Model */ = {
@@ -579,12 +577,12 @@
 		24F21AB21C4FCFE900396A38 /* Today Extension */ = {
 			isa = PBXGroup;
 			children = (
+				244B9A761C7B5910004AF2DC /* Assets.xcassets */,
 				24F21AB81C4FCFE900396A38 /* Info.plist */,
 				24F21AB51C4FCFE900396A38 /* MainInterface.storyboard */,
 				24A9E9781C6CBDE700739226 /* Today Today Extension.entitlements */,
 				241D65AE1C7B43AC00938CE8 /* TodayExtensionTodayTableViewCell.swift */,
 				24F21AB31C4FCFE900396A38 /* TodayExtensionViewController.swift */,
-				244B9A761C7B5910004AF2DC /* Assets.xcassets */,
 			);
 			path = "Today Extension";
 			sourceTree = "<group>";

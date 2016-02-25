@@ -14,7 +14,6 @@
 		24030AFC1C1C821C004E68ED /* TodayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24030AFB1C1C821C004E68ED /* TodayTests.swift */; };
 		24030B071C1C821C004E68ED /* TodayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24030B061C1C821C004E68ED /* TodayUITests.swift */; };
 		24095BD61C7C92F800CC970E /* AppGroupSharedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24095BD51C7C92F800CC970E /* AppGroupSharedData.swift */; };
-		240F147C1C2AA0450003B2AF /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F147B1C2AA0450003B2AF /* RootViewController.swift */; };
 		241D65AC1C7B3E0E00938CE8 /* BorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2488C7081C6F686D00EF8F45 /* BorderButton.swift */; };
 		241D65AF1C7B43AC00938CE8 /* TodayExtensionTodayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D65AE1C7B43AC00938CE8 /* TodayExtensionTodayTableViewCell.swift */; };
 		2425BBA91C5E3A0E008AD9A4 /* StreakTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2425BBA81C5E3A0E008AD9A4 /* StreakTableViewCell.swift */; };
@@ -233,7 +232,6 @@
 		24095BD51C7C92F800CC970E /* AppGroupSharedData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppGroupSharedData.swift; sourceTree = "<group>"; };
 		240F14741C2A9CDE0003B2AF /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		240F14771C2A9FD40003B2AF /* ManagedObjectContextSettable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectContextSettable.swift; sourceTree = "<group>"; };
-		240F147B1C2AA0450003B2AF /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		240F147D1C2ABC000003B2AF /* SegueHandlerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueHandlerType.swift; sourceTree = "<group>"; };
 		241D65AE1C7B43AC00938CE8 /* TodayExtensionTodayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayExtensionTodayTableViewCell.swift; sourceTree = "<group>"; };
 		2425BBA81C5E3A0E008AD9A4 /* StreakTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreakTableViewCell.swift; sourceTree = "<group>"; };
@@ -454,7 +452,6 @@
 				24FFBB981C3D7AE50053E261 /* ActivityTableViewController.swift */,
 				24444A5D1C30A02A00DC1579 /* AddTodayViewController.swift */,
 				24561EA61C6F77D500022222 /* GetStartedViewController.swift */,
-				240F147B1C2AA0450003B2AF /* RootViewController.swift */,
 				24FFBB961C3D6AFA0053E261 /* SettingTableViewController.swift */,
 				246688501C1DB4ED00C5E5A0 /* TodaysTableViewController.swift */,
 			);
@@ -1019,7 +1016,6 @@
 				243535191C7B50380044D13A /* ChartViewBase.swift in Sources */,
 				244B9A701C7B51F6004AF2DC /* ManagedObjectContextSettable.swift in Sources */,
 				2435351B1C7B50570044D13A /* ChartViewDataSource.swift in Sources */,
-				240F147C1C2AA0450003B2AF /* RootViewController.swift in Sources */,
 				24D67C851C3EB54600A33DB7 /* AverageTotalTableViewCell.swift in Sources */,
 				2435351F1C7B50570044D13A /* TableViewDataSource.swift in Sources */,
 				24D82C2F1C5A5D880095FA47 /* ChartTableViewCell.swift in Sources */,

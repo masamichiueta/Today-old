@@ -23,11 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Default Setting
         setupUserDefaultSetting()
         
-        //Navigation
-        let setting = Setting()
-        
         //FirstLaunch
-        if setting.firstLaunch {
+        if Setting().firstLaunch {
             let startStoryboard = UIStoryboard.storyboard(.GetStarted)
             guard let vc = startStoryboard.instantiateInitialViewController() else {
                 fatalError("InitialViewController not found")
@@ -40,18 +37,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NotificationManager.setupLocalNotificationSetting()
         
         //iCloud
-        setupiCloudAndManagedObjectContext()
+        updateiCloudSetting()
         
-        //CoreData
+        //Setup moc
+        if Setting().iCloudEnabled {
+            managedObjectContext = createTodayMainContext(.ICloud)
+        } else {
+            managedObjectContext = createTodayMainContext(.Local)
+        }
+        
+        registerForiCloudNotifications()
+        
         let mainStoryboard = UIStoryboard.storyboard(.Main)
-        guard let vc = mainStoryboard.instantiateInitialViewController() else {
+        guard let vc = mainStoryboard.instantiateInitialViewController() as? UITabBarController else {
             fatalError("InitialViewController not found")
         }
-        guard let managedObjectContextSettable = vc as? ManagedObjectContextSettable else {
-            fatalError("Wrong view controller type")
-        }
-        managedObjectContextSettable.managedObjectContext = managedObjectContext
         window?.rootViewController = vc
+        updateManagedObjectContext(managedObjectContext, rootViewController: vc)
         
         //WatchConnectivity
         if WCSession.isSupported() {
@@ -81,7 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        
+        updateiCloudSetting()
         application.applicationIconBadgeNumber = 0
     }
     
@@ -143,7 +145,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    //MARK: Helper
+    //MARK: - Helper
+    func updateManagedObjectContext(moc: NSManagedObjectContext, rootViewController: UITabBarController) {
+        
+        for child in rootViewController.childViewControllers {
+            switch child {
+            case is UINavigationController:
+                guard let nc = child as? UINavigationController else {
+                    fatalError("Wrong view controller type")
+                }
+                guard let vc = nc.viewControllers.first as? ManagedObjectContextSettable else {
+                    fatalError("expected managed object settable")
+                }
+                vc.managedObjectContext = moc
+            default:
+                guard let vc = child as? ManagedObjectContextSettable else {
+                    fatalError("expected managed object settable")
+                }
+                vc.managedObjectContext = moc
+            }
+        }
+    }
+    
+    
     private func setupUserDefaultSetting() {
         guard let settingBundle = frameworkBundle("TodayKit.framework") else {
             fatalError("Wrong framework name")
@@ -186,32 +210,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     // MARK: - iCloud
-    func setupiCloudAndManagedObjectContext() {
+    func updateiCloudSetting() {
         
         var setting = Setting()
         
-        //Check Account Change
-        if let currentiCloudToken = NSFileManager.defaultManager().ubiquityIdentityToken,
-            ubiquityIdentityToken = setting.ubiquityIdentityToken {
-                let newTokenData = NSKeyedArchiver.archivedDataWithRootObject(currentiCloudToken)
-                if !newTokenData.isEqualToData(ubiquityIdentityToken) {
-                    setting.ubiquityIdentityToken = newTokenData
-                }
+        //First launch
+        if setting.firstLaunch {
+            return
         }
         
-        //Check sign out
-        if NSFileManager.defaultManager().ubiquityIdentityToken == nil  && setting.iCloudEnabled {
-            //Fix setting
+        if !setting.iCloudEnabled {
+            return
+        }
+        
+        //iCloud enabled but user signed out from iCloud
+        if setting.iCloudEnabled && NSFileManager.defaultManager().ubiquityIdentityToken == nil {
             setting.iCloudEnabled = false
             setting.ubiquityIdentityToken = nil
+            return
         }
         
-        //Setup moc
-        if setting.iCloudEnabled {
-            managedObjectContext = createTodayMainContext(.ICloud)
-            registerForiCloudNotifications()
-        } else {
-            managedObjectContext = createTodayMainContext(.Local)
+        guard let currentiCloudToken = NSFileManager.defaultManager().ubiquityIdentityToken else {
+            return
+        }
+        
+        let newTokenData = NSKeyedArchiver.archivedDataWithRootObject(currentiCloudToken)
+        
+        guard let savediCloudTokenData = setting.ubiquityIdentityToken else {
+            return
+        }
+        
+        //iCloud enabled but iCloud account changed
+        if setting.iCloudEnabled && !newTokenData.isEqualToData(savediCloudTokenData) {
+            setting.ubiquityIdentityToken = newTokenData
         }
     }
     
@@ -224,15 +255,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "storesWillChange:", name: NSPersistentStoreCoordinatorStoresWillChangeNotification, object: managedObjectContext.persistentStoreCoordinator)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "storesDidChange:", name: NSPersistentStoreCoordinatorStoresDidChangeNotification, object: managedObjectContext.persistentStoreCoordinator)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "persistentStoreDidImportUbiquitousContentChanges:", name: NSPersistentStoreDidImportUbiquitousContentChangesNotification, object: managedObjectContext.persistentStoreCoordinator)
-    }
-    
-    func unregisterForiCloudNotifications() {
-        let iCloudStore = NSUbiquitousKeyValueStore.defaultStore()
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: NSUbiquitousKeyValueStoreDidChangeExternallyNotification, object: iCloudStore)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: NSUserDefaultsDidChangeNotification, object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: NSPersistentStoreCoordinatorStoresWillChangeNotification, object: managedObjectContext.persistentStoreCoordinator)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: NSPersistentStoreCoordinatorStoresDidChangeNotification, object: managedObjectContext.persistentStoreCoordinator)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: NSPersistentStoreDidImportUbiquitousContentChangesNotification, object: managedObjectContext.persistentStoreCoordinator)
     }
     
     func updateFromiCloud(notification: NSNotification) {

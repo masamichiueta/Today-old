@@ -93,7 +93,6 @@ class GetStartedViewController: UIViewController {
                 setting.ubiquityIdentityToken = newTokenData
                 setting.iCloudEnabled = true
                 appDelegate.managedObjectContext = createTodayMainContext(.ICloud)
-                appDelegate.registerForiCloudNotifications()
             } else {
                 let alertController = UIAlertController(title: "iCloud is Disabled", message: "Your iCloud account is disabled. Please sign in from setting.", preferredStyle: .Alert)
                 
@@ -114,6 +113,7 @@ class GetStartedViewController: UIViewController {
             self.iCloudButton.userInteractionEnabled = false
         })
         iCloudSet = true
+        
     }
     
     @IBAction func startToday(sender: AnyObject) {
@@ -123,14 +123,13 @@ class GetStartedViewController: UIViewController {
         var setting = Setting()
         setting.firstLaunch = false
         
+        appDelegate.registerForiCloudNotifications()
+        
         let mainStoryboard = UIStoryboard.storyboard(.Main)
-        guard let vc = mainStoryboard.instantiateInitialViewController() else {
+        guard let vc = mainStoryboard.instantiateInitialViewController() as? UITabBarController else {
             fatalError("InitialViewController not found")
         }
-        guard let managedObjectContextSettable = vc as? ManagedObjectContextSettable else {
-            fatalError("Wrong view controller type")
-        }
-        managedObjectContextSettable.managedObjectContext = appDelegate.managedObjectContext
+        appDelegate.updateManagedObjectContext(appDelegate.managedObjectContext, rootViewController: vc)
         
         guard let overlayView = appDelegate.window?.snapshotViewAfterScreenUpdates(false) else {
             appDelegate.window?.rootViewController = vc

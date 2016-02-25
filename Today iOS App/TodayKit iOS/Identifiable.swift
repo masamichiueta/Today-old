@@ -61,5 +61,5 @@ extension UITableView {
     public func dequeueReusableCellWithCellIdentifier(cell: TableViewCellIdentifier, forIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         return self.dequeueReusableCellWithIdentifier(cell.rawValue, forIndexPath: indexPath)
     }
-
+    
 }

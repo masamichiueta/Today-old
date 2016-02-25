@@ -57,7 +57,7 @@ class TableViewDataSource<Delegate: TableViewDataSourceDelegate, Data: DataProvi
         tableView.endUpdates()
     }
     
-
+    
     
     // MARK: UITableViewDataSource
     
@@ -82,7 +82,7 @@ class TableViewDataSource<Delegate: TableViewDataSourceDelegate, Data: DataProvi
         let object = dataProvider.objectAtIndexPath(indexPath)
         let identifier = delegate.cellIdentifierForObject(object)
         guard let cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) as? Cell else {
-                fatalError("Unexpected cell type at \(indexPath)")
+            fatalError("Unexpected cell type at \(indexPath)")
         }
         cell.configureForObject(object)
         return cell

@@ -9,7 +9,7 @@
 import UIKit
 import TodayKit
 
-class SettingTableViewController: UITableViewController {
+final class SettingTableViewController: UITableViewController {
     
     private let dateFormatter: NSDateFormatter = {
         let formatter = NSDateFormatter()
@@ -26,17 +26,16 @@ class SettingTableViewController: UITableViewController {
         let sampleCell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "sample")
         return sampleCell.detailTextLabel?.textColor
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    //MARK: Helper
     private func setupTableView() {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 44
@@ -114,7 +113,7 @@ class SettingTableViewController: UITableViewController {
             }
         } else {
             //Change to Local Storage
-             NSNotificationCenter.defaultCenter().postNotificationName(StoresWillChangeNotificationName, object: nil)
+            NSNotificationCenter.defaultCenter().postNotificationName(StoresWillChangeNotificationName, object: nil)
             setting.iCloudEnabled = false
             setting.ubiquityIdentityToken = nil
             coreDataManager.createTodayMainContext(.Local)
@@ -122,12 +121,12 @@ class SettingTableViewController: UITableViewController {
             NSNotificationCenter.defaultCenter().postNotificationName(StoresDidChangeNotificationName, object: nil)
         }
     }
-
+    
     // MARK: - Table view data source
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 3
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let setting = Setting()
         switch section {
@@ -148,7 +147,7 @@ class SettingTableViewController: UITableViewController {
         
         return 0
     }
-
+    
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
@@ -220,6 +219,7 @@ class SettingTableViewController: UITableViewController {
     }
 }
 
+//MARK: - PickerTableViewCellDelegate
 extension SettingTableViewController: PickerTableViewCellDelegate {
     func dateDidChange(date: NSDate) {
         let calendar = NSCalendar.currentCalendar()

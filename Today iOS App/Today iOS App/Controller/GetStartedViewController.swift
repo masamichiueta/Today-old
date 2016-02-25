@@ -9,7 +9,7 @@
 import UIKit
 import TodayKit
 
-class GetStartedViewController: UIViewController {
+final class GetStartedViewController: UIViewController {
     
     @IBOutlet weak var launchIcon: UIImageView!
     @IBOutlet weak var launchIconCenterXConstraint: NSLayoutConstraint!

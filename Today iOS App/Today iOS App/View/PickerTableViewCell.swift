@@ -20,14 +20,14 @@ class PickerTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
     }
     
     @IBAction func dateDidChange(sender: AnyObject) {
         self.delegate?.dateDidChange(datePicker.date)
     }
-
+    
 }

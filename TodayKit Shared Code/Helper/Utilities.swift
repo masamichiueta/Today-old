@@ -75,7 +75,7 @@ extension NSDate {
         let comp = NSCalendar.currentCalendar().components([.Year, .Month, .Day, .Weekday, .Hour, .Minute, .Second], fromDate: date)
         comp.month = comp.month - 1
         let numberOfDaysFromLastMonth = NSCalendar.currentCalendar().dateFromComponents(comp)!.numberOfDaysUntilDateTime(date)
-
+        
         
         return [Int](1...numberOfDaysFromLastMonth).map { i -> NSDate in
             let comp =  NSCalendar.currentCalendar().components([.Year, .Month, .Day, .Weekday, .Hour, .Minute, .Second], fromDate: date)
@@ -83,7 +83,7 @@ extension NSDate {
             return NSCalendar.currentCalendar().dateFromComponents(comp)!
         }
     }
-
+    
 }
 
 extension UIColor {

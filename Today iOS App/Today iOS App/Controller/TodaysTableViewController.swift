@@ -11,20 +11,18 @@ import CoreData
 import TodayKit
 import WatchConnectivity
 
-class TodaysTableViewController: UITableViewController, ManagedObjectContextSettable, SegueHandlerType {
+final class TodaysTableViewController: UITableViewController, ManagedObjectContextSettable, SegueHandlerType {
     
     enum SegueIdentifier: String {
         case ShowAddTodayViewController = "showAddTodayViewController"
     }
     
-    //MARK: Variables
     var managedObjectContext: NSManagedObjectContext!
     
     private typealias TodaysDataProvider = FetchedResultsDataProvider<TodaysTableViewController>
     private var dataProvider: TodaysDataProvider!
     private var dataSource: TableViewDataSource<TodaysTableViewController, TodaysDataProvider, TableViewCell>!
     
-    //MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
@@ -37,7 +35,6 @@ class TodaysTableViewController: UITableViewController, ManagedObjectContextSett
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func setEditing(editing: Bool, animated: Bool) {
@@ -46,7 +43,6 @@ class TodaysTableViewController: UITableViewController, ManagedObjectContextSett
         self.navigationItem.rightBarButtonItem?.enabled = !editing
     }
     
-    // MARK: IBAction
     @IBAction func cancelToTodaysTableViewController(segue: UIStoryboardSegue) {
         
     }
@@ -86,7 +82,6 @@ class TodaysTableViewController: UITableViewController, ManagedObjectContextSett
         }
     }
     
-    // MARK: Helper
     private func setupTableView() {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 44

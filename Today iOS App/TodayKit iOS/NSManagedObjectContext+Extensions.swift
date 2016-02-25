@@ -8,7 +8,7 @@
 
 import CoreData
 
-#if os(iOS)
+
 extension NSManagedObjectContext {
     
     public func insertObject<A: ManagedObject where A: ManagedObjectType>() -> A {
@@ -35,4 +35,3 @@ extension NSManagedObjectContext {
         }
     }
 }
-#endif

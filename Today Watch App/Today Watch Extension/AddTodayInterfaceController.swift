@@ -15,13 +15,12 @@ protocol AddTodayInterfaceControllerDelegate: class {
     func todayDidAdd(score: Int)
 }
 
-class AddTodayInterfaceController: WKInterfaceController, WCSessionDelegate {
-    
-    var session: WCSession!
+final class AddTodayInterfaceController: WKInterfaceController {
     
     @IBOutlet var scorePicker: WKInterfacePicker!
     
-    var score: Int = Today.maxMasterScore
+    private var session: WCSession!
+    private var score: Int = Today.maxMasterScore
     weak var delegate: ScoreInterfaceController?
     
     override func awakeWithContext(context: AnyObject?) {
@@ -58,7 +57,6 @@ class AddTodayInterfaceController: WKInterfaceController, WCSessionDelegate {
     }
     
     override func didDeactivate() {
-        // This method is called when watch view controller is no longer visible
         super.didDeactivate()
     }
     
@@ -83,4 +81,9 @@ class AddTodayInterfaceController: WKInterfaceController, WCSessionDelegate {
     @IBAction func pickerItemDidChange(value: Int) {
         score = Today.masterScores[value]
     }
+}
+
+//MARK: - WCSessionDelegate
+extension AddTodayInterfaceController: WCSessionDelegate {
+    
 }

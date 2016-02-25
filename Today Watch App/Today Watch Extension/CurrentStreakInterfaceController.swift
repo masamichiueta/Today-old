@@ -11,12 +11,13 @@ import WatchConnectivity
 import Foundation
 import TodayWatchKit
 
-class CurrentStreakInterfaceController: WKInterfaceController, WCSessionDelegate {
-    
-    var session: WCSession!
+final class CurrentStreakInterfaceController: WKInterfaceController {
     
     @IBOutlet var currentStreakLabel: WKInterfaceLabel!
-    var currentStreak: Int? {
+    
+    private var session: WCSession!
+    
+    private var currentStreak: Int? {
         didSet {
             guard let currentStreak = currentStreak else {
                 currentStreakLabel.setText("0")
@@ -26,7 +27,7 @@ class CurrentStreakInterfaceController: WKInterfaceController, WCSessionDelegate
             currentStreakLabel.setText("\(currentStreak)")
         }
     }
-
+    
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
         
@@ -42,7 +43,7 @@ class CurrentStreakInterfaceController: WKInterfaceController, WCSessionDelegate
             currentStreakLabel.setText("0")
         }
     }
-
+    
     override func willActivate() {
         super.willActivate()
         
@@ -54,16 +55,8 @@ class CurrentStreakInterfaceController: WKInterfaceController, WCSessionDelegate
         currentStreakLabel.setText("\(currentStreak)")
     }
     
-    func sessionReachabilityDidChange(session: WCSession) {
-        if session.reachable {
-            sendMessageToGetCurrentStreak()
-        } else {
-            currentStreakLabel.setText("0")
-        }
-    }
-
+    
     override func didDeactivate() {
-        // This method is called when watch view controller is no longer visible
         super.didDeactivate()
     }
     
@@ -77,5 +70,16 @@ class CurrentStreakInterfaceController: WKInterfaceController, WCSessionDelegate
                 self.currentStreak = currentStreak
             },
             errorHandler: nil)
+    }
+}
+
+//MARK: - WCSessionDelegate
+extension CurrentStreakInterfaceController: WCSessionDelegate {
+    func sessionReachabilityDidChange(session: WCSession) {
+        if session.reachable {
+            sendMessageToGetCurrentStreak()
+        } else {
+            currentStreakLabel.setText("0")
+        }
     }
 }

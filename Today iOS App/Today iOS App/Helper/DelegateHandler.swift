@@ -14,7 +14,7 @@ protocol DelegateHandler: class {
     func handleLaunch(appDelegate: AppDelegate)
 }
 
-class FirstLaunchDelegateHandler: NSObject, DelegateHandler {
+final class FirstLaunchDelegateHandler: NSObject, DelegateHandler {
     func handleLaunch(appDelegate: AppDelegate) {
         setupUserDefaultSetting()
         
@@ -27,9 +27,9 @@ class FirstLaunchDelegateHandler: NSObject, DelegateHandler {
     }
 }
 
-class LaunchDelegateHandler: NSObject, DelegateHandler {
+final class LaunchDelegateHandler: NSObject, DelegateHandler {
     
-    var session: WCSession!
+    private var session: WCSession!
     
     func handleLaunch(appDelegate: AppDelegate) {
         setupUserDefaultSetting()

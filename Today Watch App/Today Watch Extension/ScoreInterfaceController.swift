@@ -11,11 +11,16 @@ import Foundation
 import WatchConnectivity
 import TodayWatchKit
 
-class ScoreInterfaceController: WKInterfaceController, WCSessionDelegate {
+final class ScoreInterfaceController: WKInterfaceController {
     
-    var session: WCSession!
+    @IBOutlet var scoreGroup: WKInterfaceGroup!
+    @IBOutlet var scoreLabel: WKInterfaceLabel!
+    @IBOutlet var scoreIcon: WKInterfaceImage!
+    @IBOutlet var cautionLabel: WKInterfaceLabel!
     
-    var todayScore: Int? {
+    private var session: WCSession!
+    
+    private var todayScore: Int? {
         didSet {
             let watchSize = getWatchSize()
             
@@ -46,14 +51,9 @@ class ScoreInterfaceController: WKInterfaceController, WCSessionDelegate {
             scoreGroup.startAnimatingWithImagesInRange(NSRange(location: 0, length: 6 * todayScore + 1), duration: duration, repeatCount: 1)
             scoreLabel.setText("\(todayScore)")
             scoreIcon.setImageNamed(Today.type(todayScore).iconName("28"))
-
+            
         }
     }
-    
-    @IBOutlet var scoreGroup: WKInterfaceGroup!
-    @IBOutlet var scoreLabel: WKInterfaceLabel!
-    @IBOutlet var scoreIcon: WKInterfaceImage!
-    @IBOutlet var cautionLabel: WKInterfaceLabel!
     
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
@@ -76,6 +76,10 @@ class ScoreInterfaceController: WKInterfaceController, WCSessionDelegate {
         
     }
     
+    override func didDeactivate() {
+        super.didDeactivate()
+    }
+    
     @IBAction func addToday() {
         
         if todayScore == nil {
@@ -89,24 +93,11 @@ class ScoreInterfaceController: WKInterfaceController, WCSessionDelegate {
         }
     }
     
-    func hideCautionLabel() {
+    private func hideCautionLabel() {
         animateWithDuration(0.5, animations: { [unowned self] in
             self.cautionLabel.setAlpha(0.0)
             self.cautionLabel.setHidden(true)
-        })
-    }
-    
-    override func didDeactivate() {
-        // This method is called when watch view controller is no longer visible
-        super.didDeactivate()
-    }
-    
-    func sessionReachabilityDidChange(session: WCSession) {
-        if session.reachable {
-            sendMessageToGetToday()
-        } else {
-            todayScore = nil
-        }
+            })
     }
     
     private func sendMessageToGetToday() {
@@ -122,6 +113,18 @@ class ScoreInterfaceController: WKInterfaceController, WCSessionDelegate {
     }
 }
 
+//MARK: - WCSessionDelegate
+extension ScoreInterfaceController: WCSessionDelegate {
+    func sessionReachabilityDidChange(session: WCSession) {
+        if session.reachable {
+            sendMessageToGetToday()
+        } else {
+            todayScore = nil
+        }
+    }
+}
+
+//MARK: - AddTodayInterfaceControllerDelegate
 extension ScoreInterfaceController: AddTodayInterfaceControllerDelegate {
     func todayDidAdd(score: Int) {
         todayScore = score

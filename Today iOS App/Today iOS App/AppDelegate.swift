@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationWillResignActive(application: UIApplication) {
-
+        
     }
     
     func applicationDidEnterBackground(application: UIApplication) {
@@ -133,7 +133,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    private func updateAppGroupSharedData() {
+    func updateAppGroupSharedData() {
         guard let moc = CoreDataManager.sharedInstance.managedObjectContext else {
             fatalError("ManagedObjectContext is not found!")
         }

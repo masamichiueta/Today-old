@@ -10,12 +10,10 @@ import UIKit
 import TodayKit
 import NotificationCenter
 
-class TodayExtensionViewController: UIViewController, NCWidgetProviding, UITableViewDelegate, UITableViewDataSource {
+final class TodayExtensionViewController: UIViewController, NCWidgetProviding {
     
     @IBOutlet weak var tableView: UITableView!
-    
     @IBOutlet weak var buttonEffectView: UIVisualEffectView!
-    
     @IBOutlet weak var buttonEffectViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var buttonEffectViewBottomConstraint: NSLayoutConstraint!
     
@@ -32,7 +30,17 @@ class TodayExtensionViewController: UIViewController, NCWidgetProviding, UITable
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    }
+    
+    func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)) {
+        completionHandler(NCUpdateResult.NewData)
+    }
+    
+    @IBAction func addToday(sender: AnyObject) {
+        guard let url = NSURL(string: appGroupURLScheme + "://" + AppGroupURLHost.AddToday.rawValue) else {
+            return
+        }
+        extensionContext?.openURL(url, completionHandler: nil)
     }
     
     private func setupTableView() {
@@ -40,16 +48,9 @@ class TodayExtensionViewController: UIViewController, NCWidgetProviding, UITable
         tableView.estimatedRowHeight = tableViewRowHeight
     }
     
-    func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)) {
-        // Perform any setup necessary in order to update the view.
+}
 
-        // If an error is encountered, use NCUpdateResult.Failed
-        // If there's no update required, use NCUpdateResult.NoData
-        // If there's an update, use NCUpdateResult.NewData
-
-        completionHandler(NCUpdateResult.NewData)
-    }
-    
+extension TodayExtensionViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -109,11 +110,5 @@ class TodayExtensionViewController: UIViewController, NCWidgetProviding, UITable
         extensionContext?.openURL(url,
             completionHandler: nil)
     }
-    
-    @IBAction func addToday(sender: AnyObject) {
-        guard let url = NSURL(string: appGroupURLScheme + "://" + AppGroupURLHost.AddToday.rawValue) else {
-            return
-        }
-        extensionContext?.openURL(url, completionHandler: nil)
-    }
+
 }

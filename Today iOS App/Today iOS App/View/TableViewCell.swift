@@ -9,6 +9,15 @@
 import UIKit
 import TodayKit
 
+private let dateFormatter: NSDateFormatter = {
+    let formatter = NSDateFormatter()
+    formatter.dateStyle = .MediumStyle
+    formatter.timeStyle = .NoStyle
+    formatter.doesRelativeDateFormatting = true
+    return formatter
+}()
+
+
 class TableViewCell: UITableViewCell {
     
     @IBOutlet weak var dateLabel: UILabel!
@@ -27,15 +36,7 @@ class TableViewCell: UITableViewCell {
     
 }
 
-private let dateFormatter: NSDateFormatter = {
-    let formatter = NSDateFormatter()
-    formatter.dateStyle = .MediumStyle
-    formatter.timeStyle = .NoStyle
-    formatter.doesRelativeDateFormatting = true
-    return formatter
-}()
-
-
+//MARK: - ConfigurableCell
 extension TableViewCell: ConfigurableCell {
     func configureForObject(today: Today) {
         dateLabel.text = dateFormatter.stringFromDate(today.date)

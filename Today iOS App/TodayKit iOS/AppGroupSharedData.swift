@@ -15,14 +15,14 @@ public enum AppGroupURLHost: String {
 }
 
 public struct AppGroupSharedData {
-    
-    private let defaults = NSUserDefaults(suiteName: "group.com.uetamasamichi.todaygroup")
-    
     public static let todayScoreKey = "TodayScore"
     public static let todayDateKey = "TodayDate"
     public static let totalKey = "Total"
     public static let longestStreakKey = "LongestStreak"
     public static let currentStreakKey = "CurrentStrea"
+    
+    private let defaults = NSUserDefaults(suiteName: "group.com.uetamasamichi.todaygroup")
+    
     
     //MARK: - Values
     public var todayScore: Int {
@@ -55,7 +55,6 @@ public struct AppGroupSharedData {
         }
     }
     
-    //MARK: -
     public init() {
         todayScore = defaults?.integerForKey(AppGroupSharedData.todayScoreKey) ?? 0
         todayDate = defaults?.objectForKey(AppGroupSharedData.todayDateKey) as? NSDate ?? NSDate()

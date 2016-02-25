@@ -32,7 +32,6 @@ class ChartTableViewCell: UITableViewCell {
         }
     }
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -48,6 +47,7 @@ class ChartTableViewCell: UITableViewCell {
     }
 }
 
+//MARK: - ConfigurableCell
 extension ChartTableViewCell: ConfigurableCell {
     func configureForObject(dataSource: ScoreChartViewDataSource) {
         scoreChartViewDataSource = dataSource

@@ -8,7 +8,6 @@
 
 import CoreData
 
-
 public enum StorageType {
     case Local
     case Cloud

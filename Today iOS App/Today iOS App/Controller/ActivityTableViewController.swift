@@ -10,10 +10,8 @@ import UIKit
 import CoreData
 import TodayKit
 
-class ActivityTableViewController: UITableViewController, ManagedObjectContextSettable {
+final class ActivityTableViewController: UITableViewController, ManagedObjectContextSettable {
     
-    
-    //MARK: Variables
     var managedObjectContext: NSManagedObjectContext!
     
     override func viewDidLoad() {
@@ -34,7 +32,6 @@ class ActivityTableViewController: UITableViewController, ManagedObjectContextSe
         unregisterForiCloudNotifications()
     }
     
-    // MARK: - IBAction
     @IBAction func doneSettingTableViewController(segue: UIStoryboardSegue) {
         
     }
@@ -86,7 +83,6 @@ class ActivityTableViewController: UITableViewController, ManagedObjectContextSe
     }
     
     // MARK: - Table view data source
-    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -139,6 +135,7 @@ class ActivityTableViewController: UITableViewController, ManagedObjectContextSe
     }
 }
 
+//MARK: - iCloudRegistable
 extension ActivityTableViewController: iCloudRegistable {
     func ubiquitousKeyValueStoreDidChangeExternally(notification: NSNotification) { }
     
@@ -151,6 +148,7 @@ extension ActivityTableViewController: iCloudRegistable {
     func persistentStoreDidImportUbiquitousContentChanges(notification: NSNotification) { }
 }
 
+//MARK: - ChartTableViewCellDelegate
 extension ActivityTableViewController: ChartTableViewCellDelegate {
     func periodTypeDidChanged(type: ChartViewPeriodType) {
         guard let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as? ChartTableViewCell else {

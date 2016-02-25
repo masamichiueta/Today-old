@@ -28,7 +28,6 @@
 		24444A5E1C30A02A00DC1579 /* AddTodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24444A5D1C30A02A00DC1579 /* AddTodayViewController.swift */; };
 		244631451C3AB8BA002BBD06 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244631441C3AB8BA002BBD06 /* PaddingLabel.swift */; };
 		244B9A671C7B50FA004AF2DC /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F984A1C49282200DBC64B /* NotificationManager.swift */; };
-		244B9A6B1C7B50FA004AF2DC /* iCloudRegistable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242DD1171C74BFFA00A8A760 /* iCloudRegistable.swift */; };
 		244B9A701C7B51F6004AF2DC /* ManagedObjectContextSettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F14771C2A9FD40003B2AF /* ManagedObjectContextSettable.swift */; };
 		244B9A721C7B5208004AF2DC /* ConfigurableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F9DC3E1C2EFD33003A6427 /* ConfigurableCell.swift */; };
 		244B9A731C7B529F004AF2DC /* SegueHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F147D1C2ABC000003B2AF /* SegueHandlerType.swift */; };
@@ -56,7 +55,6 @@
 		24A487FC1C55054C0015DB05 /* Streak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E538D81C49E22900B781D8 /* Streak.swift */; };
 		24A488031C5505AF0015DB05 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DBB5901C2C367100E1C042 /* Utilities.swift */; };
 		24A9E9791C6CDC3F00739226 /* ManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C77EA11C2A8B6C00493C13 /* ManagedObject.swift */; };
-		24A9E9831C6CE2A600739226 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F14741C2A9CDE0003B2AF /* CoreDataStack.swift */; };
 		24A9E9841C6CE2EB00739226 /* NSManagedObjectContext+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24444A591C306B4B00DC1579 /* NSManagedObjectContext+Extensions.swift */; };
 		24C6AE971C2831660048C4D1 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C6AE961C2831660048C4D1 /* TableViewCell.swift */; };
 		24C6C1AF1C54F9970041C31F /* TodayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24C6C1A51C54F9970041C31F /* TodayKit.framework */; };
@@ -85,6 +83,9 @@
 		24F21AD51C4FD73C00396A38 /* ScoreInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F21AD41C4FD73C00396A38 /* ScoreInterfaceController.swift */; };
 		24F21AD71C4FD73C00396A38 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F21AD61C4FD73C00396A38 /* ExtensionDelegate.swift */; };
 		24F21AE11C4FD73C00396A38 /* Today Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 24F21AC11C4FD73C00396A38 /* Today Watch App.app */; };
+		24FE134D1C7F42FF00A573B8 /* iCloudRegistable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242DD1171C74BFFA00A8A760 /* iCloudRegistable.swift */; };
+		24FE134F1C7F49A700A573B8 /* TodayWCSessionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FE134E1C7F49A700A573B8 /* TodayWCSessionHandler.swift */; };
+		24FE13511C7F4AAF00A573B8 /* DelegateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FE13501C7F4AAF00A573B8 /* DelegateHandler.swift */; };
 		24FE71311C3FFB8700A14B9D /* PickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FE71301C3FFB8700A14B9D /* PickerTableViewCell.swift */; };
 		24FFBB971C3D6AFA0053E261 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FFBB961C3D6AFA0053E261 /* SettingTableViewController.swift */; };
 		24FFBB991C3D7AE50053E261 /* ActivityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FFBB981C3D7AE50053E261 /* ActivityTableViewController.swift */; };
@@ -230,13 +231,13 @@
 		24030B061C1C821C004E68ED /* TodayUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayUITests.swift; sourceTree = "<group>"; };
 		24030B081C1C821C004E68ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24095BD51C7C92F800CC970E /* AppGroupSharedData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppGroupSharedData.swift; sourceTree = "<group>"; };
-		240F14741C2A9CDE0003B2AF /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		240F14741C2A9CDE0003B2AF /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = "../../TodayKit Shared Code/Shared Code/CoreDataStack.swift"; sourceTree = "<group>"; };
 		240F14771C2A9FD40003B2AF /* ManagedObjectContextSettable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectContextSettable.swift; sourceTree = "<group>"; };
 		240F147D1C2ABC000003B2AF /* SegueHandlerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueHandlerType.swift; sourceTree = "<group>"; };
 		241D65AE1C7B43AC00938CE8 /* TodayExtensionTodayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayExtensionTodayTableViewCell.swift; sourceTree = "<group>"; };
 		2425BBA81C5E3A0E008AD9A4 /* StreakTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreakTableViewCell.swift; sourceTree = "<group>"; };
 		242D5A6E1C7374C500789616 /* Identifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
-		242DD1171C74BFFA00A8A760 /* iCloudRegistable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iCloudRegistable.swift; sourceTree = "<group>"; };
+		242DD1171C74BFFA00A8A760 /* iCloudRegistable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = iCloudRegistable.swift; path = "../Today iOS App/Shared Code/iCloudRegistable.swift"; sourceTree = "<group>"; };
 		242F984A1C49282200DBC64B /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		24444A591C306B4B00DC1579 /* NSManagedObjectContext+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Extensions.swift"; sourceTree = "<group>"; };
 		24444A5D1C30A02A00DC1579 /* AddTodayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTodayViewController.swift; sourceTree = "<group>"; };
@@ -296,6 +297,8 @@
 		24F9DC3A1C2EFB0F003A6427 /* FetchedResultsDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedResultsDataProvider.swift; sourceTree = "<group>"; };
 		24F9DC3C1C2EFCD4003A6427 /* TableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		24F9DC3E1C2EFD33003A6427 /* ConfigurableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurableCell.swift; sourceTree = "<group>"; };
+		24FE134E1C7F49A700A573B8 /* TodayWCSessionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayWCSessionHandler.swift; sourceTree = "<group>"; };
+		24FE13501C7F4AAF00A573B8 /* DelegateHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DelegateHandler.swift; sourceTree = "<group>"; };
 		24FE71301C3FFB8700A14B9D /* PickerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerTableViewCell.swift; sourceTree = "<group>"; };
 		24FE71321C4245D400A14B9D /* Setting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		24FFBB961C3D6AFA0053E261 /* SettingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
@@ -426,13 +429,15 @@
 			path = TodayUITests;
 			sourceTree = "<group>";
 		};
-		240F14761C2A9FB60003B2AF /* Shared Code */ = {
+		240F14761C2A9FB60003B2AF /* Helper */ = {
 			isa = PBXGroup;
 			children = (
 				240F14771C2A9FD40003B2AF /* ManagedObjectContextSettable.swift */,
 				242F984A1C49282200DBC64B /* NotificationManager.swift */,
-				242DD1171C74BFFA00A8A760 /* iCloudRegistable.swift */,
+				24FE134E1C7F49A700A573B8 /* TodayWCSessionHandler.swift */,
+				24FE13501C7F4AAF00A573B8 /* DelegateHandler.swift */,
 			);
+			name = Helper;
 			path = "Shared Code";
 			sourceTree = "<group>";
 		};
@@ -485,7 +490,7 @@
 			children = (
 				246688591C1EFC3E00C5E5A0 /* Controller */,
 				24F9DC351C2EF9E6003A6427 /* Data Source and Provider */,
-				240F14761C2A9FB60003B2AF /* Shared Code */,
+				240F14761C2A9FB60003B2AF /* Helper */,
 				2466885A1C1EFC5600C5E5A0 /* View */,
 				24030AE31C1C821C004E68ED /* AppDelegate.swift */,
 				24030AED1C1C821C004E68ED /* Assets.xcassets */,
@@ -510,7 +515,9 @@
 			children = (
 				24095BD51C7C92F800CC970E /* AppGroupSharedData.swift */,
 				24F9DC3E1C2EFD33003A6427 /* ConfigurableCell.swift */,
+				240F14741C2A9CDE0003B2AF /* CoreDataStack.swift */,
 				242D5A6E1C7374C500789616 /* Identifiable.swift */,
+				242DD1171C74BFFA00A8A760 /* iCloudRegistable.swift */,
 				24C6C1A91C54F9970041C31F /* Info.plist */,
 				240F147D1C2ABC000003B2AF /* SegueHandlerType.swift */,
 				24D4E3481C43ED6E00F6DA6A /* Utilities+iOS.swift */,
@@ -531,7 +538,7 @@
 			isa = PBXGroup;
 			children = (
 				24C77EA71C2A8C5F00493C13 /* Model */,
-				24C77EA31C2A8BF000493C13 /* Shared Code */,
+				24C77EA31C2A8BF000493C13 /* Helper */,
 			);
 			path = "TodayKit Shared Code";
 			sourceTree = "<group>";
@@ -545,15 +552,15 @@
 			path = TodayKitTests;
 			sourceTree = "<group>";
 		};
-		24C77EA31C2A8BF000493C13 /* Shared Code */ = {
+		24C77EA31C2A8BF000493C13 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				240F14741C2A9CDE0003B2AF /* CoreDataStack.swift */,
 				24C77EA11C2A8B6C00493C13 /* ManagedObject.swift */,
 				24444A591C306B4B00DC1579 /* NSManagedObjectContext+Extensions.swift */,
 				24DBB5901C2C367100E1C042 /* Utilities.swift */,
 				245464661C75FFEF0030EF82 /* WatchConnectivityActionType.swift */,
 			);
+			name = Helper;
 			path = "Shared Code";
 			sourceTree = "<group>";
 		};
@@ -1000,10 +1007,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24FE13511C7F4AAF00A573B8 /* DelegateHandler.swift in Sources */,
 				2435351D1C7B50570044D13A /* DataSource.swift in Sources */,
 				246688511C1DB4ED00C5E5A0 /* TodaysTableViewController.swift in Sources */,
 				244631451C3AB8BA002BBD06 /* PaddingLabel.swift in Sources */,
-				244B9A6B1C7B50FA004AF2DC /* iCloudRegistable.swift in Sources */,
 				2435351C1C7B50570044D13A /* DataProvider.swift in Sources */,
 				24C6AE971C2831660048C4D1 /* TableViewCell.swift in Sources */,
 				24030AE41C1C821C004E68ED /* AppDelegate.swift in Sources */,
@@ -1024,6 +1031,7 @@
 				24FFBB971C3D6AFA0053E261 /* SettingTableViewController.swift in Sources */,
 				24FE71311C3FFB8700A14B9D /* PickerTableViewCell.swift in Sources */,
 				24732F4B1C5E4F8600655994 /* ScoreChartView.swift in Sources */,
+				24FE134F1C7F49A700A573B8 /* TodayWCSessionHandler.swift in Sources */,
 				2488C7091C6F686D00EF8F45 /* BorderButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1048,7 +1056,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24A9E9831C6CE2A600739226 /* CoreDataStack.swift in Sources */,
 				24A487FB1C5505490015DB05 /* Setting.swift in Sources */,
 				24A487FC1C55054C0015DB05 /* Streak.swift in Sources */,
 				24A9E9791C6CDC3F00739226 /* ManagedObject.swift in Sources */,
@@ -1067,6 +1074,7 @@
 				244B9A721C7B5208004AF2DC /* ConfigurableCell.swift in Sources */,
 				244B9A741C7B52B3004AF2DC /* Identifiable.swift in Sources */,
 				24C6C1C71C54FA010041C31F /* CoreDataStack.swift in Sources */,
+				24FE134D1C7F42FF00A573B8 /* iCloudRegistable.swift in Sources */,
 				24C6C1C91C54FA080041C31F /* NSManagedObjectContext+Extensions.swift in Sources */,
 				244B9A751C7B52D6004AF2DC /* Utilities+iOS.swift in Sources */,
 				24C6C1C21C54F9DB0041C31F /* Setting.swift in Sources */,

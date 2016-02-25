@@ -90,12 +90,9 @@ class SettingTableViewController: UITableViewController {
     func iCloudSwitchValueDidChange(sender: UISwitch) {
         
         var setting = Setting()
+        let coreDataManager = CoreDataManager.sharedInstance
         guard let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate else {
             fatalError("Wrong app delegate type")
-        }
-        
-        guard let vc = appDelegate.window?.rootViewController as? UITabBarController else {
-            fatalError("Wrong root view controller type")
         }
         
         if sender.on {
@@ -105,8 +102,8 @@ class SettingTableViewController: UITableViewController {
                 setting.iCloudEnabled = true
                 let newTokenData = NSKeyedArchiver.archivedDataWithRootObject(currentiCloudToken)
                 setting.ubiquityIdentityToken = newTokenData
-                appDelegate.managedObjectContext = createTodayMainContext(.ICloud)
-                appDelegate.updateManagedObjectContext(appDelegate.managedObjectContext, rootViewController: vc)
+                coreDataManager.createTodayMainContext(.Cloud)
+                appDelegate.updateManagedObjectContextInAllViewControllers()
                 NSNotificationCenter.defaultCenter().postNotificationName(StoresDidChangeNotificationName, object: nil)
             } else {
                 let alertController = UIAlertController(title: "iCloud is Disabled", message: "Your iCloud account is disabled. Please sign in from setting.", preferredStyle: .Alert)
@@ -120,8 +117,8 @@ class SettingTableViewController: UITableViewController {
              NSNotificationCenter.defaultCenter().postNotificationName(StoresWillChangeNotificationName, object: nil)
             setting.iCloudEnabled = false
             setting.ubiquityIdentityToken = nil
-            appDelegate.managedObjectContext = createTodayMainContext(.Local)
-            appDelegate.updateManagedObjectContext(appDelegate.managedObjectContext, rootViewController: vc)
+            coreDataManager.createTodayMainContext(.Local)
+            appDelegate.updateManagedObjectContextInAllViewControllers()
             NSNotificationCenter.defaultCenter().postNotificationName(StoresDidChangeNotificationName, object: nil)
         }
     }

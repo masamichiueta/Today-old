@@ -30,17 +30,22 @@ class ActivityTableViewController: UITableViewController, ManagedObjectContextSe
         super.didReceiveMemoryWarning()
     }
     
+    deinit {
+        unregisterForiCloudNotifications()
+    }
+    
+    // MARK: - IBAction
+    @IBAction func doneSettingTableViewController(segue: UIStoryboardSegue) {
+        
+    }
+    
     private func setupTableView() {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 44
         tableView.tableFooterView = UIView()
     }
     
-    deinit {
-        unregisterForiCloudNotifications()
-    }
-    
-    func createChartViewDataSource(periodType: ChartViewPeriodType) -> ScoreChartViewDataSource {
+    private func createChartViewDataSource(periodType: ChartViewPeriodType) -> ScoreChartViewDataSource {
         switch periodType {
         case .Week:
             let datesFromLastWeekToNow = NSDate.datesFromPreviousWeekDateToDate(NSDate())
@@ -78,11 +83,6 @@ class ActivityTableViewController: UITableViewController, ManagedObjectContextSe
             }
             return ScoreChartViewDataSource(data: chartData)
         }
-    }
-    
-    // MARK: - IBAction
-    @IBAction func doneSettingTableViewController(segue: UIStoryboardSegue) {
-        
     }
     
     // MARK: - Table view data source

@@ -62,7 +62,7 @@
 		24C6C1C41C54F9F60041C31F /* Streak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E538D81C49E22900B781D8 /* Streak.swift */; };
 		24C6C1C51C54F9F90041C31F /* Today.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C77EA81C2A8C6F00493C13 /* Today.swift */; };
 		24C6C1C61C54F9FD0041C31F /* Today.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 24C77EA41C2A8C3400493C13 /* Today.xcdatamodeld */; };
-		24C6C1C71C54FA010041C31F /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F14741C2A9CDE0003B2AF /* CoreDataStack.swift */; };
+		24C6C1C71C54FA010041C31F /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F14741C2A9CDE0003B2AF /* CoreDataManager.swift */; };
 		24C6C1C81C54FA050041C31F /* ManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C77EA11C2A8B6C00493C13 /* ManagedObject.swift */; };
 		24C6C1C91C54FA080041C31F /* NSManagedObjectContext+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24444A591C306B4B00DC1579 /* NSManagedObjectContext+Extensions.swift */; };
 		24C6C1CA1C54FA0A0041C31F /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DBB5901C2C367100E1C042 /* Utilities.swift */; };
@@ -231,7 +231,7 @@
 		24030B061C1C821C004E68ED /* TodayUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayUITests.swift; sourceTree = "<group>"; };
 		24030B081C1C821C004E68ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24095BD51C7C92F800CC970E /* AppGroupSharedData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppGroupSharedData.swift; sourceTree = "<group>"; };
-		240F14741C2A9CDE0003B2AF /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		240F14741C2A9CDE0003B2AF /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		240F14771C2A9FD40003B2AF /* ManagedObjectContextSettable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectContextSettable.swift; sourceTree = "<group>"; };
 		240F147D1C2ABC000003B2AF /* SegueHandlerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueHandlerType.swift; sourceTree = "<group>"; };
 		241D65AE1C7B43AC00938CE8 /* TodayExtensionTodayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayExtensionTodayTableViewCell.swift; sourceTree = "<group>"; };
@@ -515,7 +515,7 @@
 			children = (
 				24095BD51C7C92F800CC970E /* AppGroupSharedData.swift */,
 				24F9DC3E1C2EFD33003A6427 /* ConfigurableCell.swift */,
-				240F14741C2A9CDE0003B2AF /* CoreDataStack.swift */,
+				240F14741C2A9CDE0003B2AF /* CoreDataManager.swift */,
 				242D5A6E1C7374C500789616 /* Identifiable.swift */,
 				24C6C1A91C54F9970041C31F /* Info.plist */,
 				24FE13521C7F573300A573B8 /* ManagedObjectType+iOS.swift */,
@@ -1073,7 +1073,7 @@
 				244B9A721C7B5208004AF2DC /* ConfigurableCell.swift in Sources */,
 				244B9A741C7B52B3004AF2DC /* Identifiable.swift in Sources */,
 				24FE13531C7F573300A573B8 /* ManagedObjectType+iOS.swift in Sources */,
-				24C6C1C71C54FA010041C31F /* CoreDataStack.swift in Sources */,
+				24C6C1C71C54FA010041C31F /* CoreDataManager.swift in Sources */,
 				24FE134D1C7F42FF00A573B8 /* iCloudRegistable.swift in Sources */,
 				24C6C1C91C54FA080041C31F /* NSManagedObjectContext+Extensions.swift in Sources */,
 				244B9A751C7B52D6004AF2DC /* Utilities+iOS.swift in Sources */,

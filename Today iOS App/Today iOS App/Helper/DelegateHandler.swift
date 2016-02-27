@@ -16,7 +16,6 @@ protocol DelegateHandler: class {
 
 final class FirstLaunchDelegateHandler: NSObject, DelegateHandler {
     func handleLaunch(appDelegate: AppDelegate) {
-        setupUserDefaultSetting()
         
         let startStoryboard = UIStoryboard.storyboard(.GetStarted)
         guard let vc = startStoryboard.instantiateInitialViewController() else {
@@ -32,7 +31,7 @@ final class LaunchDelegateHandler: NSObject, DelegateHandler {
     private var session: WCSession!
     
     func handleLaunch(appDelegate: AppDelegate) {
-        setupUserDefaultSetting()
+        
         setupWatchConnectivity()
         
         NotificationManager.setupLocalNotificationSetting()
@@ -62,20 +61,4 @@ final class LaunchDelegateHandler: NSObject, DelegateHandler {
             session.activateSession()
         }
     }
-}
-
-private func setupUserDefaultSetting() {
-    guard let settingBundle = frameworkBundle("TodayKit.framework") else {
-        fatalError("Wrong framework name")
-    }
-    
-    guard let fileURL = settingBundle.URLForResource("Setting", withExtension: "plist") else {
-        fatalError("Wrong file name")
-    }
-    
-    guard let defaultSettingDic = NSDictionary(contentsOfURL: fileURL) as? [String : AnyObject] else {
-        fatalError("File not exists")
-    }
-    
-    NSUserDefaults.standardUserDefaults().registerDefaults(defaultSettingDic)
 }

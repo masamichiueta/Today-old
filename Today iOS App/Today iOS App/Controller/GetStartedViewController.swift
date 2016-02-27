@@ -78,6 +78,9 @@ final class GetStartedViewController: UIViewController {
         let alertController = UIAlertController(title: "Choose Storage Option", message: "Should documents be stored in iCloud and available on all your devices?", preferredStyle: .Alert)
         
         alertController.addAction(UIAlertAction(title: "Local Only", style: .Cancel, handler: { action in
+            var setting = Setting()
+            setting.iCloudEnabled = false
+            setting.ubiquityIdentityToken = nil
             coreDataManager.createTodayMainContext(.Local)
             self.iCloudButton.setTitle("Use local storage", forState: .Normal)
         }))

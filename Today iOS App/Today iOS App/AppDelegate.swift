@@ -16,7 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
+        setupUserDefaultSetting()
+
         let handler: DelegateHandler
         
         if Setting().firstLaunch {
@@ -105,6 +106,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     //MARK: - Helper
+    func setupUserDefaultSetting() {
+        guard let settingBundle = frameworkBundle("TodayKit.framework") else {
+            fatalError("Wrong framework name")
+        }
+        
+        guard let fileURL = settingBundle.URLForResource("Setting", withExtension: "plist") else {
+            fatalError("Wrong file name")
+        }
+        
+        guard let defaultSettingDic = NSDictionary(contentsOfURL: fileURL) as? [String : AnyObject] else {
+            fatalError("File not exists")
+        }
+        
+        NSUserDefaults.standardUserDefaults().registerDefaults(defaultSettingDic)
+    }
+    
     func updateManagedObjectContextInAllViewControllers() {
         let coreDataManager = CoreDataManager.sharedInstance
         guard let moc = coreDataManager.managedObjectContext else {

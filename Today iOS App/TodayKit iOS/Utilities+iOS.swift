@@ -2,29 +2,42 @@
 //  Utilities+iOS.swift
 //  Today
 //
-//  Created by UetaMasamichi on 2016/01/11.
+//  Created by UetaMasamichi on 2016/02/28.
 //  Copyright © 2016年 Masamichi Ueta. All rights reserved.
 //
 
 import UIKit
 
-public func frameworkBundle(name: String) -> NSBundle? {
-    let frameworkDirPath = NSBundle.mainBundle().privateFrameworksPath! as NSString
-    let frameworkBundlePath = frameworkDirPath.stringByAppendingPathComponent(name)
-    let frameworkBundle = NSBundle(path: frameworkBundlePath)
-    return frameworkBundle
+extension UINavigationController {
+    public override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        guard let visibleViewController = visibleViewController else {
+            return super.supportedInterfaceOrientations()
+        }
+        return visibleViewController.supportedInterfaceOrientations()
+    }
+    
+    public override func shouldAutorotate() -> Bool {
+        guard let visibleViewController = visibleViewController else {
+            return super.shouldAutorotate()
+        }
+        return visibleViewController.shouldAutorotate()
+    }
 }
 
-public func localize(key: String) -> String {
-    return NSLocalizedString(key, comment: "")
-}
-
-public func distanceBetween(p1: CGPoint, p2: CGPoint) -> CGFloat {
-    return sqrt(pow((p1.x - p2.x), 2) + pow((p1.y - p2.y), 2))
-}
-
-extension UIColor {
-    public class func defaultTintColor() -> UIColor {
-        return UIColor(red: 0.0, green: 122.0/255.0, blue: 1.0, alpha: 1.0)
+extension UITabBarController {
+    public override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        guard let selectedViewController = selectedViewController else {
+            return super.supportedInterfaceOrientations()
+        }
+        return selectedViewController.supportedInterfaceOrientations()
+        
+    }
+    
+    public override func shouldAutorotate() -> Bool {
+        guard let selectedViewController = selectedViewController else {
+            return super.shouldAutorotate()
+        }
+        
+        return selectedViewController.shouldAutorotate()
     }
 }

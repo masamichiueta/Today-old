@@ -32,8 +32,8 @@
 		244B9A721C7B5208004AF2DC /* ConfigurableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F9DC3E1C2EFD33003A6427 /* ConfigurableCell.swift */; };
 		244B9A731C7B529F004AF2DC /* SegueHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F147D1C2ABC000003B2AF /* SegueHandlerType.swift */; };
 		244B9A741C7B52B3004AF2DC /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242D5A6E1C7374C500789616 /* Identifiable.swift */; };
-		244B9A751C7B52D6004AF2DC /* Utilities+iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D4E3481C43ED6E00F6DA6A /* Utilities+iOS.swift */; };
 		244B9A771C7B5910004AF2DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 244B9A761C7B5910004AF2DC /* Assets.xcassets */; };
+		244CF0B91C83260100736C7D /* Utilities+iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244CF0B71C8324F400736C7D /* Utilities+iOS.swift */; };
 		245464671C75FFEF0030EF82 /* WatchConnectivityActionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245464661C75FFEF0030EF82 /* WatchConnectivityActionType.swift */; };
 		245464681C75FFEF0030EF82 /* WatchConnectivityActionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245464661C75FFEF0030EF82 /* WatchConnectivityActionType.swift */; };
 		24561EA51C6F71E900022222 /* GetStarted.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24561EA41C6F71E900022222 /* GetStarted.storyboard */; };
@@ -245,6 +245,7 @@
 		244B9A761C7B5910004AF2DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		244BF08F1C623DF600A9543A /* ChartViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewDataSource.swift; sourceTree = "<group>"; };
 		244BF0941C624EF400A9543A /* ChartViewBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewBase.swift; sourceTree = "<group>"; };
+		244CF0B71C8324F400736C7D /* Utilities+iOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Utilities+iOS.swift"; path = "../../TodayKit iOS/Utilities+iOS.swift"; sourceTree = "<group>"; };
 		245464661C75FFEF0030EF82 /* WatchConnectivityActionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchConnectivityActionType.swift; sourceTree = "<group>"; };
 		24561EA41C6F71E900022222 /* GetStarted.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GetStarted.storyboard; sourceTree = "<group>"; };
 		24561EA61C6F77D500022222 /* GetStartedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStartedViewController.swift; sourceTree = "<group>"; };
@@ -273,7 +274,6 @@
 		24C7ACCF1C5656D8002B203C /* WatchUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchUtilities.swift; sourceTree = "<group>"; };
 		24D210321C79EE2F00F69478 /* CurrentStreakInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentStreakInterfaceController.swift; sourceTree = "<group>"; };
 		24D4E3461C43E1D900F6DA6A /* Setting.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Setting.plist; sourceTree = "<group>"; };
-		24D4E3481C43ED6E00F6DA6A /* Utilities+iOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Utilities+iOS.swift"; sourceTree = "<group>"; };
 		24D67C841C3EB54600A33DB7 /* AverageTotalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AverageTotalTableViewCell.swift; sourceTree = "<group>"; };
 		24D82C2E1C5A5D880095FA47 /* ChartTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartTableViewCell.swift; sourceTree = "<group>"; };
 		24DBB5901C2C367100E1C042 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
@@ -437,6 +437,7 @@
 				240F14771C2A9FD40003B2AF /* ManagedObjectContextSettable.swift */,
 				242F984A1C49282200DBC64B /* NotificationManager.swift */,
 				24FE134E1C7F49A700A573B8 /* TodayWCSessionHandler.swift */,
+				244CF0B71C8324F400736C7D /* Utilities+iOS.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -521,7 +522,6 @@
 				24FE13521C7F573300A573B8 /* ManagedObjectType+iOS.swift */,
 				24444A591C306B4B00DC1579 /* NSManagedObjectContext+Extensions.swift */,
 				240F147D1C2ABC000003B2AF /* SegueHandlerType.swift */,
-				24D4E3481C43ED6E00F6DA6A /* Utilities+iOS.swift */,
 				242DD1171C74BFFA00A8A760 /* iCloudRegistable.swift */,
 			);
 			path = "TodayKit iOS";
@@ -1021,6 +1021,7 @@
 				2425BBA91C5E3A0E008AD9A4 /* StreakTableViewCell.swift in Sources */,
 				2435351E1C7B50570044D13A /* FetchedResultsDataProvider.swift in Sources */,
 				243535191C7B50380044D13A /* ChartViewBase.swift in Sources */,
+				244CF0B91C83260100736C7D /* Utilities+iOS.swift in Sources */,
 				244B9A701C7B51F6004AF2DC /* ManagedObjectContextSettable.swift in Sources */,
 				2435351B1C7B50570044D13A /* ChartViewDataSource.swift in Sources */,
 				24D67C851C3EB54600A33DB7 /* AverageTotalTableViewCell.swift in Sources */,
@@ -1076,7 +1077,6 @@
 				24C6C1C71C54FA010041C31F /* CoreDataManager.swift in Sources */,
 				24FE134D1C7F42FF00A573B8 /* iCloudRegistable.swift in Sources */,
 				24C6C1C91C54FA080041C31F /* NSManagedObjectContext+Extensions.swift in Sources */,
-				244B9A751C7B52D6004AF2DC /* Utilities+iOS.swift in Sources */,
 				24C6C1C21C54F9DB0041C31F /* Setting.swift in Sources */,
 				244B9A731C7B529F004AF2DC /* SegueHandlerType.swift in Sources */,
 				24C6C1C81C54FA050041C31F /* ManagedObject.swift in Sources */,

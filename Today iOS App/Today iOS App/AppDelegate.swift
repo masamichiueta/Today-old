@@ -150,7 +150,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func updateAppGroupSharedData() {
         guard let moc = CoreDataManager.sharedInstance.managedObjectContext else {
-            fatalError("ManagedObjectContext is not found!")
+            return
         }
         
         var appGroupSharedData = AppGroupSharedData()

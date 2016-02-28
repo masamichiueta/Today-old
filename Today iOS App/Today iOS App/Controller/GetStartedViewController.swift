@@ -19,6 +19,8 @@ final class GetStartedViewController: UIViewController {
     @IBOutlet weak var iCloudButton: BorderButton!
     @IBOutlet weak var startButton: BorderButton!
     
+    var launchIconBottomConstraint: NSLayoutConstraint?
+    
     private var notificationSet: Bool = false {
         didSet {
             if notificationSet && iCloudSet {
@@ -37,11 +39,13 @@ final class GetStartedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         startButton.enabled = false
+        
     }
     
     override func viewDidAppear(animated: Bool) {
         launchIconCenterYConstraint.active = false
-        NSLayoutConstraint(item: launchIcon, attribute: .CenterY, relatedBy: .Equal, toItem: view, attribute: .CenterY, multiplier: 0.3, constant: 0).active = true
+        NSLayoutConstraint(item: permissionStackView, attribute: NSLayoutAttribute.Top, relatedBy: .Equal, toItem: launchIcon, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 30).active = true
+        launchIconBottomConstraint?.active = true
         UIView.animateWithDuration(1.0,
             delay: 0.0,
             options: .CurveEaseInOut,
@@ -56,6 +60,10 @@ final class GetStartedViewController: UIViewController {
                         self.startButton.alpha = 1.0
                 })
         })
+    }
+    
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return .Portrait
     }
     
     override func didReceiveMemoryWarning() {

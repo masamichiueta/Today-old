@@ -9,16 +9,16 @@
 import UIKit
 import CoreData
 import TodayKit
+import WatchConnectivity
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
+    var handler: DelegateHandler!
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         setupUserDefaultSetting()
-
-        let handler: DelegateHandler
         
         if Setting().firstLaunch {
             handler = FirstLaunchDelegateHandler()
@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationWillTerminate(application: UIApplication) {
-        
+        CoreDataManager.sharedInstance.managedObjectContext?.saveOrRollback()
     }
     
     func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
@@ -75,10 +75,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             
             if host == AppGroupURLHost.AddToday.rawValue {
-                let rootVC = window?.rootViewController
-                let tabBarVC = rootVC?.childViewControllers.first as? UITabBarController
-                let navBarVC = tabBarVC?.childViewControllers.first as? UINavigationController
-                let todaysTVC = navBarVC?.childViewControllers.first as? TodaysTableViewController
+                let tabBarController = window?.rootViewController as? UITabBarController
+                let navBarController = tabBarController?.childViewControllers.first as? UINavigationController
+                let todaysTVC = navBarController?.childViewControllers.first as? TodaysTableViewController
                 todaysTVC?.showAddTodayViewController(self)
             }
             return true
@@ -97,10 +96,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         if identifier == NotificationManager.addTodayActionName {
-            let rootVC = window?.rootViewController
-            let tabBarVC = rootVC?.childViewControllers.first as? UITabBarController
-            let navBarVC = tabBarVC?.childViewControllers.first as? UINavigationController
-            let todaysTVC = navBarVC?.childViewControllers.first as? TodaysTableViewController
+            let tabBarController = window?.rootViewController as? UITabBarController
+            let navBarController = tabBarController?.childViewControllers.first as? UINavigationController
+            let todaysTVC = navBarController?.childViewControllers.first as? TodaysTableViewController
             todaysTVC?.showAddTodayViewController(self)
         }
     }

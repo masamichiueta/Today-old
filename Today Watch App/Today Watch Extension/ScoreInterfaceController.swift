@@ -74,6 +74,10 @@ final class ScoreInterfaceController: WKInterfaceController {
     override func willActivate() {
         super.willActivate()
         
+        if todayScore == nil && session.reachable {
+            sendMessageToGetToday()
+        }
+        
     }
     
     override func didDeactivate() {

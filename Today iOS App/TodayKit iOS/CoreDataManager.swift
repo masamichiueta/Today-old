@@ -25,26 +25,29 @@ public final class CoreDataManager {
     
     public func createTodayMainContext(storageType: StorageType) -> NSManagedObjectContext {
         
+        managedObjectContext?.reset()
+        managedObjectContext = nil
+        
         let bundles = [NSBundle(forClass: Today.self)]
         guard let model = NSManagedObjectModel.mergedModelFromBundles(bundles) else {
             fatalError("model not found")
         }
         
         let psc = NSPersistentStoreCoordinator(managedObjectModel: model)
+        let options: Dictionary<NSObject, AnyObject>?
+        switch storageType {
+        case .Local:
+            options = nil
+        case .Cloud:
+            options = [NSPersistentStoreUbiquitousContentNameKey: "TodayCloudStore",
+                NSMigratePersistentStoresAutomaticallyOption: true,
+                NSInferMappingModelAutomaticallyOption: true]
+        }
         
         do {
-            let options: Dictionary<NSObject, AnyObject>?
-            switch storageType {
-            case .Local:
-                options = nil
-            case .Cloud:
-                options = [NSPersistentStoreUbiquitousContentNameKey: "TodayCloudStore",
-                    NSMigratePersistentStoresAutomaticallyOption: true,
-                    NSInferMappingModelAutomaticallyOption: true]
-            }
             try psc.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: options)
         } catch {
-            fatalError("Wrong store")
+            fatalError("Fail to remove file")
         }
         let context = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
         context.persistentStoreCoordinator = psc
@@ -86,6 +89,10 @@ public final class CoreDataManager {
     
     dynamic func updateFromiCloud(notification: NSNotification) {
         
+        if !Setting().iCloudEnabled {
+            return
+        }
+        
         let iCloudStore = NSUbiquitousKeyValueStore.defaultStore()
         let dict = iCloudStore.dictionaryRepresentation
         NSNotificationCenter.defaultCenter().removeObserver(self, name: NSUserDefaultsDidChangeNotification, object: nil)
@@ -100,6 +107,10 @@ public final class CoreDataManager {
     }
     
     dynamic func updateToiCloud(notification: NSNotification) {
+        
+        if !Setting().iCloudEnabled {
+            return
+        }
         
         let iCloudStore = NSUbiquitousKeyValueStore.defaultStore()
         let dict = NSUserDefaults.standardUserDefaults().dictionaryRepresentation()

@@ -14,8 +14,6 @@ final class TodayExtensionViewController: UIViewController, NCWidgetProviding {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var buttonEffectView: UIVisualEffectView!
-    @IBOutlet weak var buttonEffectViewTopConstraint: NSLayoutConstraint!
-    @IBOutlet weak var buttonEffectViewBottomConstraint: NSLayoutConstraint!
     
     private let tableViewRowHeight: CGFloat = 44.0
     private let rowNum = 4
@@ -25,7 +23,7 @@ final class TodayExtensionViewController: UIViewController, NCWidgetProviding {
         buttonEffectView.layer.cornerRadius = 5
         buttonEffectView.clipsToBounds = true
         setupTableView()
-        preferredContentSize = CGSize(width: tableView.frame.width, height: tableViewRowHeight * 4 + buttonEffectView.frame.height + buttonEffectViewTopConstraint.constant + buttonEffectViewBottomConstraint.constant)
+        preferredContentSize = CGSize(width: tableView.frame.width, height: tableViewRowHeight * 4 + buttonEffectView.frame.height)
     }
     
     override func didReceiveMemoryWarning() {

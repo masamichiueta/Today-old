@@ -48,7 +48,11 @@ final class CurrentStreakInterfaceController: WKInterfaceController {
         super.willActivate()
         
         guard let currentStreak = currentStreak else {
-            currentStreakLabel.setText("0")
+            if session.reachable {
+                sendMessageToGetCurrentStreak()
+            } else {
+                currentStreakLabel.setText("0")
+            }
             return
         }
         

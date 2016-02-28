@@ -29,6 +29,7 @@ final class FirstLaunchDelegateHandler: NSObject, DelegateHandler {
 final class LaunchDelegateHandler: NSObject, DelegateHandler {
     
     private var session: WCSession!
+    private let wcSessionHandler: TodayWCSessionHandler = TodayWCSessionHandler()
     
     func handleLaunch(appDelegate: AppDelegate) {
         
@@ -57,7 +58,7 @@ final class LaunchDelegateHandler: NSObject, DelegateHandler {
     private func setupWatchConnectivity() {
         if WCSession.isSupported() {
             session = WCSession.defaultSession()
-            session.delegate = TodayWCSessionHandler()
+            session.delegate = wcSessionHandler
             session.activateSession()
         }
     }

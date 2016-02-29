@@ -242,6 +242,12 @@
 		24444A591C306B4B00DC1579 /* NSManagedObjectContext+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Extensions.swift"; sourceTree = "<group>"; };
 		24444A5D1C30A02A00DC1579 /* AddTodayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTodayViewController.swift; sourceTree = "<group>"; };
 		244631441C3AB8BA002BBD06 /* PaddingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
+		244B21341C84A31E00E6D6E1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Interface.strings; sourceTree = "<group>"; };
+		244B21351C84A31E00E6D6E1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/MainInterface.strings; sourceTree = "<group>"; };
+		244B21361C84A31E00E6D6E1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Activity.strings; sourceTree = "<group>"; };
+		244B21371C84A31E00E6D6E1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		244B21381C84A31E00E6D6E1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
+		244B21391C84A31E00E6D6E1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Today.strings; sourceTree = "<group>"; };
 		244B9A761C7B5910004AF2DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		244BF08F1C623DF600A9543A /* ChartViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewDataSource.swift; sourceTree = "<group>"; };
 		244BF0941C624EF400A9543A /* ChartViewBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewBase.swift; sourceTree = "<group>"; };
@@ -1173,6 +1179,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				24030AE81C1C821C004E68ED /* Base */,
+				244B21381C84A31E00E6D6E1 /* ja */,
 			);
 			name = Main.storyboard;
 			path = .;
@@ -1182,6 +1189,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				24030AF01C1C821C004E68ED /* Base */,
+				244B21371C84A31E00E6D6E1 /* ja */,
 			);
 			name = LaunchScreen.storyboard;
 			path = .;
@@ -1191,6 +1199,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2466884E1C1DB45E00C5E5A0 /* Base */,
+				244B21361C84A31E00E6D6E1 /* ja */,
 			);
 			name = Activity.storyboard;
 			path = .;
@@ -1200,6 +1209,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				246688551C1DB61100C5E5A0 /* Base */,
+				244B21391C84A31E00E6D6E1 /* ja */,
 			);
 			name = Today.storyboard;
 			path = .;
@@ -1209,6 +1219,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				24F21AB61C4FCFE900396A38 /* Base */,
+				244B21351C84A31E00E6D6E1 /* ja */,
 			);
 			name = MainInterface.storyboard;
 			path = .;
@@ -1218,6 +1229,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				24F21AC41C4FD73C00396A38 /* Base */,
+				244B21341C84A31E00E6D6E1 /* ja */,
 			);
 			name = Interface.storyboard;
 			path = .;

@@ -1,0 +1,72 @@
+
+/* Class = "UINavigationItem"; title = "Activity"; ObjectID = "33R-D9-Dui"; */
+"33R-D9-Dui.title" = "Activity";
+
+/* Class = "UILabel"; text = "10"; ObjectID = "5QE-Xq-9Gj"; */
+"5QE-Xq-9Gj.text" = "10";
+
+/* Class = "UILabel"; text = "20"; ObjectID = "72k-aK-XvD"; */
+"72k-aK-XvD.text" = "20";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "7Ii-O7-e1P"; */
+"7Ii-O7-e1P.text" = "Detail";
+
+/* Class = "UILabel"; text = "days"; ObjectID = "7uo-O0-IFE"; */
+"7uo-O0-IFE.text" = "days";
+
+/* Class = "UILabel"; text = "Weekly summary"; ObjectID = "Eqk-PX-2p7"; */
+"Eqk-PX-2p7.text" = "Weekly summary";
+
+/* Class = "UILabel"; text = "High score:"; ObjectID = "GSk-fm-Lhm"; */
+"GSk-fm-Lhm.text" = "High score:";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "Of3-it-2mW"; */
+"Of3-it-2mW.text" = "0";
+
+/* Class = "UILabel"; text = "Total"; ObjectID = "SER-Nr-PMV"; */
+"SER-Nr-PMV.text" = "Total";
+
+/* Class = "UILabel"; text = "10"; ObjectID = "SYE-gb-kO8"; */
+"SYE-gb-kO8.text" = "10";
+
+/* Class = "UILabel"; text = "Longest streak"; ObjectID = "Sl1-Gp-Awm"; */
+"Sl1-Gp-Awm.text" = "Longest streak";
+
+/* Class = "UILabel"; text = "Low score:"; ObjectID = "VCI-09-EJm"; */
+"VCI-09-EJm.text" = "Low score:";
+
+/* Class = "UISegmentedControl"; W0p-1s-qbm.segmentTitles[0] = "Week"; ObjectID = "W0p-1s-qbm"; */
+"W0p-1s-qbm.segmentTitles[0]" = "Week";
+
+/* Class = "UISegmentedControl"; W0p-1s-qbm.segmentTitles[1] = "Month"; ObjectID = "W0p-1s-qbm"; */
+"W0p-1s-qbm.segmentTitles[1]" = "Month";
+
+/* Class = "UILabel"; text = "100"; ObjectID = "XXo-0i-ebQ"; */
+"XXo-0i-ebQ.text" = "100";
+
+/* Class = "UILabel"; text = " Current streak"; ObjectID = "Xq8-7W-WLm"; */
+"Xq8-7W-WLm.text" = " Current streak";
+
+/* Class = "UINavigationItem"; title = "Setting"; ObjectID = "ebB-KV-Dz9"; */
+"ebB-KV-Dz9.title" = "Setting";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "iOu-tf-Mox"; */
+"iOu-tf-Mox.text" = "Title";
+
+/* Class = "UILabel"; text = "days"; ObjectID = "qrp-zx-WVg"; */
+"qrp-zx-WVg.text" = "days";
+
+/* Class = "UILabel"; text = "Average"; ObjectID = "rQh-AE-cJI"; */
+"rQh-AE-cJI.text" = "Average";
+
+/* Class = "UILabel"; text = "10"; ObjectID = "sAD-7x-lBX"; */
+"sAD-7x-lBX.text" = "10";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "sQR-8B-qGX"; */
+"sQR-8B-qGX.text" = "Title";
+
+/* Class = "UILabel"; text = "total"; ObjectID = "u9y-1R-skb"; */
+"u9y-1R-skb.text" = "total";
+
+/* Class = "UITabBarItem"; title = "Activity"; ObjectID = "ucM-TO-ynK"; */
+"ucM-TO-ynK.title" = "Activity";

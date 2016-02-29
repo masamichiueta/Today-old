@@ -1,0 +1,15 @@
+
+/* Class = "UILabel"; text = "0"; ObjectID = "6bF-ET-Nny"; */
+"6bF-ET-Nny.text" = "0";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "9Wc-bp-O3u"; */
+"9Wc-bp-O3u.text" = "Title";
+
+/* Class = "UILabel"; text = "Today"; ObjectID = "Ap1-s6-pGc"; */
+"Ap1-s6-pGc.text" = "Today";
+
+/* Class = "UIButton"; normalTitle = "Add Today"; ObjectID = "E1b-E6-r5c"; */
+"E1b-E6-r5c.normalTitle" = "Add Today";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "gcH-qr-crW"; */
+"gcH-qr-crW.text" = "Subtitle";

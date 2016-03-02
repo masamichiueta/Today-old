@@ -83,17 +83,17 @@ final class GetStartedViewController: UIViewController {
         
         let coreDataManager = CoreDataManager.sharedInstance
         
-        let alertController = UIAlertController(title: "Choose Storage Option", message: "Should documents be stored in iCloud and available on all your devices?", preferredStyle: .Alert)
+        let alertController = UIAlertController(title: localize("Choose Storage Option"), message: localize("Should documents be stored in iCloud and available on all your devices?"), preferredStyle: .Alert)
         
-        alertController.addAction(UIAlertAction(title: "Local Only", style: .Cancel, handler: { action in
+        alertController.addAction(UIAlertAction(title: localize("Local Only"), style: .Cancel, handler: { action in
             var setting = Setting()
             setting.iCloudEnabled = false
             setting.ubiquityIdentityToken = nil
             coreDataManager.createTodayMainContext(.Local)
-            self.iCloudButton.setTitle("Use local storage", forState: .Normal)
+            self.iCloudButton.setTitle(localize("Use local storage"), forState: .Normal)
         }))
         
-        alertController.addAction(UIAlertAction(title: "Use iCloud", style: .Default, handler: { action in
+        alertController.addAction(UIAlertAction(title: localize("Use iCloud"), style: .Default, handler: { action in
             
             var setting = Setting()
         
@@ -103,12 +103,12 @@ final class GetStartedViewController: UIViewController {
                 setting.iCloudEnabled = true
                 coreDataManager.createTodayMainContext(.Cloud)
             } else {
-                let alertController = UIAlertController(title: "iCloud is Disabled", message: "Your iCloud account is disabled. Please sign in from setting.", preferredStyle: .Alert)
+                let alertController = UIAlertController(title: localize("iCloud is Disabled"), message: localize("Your iCloud account is disabled. Please sign in from setting."), preferredStyle: .Alert)
                 
-                alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: { action in
+                alertController.addAction(UIAlertAction(title: localize("OK"), style: .Default, handler: { action in
                     self.iCloudButton.enabled = false
                     self.iCloudButton.userInteractionEnabled = false
-                    self.iCloudButton.setTitle("Please sign in iCloud", forState: .Normal)
+                    self.iCloudButton.setTitle(localize("Please sign in iCloud"), forState: .Normal)
                     self.iCloudButton.borderColor = self.iCloudButton.currentTitleColor
                 }))
                 self.presentViewController(alertController, animated: true, completion: nil)

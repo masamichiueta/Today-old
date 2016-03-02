@@ -87,7 +87,7 @@ final class ScoreInterfaceController: WKInterfaceController {
     @IBAction func addToday() {
         
         if todayScore == nil {
-            presentControllerWithName("AddTodayInterfaceController", context: self)
+            presentController(.AddTodayInterfaceController, context: self)
         } else {
             cautionLabel.setHidden(false)
             animateWithDuration(0.5, animations: {

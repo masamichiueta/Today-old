@@ -57,9 +57,9 @@ extension ChartTableViewCell: ConfigurableCell {
         
         switch periodType {
         case .Week:
-            scoreChartView.chartTitleLabel.text = "Weekly Summary"
+            scoreChartView.chartTitleLabel.text = localize("Weekly Summary")
         case .Month:
-            scoreChartView.chartTitleLabel.text = "Monthly Summary"
+            scoreChartView.chartTitleLabel.text = localize("Monthly Summary")
         }
         if let maxYValue = dataSource.maxYValue {
             scoreChartView.highScoreNumberLabel.text = "\(maxYValue)"

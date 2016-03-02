@@ -72,22 +72,22 @@ extension TodayExtensionViewController: UITableViewDelegate, UITableViewDataSour
             return cell
         case 1:
             let cell = tableView.dequeueReusableCellWithCellIdentifier(.TodayExtensionKeyValueExtensionCell, forIndexPath: indexPath)
-            cell.textLabel?.text = "Total"
-            cell.detailTextLabel?.text = "\(sharedData.total) total"
+            cell.textLabel?.text = localize("Total")
+            cell.detailTextLabel?.text = "\(sharedData.total) " + localize("days")
             //For tap bug
             cell.backgroundView = UILabel()
             return cell
         case 2:
             let cell = tableView.dequeueReusableCellWithCellIdentifier(.TodayExtensionKeyValueExtensionCell, forIndexPath: indexPath)
-            cell.textLabel?.text = "Longest streak"
-            cell.detailTextLabel?.text = "\(sharedData.longestStreak) days"
+            cell.textLabel?.text = localize("Longest streak")
+            cell.detailTextLabel?.text = "\(sharedData.longestStreak) " + localize("days")
             //For tap bug
             cell.backgroundView = UILabel()
             return cell
         case 3:
             let cell = tableView.dequeueReusableCellWithCellIdentifier(.TodayExtensionKeyValueExtensionCell, forIndexPath: indexPath)
-            cell.textLabel?.text = "Current streak"
-            cell.detailTextLabel?.text = "\(sharedData.currentStreak) days"
+            cell.textLabel?.text = localize("Current streak")
+            cell.detailTextLabel?.text = "\(sharedData.currentStreak) " + localize("days")
             //For tap bug
             cell.backgroundView = UILabel()
             return cell

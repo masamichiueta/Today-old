@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TodayKit
 import CoreData
 
 class NotificationManager {
@@ -21,9 +22,9 @@ class NotificationManager {
         let notification = UILocalNotification()
         notification.fireDate = fireDate
         notification.timeZone = NSTimeZone.defaultTimeZone()
-        notification.alertBody = "How is your today?"
-        notification.alertAction = "Add Today"
-        notification.alertTitle = "Today"
+        notification.alertBody = localize("How is your today?")
+        notification.alertAction = localize("Add Today")
+        notification.alertTitle = localize("Today")
         notification.soundName = UILocalNotificationDefaultSoundName
         notification.applicationIconBadgeNumber = 1
         notification.repeatInterval = NSCalendarUnit.Day
@@ -74,7 +75,7 @@ class NotificationManager {
         
         let addTodayAction = UIMutableUserNotificationAction()
         addTodayAction.identifier = NotificationManager.addTodayActionName
-        addTodayAction.title = "Add Today"
+        addTodayAction.title = localize("Add Today")
         addTodayAction.activationMode = .Foreground
         addTodayAction.destructive = false
         addTodayAction.authenticationRequired = false

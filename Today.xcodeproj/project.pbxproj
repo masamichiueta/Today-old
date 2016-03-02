@@ -33,7 +33,6 @@
 		244B9A731C7B529F004AF2DC /* SegueHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F147D1C2ABC000003B2AF /* SegueHandlerType.swift */; };
 		244B9A741C7B52B3004AF2DC /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242D5A6E1C7374C500789616 /* Identifiable.swift */; };
 		244B9A771C7B5910004AF2DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 244B9A761C7B5910004AF2DC /* Assets.xcassets */; };
-		244CF0B91C83260100736C7D /* Utilities+iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244CF0B71C8324F400736C7D /* Utilities+iOS.swift */; };
 		245464671C75FFEF0030EF82 /* WatchConnectivityActionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245464661C75FFEF0030EF82 /* WatchConnectivityActionType.swift */; };
 		245464681C75FFEF0030EF82 /* WatchConnectivityActionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245464661C75FFEF0030EF82 /* WatchConnectivityActionType.swift */; };
 		24561EA71C6F77D500022222 /* GetStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24561EA61C6F77D500022222 /* GetStartedViewController.swift */; };
@@ -47,6 +46,7 @@
 		248BC5581C37AB0E00EFB221 /* DeviceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 248BC5571C37AB0E00EFB221 /* DeviceKit.framework */; };
 		248BC5591C37AB0E00EFB221 /* DeviceKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 248BC5571C37AB0E00EFB221 /* DeviceKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		248DD1311C87289D00BF2400 /* GetStarted.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 248DD1331C87289D00BF2400 /* GetStarted.storyboard */; };
+		248DD1371C872D2600BF2400 /* WatchIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248DD1361C872D2600BF2400 /* WatchIdentifiable.swift */; };
 		24A1CFE11C36D8FA00F0E9CE /* ScoreCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A1CFE01C36D8FA00F0E9CE /* ScoreCircleView.swift */; };
 		24A487F51C5503C50015DB05 /* TodayWatchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24A487EE1C5503C50015DB05 /* TodayWatchKit.framework */; };
 		24A487F61C5503C50015DB05 /* TodayWatchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24A487EE1C5503C50015DB05 /* TodayWatchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -251,7 +251,6 @@
 		244B9A761C7B5910004AF2DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		244BF08F1C623DF600A9543A /* ChartViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewDataSource.swift; sourceTree = "<group>"; };
 		244BF0941C624EF400A9543A /* ChartViewBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewBase.swift; sourceTree = "<group>"; };
-		244CF0B71C8324F400736C7D /* Utilities+iOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Utilities+iOS.swift"; sourceTree = "<group>"; };
 		245464661C75FFEF0030EF82 /* WatchConnectivityActionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchConnectivityActionType.swift; sourceTree = "<group>"; };
 		24561EA61C6F77D500022222 /* GetStartedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStartedViewController.swift; sourceTree = "<group>"; };
 		2466884E1C1DB45E00C5E5A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Activity.storyboard; sourceTree = "<group>"; };
@@ -263,6 +262,7 @@
 		248BC5571C37AB0E00EFB221 /* DeviceKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DeviceKit.framework; path = Carthage/Build/iOS/DeviceKit.framework; sourceTree = "<group>"; };
 		248DD1321C87289D00BF2400 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/GetStarted.storyboard; sourceTree = "<group>"; };
 		248DD1351C8728A200BF2400 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/GetStarted.strings; sourceTree = "<group>"; };
+		248DD1361C872D2600BF2400 /* WatchIdentifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchIdentifiable.swift; sourceTree = "<group>"; };
 		24A1CFE01C36D8FA00F0E9CE /* ScoreCircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreCircleView.swift; sourceTree = "<group>"; };
 		24A487EE1C5503C50015DB05 /* TodayWatchKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TodayWatchKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		24A487F21C5503C50015DB05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -443,7 +443,6 @@
 				240F14771C2A9FD40003B2AF /* ManagedObjectContextSettable.swift */,
 				242F984A1C49282200DBC64B /* NotificationManager.swift */,
 				24FE134E1C7F49A700A573B8 /* TodayWCSessionHandler.swift */,
-				244CF0B71C8324F400736C7D /* Utilities+iOS.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -537,6 +536,7 @@
 			children = (
 				24A487F21C5503C50015DB05 /* Info.plist */,
 				24C7ACCF1C5656D8002B203C /* WatchUtilities.swift */,
+				248DD1361C872D2600BF2400 /* WatchIdentifiable.swift */,
 			);
 			path = "TodayKit watchOS";
 			sourceTree = "<group>";
@@ -1027,7 +1027,6 @@
 				2425BBA91C5E3A0E008AD9A4 /* StreakTableViewCell.swift in Sources */,
 				2435351E1C7B50570044D13A /* FetchedResultsDataProvider.swift in Sources */,
 				243535191C7B50380044D13A /* ChartViewBase.swift in Sources */,
-				244CF0B91C83260100736C7D /* Utilities+iOS.swift in Sources */,
 				244B9A701C7B51F6004AF2DC /* ManagedObjectContextSettable.swift in Sources */,
 				2435351B1C7B50570044D13A /* ChartViewDataSource.swift in Sources */,
 				24D67C851C3EB54600A33DB7 /* AverageTotalTableViewCell.swift in Sources */,
@@ -1068,6 +1067,7 @@
 				24A9E9791C6CDC3F00739226 /* ManagedObject.swift in Sources */,
 				245464681C75FFEF0030EF82 /* WatchConnectivityActionType.swift in Sources */,
 				24A488031C5505AF0015DB05 /* Utilities.swift in Sources */,
+				248DD1371C872D2600BF2400 /* WatchIdentifiable.swift in Sources */,
 				24C7ACD01C5656D8002B203C /* WatchUtilities.swift in Sources */,
 				24A487FA1C55045D0015DB05 /* Today.swift in Sources */,
 			);

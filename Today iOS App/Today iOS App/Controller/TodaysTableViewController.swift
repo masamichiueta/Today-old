@@ -97,7 +97,7 @@ final class TodaysTableViewController: UITableViewController, ManagedObjectConte
         dataSource = TableViewDataSource(tableView: tableView, dataProvider: dataProvider, delegate: self)
         
         let noDataLabel = PaddingLabel(frame: CGRect(origin: tableView.bounds.origin, size: tableView.bounds.size))
-        noDataLabel.text = "Let's start Today!"
+        noDataLabel.text = localize("Let's start Today!")
         noDataLabel.textColor = UIColor.grayColor()
         noDataLabel.font = UIFont.systemFontOfSize(28)
         noDataLabel.textAlignment = .Center
@@ -106,8 +106,8 @@ final class TodaysTableViewController: UITableViewController, ManagedObjectConte
     }
     
     private func showAddAlert(completion: (() -> Void)?) {
-        let alert = UIAlertController(title: "Wow!", message: "Everything is OK. \nYou have already created Today.", preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
+        let alert = UIAlertController(title: localize("Wow!"), message: localize("Everything is OK. \nYou have already created Today."), preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: localize("OK"), style: .Cancel, handler: nil))
         self.presentViewController(alert, animated: true, completion: completion)
     }
 }

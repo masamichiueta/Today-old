@@ -43,7 +43,7 @@ final class SettingTableViewController: UITableViewController {
         versionLabel.textAlignment = .Center
         versionLabel.textColor = UIColor.lightGrayColor()
         let setting = Setting()
-        versionLabel.text = "Today Version \(setting.version)"
+        versionLabel.text = localize("Today Version") + " \(setting.version)"
         tableView.tableFooterView = versionLabel
     }
     
@@ -77,9 +77,9 @@ final class SettingTableViewController: UITableViewController {
         tableView.endUpdates()
         
         if sender.on {
-            let alertController = UIAlertController(title: "Check iOS Setting", message: "Please allow today to access notifications in setting app.", preferredStyle: .Alert)
-            alertController.addAction(UIAlertAction(title: "Check Later", style: .Default, handler: nil))
-            alertController.addAction(UIAlertAction(title: "Go Setting", style: .Default, handler: { action in
+            let alertController = UIAlertController(title: localize("Check iOS Setting"), message: localize("Please allow today to access notifications in setting app."), preferredStyle: .Alert)
+            alertController.addAction(UIAlertAction(title: localize("Check Later"), style: .Default, handler: nil))
+            alertController.addAction(UIAlertAction(title: localize("Go Setting"), style: .Default, handler: { action in
                 UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
             }))
             self.presentViewController(alertController, animated: true, completion: nil)
@@ -105,8 +105,8 @@ final class SettingTableViewController: UITableViewController {
                 appDelegate.updateManagedObjectContextInAllViewControllers()
                 NSNotificationCenter.defaultCenter().postNotificationName(StoresDidChangeNotificationName, object: nil)
             } else {
-                let alertController = UIAlertController(title: "iCloud is Disabled", message: "Your iCloud account is disabled. Please sign in from setting.", preferredStyle: .Alert)
-                alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: { action in
+                let alertController = UIAlertController(title: localize("iCloud is Disabled"), message: localize("Your iCloud account is disabled. Please sign in from setting."), preferredStyle: .Alert)
+                alertController.addAction(UIAlertAction(title: localize("OK"), style: .Default, handler: { action in
                     sender.on = false
                 }))
                 self.presentViewController(alertController, animated: true, completion: nil)
@@ -155,7 +155,7 @@ final class SettingTableViewController: UITableViewController {
         switch (indexPath.section, indexPath.row) {
         case (0, 0):
             let cell = tableView.dequeueReusableCellWithCellIdentifier(.SettingSwitchCell, forIndexPath: indexPath)
-            cell.textLabel?.text = "Notification Setting"
+            cell.textLabel?.text = localize("Notification Setting")
             let sw = UISwitch()
             sw.on = setting.notificationEnabled
             sw.addTarget(self, action: "notificationSwitchValueDidChange:", forControlEvents: .ValueChanged)
@@ -164,7 +164,7 @@ final class SettingTableViewController: UITableViewController {
             return cell
         case (0, 1):
             let cell = tableView.dequeueReusableCellWithCellIdentifier(.SettingCell, forIndexPath: indexPath)
-            cell.textLabel?.text = "Notification Time"
+            cell.textLabel?.text = localize("Notification Time")
             cell.detailTextLabel?.text = dateFormatter.stringFromDate(setting.notificationTime)
             cell.detailTextLabel?.textColor = pickerHidden ? defaultDetailTextColor : tableView.tintColor
             return cell
@@ -177,7 +177,7 @@ final class SettingTableViewController: UITableViewController {
             return cell
         case (1, 0):
             let cell = tableView.dequeueReusableCellWithCellIdentifier(.SettingSwitchCell, forIndexPath: indexPath)
-            cell.textLabel?.text = "iCloud sync"
+            cell.textLabel?.text = localize("iCloud sync")
             let sw = UISwitch()
             sw.on = setting.iCloudEnabled
             sw.addTarget(self, action: "iCloudSwitchValueDidChange:", forControlEvents: .ValueChanged)
@@ -186,7 +186,7 @@ final class SettingTableViewController: UITableViewController {
             return cell
         case (2, 0):
             let cell = UITableViewCell(style: .Value1, reuseIdentifier: "cell")
-            cell.textLabel?.text = "Rate Today"
+            cell.textLabel?.text = localize("Rate Today")
             cell.accessoryType = .DisclosureIndicator
             return cell
         default:

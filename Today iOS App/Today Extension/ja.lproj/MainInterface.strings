@@ -9,7 +9,7 @@
 "Ap1-s6-pGc.text" = "Today";
 
 /* Class = "UIButton"; normalTitle = "Add Today"; ObjectID = "E1b-E6-r5c"; */
-"E1b-E6-r5c.normalTitle" = "Add Today";
+"E1b-E6-r5c.normalTitle" = "Todayを追加する";
 
 /* Class = "UILabel"; text = "Subtitle"; ObjectID = "gcH-qr-crW"; */
 "gcH-qr-crW.text" = "Subtitle";

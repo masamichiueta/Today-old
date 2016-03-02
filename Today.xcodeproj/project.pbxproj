@@ -36,7 +36,6 @@
 		244CF0B91C83260100736C7D /* Utilities+iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244CF0B71C8324F400736C7D /* Utilities+iOS.swift */; };
 		245464671C75FFEF0030EF82 /* WatchConnectivityActionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245464661C75FFEF0030EF82 /* WatchConnectivityActionType.swift */; };
 		245464681C75FFEF0030EF82 /* WatchConnectivityActionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245464661C75FFEF0030EF82 /* WatchConnectivityActionType.swift */; };
-		24561EA51C6F71E900022222 /* GetStarted.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24561EA41C6F71E900022222 /* GetStarted.storyboard */; };
 		24561EA71C6F77D500022222 /* GetStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24561EA61C6F77D500022222 /* GetStartedViewController.swift */; };
 		2466884F1C1DB45E00C5E5A0 /* Activity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2466884D1C1DB45E00C5E5A0 /* Activity.storyboard */; };
 		246688511C1DB4ED00C5E5A0 /* TodaysTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246688501C1DB4ED00C5E5A0 /* TodaysTableViewController.swift */; };
@@ -47,6 +46,7 @@
 		2488C7091C6F686D00EF8F45 /* BorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2488C7081C6F686D00EF8F45 /* BorderButton.swift */; };
 		248BC5581C37AB0E00EFB221 /* DeviceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 248BC5571C37AB0E00EFB221 /* DeviceKit.framework */; };
 		248BC5591C37AB0E00EFB221 /* DeviceKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 248BC5571C37AB0E00EFB221 /* DeviceKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		248DD1311C87289D00BF2400 /* GetStarted.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 248DD1331C87289D00BF2400 /* GetStarted.storyboard */; };
 		24A1CFE11C36D8FA00F0E9CE /* ScoreCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A1CFE01C36D8FA00F0E9CE /* ScoreCircleView.swift */; };
 		24A487F51C5503C50015DB05 /* TodayWatchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24A487EE1C5503C50015DB05 /* TodayWatchKit.framework */; };
 		24A487F61C5503C50015DB05 /* TodayWatchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24A487EE1C5503C50015DB05 /* TodayWatchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -253,7 +253,6 @@
 		244BF0941C624EF400A9543A /* ChartViewBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewBase.swift; sourceTree = "<group>"; };
 		244CF0B71C8324F400736C7D /* Utilities+iOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Utilities+iOS.swift"; sourceTree = "<group>"; };
 		245464661C75FFEF0030EF82 /* WatchConnectivityActionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchConnectivityActionType.swift; sourceTree = "<group>"; };
-		24561EA41C6F71E900022222 /* GetStarted.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GetStarted.storyboard; sourceTree = "<group>"; };
 		24561EA61C6F77D500022222 /* GetStartedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStartedViewController.swift; sourceTree = "<group>"; };
 		2466884E1C1DB45E00C5E5A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Activity.storyboard; sourceTree = "<group>"; };
 		246688501C1DB4ED00C5E5A0 /* TodaysTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodaysTableViewController.swift; sourceTree = "<group>"; };
@@ -263,6 +262,8 @@
 		24732F4A1C5E4F8600655994 /* ScoreChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreChartView.swift; sourceTree = "<group>"; };
 		2488C7081C6F686D00EF8F45 /* BorderButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderButton.swift; sourceTree = "<group>"; };
 		248BC5571C37AB0E00EFB221 /* DeviceKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DeviceKit.framework; path = Carthage/Build/iOS/DeviceKit.framework; sourceTree = "<group>"; };
+		248DD1321C87289D00BF2400 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/GetStarted.storyboard; sourceTree = "<group>"; };
+		248DD1351C8728A200BF2400 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/GetStarted.strings; sourceTree = "<group>"; };
 		24A1CFE01C36D8FA00F0E9CE /* ScoreCircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreCircleView.swift; sourceTree = "<group>"; };
 		24A487EE1C5503C50015DB05 /* TodayWatchKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TodayWatchKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		24A487F21C5503C50015DB05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -478,7 +479,7 @@
 				2488C7081C6F686D00EF8F45 /* BorderButton.swift */,
 				24D82C2E1C5A5D880095FA47 /* ChartTableViewCell.swift */,
 				244BF0941C624EF400A9543A /* ChartViewBase.swift */,
-				24561EA41C6F71E900022222 /* GetStarted.storyboard */,
+				248DD1331C87289D00BF2400 /* GetStarted.storyboard */,
 				24030AEF1C1C821C004E68ED /* LaunchScreen.storyboard */,
 				24030AE71C1C821C004E68ED /* Main.storyboard */,
 				244631441C3AB8BA002BBD06 /* PaddingLabel.swift */,
@@ -896,6 +897,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = 24030AD71C1C821C004E68ED;
 			productRefGroup = 24030AE11C1C821C004E68ED /* Products */;
@@ -925,7 +927,7 @@
 				24030AE91C1C821C004E68ED /* Main.storyboard in Resources */,
 				246688561C1DB61100C5E5A0 /* Today.storyboard in Resources */,
 				2466884F1C1DB45E00C5E5A0 /* Activity.storyboard in Resources */,
-				24561EA51C6F71E900022222 /* GetStarted.storyboard in Resources */,
+				248DD1311C87289D00BF2400 /* GetStarted.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1213,6 +1215,15 @@
 			);
 			name = Today.storyboard;
 			path = .;
+			sourceTree = "<group>";
+		};
+		248DD1331C87289D00BF2400 /* GetStarted.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				248DD1321C87289D00BF2400 /* Base */,
+				248DD1351C8728A200BF2400 /* ja */,
+			);
+			name = GetStarted.storyboard;
 			sourceTree = "<group>";
 		};
 		24F21AB51C4FCFE900396A38 /* MainInterface.storyboard */ = {

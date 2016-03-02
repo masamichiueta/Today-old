@@ -22,19 +22,19 @@
                                 <rect key="frame" x="175" y="261" width="250" height="78"/>
                             </imageView>
                             <stackView hidden="YES" opaque="NO" alpha="0.0" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="44" translatesAutoresizingMaskIntoConstraints="NO" id="kmD-Lf-PDB">
-                                <rect key="frame" x="20" y="203" width="560" height="194"/>
+                                <rect key="frame" x="20" y="203" width="560" height="193"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6YF-xv-SKH">
-                                        <rect key="frame" x="129" y="0.0" width="303" height="75"/>
+                                        <rect key="frame" x="127" y="0.0" width="306" height="74.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Today reminds you to add your today." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VAG-dr-CFQ">
-                                                <rect key="frame" x="0.0" y="0.0" width="303" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Today reminds you to add your Today." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VAG-dr-CFQ">
+                                                <rect key="frame" x="0.0" y="0.0" width="306" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yVX-z9-hPM" customClass="BorderButton" customModule="Today" customModuleProvider="target">
-                                                <rect key="frame" x="26" y="31" width="250" height="44"/>
+                                                <rect key="frame" x="28" y="30.5" width="250" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="FsO-Tm-ODg"/>
                                                     <constraint firstAttribute="width" constant="250" id="bet-ah-tmc"/>
@@ -59,22 +59,22 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="YPJ-g9-V4m">
-                                        <rect key="frame" x="104" y="119" width="353" height="75"/>
+                                        <rect key="frame" x="72.5" y="118.5" width="415.5" height="74.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2. iCloud sync today across all of your devices" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j3b-Kt-Tm0">
-                                                <rect key="frame" x="0.0" y="0.0" width="353" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2. Today uses iCloud to sync across all of your devices" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j3b-Kt-Tm0">
+                                                <rect key="frame" x="0.0" y="0.0" width="415.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5XZ-il-eA8" customClass="BorderButton" customModule="Today" customModuleProvider="target">
-                                                <rect key="frame" x="51" y="31" width="250" height="44"/>
+                                                <rect key="frame" x="82.5" y="30.5" width="250" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="250" id="Q2O-TN-n0J"/>
                                                     <constraint firstAttribute="height" constant="44" id="uqm-Pb-bXJ"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <state key="normal" title="Use iCloud to save today"/>
+                                                <state key="normal" title="Use iCloud to save Today"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                         <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>

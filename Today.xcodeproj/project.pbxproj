@@ -258,7 +258,6 @@
 		246688501C1DB4ED00C5E5A0 /* TodaysTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodaysTableViewController.swift; sourceTree = "<group>"; };
 		246688551C1DB61100C5E5A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Today.storyboard; sourceTree = "<group>"; };
 		246AC1801C5120FF0047AAE7 /* AddTodayInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTodayInterfaceController.swift; sourceTree = "<group>"; };
-		2472E6FD1C3275C8006DC493 /* LTMorphingLabel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LTMorphingLabel.framework; path = Carthage/Build/iOS/LTMorphingLabel.framework; sourceTree = "<group>"; };
 		24732F4A1C5E4F8600655994 /* ScoreChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreChartView.swift; sourceTree = "<group>"; };
 		2488C7081C6F686D00EF8F45 /* BorderButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderButton.swift; sourceTree = "<group>"; };
 		248BC5571C37AB0E00EFB221 /* DeviceKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DeviceKit.framework; path = Carthage/Build/iOS/DeviceKit.framework; sourceTree = "<group>"; };
@@ -453,7 +452,6 @@
 			isa = PBXGroup;
 			children = (
 				248BC5571C37AB0E00EFB221 /* DeviceKit.framework */,
-				2472E6FD1C3275C8006DC493 /* LTMorphingLabel.framework */,
 				24F21AB01C4FCFE900396A38 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;

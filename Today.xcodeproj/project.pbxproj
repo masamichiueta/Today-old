@@ -55,6 +55,8 @@
 		24A487FC1C55054C0015DB05 /* Streak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E538D81C49E22900B781D8 /* Streak.swift */; };
 		24A488031C5505AF0015DB05 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DBB5901C2C367100E1C042 /* Utilities.swift */; };
 		24A9E9791C6CDC3F00739226 /* ManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C77EA11C2A8B6C00493C13 /* ManagedObject.swift */; };
+		24B744E81C873528000E0FFC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 24B744EA1C873528000E0FFC /* Localizable.strings */; };
+		24B744EF1C873882000E0FFC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 24B744F11C873882000E0FFC /* Localizable.strings */; };
 		24C6AE971C2831660048C4D1 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C6AE961C2831660048C4D1 /* TableViewCell.swift */; };
 		24C6C1AF1C54F9970041C31F /* TodayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24C6C1A51C54F9970041C31F /* TodayKit.framework */; };
 		24C6C1B61C54F9970041C31F /* TodayKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C6C1B51C54F9970041C31F /* TodayKitTests.swift */; };
@@ -267,6 +269,10 @@
 		24A487EE1C5503C50015DB05 /* TodayWatchKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TodayWatchKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		24A487F21C5503C50015DB05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24A9E9781C6CBDE700739226 /* Today Today Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Today Today Extension.entitlements"; sourceTree = "<group>"; };
+		24B744EB1C873531000E0FFC /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		24B744EC1C8735B5000E0FFC /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		24B744F01C873882000E0FFC /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		24B744F21C873883000E0FFC /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		24C6AE961C2831660048C4D1 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		24C6C1A51C54F9970041C31F /* TodayKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TodayKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		24C6C1A91C54F9970041C31F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -501,6 +507,7 @@
 				24030AED1C1C821C004E68ED /* Assets.xcassets */,
 				24030AF21C1C821C004E68ED /* Info.plist */,
 				24C77EAD1C2A937600493C13 /* Today.entitlements */,
+				24B744EA1C873528000E0FFC /* Localizable.strings */,
 			);
 			path = "Today iOS App";
 			sourceTree = "<group>";
@@ -590,6 +597,7 @@
 				24A9E9781C6CBDE700739226 /* Today Today Extension.entitlements */,
 				241D65AE1C7B43AC00938CE8 /* TodayExtensionTodayTableViewCell.swift */,
 				24F21AB31C4FCFE900396A38 /* TodayExtensionViewController.swift */,
+				24B744F11C873882000E0FFC /* Localizable.strings */,
 			);
 			path = "Today Extension";
 			sourceTree = "<group>";
@@ -923,6 +931,7 @@
 				24030AF11C1C821C004E68ED /* LaunchScreen.storyboard in Resources */,
 				24030AEE1C1C821C004E68ED /* Assets.xcassets in Resources */,
 				24030AE91C1C821C004E68ED /* Main.storyboard in Resources */,
+				24B744E81C873528000E0FFC /* Localizable.strings in Resources */,
 				246688561C1DB61100C5E5A0 /* Today.storyboard in Resources */,
 				2466884F1C1DB45E00C5E5A0 /* Activity.storyboard in Resources */,
 				248DD1311C87289D00BF2400 /* GetStarted.storyboard in Resources */,
@@ -970,6 +979,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				244B9A771C7B5910004AF2DC /* Assets.xcassets in Resources */,
+				24B744EF1C873882000E0FFC /* Localizable.strings in Resources */,
 				24F21AB71C4FCFE900396A38 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1222,6 +1232,24 @@
 				248DD1351C8728A200BF2400 /* ja */,
 			);
 			name = GetStarted.storyboard;
+			sourceTree = "<group>";
+		};
+		24B744EA1C873528000E0FFC /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				24B744EB1C873531000E0FFC /* Base */,
+				24B744EC1C8735B5000E0FFC /* ja */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		24B744F11C873882000E0FFC /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				24B744F01C873882000E0FFC /* Base */,
+				24B744F21C873883000E0FFC /* ja */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 		24F21AB51C4FCFE900396A38 /* MainInterface.storyboard */ = {

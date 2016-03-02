@@ -77,7 +77,7 @@ final class SettingTableViewController: UITableViewController {
         tableView.endUpdates()
         
         if sender.on {
-            let alertController = UIAlertController(title: localize("Check iOS Setting"), message: localize("Please allow today to access notifications in setting app."), preferredStyle: .Alert)
+            let alertController = UIAlertController(title: localize("Check iOS Setting"), message: localize("Please allow Today to access notifications in setting app."), preferredStyle: .Alert)
             alertController.addAction(UIAlertAction(title: localize("Check Later"), style: .Default, handler: nil))
             alertController.addAction(UIAlertAction(title: localize("Go Setting"), style: .Default, handler: { action in
                 UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)

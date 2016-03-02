@@ -59,22 +59,22 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="YPJ-g9-V4m">
-                                        <rect key="frame" x="72.5" y="118.5" width="415.5" height="74.5"/>
+                                        <rect key="frame" x="88.5" y="118.5" width="383" height="74.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2. Today uses iCloud to sync across all of your devices" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j3b-Kt-Tm0">
-                                                <rect key="frame" x="0.0" y="0.0" width="415.5" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2. Today uses local storage or iCloud to save data." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j3b-Kt-Tm0">
+                                                <rect key="frame" x="0.0" y="0.0" width="383" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5XZ-il-eA8" customClass="BorderButton" customModule="Today" customModuleProvider="target">
-                                                <rect key="frame" x="82.5" y="30.5" width="250" height="44"/>
+                                                <rect key="frame" x="66.5" y="30.5" width="250" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="250" id="Q2O-TN-n0J"/>
                                                     <constraint firstAttribute="height" constant="44" id="uqm-Pb-bXJ"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <state key="normal" title="Use iCloud to save Today"/>
+                                                <state key="normal" title="Choose the storage"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                         <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>

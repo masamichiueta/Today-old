@@ -1,0 +1,46 @@
+/* 
+  Localizable.strings
+  Today
+
+  Created by UetaMasamichi on 2016/03/02.
+  Copyright © 2016年 Masamichi Ueta. All rights reserved.
+*/
+
+//MARK: - Common
+"OK" = "OK";
+"Today" = "Today";
+"iCloud is Disabled" = "iCloudが使用できません";
+"Your iCloud account is disabled. Please sign in from setting." = "iCloudアカウントが使用できません。設定からサインインしてください。";
+
+//MARK: - ChartTableViewCell.swift
+"Weekly Summary" = "週間結果";
+"Monthly Summary" = "月間結果";
+
+//MARK: - GetStartedViewController.swift
+"Choose Storage Option" = "保存先の選択";
+"Should documents be stored in iCloud and available on all your devices?" = "iCloudにデータを保存して全てのデバイスで同期しますか？";
+"Local Only" = "この端末のみに保存する";
+"Use local storage" = "データを端末に保存します";
+"Use iCloud" = "iCloudで同期する";
+"Please sign in iCloud" = "iCloudにサインインしてください";
+
+//MARK: - NotificationManager.swift
+"How is your today?" = "今日はどうでしたか？";
+"Add Today" = "Todayを追加する";
+
+
+//MARK: - SettingTableViewController.swift
+"Today Version" = "Today バージョン";
+"Check iOS Setting" = "iOSの設定を確認してください";
+"Please allow Today to access notifications in setting app." = "設定からアプリの通知設定を許可してください";
+"Check Later" = "後で";
+"Go Setting" = "設定を確認する";
+"Notification Setting" = "通知設定";
+"Notification Time" = "通知時間";
+"iCloud sync" = "iCloud同期設定";
+"Rate Today" = "Todayを評価する";
+
+//MARK: - TodaysTableViewController.swift
+"Let's start Today!" = "Todayを始めましょう！";
+"Wow!" = "おっと！";
+"Everything is OK. \nYou have already created Today." = "既に今日のTodayは作成済みです。";

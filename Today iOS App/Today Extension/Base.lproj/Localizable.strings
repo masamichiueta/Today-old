@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  Today
+
+  Created by UetaMasamichi on 2016/03/03.
+  Copyright © 2016年 Masamichi Ueta. All rights reserved.
+*/
+
+//MARK: - TodayExtensionViewController.swift
+"Total" = "Total";
+"days" = "days";
+"Longest streak" = "Longest streak";
+"Current streak" = "Current streak";

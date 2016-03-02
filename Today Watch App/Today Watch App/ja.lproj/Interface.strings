@@ -3,16 +3,16 @@
 "AgC-eL-Hgc.title" = "Today";
 
 /* Class = "WKInterfaceController"; title = "Current Streak"; ObjectID = "Mww-RZ-ABu"; */
-"Mww-RZ-ABu.title" = "Current Streak";
+"Mww-RZ-ABu.title" = "現在の連続記録";
 
 /* Class = "WKInterfaceButton"; title = "Add"; ObjectID = "aZP-Wh-NM7"; */
-"aZP-Wh-NM7.title" = "Add";
+"aZP-Wh-NM7.title" = "追加する";
 
 /* Class = "WKInterfaceLabel"; text = "You have already created today!"; ObjectID = "dt0-zJ-CNk"; */
-"dt0-zJ-CNk.text" = "You have already created today!";
+"dt0-zJ-CNk.text" = "すでにTodayを作成済みです!";
 
 /* Class = "WKInterfaceLabel"; text = "days"; ObjectID = "mXW-PE-n6U"; */
-"mXW-PE-n6U.text" = "days";
+"mXW-PE-n6U.text" = "日";
 
 /* Class = "WKInterfaceLabel"; text = "0"; ObjectID = "mt2-0g-nab"; */
 "mt2-0g-nab.text" = "0";
@@ -21,4 +21,4 @@
 "oCW-ni-WRM.text" = "0";
 
 /* Class = "WKInterfaceMenuItem"; title = "Add Today"; ObjectID = "oCc-as-hCB"; */
-"oCc-as-hCB.title" = "Add Today";
+"oCc-as-hCB.title" = "Todayを追加する";

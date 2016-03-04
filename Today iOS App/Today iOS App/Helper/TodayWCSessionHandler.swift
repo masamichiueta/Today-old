@@ -28,7 +28,7 @@ class TodayWCSessionHandler: NSObject, WCSessionDelegate {
         
         switch watchConnectivityActionType {
         case .AddToday:
-            guard let score = message[WatchConnectivityContentType.Score.rawValue] as? Int else {
+            guard let score = message[WatchConnectivityContentType.AddedScore.rawValue] as? Int else {
                 return
             }
             
@@ -48,22 +48,20 @@ class TodayWCSessionHandler: NSObject, WCSessionDelegate {
                 }
                 replyHandler([WatchConnectivityContentType.Finished.rawValue: true])
             }
-        case .GetTodaysToday:
+        case .GetWatchData:
             let now = NSDate()
             
+            var data: [String: AnyObject] = [String: AnyObject]()
             if let startDate =  NSCalendar.currentCalendar().dateBySettingHour(0, minute: 0, second: 0, ofDate: now, options: []),
                 endDate = NSCalendar.currentCalendar().dateByAddingUnit(NSCalendarUnit.Day, value: 1, toDate: startDate, options: []),
                 today = Today.todays(moc, from: startDate, to: endDate).first {
-                    replyHandler([WatchConnectivityContentType.TodaysToday.rawValue: Int(today.score)])
-            } else {
-                replyHandler([WatchConnectivityContentType.TodaysToday.rawValue: 0])
+                  data[WatchConnectivityContentType.TodayScore.rawValue] = Int(today.score)
             }
-        case .GetCurrentStreak:
-            guard let currentStreak = Streak.currentStreak(moc) else {
-                replyHandler([WatchConnectivityContentType.CurrentStreak.rawValue: 0])
-                return
+            if let currentStreak = Streak.currentStreak(moc) {
+                data[WatchConnectivityContentType.CurrentStreak.rawValue] = Int(currentStreak.streakNumber)
             }
-            replyHandler([WatchConnectivityContentType.CurrentStreak.rawValue: Int(currentStreak.streakNumber)])
+            
+            replyHandler(data)
         }
     }
 }

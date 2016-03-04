@@ -62,10 +62,15 @@ final class AddTodayInterfaceController: WKInterfaceController {
     
     @IBAction func addToday() {
         if session.reachable {
-            session.sendMessage([watchConnectivityActionTypeKey: WatchConnectivityActionType.AddToday.rawValue, WatchConnectivityContentType.Score.rawValue: score],
+            let now = NSDate()
+            session.sendMessage([watchConnectivityActionTypeKey: WatchConnectivityActionType.AddToday.rawValue, WatchConnectivityContentType.AddedScore.rawValue: score,
+                WatchConnectivityContentType.AddedDate.rawValue: now],
                 replyHandler: {
                     (content: [String: AnyObject]) -> Void in
-                    self.delegate?.todayDidAdd(self.score)
+                    var watchData = WatchData()
+                    watchData.score = self.score
+                    watchData.updatedAt = now
+                    //self.delegate?.todayDidAdd(self.score)
                     self.dismissController()
                 },
                 errorHandler: {

@@ -32,7 +32,7 @@ final class ScoreInterfaceController: WKInterfaceController {
                     scoreGroup.setBackgroundImageNamed("score_circle_42_0")
                 }
                 scoreLabel.setText("0")
-                scoreIcon.setImageNamed(Today.type(0).iconName("28"))
+                scoreIcon.setImageNamed(Today.type(0).iconName(.TwentyEight))
                 return
             }
             
@@ -50,7 +50,7 @@ final class ScoreInterfaceController: WKInterfaceController {
             let duration = 0.5
             scoreGroup.startAnimatingWithImagesInRange(NSRange(location: 0, length: 6 * todayScore + 1), duration: duration, repeatCount: 1)
             scoreLabel.setText("\(todayScore)")
-            scoreIcon.setImageNamed(Today.type(todayScore).iconName("28"))
+            scoreIcon.setImageNamed(Today.type(todayScore).iconName(.TwentyEight))
             
         }
     }

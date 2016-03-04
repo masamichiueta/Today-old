@@ -32,7 +32,7 @@ final class AddTodayViewController: UIViewController {
                 duration: scoreCircleView.animationDuration,
                 options: UIViewAnimationOptions.TransitionCrossDissolve,
                 animations: { [unowned self] in
-                    self.iconImageView.image = Today.type(self.score).icon("40")
+                    self.iconImageView.image = Today.type(self.score).icon(.Fourty)
                     self.view.layoutIfNeeded()
                 },
                 completion: { finished in
@@ -52,7 +52,7 @@ final class AddTodayViewController: UIViewController {
         super.viewDidLoad()
         setupProgressBorderWidth()
         scoreLabel.textColor = scoreCircleView.progressCircleColor
-        iconImageView.image = Today.type(score).icon("40")
+        iconImageView.image = Today.type(score).icon(.Fourty)
         iconImageView.tintColor = scoreCircleView.progressCircleColor
     }
     

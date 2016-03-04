@@ -130,6 +130,10 @@ private let goodIconImageName = "good_face_icon_"
 private let averageIconImageName = "average_face_icon_"
 private let poorIconImageName = "poor_face_icon_"
 
+public enum TodayIconSize: String {
+    case TwentyEight = "28"
+    case Fourty = "40"
+}
 
 public enum TodayType: String {
     case Excellent
@@ -188,34 +192,34 @@ public enum TodayType: String {
         return CGGradientCreateWithColors(CGColorSpaceCreateDeviceRGB(), colors, locations)!
     }
     
-    public func icon(size: String) -> UIImage {
+    public func icon(size: TodayIconSize) -> UIImage {
         switch self {
         case .Excellent, .Good:
-            guard let image = UIImage(named: goodIconImageName + size) else {
+            guard let image = UIImage(named: goodIconImageName + size.rawValue) else {
                 fatalError("Wrong image name for good")
             }
             return image.imageWithRenderingMode(.AlwaysTemplate)
         case .Average, .Fair:
-            guard let image = UIImage(named: averageIconImageName + size) else {
+            guard let image = UIImage(named: averageIconImageName + size.rawValue) else {
                 fatalError("Wrong image name for average")
             }
             return image.imageWithRenderingMode(.AlwaysTemplate)
         case .Poor:
-            guard let image = UIImage(named: poorIconImageName + size) else {
+            guard let image = UIImage(named: poorIconImageName + size.rawValue) else {
                 fatalError("Wrong image name for poor")
             }
             return image.imageWithRenderingMode(.AlwaysTemplate)
         }
     }
     
-    public func iconName(size: String) -> String {
+    public func iconName(size: TodayIconSize) -> String {
         switch self {
         case .Excellent, .Good:
-            return goodIconImageName + size
+            return goodIconImageName + size.rawValue
         case .Average, .Fair:
-            return averageIconImageName + size
+            return averageIconImageName + size.rawValue
         case .Poor:
-            return poorIconImageName + size
+            return poorIconImageName + size.rawValue
         }
     }
 }

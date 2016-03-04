@@ -28,6 +28,6 @@ extension TodayExtensionTodayTableViewCell: ConfigurableCell {
     func configureForObject(score: Int) {
         scoreLabel.text = "\(score)"
         iconImageView.tintColor = UIColor.whiteColor()
-        iconImageView.image = Today.type(score).icon("28")
+        iconImageView.image = Today.type(score).icon(.TwentyEight)
     }
 }

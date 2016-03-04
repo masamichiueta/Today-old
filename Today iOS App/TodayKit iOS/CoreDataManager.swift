@@ -8,18 +8,33 @@
 
 import CoreData
 
+//MARKL: - StorageType
 public enum StorageType {
     case Local
     case Cloud
 }
 
-private let storeURL = NSURL.documentsURL.URLByAppendingPathComponent("Today.sqlite")
+//MARK: - ICloud Notification Selector Keys
+public enum ICloudNotificationSelectorKey: String {
+    case UbiquitousKeyValueStoreDidChangeExternally = "ubiquitousKeyValueStoreDidChangeExternally:"
+    case StoresWillChange = "storesWillChange:"
+    case StoresDidChange = "storesDidChange:"
+    case PersistentStoreDidImportUbiquitousContentChanges = "persistentStoreDidImportUbiquitousContentChanges:"
+    case UpdateFromiCloud = "updateFromiCloud:"
+    case UpdateToiCloud = "updateToiCloud:"
+}
 
+
+
+//MARK: - CoreDataManger
 public final class CoreDataManager {
     
     public static let sharedInstance = CoreDataManager()
     
     public private(set) var managedObjectContext: NSManagedObjectContext?
+    
+    private let todayUbiquitousContentNameKey = "TodayCloudStore"
+    private let todayStoreName = "Today.sqlite"
     
     private init() { }
     
@@ -39,10 +54,12 @@ public final class CoreDataManager {
         case .Local:
             options = nil
         case .Cloud:
-            options = [NSPersistentStoreUbiquitousContentNameKey: "TodayCloudStore",
+            options = [NSPersistentStoreUbiquitousContentNameKey: todayUbiquitousContentNameKey,
                 NSMigratePersistentStoresAutomaticallyOption: true,
                 NSInferMappingModelAutomaticallyOption: true]
         }
+        
+        let storeURL = NSURL.documentsURL.URLByAppendingPathComponent(todayStoreName)
         
         do {
             try psc.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: options)
@@ -66,17 +83,17 @@ public final class CoreDataManager {
     //MARK: - Notification
     func registerForiCloudNotifications() {
         let iCloudStore = NSUbiquitousKeyValueStore.defaultStore()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateFromiCloud:", name: NSUbiquitousKeyValueStoreDidChangeExternallyNotification, object: iCloudStore)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateToiCloud:", name: NSUserDefaultsDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector(ICloudNotificationSelectorKey.UpdateFromiCloud.rawValue), name: NSUbiquitousKeyValueStoreDidChangeExternallyNotification, object: iCloudStore)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector(ICloudNotificationSelectorKey.UpdateToiCloud.rawValue), name: NSUserDefaultsDidChangeNotification, object: nil)
         iCloudStore.synchronize()
         
         guard let moc = managedObjectContext else {
             return
         }
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "storesWillChange:", name: NSPersistentStoreCoordinatorStoresWillChangeNotification, object: moc.persistentStoreCoordinator)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "storesDidChange:", name: NSPersistentStoreCoordinatorStoresDidChangeNotification, object: moc.persistentStoreCoordinator)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "persistentStoreDidImportUbiquitousContentChanges:", name: NSPersistentStoreDidImportUbiquitousContentChangesNotification, object: moc.persistentStoreCoordinator)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector(ICloudNotificationSelectorKey.StoresWillChange.rawValue), name: NSPersistentStoreCoordinatorStoresWillChangeNotification, object: moc.persistentStoreCoordinator)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector(ICloudNotificationSelectorKey.StoresDidChange.rawValue), name: NSPersistentStoreCoordinatorStoresDidChangeNotification, object: moc.persistentStoreCoordinator)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector(ICloudNotificationSelectorKey.PersistentStoreDidImportUbiquitousContentChanges.rawValue), name: NSPersistentStoreDidImportUbiquitousContentChangesNotification, object: moc.persistentStoreCoordinator)
     }
     
     func unregisterForiCloudNotifications() {
@@ -101,8 +118,8 @@ public final class CoreDataManager {
         }
         
         NSUserDefaults.standardUserDefaults().synchronize()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateToiCloud:", name: NSUserDefaultsDidChangeNotification, object: nil)
-        NSNotificationCenter.defaultCenter().postNotificationName(UbiquitousKeyValueStoreDidChangeExternallyNotificationName, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector(ICloudNotificationSelectorKey.UpdateToiCloud.rawValue), name: NSUserDefaultsDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName(ICloudRegistableNotificationKey.UbiquitousKeyValueStoreDidChangeExternallyNotification.rawValue, object: nil)
         
     }
     
@@ -130,11 +147,11 @@ public final class CoreDataManager {
             }
             moc.reset()
         })
-        NSNotificationCenter.defaultCenter().postNotificationName(StoresWillChangeNotificationName, object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName(ICloudRegistableNotificationKey.StoresWillChangeNotification.rawValue, object: nil)
     }
     
     dynamic func storesDidChange(notification: NSNotification) {
-        NSNotificationCenter.defaultCenter().postNotificationName(StoresDidChangeNotificationName, object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName(ICloudRegistableNotificationKey.StoresDidChangeNotification.rawValue, object: nil)
     }
     
     dynamic func persistentStoreDidImportUbiquitousContentChanges(notification: NSNotification) {
@@ -144,7 +161,7 @@ public final class CoreDataManager {
         moc.performBlock({
             moc.mergeChangesFromContextDidSaveNotification(notification)
         })
-        NSNotificationCenter.defaultCenter().postNotificationName(PersistentStoreDidImportUbiquitousContentChangesNotificationName, object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName(ICloudRegistableNotificationKey.PersistentStoreDidImportUbiquitousContentChangesNotification.rawValue, object: nil)
     }
     
 }

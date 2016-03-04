@@ -151,7 +151,7 @@ extension TodaysTableViewController: TableViewDataSourceDelegate {
 }
 
 //MARK: - iCloudRegistable
-extension TodaysTableViewController: iCloudRegistable {
+extension TodaysTableViewController: ICloudRegistable {
     func ubiquitousKeyValueStoreDidChangeExternally(notification: NSNotification) {
         
     }

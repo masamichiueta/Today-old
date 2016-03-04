@@ -136,7 +136,7 @@ final class ActivityTableViewController: UITableViewController, ManagedObjectCon
 }
 
 //MARK: - iCloudRegistable
-extension ActivityTableViewController: iCloudRegistable {
+extension ActivityTableViewController: ICloudRegistable {
     func ubiquitousKeyValueStoreDidChangeExternally(notification: NSNotification) { }
     
     func storesWillChange(notification: NSNotification) { }

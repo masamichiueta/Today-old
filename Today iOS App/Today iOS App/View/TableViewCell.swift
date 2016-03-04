@@ -43,7 +43,7 @@ extension TableViewCell: ConfigurableCell {
         scoreCircleView.score = Int(today.score)
         scoreLabel.text = "\(today.score)"
         scoreLabel.textColor = today.type.color()
-        iconImageView.image = today.type.icon("28")
+        iconImageView.image = today.type.icon(.TwentyEight)
         iconImageView.tintColor = today.type.color()
     }
 }

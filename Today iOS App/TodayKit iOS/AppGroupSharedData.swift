@@ -15,11 +15,14 @@ public enum AppGroupURLHost: String {
 }
 
 public struct AppGroupSharedData {
-    public static let todayScoreKey = "TodayScore"
-    public static let todayDateKey = "TodayDate"
-    public static let totalKey = "Total"
-    public static let longestStreakKey = "LongestStreak"
-    public static let currentStreakKey = "CurrentStrea"
+    
+    public enum AppGroupSharedDataKey: String {
+        case TodayScore
+        case TodayDate
+        case Total
+        case LongestStreak
+        case CurrentStreak
+    }
     
     private let defaults = NSUserDefaults(suiteName: "group.com.uetamasamichi.todaygroup")
     
@@ -27,39 +30,39 @@ public struct AppGroupSharedData {
     //MARK: - Values
     public var todayScore: Int {
         didSet {
-            defaults?.setInteger(todayScore, forKey: AppGroupSharedData.todayScoreKey)
+            defaults?.setInteger(todayScore, forKey: AppGroupSharedDataKey.TodayScore.rawValue)
         }
     }
     
     public var todayDate: NSDate {
         didSet {
-            defaults?.setObject(todayDate, forKey: AppGroupSharedData.todayDateKey)
+            defaults?.setObject(todayDate, forKey: AppGroupSharedDataKey.TodayDate.rawValue)
         }
     }
     
     public var total: Int {
         didSet {
-            defaults?.setInteger(total, forKey: AppGroupSharedData.totalKey)
+            defaults?.setInteger(total, forKey: AppGroupSharedDataKey.Total.rawValue)
         }
     }
     
     public var longestStreak: Int {
         didSet {
-            defaults?.setInteger(longestStreak, forKey: AppGroupSharedData.longestStreakKey)
+            defaults?.setInteger(longestStreak, forKey: AppGroupSharedDataKey.LongestStreak.rawValue)
         }
     }
     
     public var currentStreak: Int {
         didSet {
-            defaults?.setInteger(currentStreak, forKey: AppGroupSharedData.currentStreakKey)
+            defaults?.setInteger(currentStreak, forKey: AppGroupSharedDataKey.CurrentStreak.rawValue)
         }
     }
     
     public init() {
-        todayScore = defaults?.integerForKey(AppGroupSharedData.todayScoreKey) ?? 0
-        todayDate = defaults?.objectForKey(AppGroupSharedData.todayDateKey) as? NSDate ?? NSDate()
-        total = defaults?.integerForKey(AppGroupSharedData.totalKey) ?? 0
-        longestStreak = defaults?.integerForKey(AppGroupSharedData.longestStreakKey) ?? 0
-        currentStreak = defaults?.integerForKey(AppGroupSharedData.currentStreakKey) ?? 0
+        todayScore = defaults?.integerForKey(AppGroupSharedDataKey.TodayScore.rawValue) ?? 0
+        todayDate = defaults?.objectForKey(AppGroupSharedDataKey.TodayDate.rawValue) as? NSDate ?? NSDate()
+        total = defaults?.integerForKey(AppGroupSharedDataKey.Total.rawValue) ?? 0
+        longestStreak = defaults?.integerForKey(AppGroupSharedDataKey.LongestStreak.rawValue) ?? 0
+        currentStreak = defaults?.integerForKey(AppGroupSharedDataKey.CurrentStreak.rawValue) ?? 0
     }
 }

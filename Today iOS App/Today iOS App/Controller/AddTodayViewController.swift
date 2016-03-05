@@ -8,7 +8,6 @@
 
 import UIKit
 import TodayKit
-import DeviceKit
 
 final class AddTodayViewController: UIViewController {
     

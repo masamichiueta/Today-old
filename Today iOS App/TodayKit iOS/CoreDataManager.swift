@@ -15,16 +15,14 @@ public enum StorageType {
 }
 
 //MARK: - ICloud Notification Selector Keys
-public enum ICloudNotificationSelectorKey: String {
-    case UbiquitousKeyValueStoreDidChangeExternally = "ubiquitousKeyValueStoreDidChangeExternally:"
-    case StoresWillChange = "storesWillChange:"
-    case StoresDidChange = "storesDidChange:"
-    case PersistentStoreDidImportUbiquitousContentChanges = "persistentStoreDidImportUbiquitousContentChanges:"
-    case UpdateFromiCloud = "updateFromiCloud:"
-    case UpdateToiCloud = "updateToiCloud:"
+public struct ICloudNotificationSelector {
+    public static let ubiquitousKeyValueStoreDidChangeExternally = Selector("ubiquitousKeyValueStoreDidChangeExternally:")
+    public static let storesWillChange = Selector("storesWillChange:")
+    public static let storesDidChange = Selector("storesDidChange:")
+    public static let persistentStoreDidImportUbiquitousContentChanges = Selector("persistentStoreDidImportUbiquitousContentChanges:")
+    public static let updateFromiCloud = Selector("updateFromiCloud:")
+    public static let updateToiCloud = Selector("updateToiCloud:")
 }
-
-
 
 //MARK: - CoreDataManger
 public final class CoreDataManager {
@@ -83,17 +81,17 @@ public final class CoreDataManager {
     //MARK: - Notification
     func registerForiCloudNotifications() {
         let iCloudStore = NSUbiquitousKeyValueStore.defaultStore()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector(ICloudNotificationSelectorKey.UpdateFromiCloud.rawValue), name: NSUbiquitousKeyValueStoreDidChangeExternallyNotification, object: iCloudStore)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector(ICloudNotificationSelectorKey.UpdateToiCloud.rawValue), name: NSUserDefaultsDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: ICloudNotificationSelector.updateFromiCloud, name: NSUbiquitousKeyValueStoreDidChangeExternallyNotification, object: iCloudStore)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: ICloudNotificationSelector.updateToiCloud, name: NSUserDefaultsDidChangeNotification, object: nil)
         iCloudStore.synchronize()
         
         guard let moc = managedObjectContext else {
             return
         }
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector(ICloudNotificationSelectorKey.StoresWillChange.rawValue), name: NSPersistentStoreCoordinatorStoresWillChangeNotification, object: moc.persistentStoreCoordinator)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector(ICloudNotificationSelectorKey.StoresDidChange.rawValue), name: NSPersistentStoreCoordinatorStoresDidChangeNotification, object: moc.persistentStoreCoordinator)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector(ICloudNotificationSelectorKey.PersistentStoreDidImportUbiquitousContentChanges.rawValue), name: NSPersistentStoreDidImportUbiquitousContentChangesNotification, object: moc.persistentStoreCoordinator)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: ICloudNotificationSelector.storesWillChange, name: NSPersistentStoreCoordinatorStoresWillChangeNotification, object: moc.persistentStoreCoordinator)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: ICloudNotificationSelector.storesDidChange, name: NSPersistentStoreCoordinatorStoresDidChangeNotification, object: moc.persistentStoreCoordinator)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: ICloudNotificationSelector.persistentStoreDidImportUbiquitousContentChanges, name: NSPersistentStoreDidImportUbiquitousContentChangesNotification, object: moc.persistentStoreCoordinator)
     }
     
     func unregisterForiCloudNotifications() {
@@ -118,8 +116,8 @@ public final class CoreDataManager {
         }
         
         NSUserDefaults.standardUserDefaults().synchronize()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector(ICloudNotificationSelectorKey.UpdateToiCloud.rawValue), name: NSUserDefaultsDidChangeNotification, object: nil)
-        NSNotificationCenter.defaultCenter().postNotificationName(ICloudRegistableNotificationKey.UbiquitousKeyValueStoreDidChangeExternallyNotification.rawValue, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: ICloudNotificationSelector.updateToiCloud, name: NSUserDefaultsDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName(ICloudRegistableNotificationKey.ubiquitousKeyValueStoreDidChangeExternallyNotification, object: nil)
         
     }
     
@@ -147,11 +145,11 @@ public final class CoreDataManager {
             }
             moc.reset()
         })
-        NSNotificationCenter.defaultCenter().postNotificationName(ICloudRegistableNotificationKey.StoresWillChangeNotification.rawValue, object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName(ICloudRegistableNotificationKey.storesWillChangeNotification, object: nil)
     }
     
     dynamic func storesDidChange(notification: NSNotification) {
-        NSNotificationCenter.defaultCenter().postNotificationName(ICloudRegistableNotificationKey.StoresDidChangeNotification.rawValue, object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName(ICloudRegistableNotificationKey.storesDidChangeNotification, object: nil)
     }
     
     dynamic func persistentStoreDidImportUbiquitousContentChanges(notification: NSNotification) {
@@ -161,7 +159,7 @@ public final class CoreDataManager {
         moc.performBlock({
             moc.mergeChangesFromContextDidSaveNotification(notification)
         })
-        NSNotificationCenter.defaultCenter().postNotificationName(ICloudRegistableNotificationKey.PersistentStoreDidImportUbiquitousContentChangesNotification.rawValue, object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName(ICloudRegistableNotificationKey.persistentStoreDidImportUbiquitousContentChangesNotification, object: nil)
     }
     
 }

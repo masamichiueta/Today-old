@@ -9,11 +9,11 @@
 import Foundation
 
 //MARK: - Notification Keys
-public enum ICloudRegistableNotificationKey: String {
-    case UbiquitousKeyValueStoreDidChangeExternallyNotification = "UbiquitousKeyValueStoreDidChangeExternallyNotification"
-    case StoresWillChangeNotification = "storesWillChangeNotification"
-    case StoresDidChangeNotification = "storesDidChangeNotification"
-    case PersistentStoreDidImportUbiquitousContentChangesNotification = "persistentStoreDidImportUbiquitousContentChangesNotification"
+public struct ICloudRegistableNotificationKey {
+    public static let ubiquitousKeyValueStoreDidChangeExternallyNotification = "UbiquitousKeyValueStoreDidChangeExternallyNotification"
+    public static let storesWillChangeNotification = "storesWillChangeNotification"
+    public static let storesDidChangeNotification = "storesDidChangeNotification"
+    public static let persistentStoreDidImportUbiquitousContentChangesNotification = "persistentStoreDidImportUbiquitousContentChangesNotification"
 }
 
 //MARK: - ICloudRegistable
@@ -28,17 +28,17 @@ public protocol ICloudRegistable: class {
 extension ICloudRegistable {
     
     public func registerForiCloudNotifications() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector(ICloudNotificationSelectorKey.UbiquitousKeyValueStoreDidChangeExternally.rawValue), name: ICloudRegistableNotificationKey.UbiquitousKeyValueStoreDidChangeExternallyNotification.rawValue, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector(ICloudNotificationSelectorKey.StoresWillChange.rawValue), name: ICloudRegistableNotificationKey.StoresWillChangeNotification.rawValue, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector(ICloudNotificationSelectorKey.StoresDidChange.rawValue), name: ICloudRegistableNotificationKey.StoresDidChangeNotification.rawValue, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector(ICloudNotificationSelectorKey.PersistentStoreDidImportUbiquitousContentChanges.rawValue), name:ICloudRegistableNotificationKey.PersistentStoreDidImportUbiquitousContentChangesNotification.rawValue, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: ICloudNotificationSelector.ubiquitousKeyValueStoreDidChangeExternally, name: ICloudRegistableNotificationKey.ubiquitousKeyValueStoreDidChangeExternallyNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: ICloudNotificationSelector.storesWillChange, name: ICloudRegistableNotificationKey.storesWillChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: ICloudNotificationSelector.storesDidChange, name: ICloudRegistableNotificationKey.storesDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: ICloudNotificationSelector.persistentStoreDidImportUbiquitousContentChanges, name:ICloudRegistableNotificationKey.persistentStoreDidImportUbiquitousContentChangesNotification, object: nil)
     }
     
     public func unregisterForiCloudNotifications() {
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: ICloudRegistableNotificationKey.UbiquitousKeyValueStoreDidChangeExternallyNotification.rawValue, object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: ICloudRegistableNotificationKey.StoresWillChangeNotification.rawValue, object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: ICloudRegistableNotificationKey.StoresDidChangeNotification.rawValue, object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: ICloudRegistableNotificationKey.PersistentStoreDidImportUbiquitousContentChangesNotification.rawValue, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: ICloudRegistableNotificationKey.ubiquitousKeyValueStoreDidChangeExternallyNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: ICloudRegistableNotificationKey.storesWillChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: ICloudRegistableNotificationKey.storesDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: ICloudRegistableNotificationKey.persistentStoreDidImportUbiquitousContentChangesNotification, object: nil)
     }
     
     

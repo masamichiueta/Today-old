@@ -13,50 +13,50 @@ public struct Setting {
     private let defaults = NSUserDefaults.standardUserDefaults()
     
     //MARK: - Keys
-    public enum SettingKey: String {
-        case NotificationEnabled
-        case NotificationHour
-        case NotificationMinute
-        case FirstLaunch
-        case ICloudEnabled
-        case UbiquityIdentityToken = "com.uetamasamichi.Today.UbiquityIdentityToken"
-        case Version = "CFBundleShortVersionString"
+    public struct SettingKey {
+        public static let notificationEnabled = "NotificationEnabled"
+        public static let notificationHour = "NotificationHour"
+        public static let notificationMinute = "NotificationMinute"
+        public static let firstLaunch = "FirstLaunch"
+        public static let iCloudEnabled = "ICloudEnabled"
+        public static let ubiquityIdentityToken = "com.uetamasamichi.Today.UbiquityIdentityToken"
+        public static let version = "CFBundleShortVersionString"
     }
     
     //MARK: - Values
     public var notificationEnabled: Bool {
         didSet {
-            defaults.setBool(notificationEnabled, forKey: SettingKey.NotificationEnabled.rawValue)
+            defaults.setBool(notificationEnabled, forKey: SettingKey.notificationEnabled)
         }
     }
     
     public var notificationHour: Int {
         didSet {
-            defaults.setInteger(notificationHour, forKey: SettingKey.NotificationHour.rawValue)
+            defaults.setInteger(notificationHour, forKey: SettingKey.notificationHour)
         }
     }
     
     public var notificationMinute: Int {
         didSet {
-            defaults.setInteger(notificationMinute, forKey: SettingKey.NotificationMinute.rawValue)
+            defaults.setInteger(notificationMinute, forKey: SettingKey.notificationMinute)
         }
     }
     
     public var firstLaunch: Bool {
         didSet {
-            defaults.setBool(firstLaunch, forKey: SettingKey.FirstLaunch.rawValue)
+            defaults.setBool(firstLaunch, forKey: SettingKey.firstLaunch)
         }
     }
     
     public var ubiquityIdentityToken: NSData? {
         didSet {
-            defaults.setObject(ubiquityIdentityToken, forKey: SettingKey.UbiquityIdentityToken.rawValue)
+            defaults.setObject(ubiquityIdentityToken, forKey: SettingKey.ubiquityIdentityToken)
         }
     }
     
     public var iCloudEnabled: Bool {
         didSet {
-            defaults.setBool(iCloudEnabled, forKey: SettingKey.ICloudEnabled.rawValue)
+            defaults.setBool(iCloudEnabled, forKey: SettingKey.iCloudEnabled)
         }
     }
     
@@ -64,13 +64,13 @@ public struct Setting {
     
     //MARK: -
     public init() {
-        notificationEnabled = defaults.boolForKey(SettingKey.NotificationEnabled.rawValue)
-        notificationHour = defaults.integerForKey(SettingKey.NotificationHour.rawValue)
-        notificationMinute = defaults.integerForKey(SettingKey.NotificationMinute.rawValue)
-        firstLaunch = defaults.boolForKey(SettingKey.FirstLaunch.rawValue)
-        ubiquityIdentityToken = defaults.dataForKey(SettingKey.UbiquityIdentityToken.rawValue)
-        iCloudEnabled = defaults.boolForKey(SettingKey.ICloudEnabled.rawValue)
-        guard let settingVersion = NSBundle.mainBundle().objectForInfoDictionaryKey(SettingKey.Version.rawValue) as? String else {
+        notificationEnabled = defaults.boolForKey(SettingKey.notificationEnabled)
+        notificationHour = defaults.integerForKey(SettingKey.notificationHour)
+        notificationMinute = defaults.integerForKey(SettingKey.notificationMinute)
+        firstLaunch = defaults.boolForKey(SettingKey.firstLaunch)
+        ubiquityIdentityToken = defaults.dataForKey(SettingKey.ubiquityIdentityToken)
+        iCloudEnabled = defaults.boolForKey(SettingKey.iCloudEnabled)
+        guard let settingVersion = NSBundle.mainBundle().objectForInfoDictionaryKey(SettingKey.version) as? String else {
             fatalError("Invalid setting")
         }
         version = settingVersion
@@ -87,13 +87,13 @@ public struct Setting {
     public var dictionaryRepresentation: [String : AnyObject?] {
         get {
             return [
-                SettingKey.NotificationEnabled.rawValue: notificationEnabled,
-                SettingKey.NotificationHour.rawValue: notificationHour,
-                SettingKey.NotificationMinute.rawValue: notificationMinute,
-                SettingKey.FirstLaunch.rawValue: firstLaunch,
-                SettingKey.ICloudEnabled.rawValue: iCloudEnabled,
-                SettingKey.UbiquityIdentityToken.rawValue: ubiquityIdentityToken,
-                SettingKey.Version.rawValue: version
+                SettingKey.notificationEnabled: notificationEnabled,
+                SettingKey.notificationHour: notificationHour,
+                SettingKey.notificationMinute: notificationMinute,
+                SettingKey.firstLaunch: firstLaunch,
+                SettingKey.iCloudEnabled: iCloudEnabled,
+                SettingKey.ubiquityIdentityToken: ubiquityIdentityToken,
+                SettingKey.version: version
             ]
         }
     }

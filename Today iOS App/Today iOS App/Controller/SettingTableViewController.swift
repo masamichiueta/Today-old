@@ -97,13 +97,13 @@ final class SettingTableViewController: UITableViewController {
         if sender.on {
             if let currentiCloudToken = NSFileManager.defaultManager().ubiquityIdentityToken {
                 //Chagnet to iCloud Storage
-                NSNotificationCenter.defaultCenter().postNotificationName(ICloudRegistableNotificationKey.StoresWillChangeNotification.rawValue, object: nil)
+                NSNotificationCenter.defaultCenter().postNotificationName(ICloudRegistableNotificationKey.storesWillChangeNotification, object: nil)
                 setting.iCloudEnabled = true
                 let newTokenData = NSKeyedArchiver.archivedDataWithRootObject(currentiCloudToken)
                 setting.ubiquityIdentityToken = newTokenData
                 coreDataManager.createTodayMainContext(.Cloud)
                 appDelegate.updateManagedObjectContextInAllViewControllers()
-                NSNotificationCenter.defaultCenter().postNotificationName(ICloudRegistableNotificationKey.StoresDidChangeNotification.rawValue, object: nil)
+                NSNotificationCenter.defaultCenter().postNotificationName(ICloudRegistableNotificationKey.storesDidChangeNotification, object: nil)
             } else {
                 let alertController = UIAlertController(title: localize("iCloud is Disabled"), message: localize("Your iCloud account is disabled. Please sign in from setting."), preferredStyle: .Alert)
                 alertController.addAction(UIAlertAction(title: localize("OK"), style: .Default, handler: { action in
@@ -113,12 +113,12 @@ final class SettingTableViewController: UITableViewController {
             }
         } else {
             //Change to Local Storage
-            NSNotificationCenter.defaultCenter().postNotificationName(ICloudRegistableNotificationKey.StoresWillChangeNotification.rawValue, object: nil)
+            NSNotificationCenter.defaultCenter().postNotificationName(ICloudRegistableNotificationKey.storesWillChangeNotification, object: nil)
             setting.iCloudEnabled = false
             setting.ubiquityIdentityToken = nil
             coreDataManager.createTodayMainContext(.Local)
             appDelegate.updateManagedObjectContextInAllViewControllers()
-            NSNotificationCenter.defaultCenter().postNotificationName(ICloudRegistableNotificationKey.StoresDidChangeNotification.rawValue, object: nil)
+            NSNotificationCenter.defaultCenter().postNotificationName(ICloudRegistableNotificationKey.storesDidChangeNotification, object: nil)
         }
     }
     

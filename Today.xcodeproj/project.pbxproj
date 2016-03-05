@@ -679,6 +679,7 @@
 				246688231C1D189F00C5E5A0 /* Embed App Extensions */,
 				240B06301C4D2E3B00C7C0B5 /* ShellScript */,
 				24F21AE91C4FD73E00396A38 /* Embed Watch Content */,
+				249E98A91C8B1192002D8939 /* Increment Build */,
 			);
 			buildRules = (
 			);
@@ -790,6 +791,7 @@
 				24F21AAB1C4FCFE900396A38 /* Sources */,
 				24F21AAC1C4FCFE900396A38 /* Frameworks */,
 				24F21AAD1C4FCFE900396A38 /* Resources */,
+				249E98AA1C8B1208002D8939 /* Increment Build */,
 			);
 			buildRules = (
 			);
@@ -825,6 +827,7 @@
 				24F21ACA1C4FD73C00396A38 /* Frameworks */,
 				24F21ACB1C4FD73C00396A38 /* Resources */,
 				2451ED851C54FDFC00E7181B /* Embed Frameworks */,
+				249E98AB1C8B122D002D8939 /* Increment Build */,
 			);
 			buildRules = (
 			);
@@ -1017,6 +1020,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"SwiftLint does not exist, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+		249E98A91C8B1192002D8939 /* Increment Build */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Increment Build";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
+		};
+		249E98AA1C8B1208002D8939 /* Increment Build */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Increment Build";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
+		};
+		249E98AB1C8B122D002D8939 /* Increment Build */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Increment Build";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 

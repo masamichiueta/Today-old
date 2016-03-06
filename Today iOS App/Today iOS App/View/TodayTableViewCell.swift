@@ -1,5 +1,5 @@
 //
-//  TableViewCell.swift
+//  TodayTableViewCell.swift
 //  Today
 //
 //  Created by MasamichiUeta on 2015/12/21.
@@ -9,21 +9,20 @@
 import UIKit
 import TodayKit
 
-private let dateFormatter: NSDateFormatter = {
-    let formatter = NSDateFormatter()
-    formatter.dateStyle = .MediumStyle
-    formatter.timeStyle = .NoStyle
-    formatter.doesRelativeDateFormatting = true
-    return formatter
-}()
-
-
-class TableViewCell: UITableViewCell {
+class TodayTableViewCell: UITableViewCell {
     
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var scoreCircleView: ScoreCircleView!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
+    
+    private let dateFormatter: NSDateFormatter = {
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = .MediumStyle
+        formatter.timeStyle = .NoStyle
+        formatter.doesRelativeDateFormatting = true
+        return formatter
+    }()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -37,7 +36,7 @@ class TableViewCell: UITableViewCell {
 }
 
 //MARK: - ConfigurableCell
-extension TableViewCell: ConfigurableCell {
+extension TodayTableViewCell: ConfigurableCell {
     func configureForObject(today: Today) {
         dateLabel.text = dateFormatter.stringFromDate(today.date)
         scoreCircleView.score = Int(today.score)

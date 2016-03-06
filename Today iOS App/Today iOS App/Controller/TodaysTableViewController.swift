@@ -21,7 +21,7 @@ final class TodaysTableViewController: UITableViewController, ManagedObjectConte
     
     private typealias TodaysDataProvider = FetchedResultsDataProvider<TodaysTableViewController>
     private var dataProvider: TodaysDataProvider!
-    private var dataSource: TableViewDataSource<TodaysTableViewController, TodaysDataProvider, TableViewCell>!
+    private var dataSource: TableViewDataSource<TodaysTableViewController, TodaysDataProvider, TodayTableViewCell>!
     
     override func viewDidLoad() {
         super.viewDidLoad()

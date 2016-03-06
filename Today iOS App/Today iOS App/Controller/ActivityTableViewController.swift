@@ -114,19 +114,7 @@ final class ActivityTableViewController: UITableViewController, ManagedObjectCon
             guard let cell = tableView.dequeueReusableCellWithCellIdentifier(.ActivityStreakCell, forIndexPath: indexPath) as? StreakTableViewCell else {
                 fatalError("Wrong cell type")
             }
-            let longestStreakNumber: Int
-            if let longestStreak = Streak.longestStreak(managedObjectContext) {
-                longestStreakNumber = Int(longestStreak.streakNumber)
-            } else {
-                longestStreakNumber = 0
-            }
-            let currentSterakNumber: Int
-            if let currentStreak = Streak.currentStreak(managedObjectContext) {
-                currentSterakNumber = Int(currentStreak.streakNumber)
-            } else {
-                currentSterakNumber = 0
-            }
-            cell.configureForObject((longestStreakNumber, currentSterakNumber))
+            cell.configureForObject((Streak.longestStreak(managedObjectContext), Streak.currentStreak(managedObjectContext)))
             return cell
         default:
             let cell = tableView.dequeueReusableCellWithCellIdentifier(.Cell, forIndexPath: indexPath)

@@ -12,9 +12,18 @@ import TodayKit
 class StreakTableViewCell: UITableViewCell {
     
     @IBOutlet weak var longestStreakLabel: UILabel!
+    @IBOutlet weak var longestStreakDateLabel: UILabel!
     
     @IBOutlet weak var currentStreakLabel: UILabel!
+    @IBOutlet weak var currentStreakDateLabel: UILabel!
     
+    private let dateFormatter: NSDateFormatter = {
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = .MediumStyle
+        formatter.timeStyle = .NoStyle
+        formatter.doesRelativeDateFormatting = true
+        return formatter
+    }()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,9 +37,23 @@ class StreakTableViewCell: UITableViewCell {
 
 //MARK: - ConfigurableCell 
 extension StreakTableViewCell: ConfigurableCell {
-    func configureForObject(longestAndCurrentStreaks: (Int, Int)) {
+    func configureForObject(longestAndCurrentStreaks: (Streak?, Streak?)) {
         let (longestStreak, currentStreak) = longestAndCurrentStreaks
-        longestStreakLabel.text = "\(longestStreak)"
-        currentStreakLabel.text = "\(currentStreak)"
+        
+        if let longestStreak = longestStreak {
+            longestStreakLabel.text = "\(Int(longestStreak.streakNumber))"
+            longestStreakDateLabel.text = "\(dateFormatter.stringFromDate(longestStreak.from)) - \(dateFormatter.stringFromDate(longestStreak.to))"
+        } else {
+            longestStreakLabel.text = "0"
+            longestStreakDateLabel.text = ""
+        }
+        
+        if let currentStreak = currentStreak {
+            currentStreakLabel.text = "\(Int(currentStreak.streakNumber))"
+            currentStreakDateLabel.text = "\(dateFormatter.stringFromDate(currentStreak.from)) - \(dateFormatter.stringFromDate(currentStreak.to))"
+        } else {
+            currentStreakLabel.text = "0"
+            currentStreakDateLabel.text = ""
+        }
     }
 }

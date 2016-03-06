@@ -1,4 +1,4 @@
-![Today](https://github.com/micchyboy1023/Today/tree/master/Resource/iOSApp/launch_icon.png "Today")
+[![Today](https://raw.githubusercontent.com/micchyboy1023/Today/master/Resource/iOSApp/launch_icon.png)](http://uetamasamichi.com/Today)
 
 # Today
 

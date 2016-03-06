@@ -8,7 +8,7 @@
 /* Class = "WKInterfaceButton"; title = "Add"; ObjectID = "aZP-Wh-NM7"; */
 "aZP-Wh-NM7.title" = "追加する";
 
-/* Class = "WKInterfaceLabel"; text = "You have already created today!"; ObjectID = "dt0-zJ-CNk"; */
+/* Class = "WKInterfaceLabel"; text = "You have already created Today!"; ObjectID = "dt0-zJ-CNk"; */
 "dt0-zJ-CNk.text" = "すでにTodayを作成済みです!";
 
 /* Class = "WKInterfaceLabel"; text = "days"; ObjectID = "mXW-PE-n6U"; */

@@ -10,7 +10,7 @@
             <objects>
                 <controller title="Today" id="AgC-eL-Hgc" customClass="ScoreInterfaceController" customModule="Today_Watch_Extension">
                     <items>
-                        <label alignment="center" hidden="YES" alpha="0.0" text="You have already created today!" textAlignment="center" numberOfLines="2" id="dt0-zJ-CNk">
+                        <label alignment="center" hidden="YES" alpha="0.0" text="You have already created Today!" textAlignment="center" numberOfLines="2" id="dt0-zJ-CNk">
                             <color key="textColor" red="1" green="0.21960784310000001" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="font" style="UICTFontTextStyleCaption1"/>
                         </label>

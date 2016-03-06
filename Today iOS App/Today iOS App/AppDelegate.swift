@@ -7,9 +7,7 @@
 //
 
 import UIKit
-import CoreData
 import TodayKit
-import WatchConnectivity
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

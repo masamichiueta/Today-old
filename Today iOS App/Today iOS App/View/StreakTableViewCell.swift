@@ -21,7 +21,6 @@ class StreakTableViewCell: UITableViewCell {
         let formatter = NSDateFormatter()
         formatter.dateStyle = .MediumStyle
         formatter.timeStyle = .NoStyle
-        formatter.doesRelativeDateFormatting = true
         return formatter
     }()
     

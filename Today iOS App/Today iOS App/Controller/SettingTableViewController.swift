@@ -27,6 +27,8 @@ final class SettingTableViewController: UITableViewController {
         return sampleCell.detailTextLabel?.textColor
     }
     
+    private let reviewUrl = "itms-apps://itunes.apple.com/app/id1090660820"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
@@ -208,8 +210,6 @@ final class SettingTableViewController: UITableViewController {
             
             togglePickerCell(pickerHidden)
         case (2, 0):
-            //TODO: Replace URL
-            let reviewUrl = "URL for Today App"
             UIApplication.sharedApplication().openURL(NSURL(string: reviewUrl)!)
         default:
             break

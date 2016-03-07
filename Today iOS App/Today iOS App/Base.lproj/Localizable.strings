@@ -39,7 +39,7 @@
 "Your iCloud account is disabled. Please sign in from setting." = "Your iCloud account is disabled. Please sign in from setting.";
 "Notification Setting" = "Notification Setting";
 "Notification Time" = "Notification Time";
-"iCloud sync" = "iCloud sync";
+"iCloud Sync" = "iCloud Sync";
 "Rate Today" = "Rate Today";
 
 //MARK: - TodaysTableViewController.swift

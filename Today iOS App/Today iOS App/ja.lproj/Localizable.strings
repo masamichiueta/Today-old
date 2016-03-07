@@ -37,7 +37,7 @@
 "Go Setting" = "設定を確認する";
 "Notification Setting" = "通知設定";
 "Notification Time" = "通知時間";
-"iCloud sync" = "iCloud同期設定";
+"iCloud Sync" = "iCloud同期設定";
 "Rate Today" = "Todayを評価する";
 
 //MARK: - TodaysTableViewController.swift

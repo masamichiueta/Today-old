@@ -179,7 +179,7 @@ final class SettingTableViewController: UITableViewController {
             return cell
         case (1, 0):
             let cell = tableView.dequeueReusableCellWithCellIdentifier(.SettingSwitchCell, forIndexPath: indexPath)
-            cell.textLabel?.text = localize("iCloud sync")
+            cell.textLabel?.text = localize("iCloud Sync")
             let sw = UISwitch()
             sw.on = setting.iCloudEnabled
             sw.addTarget(self, action: "iCloudSwitchValueDidChange:", forControlEvents: .ValueChanged)

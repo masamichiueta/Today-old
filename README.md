@@ -32,4 +32,5 @@ If you have a nice idea, please submit a pull request.
 
 
 # License
-Today is created by [Masamichi Ueta](http://uetamasamichi.com) and released under a [MIT License]().
+Copyright (c) 2016 Masamichi Ueta
+Today is created by [Masamichi Ueta](http://uetamasamichi.com) and released under a [MIT License](https://raw.githubusercontent.com/micchyboy1023/Today/master/LICENSE).

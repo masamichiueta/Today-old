@@ -674,8 +674,8 @@
 				24030ADE1C1C821C004E68ED /* Resources */,
 				246688111C1D187A00C5E5A0 /* Embed Frameworks */,
 				246688231C1D189F00C5E5A0 /* Embed App Extensions */,
-				240B06301C4D2E3B00C7C0B5 /* ShellScript */,
 				24F21AE91C4FD73E00396A38 /* Embed Watch Content */,
+				240B06301C4D2E3B00C7C0B5 /* SwiftLint */,
 				249E98A91C8B1192002D8939 /* Increment Build */,
 			);
 			buildRules = (
@@ -1004,13 +1004,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		240B06301C4D2E3B00C7C0B5 /* ShellScript */ = {
+		240B06301C4D2E3B00C7C0B5 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = SwiftLint;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;

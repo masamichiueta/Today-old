@@ -1,0 +1,26 @@
+{
+  "name": "today",
+  "version": "1.0.0",
+  "description": "[![Today](https://raw.githubusercontent.com/micchyboy1023/Today/master/Resource/iOSApp/launch_icon.png)](http://uetamasamichi.com/Today)",
+  "main": "index.js",
+  "scripts": {
+    "build-css": "./bin/build-css",
+    "watch-css": "./bin/watch-css",
+    "ws": "ws"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/micchyboy1023/Today.git"
+  },
+  "author": "Masamichi Ueta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/micchyboy1023/Today/issues"
+  },
+  "homepage": "https://github.com/micchyboy1023/Today#readme",
+  "devDependencies": {
+    "local-web-server": "^1.1.2",
+    "node-sass": "^3.4.2",
+    "nodemon": "^1.8.1"
+  }
+}

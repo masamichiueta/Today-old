@@ -37,8 +37,12 @@ final class ScoreInterfaceController: WKInterfaceController {
             
             let duration = 0.5
             scoreGroup.startAnimatingWithImagesInRange(NSRange(location: 0, length: 6 * todayScore + 1), duration: duration, repeatCount: 1)
+            
+            let color = Today.type(todayScore).color()
             scoreLabel.setText("\(todayScore)")
+            scoreLabel.setTextColor(color)
             scoreIcon.setImageNamed(Today.type(todayScore).iconName(.TwentyEight))
+            scoreIcon.setTintColor(color)
             
         }
     }

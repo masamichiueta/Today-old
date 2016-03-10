@@ -14,9 +14,11 @@
                             <color key="textColor" red="1" green="0.21960784310000001" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="font" style="UICTFontTextStyleCaption1"/>
                         </label>
-                        <group width="120" height="120" alignment="center" verticalAlignment="center" backgroundImage="score_circle_38_0" layout="vertical" id="dPv-TN-vgx">
+                        <group width="120" height="120" alignment="center" verticalAlignment="center" backgroundImage="score_circle_38_0" layout="vertical" spacing="0.0" id="dPv-TN-vgx">
                             <items>
-                                <label alignment="center" verticalAlignment="center" text="0" id="mt2-0g-nab"/>
+                                <label alignment="center" verticalAlignment="center" text="0" id="mt2-0g-nab">
+                                    <fontDescription key="font" type="system" weight="thin" pointSize="60"/>
+                                </label>
                                 <imageView alignment="center" verticalAlignment="center" image="poor_face_icon_28" id="k1s-gC-GYU">
                                     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </imageView>
@@ -50,7 +52,7 @@
                 <controller title="Current Streak" id="Mww-RZ-ABu" customClass="CurrentStreakInterfaceController" customModule="Today_Watch_Extension">
                     <items>
                         <label alignment="center" verticalAlignment="center" text="0" id="oCW-ni-WRM">
-                            <fontDescription key="font" type="system" pointSize="80"/>
+                            <fontDescription key="font" type="system" weight="thin" pointSize="80"/>
                         </label>
                         <label alignment="center" verticalAlignment="center" text="days" id="mXW-PE-n6U">
                             <fontDescription key="font" type="system" pointSize="16"/>

@@ -50,6 +50,10 @@ final class ScoreInterfaceController: WKInterfaceController {
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
         
+        let color = Today.type(todayScore).color()
+        scoreLabel.setTextColor(color)
+        scoreIcon.setTintColor(color)
+        
         if WCSession.isSupported() {
             session = WCSession.defaultSession()
             session.delegate = self

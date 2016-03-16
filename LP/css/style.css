@@ -1,14 +1,42 @@
-.content {
-  height: 100vh; }
+.hero {
+  text-align: center;
+  padding: 8rem 0 1rem; }
+  @media only screen and (min-width: 750px) {
+    .hero {
+      padding: 16rem 0 5rem; } }
 
-.vertical-center {
-  min-height: 100%;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column; }
+.device {
+  position: relative;
+  max-width: 80%;
+  margin: 3rem auto 0; }
+  @media only screen and (min-width: 750px) {
+    .device {
+      position: absolute;
+      top: -15rem;
+      max-height: 500px;
+      right: 0; } }
+  @media only screen and (min-width: 1000px) {
+    .device {
+      right: 8rem; } }
 
 .catchcopy {
   margin: 10px 0;
-  font-size: 2em; }
+  font-size: 3rem; }
+
+.quote {
+  font-style: italic;
+  font-weight: 300;
+  font-size: 2rem;
+  line-height: 1.6;
+  letter-spacing: 0.02rem;
+  color: #777; }
+  @media only screen and (min-width: 750px) {
+    .quote {
+      padding: 22rem 0 0; } }
+  .quote .name {
+    font-size: 1.5rem;
+    color: #939da5;
+    font-style: normal; }
+
+.text-center {
+  text-align: center; }

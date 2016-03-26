@@ -448,7 +448,7 @@
 				242F984A1C49282200DBC64B /* NotificationManager.swift */,
 				24FE134E1C7F49A700A573B8 /* TodayWCSessionHandler.swift */,
 			);
-			path = Helper;
+			name = Helper;
 			sourceTree = "<group>";
 		};
 		246688171C1D189F00C5E5A0 /* Frameworks */ = {
@@ -468,7 +468,7 @@
 				24FFBB961C3D6AFA0053E261 /* SettingTableViewController.swift */,
 				246688501C1DB4ED00C5E5A0 /* TodaysTableViewController.swift */,
 			);
-			path = Controller;
+			name = Controller;
 			sourceTree = "<group>";
 		};
 		2466885A1C1EFC5600C5E5A0 /* View */ = {
@@ -490,7 +490,7 @@
 				24C6AE961C2831660048C4D1 /* TodayTableViewCell.swift */,
 				246688541C1DB61100C5E5A0 /* Today.storyboard */,
 			);
-			path = View;
+			name = View;
 			sourceTree = "<group>";
 		};
 		24A487E51C55032E0015DB05 /* Today iOS App */ = {
@@ -574,7 +574,7 @@
 				24DBB5901C2C367100E1C042 /* Utilities.swift */,
 				245464661C75FFEF0030EF82 /* WatchConnectivityActionType.swift */,
 			);
-			path = Helper;
+			name = Helper;
 			sourceTree = "<group>";
 		};
 		24C77EA71C2A8C5F00493C13 /* Model */ = {
@@ -584,7 +584,7 @@
 				24C77EA81C2A8C6F00493C13 /* Today.swift */,
 				24C77EA41C2A8C3400493C13 /* Today.xcdatamodeld */,
 			);
-			path = Model;
+			name = Model;
 			sourceTree = "<group>";
 		};
 		24F21AB21C4FCFE900396A38 /* Today Extension */ = {
@@ -642,7 +642,7 @@
 				24F9DC3A1C2EFB0F003A6427 /* FetchedResultsDataProvider.swift */,
 				24F9DC3C1C2EFCD4003A6427 /* TableViewDataSource.swift */,
 			);
-			path = "Data Source and Provider";
+			name = "Data Source and Provider";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

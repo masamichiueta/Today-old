@@ -102,6 +102,11 @@ public enum Device {
     /// ![Image](https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/SP727/SP727-iphone6s-plus-gray-select-2015.png)
     case iPhone6sPlus
     
+    /// Device is an [iPhone SE](https://support.apple.com/kb/SP738???) TODO: Spec page not posted yet
+    ///
+    /// ![Image](https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/???) TODO: Image page not posted yet
+    case iPhoneSE
+    
     /// Device is an [iPad 2](https://support.apple.com/kb/SP622)
     ///
     /// ![Image](https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/SP622/SP622_01-ipad2-mul.png)
@@ -193,6 +198,7 @@ public enum Device {
                 case "iPhone7,1":                               return iPhone6Plus
                 case "iPhone8,1":                               return iPhone6s
                 case "iPhone8,2":                               return iPhone6sPlus
+                case "iPhone8,4":                               return iPhoneSE
                 case "iPad2,1", "iPad2,2", "iPad2,3", "iPad2,4":return iPad2
                 case "iPad3,1", "iPad3,2", "iPad3,3":           return iPad3
                 case "iPad3,4", "iPad3,5", "iPad3,6":           return iPad4
@@ -202,7 +208,7 @@ public enum Device {
                 case "iPad4,4", "iPad4,5", "iPad4,6":           return iPadMini2
                 case "iPad4,7", "iPad4,8", "iPad4,9":           return iPadMini3
                 case "iPad5,1", "iPad5,2":                      return iPadMini4
-                case "iPad6,7", "iPad6,8":                      return iPadPro
+                case "iPad6,3", "iPad6,4", "iPad6,7", "iPad6,8":return iPadPro
                 case "i386", "x86_64":                          return Simulator(mapIdentifierToDevice(String(UTF8String: getenv("SIMULATOR_MODEL_IDENTIFIER"))!))
                 default:                                        return UnknownDevice(identifier)
                 }
@@ -219,53 +225,53 @@ public enum Device {
     
     #if os(iOS)
     public static var allPods: [Device] {
-    return [.iPodTouch5, .iPodTouch6]
+        return [.iPodTouch5, .iPodTouch6]
     }
     
     /// All iPhones
     public static var allPhones: [Device] {
-    return [.iPhone4, iPhone4s, .iPhone5, .iPhone5s, .iPhone6, .iPhone6Plus, .iPhone6s, .iPhone6sPlus]
+        return [.iPhone4, iPhone4s, .iPhone5, .iPhone5s, .iPhone6, .iPhone6Plus, .iPhone6s, .iPhone6sPlus, .iPhoneSE]
     }
     
     /// All iPads
     public static var allPads: [Device] {
-    return [.iPad2, .iPad3, .iPad4, .iPadAir, .iPadAir2, .iPadMini, .iPadMini2, .iPadMini3, .iPadMini4, .iPadPro]
+        return [.iPad2, .iPad3, .iPad4, .iPadAir, .iPadAir2, .iPadMini, .iPadMini2, .iPadMini3, .iPadMini4, .iPadPro]
     }
     
     /// All simulator iPods
     public static var allSimulatorPods: [Device] {
-    return allPods.map(Device.Simulator)
+        return allPods.map(Device.Simulator)
     }
     
     /// All simulator iPhones
     public static var allSimulatorPhones: [Device] {
-    return allPhones.map(Device.Simulator)
+        return allPhones.map(Device.Simulator)
     }
     
     /// All simulator iPads
     public static var allSimulatorPads: [Device] {
-    return allPads.map(Device.Simulator)
+        return allPads.map(Device.Simulator)
     }
     
     /// Return whether the device is an iPod (real or simulator)
     public var isPod: Bool {
-    return self.isOneOf(Device.allPods) || self.isOneOf(Device.allSimulatorPods)
+        return self.isOneOf(Device.allPods) || self.isOneOf(Device.allSimulatorPods)
     }
     
     /// Return whether the device is an iPhone (real or simulator)
     public var isPhone: Bool {
-    return self.isOneOf(Device.allPhones) || self.isOneOf(Device.allSimulatorPhones)
+        return self.isOneOf(Device.allPhones) || self.isOneOf(Device.allSimulatorPhones)
     }
     
     /// Return whether the device is an iPad (real or simulator)
     public var isPad: Bool {
-    return self.isOneOf(Device.allPads) || self.isOneOf(Device.allSimulatorPads)
+        return self.isOneOf(Device.allPads) || self.isOneOf(Device.allSimulatorPads)
     }
     
     /// Return whether the device is any of the simulator
     /// Useful when there is a need to check and skip running a portion of code (location request or others)
     public var isSimulator: Bool {
-    return self.isOneOf(Device.allSimulators)
+        return self.isOneOf(Device.allSimulators)
     }
     
     
@@ -298,15 +304,17 @@ public enum Device {
     /**
      This method saves you in many cases from the need of updating your code with every new device.
      Most uses for an enum like this are the following:
+     
      ```
      switch Device() {
      case .iPodTouch5, .iPodTouch6: callMethodOnIPods()
-     case .iPhone4, iPhone4s, .iPhone5, .iPhone5s, .iPhone6, .iPhone6Plus, .iPhone6s, .iPhone6sPlus: callMethodOnIPhones()
+     case .iPhone4, iPhone4s, .iPhone5, .iPhone5s, .iPhone6, .iPhone6Plus, .iPhone6s, .iPhone6sPlus, .iPhoneSE: callMethodOnIPhones()
      case .iPad2, .iPad3, .iPad4, .iPadAir, .iPadAir2, .iPadMini, .iPadMini2, .iPadMini3, .iPadMini4, .iPadPro: callMethodOnIPads()
      default: break
      }
      ```
      This code can now be replaced with
+     
      ```
      let device = Device()
      if device.isOneOf(Device.allPods) {
@@ -317,7 +325,9 @@ public enum Device {
      callMethodOnIPads()
      }
      ```
+     
      - parameter devices: An array of devices.
+     
      - returns: Returns whether the current device is one of the passed in ones.
      */
     public func isOneOf(devices: [Device]) -> Bool {
@@ -335,6 +345,8 @@ public enum Device {
         case Pad
         /// The user interface should be designed for TV
         case TV
+        /// The user interface should be designed for Car
+        case CarPlay
         /// Used when an object has a trait collection, but it is not in an environment yet. For example, a view that is created, but not put into a view hierarchy.
         case Unspecified
         
@@ -343,7 +355,8 @@ public enum Device {
             case .Pad:          self = .Pad
             case .Phone:        self = .Phone
             case .TV:           self = .TV
-            case .Unspecified:  self = .Unspecified
+            case .CarPlay:      self = .CarPlay
+            default:            self = .Unspecified
             }
         }
         
@@ -393,6 +406,7 @@ extension Device: CustomStringConvertible {
             case .iPhone6Plus:                  return "iPhone 6 Plus"
             case .iPhone6s:                     return "iPhone 6s"
             case .iPhone6sPlus:                 return "iPhone 6s Plus"
+            case .iPhoneSE:                     return "iPhone SE"
             case .iPad2:                        return "iPad 2"
             case .iPad3:                        return "iPad 3"
             case .iPad4:                        return "iPad 4"
@@ -428,6 +442,7 @@ public func == (lhs: Device, rhs: Device) -> Bool {
     extension Device {
         /**
          This enum describes the state of the battery.
+         
          - Full:      The device is plugged into power and the battery is 100% charged or the device is the iOS Simulator.
          - Charging:  The device is plugged into power and the battery is less than 100% charged.
          - Unplugged: The device is not plugged into power; the battery is discharging.

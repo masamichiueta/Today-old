@@ -160,7 +160,7 @@ final class SettingTableViewController: UITableViewController {
             cell.textLabel?.text = localize("Notification Setting")
             let sw = UISwitch()
             sw.on = setting.notificationEnabled
-            sw.addTarget(self, action: "notificationSwitchValueDidChange:", forControlEvents: .ValueChanged)
+            sw.addTarget(self, action: #selector(self.notificationSwitchValueDidChange), forControlEvents: .ValueChanged)
             cell.accessoryView = sw
             cell.selectionStyle = .None
             return cell
@@ -182,7 +182,7 @@ final class SettingTableViewController: UITableViewController {
             cell.textLabel?.text = localize("iCloud Sync")
             let sw = UISwitch()
             sw.on = setting.iCloudEnabled
-            sw.addTarget(self, action: "iCloudSwitchValueDidChange:", forControlEvents: .ValueChanged)
+            sw.addTarget(self, action: #selector(self.iCloudSwitchValueDidChange), forControlEvents: .ValueChanged)
             cell.accessoryView = sw
             cell.selectionStyle = .None
             return cell

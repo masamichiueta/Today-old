@@ -98,7 +98,7 @@ final class ScoreInterfaceController: WKInterfaceController {
             cautionLabel.setHidden(false)
             animateWithDuration(0.5, animations: {
                 self.cautionLabel.setAlpha(1.0)
-                NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: "hideCautionLabel", userInfo: nil, repeats: false)
+                NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: #selector(self.hideCautionLabel), userInfo: nil, repeats: false)
             })
         }
     }

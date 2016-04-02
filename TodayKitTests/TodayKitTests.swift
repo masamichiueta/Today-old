@@ -21,16 +21,12 @@ class TodayKitTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
-        }
+    func testDistanceBetweenPoints() {
+        let point1 = CGPoint(x: 0, y: 0)
+        let point2 = CGPoint(x: 3, y: 4)
+        
+        XCTAssertEqual(distanceBetween(point1, p2: point2), 5)
+
     }
     
 }

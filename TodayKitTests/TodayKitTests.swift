@@ -21,6 +21,7 @@ class TodayKitTests: XCTestCase {
         super.tearDown()
     }
     
+    //MARK: - Utilities
     func testFrameworkBundle() {
         
         let todayKitBundle = frameworkBundle("TodayKit.framework")
@@ -37,6 +38,19 @@ class TodayKitTests: XCTestCase {
         
         XCTAssertEqual(distanceBetween(point1, p2: point2), 5)
 
+    }
+    
+    func testNumberOfDaysUntilDateTime() {
+        
+        let now = NSDate()
+        let nextDay = NSDate(timeInterval: 60*60*24, sinceDate: now)
+        
+        XCTAssertEqual(now.numberOfDaysUntilDateTime(nextDay), 1)
+        
+        let sameDay = NSDate(timeInterval: 0, sinceDate: now)
+        XCTAssertEqual(sameDay.numberOfDaysUntilDateTime(now), 0)
+        
+        
     }
     
 }

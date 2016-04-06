@@ -18,12 +18,12 @@ public final class Streak: ManagedObject {
         let date = NSDate()
         from = date
         to = date
-        streakNumber = Int64(from.numberOfDaysUntilDateTime(to) + 1)
+        streakNumber = Int64(NSDate.numberOfDaysFromDateTime(from, toDateTime: to) + 1)
     }
     
     public override func willSave() {
         //update streakNumber depending on from and to
-        self.setPrimitiveValue(NSNumber(longLong: from.numberOfDaysUntilDateTime(to) + 1), forKey: "streakNumber")
+        self.setPrimitiveValue(NSNumber(longLong: NSDate.numberOfDaysFromDateTime(from, toDateTime: to) + 1), forKey: "streakNumber")
     }
     
     //MARK: - CoreData

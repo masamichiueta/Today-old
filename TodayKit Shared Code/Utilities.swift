@@ -49,7 +49,7 @@ extension NSURL {
 }
 
 extension NSDate {
-    public func numberOfDaysUntilDateTime(toDateTime: NSDate, inTimeZone timeZone: NSTimeZone? = nil) -> Int {
+    public static func numberOfDaysFromDateTime(fromDateTime: NSDate, toDateTime: NSDate, inTimeZone timeZone: NSTimeZone? = nil) -> Int {
         let calendar = NSCalendar.currentCalendar()
         if let timeZone = timeZone {
             calendar.timeZone = timeZone
@@ -57,7 +57,7 @@ extension NSDate {
         
         var fromDate: NSDate?, toDate: NSDate?
         
-        calendar.rangeOfUnit(.Day, startDate: &fromDate, interval: nil, forDate: self)
+        calendar.rangeOfUnit(.Day, startDate: &fromDate, interval: nil, forDate: fromDateTime)
         calendar.rangeOfUnit(.Day, startDate: &toDate, interval: nil, forDate: toDateTime)
         let difference = calendar.components(.Day, fromDate: fromDate!, toDate: toDate!, options: [])
         return difference.day
@@ -82,7 +82,12 @@ extension NSDate {
     public static func nextMonthDatesFromDate(date: NSDate) -> [NSDate] {
         let comp = NSCalendar.currentCalendar().components([.Year, .Month, .Day, .Weekday, .Hour, .Minute, .Second], fromDate: date)
         comp.month = comp.month + 1
-        let numberOfDaysToNextMonth = date.numberOfDaysUntilDateTime(NSCalendar.currentCalendar().dateFromComponents(comp)!)
+        
+        guard let toDateTime = NSCalendar.currentCalendar().dateFromComponents(comp) else {
+            fatalError("Wrong components")
+        }
+        
+        let numberOfDaysToNextMonth = NSDate.numberOfDaysFromDateTime(date, toDateTime: toDateTime)
         
         return [Int](0..<numberOfDaysToNextMonth).map { i -> NSDate in
             let comp =  NSCalendar.currentCalendar().components([.Year, .Month, .Day, .Weekday, .Hour, .Minute, .Second], fromDate: date)
@@ -94,8 +99,11 @@ extension NSDate {
     public static func previousMonthDatesFromDate(date: NSDate) -> [NSDate] {
         let comp = NSCalendar.currentCalendar().components([.Year, .Month, .Day, .Weekday, .Hour, .Minute, .Second], fromDate: date)
         comp.month = comp.month - 1
-        let numberOfDaysFromLastMonth = NSCalendar.currentCalendar().dateFromComponents(comp)!.numberOfDaysUntilDateTime(date)
         
+        guard let fromDateTime = NSCalendar.currentCalendar().dateFromComponents(comp) else {
+            fatalError("Wrong components")
+        }
+        let numberOfDaysFromLastMonth = NSDate.numberOfDaysFromDateTime(fromDateTime, toDateTime: date)        
         
         return [Int](1...numberOfDaysFromLastMonth).map { i -> NSDate in
             let comp =  NSCalendar.currentCalendar().components([.Year, .Month, .Day, .Weekday, .Hour, .Minute, .Second], fromDate: date)

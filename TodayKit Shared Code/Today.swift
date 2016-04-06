@@ -116,6 +116,7 @@ public final class Today: ManagedObject {
     #endif
 }
 
+//MARK: - ManagedObjectType
 extension Today: ManagedObjectType {
     public static var entityName: String {
         return "Today"
@@ -126,6 +127,7 @@ extension Today: ManagedObjectType {
     }
 }
 
+//MARK: - TodayType
 private let goodIconImageName = "good_face_icon_"
 private let averageIconImageName = "average_face_icon_"
 private let poorIconImageName = "poor_face_icon_"

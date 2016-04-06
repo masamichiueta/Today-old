@@ -105,6 +105,7 @@ public final class Streak: ManagedObject {
     #endif
 }
 
+//MARK: - ManagedObjectType
 extension Streak: ManagedObjectType {
     
     public static var entityName: String {

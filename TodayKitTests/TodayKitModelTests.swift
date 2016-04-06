@@ -26,9 +26,34 @@ class TodayKitModelTests: XCTestCase {
         XCTAssertEqual(entityName, "Today")
     }
     
+    func testTodayDefaultSortDescriptors() {
+        let descriptors = Today.defaultSortDescriptors
+        XCTAssertEqual(descriptors.count, 1)
+        
+        guard let descriptor = descriptors.first else {
+            fatalError()
+        }
+        
+        XCTAssertEqual(descriptor.key, "date")
+        XCTAssertFalse(descriptor.ascending)
+        
+    }
+    
     func testStreakEntityName() {
         let entityName = Streak.entityName
         XCTAssertEqual(entityName, "Streak")
+    }
+    
+    func testStreakDefaultSortDescriptors() {
+        let descriptors = Streak.defaultSortDescriptors
+        XCTAssertEqual(descriptors.count, 1)
+        
+        guard let descriptor = descriptors.first else {
+            fatalError()
+        }
+        
+        XCTAssertEqual(descriptor.key, "to")
+        XCTAssertFalse(descriptor.ascending)
     }
     
 }

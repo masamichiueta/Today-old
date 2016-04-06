@@ -12,16 +12,21 @@ public func localize(key: String) -> String {
     return NSLocalizedString(key, comment: "")
 }
 
-public func frameworkBundle(name: String) -> NSBundle? {
-    let frameworkDirPath = NSBundle.mainBundle().privateFrameworksPath! as NSString
-    let frameworkBundlePath = frameworkDirPath.stringByAppendingPathComponent(name)
-    let frameworkBundle = NSBundle(path: frameworkBundlePath)
-    return frameworkBundle
+extension NSBundle {
+    public static func frameworkBundle(name: String) -> NSBundle? {
+        let frameworkDirPath = NSBundle.mainBundle().privateFrameworksPath! as NSString
+        let frameworkBundlePath = frameworkDirPath.stringByAppendingPathComponent(name)
+        let frameworkBundle = NSBundle(path: frameworkBundlePath)
+        return frameworkBundle
+    }
 }
 
-public func distanceBetween(p1: CGPoint, p2: CGPoint) -> CGFloat {
-    return sqrt(pow((p1.x - p2.x), 2) + pow((p1.y - p2.y), 2))
+extension CGPoint {
+    public static func distanceBetween(p1: CGPoint, p2: CGPoint) -> CGFloat {
+        return sqrt(pow((p1.x - p2.x), 2) + pow((p1.y - p2.y), 2))
+    }
 }
+
 
 extension NSURL {
     
@@ -58,7 +63,7 @@ extension NSDate {
         return difference.day
     }
     
-    public static func datesToNextWeekDateFromDate(date: NSDate) -> [NSDate] {
+    public static func nextWeekDatesFromDate(date: NSDate) -> [NSDate] {
         return [Int](0..<7).map { i -> NSDate in
             let comp =  NSCalendar.currentCalendar().components([.Year, .Month, .Day, .Weekday, .Hour, .Minute, .Second], fromDate: date)
             comp.day = comp.day + i
@@ -66,7 +71,7 @@ extension NSDate {
         }
     }
     
-    public static func datesFromPreviousWeekDateToDate(date: NSDate) -> [NSDate] {
+    public static func previousWeekDatesFromDate(date: NSDate) -> [NSDate] {
         return [Int](1...7).map { i -> NSDate in
             let comp =  NSCalendar.currentCalendar().components([.Year, .Month, .Day, .Weekday, .Hour, .Minute, .Second], fromDate: date)
             comp.day = comp.day - 7 + i
@@ -74,7 +79,7 @@ extension NSDate {
         }
     }
     
-    public static func datesToNextMonthDateFromDate(date: NSDate) -> [NSDate] {
+    public static func nextMonthDatesFromDate(date: NSDate) -> [NSDate] {
         let comp = NSCalendar.currentCalendar().components([.Year, .Month, .Day, .Weekday, .Hour, .Minute, .Second], fromDate: date)
         comp.month = comp.month + 1
         let numberOfDaysToNextMonth = date.numberOfDaysUntilDateTime(NSCalendar.currentCalendar().dateFromComponents(comp)!)
@@ -86,7 +91,7 @@ extension NSDate {
         }
     }
     
-    public static func datesFromPreviousMonthDateToDate(date: NSDate) -> [NSDate] {
+    public static func previousMonthDatesFromDate(date: NSDate) -> [NSDate] {
         let comp = NSCalendar.currentCalendar().components([.Year, .Month, .Day, .Weekday, .Hour, .Minute, .Second], fromDate: date)
         comp.month = comp.month - 1
         let numberOfDaysFromLastMonth = NSCalendar.currentCalendar().dateFromComponents(comp)!.numberOfDaysUntilDateTime(date)
@@ -102,67 +107,67 @@ extension NSDate {
 }
 
 extension UIColor {
-    public class func defaultTintColor() -> UIColor {
+    public static func defaultTintColor() -> UIColor {
         return UIColor(red: 0.0, green: 122.0/255.0, blue: 1.0, alpha: 1.0)
     }
     
-    public class func todayRedColor() -> UIColor {
+    public static func todayRedColor() -> UIColor {
         return UIColor(red: 255.0/255.0, green: 59.0/255.0, blue: 48.0/255.0, alpha: 1.0)
     }
     
-    public class func todayOrangeColor() -> UIColor {
+    public static func todayOrangeColor() -> UIColor {
         return UIColor(red: 255.0/255.0, green: 149.0/255.0, blue: 0/255.0, alpha: 1.0)
     }
     
-    public class func todayYellowColor() -> UIColor {
+    public static func todayYellowColor() -> UIColor {
         return UIColor(red: 255.0/255.0, green: 204.0/255.0, blue: 0/255.0, alpha: 1.0)
     }
     
-    public class func todayGreenColor() -> UIColor {
+    public static func todayGreenColor() -> UIColor {
         return UIColor(red: 76.0/255.0, green: 217.0/255.0, blue: 100.0/255.0, alpha: 1.0)
     }
     
-    public class func todayBlueColor() -> UIColor {
+    public static func todayBlueColor() -> UIColor {
         return UIColor(red: 52.0/255.0, green: 170.0/255.0, blue: 220.0/255.0, alpha: 1.0)
     }
     
-    public class func todayGradientRedStartColor() -> UIColor {
+    public static func todayGradientRedStartColor() -> UIColor {
         return UIColor(red: 255.0/255.0, green: 94.0/255.0, blue: 58.0/255.0, alpha: 1.0)
     }
     
-    public class func todayGradientRedEndColor() -> UIColor {
+    public static func todayGradientRedEndColor() -> UIColor {
         return UIColor(red: 255.0/255.0, green: 42.0/255.0, blue: 104.0/255.0, alpha: 1.0)
     }
     
-    public class func todayGradientOrangeStartColor() -> UIColor {
+    public static func todayGradientOrangeStartColor() -> UIColor {
         return UIColor(red: 255.0/255.0, green: 149.0/255.0, blue: 0.0/255.0, alpha: 1.0)
     }
     
-    public class func todayGradientOrangeEndColor() -> UIColor {
+    public static func todayGradientOrangeEndColor() -> UIColor {
         return UIColor(red: 255.0/255.0, green: 94.0/255.0, blue: 58.0/255.0, alpha: 1.0)
     }
     
-    public class func todayGradientYellowStartColor() -> UIColor {
+    public static func todayGradientYellowStartColor() -> UIColor {
         return UIColor(red: 255.0/255.0, green: 219.0/255.0, blue: 76.0/255.0, alpha: 1.0)
     }
     
-    public class func todayGradientYellowEndColor() -> UIColor {
+    public static func todayGradientYellowEndColor() -> UIColor {
         return UIColor(red: 255.0/255.0, green: 205.0/255.0, blue: 2.0/255.0, alpha: 1.0)
     }
     
-    public class func todayGradientGreenStartColor() -> UIColor {
+    public static func todayGradientGreenStartColor() -> UIColor {
         return UIColor(red: 135.0/255.0, green: 252.0/255.0, blue: 112.0/255.0, alpha: 1.0)
     }
     
-    public class func todayGradientGreenEndColor() -> UIColor {
+    public static func todayGradientGreenEndColor() -> UIColor {
         return UIColor(red: 11.0/255.0, green: 211.0/255.0, blue: 24.0/255.0, alpha: 1.0)
     }
     
-    public class func todayGradientBlueStartColor() -> UIColor {
+    public static func todayGradientBlueStartColor() -> UIColor {
         return UIColor(red: 26.0/255.0, green: 214.0/255.0, blue: 253.0/255.0, alpha: 1.0)
     }
     
-    public class func todayGradientBlueEndColor() -> UIColor {
+    public static func todayGradientBlueEndColor() -> UIColor {
         return UIColor(red: 29.0/255.0, green: 98.0/255.0, blue: 240.0/255.0, alpha: 1.0)
     }
 }

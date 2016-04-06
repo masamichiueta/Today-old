@@ -103,7 +103,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     //MARK: - Helper
     func setupUserDefaultSetting() {
-        guard let settingBundle = frameworkBundle("TodayKit.framework") else {
+        guard let settingBundle = NSBundle.frameworkBundle("TodayKit.framework") else {
             fatalError("Wrong framework name")
         }
         

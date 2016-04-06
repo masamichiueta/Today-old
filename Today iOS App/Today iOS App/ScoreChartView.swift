@@ -244,7 +244,7 @@ class ScoreChartView: ChartViewBase {
             path.lineCapStyle = .Round
             
             //Calculate intersection between line and circle
-            let rate = circleRadius / distanceBetween(lastPointAndIndex.point, p2: currentPoint)
+            let rate = circleRadius / CGPoint.distanceBetween(lastPointAndIndex.point, p2: currentPoint)
             let startIntersection = CGPoint(
                 x: lastPointAndIndex.point.x + rate * (currentPoint.x - lastPointAndIndex.point.x),
                 y: lastPointAndIndex.point.y + rate * (currentPoint.y - lastPointAndIndex.point.y))

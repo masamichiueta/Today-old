@@ -53,7 +53,7 @@ class TodayWCSessionHandler: NSObject, WCSessionDelegate {
             
             var data: [String: AnyObject] = [String: AnyObject]()
             if let startDate =  NSCalendar.currentCalendar().dateBySettingHour(0, minute: 0, second: 0, ofDate: now, options: []),
-                endDate = NSCalendar.currentCalendar().dateByAddingUnit(NSCalendarUnit.Day, value: 1, toDate: startDate, options: []),
+                endDate = NSCalendar.currentCalendar().dateByAddingUnit(.Day, value: 1, toDate: startDate, options: []),
                 today = Today.todays(moc, from: startDate, to: endDate).first {
                   data[WatchConnectivityContentType.TodayScore.rawValue] = Int(today.score)
             }

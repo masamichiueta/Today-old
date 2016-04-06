@@ -45,7 +45,7 @@ final class ActivityTableViewController: UITableViewController, ManagedObjectCon
     private func createChartViewDataSource(periodType: ChartViewPeriodType) -> ScoreChartViewDataSource {
         switch periodType {
         case .Week:
-            let datesFromLastWeekToNow = NSDate.datesFromPreviousWeekDateToDate(NSDate())
+            let datesFromLastWeekToNow = NSDate.previousWeekDatesFromDate(NSDate())
             let todaysInWeek = Today.todays(managedObjectContext, from: datesFromLastWeekToNow.first!, to: datesFromLastWeekToNow.last!)
             let chartData = datesFromLastWeekToNow.map {date -> ChartData in
                 let todayAtDate = todaysInWeek.filter {
@@ -62,7 +62,7 @@ final class ActivityTableViewController: UITableViewController, ManagedObjectCon
             }
             return ScoreChartViewDataSource(data: chartData)
         case .Month:
-            let datesFromLastMonthToNow = NSDate.datesFromPreviousMonthDateToDate(NSDate())
+            let datesFromLastMonthToNow = NSDate.previousMonthDatesFromDate(NSDate())
             let todaysInMonth = Today.todays(managedObjectContext, from: datesFromLastMonthToNow.first!, to: datesFromLastMonthToNow.last!)
             let chartData = datesFromLastMonthToNow.enumerate().map {(index, date) -> ChartData in
                 let todayAtDate = todaysInMonth.filter {

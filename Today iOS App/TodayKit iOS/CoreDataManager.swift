@@ -36,7 +36,7 @@ public final class CoreDataManager {
             fatalError("model not found")
         }
         
-        let psc = NSPersistentStoreCoordinator(managedObjectModel: model)
+        let persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: model)
         let options: Dictionary<NSObject, AnyObject>?
         switch storageType {
         case .Local:
@@ -50,12 +50,13 @@ public final class CoreDataManager {
         let storeURL = NSURL.documentsURL.URLByAppendingPathComponent(todayStoreName)
         
         do {
-            try psc.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: options)
-        } catch {
-            fatalError("Fail to remove file")
+            try persistentStoreCoordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: options)
+        } catch let error as NSError {
+            print("\(error) \(error.userInfo)")
+            abort()
         }
         let context = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
-        context.persistentStoreCoordinator = psc
+        context.persistentStoreCoordinator = persistentStoreCoordinator
         managedObjectContext = context
         
         switch storageType {

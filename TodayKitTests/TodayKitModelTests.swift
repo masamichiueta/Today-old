@@ -32,7 +32,6 @@ class TodayKitModelTests: XCTestCase {
         
         managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
         managedObjectContext?.persistentStoreCoordinator = psc
-        
     }
     
     override func tearDown() {
@@ -112,8 +111,72 @@ class TodayKitModelTests: XCTestCase {
         
         let excellentType10 = Today.type(10)
         XCTAssertEqual(excellentType10, TodayType.Excellent)
+        
+        let excellentType11 = Today.type(11)
+        XCTAssertEqual(excellentType11, TodayType.Excellent)
     }
     
+    func testTodayTypeColor() {
+        let poor = TodayType.Poor
+        XCTAssertEqual(poor.color(), UIColor.todayBlueColor())
+        
+        let fair = TodayType.Fair
+        XCTAssertEqual(fair.color(), UIColor.todayGreenColor())
+        
+        let average = TodayType.Average
+        XCTAssertEqual(average.color(), UIColor.todayYellowColor())
+        
+        let good = TodayType.Good
+        XCTAssertEqual(good.color(), UIColor.todayOrangeColor())
+        
+        let excellent = TodayType.Excellent
+        XCTAssertEqual(excellent.color(), UIColor.todayRedColor())
+    }
+    
+    func testTodayIcon() {
+        let poor = TodayType.Poor
+        XCTAssertNotNil(poor.icon(.TwentyEight))
+        XCTAssertNotNil(poor.icon(.Fourty))
+        
+        let fair = TodayType.Fair
+        XCTAssertNotNil(fair.icon(.TwentyEight))
+        XCTAssertNotNil(fair.icon(.Fourty))
+        
+        let average = TodayType.Average
+        XCTAssertNotNil(average.icon(.TwentyEight))
+        XCTAssertNotNil(average.icon(.Fourty))
+
+        let good = TodayType.Good
+        XCTAssertNotNil(good.icon(.TwentyEight))
+        XCTAssertNotNil(good.icon(.Fourty))
+
+        let excellent = TodayType.Excellent
+        XCTAssertNotNil(excellent.icon(.TwentyEight))
+        XCTAssertNotNil(excellent.icon(.Fourty))
+        
+    }
+    
+    func testTodayTypeIconNmae() {
+        let poor = TodayType.Poor
+        XCTAssertEqual(poor.iconName(.TwentyEight),"poor_face_icon_28")
+        XCTAssertEqual(poor.iconName(.Fourty),"poor_face_icon_40")
+        
+        let fair = TodayType.Fair
+        XCTAssertEqual(fair.iconName(.TwentyEight),"average_face_icon_28")
+        XCTAssertEqual(fair.iconName(.Fourty),"average_face_icon_40")
+        
+        let average = TodayType.Average
+        XCTAssertEqual(average.iconName(.TwentyEight),"average_face_icon_28")
+        XCTAssertEqual(average.iconName(.Fourty),"average_face_icon_40")
+        
+        let good = TodayType.Good
+        XCTAssertEqual(good.iconName(.TwentyEight),"good_face_icon_28")
+        XCTAssertEqual(good.iconName(.Fourty),"good_face_icon_40")
+        
+        let excellent = TodayType.Excellent
+        XCTAssertEqual(excellent.iconName(.TwentyEight),"good_face_icon_28")
+        XCTAssertEqual(excellent.iconName(.Fourty),"good_face_icon_40")
+    }
     
     //MARK: - Streak
     func testStreakEntityName() {

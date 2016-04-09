@@ -61,21 +61,18 @@ public final class Today: ManagedObject {
         }
     }
     
-    public static func type(score: Int?) -> TodayType {
-        guard let s = score else {
-            return .Poor
-        }
+    public static func type(score: Int) -> TodayType {
         
         let step = scoreRange.count / TodayType.count
         
-        switch s {
+        switch score {
         case 0...step:
             return .Poor
-        case step+1...step*2:
+        case (step + 1)...(step * 2):
             return .Fair
-        case step*2+1...step*3:
+        case (step * 2 + 1)...(step * 3):
             return .Average
-        case step*3+1...step*4:
+        case (step * 3 + 1)...(step * 4):
             return .Good
         default:
             return .Excellent

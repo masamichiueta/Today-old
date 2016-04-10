@@ -10,9 +10,44 @@ import XCTest
 import CoreData
 @testable import TodayKit
 
+let dateFormatter: NSDateFormatter = {
+    let formatter = NSDateFormatter()
+    formatter.dateFormat = "yyyyMMdd"
+    return formatter
+}()
+
 class TodayKitModelTests: XCTestCase {
     
     var managedObjectContext: NSManagedObjectContext?
+    
+    
+    
+    struct TodayTestModel {
+        let score: Int
+        let date: NSDate
+        
+        init(score: Int, date: String) {
+            self.score = score
+            self.date = dateFormatter.dateFromString(date)!
+        }
+    }
+    
+    let todayTestData: [TodayTestModel] = [
+        TodayTestModel(score: 10, date: "20160101"),
+        TodayTestModel(score: 9, date: "20160102"),
+        TodayTestModel(score: 8, date: "20160103"),
+        TodayTestModel(score: 7, date: "20160105"),
+        TodayTestModel(score: 6, date: "20160107"),
+        TodayTestModel(score: 5, date: "20160108"),
+        TodayTestModel(score: 4, date: "20160109"),
+        TodayTestModel(score: 3, date: "20160113"),
+        TodayTestModel(score: 2, date: "20160114"),
+        TodayTestModel(score: 1, date: "20160115"),
+        TodayTestModel(score: 0, date: "20160116"),
+        TodayTestModel(score: 4, date: "20160119"),
+        TodayTestModel(score: 3, date: "20160121"),
+        TodayTestModel(score: 2, date: "20160122")
+    ]
     
     override func setUp() {
         super.setUp()
@@ -32,10 +67,27 @@ class TodayKitModelTests: XCTestCase {
         
         managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
         managedObjectContext?.persistentStoreCoordinator = psc
+        
+        //Insert Test Data
+        managedObjectContext?.performBlockAndWait {
+            for data in self.todayTestData {
+                
+                Today.insertIntoContext(self.managedObjectContext!, score: Int64(data.score), date: data.date)
+                
+                //Update current streak or create a new streak
+                if let currentStreak = Streak.currentStreak(self.managedObjectContext!) {
+                    currentStreak.to = data.date
+                } else {
+                    Streak.insertIntoContext(self.managedObjectContext!, from: data.date, to: data.date)
+                }
+                
+            }
+        }
     }
     
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
+        managedObjectContext = nil
         super.tearDown()
     }
     
@@ -145,11 +197,11 @@ class TodayKitModelTests: XCTestCase {
         let average = TodayType.Average
         XCTAssertNotNil(average.icon(.TwentyEight))
         XCTAssertNotNil(average.icon(.Fourty))
-
+        
         let good = TodayType.Good
         XCTAssertNotNil(good.icon(.TwentyEight))
         XCTAssertNotNil(good.icon(.Fourty))
-
+        
         let excellent = TodayType.Excellent
         XCTAssertNotNil(excellent.icon(.TwentyEight))
         XCTAssertNotNil(excellent.icon(.Fourty))
@@ -177,6 +229,14 @@ class TodayKitModelTests: XCTestCase {
         XCTAssertEqual(excellent.iconName(.TwentyEight),"good_face_icon_28")
         XCTAssertEqual(excellent.iconName(.Fourty),"good_face_icon_40")
     }
+    
+    func testTodayCount() {
+        let count = Today.countInContext(self.managedObjectContext!)
+        XCTAssertEqual(count, 14)
+        
+    }
+    
+    
     
     //MARK: - Streak
     func testStreakEntityName() {

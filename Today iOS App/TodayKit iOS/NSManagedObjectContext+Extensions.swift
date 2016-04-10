@@ -34,4 +34,11 @@ extension NSManagedObjectContext {
             self.saveOrRollback()
         }
     }
+    
+    public func performChangesAndWait(block: () -> ()) {
+        performBlockAndWait {
+            block()
+            self.saveOrRollback()
+        }
+    }
 }

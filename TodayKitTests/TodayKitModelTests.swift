@@ -19,8 +19,7 @@ let dateFormatter: NSDateFormatter = {
 class TodayKitModelTests: XCTestCase {
     
     var managedObjectContext: NSManagedObjectContext?
-    
-    
+    let storeURL = NSURL.documentsURL.URLByAppendingPathComponent("TodayTest.sqlite")
     
     struct TodayTestModel {
         let score: Int
@@ -58,8 +57,9 @@ class TodayKitModelTests: XCTestCase {
         
         let psc = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
         
+        
         do {
-            try psc.addPersistentStoreWithType(NSInMemoryStoreType, configuration: nil, URL: nil, options: nil)
+            try psc.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: nil)
         } catch let error as NSError {
             print("\(error) \(error.userInfo)")
             abort()
@@ -69,7 +69,7 @@ class TodayKitModelTests: XCTestCase {
         managedObjectContext?.persistentStoreCoordinator = psc
         
         //Insert Test Data
-        managedObjectContext?.performBlockAndWait {
+        managedObjectContext?.performChangesAndWait {
             for data in self.todayTestData {
                 
                 Today.insertIntoContext(self.managedObjectContext!, score: Int64(data.score), date: data.date)
@@ -87,7 +87,25 @@ class TodayKitModelTests: XCTestCase {
     
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
-        managedObjectContext = nil
+        let walURL = NSURL.fileURLWithPath(storeURL.path! + "-wal")
+        let shmURL = NSURL.fileURLWithPath(storeURL.path! + "-shm")
+        
+        do {
+            if let walPath = walURL.path where NSFileManager.defaultManager().fileExistsAtPath(walPath) {
+                try NSFileManager.defaultManager().removeItemAtURL(walURL)
+            }
+            if let shmPath = shmURL.path where NSFileManager.defaultManager().fileExistsAtPath(shmPath) {
+                try NSFileManager.defaultManager().removeItemAtURL(shmURL)
+            }
+            if let storePath = storeURL.path where NSFileManager.defaultManager().fileExistsAtPath(storePath) {
+                try NSFileManager.defaultManager().removeItemAtURL(storeURL)
+            }
+            
+        } catch let error as NSError {
+            print("\(error) \(error.userInfo)")
+            abort()
+        }
+       
         super.tearDown()
     }
     
@@ -236,7 +254,10 @@ class TodayKitModelTests: XCTestCase {
         
     }
     
-    
+    func testAverage() {
+        let average = Today.average(self.managedObjectContext!)
+        XCTAssertEqual(average, 4)
+    }
     
     //MARK: - Streak
     func testStreakEntityName() {

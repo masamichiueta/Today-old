@@ -81,13 +81,13 @@ public final class Streak: ManagedObject {
                     return
                 }
                 
-                //update from when date equals to from
+                //update from when date equals to nextDate
                 if NSCalendar.currentCalendar().isDate(streakContainsDate.from, inSameDayAsDate: date) {
                     streakContainsDate.from = nextDate
                     return
                 }
                 
-                //update to when date equals to to
+                //update to when date equals to previousDate
                 if NSCalendar.currentCalendar().isDate(streakContainsDate.to, inSameDayAsDate: date) {
                     
                     streakContainsDate.to = previousDate
@@ -95,7 +95,7 @@ public final class Streak: ManagedObject {
                 }
                 
                 //separate streak into two new streak
-                //from - previousDate | date | nextDate - to
+                // | from - previousDate | | nextDate - to |
                 Streak.insertIntoContext(moc, from: nextDate, to: streakContainsDate.to)
                 streakContainsDate.to = previousDate
                 

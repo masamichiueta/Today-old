@@ -82,21 +82,29 @@ public final class Today: ManagedObject {
     //MARK: - CoreData
     #if os(iOS)
     public static func created(moc: NSManagedObjectContext, forDate date: NSDate) -> Bool {
+        let comp = NSCalendar.currentCalendar().components([.Year, .Month, .Day], fromDate: date)
+        guard let from = NSCalendar.currentCalendar().dateFromComponents(comp) else {
+            fatalError("Wrong components")
+        }
         
-        let todays = Today.fetchInContext(moc, configurationBlock: {
-            request in
+        comp.day = comp.day + 1
+        guard let to = NSCalendar.currentCalendar().dateFromComponents(comp) else {
+            fatalError("Wrong components")
+        }
+        
+        let todays = Today.fetchInContext(moc, configurationBlock: { request in
             request.sortDescriptors = Today.defaultSortDescriptors
+            request.predicate = NSPredicate(format: "date => %@ && date < %@", from, to)
             request.fetchLimit = 1
         })
         if todays.count == 0 {
             return false
         }
-        return NSCalendar.currentCalendar().isDate(date, inSameDayAsDate: todays[0].date)
+        return true
     }
     
     public static func todays(moc: NSManagedObjectContext, from: NSDate, to: NSDate) -> [Today] {
-        let todays = Today.fetchInContext(moc, configurationBlock: {
-            request in
+        let todays = Today.fetchInContext(moc, configurationBlock: { request in
             request.sortDescriptors = Today.defaultSortDescriptors
             request.predicate = NSPredicate(format: "date => %@ && date <= %@", from, to)
         })

@@ -32,17 +32,17 @@ class TodayKitModelTests: XCTestCase {
     }
     
     let todayTestData: [TodayTestModel] = [
-        TodayTestModel(score: 10, date: "20160101"),
-        TodayTestModel(score: 9, date: "20160102"),
-        TodayTestModel(score: 8, date: "20160103"),
-        TodayTestModel(score: 7, date: "20160105"),
-        TodayTestModel(score: 6, date: "20160107"),
+        TodayTestModel(score: 0, date: "20160101"),
+        TodayTestModel(score: 1, date: "20160102"),
+        TodayTestModel(score: 2, date: "20160103"),
+        TodayTestModel(score: 3, date: "20160105"),
+        TodayTestModel(score: 4, date: "20160107"),
         TodayTestModel(score: 5, date: "20160108"),
-        TodayTestModel(score: 4, date: "20160109"),
-        TodayTestModel(score: 3, date: "20160113"),
-        TodayTestModel(score: 2, date: "20160114"),
-        TodayTestModel(score: 1, date: "20160115"),
-        TodayTestModel(score: 0, date: "20160116"),
+        TodayTestModel(score: 6, date: "20160109"),
+        TodayTestModel(score: 7, date: "20160113"),
+        TodayTestModel(score: 8, date: "20160114"),
+        TodayTestModel(score: 9, date: "20160115"),
+        TodayTestModel(score: 10, date: "20160116"),
         TodayTestModel(score: 4, date: "20160119"),
         TodayTestModel(score: 3, date: "20160121"),
         TodayTestModel(score: 2, date: "20160122")
@@ -146,7 +146,43 @@ class TodayKitModelTests: XCTestCase {
         XCTAssertEqual(Today.minMasterScore, 0)
     }
     
+    func testTodayTypeProperty() {
+        let todays = Today.fetchInContext(managedObjectContext!, configurationBlock: { request in
+            request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
+        })
+        
+        XCTAssertEqual(todays[0].type, TodayType.Poor)
+        XCTAssertEqual(todays[1].type, TodayType.Poor)
+        XCTAssertEqual(todays[2].type, TodayType.Poor)
+        XCTAssertEqual(todays[3].type, TodayType.Fair)
+        XCTAssertEqual(todays[4].type, TodayType.Fair)
+        XCTAssertEqual(todays[5].type, TodayType.Average)
+        XCTAssertEqual(todays[6].type, TodayType.Average)
+        XCTAssertEqual(todays[7].type, TodayType.Good)
+        XCTAssertEqual(todays[8].type, TodayType.Good)
+        XCTAssertEqual(todays[9].type, TodayType.Excellent)
+        XCTAssertEqual(todays[10].type, TodayType.Excellent)
+        
+    }
     
+    func testTodayColorProperty() {
+        let todays = Today.fetchInContext(managedObjectContext!, configurationBlock: { request in
+            request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
+        })
+        
+        XCTAssertEqual(todays[0].color, TodayType.Poor.color())
+        XCTAssertEqual(todays[1].color, TodayType.Poor.color())
+        XCTAssertEqual(todays[2].color, TodayType.Poor.color())
+        XCTAssertEqual(todays[3].color, TodayType.Fair.color())
+        XCTAssertEqual(todays[4].color, TodayType.Fair.color())
+        XCTAssertEqual(todays[5].color, TodayType.Average.color())
+        XCTAssertEqual(todays[6].color, TodayType.Average.color())
+        XCTAssertEqual(todays[7].color, TodayType.Good.color())
+        XCTAssertEqual(todays[8].color, TodayType.Good.color())
+        XCTAssertEqual(todays[9].color, TodayType.Excellent.color())
+        XCTAssertEqual(todays[10].color, TodayType.Excellent.color())
+        
+    }
     
     func testTodayType() {
         let poorType0 = Today.type(0)
@@ -249,14 +285,50 @@ class TodayKitModelTests: XCTestCase {
     }
     
     func testTodayCount() {
-        let count = Today.countInContext(self.managedObjectContext!)
+        let count = Today.countInContext(managedObjectContext!)
         XCTAssertEqual(count, 14)
+        
+        let compFrom = NSDateComponents()
+        compFrom.year = 2016
+        compFrom.month = 1
+        compFrom.day = 1
+        let from = NSCalendar.currentCalendar().dateFromComponents(compFrom)
+        
+        let compTo = NSDateComponents()
+        compTo.year = 2016
+        compTo.month = 1
+        compTo.day = 16
+        let to = NSCalendar.currentCalendar().dateFromComponents(compTo)
+        
+        let todays = Today.todays(managedObjectContext!, from: from!, to: to!)
+        XCTAssertEqual(todays.count, 11)
         
     }
     
     func testAverage() {
         let average = Today.average(self.managedObjectContext!)
         XCTAssertEqual(average, 4)
+    }
+    
+    func testCreated() {
+        let createdComp = NSDateComponents()
+        createdComp.year = 2016
+        createdComp.month = 1
+        createdComp.day = 1
+        createdComp.hour = 11
+        createdComp.minute = 23
+        let createdDate = NSCalendar.currentCalendar().dateFromComponents(createdComp)
+        XCTAssertTrue(Today.created(managedObjectContext!, forDate: createdDate!))
+        
+        let notCreatedComp = NSDateComponents()
+        notCreatedComp.year = 2016
+        notCreatedComp.month = 1
+        notCreatedComp.day = 4
+        notCreatedComp.hour = 2
+        notCreatedComp.minute = 2
+        let notCreatedDate = NSCalendar.currentCalendar().dateFromComponents(notCreatedComp)
+        XCTAssertFalse(Today.created(managedObjectContext!, forDate: notCreatedDate!))
+        
     }
     
     //MARK: - Streak

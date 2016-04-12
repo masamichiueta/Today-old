@@ -140,7 +140,7 @@ extension TodaysTableViewController: TableViewDataSourceDelegate {
         case .Delete:
             let today: Today = dataProvider.objectAtIndexPath(indexPath)
             managedObjectContext.performChanges {
-                Streak.updateStreak(self.managedObjectContext, forDate: today.date)
+                Streak.deleteDateFromStreak(self.managedObjectContext, date: today.date)
                 self.managedObjectContext.deleteObject(today)
             }
             

@@ -67,16 +67,24 @@ public final class Streak: ManagedObject {
         return streaks[0]
     }
     
-    public static func updateStreak(moc: NSManagedObjectContext, forDate date: NSDate) {
-        if let targetStreak = Streak.findOrFetchInContext(moc, matchingPredicate: NSPredicate(format: "from <= %@ AND to >= %@", date, date)) {
+    public static func deleteDateFromStreak(moc: NSManagedObjectContext, date: NSDate) {
+        
+        let comp = NSCalendar.currentCalendar().components([.Year, .Month, .Day], fromDate: date)
+        let nextDateComp = NSCalendar.currentCalendar().components([.Year, .Month, .Day], fromDate: date)
+        let previousDateComp = NSCalendar.currentCalendar().components([.Year, .Month, .Day], fromDate: date)
+        nextDateComp.day = nextDateComp.day + 1
+        previousDateComp.day = previousDateComp.day - 1
+        guard let noTimeDate = NSCalendar.currentCalendar().dateFromComponents(comp),
+            let nextDate = NSCalendar.currentCalendar().dateFromComponents(nextDateComp),
+            let previousDate = NSCalendar.currentCalendar().dateFromComponents(previousDateComp) else {
+            fatalError("Wrong component")
+        }
+    
+        if let targetStreak = Streak.findOrFetchInContext(moc, matchingPredicate: NSPredicate(format: "from <= %@ AND to >= %@", noTimeDate, noTimeDate)) {
             
             //delete streak when from and to equal
             if NSCalendar.currentCalendar().isDate(targetStreak.from, inSameDayAsDate: targetStreak.to) {
                 moc.deleteObject(targetStreak)
-                return
-            }
-            
-            guard let nextDate = NSCalendar.currentCalendar().dateByAddingUnit(.Day, value: 1, toDate: date, options: []), let previousDate = NSCalendar.currentCalendar().dateByAddingUnit(.Day, value: -1, toDate: date, options: []) else {
                 return
             }
             

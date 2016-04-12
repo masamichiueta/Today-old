@@ -461,7 +461,7 @@ class TodayKitModelTests: XCTestCase {
             comp.day = comp.day - 1
             let currentFrom = NSCalendar.currentCalendar().dateFromComponents(comp)!
             comp.day = comp.day - 1
-            let updateDate = NSCalendar.currentCalendar().dateFromComponents(comp)!
+            let deleteDate = NSCalendar.currentCalendar().dateFromComponents(comp)!
             
             comp.day = comp.day - 6
             let longestTo = NSCalendar.currentCalendar().dateFromComponents(comp)!
@@ -469,7 +469,7 @@ class TodayKitModelTests: XCTestCase {
             let longestFrom = NSCalendar.currentCalendar().dateFromComponents(comp)!
             
             managedObjectContext.performChangesAndWait {
-                Streak.deleteDateFromStreak(self.managedObjectContext, date: updateDate)
+                Streak.deleteDateFromStreak(self.managedObjectContext, date: deleteDate)
             }
             
             let currentStreak = Streak.currentStreak(managedObjectContext)!
@@ -506,6 +506,26 @@ class TodayKitModelTests: XCTestCase {
             XCTAssertEqual(longestStreak.streakNumber, 5)
             XCTAssertTrue(NSCalendar.currentCalendar().isDate((longestStreak.from), inSameDayAsDate: currentFrom))
             XCTAssertTrue(NSCalendar.currentCalendar().isDate((longestStreak.to), inSameDayAsDate: currentTo))
+        }
+    }
+    
+    func testUpdateCurrentStreakAtFrom() {
+        runTestWithTestData {
+            let comp = NSCalendar.currentCalendar().components([.Year, .Month, .Day], fromDate: NSDate())
+            comp.day = comp.day - 4
+            let currentFrom = NSCalendar.currentCalendar().dateFromComponents(comp)!
+            comp.day = comp.day - 1
+            let deleteDate = NSCalendar.currentCalendar().dateFromComponents(comp)!
+            
+            managedObjectContext.performChangesAndWait {
+                Streak.deleteDateFromStreak(self.managedObjectContext, date: deleteDate)
+            }
+            
+            let currentStreak = Streak.currentStreak(managedObjectContext)!
+            XCTAssertEqual(currentStreak.streakNumber, 5)
+            XCTAssertTrue(NSCalendar.currentCalendar().isDate(currentStreak.to, inSameDayAsDate: NSDate()))
+            XCTAssertTrue(NSCalendar.currentCalendar().isDate(currentStreak.from, inSameDayAsDate: currentFrom))
+            
         }
     }
     

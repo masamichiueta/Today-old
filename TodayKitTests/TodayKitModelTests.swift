@@ -390,6 +390,14 @@ class TodayKitModelTests: XCTestCase {
         }
     }
     
+    func testFindToday() {
+        runTestWithTestData {
+            let predicate = NSPredicate(format: "date == %@", streak1[0])
+            let today = Today.findOrFetchInContext(managedObjectContext, matchingPredicate: predicate)
+            XCTAssertEqual(today?.score, 0)
+        }
+    }
+    
     //MARK: - Streak
     func testStreakEntityName() {
         let entityName = Streak.entityName

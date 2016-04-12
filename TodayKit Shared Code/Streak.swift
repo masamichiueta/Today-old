@@ -10,9 +10,9 @@ import UIKit
 import CoreData
 
 public final class Streak: ManagedObject {
-    @NSManaged public var from: NSDate
-    @NSManaged public var to: NSDate
-    @NSManaged public var streakNumber: Int64
+    @NSManaged public private(set) var from: NSDate
+    @NSManaged public private(set) var to: NSDate
+    @NSManaged public private(set) var streakNumber: Int64
     
     public override func awakeFromInsert() {
         let date = NSDate()
@@ -108,7 +108,21 @@ public final class Streak: ManagedObject {
             
         }
     }
+    
+    public static func updateOrCreateCurrentStreak(moc: NSManagedObjectContext, date: NSDate) -> Streak {
+        //Update current streak or create a new streak
+        if let currentStreak = Streak.currentStreak(moc) {
+            currentStreak.to = date
+            return currentStreak
+        } else {
+            let newCurrentStreak = Streak.insertIntoContext(moc, from: date, to: date)
+            return newCurrentStreak
+        }
+    }
+    
     #endif
+    
+    
 }
 
 //MARK: - ManagedObjectType

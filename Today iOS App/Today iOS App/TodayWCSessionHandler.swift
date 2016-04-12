@@ -38,13 +38,7 @@ class TodayWCSessionHandler: NSObject, WCSessionDelegate {
                     let now = NSDate()
                     //Add today
                     Today.insertIntoContext(moc, score: Int64(score), date: now)
-                    
-                    //Update current streak or create a new streak
-                    if let currentStreak = Streak.currentStreak(moc) {
-                        currentStreak.to = now
-                    } else {
-                        Streak.insertIntoContext(moc, from: now, to: now)
-                    }
+                    Streak.updateOrCreateCurrentStreak(moc, date: now)
                 }
                 replyHandler([WatchConnectivityContentType.Finished.rawValue: true])
             }

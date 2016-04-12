@@ -390,7 +390,7 @@ class TodayKitModelTests: XCTestCase {
         }
     }
     
-    func testFindToday() {
+    func testFindOrFetchToday() {
         runTestWithTestData {
             let predicate = NSPredicate(format: "date == %@", streak1[0])
             let today = Today.findOrFetchInContext(managedObjectContext, matchingPredicate: predicate)
@@ -428,7 +428,7 @@ class TodayKitModelTests: XCTestCase {
             
         }
         
-
+        
     }
     
     func testCurrentStreak() {
@@ -574,6 +574,23 @@ class TodayKitModelTests: XCTestCase {
             }
             
             XCTAssertEqual(Streak.countInContext(managedObjectContext), 3)
+            
+        }
+    }
+    
+    func testFindOrCreateStreak() {
+        runTestWithTestData {
+            
+            let comp = NSCalendar.currentCalendar().components([.Year, .Month, .Day], fromDate: NSDate())
+            comp.day = comp.day - 30
+            let from = NSCalendar.currentCalendar().dateFromComponents(comp)!
+            comp.day = comp.day + 1
+            let to = NSCalendar.currentCalendar().dateFromComponents(comp)!
+            
+            let predicate = NSPredicate(format: "from <= %@ AND to >= %@", from, to)
+            let streak = Streak.findOrCreateInContext(managedObjectContext, matchingPredicate: predicate, configure: ({ _ in }))
+            
+            XCTAssertNotNil(streak)
             
         }
     }

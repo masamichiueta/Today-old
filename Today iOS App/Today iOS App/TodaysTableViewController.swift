@@ -62,13 +62,7 @@ final class TodaysTableViewController: UITableViewController, ManagedObjectConte
             
             //Create today
             Today.insertIntoContext(self.managedObjectContext, score: Int64(vc.score), date: now)
-            
-            //Update current streak or create a new streak
-            if let currentStreak = Streak.currentStreak(self.managedObjectContext) {
-                currentStreak.to = now
-            } else {
-                Streak.insertIntoContext(self.managedObjectContext, from: now, to: now)
-            }
+            Streak.updateOrCreateCurrentStreak(self.managedObjectContext, date: now)
         }
         
     }

@@ -68,38 +68,36 @@ public final class Streak: ManagedObject {
     }
     
     public static func updateStreak(moc: NSManagedObjectContext, forDate date: NSDate) {
-        if let streakContainsDate = Streak.findOrFetchInContext(moc, matchingPredicate: NSPredicate(format: "from <= %@ AND to >= %@", date, date)) {
-            moc.performChanges {
-                
-                //delete streak when from and to equal
-                if NSCalendar.currentCalendar().isDate(streakContainsDate.from, inSameDayAsDate: streakContainsDate.to) {
-                    moc.deleteObject(streakContainsDate)
-                    return
-                }
-                
-                guard let nextDate = NSCalendar.currentCalendar().dateByAddingUnit(.Day, value: 1, toDate: date, options: []), let previousDate = NSCalendar.currentCalendar().dateByAddingUnit(.Day, value: -1, toDate: date, options: []) else {
-                    return
-                }
-                
-                //update from when date equals to nextDate
-                if NSCalendar.currentCalendar().isDate(streakContainsDate.from, inSameDayAsDate: date) {
-                    streakContainsDate.from = nextDate
-                    return
-                }
-                
-                //update to when date equals to previousDate
-                if NSCalendar.currentCalendar().isDate(streakContainsDate.to, inSameDayAsDate: date) {
-                    
-                    streakContainsDate.to = previousDate
-                    return
-                }
-                
-                //separate streak into two new streak
-                // | from - previousDate | | nextDate - to |
-                Streak.insertIntoContext(moc, from: nextDate, to: streakContainsDate.to)
-                streakContainsDate.to = previousDate
-                
+        if let targetStreak = Streak.findOrFetchInContext(moc, matchingPredicate: NSPredicate(format: "from <= %@ AND to >= %@", date, date)) {
+            
+            //delete streak when from and to equal
+            if NSCalendar.currentCalendar().isDate(targetStreak.from, inSameDayAsDate: targetStreak.to) {
+                moc.deleteObject(targetStreak)
+                return
             }
+            
+            guard let nextDate = NSCalendar.currentCalendar().dateByAddingUnit(.Day, value: 1, toDate: date, options: []), let previousDate = NSCalendar.currentCalendar().dateByAddingUnit(.Day, value: -1, toDate: date, options: []) else {
+                return
+            }
+            
+            //update from when date equals to nextDate
+            if NSCalendar.currentCalendar().isDate(targetStreak.from, inSameDayAsDate: date) {
+                targetStreak.from = nextDate
+                return
+            }
+            
+            //update to when date equals to previousDate
+            if NSCalendar.currentCalendar().isDate(targetStreak.to, inSameDayAsDate: date) {
+                
+                targetStreak.to = previousDate
+                return
+            }
+            
+            //separate streak into two new streak
+            // | from - previousDate | | nextDate - to |
+            Streak.insertIntoContext(moc, from: nextDate, to: targetStreak.to)
+            targetStreak.to = previousDate
+            
         }
     }
     #endif

@@ -27,8 +27,68 @@ class TodayKitModelTests: XCTestCase {
     
     var todayTestData: [TodayTestModel]!
     
+    // [Today, Today-1, Today-2, Today-3, Today-4, Today-5]
+    var streak1: [NSDate] = {
+        var dates = [NSDate]()
+        let comp = NSCalendar.currentCalendar().components([.Year, .Month, .Day], fromDate: NSDate())
+        for _ in 0 ..< 6 {
+            let date = NSCalendar.currentCalendar().dateFromComponents(comp)
+            dates.append(date!)
+            comp.day = comp.day - 1
+        }
+        return dates
+    }()
+    
+    // [Today-8, Today-9, Today-10, Today-11]
+    var streak2: [NSDate] = {
+        var dates = [NSDate]()
+        let comp = NSCalendar.currentCalendar().components([.Year, .Month, .Day], fromDate: NSDate())
+        comp.day = comp.day - 8
+        for _ in 0 ..< 4 {
+            let date = NSCalendar.currentCalendar().dateFromComponents(comp)
+            dates.append(date!)
+            comp.day = comp.day - 1
+        }
+        return dates
+    }()
+    
+    // [Today-15, Today-16, Today-17, Today-18]
+    var streak3: [NSDate] = {
+        var dates = [NSDate]()
+        let comp = NSCalendar.currentCalendar().components([.Year, .Month, .Day], fromDate: NSDate())
+        comp.day = comp.day - 15
+        for _ in 0 ..< 4 {
+            let date = NSCalendar.currentCalendar().dateFromComponents(comp)
+            dates.append(date!)
+            comp.day = comp.day - 1
+        }
+        return dates
+    }()
+    
     override func setUp() {
         super.setUp()
+        
+        setupMoc()
+        
+        todayTestData = [
+            TodayTestModel(score: 0, date: streak3[3]),
+            TodayTestModel(score: 1, date: streak3[2]),
+            TodayTestModel(score: 2, date: streak3[1]),
+            TodayTestModel(score: 3, date: streak3[0]),
+            TodayTestModel(score: 4, date: streak2[3]),
+            TodayTestModel(score: 5, date: streak2[2]),
+            TodayTestModel(score: 6, date: streak2[1]),
+            TodayTestModel(score: 7, date: streak2[0]),
+            TodayTestModel(score: 8, date: streak1[5]),
+            TodayTestModel(score: 9, date: streak1[4]),
+            TodayTestModel(score: 10, date: streak1[3]),
+            TodayTestModel(score: 4, date: streak1[2]),
+            TodayTestModel(score: 3, date: streak1[1]),
+            TodayTestModel(score: 2, date: streak1[0])
+        ]
+    }
+    
+    func setupMoc() {
         let bundles = [NSBundle(forClass: Today.self)]
         guard let managedObjectModel = NSManagedObjectModel.mergedModelFromBundles(bundles) else {
             fatalError("model not found")
@@ -46,59 +106,37 @@ class TodayKitModelTests: XCTestCase {
         
         managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
         managedObjectContext.persistentStoreCoordinator = psc
-        
-        let comp = NSCalendar.currentCalendar().components([.Year, .Month, .Day], fromDate: NSDate())
-        
-        // today - (today - 6)
-        var dates1 = [NSDate]()
-        for _ in 0 ..< 6 {
-            let date = NSCalendar.currentCalendar().dateFromComponents(comp)
-            dates1.append(date!)
-            comp.day = comp.day - 1
+    }
+    
+    func runTestWithTestData(@noescape block: () -> ()) {
+        if managedObjectContext == nil {
+            setupMoc()
         }
-        
-        var dates2 = [NSDate]()
-        comp.day = comp.day - 2
-        for _ in 0 ..< 4 {
-            let date = NSCalendar.currentCalendar().dateFromComponents(comp)
-            dates2.append(date!)
-            comp.day = comp.day - 1
-        }
-        
-        var dates3 = [NSDate]()
-        comp.day = comp.day - 3
-        for _ in 0 ..< 4 {
-            let date = NSCalendar.currentCalendar().dateFromComponents(comp)
-            dates3.append(date!)
-            comp.day = comp.day - 1
-        }
-        
-        todayTestData = [
-            TodayTestModel(score: 0, date: dates3[3]),
-            TodayTestModel(score: 1, date: dates3[2]),
-            TodayTestModel(score: 2, date: dates3[1]),
-            TodayTestModel(score: 3, date: dates3[0]),
-            TodayTestModel(score: 4, date: dates2[3]),
-            TodayTestModel(score: 5, date: dates2[2]),
-            TodayTestModel(score: 6, date: dates2[1]),
-            TodayTestModel(score: 7, date: dates2[0]),
-            TodayTestModel(score: 8, date: dates1[5]),
-            TodayTestModel(score: 9, date: dates1[4]),
-            TodayTestModel(score: 10, date: dates1[3]),
-            TodayTestModel(score: 4, date: dates1[2]),
-            TodayTestModel(score: 3, date: dates1[1]),
-            TodayTestModel(score: 2, date: dates1[0])
-        ]
         
         //Insert Test Data
         managedObjectContext.performChangesAndWait {
             for data in self.todayTestData {
-                print(data.date.descriptionWithLocale(NSLocale.currentLocale()))
                 Today.insertIntoContext(self.managedObjectContext, score: Int64(data.score), date: data.date)
-                Streak.insertIntoContext(self.managedObjectContext, from: dates1[5], to: dates1[0])
-                Streak.insertIntoContext(self.managedObjectContext, from: dates2[3], to: dates2[0])
-                Streak.insertIntoContext(self.managedObjectContext, from: dates3[3], to: dates3[0])
-                
+            }
+            Streak.insertIntoContext(self.managedObjectContext, from: self.streak1[5], to: self.streak1[0])
+            Streak.insertIntoContext(self.managedObjectContext, from: self.streak2[3], to: self.streak2[0])
+            Streak.insertIntoContext(self.managedObjectContext, from: self.streak3[3], to: self.streak3[0])
+        }
+        
+        block()
+        
+        //DeleteTestData
+        managedObjectContext.performChangesAndWait {
+            let todayRequest = NSFetchRequest(entityName: Today.entityName)
+            let todayDeleteRequest = NSBatchDeleteRequest(fetchRequest: todayRequest)
+            let streakRequest = NSFetchRequest(entityName: Streak.entityName)
+            let streakDeleteRequest = NSBatchDeleteRequest(fetchRequest: streakRequest)
+            do {
+                try self.managedObjectContext.executeRequest(todayDeleteRequest)
+                try self.managedObjectContext.executeRequest(streakDeleteRequest)
+            } catch let error as NSError {
+                print("\(error) \(error.userInfo)")
+                abort()
             }
         }
     }
@@ -165,41 +203,43 @@ class TodayKitModelTests: XCTestCase {
     }
     
     func testTodayTypeProperty() {
-        let todays = Today.fetchInContext(managedObjectContext, configurationBlock: { request in
-            request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
-        })
-        
-        XCTAssertEqual(todays[0].type, TodayType.Poor)
-        XCTAssertEqual(todays[1].type, TodayType.Poor)
-        XCTAssertEqual(todays[2].type, TodayType.Poor)
-        XCTAssertEqual(todays[3].type, TodayType.Fair)
-        XCTAssertEqual(todays[4].type, TodayType.Fair)
-        XCTAssertEqual(todays[5].type, TodayType.Average)
-        XCTAssertEqual(todays[6].type, TodayType.Average)
-        XCTAssertEqual(todays[7].type, TodayType.Good)
-        XCTAssertEqual(todays[8].type, TodayType.Good)
-        XCTAssertEqual(todays[9].type, TodayType.Excellent)
-        XCTAssertEqual(todays[10].type, TodayType.Excellent)
-        
+        runTestWithTestData {
+            let todays = Today.fetchInContext(managedObjectContext, configurationBlock: { request in
+                request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
+            })
+            
+            XCTAssertEqual(todays[0].type, TodayType.Poor)
+            XCTAssertEqual(todays[1].type, TodayType.Poor)
+            XCTAssertEqual(todays[2].type, TodayType.Poor)
+            XCTAssertEqual(todays[3].type, TodayType.Fair)
+            XCTAssertEqual(todays[4].type, TodayType.Fair)
+            XCTAssertEqual(todays[5].type, TodayType.Average)
+            XCTAssertEqual(todays[6].type, TodayType.Average)
+            XCTAssertEqual(todays[7].type, TodayType.Good)
+            XCTAssertEqual(todays[8].type, TodayType.Good)
+            XCTAssertEqual(todays[9].type, TodayType.Excellent)
+            XCTAssertEqual(todays[10].type, TodayType.Excellent)
+        }
     }
     
     func testTodayColorProperty() {
-        let todays = Today.fetchInContext(managedObjectContext, configurationBlock: { request in
-            request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
-        })
-        
-        XCTAssertEqual(todays[0].color, TodayType.Poor.color())
-        XCTAssertEqual(todays[1].color, TodayType.Poor.color())
-        XCTAssertEqual(todays[2].color, TodayType.Poor.color())
-        XCTAssertEqual(todays[3].color, TodayType.Fair.color())
-        XCTAssertEqual(todays[4].color, TodayType.Fair.color())
-        XCTAssertEqual(todays[5].color, TodayType.Average.color())
-        XCTAssertEqual(todays[6].color, TodayType.Average.color())
-        XCTAssertEqual(todays[7].color, TodayType.Good.color())
-        XCTAssertEqual(todays[8].color, TodayType.Good.color())
-        XCTAssertEqual(todays[9].color, TodayType.Excellent.color())
-        XCTAssertEqual(todays[10].color, TodayType.Excellent.color())
-        
+        runTestWithTestData {
+            let todays = Today.fetchInContext(managedObjectContext, configurationBlock: { request in
+                request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
+            })
+            
+            XCTAssertEqual(todays[0].color, TodayType.Poor.color())
+            XCTAssertEqual(todays[1].color, TodayType.Poor.color())
+            XCTAssertEqual(todays[2].color, TodayType.Poor.color())
+            XCTAssertEqual(todays[3].color, TodayType.Fair.color())
+            XCTAssertEqual(todays[4].color, TodayType.Fair.color())
+            XCTAssertEqual(todays[5].color, TodayType.Average.color())
+            XCTAssertEqual(todays[6].color, TodayType.Average.color())
+            XCTAssertEqual(todays[7].color, TodayType.Good.color())
+            XCTAssertEqual(todays[8].color, TodayType.Good.color())
+            XCTAssertEqual(todays[9].color, TodayType.Excellent.color())
+            XCTAssertEqual(todays[10].color, TodayType.Excellent.color())
+        }
     }
     
     func testTodayType() {
@@ -303,35 +343,39 @@ class TodayKitModelTests: XCTestCase {
     }
     
     func testTodayCount() {
-        let count = Today.countInContext(managedObjectContext)
-        XCTAssertEqual(count, 14)
-        
-        let comp = NSCalendar.currentCalendar().components([.Year, .Month, .Day], fromDate: NSDate())
-        
-        let to = NSCalendar.currentCalendar().dateFromComponents(comp)
-        
-        comp.day = comp.day - 9
-        let from = NSCalendar.currentCalendar().dateFromComponents(comp)
-        
-        let todays = Today.todays(managedObjectContext, from: from!, to: to!)
-        XCTAssertEqual(todays.count, 8)
-        
+        runTestWithTestData {
+            let count = Today.countInContext(managedObjectContext)
+            XCTAssertEqual(count, 14)
+            
+            let comp = NSCalendar.currentCalendar().components([.Year, .Month, .Day], fromDate: NSDate())
+            
+            let to = NSCalendar.currentCalendar().dateFromComponents(comp)!
+            
+            comp.day = comp.day - 9
+            let from = NSCalendar.currentCalendar().dateFromComponents(comp)!
+            
+            let todays = Today.todays(managedObjectContext, from: from, to: to)
+            XCTAssertEqual(todays.count, 8)
+        }
     }
     
     func testAverage() {
-        let average = Today.average(self.managedObjectContext)
-        XCTAssertEqual(average, 4)
+        runTestWithTestData {
+            let average = Today.average(managedObjectContext)
+            XCTAssertEqual(average, 4)
+        }
     }
     
     func testCreated() {
-        XCTAssertTrue(Today.created(managedObjectContext, forDate: NSDate()))
-        
-        let comp = NSCalendar.currentCalendar().components([.Year, .Month, .Day], fromDate: NSDate())
-        comp.day = comp.day - 30
-        let notCreatedDate = NSCalendar.currentCalendar().dateFromComponents(comp)
-        
-        XCTAssertFalse(Today.created(managedObjectContext, forDate: notCreatedDate!))
-        
+        runTestWithTestData {
+            XCTAssertTrue(Today.created(managedObjectContext, forDate: NSDate()))
+            
+            let comp = NSCalendar.currentCalendar().components([.Year, .Month, .Day], fromDate: NSDate())
+            comp.day = comp.day - 30
+            let notCreatedDate = NSCalendar.currentCalendar().dateFromComponents(comp)
+            
+            XCTAssertFalse(Today.created(self.managedObjectContext, forDate: notCreatedDate!))
+        }
     }
     
     //MARK: - Streak
@@ -353,20 +397,64 @@ class TodayKitModelTests: XCTestCase {
     }
     
     func testCurrentStreak() {
-        let currentStreak = Streak.currentStreak(managedObjectContext)
-        XCTAssertEqual(currentStreak?.streakNumber, 6)
+        runTestWithTestData {
+            let currentStreak = Streak.currentStreak(managedObjectContext)!
+            
+            let comp = NSCalendar.currentCalendar().components([.Year, .Month, .Day], fromDate: NSDate())
+            comp.day = comp.day - 5
+            let from = NSCalendar.currentCalendar().dateFromComponents(comp)!
+            
+            XCTAssertEqual(currentStreak.streakNumber, 6)
+            XCTAssertTrue(NSCalendar.currentCalendar().isDate((currentStreak.from), inSameDayAsDate: from))
+            XCTAssertTrue(NSCalendar.currentCalendar().isDate((currentStreak.to), inSameDayAsDate: NSDate()))
+        }
+        
+        XCTAssertNil(Streak.currentStreak(managedObjectContext))
     }
     
     func testLongestStreak() {
-        let longestStreak = Streak.longestStreak(managedObjectContext)
+        runTestWithTestData {
+            let longestStreak = Streak.longestStreak(managedObjectContext)!
+            
+            let comp = NSCalendar.currentCalendar().components([.Year, .Month, .Day], fromDate: NSDate())
+            comp.day = comp.day - 5
+            let from = NSCalendar.currentCalendar().dateFromComponents(comp)!
+            
+            XCTAssertTrue(NSCalendar.currentCalendar().isDate((longestStreak.from), inSameDayAsDate: from))
+            XCTAssertTrue(NSCalendar.currentCalendar().isDate((longestStreak.to), inSameDayAsDate: NSDate()))
+            XCTAssertEqual(longestStreak.streakNumber, 6)
+        }
         
-        let comp = NSCalendar.currentCalendar().components([.Year, .Month, .Day], fromDate: NSDate())
-        comp.day = comp.day - 5
-        let from = NSCalendar.currentCalendar().dateFromComponents(comp)
-        
-        XCTAssertTrue(NSCalendar.currentCalendar().isDate((longestStreak?.from)!, inSameDayAsDate: from!))
-        XCTAssertTrue(NSCalendar.currentCalendar().isDate((longestStreak?.to)!, inSameDayAsDate: NSDate()))
-        XCTAssertEqual(longestStreak?.streakNumber, 6)
+        XCTAssertNil(Streak.longestStreak(managedObjectContext))
     }
     
+    func testUpdateStreak() {
+        runTestWithTestData {
+            let comp = NSCalendar.currentCalendar().components([.Year, .Month, .Day], fromDate: NSDate())
+            comp.day = comp.day - 1
+            let currentFrom = NSCalendar.currentCalendar().dateFromComponents(comp)!
+            comp.day = comp.day - 1
+            let updateDate = NSCalendar.currentCalendar().dateFromComponents(comp)!
+            
+            comp.day = comp.day - 6
+            let longestTo = NSCalendar.currentCalendar().dateFromComponents(comp)!
+            comp.day = comp.day - 3
+            let longestFrom = NSCalendar.currentCalendar().dateFromComponents(comp)!
+            
+            managedObjectContext.performChangesAndWait {
+                Streak.updateStreak(self.managedObjectContext, forDate: updateDate)
+            }
+            
+            let currentStreak = Streak.currentStreak(managedObjectContext)!
+            XCTAssertEqual(currentStreak.streakNumber, 2)
+            XCTAssertTrue(NSCalendar.currentCalendar().isDate((currentStreak.from), inSameDayAsDate: currentFrom))
+            XCTAssertTrue(NSCalendar.currentCalendar().isDate((currentStreak.to), inSameDayAsDate: NSDate()))
+            
+            
+            let longestStreak = Streak.longestStreak(managedObjectContext)!
+            XCTAssertEqual(longestStreak.streakNumber, 4)
+            XCTAssertTrue(NSCalendar.currentCalendar().isDate((longestStreak.from), inSameDayAsDate: longestFrom))
+            XCTAssertTrue(NSCalendar.currentCalendar().isDate((longestStreak.to), inSameDayAsDate: longestTo))
+        }
+    }
 }

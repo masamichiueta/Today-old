@@ -23,6 +23,7 @@ class TodayKitIOSTests: XCTestCase {
     
     //MARK: - AppGroupSharedData
     func testAppGroupUserDefaults() {
+        AppGroupSharedData.clean()
         var appGroupSharedData = AppGroupSharedData()
         XCTAssertEqual(appGroupSharedData.todayScore, 0)
         XCTAssertEqual(appGroupSharedData.total, 0)
@@ -49,7 +50,7 @@ class TodayKitIOSTests: XCTestCase {
         XCTAssertEqual(appGroupSharedDataUpdated.longestStreak, 5)
         XCTAssertEqual(appGroupSharedDataUpdated.todayDate, now)
         
-        appGroupSharedDataUpdated.clean()
+        AppGroupSharedData.clean()
         
         let appGroupSharedDataCleaned = AppGroupSharedData()
         XCTAssertEqual(appGroupSharedDataCleaned.todayScore, 0)
@@ -60,6 +61,7 @@ class TodayKitIOSTests: XCTestCase {
     
     //MARK: - Setting
     func testSetting() {
+        Setting.clean()
         Setting.setupDefaultSetting()
         var setting = Setting()
         XCTAssertTrue(setting.firstLaunch)
@@ -92,5 +94,7 @@ class TodayKitIOSTests: XCTestCase {
         XCTAssertFalse(settingUpdated.notificationEnabled)
         XCTAssertEqual(setting.notificationHour, 3)
         XCTAssertEqual(setting.notificationMinute, 40)
+        
+        Setting.clean()
     }
 }

@@ -14,6 +14,11 @@ public enum StorageType {
     case Cloud
 }
 
+private let todayUbiquitousContentNameKey = "TodayCloudStore"
+private let todayStoreName = "Today.sqlite"
+let storeURL = NSURL.documentsURL.URLByAppendingPathComponent(todayStoreName)
+
+
 //MARK: - CoreDataManger
 public final class CoreDataManager {
     
@@ -21,8 +26,6 @@ public final class CoreDataManager {
     
     public private(set) var managedObjectContext: NSManagedObjectContext?
     
-    private let todayUbiquitousContentNameKey = "TodayCloudStore"
-    private let todayStoreName = "Today.sqlite"
     
     private init() { }
     
@@ -47,8 +50,6 @@ public final class CoreDataManager {
                 NSInferMappingModelAutomaticallyOption: true]
         }
         
-        let storeURL = NSURL.documentsURL.URLByAppendingPathComponent(todayStoreName)
-        
         do {
             try persistentStoreCoordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: options)
         } catch let error as NSError {
@@ -67,6 +68,31 @@ public final class CoreDataManager {
         }
         
         return context
+    }
+    
+    public func removeStoreFiles() {
+        guard let storePath = storeURL.path else {
+            fatalError("Wrong store URL")
+        }
+        
+        let walURL = NSURL.fileURLWithPath(storePath + "-wal")
+        let shmURL = NSURL.fileURLWithPath(storePath + "-shm")
+        
+        do {
+            if let walPath = walURL.path where NSFileManager.defaultManager().fileExistsAtPath(walPath) {
+                try NSFileManager.defaultManager().removeItemAtURL(walURL)
+            }
+            if let shmPath = shmURL.path where NSFileManager.defaultManager().fileExistsAtPath(shmPath) {
+                try NSFileManager.defaultManager().removeItemAtURL(shmURL)
+            }
+            if let storePath = storeURL.path where NSFileManager.defaultManager().fileExistsAtPath(storePath) {
+                try NSFileManager.defaultManager().removeItemAtURL(storeURL)
+            }
+            
+        } catch let error as NSError {
+            print("\(error) \(error.userInfo)")
+            abort()
+        }
     }
     
     //MARK: - Notification

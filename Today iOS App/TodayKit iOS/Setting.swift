@@ -10,7 +10,7 @@ import Foundation
 
 public struct Setting {
     
-    private let defaults = NSUserDefaults.standardUserDefaults()
+    private static let defaults = NSUserDefaults.standardUserDefaults()
     
     //MARK: - Keys
     public struct SettingKey {
@@ -26,37 +26,37 @@ public struct Setting {
     //MARK: - Values
     public var notificationEnabled: Bool {
         didSet {
-            defaults.setBool(notificationEnabled, forKey: SettingKey.notificationEnabled)
+            Setting.defaults.setBool(notificationEnabled, forKey: SettingKey.notificationEnabled)
         }
     }
     
     public var notificationHour: Int {
         didSet {
-            defaults.setInteger(notificationHour, forKey: SettingKey.notificationHour)
+            Setting.defaults.setInteger(notificationHour, forKey: SettingKey.notificationHour)
         }
     }
     
     public var notificationMinute: Int {
         didSet {
-            defaults.setInteger(notificationMinute, forKey: SettingKey.notificationMinute)
+            Setting.defaults.setInteger(notificationMinute, forKey: SettingKey.notificationMinute)
         }
     }
     
     public var firstLaunch: Bool {
         didSet {
-            defaults.setBool(firstLaunch, forKey: SettingKey.firstLaunch)
+            Setting.defaults.setBool(firstLaunch, forKey: SettingKey.firstLaunch)
         }
     }
     
     public var ubiquityIdentityToken: NSData? {
         didSet {
-            defaults.setObject(ubiquityIdentityToken, forKey: SettingKey.ubiquityIdentityToken)
+            Setting.defaults.setObject(ubiquityIdentityToken, forKey: SettingKey.ubiquityIdentityToken)
         }
     }
     
     public var iCloudEnabled: Bool {
         didSet {
-            defaults.setBool(iCloudEnabled, forKey: SettingKey.iCloudEnabled)
+            Setting.defaults.setBool(iCloudEnabled, forKey: SettingKey.iCloudEnabled)
         }
     }
     
@@ -64,12 +64,12 @@ public struct Setting {
     
     //MARK: -
     public init() {
-        notificationEnabled = defaults.boolForKey(SettingKey.notificationEnabled)
-        notificationHour = defaults.integerForKey(SettingKey.notificationHour)
-        notificationMinute = defaults.integerForKey(SettingKey.notificationMinute)
-        firstLaunch = defaults.boolForKey(SettingKey.firstLaunch)
-        ubiquityIdentityToken = defaults.dataForKey(SettingKey.ubiquityIdentityToken)
-        iCloudEnabled = defaults.boolForKey(SettingKey.iCloudEnabled)
+        notificationEnabled = Setting.defaults.boolForKey(SettingKey.notificationEnabled)
+        notificationHour = Setting.defaults.integerForKey(SettingKey.notificationHour)
+        notificationMinute = Setting.defaults.integerForKey(SettingKey.notificationMinute)
+        firstLaunch = Setting.defaults.boolForKey(SettingKey.firstLaunch)
+        ubiquityIdentityToken = Setting.defaults.dataForKey(SettingKey.ubiquityIdentityToken)
+        iCloudEnabled = Setting.defaults.boolForKey(SettingKey.iCloudEnabled)
         guard let settingVersion = NSBundle.mainBundle().objectForInfoDictionaryKey(SettingKey.version) as? String else {
             fatalError("Invalid setting")
         }
@@ -111,7 +111,10 @@ public struct Setting {
             fatalError("File not exists")
         }
         
-        NSUserDefaults.standardUserDefaults().registerDefaults(defaultSettingDic)
+        Setting.defaults.registerDefaults(defaultSettingDic)
     }
     
+    public static func clean() {
+        Setting.defaults.clean()
+    }
 }

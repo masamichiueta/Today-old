@@ -27,6 +27,13 @@ extension CGPoint {
     }
 }
 
+extension NSUserDefaults {
+    public func clean() {
+        for key in self.dictionaryRepresentation().keys {
+            self.removeObjectForKey(key)
+        }
+    }
+}
 
 extension NSURL {
     

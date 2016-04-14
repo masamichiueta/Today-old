@@ -36,6 +36,7 @@
 		245464671C75FFEF0030EF82 /* WatchConnectivityActionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245464661C75FFEF0030EF82 /* WatchConnectivityActionType.swift */; };
 		245464681C75FFEF0030EF82 /* WatchConnectivityActionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245464661C75FFEF0030EF82 /* WatchConnectivityActionType.swift */; };
 		24561EA71C6F77D500022222 /* GetStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24561EA61C6F77D500022222 /* GetStartedViewController.swift */; };
+		245FA6671CBFDA1700A8ABEC /* TodayKitIOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245FA6661CBFDA1700A8ABEC /* TodayKitIOSTests.swift */; };
 		2466884F1C1DB45E00C5E5A0 /* Activity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2466884D1C1DB45E00C5E5A0 /* Activity.storyboard */; };
 		246688511C1DB4ED00C5E5A0 /* TodaysTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246688501C1DB4ED00C5E5A0 /* TodaysTableViewController.swift */; };
 		246688561C1DB61100C5E5A0 /* Today.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 246688541C1DB61100C5E5A0 /* Today.storyboard */; };
@@ -254,6 +255,7 @@
 		244BF0941C624EF400A9543A /* ChartViewBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewBase.swift; sourceTree = "<group>"; };
 		245464661C75FFEF0030EF82 /* WatchConnectivityActionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchConnectivityActionType.swift; sourceTree = "<group>"; };
 		24561EA61C6F77D500022222 /* GetStartedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStartedViewController.swift; sourceTree = "<group>"; };
+		245FA6661CBFDA1700A8ABEC /* TodayKitIOSTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayKitIOSTests.swift; sourceTree = "<group>"; };
 		2466884E1C1DB45E00C5E5A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Activity.storyboard; sourceTree = "<group>"; };
 		246688501C1DB4ED00C5E5A0 /* TodaysTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodaysTableViewController.swift; sourceTree = "<group>"; };
 		246688551C1DB61100C5E5A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Today.storyboard; sourceTree = "<group>"; };
@@ -566,6 +568,7 @@
 				24C6C1B71C54F9970041C31F /* Info.plist */,
 				24C6C1B51C54F9970041C31F /* TodayKitUtilitiesTests.swift */,
 				247363BC1CB5582E007F68C7 /* TodayKitModelTests.swift */,
+				245FA6661CBFDA1700A8ABEC /* TodayKitIOSTests.swift */,
 			);
 			path = TodayKitTests;
 			sourceTree = "<group>";
@@ -1130,6 +1133,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				247363BD1CB5582E007F68C7 /* TodayKitModelTests.swift in Sources */,
+				245FA6671CBFDA1700A8ABEC /* TodayKitIOSTests.swift in Sources */,
 				24C6C1B61C54F9970041C31F /* TodayKitUtilitiesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -97,4 +97,18 @@ class TodayKitIOSTests: XCTestCase {
         
         Setting.clean()
     }
+    
+    //MARK: - CoreDataManager
+    func testCoreDataManager() {
+        let manager = CoreDataManager.sharedInstance
+        XCTAssertNotNil(manager)
+        
+        XCTAssertNotNil(manager.createTodayMainContext(.Local))
+        
+        manager.removeStoreFiles()
+        
+        XCTAssertNotNil(manager.createTodayMainContext(.Cloud))
+        
+        manager.removeStoreFiles()
+    }
 }

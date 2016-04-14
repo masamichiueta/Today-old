@@ -21,6 +21,7 @@ class TodayKitIOSTests: XCTestCase {
         super.tearDown()
     }
     
+    //MARK: - AppGroupSharedData
     func testAppGroupUserDefaults() {
         var appGroupSharedData = AppGroupSharedData()
         XCTAssertEqual(appGroupSharedData.todayScore, 0)
@@ -55,5 +56,41 @@ class TodayKitIOSTests: XCTestCase {
         XCTAssertEqual(appGroupSharedDataCleaned.total, 0)
         XCTAssertEqual(appGroupSharedDataCleaned.currentStreak, 0)
         XCTAssertEqual(appGroupSharedDataCleaned.longestStreak, 0)
+    }
+    
+    //MARK: - Setting
+    func testSetting() {
+        Setting.setupDefaultSetting()
+        var setting = Setting()
+        XCTAssertTrue(setting.firstLaunch)
+        XCTAssertFalse(setting.iCloudEnabled)
+        XCTAssertTrue(setting.notificationEnabled)
+        XCTAssertEqual(setting.notificationHour, 21)
+        XCTAssertEqual(setting.notificationMinute, 0)
+        XCTAssertEqual(setting.version, "1.1")
+        
+        let dic = setting.dictionaryRepresentation
+        XCTAssertNotNil(dic[Setting.SettingKey.firstLaunch])
+        XCTAssertNotNil(dic[Setting.SettingKey.iCloudEnabled])
+        XCTAssertNotNil(dic[Setting.SettingKey.notificationEnabled])
+        XCTAssertNotNil(dic[Setting.SettingKey.notificationHour])
+        XCTAssertNotNil(dic[Setting.SettingKey.notificationMinute])
+        XCTAssertNotNil(dic[Setting.SettingKey.ubiquityIdentityToken])
+        XCTAssertNotNil(dic[Setting.SettingKey.version])
+        
+        XCTAssertNotNil(setting.notificationTime)
+        
+        setting.firstLaunch = false
+        setting.iCloudEnabled = true
+        setting.notificationEnabled = false
+        setting.notificationHour = 3
+        setting.notificationMinute = 40
+        
+        let settingUpdated = Setting()
+        XCTAssertFalse(settingUpdated.firstLaunch)
+        XCTAssertTrue(settingUpdated.iCloudEnabled)
+        XCTAssertFalse(settingUpdated.notificationEnabled)
+        XCTAssertEqual(setting.notificationHour, 3)
+        XCTAssertEqual(setting.notificationMinute, 40)
     }
 }

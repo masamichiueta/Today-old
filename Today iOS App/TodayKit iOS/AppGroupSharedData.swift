@@ -64,4 +64,13 @@ public struct AppGroupSharedData {
         longestStreak = defaults?.integerForKey(AppGroupSharedDataKey.longestStreak) ?? 0
         currentStreak = defaults?.integerForKey(AppGroupSharedDataKey.currentStreak) ?? 0
     }
+    
+    public func clean() {
+        guard let keys = defaults?.dictionaryRepresentation().keys else {
+            return
+        }
+        for key in keys {
+            defaults?.removeObjectForKey(key)
+        }
+    }
 }

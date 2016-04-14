@@ -1,6 +1,6 @@
 //
-//  TodayKitUtilitiesTests.swift
-//  TodayKitTests
+//  TodayKitHelperTests.swift
+//  Today
 //
 //  Created by UetaMasamichi on 2016/01/24.
 //  Copyright © 2016年 Masamichi Ueta. All rights reserved.
@@ -9,7 +9,7 @@
 import XCTest
 @testable import TodayKit
 
-class TodayKitUtilitiesTests: XCTestCase {
+class TodayKitHelperTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

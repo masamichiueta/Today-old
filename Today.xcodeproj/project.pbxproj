@@ -38,6 +38,7 @@
 		24561EA71C6F77D500022222 /* GetStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24561EA61C6F77D500022222 /* GetStartedViewController.swift */; };
 		245FA6671CBFDA1700A8ABEC /* TodayKitIOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245FA6661CBFDA1700A8ABEC /* TodayKitIOSTests.swift */; };
 		245FA6791CBFE92A00A8ABEC /* TodayHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245FA6781CBFE92A00A8ABEC /* TodayHelperTests.swift */; };
+		246214C01CC2739200009053 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 246214BF1CC2739200009053 /* Settings.bundle */; };
 		2466884F1C1DB45E00C5E5A0 /* Activity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2466884D1C1DB45E00C5E5A0 /* Activity.storyboard */; };
 		246688511C1DB4ED00C5E5A0 /* TodaysTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246688501C1DB4ED00C5E5A0 /* TodaysTableViewController.swift */; };
 		246688561C1DB61100C5E5A0 /* Today.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 246688541C1DB61100C5E5A0 /* Today.storyboard */; };
@@ -258,6 +259,7 @@
 		24561EA61C6F77D500022222 /* GetStartedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStartedViewController.swift; sourceTree = "<group>"; };
 		245FA6661CBFDA1700A8ABEC /* TodayKitIOSTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayKitIOSTests.swift; sourceTree = "<group>"; };
 		245FA6781CBFE92A00A8ABEC /* TodayHelperTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayHelperTests.swift; sourceTree = "<group>"; };
+		246214BF1CC2739200009053 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		2466884E1C1DB45E00C5E5A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Activity.storyboard; sourceTree = "<group>"; };
 		246688501C1DB4ED00C5E5A0 /* TodaysTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodaysTableViewController.swift; sourceTree = "<group>"; };
 		246688551C1DB61100C5E5A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Today.storyboard; sourceTree = "<group>"; };
@@ -512,6 +514,7 @@
 				24030AF21C1C821C004E68ED /* Info.plist */,
 				24C77EAD1C2A937600493C13 /* Today.entitlements */,
 				24B744EA1C873528000E0FFC /* Localizable.strings */,
+				246214BF1CC2739200009053 /* Settings.bundle */,
 			);
 			path = "Today iOS App";
 			sourceTree = "<group>";
@@ -938,6 +941,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				246214C01CC2739200009053 /* Settings.bundle in Resources */,
 				24030AF11C1C821C004E68ED /* LaunchScreen.storyboard in Resources */,
 				24030AEE1C1C821C004E68ED /* Assets.xcassets in Resources */,
 				24030AE91C1C821C004E68ED /* Main.storyboard in Resources */,
@@ -1039,7 +1043,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$SRCROOT/Today iOS App/Today Extension/Info.plist\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$SRCROOT/Today Watch App/Today Watch App/Info.plist\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$SRCROOT/Today Watch App/Today Watch Extension/Info.plist\"";
+			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/Today iOS App/Today Extension/Info.plist\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/Today Watch App/Today Watch App/Info.plist\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/Today Watch App/Today Watch Extension/Info.plist\"\n\nappVersion=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\n/usr/libexec/PlistBuddy -c \"Set :PreferenceSpecifiers:1:DefaultValue $appVersion.$buildNumber\" \"${PROJECT_DIR}/Today iOS App/Today iOS App/Settings.bundle/Root.plist\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 

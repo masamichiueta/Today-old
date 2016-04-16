@@ -41,12 +41,6 @@ final class SettingTableViewController: UITableViewController {
     private func setupTableView() {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 44
-        let versionLabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 20))
-        versionLabel.textAlignment = .Center
-        versionLabel.textColor = UIColor.lightGrayColor()
-        let setting = Setting()
-        versionLabel.text = localize("Today Version") + " \(setting.version)"
-        tableView.tableFooterView = versionLabel
     }
     
     private func togglePickerCell(pickerHidden: Bool) {

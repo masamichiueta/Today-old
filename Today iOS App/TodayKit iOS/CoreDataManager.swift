@@ -129,7 +129,9 @@ public final class CoreDataManager {
         let dict = iCloudStore.dictionaryRepresentation
         NSNotificationCenter.defaultCenter().removeObserver(self, name: NSUserDefaultsDidChangeNotification, object: nil)
         for (key, value) in dict {
-            NSUserDefaults.standardUserDefaults().setObject(value, forKey: key)
+            if Setting.SettingKey.syncTargetKeys.contains(key) {
+                NSUserDefaults.standardUserDefaults().setObject(value, forKey: key)
+            }
         }
         
         NSUserDefaults.standardUserDefaults().synchronize()
@@ -147,7 +149,9 @@ public final class CoreDataManager {
         let iCloudStore = NSUbiquitousKeyValueStore.defaultStore()
         let dict = NSUserDefaults.standardUserDefaults().dictionaryRepresentation()
         for (key, value) in dict {
-            iCloudStore.setObject(value, forKey: key)
+            if Setting.SettingKey.syncTargetKeys.contains(key) {
+                iCloudStore.setObject(value, forKey: key)
+            }
         }
         iCloudStore.synchronize()
     }

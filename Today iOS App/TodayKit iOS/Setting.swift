@@ -21,6 +21,14 @@ public struct Setting {
         public static let iCloudEnabled = "ICloudEnabled"
         public static let ubiquityIdentityToken = "com.uetamasamichi.Today.UbiquityIdentityToken"
         public static let version = "CFBundleShortVersionString"
+        
+        public static let syncTargetKeys = [
+            SettingKey.notificationEnabled,
+            SettingKey.notificationHour,
+            SettingKey.notificationMinute,
+            SettingKey.firstLaunch,
+            SettingKey.iCloudEnabled
+        ]
     }
     
     //MARK: - Values

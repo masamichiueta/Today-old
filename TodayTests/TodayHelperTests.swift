@@ -36,9 +36,14 @@ class TodayHelperTests: XCTestCase {
     }
     
     func testThatItHandlesLaunch() {
+        //given
         let handler = LaunchDelegateHandler()
         let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        //when
         handler.handleLaunch(delegate)
+        
+        //then
         XCTAssertTrue(delegate.window?.rootViewController is UITabBarController)
     }
     
@@ -63,5 +68,5 @@ class TodayHelperTests: XCTestCase {
     }
     
     
-
+    
 }

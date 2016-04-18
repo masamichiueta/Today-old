@@ -75,30 +75,6 @@ class TodayKitModelTests: XCTestCase {
         return dates
     }()
     
-    override func setUp() {
-        super.setUp()
-        
-        setupMoc()
-        
-        todayTestData = [
-            TodayTestModel(score: 0, date: streak1[0]),
-            TodayTestModel(score: 1, date: streak1[1]),
-            TodayTestModel(score: 2, date: streak1[2]),
-            TodayTestModel(score: 3, date: streak1[3]),
-            TodayTestModel(score: 4, date: streak1[4]),
-            TodayTestModel(score: 5, date: streak1[5]),
-            TodayTestModel(score: 6, date: streak2[0]),
-            TodayTestModel(score: 7, date: streak2[1]),
-            TodayTestModel(score: 8, date: streak2[2]),
-            TodayTestModel(score: 9, date: streak2[3]),
-            TodayTestModel(score: 10, date: streak3[0]),
-            TodayTestModel(score: 2, date: streak3[1]),
-            TodayTestModel(score: 3, date: streak3[2]),
-            TodayTestModel(score: 4, date: streak3[3]),
-            TodayTestModel(score: 4, date: streak4[0])
-        ]
-    }
-    
     func setupMoc() {
         let bundles = [NSBundle(forClass: Today.self)]
         guard let managedObjectModel = NSManagedObjectModel.mergedModelFromBundles(bundles) else {
@@ -153,8 +129,32 @@ class TodayKitModelTests: XCTestCase {
         }
     }
     
+    //MARK: - Life Cycle
+    override func setUp() {
+        super.setUp()
+        
+        setupMoc()
+        
+        todayTestData = [
+            TodayTestModel(score: 0, date: streak1[0]),
+            TodayTestModel(score: 1, date: streak1[1]),
+            TodayTestModel(score: 2, date: streak1[2]),
+            TodayTestModel(score: 3, date: streak1[3]),
+            TodayTestModel(score: 4, date: streak1[4]),
+            TodayTestModel(score: 5, date: streak1[5]),
+            TodayTestModel(score: 6, date: streak2[0]),
+            TodayTestModel(score: 7, date: streak2[1]),
+            TodayTestModel(score: 8, date: streak2[2]),
+            TodayTestModel(score: 9, date: streak2[3]),
+            TodayTestModel(score: 10, date: streak3[0]),
+            TodayTestModel(score: 2, date: streak3[1]),
+            TodayTestModel(score: 3, date: streak3[2]),
+            TodayTestModel(score: 4, date: streak3[3]),
+            TodayTestModel(score: 4, date: streak4[0])
+        ]
+    }
+    
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         let walURL = NSURL.fileURLWithPath(storeURL.path! + "-wal")
         let shmURL = NSURL.fileURLWithPath(storeURL.path! + "-shm")
         
@@ -177,49 +177,68 @@ class TodayKitModelTests: XCTestCase {
         super.tearDown()
     }
     
-    func testModelExists() {
+    //MARK: - Entity
+    func testThatItChecksModelExists() {
+        //given
         guard let managedObjectContext = managedObjectContext else {
             fatalError("ManagedObjectContext not found")
         }
         
+        //when
         let todayEntity = NSEntityDescription.entityForName(Today.entityName, inManagedObjectContext: managedObjectContext)
+        
+        //then
         XCTAssertNotNil(todayEntity)
         
+        
+        //when
         let streakEntity = NSEntityDescription.entityForName(Streak.entityName, inManagedObjectContext: managedObjectContext)
+        
+        //then
         XCTAssertNotNil(streakEntity)
         
     }
     
     //MARK: - Today
-    func testTodayEntityName() {
+    func testThatItGetsTodayEntityName() {
+        //given
         let entityName = Today.entityName
+        
+        //then
         XCTAssertEqual(entityName, "Today")
     }
     
-    func testTodayDefaultSortDescriptors() {
+    func testThatItGetsTodayDefaultSortDescriptors() {
+        //given
         let descriptors = Today.defaultSortDescriptors
+        
+        //then
         XCTAssertEqual(descriptors.count, 1)
         
+        //given
         guard let descriptor = descriptors.first else {
             fatalError()
         }
         
+        //then
         XCTAssertEqual(descriptor.key, "date")
         XCTAssertFalse(descriptor.ascending)
     }
     
-    func testMasterScore() {
+    func testThatItGetsMasterScore() {
         XCTAssertEqual(Today.masterScores.count, 11)
         XCTAssertEqual(Today.maxMasterScore, 10)
         XCTAssertEqual(Today.minMasterScore, 0)
     }
     
-    func testTodayTypeProperty() {
+    func testThatItGetsTodayTypeProperty() {
         runTestWithTestData {
+            //given
             let todays = Today.fetchInContext(managedObjectContext, configurationBlock: { request in
                 request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
             })
             
+            //then
             XCTAssertEqual(todays[0].type, TodayType.Poor)
             XCTAssertEqual(todays[1].type, TodayType.Poor)
             XCTAssertEqual(todays[2].type, TodayType.Poor)
@@ -234,12 +253,14 @@ class TodayKitModelTests: XCTestCase {
         }
     }
     
-    func testTodayColorProperty() {
+    func testThatItGestsTodayColorProperty() {
         runTestWithTestData {
+            //given
             let todays = Today.fetchInContext(managedObjectContext, configurationBlock: { request in
                 request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
             })
             
+            //then
             XCTAssertEqual(todays[0].color, TodayType.Poor.color())
             XCTAssertEqual(todays[1].color, TodayType.Poor.color())
             XCTAssertEqual(todays[2].color, TodayType.Poor.color())
@@ -254,217 +275,353 @@ class TodayKitModelTests: XCTestCase {
         }
     }
     
-    func testTodayType() {
+    func testThatItGetsTodayType() {
+        
+        //given
         let poorType0 = Today.type(0)
+        
+        //then
         XCTAssertEqual(poorType0, TodayType.Poor)
         
+        
+        //given
         let poorType1 = Today.type(1)
+        
+        //then
         XCTAssertEqual(poorType1, TodayType.Poor)
         
+        
+        //given
         let poorType2 = Today.type(2)
+
+        //then
         XCTAssertEqual(poorType2, TodayType.Poor)
         
+        
+        //given
         let fairType3 = Today.type(3)
+        
+        //then
         XCTAssertEqual(fairType3, TodayType.Fair)
         
+        
+        //given
         let fairType4 = Today.type(4)
+        
+        //then
         XCTAssertEqual(fairType4, TodayType.Fair)
         
+        
+        //given
         let averageType5 = Today.type(5)
+        
+        //then
         XCTAssertEqual(averageType5, TodayType.Average)
         
+        
+        //given
         let averageType6 = Today.type(6)
+        
+        //then
         XCTAssertEqual(averageType6, TodayType.Average)
         
+        
+        //given
         let goodType7 = Today.type(7)
+        
+        //then
         XCTAssertEqual(goodType7, TodayType.Good)
         
+        
+        //given
         let goodType8 = Today.type(8)
+        
+        //then
         XCTAssertEqual(goodType8, TodayType.Good)
         
+        
+        //given
         let excellentType9 = Today.type(9)
+
+        //then
         XCTAssertEqual(excellentType9, TodayType.Excellent)
         
+        
+        //given
         let excellentType10 = Today.type(10)
+        
+        //then
         XCTAssertEqual(excellentType10, TodayType.Excellent)
         
+        
+        //given
         let excellentType11 = Today.type(11)
+        
+        //then
         XCTAssertEqual(excellentType11, TodayType.Excellent)
     }
     
-    func testTodayTypeColor() {
+    func testThatItGetsTodayTypeColor() {
+        //given
         let poor = TodayType.Poor
+        
+        //then
         XCTAssertEqual(poor.color(), UIColor.todayBlueColor())
         
+        
+        //given
         let fair = TodayType.Fair
+        
+        //then
         XCTAssertEqual(fair.color(), UIColor.todayGreenColor())
         
+        
+        //given
         let average = TodayType.Average
+        
+        //then
         XCTAssertEqual(average.color(), UIColor.todayYellowColor())
         
+        
+        //given
         let good = TodayType.Good
+        
+        //then
         XCTAssertEqual(good.color(), UIColor.todayOrangeColor())
         
+        
+        //given
         let excellent = TodayType.Excellent
+        
+        //then
         XCTAssertEqual(excellent.color(), UIColor.todayRedColor())
     }
     
-    func testTodayIcon() {
+    func testThatItGetsTodayIcon() {
+        //given
         let poor = TodayType.Poor
+        
+        //then
         XCTAssertNotNil(poor.icon(.TwentyEight))
         XCTAssertNotNil(poor.icon(.Fourty))
         
+        
+        //given
         let fair = TodayType.Fair
+        
+        //then
         XCTAssertNotNil(fair.icon(.TwentyEight))
         XCTAssertNotNil(fair.icon(.Fourty))
         
+        
+        //given
         let average = TodayType.Average
+        
+        //then
         XCTAssertNotNil(average.icon(.TwentyEight))
         XCTAssertNotNil(average.icon(.Fourty))
         
+        
+        //given
         let good = TodayType.Good
+        
+        //then
         XCTAssertNotNil(good.icon(.TwentyEight))
         XCTAssertNotNil(good.icon(.Fourty))
         
+        
+        //given
         let excellent = TodayType.Excellent
+        
+        //then
         XCTAssertNotNil(excellent.icon(.TwentyEight))
         XCTAssertNotNil(excellent.icon(.Fourty))
         
     }
     
-    func testTodayTypeIconNmae() {
+    func testThatItGetsTodayTypeIconNmae() {
+        //given
         let poor = TodayType.Poor
+        
+        //then
         XCTAssertEqual(poor.iconName(.TwentyEight),"poor_face_icon_28")
         XCTAssertEqual(poor.iconName(.Fourty),"poor_face_icon_40")
         
+        
+        //given
         let fair = TodayType.Fair
+        
+        //then
         XCTAssertEqual(fair.iconName(.TwentyEight),"average_face_icon_28")
         XCTAssertEqual(fair.iconName(.Fourty),"average_face_icon_40")
         
+        
+        //given
         let average = TodayType.Average
+        
+        //then
         XCTAssertEqual(average.iconName(.TwentyEight),"average_face_icon_28")
         XCTAssertEqual(average.iconName(.Fourty),"average_face_icon_40")
         
+        
+        //given
         let good = TodayType.Good
+        
+        //then
         XCTAssertEqual(good.iconName(.TwentyEight),"good_face_icon_28")
         XCTAssertEqual(good.iconName(.Fourty),"good_face_icon_40")
         
+        
+        //given
         let excellent = TodayType.Excellent
+        
+        //then
         XCTAssertEqual(excellent.iconName(.TwentyEight),"good_face_icon_28")
         XCTAssertEqual(excellent.iconName(.Fourty),"good_face_icon_40")
     }
     
-    func testTodayCount() {
+    func testThatItGetsTodayCount() {
         runTestWithTestData {
+            //given
             let count = Today.countInContext(managedObjectContext)
+            
+            //then
             XCTAssertEqual(count, 15)
             
+            
+            //given
             let comp = NSCalendar.currentCalendar().components([.Year, .Month, .Day], fromDate: NSDate())
-            
             let to = NSCalendar.currentCalendar().dateFromComponents(comp)!
-            
             comp.day = comp.day - 9
             let from = NSCalendar.currentCalendar().dateFromComponents(comp)!
             
+            //when
             let todays = Today.todays(managedObjectContext, from: from, to: to)
+            
+            //then
             XCTAssertEqual(todays.count, 8)
         }
     }
     
-    func testAverage() {
+    func testThatItGetsAverage() {
         runTestWithTestData {
+            //given
             let average = Today.average(managedObjectContext)
+            
+            //then
             XCTAssertEqual(average, 4)
         }
     }
     
-    func testCreated() {
+    func testThatItChecksTodayHasBeenCreated() {
         runTestWithTestData {
+            //then
             XCTAssertTrue(Today.created(managedObjectContext, forDate: NSDate()))
             
+            //given
             let comp = NSCalendar.currentCalendar().components([.Year, .Month, .Day], fromDate: NSDate())
             comp.day = comp.day - 30
             let notCreatedDate = NSCalendar.currentCalendar().dateFromComponents(comp)
             
+            //then
             XCTAssertFalse(Today.created(self.managedObjectContext, forDate: notCreatedDate!))
         }
     }
     
-    func testFindOrFetchToday() {
+    func testThatItFindsOrFetchesToday() {
         runTestWithTestData {
+            //given
             let predicate = NSPredicate(format: "date == %@", streak1[0])
+            
+            //when
             let today = Today.findOrFetchInContext(managedObjectContext, matchingPredicate: predicate)
+            
+            //then
             XCTAssertEqual(today?.score, 0)
         }
     }
     
     //MARK: - Streak
-    func testStreakEntityName() {
+    func testThatItGetsStreakEntityName() {
+        //given
         let entityName = Streak.entityName
+        
+        //then
         XCTAssertEqual(entityName, "Streak")
     }
     
-    func testStreakDefaultSortDescriptors() {
+    func testThatItGetsStreakDefaultSortDescriptors() {
+        //given
         let descriptors = Streak.defaultSortDescriptors
+        
+        //then
         XCTAssertEqual(descriptors.count, 1)
         
+        
+        //given
         guard let descriptor = descriptors.first else {
             fatalError()
         }
         
+        //then
         XCTAssertEqual(descriptor.key, "to")
         XCTAssertFalse(descriptor.ascending)
     }
     
-    func testStreakCount() {
+    func testThatItGetsStreakCount() {
         runTestWithTestData {
+            //then
             XCTAssertEqual(Streak.countInContext(managedObjectContext), 4)
             
+            //when
             managedObjectContext.performChangesAndWait {
                 self.managedObjectContext.deleteObject(Streak.longestStreak(self.managedObjectContext)!)
             }
             
+            //then
             XCTAssertEqual(Streak.countInContext(managedObjectContext), 3)
-            
         }
-        
-        
     }
     
-    func testCurrentStreak() {
+    func testThatItGetsCurrentStreak() {
         runTestWithTestData {
+            //given
             let currentStreak = Streak.currentStreak(managedObjectContext)!
-            
             let comp = NSCalendar.currentCalendar().components([.Year, .Month, .Day], fromDate: NSDate())
             comp.day = comp.day - 5
             let from = NSCalendar.currentCalendar().dateFromComponents(comp)!
             
+            //then
             XCTAssertEqual(currentStreak.streakNumber, 6)
             XCTAssertTrue(NSCalendar.currentCalendar().isDate((currentStreak.from), inSameDayAsDate: from))
             XCTAssertTrue(NSCalendar.currentCalendar().isDate((currentStreak.to), inSameDayAsDate: NSDate()))
         }
         
+        //then
         XCTAssertNil(Streak.currentStreak(managedObjectContext))
     }
     
-    func testLongestStreak() {
+    func testThatItGetsLongestStreak() {
         runTestWithTestData {
+            //given
             let longestStreak = Streak.longestStreak(managedObjectContext)!
-            
             let comp = NSCalendar.currentCalendar().components([.Year, .Month, .Day], fromDate: NSDate())
             comp.day = comp.day - 5
             let from = NSCalendar.currentCalendar().dateFromComponents(comp)!
             
+            //then
             XCTAssertTrue(NSCalendar.currentCalendar().isDate((longestStreak.from), inSameDayAsDate: from))
             XCTAssertTrue(NSCalendar.currentCalendar().isDate((longestStreak.to), inSameDayAsDate: NSDate()))
             XCTAssertEqual(longestStreak.streakNumber, 6)
         }
         
+        //then
         XCTAssertNil(Streak.longestStreak(managedObjectContext))
     }
     
-    func testUpdateStreak() {
+    func testThatItUpdatesStreak() {
         runTestWithTestData {
+            //given
             let comp = NSCalendar.currentCalendar().components([.Year, .Month, .Day], fromDate: NSDate())
             comp.day = comp.day - 1
             let currentFrom = NSCalendar.currentCalendar().dateFromComponents(comp)!
@@ -476,11 +633,14 @@ class TodayKitModelTests: XCTestCase {
             comp.day = comp.day - 3
             let longestFrom = NSCalendar.currentCalendar().dateFromComponents(comp)!
             
+            //when
             managedObjectContext.performChangesAndWait {
                 Streak.deleteDateFromStreak(self.managedObjectContext, date: deleteDate)
             }
             
             let currentStreak = Streak.currentStreak(managedObjectContext)!
+            
+            //then
             XCTAssertEqual(currentStreak.streakNumber, 2)
             XCTAssertTrue(NSCalendar.currentCalendar().isDate((currentStreak.from), inSameDayAsDate: currentFrom))
             XCTAssertTrue(NSCalendar.currentCalendar().isDate((currentStreak.to), inSameDayAsDate: NSDate()))
@@ -493,18 +653,21 @@ class TodayKitModelTests: XCTestCase {
         }
     }
     
-    func testUpdateCurrentStreakAtTo() {
+    func testThatItUpdatesCurrentStreakAtTo() {
         runTestWithTestData {
-            managedObjectContext.performChangesAndWait {
-                Streak.deleteDateFromStreak(self.managedObjectContext, date: NSDate())
-            }
-            
+            //given
             let comp = NSCalendar.currentCalendar().components([.Year, .Month, .Day], fromDate: NSDate())
             comp.day = comp.day - 1
             let currentTo = NSCalendar.currentCalendar().dateFromComponents(comp)!
             comp.day = comp.day - 4
             let currentFrom = NSCalendar.currentCalendar().dateFromComponents(comp)!
             
+            //when
+            managedObjectContext.performChangesAndWait {
+                Streak.deleteDateFromStreak(self.managedObjectContext, date: NSDate())
+            }
+            
+            //then
             let currentStreak = Streak.currentStreak(managedObjectContext)!
             XCTAssertEqual(currentStreak.streakNumber, 5)
             XCTAssertTrue(NSCalendar.currentCalendar().isDate((currentStreak.from), inSameDayAsDate: currentFrom))
@@ -517,19 +680,23 @@ class TodayKitModelTests: XCTestCase {
         }
     }
     
-    func testUpdateCurrentStreakAtFrom() {
+    func testThatItUpdatesCurrentStreakAtFrom() {
         runTestWithTestData {
+            //given
             let comp = NSCalendar.currentCalendar().components([.Year, .Month, .Day], fromDate: NSDate())
             comp.day = comp.day - 4
             let currentFrom = NSCalendar.currentCalendar().dateFromComponents(comp)!
             comp.day = comp.day - 1
             let deleteDate = NSCalendar.currentCalendar().dateFromComponents(comp)!
             
+            //when
             managedObjectContext.performChangesAndWait {
                 Streak.deleteDateFromStreak(self.managedObjectContext, date: deleteDate)
             }
             
             let currentStreak = Streak.currentStreak(managedObjectContext)!
+            
+            //then
             XCTAssertEqual(currentStreak.streakNumber, 5)
             XCTAssertTrue(NSCalendar.currentCalendar().isDate(currentStreak.to, inSameDayAsDate: NSDate()))
             XCTAssertTrue(NSCalendar.currentCalendar().isDate(currentStreak.from, inSameDayAsDate: currentFrom))
@@ -537,24 +704,32 @@ class TodayKitModelTests: XCTestCase {
         }
     }
     
-    func testCurrentStreakNil() {
+    func testThatItChecksCurrentStreakNil() {
         runTestWithTestData {
+            //given
             let date = NSDate()
             let comp = NSCalendar.currentCalendar().components([.Year, .Month, .Day], fromDate: date)
             comp.day = comp.day - 1
             let secondDate = NSCalendar.currentCalendar().dateFromComponents(comp)!
+            
+            //when
             managedObjectContext.performChangesAndWait {
                 Streak.deleteDateFromStreak(self.managedObjectContext, date: date)
                 Streak.deleteDateFromStreak(self.managedObjectContext, date: secondDate)
             }
             
+            //then
             XCTAssertNil(Streak.currentStreak(managedObjectContext))
             
+            
+            //given
             let longestStreak = Streak.longestStreak(managedObjectContext)!
             comp.day = comp.day - 1
             let longestTo = NSCalendar.currentCalendar().dateFromComponents(comp)!
             comp.day = comp.day - 3
             let longestFrom = NSCalendar.currentCalendar().dateFromComponents(comp)!
+            
+            //then
             XCTAssertEqual(longestStreak.streakNumber, 4)
             XCTAssertTrue(NSCalendar.currentCalendar().isDate((longestStreak.from), inSameDayAsDate: longestFrom))
             XCTAssertTrue(NSCalendar.currentCalendar().isDate((longestStreak.to), inSameDayAsDate: longestTo))
@@ -562,25 +737,26 @@ class TodayKitModelTests: XCTestCase {
         }
     }
     
-    func testDeleteOneDayStreak() {
+    func testThatItDeletesOneDayStreak() {
         runTestWithTestData {
-            
+            //given
             let comp = NSCalendar.currentCalendar().components([.Year, .Month, .Day], fromDate: NSDate())
             comp.day = comp.day - 21
             let updateDate = NSCalendar.currentCalendar().dateFromComponents(comp)!
             
+            //when
             managedObjectContext.performChangesAndWait {
                 Streak.deleteDateFromStreak(self.managedObjectContext, date: updateDate)
             }
             
+            //then
             XCTAssertEqual(Streak.countInContext(managedObjectContext), 3)
-            
         }
     }
     
-    func testFindOrCreateStreak() {
+    func testThatItFindsOrCreatesStreak() {
         runTestWithTestData {
-            
+            //given
             let comp = NSCalendar.currentCalendar().components([.Year, .Month, .Day], fromDate: NSDate())
             comp.day = comp.day - 30
             let from = NSCalendar.currentCalendar().dateFromComponents(comp)!
@@ -588,8 +764,11 @@ class TodayKitModelTests: XCTestCase {
             let to = NSCalendar.currentCalendar().dateFromComponents(comp)!
             
             let predicate = NSPredicate(format: "from <= %@ AND to >= %@", from, to)
+            
+            //when
             let streak = Streak.findOrCreateInContext(managedObjectContext, matchingPredicate: predicate, configure: ({ _ in }))
             
+            //then
             XCTAssertNotNil(streak)
             
         }

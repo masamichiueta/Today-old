@@ -11,7 +11,6 @@
 		24030AE91C1C821C004E68ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24030AE71C1C821C004E68ED /* Main.storyboard */; };
 		24030AEE1C1C821C004E68ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24030AED1C1C821C004E68ED /* Assets.xcassets */; };
 		24030AF11C1C821C004E68ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24030AEF1C1C821C004E68ED /* LaunchScreen.storyboard */; };
-		24030AFC1C1C821C004E68ED /* TodayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24030AFB1C1C821C004E68ED /* TodayTests.swift */; };
 		24030B071C1C821C004E68ED /* TodayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24030B061C1C821C004E68ED /* TodayUITests.swift */; };
 		24095BD61C7C92F800CC970E /* AppGroupSharedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24095BD51C7C92F800CC970E /* AppGroupSharedData.swift */; };
 		241D65AC1C7B3E0E00938CE8 /* BorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2488C7081C6F686D00EF8F45 /* BorderButton.swift */; };
@@ -230,7 +229,6 @@
 		24030AF01C1C821C004E68ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		24030AF21C1C821C004E68ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24030AF71C1C821C004E68ED /* TodayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		24030AFB1C1C821C004E68ED /* TodayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTests.swift; sourceTree = "<group>"; };
 		24030AFD1C1C821C004E68ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24030B021C1C821C004E68ED /* TodayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		24030B061C1C821C004E68ED /* TodayUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayUITests.swift; sourceTree = "<group>"; };
@@ -436,7 +434,6 @@
 			isa = PBXGroup;
 			children = (
 				24030AFD1C1C821C004E68ED /* Info.plist */,
-				24030AFB1C1C821C004E68ED /* TodayTests.swift */,
 				245FA6781CBFE92A00A8ABEC /* TodayHelperTests.swift */,
 				2437C7D41CC527DD004F5C27 /* TodayDataTests.swift */,
 			);
@@ -1088,7 +1085,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24030AFC1C1C821C004E68ED /* TodayTests.swift in Sources */,
 				245FA6791CBFE92A00A8ABEC /* TodayHelperTests.swift in Sources */,
 				2437C7D51CC527DD004F5C27 /* TodayDataTests.swift in Sources */,
 			);

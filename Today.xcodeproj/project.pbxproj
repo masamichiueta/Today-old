@@ -25,6 +25,7 @@
 		2435351D1C7B50570044D13A /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F9DC381C2EFAC5003A6427 /* DataSource.swift */; };
 		2435351E1C7B50570044D13A /* FetchedResultsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F9DC3A1C2EFB0F003A6427 /* FetchedResultsDataProvider.swift */; };
 		2435351F1C7B50570044D13A /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F9DC3C1C2EFCD4003A6427 /* TableViewDataSource.swift */; };
+		2437C7D51CC527DD004F5C27 /* TodayDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2437C7D41CC527DD004F5C27 /* TodayDataTests.swift */; };
 		24444A5E1C30A02A00DC1579 /* AddTodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24444A5D1C30A02A00DC1579 /* AddTodayViewController.swift */; };
 		244631451C3AB8BA002BBD06 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244631441C3AB8BA002BBD06 /* PaddingLabel.swift */; };
 		244B9A671C7B50FA004AF2DC /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F984A1C49282200DBC64B /* NotificationManager.swift */; };
@@ -243,6 +244,7 @@
 		242D5A6E1C7374C500789616 /* Identifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
 		242DD1171C74BFFA00A8A760 /* ICloudRegistable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICloudRegistable.swift; sourceTree = "<group>"; };
 		242F984A1C49282200DBC64B /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		2437C7D41CC527DD004F5C27 /* TodayDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayDataTests.swift; sourceTree = "<group>"; };
 		24444A591C306B4B00DC1579 /* NSManagedObjectContext+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Extensions.swift"; sourceTree = "<group>"; };
 		24444A5D1C30A02A00DC1579 /* AddTodayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTodayViewController.swift; sourceTree = "<group>"; };
 		244631441C3AB8BA002BBD06 /* PaddingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
@@ -436,6 +438,7 @@
 				24030AFD1C1C821C004E68ED /* Info.plist */,
 				24030AFB1C1C821C004E68ED /* TodayTests.swift */,
 				245FA6781CBFE92A00A8ABEC /* TodayHelperTests.swift */,
+				2437C7D41CC527DD004F5C27 /* TodayDataTests.swift */,
 			);
 			path = TodayTests;
 			sourceTree = "<group>";
@@ -1087,6 +1090,7 @@
 			files = (
 				24030AFC1C1C821C004E68ED /* TodayTests.swift in Sources */,
 				245FA6791CBFE92A00A8ABEC /* TodayHelperTests.swift in Sources */,
+				2437C7D51CC527DD004F5C27 /* TodayDataTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

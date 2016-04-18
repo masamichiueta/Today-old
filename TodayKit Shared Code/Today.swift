@@ -12,8 +12,8 @@ import CoreData
 private let scoreRange = [Int](0...10)
 
 public final class Today: ManagedObject {
-    @NSManaged public private(set) var date: NSDate
-    @NSManaged public private(set) var score: Int64
+    @NSManaged public internal(set) var date: NSDate
+    @NSManaged public internal(set) var score: Int64
     
     public var type: TodayType {
         return Today.type(Int(score))
@@ -78,47 +78,6 @@ public final class Today: ManagedObject {
             return .Excellent
         }
     }
-    
-    //MARK: - CoreData
-    #if os(iOS)
-    public static func created(moc: NSManagedObjectContext, forDate date: NSDate) -> Bool {
-        let comp = NSCalendar.currentCalendar().components([.Year, .Month, .Day], fromDate: date)
-        guard let from = NSCalendar.currentCalendar().dateFromComponents(comp) else {
-            fatalError("Wrong components")
-        }
-        
-        comp.day = comp.day + 1
-        guard let to = NSCalendar.currentCalendar().dateFromComponents(comp) else {
-            fatalError("Wrong components")
-        }
-        
-        let todays = Today.fetchInContext(moc, configurationBlock: { request in
-            request.sortDescriptors = Today.defaultSortDescriptors
-            request.predicate = NSPredicate(format: "date => %@ && date < %@", from, to)
-            request.fetchLimit = 1
-        })
-        if todays.count == 0 {
-            return false
-        }
-        return true
-    }
-    
-    public static func todays(moc: NSManagedObjectContext, from: NSDate, to: NSDate) -> [Today] {
-        let todays = Today.fetchInContext(moc, configurationBlock: { request in
-            request.sortDescriptors = Today.defaultSortDescriptors
-            request.predicate = NSPredicate(format: "date => %@ && date <= %@", from, to)
-        })
-        
-        return todays
-    }
-    
-    public static func insertIntoContext(moc: NSManagedObjectContext, score: Int64, date: NSDate) -> Today {
-        let today: Today = moc.insertObject()
-        today.score = score
-        today.date = date
-        return today
-    }
-    #endif
 }
 
 //MARK: - ManagedObjectType

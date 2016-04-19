@@ -24,46 +24,28 @@ class TodayHelperTests: XCTestCase {
     
     //MARK: - DelegateHandler
     func testThatItHandlesFirstLaunch() {
-        //given
         let handler = FirstLaunchDelegateHandler()
         let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        
-        //when
         handler.handleLaunch(delegate)
-        
-        //then
         XCTAssertTrue(delegate.window?.rootViewController is GetStartedViewController)
     }
     
     func testThatItHandlesLaunch() {
-        //given
         let handler = LaunchDelegateHandler()
         let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        
-        //when
         handler.handleLaunch(delegate)
-        
-        //then
         XCTAssertTrue(delegate.window?.rootViewController is UITabBarController)
     }
     
     //MARK: - NotificationManager
     func testThatItCheckScheduleLocalNotification() {
-        //given
         let notificationName = "testScheduleLocalNotification"
-        
-        //when
         NotificationManager.scheduleLocalNotification(NSDate(), withName: notificationName)
-        
-        //then
         XCTAssertTrue(NotificationManager.scheduledLocalNotificationExistsForName(notificationName))
         XCTAssertFalse(NotificationManager.scheduledLocalNotificationExistsForName("not exists"))
         
-        //when
         NotificationManager.cancelScheduledLocalNotificationForName("not exists")
         NotificationManager.cancelScheduledLocalNotificationForName(notificationName)
-        
-        //then
         XCTAssertFalse(NotificationManager.scheduledLocalNotificationExistsForName(notificationName))
     }
     

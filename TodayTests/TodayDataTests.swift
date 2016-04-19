@@ -23,17 +23,13 @@ class TodayDataTests: XCTestCase {
     
     //MARK: - ChartData
     func testThatItCreatesChartData() {
-        //given
         let data = ChartData(xValue: "10", yValue: 10)
-        
-        //then
         XCTAssertEqual(data.xValue, "10")
         XCTAssertEqual(data.yValue, 10)
     }
     
     //MARK: - ChartViewDataSource
     func testThatItCreatesChartViewDataSource() {
-        //given
         let data = [
             ChartData(xValue: "1", yValue: 1),
             ChartData(xValue: "2", yValue: 4),
@@ -41,8 +37,6 @@ class TodayDataTests: XCTestCase {
             ChartData(xValue: nil, yValue: nil)
         ]
         let dataSource = ScoreChartViewDataSource(data: data)
-        
-        //then
         XCTAssertEqual(dataSource.numberOfObjects(), 4)
         XCTAssertEqual(dataSource.first?.yValue, 1)
         XCTAssertNil(dataSource.last?.yValue)

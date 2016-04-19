@@ -1,19 +1,22 @@
 //
-//  TodayUITests.swift
-//  TodayUITests
+//  TodayFirstLaunchUITests.swift
+//  Today
 //
 //  Created by UetaMasamichi on 4/19/16.
 //  Copyright © 2016 Masamichi Ueta. All rights reserved.
 //
 
 import XCTest
+@testable import TodayKit
 
-class TodayUITests: XCTestCase {
-        
+class TodayFirstLaunchUITests: XCTestCase {
+    
     override func setUp() {
         super.setUp()
-        
+       
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        Setting.clean()
+        Setting.setupDefaultSetting()
         
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
@@ -27,9 +30,14 @@ class TodayUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-    
-    func testExample() {
+
+    func testThatItGetsStarted() {
+        
+        
+        let app = XCUIApplication()
+        app.navigationBars["Todays"].buttons["Add"].tap()
+        app.navigationBars["How is your today?"].buttons["Save"].tap()
         
     }
-    
+
 }

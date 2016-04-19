@@ -21,14 +21,7 @@ class TodayKitHelperTests: XCTestCase {
         super.tearDown()
     }
     
-    //MARK: - Utilities
-    func testThatItGetsFrameworkBundle() {
-        let todayKitBundle = NSBundle.frameworkBundle("TodayKit.framework")
-        let nilBundle = NSBundle.frameworkBundle("This framework does not exists")
-        XCTAssertNotNil(todayKitBundle)
-        XCTAssertNil(nilBundle)
-    }
-    
+    //MARK: - Utilities    
     func testThatItCalculateDistanceBetweenPoints() {
         let point1 = CGPoint(x: 0, y: 0)
         let point2 = CGPoint(x: 3, y: 4)

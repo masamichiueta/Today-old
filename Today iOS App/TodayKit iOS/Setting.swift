@@ -107,9 +107,8 @@ public struct Setting {
     }
     
     public static func setupDefaultSetting() {
-        guard let settingBundle = NSBundle.frameworkBundle("TodayKit.framework") else {
-            fatalError("Wrong framework name")
-        }
+        
+        let settingBundle = NSBundle(forClass: Today.self)
         
         guard let fileURL = settingBundle.URLForResource("Setting", withExtension: "plist") else {
             fatalError("Wrong file name")

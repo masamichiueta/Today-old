@@ -43,39 +43,19 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "24030B011C1C821C004E68ED"
-               BuildableName = "TodayUITests.xctest"
-               BlueprintName = "TodayUITests"
-               ReferencedContainer = "container:Today.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "246688351C1D18C400C5E5A0"
-               BuildableName = "TodayFrameworkTests.xctest"
-               BlueprintName = "TodayFrameworkTests"
-               ReferencedContainer = "container:Today.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "24C77E8B1C2A8A3E00493C13"
-               BuildableName = "TodayModelTests.xctest"
-               BlueprintName = "TodayModelTests"
-               ReferencedContainer = "container:Today.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "24C6C1AD1C54F9970041C31F"
                BuildableName = "TodayKitTests.xctest"
                BlueprintName = "TodayKitTests"
+               ReferencedContainer = "container:Today.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "2463EBB01CC67B130082AA19"
+               BuildableName = "TodayUITests.xctest"
+               BlueprintName = "TodayUITests"
                ReferencedContainer = "container:Today.xcodeproj">
             </BuildableReference>
          </TestableReference>

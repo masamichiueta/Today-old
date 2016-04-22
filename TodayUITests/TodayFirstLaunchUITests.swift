@@ -15,15 +15,16 @@ class TodayFirstLaunchUITests: XCTestCase {
         super.setUp()
        
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        Setting.clean()
-        Setting.setupDefaultSetting()
         
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
         // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
-        XCUIApplication().launch()
+        let app = XCUIApplication()
+        app.launchArguments = ["firstLaunchUITest"]
+        app.launch()
 
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        
     }
     
     override func tearDown() {
@@ -32,11 +33,11 @@ class TodayFirstLaunchUITests: XCTestCase {
     }
 
     func testThatItGetsStarted() {
-        
-        
         let app = XCUIApplication()
-        app.navigationBars["Todays"].buttons["Add"].tap()
-        app.navigationBars["How is your today?"].buttons["Save"].tap()
+        app.buttons["通知を許可する"].tap()
+        app.buttons["保存先を選択する"].tap()
+        app.alerts["保存先の選択"].collectionViews.buttons["この端末のみに保存する"].tap()
+        app.buttons["Todayを始める"].tap()
         
     }
 

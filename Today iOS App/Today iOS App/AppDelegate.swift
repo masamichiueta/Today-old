@@ -16,6 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var handler: DelegateHandler!
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        //For UI Testing
+        if NSProcessInfo.processInfo().arguments.contains("firstLaunchUITest") {
+            Setting.clean()
+        }
+        
         Setting.setupDefaultSetting()
         
         if Setting().firstLaunch {

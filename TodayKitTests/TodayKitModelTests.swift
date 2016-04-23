@@ -15,143 +15,15 @@ class TodayKitModelTests: XCTestCase {
     var managedObjectContext: NSManagedObjectContext!
     let storeURL = NSURL.documentsURL.URLByAppendingPathComponent("TodayTest.sqlite")
     
-    struct TodayTestModel {
-        let score: Int
-        let date: NSDate
-        
-        init(score: Int, date: NSDate) {
-            self.score = score
-            self.date = date
-        }
-    }
-    
     var todayTestData: [TodayTestModel]!
-    
-    // [Today, Today-1, Today-2, Today-3, Today-4, Today-5]
-    var streak1: [NSDate] = {
-        var dates = [NSDate]()
-        let comp = NSCalendar.currentCalendar().components([.Year, .Month, .Day], fromDate: NSDate())
-        for _ in 0 ..< 6 {
-            let date = NSCalendar.currentCalendar().dateFromComponents(comp)
-            dates.append(date!)
-            comp.day = comp.day - 1
-        }
-        return dates
-    }()
-    
-    // [Today-8, Today-9, Today-10, Today-11]
-    var streak2: [NSDate] = {
-        var dates = [NSDate]()
-        let comp = NSCalendar.currentCalendar().components([.Year, .Month, .Day], fromDate: NSDate())
-        comp.day = comp.day - 8
-        for _ in 0 ..< 4 {
-            let date = NSCalendar.currentCalendar().dateFromComponents(comp)
-            dates.append(date!)
-            comp.day = comp.day - 1
-        }
-        return dates
-    }()
-    
-    // [Today-15, Today-16, Today-17, Today-18]
-    var streak3: [NSDate] = {
-        var dates = [NSDate]()
-        let comp = NSCalendar.currentCalendar().components([.Year, .Month, .Day], fromDate: NSDate())
-        comp.day = comp.day - 15
-        for _ in 0 ..< 4 {
-            let date = NSCalendar.currentCalendar().dateFromComponents(comp)
-            dates.append(date!)
-            comp.day = comp.day - 1
-        }
-        return dates
-    }()
-    
-    // [Today - 21]
-    var streak4: [NSDate] = {
-        var dates = [NSDate]()
-        let comp = NSCalendar.currentCalendar().components([.Year, .Month, .Day], fromDate: NSDate())
-        comp.day = comp.day - 21
-        let date = NSCalendar.currentCalendar().dateFromComponents(comp)
-        dates.append(date!)
-        return dates
-    }()
-    
-    func setupMoc() {
-        let bundles = [NSBundle(forClass: Today.self)]
-        guard let managedObjectModel = NSManagedObjectModel.mergedModelFromBundles(bundles) else {
-            fatalError("model not found")
-        }
-        
-        let psc = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
-        
-        
-        do {
-            try psc.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: nil)
-        } catch let error as NSError {
-            print("\(error) \(error.userInfo)")
-            abort()
-        }
-        
-        managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
-        managedObjectContext.persistentStoreCoordinator = psc
-    }
-    
-    func runTestWithTestData(@noescape block: () -> ()) {
-        if managedObjectContext == nil {
-            setupMoc()
-        }
-        
-        //Insert Test Data
-        managedObjectContext.performChangesAndWait {
-            for data in self.todayTestData {
-                Today.insertIntoContext(self.managedObjectContext, score: Int64(data.score), date: data.date)
-            }
-            Streak.insertIntoContext(self.managedObjectContext, from: self.streak1[5], to: self.streak1[0])
-            Streak.insertIntoContext(self.managedObjectContext, from: self.streak2[3], to: self.streak2[0])
-            Streak.insertIntoContext(self.managedObjectContext, from: self.streak3[3], to: self.streak3[0])
-            Streak.insertIntoContext(self.managedObjectContext, from: self.streak4[0], to: self.streak4[0])
-        }
-        
-        block()
-        
-        //DeleteTestData
-        managedObjectContext.performChangesAndWait {
-            let todayRequest = NSFetchRequest(entityName: Today.entityName)
-            let todayDeleteRequest = NSBatchDeleteRequest(fetchRequest: todayRequest)
-            let streakRequest = NSFetchRequest(entityName: Streak.entityName)
-            let streakDeleteRequest = NSBatchDeleteRequest(fetchRequest: streakRequest)
-            do {
-                try self.managedObjectContext.executeRequest(todayDeleteRequest)
-                try self.managedObjectContext.executeRequest(streakDeleteRequest)
-            } catch let error as NSError {
-                print("\(error) \(error.userInfo)")
-                abort()
-            }
-        }
-    }
     
     //MARK: - Life Cycle
     override func setUp() {
         super.setUp()
         
-        setupMoc()
+        setUpMoc()
         
-        todayTestData = [
-            TodayTestModel(score: 0, date: streak1[0]),
-            TodayTestModel(score: 1, date: streak1[1]),
-            TodayTestModel(score: 2, date: streak1[2]),
-            TodayTestModel(score: 3, date: streak1[3]),
-            TodayTestModel(score: 4, date: streak1[4]),
-            TodayTestModel(score: 5, date: streak1[5]),
-            TodayTestModel(score: 6, date: streak2[0]),
-            TodayTestModel(score: 7, date: streak2[1]),
-            TodayTestModel(score: 8, date: streak2[2]),
-            TodayTestModel(score: 9, date: streak2[3]),
-            TodayTestModel(score: 10, date: streak3[0]),
-            TodayTestModel(score: 2, date: streak3[1]),
-            TodayTestModel(score: 3, date: streak3[2]),
-            TodayTestModel(score: 4, date: streak3[3]),
-            TodayTestModel(score: 4, date: streak4[0])
-        ]
+        todayTestData = TodayTestData.createTestData()
     }
     
     override func tearDown() {
@@ -175,6 +47,60 @@ class TodayKitModelTests: XCTestCase {
         }
         
         super.tearDown()
+    }
+    
+    func setUpMoc() {
+        let bundles = [NSBundle(forClass: Today.self)]
+        guard let managedObjectModel = NSManagedObjectModel.mergedModelFromBundles(bundles) else {
+            fatalError("model not found")
+        }
+        
+        let psc = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
+        
+        
+        do {
+            try psc.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: nil)
+        } catch let error as NSError {
+            print("\(error) \(error.userInfo)")
+            abort()
+        }
+        
+        managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
+        managedObjectContext.persistentStoreCoordinator = psc
+    }
+    
+    func runTestWithTestData(@noescape block: () -> ()) {
+        if managedObjectContext == nil {
+            setUpMoc()
+        }
+        
+        //Insert Test Data
+        managedObjectContext.performChangesAndWait {
+            for data in self.todayTestData {
+                Today.insertIntoContext(self.managedObjectContext, score: Int64(data.score), date: data.date)
+            }
+            Streak.insertIntoContext(self.managedObjectContext, from: TodayTestData.streak1[5], to: TodayTestData.streak1[0])
+            Streak.insertIntoContext(self.managedObjectContext, from: TodayTestData.streak2[3], to: TodayTestData.streak2[0])
+            Streak.insertIntoContext(self.managedObjectContext, from: TodayTestData.streak3[3], to: TodayTestData.streak3[0])
+            Streak.insertIntoContext(self.managedObjectContext, from: TodayTestData.streak4[0], to: TodayTestData.streak4[0])
+        }
+        
+        block()
+        
+        //DeleteTestData
+        managedObjectContext.performChangesAndWait {
+            let todayRequest = NSFetchRequest(entityName: Today.entityName)
+            let todayDeleteRequest = NSBatchDeleteRequest(fetchRequest: todayRequest)
+            let streakRequest = NSFetchRequest(entityName: Streak.entityName)
+            let streakDeleteRequest = NSBatchDeleteRequest(fetchRequest: streakRequest)
+            do {
+                try self.managedObjectContext.executeRequest(todayDeleteRequest)
+                try self.managedObjectContext.executeRequest(streakDeleteRequest)
+            } catch let error as NSError {
+                print("\(error) \(error.userInfo)")
+                abort()
+            }
+        }
     }
     
     //MARK: - Entity
@@ -388,7 +314,7 @@ class TodayKitModelTests: XCTestCase {
     
     func testThatItFindsOrFetchesToday() {
         runTestWithTestData {
-            let predicate = NSPredicate(format: "date == %@", streak1[0])
+            let predicate = NSPredicate(format: "date == %@", TodayTestData.streak1[0])
             let today = Today.findOrFetchInContext(managedObjectContext, matchingPredicate: predicate)
             XCTAssertEqual(today?.score, 0)
         }

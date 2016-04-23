@@ -45,6 +45,8 @@
 		2466884F1C1DB45E00C5E5A0 /* Activity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2466884D1C1DB45E00C5E5A0 /* Activity.storyboard */; };
 		246688511C1DB4ED00C5E5A0 /* TodaysTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246688501C1DB4ED00C5E5A0 /* TodaysTableViewController.swift */; };
 		246688561C1DB61100C5E5A0 /* Today.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 246688541C1DB61100C5E5A0 /* Today.storyboard */; };
+		246884451CCB6A71006190DF /* TodayTestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246884441CCB6A71006190DF /* TodayTestData.swift */; };
+		246884471CCB6C1F006190DF /* TodayTestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246884461CCB6C1F006190DF /* TodayTestData.swift */; };
 		246AC1811C5120FF0047AAE7 /* AddTodayInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246AC1801C5120FF0047AAE7 /* AddTodayInterfaceController.swift */; };
 		24732F4B1C5E4F8600655994 /* ScoreChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24732F4A1C5E4F8600655994 /* ScoreChartView.swift */; };
 		247363BD1CB5582E007F68C7 /* TodayKitModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247363BC1CB5582E007F68C7 /* TodayKitModelTests.swift */; };
@@ -269,6 +271,8 @@
 		2466884E1C1DB45E00C5E5A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Activity.storyboard; sourceTree = "<group>"; };
 		246688501C1DB4ED00C5E5A0 /* TodaysTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodaysTableViewController.swift; sourceTree = "<group>"; };
 		246688551C1DB61100C5E5A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Today.storyboard; sourceTree = "<group>"; };
+		246884441CCB6A71006190DF /* TodayTestData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayTestData.swift; sourceTree = "<group>"; };
+		246884461CCB6C1F006190DF /* TodayTestData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayTestData.swift; sourceTree = "<group>"; };
 		246AC1801C5120FF0047AAE7 /* AddTodayInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTodayInterfaceController.swift; sourceTree = "<group>"; };
 		24732F4A1C5E4F8600655994 /* ScoreChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreChartView.swift; sourceTree = "<group>"; };
 		247363BC1CB5582E007F68C7 /* TodayKitModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayKitModelTests.swift; sourceTree = "<group>"; };
@@ -460,6 +464,7 @@
 		2463EBB21CC67B130082AA19 /* TodayUITests */ = {
 			isa = PBXGroup;
 			children = (
+				246884461CCB6C1F006190DF /* TodayTestData.swift */,
 				2463EBB31CC67B130082AA19 /* TodayUITests.swift */,
 				2463EBB51CC67B130082AA19 /* Info.plist */,
 				2463EBBB1CC67CCB0082AA19 /* TodayFirstLaunchUITests.swift */,
@@ -584,6 +589,7 @@
 				24C6C1B51C54F9970041C31F /* TodayKitHelperTests.swift */,
 				247363BC1CB5582E007F68C7 /* TodayKitModelTests.swift */,
 				245FA6661CBFDA1700A8ABEC /* TodayKitIOSTests.swift */,
+				246884441CCB6A71006190DF /* TodayTestData.swift */,
 			);
 			path = TodayKitTests;
 			sourceTree = "<group>";
@@ -1103,6 +1109,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				246884471CCB6C1F006190DF /* TodayTestData.swift in Sources */,
 				2463EBB41CC67B130082AA19 /* TodayUITests.swift in Sources */,
 				2463EBBC1CC67CCB0082AA19 /* TodayFirstLaunchUITests.swift in Sources */,
 			);
@@ -1153,6 +1160,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				247363BD1CB5582E007F68C7 /* TodayKitModelTests.swift in Sources */,
+				246884451CCB6A71006190DF /* TodayTestData.swift in Sources */,
 				245FA6671CBFDA1700A8ABEC /* TodayKitIOSTests.swift in Sources */,
 				24C6C1B61C54F9970041C31F /* TodayKitHelperTests.swift in Sources */,
 			);

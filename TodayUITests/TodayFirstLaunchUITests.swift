@@ -34,11 +34,18 @@ class TodayFirstLaunchUITests: XCTestCase {
 
     func testThatItGetsStarted() {
         let app = XCUIApplication()
-        app.buttons["通知を許可する"].tap()
-        app.buttons["保存先を選択する"].tap()
-        app.alerts["保存先の選択"].collectionViews.buttons["この端末のみに保存する"].tap()
-        app.buttons["Todayを始める"].tap()
+        let notificationButton = app.buttons["getStartedNotificationButton"]
+        notificationButton.tap()
+        XCTAssertFalse(notificationButton.enabled)
         
+        let iCloudButton = app.buttons["getStartediCloudButton"]
+        iCloudButton.tap()
+        XCTAssertFalse(iCloudButton.enabled)
+        app.alerts.element.collectionViews.buttons.elementBoundByIndex(1).tap()
+        
+        let startButton = app.buttons["getStartedStartButton"]
+        XCTAssertTrue(startButton.enabled)
+
     }
 
 }

@@ -22,7 +22,7 @@
                                 <rect key="frame" x="171" y="261" width="259" height="79"/>
                             </imageView>
                             <stackView hidden="YES" opaque="NO" alpha="0.0" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" spacing="44" translatesAutoresizingMaskIntoConstraints="NO" id="kmD-Lf-PDB">
-                                <rect key="frame" x="20" y="203" width="560" height="193"/>
+                                <rect key="frame" x="20" y="24" width="560" height="193"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6YF-xv-SKH">
                                         <rect key="frame" x="127" y="0.0" width="306" height="75"/>
@@ -35,6 +35,7 @@
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yVX-z9-hPM" customClass="BorderButton" customModule="Today" customModuleProvider="target">
                                                 <rect key="frame" x="28" y="31" width="250" height="44"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="getStartedNotificationButton"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="FsO-Tm-ODg"/>
                                                     <constraint firstAttribute="width" constant="250" id="bet-ah-tmc"/>
@@ -69,6 +70,7 @@
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5XZ-il-eA8" customClass="BorderButton" customModule="Today" customModuleProvider="target">
                                                 <rect key="frame" x="67" y="31" width="250" height="44"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="getStartediCloudButton"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="250" id="Q2O-TN-n0J"/>
                                                     <constraint firstAttribute="height" constant="44" id="uqm-Pb-bXJ"/>
@@ -96,6 +98,7 @@
                             </stackView>
                             <button hidden="YES" opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ApV-rO-Sxo" customClass="BorderButton" customModule="Today" customModuleProvider="target">
                                 <rect key="frame" x="175" y="506" width="250" height="44"/>
+                                <accessibility key="accessibilityConfiguration" identifier="getStartedStartButton"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="UC1-1N-776"/>
                                     <constraint firstAttribute="height" constant="44" id="l3o-lG-bY0"/>

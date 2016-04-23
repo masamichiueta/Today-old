@@ -18,8 +18,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         //For UI Testing
-        if NSProcessInfo.processInfo().arguments.contains("firstLaunchUITest") {
+        let processInfoArguments = NSProcessInfo.processInfo().arguments
+        if processInfoArguments.contains("firstLaunchUITest") {
             Setting.clean()
+        } else if processInfoArguments.contains("UITest") {
+            var setting = Setting()
+            setting.firstLaunch = false
+            setting.iCloudEnabled = false
         }
         
         Setting.setupDefaultSetting()

@@ -136,14 +136,19 @@ final class GetStartedViewController: UIViewController {
             fatalError("InitialViewController not found")
         }
         
+        guard let moc = CoreDataManager.sharedInstance.managedObjectContext else {
+            fatalError("ManagedObjectContext not found")
+        }
+        
         guard let overlayView = appDelegate.window?.snapshotViewAfterScreenUpdates(false) else {
             appDelegate.window?.rootViewController = vc
-            appDelegate.updateManagedObjectContextInAllViewControllers()
+            appDelegate.updateManagedObjectContextInAllViewControllers(moc)
             return
         }
+        
         vc.view.addSubview(overlayView)
         appDelegate.window?.rootViewController = vc
-        appDelegate.updateManagedObjectContextInAllViewControllers()
+        appDelegate.updateManagedObjectContextInAllViewControllers(moc)
         UIView.animateWithDuration(0.5,
             delay: 0,
             options: .TransitionCrossDissolve,

@@ -56,9 +56,9 @@ public final class CoreDataManager {
             print("\(error) \(error.userInfo)")
             abort()
         }
-        let context = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
-        context.persistentStoreCoordinator = persistentStoreCoordinator
-        managedObjectContext = context
+        let moc = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
+        moc.persistentStoreCoordinator = persistentStoreCoordinator
+        managedObjectContext = moc
         
         switch storageType {
         case .Cloud:
@@ -67,7 +67,7 @@ public final class CoreDataManager {
             unregisterForiCloudNotifications()
         }
         
-        return context
+        return moc
     }
     
     public func removeStoreFiles() {

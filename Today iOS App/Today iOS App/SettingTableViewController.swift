@@ -97,8 +97,8 @@ final class SettingTableViewController: UITableViewController {
                 setting.iCloudEnabled = true
                 let newTokenData = NSKeyedArchiver.archivedDataWithRootObject(currentiCloudToken)
                 setting.ubiquityIdentityToken = newTokenData
-                coreDataManager.createTodayMainContext(.Cloud)
-                appDelegate.updateManagedObjectContextInAllViewControllers()
+                let moc = coreDataManager.createTodayMainContext(.Cloud)
+                appDelegate.updateManagedObjectContextInAllViewControllers(moc)
                 NSNotificationCenter.defaultCenter().postNotificationName(ICloudRegistableNotificationKey.storesDidChangeNotification, object: nil)
             } else {
                 let alertController = UIAlertController(title: localize("iCloud is Disabled"), message: localize("Your iCloud account is disabled. Please sign in from setting."), preferredStyle: .Alert)
@@ -112,8 +112,8 @@ final class SettingTableViewController: UITableViewController {
             NSNotificationCenter.defaultCenter().postNotificationName(ICloudRegistableNotificationKey.storesWillChangeNotification, object: nil)
             setting.iCloudEnabled = false
             setting.ubiquityIdentityToken = nil
-            coreDataManager.createTodayMainContext(.Local)
-            appDelegate.updateManagedObjectContextInAllViewControllers()
+            let moc = coreDataManager.createTodayMainContext(.Local)
+            appDelegate.updateManagedObjectContextInAllViewControllers(moc)
             NSNotificationCenter.defaultCenter().postNotificationName(ICloudRegistableNotificationKey.storesDidChangeNotification, object: nil)
         }
     }

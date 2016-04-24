@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 import TodayKit
 import WatchConnectivity
 
@@ -39,11 +40,12 @@ final class LaunchDelegateHandler: NSObject, DelegateHandler {
         appDelegate.updateiCloudSetting()
         
         //Setup moc
+        let moc: NSManagedObjectContext
         let coreDataManager = CoreDataManager.sharedInstance
         if Setting().iCloudEnabled {
-            coreDataManager.createTodayMainContext(.Cloud)
+            moc = coreDataManager.createTodayMainContext(.Cloud)
         } else {
-            coreDataManager.createTodayMainContext(.Local)
+            moc = coreDataManager.createTodayMainContext(.Local)
         }
         
         let mainStoryboard = UIStoryboard.storyboard(.Main)
@@ -52,7 +54,7 @@ final class LaunchDelegateHandler: NSObject, DelegateHandler {
         }
         
         appDelegate.window?.rootViewController = vc
-        appDelegate.updateManagedObjectContextInAllViewControllers()
+        appDelegate.updateManagedObjectContextInAllViewControllers(moc)
     }
     
     private func setupWatchConnectivity() {

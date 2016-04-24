@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 import TodayKit
 
 @UIApplicationMain
@@ -44,7 +45,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidEnterBackground(application: UIApplication) {
-        updateAppGroupSharedData()
+        guard let moc = CoreDataManager.sharedInstance.managedObjectContext else {
+            return
+        }
+        updateAppGroupSharedData(moc)
     }
     
     func applicationWillEnterForeground(application: UIApplication) {
@@ -113,11 +117,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     //MARK: - Helper
-    func updateManagedObjectContextInAllViewControllers() {
-        let coreDataManager = CoreDataManager.sharedInstance
-        guard let moc = coreDataManager.managedObjectContext else {
-            fatalError("ManagedObjectContext is not found!")
-        }
+    func updateManagedObjectContextInAllViewControllers(moc: NSManagedObjectContext) {
         guard let rootViewController = window?.rootViewController as? UITabBarController else {
             fatalError("Wrong root view controller type")
         }
@@ -141,11 +141,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    func updateAppGroupSharedData() {
-        guard let moc = CoreDataManager.sharedInstance.managedObjectContext else {
-            return
-        }
-        
+    func updateAppGroupSharedData(moc: NSManagedObjectContext) {
         var appGroupSharedData = AppGroupSharedData()
         let now = NSDate()
         

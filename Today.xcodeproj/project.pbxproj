@@ -12,6 +12,7 @@
 		24030AEE1C1C821C004E68ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24030AED1C1C821C004E68ED /* Assets.xcassets */; };
 		24030AF11C1C821C004E68ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24030AEF1C1C821C004E68ED /* LaunchScreen.storyboard */; };
 		24095BD61C7C92F800CC970E /* AppGroupSharedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24095BD51C7C92F800CC970E /* AppGroupSharedData.swift */; };
+		240C75921CCD0C6A00FA46E9 /* UITestSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240C758F1CCD05F000FA46E9 /* UITestSetting.swift */; };
 		241D65AC1C7B3E0E00938CE8 /* BorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2488C7081C6F686D00EF8F45 /* BorderButton.swift */; };
 		241D65AF1C7B43AC00938CE8 /* TodayExtensionTodayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D65AE1C7B43AC00938CE8 /* TodayExtensionTodayTableViewCell.swift */; };
 		2425BBA91C5E3A0E008AD9A4 /* StreakTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2425BBA81C5E3A0E008AD9A4 /* StreakTableViewCell.swift */; };
@@ -46,7 +47,6 @@
 		246688511C1DB4ED00C5E5A0 /* TodaysTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246688501C1DB4ED00C5E5A0 /* TodaysTableViewController.swift */; };
 		246688561C1DB61100C5E5A0 /* Today.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 246688541C1DB61100C5E5A0 /* Today.storyboard */; };
 		246884451CCB6A71006190DF /* TodayTestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246884441CCB6A71006190DF /* TodayTestData.swift */; };
-		246884471CCB6C1F006190DF /* TodayTestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246884461CCB6C1F006190DF /* TodayTestData.swift */; };
 		246AC1811C5120FF0047AAE7 /* AddTodayInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246AC1801C5120FF0047AAE7 /* AddTodayInterfaceController.swift */; };
 		24732F4B1C5E4F8600655994 /* ScoreChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24732F4A1C5E4F8600655994 /* ScoreChartView.swift */; };
 		247363BD1CB5582E007F68C7 /* TodayKitModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247363BC1CB5582E007F68C7 /* TodayKitModelTests.swift */; };
@@ -236,6 +236,7 @@
 		24030AF71C1C821C004E68ED /* TodayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		24030AFD1C1C821C004E68ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24095BD51C7C92F800CC970E /* AppGroupSharedData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppGroupSharedData.swift; sourceTree = "<group>"; };
+		240C758F1CCD05F000FA46E9 /* UITestSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITestSetting.swift; sourceTree = "<group>"; };
 		240F14741C2A9CDE0003B2AF /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		240F14771C2A9FD40003B2AF /* ManagedObjectContextSettable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectContextSettable.swift; sourceTree = "<group>"; };
 		240F147D1C2ABC000003B2AF /* SegueHandlerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueHandlerType.swift; sourceTree = "<group>"; };
@@ -272,7 +273,6 @@
 		246688501C1DB4ED00C5E5A0 /* TodaysTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodaysTableViewController.swift; sourceTree = "<group>"; };
 		246688551C1DB61100C5E5A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Today.storyboard; sourceTree = "<group>"; };
 		246884441CCB6A71006190DF /* TodayTestData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayTestData.swift; sourceTree = "<group>"; };
-		246884461CCB6C1F006190DF /* TodayTestData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayTestData.swift; sourceTree = "<group>"; };
 		246AC1801C5120FF0047AAE7 /* AddTodayInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTodayInterfaceController.swift; sourceTree = "<group>"; };
 		24732F4A1C5E4F8600655994 /* ScoreChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreChartView.swift; sourceTree = "<group>"; };
 		247363BC1CB5582E007F68C7 /* TodayKitModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayKitModelTests.swift; sourceTree = "<group>"; };
@@ -436,6 +436,7 @@
 				24F21AB21C4FCFE900396A38 /* Today Extension */,
 				24A487E51C55032E0015DB05 /* Today iOS App */,
 				24A487E71C5503A10015DB05 /* TodayKit iOS */,
+				240C758E1CCD059B00FA46E9 /* UITestSetting */,
 			);
 			path = "Today iOS App";
 			sourceTree = "<group>";
@@ -448,6 +449,14 @@
 				2437C7D41CC527DD004F5C27 /* TodayDataTests.swift */,
 			);
 			path = TodayTests;
+			sourceTree = "<group>";
+		};
+		240C758E1CCD059B00FA46E9 /* UITestSetting */ = {
+			isa = PBXGroup;
+			children = (
+				240C758F1CCD05F000FA46E9 /* UITestSetting.swift */,
+			);
+			name = UITestSetting;
 			sourceTree = "<group>";
 		};
 		240F14761C2A9FB60003B2AF /* Helper */ = {
@@ -464,7 +473,6 @@
 		2463EBB21CC67B130082AA19 /* TodayUITests */ = {
 			isa = PBXGroup;
 			children = (
-				246884461CCB6C1F006190DF /* TodayTestData.swift */,
 				2463EBB31CC67B130082AA19 /* TodayUITests.swift */,
 				2463EBB51CC67B130082AA19 /* Info.plist */,
 				2463EBBB1CC67CCB0082AA19 /* TodayFirstLaunchUITests.swift */,
@@ -1086,6 +1094,7 @@
 				24D67C851C3EB54600A33DB7 /* AverageTotalTableViewCell.swift in Sources */,
 				2435351F1C7B50570044D13A /* TableViewDataSource.swift in Sources */,
 				24D82C2F1C5A5D880095FA47 /* ChartTableViewCell.swift in Sources */,
+				240C75921CCD0C6A00FA46E9 /* UITestSetting.swift in Sources */,
 				24FFBB991C3D7AE50053E261 /* ActivityTableViewController.swift in Sources */,
 				24A1CFE11C36D8FA00F0E9CE /* ScoreCircleView.swift in Sources */,
 				24FFBB971C3D6AFA0053E261 /* SettingTableViewController.swift in Sources */,
@@ -1109,7 +1118,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				246884471CCB6C1F006190DF /* TodayTestData.swift in Sources */,
 				2463EBB41CC67B130082AA19 /* TodayUITests.swift in Sources */,
 				2463EBBC1CC67CCB0082AA19 /* TodayFirstLaunchUITests.swift in Sources */,
 			);
@@ -1423,6 +1431,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				INFOPLIST_FILE = "Today iOS App/Today iOS App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
@@ -1441,6 +1450,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				INFOPLIST_FILE = "Today iOS App/Today iOS App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.Today;
@@ -1476,6 +1486,7 @@
 		2463EBB91CC67B130082AA19 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUNDLE_LOADER = "";
 				CLANG_ANALYZER_NONNULL = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				INFOPLIST_FILE = TodayUITests/Info.plist;
@@ -1490,6 +1501,7 @@
 		2463EBBA1CC67B130082AA19 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUNDLE_LOADER = "";
 				CLANG_ANALYZER_NONNULL = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;

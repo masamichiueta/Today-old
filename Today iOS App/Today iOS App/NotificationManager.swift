@@ -17,27 +17,27 @@ class NotificationManager {
     
     private static let notificationKey = "notificationKey"
     
-    static func scheduleLocalNotification(fireDate: NSDate, withName name: String) {
+    static func scheduleLocalNotification(_ fireDate: Date, withName name: String) {
         let notification = UILocalNotification()
         notification.fireDate = fireDate
-        notification.timeZone = NSTimeZone.defaultTimeZone()
+        notification.timeZone = TimeZone.default()
         notification.alertBody = localize("How is your today?")
         notification.alertAction = localize("Add Today")
         notification.alertTitle = localize("Today")
         notification.soundName = UILocalNotificationDefaultSoundName
         notification.applicationIconBadgeNumber = 1
-        notification.repeatInterval = NSCalendarUnit.Day
+        notification.repeatInterval = Calendar.Unit.day
         notification.category = addTodayCategoryName
         
         var info = [NSObject: AnyObject]()
         info[notificationKey] = name
         notification.userInfo = info
         
-        UIApplication.sharedApplication().scheduleLocalNotification(notification)
+        UIApplication.shared().scheduleLocalNotification(notification)
     }
     
-    static func cancelScheduledLocalNotificationForName(name: String) {
-        guard let scheduledLocalNotifications = UIApplication.sharedApplication().scheduledLocalNotifications else {
+    static func cancelScheduledLocalNotificationForName(_ name: String) {
+        guard let scheduledLocalNotifications = UIApplication.shared().scheduledLocalNotifications else {
             return
         }
         
@@ -47,13 +47,13 @@ class NotificationManager {
             }
             
             if notificationName == name {
-                UIApplication.sharedApplication().cancelLocalNotification(notification)
+                UIApplication.shared().cancelLocalNotification(notification)
             }
         }
     }
     
-    static func scheduledLocalNotificationExistsForName(name: String) -> Bool {
-        guard let scheduledLocalNotifications = UIApplication.sharedApplication().scheduledLocalNotifications else {
+    static func scheduledLocalNotificationExistsForName(_ name: String) -> Bool {
+        guard let scheduledLocalNotifications = UIApplication.shared().scheduledLocalNotifications else {
             return false
         }
         
@@ -75,19 +75,19 @@ class NotificationManager {
         let addTodayAction = UIMutableUserNotificationAction()
         addTodayAction.identifier = NotificationManager.addTodayActionName
         addTodayAction.title = localize("Add Today")
-        addTodayAction.activationMode = .Foreground
-        addTodayAction.destructive = false
-        addTodayAction.authenticationRequired = false
+        addTodayAction.activationMode = .foreground
+        addTodayAction.isDestructive = false
+        addTodayAction.isAuthenticationRequired = false
         
         let addTodayCategory = UIMutableUserNotificationCategory()
         addTodayCategory.identifier = NotificationManager.addTodayCategoryName
-        addTodayCategory.setActions([addTodayAction], forContext: .Default)
-        addTodayCategory.setActions([addTodayAction], forContext: .Minimal)
+        addTodayCategory.setActions([addTodayAction], for: .default)
+        addTodayCategory.setActions([addTodayAction], for: .minimal)
         
         let categories = Set<UIUserNotificationCategory>(arrayLiteral: addTodayCategory)
         
-        let types: UIUserNotificationType = [UIUserNotificationType.Badge, UIUserNotificationType.Alert, UIUserNotificationType.Sound]
-        let mySettings = UIUserNotificationSettings(forTypes: types, categories: categories)
-        UIApplication.sharedApplication().registerUserNotificationSettings(mySettings)
+        let types: UIUserNotificationType = [UIUserNotificationType.badge, UIUserNotificationType.alert, UIUserNotificationType.sound]
+        let mySettings = UIUserNotificationSettings(types: types, categories: categories)
+        UIApplication.shared().registerUserNotificationSettings(mySettings)
     }
 }

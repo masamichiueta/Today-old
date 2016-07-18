@@ -15,7 +15,7 @@ public protocol SegueHandlerType {
 
 extension SegueHandlerType where Self: UIViewController, SegueIdentifier.RawValue == String {
     
-    public func segueIdentifierForSegue(segue: UIStoryboardSegue) -> SegueIdentifier {
+    public func segueIdentifierForSegue(_ segue: UIStoryboardSegue) -> SegueIdentifier {
         guard let identifier = segue.identifier,
             let segueIdentifier = SegueIdentifier(rawValue: identifier) else {
                 fatalError("Unknown segue: \(segue))")
@@ -23,8 +23,8 @@ extension SegueHandlerType where Self: UIViewController, SegueIdentifier.RawValu
         return segueIdentifier
     }
     
-    public func performSegue(segueIdentifier: SegueIdentifier) {
-        performSegueWithIdentifier(segueIdentifier.rawValue, sender: nil)
+    public func performSegue(_ segueIdentifier: SegueIdentifier) {
+        performSegue(withIdentifier: segueIdentifier.rawValue, sender: nil)
     }
     
 }

@@ -13,24 +13,24 @@ public class ManagedObject: NSManagedObject {
 
 public protocol ManagedObjectType: class {
     static var entityName: String { get }
-    static var defaultSortDescriptors: [NSSortDescriptor] { get }
-    static var defaultPredicate: NSPredicate { get }
+    static var defaultSortDescriptors: [SortDescriptor] { get }
+    static var defaultPredicate: Predicate { get }
     var managedObjectContext: NSManagedObjectContext? { get }
 }
 
 extension ManagedObjectType {
-    public static var defaultSortDescriptors: [NSSortDescriptor] {
+    public static var defaultSortDescriptors: [SortDescriptor] {
         return []
     }
     
-    public static var sortedFetchRequest: NSFetchRequest {
-        let request = NSFetchRequest(entityName: entityName)
+    public static var sortedFetchRequest: NSFetchRequest<NSManagedObject> {
+        let request = NSFetchRequest<NSManagedObject>(entityName: entityName)
         request.sortDescriptors = defaultSortDescriptors
         return request
     }
     
-    public static var defaultPredicate: NSPredicate {
-        let predicate = NSPredicate()
+    public static var defaultPredicate: Predicate {
+        let predicate = Predicate()
         return predicate
     }
     

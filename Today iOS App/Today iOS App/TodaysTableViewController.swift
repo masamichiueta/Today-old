@@ -36,22 +36,22 @@ final class TodaysTableViewController: UITableViewController, ManagedObjectConte
         super.didReceiveMemoryWarning()
     }
     
-    override func setEditing(editing: Bool, animated: Bool) {
+    override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
-        tableView.editing = editing
-        self.navigationItem.rightBarButtonItem?.enabled = !editing
+        tableView.isEditing = editing
+        self.navigationItem.rightBarButtonItem?.isEnabled = !editing
     }
     
-    @IBAction func cancelToTodaysTableViewController(segue: UIStoryboardSegue) {
+    @IBAction func cancelToTodaysTableViewController(_ segue: UIStoryboardSegue) {
         
     }
     
-    @IBAction func saveAddTodayViewController(segue: UIStoryboardSegue) {
+    @IBAction func saveAddTodayViewController(_ segue: UIStoryboardSegue) {
         guard let vc = segue.sourceViewController as? AddTodayViewController else {
             fatalError("Wrong view controller type")
         }
         
-        let now = NSDate()
+        let now = Date()
         
         if Today.created(managedObjectContext, forDate: now) {
             showAddAlert(nil)
@@ -67,8 +67,8 @@ final class TodaysTableViewController: UITableViewController, ManagedObjectConte
         
     }
     
-    @IBAction func showAddTodayViewController(sender: AnyObject) {
-        if Today.created(managedObjectContext, forDate: NSDate()) {
+    @IBAction func showAddTodayViewController(_ sender: AnyObject) {
+        if Today.created(managedObjectContext, forDate: Date()) {
             showAddAlert(nil)
         } else {
             performSegue(.ShowAddTodayViewController)
@@ -91,51 +91,51 @@ final class TodaysTableViewController: UITableViewController, ManagedObjectConte
         
         let noDataLabel = PaddingLabel(frame: CGRect(origin: tableView.bounds.origin, size: tableView.bounds.size))
         noDataLabel.text = localize("Let's start Today!")
-        noDataLabel.textColor = UIColor.grayColor()
-        noDataLabel.font = UIFont.systemFontOfSize(28)
-        noDataLabel.textAlignment = .Center
+        noDataLabel.textColor = UIColor.gray()
+        noDataLabel.font = UIFont.systemFont(ofSize: 28)
+        noDataLabel.textAlignment = .center
         noDataLabel.numberOfLines = 2
         dataSource.noDataView = noDataLabel
     }
     
-    private func showAddAlert(completion: (() -> Void)?) {
-        let alert = UIAlertController(title: localize("Wow!"), message: localize("Everything is OK. \nYou have already created Today."), preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: localize("OK"), style: .Cancel, handler: nil))
-        self.presentViewController(alert, animated: true, completion: completion)
+    private func showAddAlert(_ completion: (() -> Void)?) {
+        let alert = UIAlertController(title: localize("Wow!"), message: localize("Everything is OK. \nYou have already created Today."), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: localize("OK"), style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: completion)
     }
 }
 
 //MARK: - UITableViewDelegate
 extension TodaysTableViewController {
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("cell did select")
     }
 }
 
 //MARK: - AugmentedDataProviderDelegate
 extension TodaysTableViewController: DataProviderDelegate {
-    func dataProviderDidUpdate(updates: [DataProviderUpdate<Today>]?) {
+    func dataProviderDidUpdate(_ updates: [DataProviderUpdate<Today>]?) {
         dataSource.processUpdates(updates)
     }
 }
 
 //MARK: - TableViewDataSourceDelegate
 extension TodaysTableViewController: TableViewDataSourceDelegate {
-    func cellIdentifierForObject(object: Today) -> String {
+    func cellIdentifierForObject(_ object: Today) -> String {
         return "TodayCell"
     }
     
-    func canEditRowAtIndexPath(indexPath: NSIndexPath) -> Bool {
+    func canEditRowAtIndexPath(_ indexPath: IndexPath) -> Bool {
         return true
     }
     
-    func didEditRowAtIndexPath(indexPath: NSIndexPath, commitEditingStyle editingStyle: UITableViewCellEditingStyle) {
+    func didEditRowAtIndexPath(_ indexPath: IndexPath, commitEditingStyle editingStyle: UITableViewCellEditingStyle) {
         switch editingStyle {
-        case .Delete:
+        case .delete:
             let today: Today = dataProvider.objectAtIndexPath(indexPath)
             managedObjectContext.performChanges {
                 Streak.deleteDateFromStreak(self.managedObjectContext, date: today.date)
-                self.managedObjectContext.deleteObject(today)
+                self.managedObjectContext.delete(today)
             }
             
         default:
@@ -155,20 +155,20 @@ extension TodaysTableViewController: ICloudRegistable {
         ICloudRegister.unregister(self)
     }
     
-    func ubiquitousKeyValueStoreDidChangeExternally(notification: NSNotification) {
+    func ubiquitousKeyValueStoreDidChangeExternally(_ notification: Notification) {
         
     }
     
-    func storesWillChange(notification: NSNotification) {
+    func storesWillChange(_ notification: Notification) {
         
     }
     
-    func storesDidChange(notification: NSNotification) {
+    func storesDidChange(_ notification: Notification) {
         setupTableView()
         tableView.reloadData()
     }
     
-    func persistentStoreDidImportUbiquitousContentChanges(notification: NSNotification) {
+    func persistentStoreDidImportUbiquitousContentChanges(_ notification: Notification) {
         
     }
 }

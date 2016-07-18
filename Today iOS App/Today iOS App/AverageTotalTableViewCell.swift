@@ -21,14 +21,14 @@ class AverageTotalTableViewCell: UITableViewCell {
         scoreCircleView.animated = false
     }
     
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
 }
 
 //MARK: - ConfigurableCell
 extension AverageTotalTableViewCell: ConfigurableCell {
-    func configureForObject(averageAndTotal: (Int, Int)) {
+    func configureForObject(_ averageAndTotal: (Int, Int)) {
         let (average, total) = averageAndTotal
         scoreCircleView.score = average
         scoreLabel.text = "\(average)"

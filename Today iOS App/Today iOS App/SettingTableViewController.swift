@@ -11,19 +11,19 @@ import TodayKit
 
 final class SettingTableViewController: UITableViewController {
     
-    private let dateFormatter: NSDateFormatter = {
-        let formatter = NSDateFormatter()
-        formatter.dateStyle = .NoStyle
-        formatter.timeStyle = .ShortStyle
+    private let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .noStyle
+        formatter.timeStyle = .shortStyle
         return formatter
     }()
     
-    private let pickerIndexPath = NSIndexPath(forRow: 2, inSection: 0)
+    private let pickerIndexPath = IndexPath(row: 2, section: 0)
     
     private var pickerHidden: Bool = true
     
     private var defaultDetailTextColor: UIColor? {
-        let sampleCell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "sample")
+        let sampleCell = UITableViewCell(style: UITableViewCellStyle.value1, reuseIdentifier: "sample")
         return sampleCell.detailTextLabel?.textColor
     }
     
@@ -43,87 +43,87 @@ final class SettingTableViewController: UITableViewController {
         tableView.estimatedRowHeight = 44
     }
     
-    private func togglePickerCell(pickerHidden: Bool) {
+    private func togglePickerCell(_ pickerHidden: Bool) {
         //Update tableView
         tableView.beginUpdates()
         if pickerHidden {
-            tableView.deleteRowsAtIndexPaths([pickerIndexPath], withRowAnimation: .Fade)
+            tableView.deleteRows(at: [pickerIndexPath], with: .fade)
         } else {
-            tableView.insertRowsAtIndexPaths([pickerIndexPath], withRowAnimation: .Fade)
+            tableView.insertRows(at: [pickerIndexPath], with: .fade)
         }
         
         tableView.endUpdates()
     }
     
-    func notificationSwitchValueDidChange(sender: UISwitch) {
+    func notificationSwitchValueDidChange(_ sender: UISwitch) {
         var setting = Setting()
-        setting.notificationEnabled = sender.on
+        setting.notificationEnabled = sender.isOn
         
-        let indexPaths = pickerHidden ? [NSIndexPath(forRow: pickerIndexPath.row - 1, inSection: pickerIndexPath.section)] : [NSIndexPath(forRow: pickerIndexPath.row - 1, inSection: pickerIndexPath.section), pickerIndexPath]
+        let indexPaths = pickerHidden ? [IndexPath(row: (pickerIndexPath as NSIndexPath).row - 1, section: (pickerIndexPath as NSIndexPath).section)] : [IndexPath(row: (pickerIndexPath as NSIndexPath).row - 1, section: (pickerIndexPath as NSIndexPath).section), pickerIndexPath]
         
         tableView.beginUpdates()
-        if sender.on {
-            tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Fade)
+        if sender.isOn {
+            tableView.insertRows(at: indexPaths, with: .fade)
             NotificationManager.scheduleLocalNotification(setting.notificationTime, withName: NotificationManager.addTodayNotificationName)
         } else {
-            tableView.deleteRowsAtIndexPaths(indexPaths, withRowAnimation: .Fade)
+            tableView.deleteRows(at: indexPaths, with: .fade)
             pickerHidden = true
             NotificationManager.cancelScheduledLocalNotificationForName(NotificationManager.addTodayNotificationName)
         }
         tableView.endUpdates()
         
-        if sender.on {
-            let alertController = UIAlertController(title: localize("Check iOS Setting"), message: localize("Please allow Today to access notifications in setting app."), preferredStyle: .Alert)
-            alertController.addAction(UIAlertAction(title: localize("Check Later"), style: .Default, handler: nil))
-            alertController.addAction(UIAlertAction(title: localize("Go Setting"), style: .Default, handler: { action in
-                UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
+        if sender.isOn {
+            let alertController = UIAlertController(title: localize("Check iOS Setting"), message: localize("Please allow Today to access notifications in setting app."), preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: localize("Check Later"), style: .default, handler: nil))
+            alertController.addAction(UIAlertAction(title: localize("Go Setting"), style: .default, handler: { action in
+                UIApplication.shared().openURL(URL(string: UIApplicationOpenSettingsURLString)!)
             }))
-            self.presentViewController(alertController, animated: true, completion: nil)
+            self.present(alertController, animated: true, completion: nil)
         }
     }
     
-    func iCloudSwitchValueDidChange(sender: UISwitch) {
+    func iCloudSwitchValueDidChange(_ sender: UISwitch) {
         
         var setting = Setting()
         let coreDataManager = CoreDataManager.sharedInstance
-        guard let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate else {
+        guard let appDelegate = UIApplication.shared().delegate as? AppDelegate else {
             fatalError("Wrong app delegate type")
         }
         
-        if sender.on {
-            if let currentiCloudToken = NSFileManager.defaultManager().ubiquityIdentityToken {
+        if sender.isOn {
+            if let currentiCloudToken = FileManager.default().ubiquityIdentityToken {
                 //Chagnet to iCloud Storage
-                NSNotificationCenter.defaultCenter().postNotificationName(ICloudRegistableNotificationKey.storesWillChangeNotification, object: nil)
+                NotificationCenter.default().post(name: Notification.Name(rawValue: ICloudRegistableNotificationKey.storesWillChangeNotification), object: nil)
                 setting.iCloudEnabled = true
-                let newTokenData = NSKeyedArchiver.archivedDataWithRootObject(currentiCloudToken)
+                let newTokenData = NSKeyedArchiver.archivedData(withRootObject: currentiCloudToken)
                 setting.ubiquityIdentityToken = newTokenData
-                let moc = coreDataManager.createTodayMainContext(.Cloud)
+                let moc = coreDataManager.createTodayMainContext(.cloud)
                 appDelegate.updateManagedObjectContextInAllViewControllers(moc)
-                NSNotificationCenter.defaultCenter().postNotificationName(ICloudRegistableNotificationKey.storesDidChangeNotification, object: nil)
+                NotificationCenter.default().post(name: Notification.Name(rawValue: ICloudRegistableNotificationKey.storesDidChangeNotification), object: nil)
             } else {
-                let alertController = UIAlertController(title: localize("iCloud is Disabled"), message: localize("Your iCloud account is disabled. Please sign in from setting."), preferredStyle: .Alert)
-                alertController.addAction(UIAlertAction(title: localize("OK"), style: .Default, handler: { action in
-                    sender.on = false
+                let alertController = UIAlertController(title: localize("iCloud is Disabled"), message: localize("Your iCloud account is disabled. Please sign in from setting."), preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: localize("OK"), style: .default, handler: { action in
+                    sender.isOn = false
                 }))
-                self.presentViewController(alertController, animated: true, completion: nil)
+                self.present(alertController, animated: true, completion: nil)
             }
         } else {
             //Change to Local Storage
-            NSNotificationCenter.defaultCenter().postNotificationName(ICloudRegistableNotificationKey.storesWillChangeNotification, object: nil)
+            NotificationCenter.default().post(name: Notification.Name(rawValue: ICloudRegistableNotificationKey.storesWillChangeNotification), object: nil)
             setting.iCloudEnabled = false
             setting.ubiquityIdentityToken = nil
-            let moc = coreDataManager.createTodayMainContext(.Local)
+            let moc = coreDataManager.createTodayMainContext(.local)
             appDelegate.updateManagedObjectContextInAllViewControllers(moc)
-            NSNotificationCenter.defaultCenter().postNotificationName(ICloudRegistableNotificationKey.storesDidChangeNotification, object: nil)
+            NotificationCenter.default().post(name: Notification.Name(rawValue: ICloudRegistableNotificationKey.storesDidChangeNotification), object: nil)
         }
     }
     
     // MARK: - Table view data source
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let setting = Setting()
         switch section {
         case 0:
@@ -145,26 +145,26 @@ final class SettingTableViewController: UITableViewController {
     }
     
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let setting = Setting()
-        switch (indexPath.section, indexPath.row) {
+        switch ((indexPath as NSIndexPath).section, (indexPath as NSIndexPath).row) {
         case (0, 0):
             let cell = tableView.dequeueReusableCellWithCellIdentifier(.SettingSwitchCell, forIndexPath: indexPath)
             cell.textLabel?.text = localize("Notification Setting")
             let sw = UISwitch()
-            sw.on = setting.notificationEnabled
-            sw.addTarget(self, action: #selector(self.notificationSwitchValueDidChange), forControlEvents: .ValueChanged)
+            sw.isOn = setting.notificationEnabled
+            sw.addTarget(self, action: #selector(self.notificationSwitchValueDidChange), for: .valueChanged)
             cell.accessoryView = sw
-            cell.selectionStyle = .None
+            cell.selectionStyle = .none
             return cell
         case (0, 1):
             let cell = tableView.dequeueReusableCellWithCellIdentifier(.SettingCell, forIndexPath: indexPath)
             cell.textLabel?.text = localize("Notification Time")
-            cell.detailTextLabel?.text = dateFormatter.stringFromDate(setting.notificationTime)
+            cell.detailTextLabel?.text = dateFormatter.string(from: setting.notificationTime)
             cell.detailTextLabel?.textColor = pickerHidden ? defaultDetailTextColor : tableView.tintColor
             return cell
-        case (pickerIndexPath.section, pickerIndexPath.row): //(0, 2)
+        case ((pickerIndexPath as NSIndexPath).section, (pickerIndexPath as NSIndexPath).row): //(0, 2)
             guard let cell = tableView.dequeueReusableCellWithCellIdentifier(.SettingPickerCell, forIndexPath: indexPath) as? PickerTableViewCell else {
                 fatalError("Wrong cell type")
             }
@@ -175,59 +175,59 @@ final class SettingTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCellWithCellIdentifier(.SettingSwitchCell, forIndexPath: indexPath)
             cell.textLabel?.text = localize("iCloud Sync")
             let sw = UISwitch()
-            sw.on = setting.iCloudEnabled
-            sw.addTarget(self, action: #selector(self.iCloudSwitchValueDidChange), forControlEvents: .ValueChanged)
+            sw.isOn = setting.iCloudEnabled
+            sw.addTarget(self, action: #selector(self.iCloudSwitchValueDidChange), for: .valueChanged)
             cell.accessoryView = sw
-            cell.selectionStyle = .None
+            cell.selectionStyle = .none
             return cell
         case (2, 0):
-            let cell = UITableViewCell(style: .Value1, reuseIdentifier: "cell")
+            let cell = UITableViewCell(style: .value1, reuseIdentifier: "cell")
             cell.textLabel?.text = localize("Rate Today")
-            cell.accessoryType = .DisclosureIndicator
+            cell.accessoryType = .disclosureIndicator
             return cell
         default:
             break
         }
         
-        let cell = UITableViewCell(style: .Value1, reuseIdentifier: "cell")
+        let cell = UITableViewCell(style: .value1, reuseIdentifier: "cell")
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        switch (indexPath.section, indexPath.row) {
-        case (pickerIndexPath.section, pickerIndexPath.row - 1), (pickerIndexPath.section, pickerIndexPath.row):
+        switch ((indexPath as NSIndexPath).section, (indexPath as NSIndexPath).row) {
+        case ((pickerIndexPath as NSIndexPath).section, (pickerIndexPath as NSIndexPath).row - 1), ((pickerIndexPath as NSIndexPath).section, (pickerIndexPath as NSIndexPath).row):
             pickerHidden = !pickerHidden
             
-            let cell = tableView.cellForRowAtIndexPath(indexPath)
+            let cell = tableView.cellForRow(at: indexPath)
             cell?.detailTextLabel?.textColor = pickerHidden ? defaultDetailTextColor : tableView.tintColor
             
             togglePickerCell(pickerHidden)
         case (2, 0):
-            UIApplication.sharedApplication().openURL(NSURL(string: reviewUrl)!)
+            UIApplication.shared().openURL(URL(string: reviewUrl)!)
         default:
             break
         }
         
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
 //MARK: - PickerTableViewCellDelegate
 extension SettingTableViewController: PickerTableViewCellDelegate {
-    func dateDidChange(date: NSDate) {
-        let calendar = NSCalendar.currentCalendar()
-        let comps = calendar.components([.Hour, .Minute], fromDate: date)
-        let notificationTime = calendar.dateFromComponents(comps)!
+    func dateDidChange(_ date: Date) {
+        let calendar = Calendar.current()
+        let comps = calendar.components([.hour, .minute], from: date)
+        let notificationTime = calendar.date(from: comps)!
         
         //Update setting ans save
         var setting = Setting()
-        setting.notificationHour = comps.hour
-        setting.notificationMinute = comps.minute
+        setting.notificationHour = comps.hour!
+        setting.notificationMinute = comps.minute!
         
         //Update text label
-        let timeCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: pickerIndexPath.row - 1, inSection: pickerIndexPath.section))
-        timeCell?.detailTextLabel?.text = dateFormatter.stringFromDate(notificationTime)
+        let timeCell = tableView.cellForRow(at: IndexPath(row: (pickerIndexPath as NSIndexPath).row - 1, section: (pickerIndexPath as NSIndexPath).section))
+        timeCell?.detailTextLabel?.text = dateFormatter.string(from: notificationTime)
         
         //Update notification
         NotificationManager.cancelScheduledLocalNotificationForName(NotificationManager.addTodayNotificationName)

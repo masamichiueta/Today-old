@@ -12,7 +12,7 @@ import Foundation
 import TodayWatchKit
 
 protocol AddTodayInterfaceControllerDelegate: class {
-    func todayDidAdd(score: Int)
+    func todayDidAdd(_ score: Int)
 }
 
 final class AddTodayInterfaceController: WKInterfaceController {
@@ -23,13 +23,13 @@ final class AddTodayInterfaceController: WKInterfaceController {
     private var score: Int = Today.maxMasterScore
     weak var delegate: ScoreInterfaceController?
     
-    override func awakeWithContext(context: AnyObject?) {
-        super.awakeWithContext(context)
+    override func awake(withContext context: AnyObject?) {
+        super.awake(withContext: context)
         
         if WCSession.isSupported() {
-            session = WCSession.defaultSession()
+            session = WCSession.default()
             session.delegate = self
-            session.activateSession()
+            session.activate()
         }
         
         delegate = context as? ScoreInterfaceController
@@ -40,9 +40,9 @@ final class AddTodayInterfaceController: WKInterfaceController {
             let watchSize = getWatchSize()
             
             switch watchSize {
-            case .ThirtyEight:
+            case .thirtyEight:
                 pickerItem.contentImage = WKImage(imageName: "score_select_circle_38_\($0).png")
-            case .FourtyTwo:
+            case .fourtyTwo:
                 pickerItem.contentImage = WKImage(imageName: "score_select_circle_42_\($0).png")
             }
             
@@ -61,8 +61,8 @@ final class AddTodayInterfaceController: WKInterfaceController {
     }
     
     @IBAction func addToday() {
-        if session.reachable {
-            let now = NSDate()
+        if session.isReachable {
+            let now = Date()
             session.sendMessage([watchConnectivityActionTypeKey: WatchConnectivityActionType.AddToday.rawValue, WatchConnectivityContentType.AddedScore.rawValue: score,
                 WatchConnectivityContentType.AddedDate.rawValue: now],
                 replyHandler: {
@@ -71,24 +71,26 @@ final class AddTodayInterfaceController: WKInterfaceController {
                     watchData.score = self.score
                     watchData.updatedAt = now
                     //self.delegate?.todayDidAdd(self.score)
-                    self.dismissController()
+                    self.dismiss()
                 },
                 errorHandler: {
                     (error) -> Void in
-                    self.dismissController()
+                    self.dismiss()
             })
         } else {
-            self.dismissController()
+            self.dismiss()
         }
         
     }
     
-    @IBAction func pickerItemDidChange(value: Int) {
+    @IBAction func pickerItemDidChange(_ value: Int) {
         score = Today.masterScores[value]
     }
 }
 
 //MARK: - WCSessionDelegate
 extension AddTodayInterfaceController: WCSessionDelegate {
-    
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: NSError?) {
+        
+    }
 }

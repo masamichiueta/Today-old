@@ -14,7 +14,7 @@ extension WKInterfaceController {
         case AddTodayInterfaceController
     }
     
-    public func presentController(controller: InterfaceController, context: AnyObject?) {
-        presentControllerWithName(controller.rawValue, context: context)
+    public func presentController(_ controller: InterfaceController, context: AnyObject?) {
+        self.presentController(withName: controller.rawValue, context: context)
     }
 }

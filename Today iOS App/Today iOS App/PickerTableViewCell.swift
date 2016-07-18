@@ -9,7 +9,7 @@
 import UIKit
 
 protocol PickerTableViewCellDelegate: class {
-    func dateDidChange(date: NSDate)
+    func dateDidChange(_ date: Date)
 }
 
 class PickerTableViewCell: UITableViewCell {
@@ -21,12 +21,12 @@ class PickerTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
     
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
     }
     
-    @IBAction func dateDidChange(sender: AnyObject) {
+    @IBAction func dateDidChange(_ sender: AnyObject) {
         self.delegate?.dateDidChange(datePicker.date)
     }
     

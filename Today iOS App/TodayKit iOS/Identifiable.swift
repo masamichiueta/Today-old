@@ -26,12 +26,12 @@ extension UIStoryboard {
         case Activity
     }
     
-    public class func storyboard(storyboard: Storyboard, bundle: NSBundle? = nil) -> UIStoryboard {
+    public class func storyboard(_ storyboard: Storyboard, bundle: Bundle? = nil) -> UIStoryboard {
         return UIStoryboard(name: storyboard.rawValue, bundle: bundle)
     }
     
     public func instantiateViewController<T: UIViewController where T: Identifiable>() -> T {
-        let optionalViewController = self.instantiateViewControllerWithIdentifier(T.identifier)
+        let optionalViewController = self.instantiateViewController(withIdentifier: T.identifier)
         
         guard let viewController = optionalViewController as? T  else {
             fatalError("Couldn’t instantiate view controller with identifier \(T.identifier)")
@@ -58,8 +58,8 @@ extension UITableView {
         
     }
     
-    public func dequeueReusableCellWithCellIdentifier(cell: TableViewCellIdentifier, forIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return self.dequeueReusableCellWithIdentifier(cell.rawValue, forIndexPath: indexPath)
+    public func dequeueReusableCellWithCellIdentifier(_ cell: TableViewCellIdentifier, forIndexPath indexPath: IndexPath) -> UITableViewCell {
+        return self.dequeueReusableCell(withIdentifier: cell.rawValue, for: indexPath)
     }
     
 }

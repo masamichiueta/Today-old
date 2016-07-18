@@ -30,15 +30,15 @@ final class TodayExtensionViewController: UIViewController, NCWidgetProviding {
         super.didReceiveMemoryWarning()
     }
     
-    func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)) {
-        completionHandler(NCUpdateResult.NewData)
+    func widgetPerformUpdate(completionHandler: ((NCUpdateResult) -> Void)) {
+        completionHandler(NCUpdateResult.newData)
     }
     
-    @IBAction func addToday(sender: AnyObject) {
-        guard let url = NSURL(string: appGroupURLScheme + "://" + AppGroupURLHost.AddToday.rawValue) else {
+    @IBAction func addToday(_ sender: AnyObject) {
+        guard let url = URL(string: appGroupURLScheme + "://" + AppGroupURLHost.AddToday.rawValue) else {
             return
         }
-        extensionContext?.openURL(url, completionHandler: nil)
+        extensionContext?.open(url, completionHandler: nil)
     }
     
     private func setupTableView() {
@@ -49,19 +49,19 @@ final class TodayExtensionViewController: UIViewController, NCWidgetProviding {
 }
 
 extension TodayExtensionViewController: UITableViewDelegate, UITableViewDataSource {
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return rowNum
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let sharedData = AppGroupSharedData()
         
-        switch indexPath.row {
+        switch (indexPath as NSIndexPath).row {
         case 0:
             guard let cell = tableView.dequeueReusableCellWithCellIdentifier(.TodayExtensionCell, forIndexPath: indexPath) as? TodayExtensionTodayTableViewCell else {
                 fatalError("Wrong cell type")
@@ -96,16 +96,16 @@ extension TodayExtensionViewController: UITableViewDelegate, UITableViewDataSour
         }
         
         //dummy
-        let cell = UITableViewCell(style: .Default, reuseIdentifier: "cell")
+        let cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
         
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        guard let url = NSURL(string: appGroupURLScheme + "://") else {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let url = URL(string: appGroupURLScheme + "://") else {
             return
         }
-        extensionContext?.openURL(url,
+        extensionContext?.open(url,
             completionHandler: nil)
     }
 

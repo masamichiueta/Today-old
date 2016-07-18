@@ -20,8 +20,8 @@ final class CurrentStreakInterfaceController: WKInterfaceController {
         }
     }
     
-    override func awakeWithContext(context: AnyObject?) {
-        super.awakeWithContext(context)
+    override func awake(withContext context: AnyObject?) {
+        super.awake(withContext: context)
     }
     
     override func willActivate() {

@@ -38,15 +38,15 @@ class TodayFirstLaunchUITests: XCTestCase {
         let app = XCUIApplication()
         let notificationButton = app.buttons["getStartedNotificationButton"]
         notificationButton.tap()
-        XCTAssertFalse(notificationButton.enabled)
+        XCTAssertFalse(notificationButton.isEnabled)
         
         let iCloudButton = app.buttons["getStartediCloudButton"]
         iCloudButton.tap()
-        XCTAssertFalse(iCloudButton.enabled)
-        app.alerts.element.collectionViews.buttons.elementBoundByIndex(1).tap()
+        XCTAssertFalse(iCloudButton.isEnabled)
+        app.alerts.element.collectionViews.buttons.elementBound(by: 1).tap()
         
         let startButton = app.buttons["getStartedStartButton"]
-        XCTAssertTrue(startButton.enabled)
+        XCTAssertTrue(startButton.isEnabled)
 
     }
 

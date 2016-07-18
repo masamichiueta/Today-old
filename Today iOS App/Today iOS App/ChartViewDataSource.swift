@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ChartViewDataSource: class {
-    func chartView(chartView: ChartViewBase, dataAtIndex index: Int) -> ChartData?
+    func chartView(_ chartView: ChartViewBase, dataAtIndex index: Int) -> ChartData?
     var first: ChartData? { get }
     var last: ChartData? { get }
     var latestYValue: Int? { get }
@@ -26,7 +26,7 @@ class ScoreChartViewDataSource: ChartViewDataSource {
         self.data = data
     }
     
-    func chartView(chartView: ChartViewBase, dataAtIndex index: Int) -> ChartData? {
+    func chartView(_ chartView: ChartViewBase, dataAtIndex index: Int) -> ChartData? {
         if index < data.count {
             return data[index]
         } else {
@@ -40,9 +40,9 @@ class ScoreChartViewDataSource: ChartViewDataSource {
     
     var latestYValue: Int? { get { return data.flatMap({ $0.yValue }).last } }
     
-    var maxYValue: Int? { get { return data.flatMap({ $0.yValue }).maxElement()} }
+    var maxYValue: Int? { get { return data.flatMap({ $0.yValue }).max()} }
     
-    var minYValue: Int? { get { return data.flatMap({ $0.yValue }).minElement()} }
+    var minYValue: Int? { get { return data.flatMap({ $0.yValue }).min()} }
     
     func numberOfObjects() -> Int {
         return data.count

@@ -10,7 +10,7 @@ import Foundation
 
 public struct WatchData {
     
-    private let defaults = NSUserDefaults.standardUserDefaults()
+    private let defaults = UserDefaults.standard()
     
     //MARK: - Keys
     public enum WatchDataKey: String {
@@ -21,26 +21,26 @@ public struct WatchData {
     
     public var score: Int {
         didSet {
-            defaults.setInteger(score, forKey: WatchDataKey.Score.rawValue)
+            defaults.set(score, forKey: WatchDataKey.Score.rawValue)
         }
     }
     
     public var currentStreak: Int {
         didSet {
-            defaults.setInteger(currentStreak, forKey: WatchDataKey.CurrentStreak.rawValue)
+            defaults.set(currentStreak, forKey: WatchDataKey.CurrentStreak.rawValue)
         }
     }
     
-    public var updatedAt: NSDate? {
+    public var updatedAt: Date? {
         didSet {
-            defaults.setObject(updatedAt, forKey: WatchDataKey.UpdatedAt.rawValue)
+            defaults.set(updatedAt, forKey: WatchDataKey.UpdatedAt.rawValue)
         }
     }
     
     public init() {
-        score = defaults.integerForKey(WatchDataKey.Score.rawValue)
-        currentStreak = defaults.integerForKey(WatchDataKey.CurrentStreak.rawValue)
-        guard let savedUpdatedAt = defaults.objectForKey(WatchDataKey.UpdatedAt.rawValue) as? NSDate else {
+        score = defaults.integer(forKey: WatchDataKey.Score.rawValue)
+        currentStreak = defaults.integer(forKey: WatchDataKey.CurrentStreak.rawValue)
+        guard let savedUpdatedAt = defaults.object(forKey: WatchDataKey.UpdatedAt.rawValue) as? Date else {
             return
         }
         updatedAt = savedUpdatedAt

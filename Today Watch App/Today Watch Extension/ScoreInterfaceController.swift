@@ -29,14 +29,14 @@ final class ScoreInterfaceController: WKInterfaceController {
             
             let watchSize = getWatchSize()
             switch watchSize {
-            case .ThirtyEight:
+            case .thirtyEight:
                 scoreGroup.setBackgroundImageNamed("score_circle_38_")
-            case .FourtyTwo:
+            case .fourtyTwo:
                 scoreGroup.setBackgroundImageNamed("score_circle_42_")
             }
             
             let duration = 0.5
-            scoreGroup.startAnimatingWithImagesInRange(NSRange(location: 0, length: 6 * todayScore + 1), duration: duration, repeatCount: 1)
+            scoreGroup.startAnimatingWithImages(in: NSRange(location: 0, length: 6 * todayScore + 1), duration: duration, repeatCount: 1)
             
             let color = Today.type(todayScore).color()
             scoreLabel.setText("\(todayScore)")
@@ -47,17 +47,17 @@ final class ScoreInterfaceController: WKInterfaceController {
         }
     }
     
-    override func awakeWithContext(context: AnyObject?) {
-        super.awakeWithContext(context)
+    override func awake(withContext context: AnyObject?) {
+        super.awake(withContext: context)
         
         let color = Today.type(todayScore).color()
         scoreLabel.setTextColor(color)
         scoreIcon.setTintColor(color)
         
         if WCSession.isSupported() {
-            session = WCSession.defaultSession()
+            session = WCSession.default()
             session.delegate = self
-            session.activateSession()
+            session.activate()
         }
     }
     
@@ -66,11 +66,11 @@ final class ScoreInterfaceController: WKInterfaceController {
         cautionLabel.setHidden(true)
         var watchData = WatchData()
         
-        if let updatedAt = watchData.updatedAt where NSCalendar.currentCalendar().isDate(updatedAt, inSameDayAsDate: NSDate()) {
+        if let updatedAt = watchData.updatedAt where Calendar.current().isDate(updatedAt, inSameDayAs: Date()) {
             todayScore = watchData.score
         }
         
-        if session.reachable {
+        if session.isReachable {
             sendMessageToGetWatchData()
         }
         
@@ -85,26 +85,26 @@ final class ScoreInterfaceController: WKInterfaceController {
     @IBAction func addToday() {
         
         let watchData = WatchData()
-        let today = NSDate()
+        let today = Date()
         
         guard let updatedAt = watchData.updatedAt else {
             presentController(.AddTodayInterfaceController, context: self)
             return
         }
         
-        if !NSCalendar.currentCalendar().isDate(updatedAt, inSameDayAsDate: today) {
+        if !Calendar.current().isDate(updatedAt, inSameDayAs: today) {
             presentController(.AddTodayInterfaceController, context: self)
         } else {
             cautionLabel.setHidden(false)
-            animateWithDuration(0.5, animations: {
+            animate(withDuration: 0.5, animations: {
                 self.cautionLabel.setAlpha(1.0)
-                NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: #selector(self.hideCautionLabel), userInfo: nil, repeats: false)
+                Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(self.hideCautionLabel), userInfo: nil, repeats: false)
             })
         }
     }
     
     func hideCautionLabel() {
-        animateWithDuration(0.5, animations: { [unowned self] in
+        animate(withDuration: 0.5, animations: { [unowned self] in
             self.cautionLabel.setAlpha(0.0)
             self.cautionLabel.setHidden(true)
             })
@@ -121,15 +121,15 @@ final class ScoreInterfaceController: WKInterfaceController {
                 let currentStreak = content[WatchConnectivityContentType.CurrentStreak.rawValue] as? Int
                 
                 switch (score, currentStreak) {
-                case (let .Some(score), let .Some(currentStreak)):
+                case (let .some(score), let .some(currentStreak)):
                     watchData.score = score
                     watchData.currentStreak = currentStreak
-                    watchData.updatedAt = NSDate()
-                case (let .Some(score), nil):
+                    watchData.updatedAt = Date()
+                case (let .some(score), nil):
                     watchData.score = score
                     watchData.currentStreak = 0
                     watchData.updatedAt = nil
-                case (nil, let .Some(currentStreak)):
+                case (nil, let .some(currentStreak)):
                     watchData.score = 0
                     watchData.currentStreak = currentStreak
                     watchData.updatedAt = nil
@@ -146,8 +146,13 @@ final class ScoreInterfaceController: WKInterfaceController {
 
 //MARK: - WCSessionDelegate
 extension ScoreInterfaceController: WCSessionDelegate {
-    func sessionReachabilityDidChange(session: WCSession) {
-        if session.reachable {
+    
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: NSError?) {
+        
+    }
+    
+    func sessionReachabilityDidChange(_ session: WCSession) {
+        if session.isReachable {
             sendMessageToGetWatchData()
         }
     }
@@ -155,7 +160,7 @@ extension ScoreInterfaceController: WCSessionDelegate {
 
 //MARK: - AddTodayInterfaceControllerDelegate
 extension ScoreInterfaceController: AddTodayInterfaceControllerDelegate {
-    func todayDidAdd(score: Int) {
+    func todayDidAdd(_ score: Int) {
         todayScore = score
     }
 }

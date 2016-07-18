@@ -10,12 +10,12 @@ import UIKit
 import TodayKit
 
 enum ChartViewPeriodType: Int {
-    case Week
-    case Month
+    case week
+    case month
 }
 
 protocol ChartTableViewCellDelegate: class {
-    func periodTypeDidChanged(type: ChartViewPeriodType)
+    func periodTypeDidChanged(_ type: ChartViewPeriodType)
 }
 
 
@@ -26,7 +26,7 @@ class ChartTableViewCell: UITableViewCell {
     weak var delegate: ChartTableViewCellDelegate?
     var scoreChartViewDataSource: ScoreChartViewDataSource?
     
-    var periodType: ChartViewPeriodType = .Week {
+    var periodType: ChartViewPeriodType = .week {
         didSet {
             delegate?.periodTypeDidChanged(periodType)
         }
@@ -36,29 +36,29 @@ class ChartTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
     
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
         // Configure the view for the selected state
     }
     
-    @IBAction func periodDidChange(sender: UISegmentedControl) {
+    @IBAction func periodDidChange(_ sender: UISegmentedControl) {
         periodType = ChartViewPeriodType(rawValue: sender.selectedSegmentIndex)!
     }
 }
 
 //MARK: - ConfigurableCell
 extension ChartTableViewCell: ConfigurableCell {
-    func configureForObject(dataSource: ScoreChartViewDataSource) {
+    func configureForObject(_ dataSource: ScoreChartViewDataSource) {
         scoreChartViewDataSource = dataSource
         scoreChartView.dataSource = scoreChartViewDataSource
         scoreChartView.customMaxYValue = Today.maxMasterScore
         scoreChartView.customMinYValue = Today.minMasterScore
         
         switch periodType {
-        case .Week:
+        case .week:
             scoreChartView.chartTitleLabel.text = localize("Weekly Summary")
-        case .Month:
+        case .month:
             scoreChartView.chartTitleLabel.text = localize("Monthly Summary")
         }
         if let maxYValue = dataSource.maxYValue {

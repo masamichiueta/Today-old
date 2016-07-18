@@ -20,7 +20,7 @@ class PaddingLabel: UILabel {
         super.init(coder: aDecoder)
     }
     
-    override func drawTextInRect(rect: CGRect) {
-        super.drawTextInRect(UIEdgeInsetsInsetRect(rect, insets))
+    override func drawText(in rect: CGRect) {
+        super.drawText(in: UIEdgeInsetsInsetRect(rect, insets))
     }
 }

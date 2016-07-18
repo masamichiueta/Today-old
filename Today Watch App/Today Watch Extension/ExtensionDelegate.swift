@@ -17,9 +17,9 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
     func applicationDidFinishLaunching() {
         
         if WCSession.isSupported() {
-            session = WCSession.defaultSession()
+            session = WCSession.default()
             session.delegate = self
-            session.activateSession()
+            session.activate()
         }
     }
     
@@ -35,5 +35,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
 
 //MARK: - WCSessionDelegate
 extension ExtensionDelegate: WCSessionDelegate {
-    
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: NSError?) {
+        
+    }
 }

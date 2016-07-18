@@ -24,46 +24,46 @@ final class GetStartedViewController: UIViewController {
     private var notificationSet: Bool = false {
         didSet {
             if notificationSet && iCloudSet {
-                startButton.enabled = true
+                startButton.isEnabled = true
             }
         }
     }
     private var iCloudSet: Bool = false {
         didSet {
             if notificationSet && iCloudSet {
-                startButton.enabled = true
+                startButton.isEnabled = true
             }
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        startButton.enabled = false
+        startButton.isEnabled = false
         
     }
     
-    override func viewDidAppear(animated: Bool) {
-        launchIconCenterYConstraint.active = false
-        NSLayoutConstraint(item: permissionStackView, attribute: NSLayoutAttribute.Top, relatedBy: .Equal, toItem: launchIcon, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 30).active = true
-        launchIconBottomConstraint?.active = true
-        UIView.animateWithDuration(1.0,
+    override func viewDidAppear(_ animated: Bool) {
+        launchIconCenterYConstraint.isActive = false
+        NSLayoutConstraint(item: permissionStackView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: launchIcon, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: 30).isActive = true
+        launchIconBottomConstraint?.isActive = true
+        UIView.animate(withDuration: 1.0,
             delay: 0.0,
-            options: .CurveEaseInOut,
+            options: UIViewAnimationOptions(),
             animations: {
                 self.view.layoutIfNeeded()
             }, completion: { finished in
-                UIView.animateWithDuration(0.5,
+                UIView.animate(withDuration: 0.5,
                     animations: {
-                        self.permissionStackView.hidden = false
+                        self.permissionStackView.isHidden = false
                         self.permissionStackView.alpha = 1.0
-                        self.startButton.hidden = false
+                        self.startButton.isHidden = false
                         self.startButton.alpha = 1.0
                 })
         })
     }
     
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return .Portrait
+        return .portrait
     }
     
     override func didReceiveMemoryWarning() {
@@ -71,61 +71,61 @@ final class GetStartedViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func showNotificationPermission(sender: AnyObject) {
+    @IBAction func showNotificationPermission(_ sender: AnyObject) {
         NotificationManager.setupLocalNotificationSetting()
         notificationButton.backgroundColor = UIColor.defaultTintColor()
-        notificationButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        notificationButton.userInteractionEnabled = false
+        notificationButton.setTitleColor(UIColor.white(), for: UIControlState())
+        notificationButton.isUserInteractionEnabled = false
         notificationSet = true
     }
     
-    @IBAction func showiCloudPermission(sender: AnyObject) {
+    @IBAction func showiCloudPermission(_ sender: AnyObject) {
         
         let coreDataManager = CoreDataManager.sharedInstance
         
-        let alertController = UIAlertController(title: localize("Choose Storage Option"), message: localize("Should documents be stored in iCloud and available on all your devices?"), preferredStyle: .Alert)
+        let alertController = UIAlertController(title: localize("Choose Storage Option"), message: localize("Should documents be stored in iCloud and available on all your devices?"), preferredStyle: .alert)
         
-        alertController.addAction(UIAlertAction(title: localize("Local Only"), style: .Cancel, handler: { action in
+        alertController.addAction(UIAlertAction(title: localize("Local Only"), style: .cancel, handler: { action in
             var setting = Setting()
             setting.iCloudEnabled = false
             setting.ubiquityIdentityToken = nil
-            coreDataManager.createTodayMainContext(.Local)
-            self.iCloudButton.setTitle(localize("Use local storage"), forState: .Normal)
+            coreDataManager.createTodayMainContext(.local)
+            self.iCloudButton.setTitle(localize("Use local storage"), for: UIControlState())
         }))
         
-        alertController.addAction(UIAlertAction(title: localize("Use iCloud"), style: .Default, handler: { action in
+        alertController.addAction(UIAlertAction(title: localize("Use iCloud"), style: .default, handler: { action in
             
             var setting = Setting()
         
-            if let currentiCloudToken = NSFileManager.defaultManager().ubiquityIdentityToken {
-                let newTokenData = NSKeyedArchiver.archivedDataWithRootObject(currentiCloudToken)
+            if let currentiCloudToken = FileManager.default().ubiquityIdentityToken {
+                let newTokenData = NSKeyedArchiver.archivedData(withRootObject: currentiCloudToken)
                 setting.ubiquityIdentityToken = newTokenData
                 setting.iCloudEnabled = true
-                coreDataManager.createTodayMainContext(.Cloud)
+                coreDataManager.createTodayMainContext(.cloud)
             } else {
-                let alertController = UIAlertController(title: localize("iCloud is Disabled"), message: localize("Your iCloud account is disabled. Please sign in from setting."), preferredStyle: .Alert)
+                let alertController = UIAlertController(title: localize("iCloud is Disabled"), message: localize("Your iCloud account is disabled. Please sign in from setting."), preferredStyle: .alert)
                 
-                alertController.addAction(UIAlertAction(title: localize("OK"), style: .Default, handler: { action in
-                    self.iCloudButton.enabled = false
-                    self.iCloudButton.userInteractionEnabled = false
-                    self.iCloudButton.setTitle(localize("Please sign in iCloud"), forState: .Normal)
+                alertController.addAction(UIAlertAction(title: localize("OK"), style: .default, handler: { action in
+                    self.iCloudButton.isEnabled = false
+                    self.iCloudButton.isUserInteractionEnabled = false
+                    self.iCloudButton.setTitle(localize("Please sign in iCloud"), for: UIControlState())
                     self.iCloudButton.borderColor = self.iCloudButton.currentTitleColor
                 }))
-                self.presentViewController(alertController, animated: true, completion: nil)
+                self.present(alertController, animated: true, completion: nil)
                 setting.ubiquityIdentityToken = nil
-                coreDataManager.createTodayMainContext(.Local)
+                coreDataManager.createTodayMainContext(.local)
             }
         }))
-        self.presentViewController(alertController, animated: true, completion: { finished in
+        self.present(alertController, animated: true, completion: { finished in
             self.iCloudButton.backgroundColor = UIColor.defaultTintColor()
-            self.iCloudButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-            self.iCloudButton.userInteractionEnabled = false
+            self.iCloudButton.setTitleColor(UIColor.white(), for: UIControlState())
+            self.iCloudButton.isUserInteractionEnabled = false
         })
         iCloudSet = true
     }
     
-    @IBAction func startToday(sender: AnyObject) {
-        guard let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate else {
+    @IBAction func startToday(_ sender: AnyObject) {
+        guard let appDelegate = UIApplication.shared().delegate as? AppDelegate else {
             fatalError("Wrong appdelegate type")
         }
         var setting = Setting()
@@ -140,7 +140,7 @@ final class GetStartedViewController: UIViewController {
             fatalError("ManagedObjectContext not found")
         }
         
-        guard let overlayView = appDelegate.window?.snapshotViewAfterScreenUpdates(false) else {
+        guard let overlayView = appDelegate.window?.snapshotView(afterScreenUpdates: false) else {
             appDelegate.window?.rootViewController = vc
             appDelegate.updateManagedObjectContextInAllViewControllers(moc)
             return
@@ -149,9 +149,9 @@ final class GetStartedViewController: UIViewController {
         vc.view.addSubview(overlayView)
         appDelegate.window?.rootViewController = vc
         appDelegate.updateManagedObjectContextInAllViewControllers(moc)
-        UIView.animateWithDuration(0.5,
+        UIView.animate(withDuration: 0.5,
             delay: 0,
-            options: .TransitionCrossDissolve,
+            options: .transitionCrossDissolve,
             animations: {
                 overlayView.alpha = 0
             },

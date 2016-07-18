@@ -10,19 +10,19 @@ import WatchKit
 import Foundation
 
 public enum WatchSize: Int {
-    case ThirtyEight
-    case FourtyTwo
+    case thirtyEight
+    case fourtyTwo
 }
 
 public func getWatchSize() -> WatchSize {
     
-    let device = WKInterfaceDevice.currentDevice()
+    let device = WKInterfaceDevice.current()
     let bounds = device.screenBounds
     
     if bounds.width > 136.0 {
-        return WatchSize.FourtyTwo
+        return WatchSize.fourtyTwo
     } else {
-        return WatchSize.ThirtyEight
+        return WatchSize.thirtyEight
     }
     
 }

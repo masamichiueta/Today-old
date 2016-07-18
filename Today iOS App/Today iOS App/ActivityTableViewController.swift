@@ -20,7 +20,7 @@ final class ActivityTableViewController: UITableViewController, ManagedObjectCon
         registerForiCloudNotifications()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
     }
     
@@ -32,7 +32,7 @@ final class ActivityTableViewController: UITableViewController, ManagedObjectCon
         unregisterForiCloudNotifications()
     }
     
-    @IBAction func doneSettingTableViewController(segue: UIStoryboardSegue) {
+    @IBAction func doneSettingTableViewController(_ segue: UIStoryboardSegue) {
         
     }
     
@@ -42,16 +42,16 @@ final class ActivityTableViewController: UITableViewController, ManagedObjectCon
         tableView.tableFooterView = UIView()
     }
     
-    private func createChartViewDataSource(periodType: ChartViewPeriodType) -> ScoreChartViewDataSource {
+    private func createChartViewDataSource(_ periodType: ChartViewPeriodType) -> ScoreChartViewDataSource {
         switch periodType {
-        case .Week:
-            let datesFromLastWeekToNow = NSDate.previousWeekDatesFromDate(NSDate())
+        case .week:
+            let datesFromLastWeekToNow = Date.previousWeekDatesFromDate(Date())
             let todaysInWeek = Today.todays(managedObjectContext, from: datesFromLastWeekToNow.first!, to: datesFromLastWeekToNow.last!)
             let chartData = datesFromLastWeekToNow.map {date -> ChartData in
                 let todayAtDate = todaysInWeek.filter {
-                    NSCalendar.currentCalendar().isDate(date, inSameDayAsDate: $0.date)
+                    Calendar.current().isDate(date, inSameDayAs: $0.date)
                     }.first
-                let comp = NSCalendar.currentCalendar().components([.Year, .Month, .Day, .Weekday], fromDate: date)
+                let comp = Calendar.current().components([.year, .month, .day, .weekday], from: date)
                 let data: ChartData
                 if let todayAtDate = todayAtDate {
                     data = ChartData(xValue: "\(comp.day)", yValue: Int(todayAtDate.score))
@@ -61,14 +61,14 @@ final class ActivityTableViewController: UITableViewController, ManagedObjectCon
                 return data
             }
             return ScoreChartViewDataSource(data: chartData)
-        case .Month:
-            let datesFromLastMonthToNow = NSDate.previousMonthDatesFromDate(NSDate())
+        case .month:
+            let datesFromLastMonthToNow = Date.previousMonthDatesFromDate(Date())
             let todaysInMonth = Today.todays(managedObjectContext, from: datesFromLastMonthToNow.first!, to: datesFromLastMonthToNow.last!)
-            let chartData = datesFromLastMonthToNow.enumerate().map {(index, date) -> ChartData in
+            let chartData = datesFromLastMonthToNow.enumerated().map {(index, date) -> ChartData in
                 let todayAtDate = todaysInMonth.filter {
-                    NSCalendar.currentCalendar().isDate(date, inSameDayAsDate: $0.date)
+                    Calendar.current().isDate(date, inSameDayAs: $0.date)
                     }.first
-                let comp = NSCalendar.currentCalendar().components([.Year, .Month, .Day, .Weekday], fromDate: date)
+                let comp = Calendar.current().components([.year, .month, .day, .weekday], from: date)
                 let data: ChartData
                 let xValue = index % 6 == 0 ? "\(comp.day)" : ""
                 if let todayAtDate = todayAtDate {
@@ -83,17 +83,17 @@ final class ActivityTableViewController: UITableViewController, ManagedObjectCon
     }
     
     // MARK: - Table view data source
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        switch indexPath.row {
+        switch (indexPath as NSIndexPath).row {
         case 0:
             guard let cell = tableView.dequeueReusableCellWithCellIdentifier(.ActivityChartCell, forIndexPath: indexPath) as? ChartTableViewCell else {
                 fatalError("Wrong cell type")
@@ -134,21 +134,21 @@ extension ActivityTableViewController: ICloudRegistable {
         ICloudRegister.unregister(self)
     }
     
-    func ubiquitousKeyValueStoreDidChangeExternally(notification: NSNotification) { }
+    func ubiquitousKeyValueStoreDidChangeExternally(_ notification: Notification) { }
     
-    func storesWillChange(notification: NSNotification) { }
+    func storesWillChange(_ notification: Notification) { }
     
-    func storesDidChange(notification: NSNotification) {
+    func storesDidChange(_ notification: Notification) {
         tableView.reloadData()
     }
     
-    func persistentStoreDidImportUbiquitousContentChanges(notification: NSNotification) { }
+    func persistentStoreDidImportUbiquitousContentChanges(_ notification: Notification) { }
 }
 
 //MARK: - ChartTableViewCellDelegate
 extension ActivityTableViewController: ChartTableViewCellDelegate {
-    func periodTypeDidChanged(type: ChartViewPeriodType) {
-        guard let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as? ChartTableViewCell else {
+    func periodTypeDidChanged(_ type: ChartViewPeriodType) {
+        guard let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? ChartTableViewCell else {
             fatalError("Wrong cell type")
         }
         let dataSource = createChartViewDataSource(type)

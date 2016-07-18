@@ -12,7 +12,19 @@ import WatchConnectivity
 
 class TodayWCSessionHandler: NSObject, WCSessionDelegate {
     
-    func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: NSError?) {
+        
+    }
+    
+    func sessionDidBecomeInactive(_ session: WCSession) {
+        
+    }
+    
+    func sessionDidDeactivate(_ session: WCSession) {
+        
+    }
+    
+    func session(_ session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
         
         guard let moc = CoreDataManager.sharedInstance.managedObjectContext else {
             fatalError("ManagedObjectContext is not found!")
@@ -33,9 +45,9 @@ class TodayWCSessionHandler: NSObject, WCSessionDelegate {
             }
             
             //Create today
-            if !Today.created(moc, forDate: NSDate()) {
+            if !Today.created(moc, forDate: Date()) {
                 moc.performChanges {
-                    let now = NSDate()
+                    let now = Date()
                     //Add today
                     Today.insertIntoContext(moc, score: Int64(score), date: now)
                     Streak.updateOrCreateCurrentStreak(moc, date: now)
@@ -43,11 +55,11 @@ class TodayWCSessionHandler: NSObject, WCSessionDelegate {
                 replyHandler([WatchConnectivityContentType.Finished.rawValue: true])
             }
         case .GetWatchData:
-            let now = NSDate()
+            let now = Date()
             
             var data: [String: AnyObject] = [String: AnyObject]()
-            if let startDate =  NSCalendar.currentCalendar().dateBySettingHour(0, minute: 0, second: 0, ofDate: now, options: []),
-                endDate = NSCalendar.currentCalendar().dateByAddingUnit(.Day, value: 1, toDate: startDate, options: []),
+            if let startDate =  Calendar.current().date(bySettingHour: 0, minute: 0, second: 0, of: now, options: []),
+                endDate = Calendar.current().date(byAdding: .day, value: 1, to: startDate, options: []),
                 today = Today.todays(moc, from: startDate, to: endDate).first {
                   data[WatchConnectivityContentType.TodayScore.rawValue] = Int(today.score)
             }

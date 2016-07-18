@@ -20,21 +20,21 @@ class ScoreChartView: ChartViewBase {
     
     var customMaxYValue: Int?
     var customMinYValue: Int?
-    var axisFont = UIFont.systemFontOfSize(12.0)
+    var axisFont = UIFont.systemFont(ofSize: 12.0)
     
-    var gradient: CGGradientRef = {
+    var gradient: CGGradient = {
         
         let colors: [CGColor] = [
-            UIColor.todayGradientRedStartColor().CGColor,
-            UIColor.todayGradientRedEndColor().CGColor
+            UIColor.todayGradientRedStartColor().cgColor,
+            UIColor.todayGradientRedEndColor().cgColor
         ]
         let locations: [CGFloat] = [0.0, 1.0]
-        return CGGradientCreateWithColors(CGColorSpaceCreateDeviceRGB(), colors, locations)!
+        return CGGradient(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: colors, locations: locations)!
     }()
     
     
     
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         let clipPath = UIBezierPath(roundedRect: bounds, cornerRadius: 10.0)
         clipPath.addClip()
         
@@ -84,14 +84,14 @@ class ScoreChartView: ChartViewBase {
         drawDataInRect(dataRect)
     }
     
-    override func traitCollectionDidChange(previousTraitCollection: UITraitCollection?) {
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         setNeedsDisplay()
     }
     
     //MARK: - Draiwng
     private func drawBackgroundGradient() {
         let ctx = UIGraphicsGetCurrentContext()
-        CGContextSaveGState(ctx)
+        ctx?.saveGState()
         let startPoint = CGPoint(x: bounds.midX, y: 0)
         let endPoint = CGPoint(x: bounds.midX, y: bounds.maxX)
         if let latestYValue = dataSource?.latestYValue {
@@ -99,58 +99,58 @@ class ScoreChartView: ChartViewBase {
         } else {
             gradient = TodayType.Poor.gradientColor()
         }
-        CGContextDrawLinearGradient(ctx, gradient, startPoint, endPoint, [])
-        CGContextRestoreGState(ctx)
+        ctx?.drawLinearGradient(gradient, start: startPoint, end: endPoint, options: [])
+        ctx?.restoreGState()
     }
     
-    private func drawHorizontalLineInRect(rect: CGRect) {
+    private func drawHorizontalLineInRect(_ rect: CGRect) {
         let ctx = UIGraphicsGetCurrentContext()
-        CGContextSaveGState(ctx)
-        UIColor.whiteColor().setStroke()
+        ctx?.saveGState()
+        UIColor.white().setStroke()
         let horizontalLine = UIBezierPath()
         horizontalLine.lineWidth = 0.5
-        horizontalLine.moveToPoint(CGPoint(x: rect.minX, y: rect.minY))
-        horizontalLine.addLineToPoint(CGPoint(x: rect.maxX, y: rect.minY))
-        CGContextSaveGState(ctx)
+        horizontalLine.move(to: CGPoint(x: rect.minX, y: rect.minY))
+        horizontalLine.addLine(to: CGPoint(x: rect.maxX, y: rect.minY))
+        ctx?.saveGState()
         horizontalLine.stroke()
-        CGContextTranslateCTM(ctx, 0.0, rect.height)
+        ctx?.translate(x: 0.0, y: rect.height)
         horizontalLine.stroke()
-        CGContextRestoreGState(ctx)
-        CGContextRestoreGState(ctx)
+        ctx?.restoreGState()
+        ctx?.restoreGState()
     }
     
-    private func drawXLabelInRect(rect: CGRect) {
+    private func drawXLabelInRect(_ rect: CGRect) {
         guard let dataSource = dataSource else {
             fatalError("No data source")
         }
         let ctx = UIGraphicsGetCurrentContext()
-        CGContextSaveGState(ctx)
+        ctx?.saveGState()
         let labelSpace = (rect.width / CGFloat(dataSource.numberOfObjects() - 1))
-        CGContextTranslateCTM(ctx, rect.minX, rect.minY)
+        ctx?.translate(x: rect.minX, y: rect.minY)
         
         for i in 0..<dataSource.numberOfObjects() {
             guard let data = dataSource.chartView(self, dataAtIndex: i),
                 let label = data.xValue else {
                     continue
             }
-            let labelSize = label.sizeWithAttributes([NSFontAttributeName: axisFont])
-            label.drawInRect(CGRect(x: labelSpace * CGFloat(i) - labelSize.width / 2.0, y: 0.0, width: labelSize.width, height: labelSize.height), withAttributes: [NSFontAttributeName: axisFont, NSForegroundColorAttributeName: UIColor.whiteColor()])
+            let labelSize = label.size(attributes: [NSFontAttributeName: axisFont])
+            label.draw(in: CGRect(x: labelSpace * CGFloat(i) - labelSize.width / 2.0, y: 0.0, width: labelSize.width, height: labelSize.height), withAttributes: [NSFontAttributeName: axisFont, NSForegroundColorAttributeName: UIColor.white()])
         }
-        CGContextRestoreGState(ctx)
+        ctx?.restoreGState()
     }
     
-    private func drawYLabelInRect(rect: CGRect) {
+    private func drawYLabelInRect(_ rect: CGRect) {
         guard let dataSource = dataSource else {
             fatalError("No data source")
         }
         let ctx = UIGraphicsGetCurrentContext()
-        CGContextSaveGState(ctx)
-        CGContextTranslateCTM(ctx, rect.minX, rect.minY)
+        ctx?.saveGState()
+        ctx?.translate(x: rect.minX, y: rect.minY)
         
-        guard let paragraphStyle = NSParagraphStyle.defaultParagraphStyle().mutableCopy() as? NSMutableParagraphStyle else {
+        guard let paragraphStyle = NSParagraphStyle.default().mutableCopy() as? NSMutableParagraphStyle else {
             fatalError("Wrong paragraph style")
         }
-        paragraphStyle.alignment = .Right
+        paragraphStyle.alignment = .right
         
         let maxYLabel: String
         if let customMaxYValue = customMaxYValue {
@@ -161,8 +161,8 @@ class ScoreChartView: ChartViewBase {
             maxYLabel = ""
         }
         
-        let maxYLabelSize = maxYLabel.sizeWithAttributes([NSFontAttributeName: axisFont])
-        maxYLabel.drawInRect(CGRect(x: 0.0, y: -(maxYLabelSize.height / 2.0), width: rect.width, height: maxYLabelSize.height), withAttributes: [NSFontAttributeName: axisFont, NSForegroundColorAttributeName: UIColor.whiteColor(), NSParagraphStyleAttributeName: paragraphStyle])
+        let maxYLabelSize = maxYLabel.size(attributes: [NSFontAttributeName: axisFont])
+        maxYLabel.draw(in: CGRect(x: 0.0, y: -(maxYLabelSize.height / 2.0), width: rect.width, height: maxYLabelSize.height), withAttributes: [NSFontAttributeName: axisFont, NSForegroundColorAttributeName: UIColor.white(), NSParagraphStyleAttributeName: paragraphStyle])
         
         let minYLabel: String
         if let customMinYValue = customMinYValue {
@@ -173,22 +173,22 @@ class ScoreChartView: ChartViewBase {
             minYLabel = ""
         }
         
-        let minYLabelSize = minYLabel.sizeWithAttributes([NSFontAttributeName: axisFont])
-        minYLabel.drawInRect(CGRect(x: 0.0, y: rect.height - minYLabelSize.height / 2.0, width: rect.width, height: minYLabelSize.height), withAttributes: [NSFontAttributeName: axisFont, NSForegroundColorAttributeName: UIColor.whiteColor(), NSParagraphStyleAttributeName: paragraphStyle])
+        let minYLabelSize = minYLabel.size(attributes: [NSFontAttributeName: axisFont])
+        minYLabel.draw(in: CGRect(x: 0.0, y: rect.height - minYLabelSize.height / 2.0, width: rect.width, height: minYLabelSize.height), withAttributes: [NSFontAttributeName: axisFont, NSForegroundColorAttributeName: UIColor.white(), NSParagraphStyleAttributeName: paragraphStyle])
         
-        CGContextRestoreGState(ctx)
+        ctx?.restoreGState()
     }
     
-    private func drawDataInRect(rect: CGRect) {
+    private func drawDataInRect(_ rect: CGRect) {
         guard let dataSource = dataSource else {
             fatalError("No data source")
         }
         let ctx = UIGraphicsGetCurrentContext()
-        CGContextSaveGState(ctx)
-        UIColor.whiteColor().setFill()
-        UIColor.whiteColor().setStroke()
+        ctx?.saveGState()
+        UIColor.white().setFill()
+        UIColor.white().setStroke()
         let lineWidth: CGFloat = 1.0
-        CGContextTranslateCTM(ctx, rect.minX, rect.minY)
+        ctx?.translate(x: rect.minX, y: rect.minY)
         let maxYValue: Int
         if let customMaxYValue = customMaxYValue {
             maxYValue = customMaxYValue
@@ -216,7 +216,7 @@ class ScoreChartView: ChartViewBase {
         }
         var lastPointAndIndex: (point: CGPoint, index: Int) = (initialDataPoint, -1)
         for i in 0..<dataSource.numberOfObjects() {
-            CGContextSaveGState(ctx)
+            ctx?.saveGState()
             
             guard let data = dataSource.chartView(self, dataAtIndex: i),
                 let yValue = data.yValue else {
@@ -232,7 +232,7 @@ class ScoreChartView: ChartViewBase {
             
             //At first point, just draw a circle
             if i == 0 {
-                CGContextRestoreGState(ctx)
+                ctx?.restoreGState()
                 lastPointAndIndex = (currentPoint, 0)
                 continue
             }
@@ -240,8 +240,8 @@ class ScoreChartView: ChartViewBase {
             //Draw chart line
             let path = UIBezierPath()
             path.lineWidth = lineWidth
-            path.lineJoinStyle = .Round
-            path.lineCapStyle = .Round
+            path.lineJoinStyle = .round
+            path.lineCapStyle = .round
             
             //Calculate intersection between line and circle
             let rate = circleRadius / CGPoint.distanceBetween(lastPointAndIndex.point, p2: currentPoint)
@@ -253,17 +253,17 @@ class ScoreChartView: ChartViewBase {
                 x: currentPoint.x - rate * (currentPoint.x - lastPointAndIndex.point.x),
                 y: currentPoint.y - rate * (currentPoint.y - lastPointAndIndex.point.y))
             
-            path.moveToPoint(startIntersection)
+            path.move(to: startIntersection)
             
             if lastPointAndIndex.index != i - 1 {
                 let pattern: [CGFloat] = [3.0, 6.0]
                 path.setLineDash(pattern, count: pattern.count, phase: 0)
             }
-            path.addLineToPoint(endIntersection)
+            path.addLine(to: endIntersection)
             path.stroke()
-            CGContextRestoreGState(ctx)
+            ctx?.restoreGState()
             lastPointAndIndex = (currentPoint, i)
         }
-        CGContextRestoreGState(ctx)
+        ctx?.restoreGState()
     }
 }

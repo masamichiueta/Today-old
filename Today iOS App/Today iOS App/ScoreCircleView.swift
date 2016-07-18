@@ -11,7 +11,7 @@ import TodayKit
 
 @IBDesignable class ScoreCircleView: UIView {
     
-    @IBInspectable var progressCircleColor: UIColor = Today.type(Today.masterScores.maxElement()!).color() {
+    @IBInspectable var progressCircleColor: UIColor = Today.type(Today.masterScores.max()!).color() {
         didSet {
             setNeedsDisplay()
         }
@@ -32,8 +32,8 @@ import TodayKit
                     })
             } else {
                 progressCircleLayer.strokeEnd = CGFloat(score)/CGFloat(Today.maxMasterScore)
-                progressCircleLayer.strokeColor = toStrokeColor.CGColor
-                backCircleLayer.strokeColor = CGColorCreateCopyWithAlpha(toStrokeColor.CGColor, backgroundOpacity)
+                progressCircleLayer.strokeColor = toStrokeColor.cgColor
+                backCircleLayer.strokeColor = CGColor(copyWithAlphaColor: toStrokeColor.cgColor, alpha: backgroundOpacity)
                 progressCircleColor = toStrokeColor
             }
         }
@@ -67,7 +67,7 @@ import TodayKit
         drawProgressCircle()
     }
     
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         drawBackCircle()
         drawProgressCircle()
     }
@@ -86,8 +86,8 @@ import TodayKit
             startAngle: CGFloat(0),
             endAngle: CGFloat(M_PI * 2),
             clockwise: true)
-        backCircleLayer.path = path.CGPath
-        backCircleLayer.strokeColor = CGColorCreateCopyWithAlpha(progressCircleColor.CGColor, backgroundOpacity)
+        backCircleLayer.path = path.cgPath
+        backCircleLayer.strokeColor = CGColor(copyWithAlphaColor: progressCircleColor.cgColor, alpha: backgroundOpacity)
         backCircleLayer.fillColor = nil
         backCircleLayer.lineWidth = progressBorderWidth
         
@@ -102,22 +102,22 @@ import TodayKit
             startAngle: startAngle,
             endAngle: endAngle,
             clockwise: true)
-        progressCircleLayer.path = path.CGPath
+        progressCircleLayer.path = path.cgPath
         progressCircleLayer.lineWidth = progressBorderWidth
         progressCircleLayer.lineCap = kCALineCapRound
-        progressCircleLayer.strokeColor = progressCircleColor.CGColor
+        progressCircleLayer.strokeColor = progressCircleColor.cgColor
         progressCircleLayer.fillColor = nil
         progressCircleLayer.strokeStart = 0.0
         progressCircleLayer.strokeEnd = CGFloat(score)/CGFloat(Today.maxMasterScore)
     }
     
-    private func animateProgressFromScore(fromScore: Int, toScore: Int, fromStrokeColor: UIColor, toStrokeColor: UIColor, completion: () -> ()) {
+    private func animateProgressFromScore(_ fromScore: Int, toScore: Int, fromStrokeColor: UIColor, toStrokeColor: UIColor, completion: () -> ()) {
         let fromStrokeEnd = CGFloat(fromScore)/CGFloat(Today.maxMasterScore)
         let toStrokeEnd = CGFloat(toScore)/CGFloat(Today.maxMasterScore)
         
         CATransaction.begin()
         
-        animationDuration = max(NSTimeInterval(abs(toStrokeEnd - fromStrokeEnd)), minDuration)
+        animationDuration = max(TimeInterval(abs(toStrokeEnd - fromStrokeEnd)), minDuration)
         
         let strokeEndAnimation = CABasicAnimation(keyPath: "strokeEnd")
         strokeEndAnimation.fromValue = fromStrokeEnd
@@ -125,23 +125,23 @@ import TodayKit
         progressCircleLayer.strokeEnd = toStrokeEnd
         
         let strokeColorAnimation = CABasicAnimation(keyPath: "strokeColor")
-        strokeColorAnimation.fromValue = fromStrokeColor.CGColor
-        strokeColorAnimation.toValue = toStrokeColor.CGColor
-        progressCircleLayer.strokeColor = toStrokeColor.CGColor
+        strokeColorAnimation.fromValue = fromStrokeColor.cgColor
+        strokeColorAnimation.toValue = toStrokeColor.cgColor
+        progressCircleLayer.strokeColor = toStrokeColor.cgColor
         
         let progressCircleAnimationGroup = CAAnimationGroup()
         progressCircleAnimationGroup.duration = animationDuration
         progressCircleAnimationGroup.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         progressCircleAnimationGroup.animations = [strokeEndAnimation, strokeColorAnimation]
-        progressCircleLayer.addAnimation(progressCircleAnimationGroup, forKey: "progressCircle")
+        progressCircleLayer.add(progressCircleAnimationGroup, forKey: "progressCircle")
         
         let backgroundStrokeColorAnimation = CABasicAnimation(keyPath: "strokeColor")
         backgroundStrokeColorAnimation.duration = animationDuration
         backgroundStrokeColorAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-        backgroundStrokeColorAnimation.fromValue = CGColorCreateCopyWithAlpha(fromStrokeColor.CGColor, backgroundOpacity)
-        backgroundStrokeColorAnimation.toValue = CGColorCreateCopyWithAlpha(toStrokeColor.CGColor, backgroundOpacity)
-        backCircleLayer.strokeColor = CGColorCreateCopyWithAlpha(toStrokeColor.CGColor, backgroundOpacity)
-        backCircleLayer.addAnimation(backgroundStrokeColorAnimation, forKey: "backgroundCircle")
+        backgroundStrokeColorAnimation.fromValue = CGColor(copyWithAlphaColor: fromStrokeColor.cgColor, alpha: backgroundOpacity)
+        backgroundStrokeColorAnimation.toValue = CGColor(copyWithAlphaColor: toStrokeColor.cgColor, alpha: backgroundOpacity)
+        backCircleLayer.strokeColor = CGColor(copyWithAlphaColor: toStrokeColor.cgColor, alpha: backgroundOpacity)
+        backCircleLayer.add(backgroundStrokeColorAnimation, forKey: "backgroundCircle")
         
         CATransaction.setCompletionBlock(completion)
         CATransaction.commit()

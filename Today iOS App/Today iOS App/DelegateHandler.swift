@@ -12,11 +12,11 @@ import TodayKit
 import WatchConnectivity
 
 protocol DelegateHandler: class {
-    func handleLaunch(appDelegate: AppDelegate)
+    func handleLaunch(_ appDelegate: AppDelegate)
 }
 
 final class FirstLaunchDelegateHandler: NSObject, DelegateHandler {
-    func handleLaunch(appDelegate: AppDelegate) {
+    func handleLaunch(_ appDelegate: AppDelegate) {
         
         let startStoryboard = UIStoryboard.storyboard(.GetStarted)
         guard let vc = startStoryboard.instantiateInitialViewController() else {
@@ -32,7 +32,7 @@ final class LaunchDelegateHandler: NSObject, DelegateHandler {
     private var session: WCSession!
     private let wcSessionHandler: TodayWCSessionHandler = TodayWCSessionHandler()
     
-    func handleLaunch(appDelegate: AppDelegate) {
+    func handleLaunch(_ appDelegate: AppDelegate) {
         
         setupWatchConnectivity()
         
@@ -43,9 +43,9 @@ final class LaunchDelegateHandler: NSObject, DelegateHandler {
         let moc: NSManagedObjectContext
         let coreDataManager = CoreDataManager.sharedInstance
         if Setting().iCloudEnabled {
-            moc = coreDataManager.createTodayMainContext(.Cloud)
+            moc = coreDataManager.createTodayMainContext(.cloud)
         } else {
-            moc = coreDataManager.createTodayMainContext(.Local)
+            moc = coreDataManager.createTodayMainContext(.local)
         }
         
         let mainStoryboard = UIStoryboard.storyboard(.Main)
@@ -59,9 +59,9 @@ final class LaunchDelegateHandler: NSObject, DelegateHandler {
     
     private func setupWatchConnectivity() {
         if WCSession.isSupported() {
-            session = WCSession.defaultSession()
+            session = WCSession.default()
             session.delegate = wcSessionHandler
-            session.activateSession()
+            session.activate()
         }
     }
 }

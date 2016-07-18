@@ -16,10 +16,10 @@ class TodayTableViewCell: UITableViewCell {
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
     
-    private let dateFormatter: NSDateFormatter = {
-        let formatter = NSDateFormatter()
-        formatter.dateStyle = .MediumStyle
-        formatter.timeStyle = .NoStyle
+    private let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .mediumStyle
+        formatter.timeStyle = .noStyle
         formatter.doesRelativeDateFormatting = true
         return formatter
     }()
@@ -29,7 +29,7 @@ class TodayTableViewCell: UITableViewCell {
         scoreCircleView.animated = false
     }
     
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     
@@ -37,8 +37,8 @@ class TodayTableViewCell: UITableViewCell {
 
 //MARK: - ConfigurableCell
 extension TodayTableViewCell: ConfigurableCell {
-    func configureForObject(today: Today) {
-        dateLabel.text = dateFormatter.stringFromDate(today.date)
+    func configureForObject(_ today: Today) {
+        dateLabel.text = dateFormatter.string(from: today.date)
         scoreCircleView.score = Int(today.score)
         scoreLabel.text = "\(today.score)"
         scoreLabel.textColor = today.type.color()

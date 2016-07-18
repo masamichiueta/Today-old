@@ -22,14 +22,14 @@ final class AddTodayViewController: UIViewController {
             let animation = CATransition()
             animation.type = kCATransitionFade
             animation.duration = scoreCircleView.animationDuration
-            scoreLabel.layer.addAnimation(animation, forKey: nil)
+            scoreLabel.layer.add(animation, forKey: nil)
             self.scoreLabel.text = "\(self.score)"
             let toStrokeColor = Today.type(score).color()
             scoreLabel.textColor = toStrokeColor
             iconImageView.tintColor = toStrokeColor
-            UIView.transitionWithView(iconImageView,
+            UIView.transition(with: iconImageView,
                 duration: scoreCircleView.animationDuration,
-                options: UIViewAnimationOptions.TransitionCrossDissolve,
+                options: UIViewAnimationOptions.transitionCrossDissolve,
                 animations: { [unowned self] in
                     self.iconImageView.image = Today.type(self.score).icon(.Fourty)
                     self.view.layoutIfNeeded()
@@ -40,12 +40,12 @@ final class AddTodayViewController: UIViewController {
         }
     }
     
-    private let thinProgressBorderGroup: [Device] = [.iPhone4, .iPhone4s, .Simulator(.iPhone4), .Simulator(.iPhone4s)]
+    private let thinProgressBorderGroup: [Device] = [.iPhone4, .iPhone4s, .simulator(.iPhone4), .simulator(.iPhone4s)]
     private let device = Device()
     private let thinProgressBorderWidth: CGFloat = 5.0
     private let defaultProgressBorderWidth: CGFloat = 10.0
-    private let smallScoreFont = UIFont.systemFontOfSize(50, weight: UIFontWeightThin)
-    private let defaultScoreFont = UIFont.systemFontOfSize(100, weight: UIFontWeightThin)
+    private let smallScoreFont = UIFont.systemFont(ofSize: 50, weight: UIFontWeightThin)
+    private let defaultScoreFont = UIFont.systemFont(ofSize: 100, weight: UIFontWeightThin)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,10 +59,10 @@ final class AddTodayViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    override func traitCollectionDidChange(previousTraitCollection: UITraitCollection?) {
-        let compactHeightCollection = UITraitCollection(verticalSizeClass: .Compact)
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        let compactHeightCollection = UITraitCollection(verticalSizeClass: .compact)
         
-        if traitCollection.containsTraitsInCollection(compactHeightCollection) || device.isOneOf(thinProgressBorderGroup) {
+        if traitCollection.containsTraits(in: compactHeightCollection) || device.isOneOf(thinProgressBorderGroup) {
             scoreCircleView.progressBorderWidth = thinProgressBorderWidth
             scoreLabel.font = smallScoreFont
         } else {
@@ -72,8 +72,8 @@ final class AddTodayViewController: UIViewController {
     }
     
     private func setupProgressBorderWidth() {
-        let compactHeightCollection = UITraitCollection(verticalSizeClass: .Compact)
-        if traitCollection.containsTraitsInCollection(compactHeightCollection) || device.isOneOf(thinProgressBorderGroup) {
+        let compactHeightCollection = UITraitCollection(verticalSizeClass: .compact)
+        if traitCollection.containsTraits(in: compactHeightCollection) || device.isOneOf(thinProgressBorderGroup) {
             scoreCircleView.progressBorderWidth = thinProgressBorderWidth
             scoreLabel.font = defaultScoreFont
         }
@@ -82,19 +82,19 @@ final class AddTodayViewController: UIViewController {
 
 //MARK: - UIPickerViewDataSource, UIPickerViewDelegate
 extension AddTodayViewController: UIPickerViewDataSource, UIPickerViewDelegate {
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return Today.masterScores.count
     }
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return "\(Today.masterScores[row])"
     }
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         score = Today.masterScores[row]
     }
 }

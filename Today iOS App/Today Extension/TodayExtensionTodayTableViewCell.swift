@@ -18,16 +18,16 @@ class TodayExtensionTodayTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
     
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
 }
 
 //MARK: - ConfigurableCell
 extension TodayExtensionTodayTableViewCell: ConfigurableCell {
-    func configureForObject(score: Int) {
+    func configureForObject(_ score: Int) {
         scoreLabel.text = "\(score)"
-        iconImageView.tintColor = UIColor.whiteColor()
+        iconImageView.tintColor = UIColor.white()
         iconImageView.image = Today.type(score).icon(.TwentyEight)
     }
 }

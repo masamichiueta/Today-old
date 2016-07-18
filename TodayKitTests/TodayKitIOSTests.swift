@@ -30,7 +30,7 @@ class TodayKitIOSTests: XCTestCase {
         XCTAssertEqual(appGroupSharedData.currentStreak, 0)
         XCTAssertEqual(appGroupSharedData.longestStreak, 0)
         
-        let now = NSDate()
+        let now = Date()
         appGroupSharedData.todayScore = 3
         appGroupSharedData.total = 1
         appGroupSharedData.currentStreak = 2
@@ -99,9 +99,9 @@ class TodayKitIOSTests: XCTestCase {
     func testThatItGetsCoreDataManager() {
         let manager = CoreDataManager.sharedInstance
         XCTAssertNotNil(manager)
-        XCTAssertNotNil(manager.createTodayMainContext(.Local))
+        XCTAssertNotNil(manager.createTodayMainContext(.local))
         manager.removeStoreFiles()
-        XCTAssertNotNil(manager.createTodayMainContext(.Cloud))
+        XCTAssertNotNil(manager.createTodayMainContext(.cloud))
         
         manager.removeStoreFiles()
     }

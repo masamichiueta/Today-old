@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var handler: DelegateHandler!
     
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         //For UI Testing
         if UITestSetting.isUITesting() {
@@ -36,36 +36,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    func applicationWillResignActive(application: UIApplication) {
+    func applicationWillResignActive(_ application: UIApplication) {
         
     }
     
-    func applicationDidEnterBackground(application: UIApplication) {
+    func applicationDidEnterBackground(_ application: UIApplication) {
         guard let moc = CoreDataManager.sharedInstance.managedObjectContext else {
             return
         }
         updateAppGroupSharedData(moc)
     }
     
-    func applicationWillEnterForeground(application: UIApplication) {
+    func applicationWillEnterForeground(_ application: UIApplication) {
         
     }
     
-    func applicationDidBecomeActive(application: UIApplication) {
+    func applicationDidBecomeActive(_ application: UIApplication) {
         updateiCloudSetting()
         application.applicationIconBadgeNumber = 0
     }
     
-    func applicationWillTerminate(application: UIApplication) {
+    func applicationWillTerminate(_ application: UIApplication) {
         CoreDataManager.sharedInstance.managedObjectContext?.saveOrRollback()
     }
     
-    func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
+    func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
         
         var setting = Setting()
         
         //Notification off
-        if notificationSettings.types == [.None] {
+        if notificationSettings.types == UIUserNotificationType() {
             setting.notificationEnabled = false
         }
         
@@ -76,7 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     
-    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: AnyObject) -> Bool {
         
         if url.scheme == appGroupURLScheme {
             guard let host = url.host else {
@@ -94,7 +94,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return false
     }
     
-    func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: () -> Void) {
+    func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, for notification: UILocalNotification, completionHandler: () -> Void) {
         
         defer {
             completionHandler()
@@ -113,7 +113,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     //MARK: - Helper
-    func updateManagedObjectContextInAllViewControllers(moc: NSManagedObjectContext) {
+    func updateManagedObjectContextInAllViewControllers(_ moc: NSManagedObjectContext) {
         guard let rootViewController = window?.rootViewController as? UITabBarController else {
             fatalError("Wrong root view controller type")
         }
@@ -137,17 +137,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    func updateAppGroupSharedData(moc: NSManagedObjectContext) {
+    func updateAppGroupSharedData(_ moc: NSManagedObjectContext) {
         var appGroupSharedData = AppGroupSharedData()
-        let now = NSDate()
+        let now = Date()
         
-        if !NSCalendar.currentCalendar().isDate(appGroupSharedData.todayDate, inSameDayAsDate: now) {
+        if !Calendar.current().isDate(appGroupSharedData.todayDate, inSameDayAs: now) {
             appGroupSharedData.todayScore = 0
             appGroupSharedData.todayDate = now
         } else {
-            let now = NSDate()
-            if let startDate =  NSCalendar.currentCalendar().dateBySettingHour(0, minute: 0, second: 0, ofDate: now, options: []),
-                endDate = NSCalendar.currentCalendar().dateByAddingUnit(NSCalendarUnit.Day, value: 1, toDate: startDate, options: []),
+            let now = Date()
+            if let startDate =  Calendar.current().date(bySettingHour: 0, minute: 0, second: 0, of: now, options: []),
+                endDate = Calendar.current().date(byAdding: Calendar.Unit.day, value: 1, to: startDate, options: []),
                 today = Today.todays(moc, from: startDate, to: endDate).first {
                     appGroupSharedData.todayScore = Int(today.score)
                     appGroupSharedData.todayDate = today.date
@@ -176,24 +176,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         //iCloud enabled but user signed out from iCloud
-        if setting.iCloudEnabled && NSFileManager.defaultManager().ubiquityIdentityToken == nil {
+        if setting.iCloudEnabled && FileManager.default().ubiquityIdentityToken == nil {
             setting.iCloudEnabled = false
             setting.ubiquityIdentityToken = nil
             return
         }
         
-        guard let currentiCloudToken = NSFileManager.defaultManager().ubiquityIdentityToken else {
+        guard let currentiCloudToken = FileManager.default().ubiquityIdentityToken else {
             return
         }
         
-        let newTokenData = NSKeyedArchiver.archivedDataWithRootObject(currentiCloudToken)
+        let newTokenData = NSKeyedArchiver.archivedData(withRootObject: currentiCloudToken)
         
         guard let savediCloudTokenData = setting.ubiquityIdentityToken else {
             return
         }
         
         //iCloud enabled but iCloud account changed
-        if setting.iCloudEnabled && !newTokenData.isEqualToData(savediCloudTokenData) {
+        if setting.iCloudEnabled && (newTokenData != savediCloudTokenData) {
             setting.ubiquityIdentityToken = newTokenData
         }
     }

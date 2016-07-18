@@ -17,10 +17,10 @@ class StreakTableViewCell: UITableViewCell {
     @IBOutlet weak var currentStreakLabel: UILabel!
     @IBOutlet weak var currentStreakDateLabel: UILabel!
     
-    private let dateFormatter: NSDateFormatter = {
-        let formatter = NSDateFormatter()
-        formatter.dateStyle = .MediumStyle
-        formatter.timeStyle = .NoStyle
+    private let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .mediumStyle
+        formatter.timeStyle = .noStyle
         return formatter
     }()
     
@@ -28,7 +28,7 @@ class StreakTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
     
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     
@@ -36,12 +36,12 @@ class StreakTableViewCell: UITableViewCell {
 
 //MARK: - ConfigurableCell 
 extension StreakTableViewCell: ConfigurableCell {
-    func configureForObject(longestAndCurrentStreaks: (Streak?, Streak?)) {
+    func configureForObject(_ longestAndCurrentStreaks: (Streak?, Streak?)) {
         let (longestStreak, currentStreak) = longestAndCurrentStreaks
         
         if let longestStreak = longestStreak {
             longestStreakLabel.text = "\(Int(longestStreak.streakNumber))"
-            longestStreakDateLabel.text = "\(dateFormatter.stringFromDate(longestStreak.from)) - \(dateFormatter.stringFromDate(longestStreak.to))"
+            longestStreakDateLabel.text = "\(dateFormatter.string(from: longestStreak.from)) - \(dateFormatter.string(from: longestStreak.to))"
         } else {
             longestStreakLabel.text = "0"
             longestStreakDateLabel.text = ""
@@ -49,7 +49,7 @@ extension StreakTableViewCell: ConfigurableCell {
         
         if let currentStreak = currentStreak {
             currentStreakLabel.text = "\(Int(currentStreak.streakNumber))"
-            currentStreakDateLabel.text = "\(dateFormatter.stringFromDate(currentStreak.from)) - \(dateFormatter.stringFromDate(currentStreak.to))"
+            currentStreakDateLabel.text = "\(dateFormatter.string(from: currentStreak.from)) - \(dateFormatter.string(from: currentStreak.to))"
         } else {
             currentStreakLabel.text = "0"
             currentStreakDateLabel.text = ""

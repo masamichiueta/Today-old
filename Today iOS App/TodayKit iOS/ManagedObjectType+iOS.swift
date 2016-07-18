@@ -10,7 +10,7 @@ import CoreData
 
 extension ManagedObjectType where Self: ManagedObject {
     
-    public static func findOrCreateInContext(moc: NSManagedObjectContext, matchingPredicate predicate: NSPredicate, configure: Self -> ()) -> Self {
+    public static func findOrCreateInContext(_ moc: NSManagedObjectContext, matchingPredicate predicate: Predicate, configure: (Self) -> ()) -> Self {
         guard let obj = findOrFetchInContext(moc, matchingPredicate: predicate) else {
             let newObject: Self = moc.insertObject()
             configure(newObject)
@@ -19,7 +19,7 @@ extension ManagedObjectType where Self: ManagedObject {
         return obj
     }
     
-    public static func findOrFetchInContext(moc: NSManagedObjectContext, matchingPredicate predicate: NSPredicate) -> Self? {
+    public static func findOrFetchInContext(_ moc: NSManagedObjectContext, matchingPredicate predicate: Predicate) -> Self? {
         guard let obj = materializedObjectInContext(moc, matchingPredicate: predicate) else {
             return fetchInContext(moc) { request in
                 request.predicate = predicate
@@ -30,12 +30,12 @@ extension ManagedObjectType where Self: ManagedObject {
         return obj
     }
     
-    public static func fetchInContext(moc: NSManagedObjectContext, @noescape configurationBlock: NSFetchRequest -> () = { _ in }) -> [Self] {
-        let request = NSFetchRequest(entityName: Self.entityName)
+    public static func fetchInContext(_ moc: NSManagedObjectContext, configurationBlock: (NSFetchRequest<NSManagedObject>) -> () = { _ in }) -> [Self] {
+        let request = NSFetchRequest<NSManagedObject>(entityName: Self.entityName)
         configurationBlock(request)
         
         do {
-            guard let result = try moc.executeFetchRequest(request) as? [Self] else {
+            guard let result = try moc.fetch(request) as? [Self] else {
                 fatalError("Fetched objects have wrong type")
             }
             return result
@@ -44,18 +44,21 @@ extension ManagedObjectType where Self: ManagedObject {
         }
     }
     
-    public static func countInContext(moc: NSManagedObjectContext, @noescape configurationBlock: NSFetchRequest -> () = { _ in }) -> Int {
-        let request = NSFetchRequest(entityName: entityName)
+    public static func countInContext(_ moc: NSManagedObjectContext, configurationBlock: (NSFetchRequest<NSManagedObject>) -> () = { _ in }) -> Int {
+        let request = NSFetchRequest<NSManagedObject>(entityName: entityName)
         configurationBlock(request)
         var error: NSError?
-        let result = moc.countForFetchRequest(request, error: &error)
-        guard result != NSNotFound else { fatalError("Failed to execute fetch request: \(error)") }
-        return result
+        do {
+            let result = try moc.count(for: request)
+            return result
+        } catch {
+            fatalError("Failed to execute fetch request: \(error)")
+        }
     }
     
-    public static func materializedObjectInContext(moc: NSManagedObjectContext, matchingPredicate predicate: NSPredicate) -> Self? {
-        for obj in moc.registeredObjects where !obj.fault {
-            guard let res = obj as? Self where predicate.evaluateWithObject(res) else { continue }
+    public static func materializedObjectInContext(_ moc: NSManagedObjectContext, matchingPredicate predicate: Predicate) -> Self? {
+        for obj in moc.registeredObjects where !obj.isFault {
+            guard let res = obj as? Self where predicate.evaluate(with: res) else { continue }
             return res
         }
         return nil

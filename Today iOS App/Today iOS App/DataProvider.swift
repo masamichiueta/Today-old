@@ -10,20 +10,20 @@ import UIKit
 
 protocol DataProvider: class {
     associatedtype Object
-    func objectAtIndexPath(indexPath: NSIndexPath) -> Object
+    func objectAtIndexPath(_ indexPath: IndexPath) -> Object
     func numberOfSection() -> Int
-    func numberOfItemsInSection(section: Int) -> Int
+    func numberOfItemsInSection(_ section: Int) -> Int
     func numberOfObjects() -> Int
 }
 
 protocol DataProviderDelegate: class {
     associatedtype Object
-    func dataProviderDidUpdate(updates: [DataProviderUpdate<Object>]?)
+    func dataProviderDidUpdate(_ updates: [DataProviderUpdate<Object>]?)
 }
 
 enum DataProviderUpdate<Object> {
-    case Insert(NSIndexPath)
-    case Update(NSIndexPath, Object)
-    case Move(NSIndexPath, NSIndexPath)
-    case Delete(NSIndexPath)
+    case insert(IndexPath)
+    case update(IndexPath, Object)
+    case move(IndexPath, IndexPath)
+    case delete(IndexPath)
 }

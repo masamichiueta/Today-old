@@ -9,14 +9,14 @@
 import CoreData
 
 extension Streak {
-    public static func insertIntoContext(moc: NSManagedObjectContext, from: NSDate, to: NSDate) -> Streak {
+    public static func insertIntoContext(_ moc: NSManagedObjectContext, from: Date, to: Date) -> Streak {
         let streak: Streak = moc.insertObject()
         streak.from = from
         streak.to = to
         return streak
     }
     
-    public static func currentStreak(moc: NSManagedObjectContext) -> Streak? {
+    public static func currentStreak(_ moc: NSManagedObjectContext) -> Streak? {
         let streaks = Streak.fetchInContext(moc, configurationBlock: {
             request in
             request.sortDescriptors = Streak.defaultSortDescriptors
@@ -26,18 +26,18 @@ extension Streak {
             return nil
         }
         
-        if NSCalendar.currentCalendar().isDateInYesterday(streaks[0].to) ||  NSCalendar.currentCalendar().isDateInToday(streaks[0].to) {
+        if Calendar.current().isDateInYesterday(streaks[0].to) ||  Calendar.current().isDateInToday(streaks[0].to) {
             return streaks[0]
         }
         
         return nil
     }
     
-    public static func longestStreak(moc: NSManagedObjectContext) -> Streak? {
+    public static func longestStreak(_ moc: NSManagedObjectContext) -> Streak? {
         let streaks = Streak.fetchInContext(moc, configurationBlock: {
             request in
-            let numberSortDescriptor = NSSortDescriptor(key: "streakNumber", ascending: false)
-            let toSortDescriptor = NSSortDescriptor(key: "to", ascending: false)
+            let numberSortDescriptor = SortDescriptor(key: "streakNumber", ascending: false)
+            let toSortDescriptor = SortDescriptor(key: "to", ascending: false)
             request.sortDescriptors = [numberSortDescriptor, toSortDescriptor]
         })
         
@@ -48,35 +48,35 @@ extension Streak {
         return streaks[0]
     }
     
-    public static func deleteDateFromStreak(moc: NSManagedObjectContext, date: NSDate) {
+    public static func deleteDateFromStreak(_ moc: NSManagedObjectContext, date: Date) {
         
-        let comp = NSCalendar.currentCalendar().components([.Year, .Month, .Day], fromDate: date)
-        let nextDateComp = NSCalendar.currentCalendar().components([.Year, .Month, .Day], fromDate: date)
-        let previousDateComp = NSCalendar.currentCalendar().components([.Year, .Month, .Day], fromDate: date)
-        nextDateComp.day = nextDateComp.day + 1
-        previousDateComp.day = previousDateComp.day - 1
-        guard let noTimeDate = NSCalendar.currentCalendar().dateFromComponents(comp),
-            let nextDate = NSCalendar.currentCalendar().dateFromComponents(nextDateComp),
-            let previousDate = NSCalendar.currentCalendar().dateFromComponents(previousDateComp) else {
+        let comp = Calendar.current().components([.year, .month, .day], from: date)
+        var nextDateComp = Calendar.current().components([.year, .month, .day], from: date)
+        var previousDateComp = Calendar.current().components([.year, .month, .day], from: date)
+        nextDateComp.day = nextDateComp.day! + 1
+        previousDateComp.day = previousDateComp.day! - 1
+        guard let noTimeDate = Calendar.current().date(from: comp),
+            let nextDate = Calendar.current().date(from: nextDateComp),
+            let previousDate = Calendar.current().date(from: previousDateComp) else {
                 fatalError("Wrong component")
         }
         
-        if let targetStreak = Streak.findOrFetchInContext(moc, matchingPredicate: NSPredicate(format: "from <= %@ AND to >= %@", noTimeDate, noTimeDate)) {
+        if let targetStreak = Streak.findOrFetchInContext(moc, matchingPredicate: Predicate(format: "from <= %@ AND to >= %@", noTimeDate, noTimeDate)) {
             
             //delete streak when from and to equal
-            if NSCalendar.currentCalendar().isDate(targetStreak.from, inSameDayAsDate: targetStreak.to) {
-                moc.deleteObject(targetStreak)
+            if Calendar.current().isDate(targetStreak.from, inSameDayAs: targetStreak.to) {
+                moc.delete(targetStreak)
                 return
             }
             
             //update from when date equals to nextDate
-            if NSCalendar.currentCalendar().isDate(targetStreak.from, inSameDayAsDate: date) {
+            if Calendar.current().isDate(targetStreak.from, inSameDayAs: date) {
                 targetStreak.from = nextDate
                 return
             }
             
             //update to when date equals to previousDate
-            if NSCalendar.currentCalendar().isDate(targetStreak.to, inSameDayAsDate: date) {
+            if Calendar.current().isDate(targetStreak.to, inSameDayAs: date) {
                 
                 targetStreak.to = previousDate
                 return
@@ -90,7 +90,7 @@ extension Streak {
         }
     }
     
-    public static func updateOrCreateCurrentStreak(moc: NSManagedObjectContext, date: NSDate) -> Streak {
+    public static func updateOrCreateCurrentStreak(_ moc: NSManagedObjectContext, date: Date) -> Streak {
         //Update current streak or create a new streak
         if let currentStreak = Streak.currentStreak(moc) {
             currentStreak.to = date

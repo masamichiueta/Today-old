@@ -10,13 +10,20 @@ import CoreData
 
 //MARKL: - StorageType
 public enum StorageType {
-    case Local
-    case Cloud
+    case local
+    case cloud
 }
 
 private let todayUbiquitousContentNameKey = "TodayCloudStore"
 private let todayStoreName = "Today.sqlite"
-let storeURL = NSURL.documentsURL.URLByAppendingPathComponent(todayStoreName)
+let storeURL: URL = {
+    do {
+        let url = try URL.documentsURL.appendingPathComponent(todayStoreName)
+        return url
+    } catch {
+        fatalError()
+    }
+}()
 
 
 //MARK: - CoreDataManger
@@ -29,41 +36,41 @@ public final class CoreDataManager {
     
     private init() { }
     
-    public func createTodayMainContext(storageType: StorageType) -> NSManagedObjectContext {
+    public func createTodayMainContext(_ storageType: StorageType) -> NSManagedObjectContext {
         
         managedObjectContext?.reset()
         managedObjectContext = nil
         
-        let bundles = [NSBundle(forClass: Today.self)]
-        guard let model = NSManagedObjectModel.mergedModelFromBundles(bundles) else {
+        let bundles = [Bundle(for: Today.self)]
+        guard let model = NSManagedObjectModel.mergedModel(from: bundles) else {
             fatalError("model not found")
         }
         
         let persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: model)
         let options: Dictionary<NSObject, AnyObject>?
         switch storageType {
-        case .Local:
+        case .local:
             options = nil
-        case .Cloud:
+        case .cloud:
             options = [NSPersistentStoreUbiquitousContentNameKey: todayUbiquitousContentNameKey,
                 NSMigratePersistentStoresAutomaticallyOption: true,
                 NSInferMappingModelAutomaticallyOption: true]
         }
         
         do {
-            try persistentStoreCoordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: options)
+            try persistentStoreCoordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: storeURL, options: options)
         } catch let error as NSError {
             print("\(error) \(error.userInfo)")
             abort()
         }
-        let moc = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
+        let moc = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
         moc.persistentStoreCoordinator = persistentStoreCoordinator
         managedObjectContext = moc
         
         switch storageType {
-        case .Cloud:
+        case .cloud:
             registerForiCloudNotifications()
-        case .Local:
+        case .local:
             unregisterForiCloudNotifications()
         }
         
@@ -75,18 +82,18 @@ public final class CoreDataManager {
             fatalError("Wrong store URL")
         }
         
-        let walURL = NSURL.fileURLWithPath(storePath + "-wal")
-        let shmURL = NSURL.fileURLWithPath(storePath + "-shm")
+        let walURL = URL(fileURLWithPath: storePath + "-wal")
+        let shmURL = URL(fileURLWithPath: storePath + "-shm")
         
         do {
-            if let walPath = walURL.path where NSFileManager.defaultManager().fileExistsAtPath(walPath) {
-                try NSFileManager.defaultManager().removeItemAtURL(walURL)
+            if let walPath = walURL.path where FileManager.default().fileExists(atPath: walPath) {
+                try FileManager.default().removeItem(at: walURL)
             }
-            if let shmPath = shmURL.path where NSFileManager.defaultManager().fileExistsAtPath(shmPath) {
-                try NSFileManager.defaultManager().removeItemAtURL(shmURL)
+            if let shmPath = shmURL.path where FileManager.default().fileExists(atPath: shmPath) {
+                try FileManager.default().removeItem(at: shmURL)
             }
-            if let storePath = storeURL.path where NSFileManager.defaultManager().fileExistsAtPath(storePath) {
-                try NSFileManager.defaultManager().removeItemAtURL(storeURL)
+            if let storePath = storeURL.path where FileManager.default().fileExists(atPath: storePath) {
+                try FileManager.default().removeItem(at: storeURL)
             }
             
         } catch let error as NSError {
@@ -97,90 +104,90 @@ public final class CoreDataManager {
     
     //MARK: - Notification
     func registerForiCloudNotifications() {
-        let iCloudStore = NSUbiquitousKeyValueStore.defaultStore()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.updateFromiCloud), name: NSUbiquitousKeyValueStoreDidChangeExternallyNotification, object: iCloudStore)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.updateToiCloud), name: NSUserDefaultsDidChangeNotification, object: nil)
+        let iCloudStore = NSUbiquitousKeyValueStore.default()
+        NotificationCenter.default().addObserver(self, selector: #selector(self.updateFromiCloud), name: NSUbiquitousKeyValueStore.didChangeExternallyNotification, object: iCloudStore)
+        NotificationCenter.default().addObserver(self, selector: #selector(self.updateToiCloud), name: UserDefaults.didChangeNotification, object: nil)
         iCloudStore.synchronize()
         
         guard let moc = managedObjectContext else {
             return
         }
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.storesWillChange), name: NSPersistentStoreCoordinatorStoresWillChangeNotification, object: moc.persistentStoreCoordinator)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.storesDidChange), name: NSPersistentStoreCoordinatorStoresDidChangeNotification, object: moc.persistentStoreCoordinator)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.persistentStoreDidImportUbiquitousContentChanges), name: NSPersistentStoreDidImportUbiquitousContentChangesNotification, object: moc.persistentStoreCoordinator)
+        NotificationCenter.default().addObserver(self, selector: #selector(self.storesWillChange), name: NSNotification.Name.NSPersistentStoreCoordinatorStoresWillChange, object: moc.persistentStoreCoordinator)
+        NotificationCenter.default().addObserver(self, selector: #selector(self.storesDidChange), name: NSNotification.Name.NSPersistentStoreCoordinatorStoresDidChange, object: moc.persistentStoreCoordinator)
+        NotificationCenter.default().addObserver(self, selector: #selector(self.persistentStoreDidImportUbiquitousContentChanges), name: NSNotification.Name.NSPersistentStoreDidImportUbiquitousContentChanges, object: moc.persistentStoreCoordinator)
     }
     
     func unregisterForiCloudNotifications() {
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: NSUbiquitousKeyValueStoreDidChangeExternallyNotification, object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: NSUserDefaultsDidChangeNotification, object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: NSPersistentStoreCoordinatorStoresWillChangeNotification, object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: NSPersistentStoreCoordinatorStoresDidChangeNotification, object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: NSPersistentStoreDidImportUbiquitousContentChangesNotification, object: nil)
+        NotificationCenter.default().removeObserver(self, name: NSUbiquitousKeyValueStore.didChangeExternallyNotification, object: nil)
+        NotificationCenter.default().removeObserver(self, name: UserDefaults.didChangeNotification, object: nil)
+        NotificationCenter.default().removeObserver(self, name: NSNotification.Name.NSPersistentStoreCoordinatorStoresWillChange, object: nil)
+        NotificationCenter.default().removeObserver(self, name: NSNotification.Name.NSPersistentStoreCoordinatorStoresDidChange, object: nil)
+        NotificationCenter.default().removeObserver(self, name: NSNotification.Name.NSPersistentStoreDidImportUbiquitousContentChanges, object: nil)
     }
     
-    dynamic func updateFromiCloud(notification: NSNotification) {
+    dynamic func updateFromiCloud(_ notification: Notification) {
         
         if !Setting().iCloudEnabled {
             return
         }
         
-        let iCloudStore = NSUbiquitousKeyValueStore.defaultStore()
+        let iCloudStore = NSUbiquitousKeyValueStore.default()
         let dict = iCloudStore.dictionaryRepresentation
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: NSUserDefaultsDidChangeNotification, object: nil)
+        NotificationCenter.default().removeObserver(self, name: UserDefaults.didChangeNotification, object: nil)
         for (key, value) in dict {
             if Setting.SettingKey.syncTargetKeys.contains(key) {
-                NSUserDefaults.standardUserDefaults().setObject(value, forKey: key)
+                UserDefaults.standard().set(value, forKey: key)
             }
         }
         
-        NSUserDefaults.standardUserDefaults().synchronize()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.updateToiCloud), name: NSUserDefaultsDidChangeNotification, object: nil)
-        NSNotificationCenter.defaultCenter().postNotificationName(ICloudRegistableNotificationKey.ubiquitousKeyValueStoreDidChangeExternallyNotification, object: nil)
+        UserDefaults.standard().synchronize()
+        NotificationCenter.default().addObserver(self, selector: #selector(self.updateToiCloud), name: UserDefaults.didChangeNotification, object: nil)
+        NotificationCenter.default().post(name: Notification.Name(rawValue: ICloudRegistableNotificationKey.ubiquitousKeyValueStoreDidChangeExternallyNotification), object: nil)
         
     }
     
-    dynamic func updateToiCloud(notification: NSNotification) {
+    dynamic func updateToiCloud(_ notification: Notification) {
         
         if !Setting().iCloudEnabled {
             return
         }
         
-        let iCloudStore = NSUbiquitousKeyValueStore.defaultStore()
-        let dict = NSUserDefaults.standardUserDefaults().dictionaryRepresentation()
+        let iCloudStore = NSUbiquitousKeyValueStore.default()
+        let dict = UserDefaults.standard().dictionaryRepresentation()
         for (key, value) in dict {
             if Setting.SettingKey.syncTargetKeys.contains(key) {
-                iCloudStore.setObject(value, forKey: key)
+                iCloudStore.set(value, forKey: key)
             }
         }
         iCloudStore.synchronize()
     }
     
-    dynamic func storesWillChange(notification: NSNotification) {
+    dynamic func storesWillChange(_ notification: Notification) {
         guard let moc = managedObjectContext else {
             return
         }
-        moc.performBlockAndWait({
+        moc.performAndWait({
             if moc.hasChanges {
                 moc.saveOrRollback()
             }
             moc.reset()
         })
-        NSNotificationCenter.defaultCenter().postNotificationName(ICloudRegistableNotificationKey.storesWillChangeNotification, object: nil)
+        NotificationCenter.default().post(name: Notification.Name(rawValue: ICloudRegistableNotificationKey.storesWillChangeNotification), object: nil)
     }
     
-    dynamic func storesDidChange(notification: NSNotification) {
-        NSNotificationCenter.defaultCenter().postNotificationName(ICloudRegistableNotificationKey.storesDidChangeNotification, object: nil)
+    dynamic func storesDidChange(_ notification: Notification) {
+        NotificationCenter.default().post(name: Notification.Name(rawValue: ICloudRegistableNotificationKey.storesDidChangeNotification), object: nil)
     }
     
-    dynamic func persistentStoreDidImportUbiquitousContentChanges(notification: NSNotification) {
+    dynamic func persistentStoreDidImportUbiquitousContentChanges(_ notification: Notification) {
         guard let moc = managedObjectContext else {
             return
         }
-        moc.performBlock({
-            moc.mergeChangesFromContextDidSaveNotification(notification)
+        moc.perform({
+            moc.mergeChanges(fromContextDidSave: notification)
         })
-        NSNotificationCenter.defaultCenter().postNotificationName(ICloudRegistableNotificationKey.persistentStoreDidImportUbiquitousContentChangesNotification, object: nil)
+        NotificationCenter.default().post(name: Notification.Name(rawValue: ICloudRegistableNotificationKey.persistentStoreDidImportUbiquitousContentChangesNotification), object: nil)
     }
     
 }

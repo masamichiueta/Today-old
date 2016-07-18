@@ -10,5 +10,5 @@ import UIKit
 
 protocol DataSourceDelegate: class {
     associatedtype Object
-    func cellIdentifierForObject(object: Object) -> String
+    func cellIdentifierForObject(_ object: Object) -> String
 }

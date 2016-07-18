@@ -10,8 +10,8 @@ import UIKit
 import TodayKit
 
 protocol TableViewDataSourceDelegate: DataSourceDelegate {
-    func canEditRowAtIndexPath(indexPath: NSIndexPath) -> Bool
-    func didEditRowAtIndexPath(indexPath: NSIndexPath, commitEditingStyle editingStyle: UITableViewCellEditingStyle)
+    func canEditRowAtIndexPath(_ indexPath: IndexPath) -> Bool
+    func didEditRowAtIndexPath(_ indexPath: IndexPath, commitEditingStyle editingStyle: UITableViewCellEditingStyle)
 }
 
 
@@ -37,21 +37,21 @@ class TableViewDataSource<Delegate: TableViewDataSourceDelegate, Data: DataProvi
         tableView.reloadData()
     }
     
-    func processUpdates(updates: [DataProviderUpdate<Data.Object>]?) {
+    func processUpdates(_ updates: [DataProviderUpdate<Data.Object>]?) {
         guard let updates = updates else { return tableView.reloadData() }
         tableView.beginUpdates()
         for update in updates {
             switch update {
-            case .Insert(let indexPath):
-                tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-            case .Update(let indexPath, let object):
-                guard let cell = tableView.cellForRowAtIndexPath(indexPath) as? Cell else { break }
+            case .insert(let indexPath):
+                tableView.insertRows(at: [indexPath], with: .fade)
+            case .update(let indexPath, let object):
+                guard let cell = tableView.cellForRow(at: indexPath) as? Cell else { break }
                 cell.configureForObject(object)
-            case .Move(let indexPath, let newIndexPath):
-                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-                tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
-            case .Delete(let indexPath):
-                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            case .move(let indexPath, let newIndexPath):
+                tableView.deleteRows(at: [indexPath], with: .fade)
+                tableView.insertRows(at: [newIndexPath], with: .fade)
+            case .delete(let indexPath):
+                tableView.deleteRows(at: [indexPath], with: .fade)
             }
         }
         tableView.endUpdates()
@@ -61,38 +61,38 @@ class TableViewDataSource<Delegate: TableViewDataSourceDelegate, Data: DataProvi
     
     // MARK: UITableViewDataSource
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         
         if dataProvider.numberOfObjects() == 0 && noDataView != nil {
             tableView.backgroundView = noDataView
-            tableView.separatorStyle = .None
+            tableView.separatorStyle = .none
         } else {
             tableView.backgroundView = nil
-            tableView.separatorStyle = .SingleLine
+            tableView.separatorStyle = .singleLine
         }
         
         return dataProvider.numberOfSection()
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataProvider.numberOfItemsInSection(section)
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let object = dataProvider.objectAtIndexPath(indexPath)
         let identifier = delegate.cellIdentifierForObject(object)
-        guard let cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) as? Cell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? Cell else {
             fatalError("Unexpected cell type at \(indexPath)")
         }
         cell.configureForObject(object)
         return cell
     }
     
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return delegate.canEditRowAtIndexPath(indexPath)
     }
     
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         return delegate.didEditRowAtIndexPath(indexPath, commitEditingStyle: editingStyle)
     }
     
@@ -100,11 +100,11 @@ class TableViewDataSource<Delegate: TableViewDataSourceDelegate, Data: DataProvi
 
 extension TableViewDataSourceDelegate {
     
-    func cellIdentifierForObject(object: Object) -> String {
+    func cellIdentifierForObject(_ object: Object) -> String {
         return ""
     }
     
-    func canEditRowAtIndexPath(indexPath: NSIndexPath) -> Bool {
+    func canEditRowAtIndexPath(_ indexPath: IndexPath) -> Bool {
         return false
     }
 }

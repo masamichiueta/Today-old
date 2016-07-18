@@ -16,7 +16,7 @@ class UITestSetting {
     private static var managedObjectContext: NSManagedObjectContext!
     
     static func isUITesting() -> Bool {
-        let processInfoArguments = NSProcessInfo.processInfo().arguments
+        let processInfoArguments = ProcessInfo.processInfo().arguments
         if processInfoArguments.contains("FirstLaunchUITest") || processInfoArguments.contains("NormalLaunchUITest") {
             return true
         }
@@ -26,11 +26,11 @@ class UITestSetting {
     
     static func handleUITest() {
         
-        guard let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate else {
+        guard let appDelegate = UIApplication.shared().delegate as? AppDelegate else {
             return
         }
         
-        let processInfoArguments = NSProcessInfo.processInfo().arguments
+        let processInfoArguments = ProcessInfo.processInfo().arguments
         
         if processInfoArguments.contains("FirstLaunchUITest") {
             Setting.clean()
@@ -45,7 +45,7 @@ class UITestSetting {
             
             if managedObjectContext == nil {
                 let coreDataManager = CoreDataManager.sharedInstance
-                managedObjectContext = coreDataManager.createTodayMainContext(.Local)
+                managedObjectContext = coreDataManager.createTodayMainContext(.local)
             }
             
             cleanUpTestData()
@@ -72,13 +72,13 @@ class UITestSetting {
     
     static func cleanUpTestData() {
         managedObjectContext.performChangesAndWait {
-            let todayRequest = NSFetchRequest(entityName: Today.entityName)
+            let todayRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Today.entityName)
             let todayDeleteRequest = NSBatchDeleteRequest(fetchRequest: todayRequest)
-            let streakRequest = NSFetchRequest(entityName: Streak.entityName)
+            let streakRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Streak.entityName)
             let streakDeleteRequest = NSBatchDeleteRequest(fetchRequest: streakRequest)
             do {
-                try self.managedObjectContext.executeRequest(todayDeleteRequest)
-                try self.managedObjectContext.executeRequest(streakDeleteRequest)
+                try self.managedObjectContext.execute(todayDeleteRequest)
+                try self.managedObjectContext.execute(streakDeleteRequest)
             } catch let error as NSError {
                 print("\(error) \(error.userInfo)")
                 abort()
@@ -90,9 +90,9 @@ class UITestSetting {
 
 private struct TodayTestModel {
     let score: Int
-    let date: NSDate
+    let date: Date
     
-    init(score: Int, date: NSDate) {
+    init(score: Int, date: Date) {
         self.score = score
         self.date = date
     }
@@ -101,27 +101,27 @@ private struct TodayTestModel {
 private struct TodayTestData {
     
     // [Today-1, Today-2, Today-3, Today-4, Today-5, Today -6]
-    static var streak1: [NSDate] = {
-        var dates = [NSDate]()
-        let comp = NSCalendar.currentCalendar().components([.Year, .Month, .Day], fromDate: NSDate())
-        comp.day = comp.day - 1
+    static var streak1: [Date] = {
+        var dates = [Date]()
+        var comp = Calendar.current().components([.year, .month, .day], from: Date())
+        comp.day = comp.day! - 1
         for _ in 0 ..< 6 {
-            let date = NSCalendar.currentCalendar().dateFromComponents(comp)
+            let date = Calendar.current().date(from: comp)
             dates.append(date!)
-            comp.day = comp.day - 1
+            comp.day = comp.day! - 1
         }
         return dates
     }()
     
     // [Today-8, Today-9, Today-10, Today-11]
-    static var streak2: [NSDate] = {
-        var dates = [NSDate]()
-        let comp = NSCalendar.currentCalendar().components([.Year, .Month, .Day], fromDate: NSDate())
-        comp.day = comp.day - 8
+    static var streak2: [Date] = {
+        var dates = [Date]()
+        var comp = Calendar.current().components([.year, .month, .day], from: Date())
+        comp.day = comp.day! - 8
         for _ in 0 ..< 4 {
-            let date = NSCalendar.currentCalendar().dateFromComponents(comp)
+            let date = Calendar.current().date(from: comp)
             dates.append(date!)
-            comp.day = comp.day - 1
+            comp.day = comp.day! - 1
         }
         return dates
     }()

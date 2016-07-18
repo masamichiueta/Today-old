@@ -12,7 +12,7 @@ import CoreData
 private let scoreRange = [Int](0...10)
 
 public final class Today: ManagedObject {
-    @NSManaged public internal(set) var date: NSDate
+    @NSManaged public internal(set) var date: Date
     @NSManaged public internal(set) var score: Int64
     
     public var type: TodayType {
@@ -24,7 +24,7 @@ public final class Today: ManagedObject {
     }
     
     public static var masterScores: [Int] {
-        return scoreRange.sort {
+        return scoreRange.sorted {
             $0 > $1
         }
     }
@@ -37,22 +37,23 @@ public final class Today: ManagedObject {
         return Today.masterScores.last!
     }
     
-    public static func average(moc: NSManagedObjectContext) -> Int {
-        let request = NSFetchRequest(entityName: Today.entityName)
-        request.resultType = .DictionaryResultType
+    public static func average(_ moc: NSManagedObjectContext) -> Int {
+        let request = NSFetchRequest<Today>(entityName: Today.entityName)
+        request.resultType = .dictionaryResultType
         
         let keyPathExpression = NSExpression(forKeyPath: "score")
         let averageExpression = NSExpression(forFunction: "average:", arguments: [keyPathExpression])
         let expressionDescription = NSExpressionDescription()
         expressionDescription.name = "averageScore"
         expressionDescription.expression = averageExpression
-        expressionDescription.expressionResultType = .Integer64AttributeType
+        expressionDescription.expressionResultType = .integer64AttributeType
         
         request.propertiesToFetch = [expressionDescription]
         
         do {
-            let objects = try moc.executeFetchRequest(request)
-            guard let averageScore = objects[0]["averageScore"] as? Int else {
+            let objects = try moc.fetch(request)
+            let object = objects[0]
+            guard let averageScore = object.value(forKey: "averageScore") as? Int else {
                 fatalError("Invalid key")
             }
             return averageScore
@@ -61,7 +62,7 @@ public final class Today: ManagedObject {
         }
     }
     
-    public static func type(score: Int) -> TodayType {
+    public static func type(_ score: Int) -> TodayType {
         
         let step = scoreRange.count / TodayType.count
         
@@ -86,8 +87,8 @@ extension Today: ManagedObjectType {
         return "Today"
     }
     
-    public static var defaultSortDescriptors: [NSSortDescriptor] {
-        return [NSSortDescriptor(key: "date", ascending: false)]
+    public static var defaultSortDescriptors: [SortDescriptor] {
+        return [SortDescriptor(key: "date", ascending: false)]
     }
 }
 
@@ -125,60 +126,60 @@ public enum TodayType: String {
         }
     }
     
-    public func gradientColor() -> CGGradientRef {
+    public func gradientColor() -> CGGradient {
         let locations: [CGFloat] = [0.0, 1.0]
         let colors: [CGColor]
         switch self {
         case .Excellent:
             colors = [
-                UIColor.todayGradientRedStartColor().CGColor,
-                UIColor.todayGradientRedEndColor().CGColor
+                UIColor.todayGradientRedStartColor().cgColor,
+                UIColor.todayGradientRedEndColor().cgColor
             ]
         case .Good:
             colors = [
-                UIColor.todayGradientOrangeStartColor().CGColor,
-                UIColor.todayGradientOrangeEndColor().CGColor
+                UIColor.todayGradientOrangeStartColor().cgColor,
+                UIColor.todayGradientOrangeEndColor().cgColor
             ]
         case .Average:
             colors = [
-                UIColor.todayGradientYellowStartColor().CGColor,
-                UIColor.todayGradientYellowEndColor().CGColor
+                UIColor.todayGradientYellowStartColor().cgColor,
+                UIColor.todayGradientYellowEndColor().cgColor
             ]
         case .Fair:
             colors = [
-                UIColor.todayGradientGreenStartColor().CGColor,
-                UIColor.todayGradientGreenEndColor().CGColor
+                UIColor.todayGradientGreenStartColor().cgColor,
+                UIColor.todayGradientGreenEndColor().cgColor
             ]
         case .Poor:
             colors = [
-                UIColor.todayGradientBlueStartColor().CGColor,
-                UIColor.todayGradientBlueEndColor().CGColor
+                UIColor.todayGradientBlueStartColor().cgColor,
+                UIColor.todayGradientBlueEndColor().cgColor
             ]
         }
-        return CGGradientCreateWithColors(CGColorSpaceCreateDeviceRGB(), colors, locations)!
+        return CGGradient(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: colors, locations: locations)!
     }
     
-    public func icon(size: TodayIconSize) -> UIImage {
+    public func icon(_ size: TodayIconSize) -> UIImage {
         switch self {
         case .Excellent, .Good:
             guard let image = UIImage(named: goodIconImageName + size.rawValue) else {
                 fatalError("Wrong image name for good")
             }
-            return image.imageWithRenderingMode(.AlwaysTemplate)
+            return image.withRenderingMode(.alwaysTemplate)
         case .Average, .Fair:
             guard let image = UIImage(named: averageIconImageName + size.rawValue) else {
                 fatalError("Wrong image name for average")
             }
-            return image.imageWithRenderingMode(.AlwaysTemplate)
+            return image.withRenderingMode(.alwaysTemplate)
         case .Poor:
             guard let image = UIImage(named: poorIconImageName + size.rawValue) else {
                 fatalError("Wrong image name for poor")
             }
-            return image.imageWithRenderingMode(.AlwaysTemplate)
+            return image.withRenderingMode(.alwaysTemplate)
         }
     }
     
-    public func iconName(size: TodayIconSize) -> String {
+    public func iconName(_ size: TodayIconSize) -> String {
         switch self {
         case .Excellent, .Good:
             return goodIconImageName + size.rawValue

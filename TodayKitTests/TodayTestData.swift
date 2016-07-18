@@ -10,9 +10,9 @@ import Foundation
 
 struct TodayTestModel {
     let score: Int
-    let date: NSDate
+    let date: Date
     
-    init(score: Int, date: NSDate) {
+    init(score: Int, date: Date) {
         self.score = score
         self.date = date
     }
@@ -21,49 +21,49 @@ struct TodayTestModel {
 struct TodayTestData {
     
     // [Today, Today-1, Today-2, Today-3, Today-4, Today-5]
-    static var streak1: [NSDate] = {
-        var dates = [NSDate]()
-        let comp = NSCalendar.currentCalendar().components([.Year, .Month, .Day], fromDate: NSDate())
+    static var streak1: [Date] = {
+        var dates = [Date]()
+        var comp = Calendar.current().components([.year, .month, .day], from: Date())
         for _ in 0 ..< 6 {
-            let date = NSCalendar.currentCalendar().dateFromComponents(comp)
+            let date = Calendar.current().date(from: comp)
             dates.append(date!)
-            comp.day = comp.day - 1
+            comp.day = comp.day! - 1
         }
         return dates
     }()
     
     // [Today-8, Today-9, Today-10, Today-11]
-    static var streak2: [NSDate] = {
-        var dates = [NSDate]()
-        let comp = NSCalendar.currentCalendar().components([.Year, .Month, .Day], fromDate: NSDate())
-        comp.day = comp.day - 8
+    static var streak2: [Date] = {
+        var dates = [Date]()
+        var comp = Calendar.current().components([.year, .month, .day], from: Date())
+        comp.day = comp.day! - 8
         for _ in 0 ..< 4 {
-            let date = NSCalendar.currentCalendar().dateFromComponents(comp)
+            let date = Calendar.current().date(from: comp)
             dates.append(date!)
-            comp.day = comp.day - 1
+            comp.day = comp.day! - 1
         }
         return dates
     }()
     
     // [Today-15, Today-16, Today-17, Today-18]
-    static var streak3: [NSDate] = {
-        var dates = [NSDate]()
-        let comp = NSCalendar.currentCalendar().components([.Year, .Month, .Day], fromDate: NSDate())
-        comp.day = comp.day - 15
+    static var streak3: [Date] = {
+        var dates = [Date]()
+        var comp = Calendar.current().components([.year, .month, .day], from: Date())
+        comp.day = comp.day! - 15
         for _ in 0 ..< 4 {
-            let date = NSCalendar.currentCalendar().dateFromComponents(comp)
+            let date = Calendar.current().date(from: comp)
             dates.append(date!)
-            comp.day = comp.day - 1
+            comp.day = comp.day! - 1
         }
         return dates
     }()
     
     // [Today - 21]
-    static var streak4: [NSDate] = {
-        var dates = [NSDate]()
-        let comp = NSCalendar.currentCalendar().components([.Year, .Month, .Day], fromDate: NSDate())
-        comp.day = comp.day - 21
-        let date = NSCalendar.currentCalendar().dateFromComponents(comp)
+    static var streak4: [Date] = {
+        var dates = [Date]()
+        var comp = Calendar.current().components([.year, .month, .day], from: Date())
+        comp.day = comp.day! - 21
+        let date = Calendar.current().date(from: comp)
         dates.append(date!)
         return dates
     }()

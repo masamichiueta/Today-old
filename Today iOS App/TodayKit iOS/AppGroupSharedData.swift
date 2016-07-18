@@ -24,45 +24,45 @@ public struct AppGroupSharedData {
         public static let currentStreak = "CurrentStreak"
     }
     
-    private static let defaults = NSUserDefaults(suiteName: "group.com.uetamasamichi.todaygroup")
+    private static let defaults = UserDefaults(suiteName: "group.com.uetamasamichi.todaygroup")
     
     //MARK: - Values
     public var todayScore: Int {
         didSet {
-            AppGroupSharedData.defaults?.setInteger(todayScore, forKey: AppGroupSharedDataKey.todayScore)
+            AppGroupSharedData.defaults?.set(todayScore, forKey: AppGroupSharedDataKey.todayScore)
         }
     }
     
-    public var todayDate: NSDate {
+    public var todayDate: Date {
         didSet {
-            AppGroupSharedData.defaults?.setObject(todayDate, forKey: AppGroupSharedDataKey.todayDate)
+            AppGroupSharedData.defaults?.set(todayDate, forKey: AppGroupSharedDataKey.todayDate)
         }
     }
     
     public var total: Int {
         didSet {
-            AppGroupSharedData.defaults?.setInteger(total, forKey: AppGroupSharedDataKey.total)
+            AppGroupSharedData.defaults?.set(total, forKey: AppGroupSharedDataKey.total)
         }
     }
     
     public var longestStreak: Int {
         didSet {
-            AppGroupSharedData.defaults?.setInteger(longestStreak, forKey: AppGroupSharedDataKey.longestStreak)
+            AppGroupSharedData.defaults?.set(longestStreak, forKey: AppGroupSharedDataKey.longestStreak)
         }
     }
     
     public var currentStreak: Int {
         didSet {
-            AppGroupSharedData.defaults?.setInteger(currentStreak, forKey: AppGroupSharedDataKey.currentStreak)
+            AppGroupSharedData.defaults?.set(currentStreak, forKey: AppGroupSharedDataKey.currentStreak)
         }
     }
     
     public init() {
-        todayScore = AppGroupSharedData.defaults?.integerForKey(AppGroupSharedDataKey.todayScore) ?? 0
-        todayDate = AppGroupSharedData.defaults?.objectForKey(AppGroupSharedDataKey.todayDate) as? NSDate ?? NSDate()
-        total = AppGroupSharedData.defaults?.integerForKey(AppGroupSharedDataKey.total) ?? 0
-        longestStreak = AppGroupSharedData.defaults?.integerForKey(AppGroupSharedDataKey.longestStreak) ?? 0
-        currentStreak = AppGroupSharedData.defaults?.integerForKey(AppGroupSharedDataKey.currentStreak) ?? 0
+        todayScore = AppGroupSharedData.defaults?.integer(forKey: AppGroupSharedDataKey.todayScore) ?? 0
+        todayDate = AppGroupSharedData.defaults?.object(forKey: AppGroupSharedDataKey.todayDate) as? Date ?? Date()
+        total = AppGroupSharedData.defaults?.integer(forKey: AppGroupSharedDataKey.total) ?? 0
+        longestStreak = AppGroupSharedData.defaults?.integer(forKey: AppGroupSharedDataKey.longestStreak) ?? 0
+        currentStreak = AppGroupSharedData.defaults?.integer(forKey: AppGroupSharedDataKey.currentStreak) ?? 0
     }
     
     public static func clean() {

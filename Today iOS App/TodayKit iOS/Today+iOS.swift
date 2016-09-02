@@ -9,6 +9,7 @@
 import CoreData
 
 extension Today {
+    
     public static func created(_ moc: NSManagedObjectContext, forDate date: Date) -> Bool {
         var comp = Calendar.current().components([.year, .month, .day], from: date)
         guard let from = Calendar.current().date(from: comp) else {

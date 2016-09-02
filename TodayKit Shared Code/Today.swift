@@ -11,7 +11,7 @@ import CoreData
 
 private let scoreRange = [Int](0...10)
 
-public final class Today: ManagedObject {
+public final class Today: NSManagedObject {
     @NSManaged public internal(set) var date: Date
     @NSManaged public internal(set) var score: Int64
     
@@ -81,16 +81,16 @@ public final class Today: ManagedObject {
     }
 }
 
-//MARK: - ManagedObjectType
-extension Today: ManagedObjectType {
-    public static var entityName: String {
-        return "Today"
-    }
-    
-    public static var defaultSortDescriptors: [SortDescriptor] {
-        return [SortDescriptor(key: "date", ascending: false)]
-    }
-}
+////MARK: - ManagedObjectType
+//extension Today: ManagedObjectType {
+//    public static var entityName: String {
+//        return "Today"
+//    }
+//    
+//    public static var defaultSortDescriptors: [SortDescriptor] {
+//        return [SortDescriptor(key: "date", ascending: false)]
+//    }
+//}
 
 //MARK: - TodayType
 private let goodIconImageName = "good_face_icon_"
@@ -156,7 +156,7 @@ public enum TodayType: String {
                 UIColor.todayGradientBlueEndColor().cgColor
             ]
         }
-        return CGGradient(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: colors, locations: locations)!
+        return CGGradient(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: colors as CFArray, locations: locations)!
     }
     
     public func icon(_ size: TodayIconSize) -> UIImage {

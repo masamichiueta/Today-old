@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-public final class Streak: ManagedObject {
+public final class Streak: NSManagedObject {
     @NSManaged public internal(set) var from: Date
     @NSManaged public internal(set) var to: Date
     @NSManaged public internal(set) var streakNumber: Int64
@@ -18,23 +18,25 @@ public final class Streak: ManagedObject {
         let date = Date()
         from = date
         to = date
-        streakNumber = Int64(Date.numberOfDaysFromDateTime(from, toDateTime: to) + 1)
+        //streakNumber = Int64(Date.numberOfDaysFromDateTime(from, toDateTime: to) + 1)
     }
     
     public override func willSave() {
         //update streakNumber depending on from and to
-        self.setPrimitiveValue(NSNumber(value: Date.numberOfDaysFromDateTime(from, toDateTime: to) + 1), forKey: "streakNumber")
+        
+        //TODO:
+        //self.setPrimitiveValue(NSNumber(value: Date.numberOfDaysFromDateTime(from, toDateTime: to) + 1), forKey: "streakNumber")
     }
 }
 
 //MARK: - ManagedObjectType
-extension Streak: ManagedObjectType {
-    
-    public static var entityName: String {
-        return "Streak"
-    }
-    
-    public static var defaultSortDescriptors: [SortDescriptor] {
-        return [SortDescriptor(key: "to", ascending: false)]
-    }
-}
+//extension Streak: ManagedObjectType {
+//    
+//    public static var entityName: String {
+//        return "Streak"
+//    }
+//    
+//    public static var defaultSortDescriptors: [SortDescriptor] {
+//        return [SortDescriptor(key: "to", ascending: false)]
+//    }
+//}

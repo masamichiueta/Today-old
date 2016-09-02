@@ -18,20 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        //For UI Testing
-        if UITestSetting.isUITesting() {
-            UITestSetting.handleUITest()
-            return true
-        }
-        
         Setting.setupDefaultSetting()
-        
-        if Setting().firstLaunch {
-            handler = FirstLaunchDelegateHandler()
-        } else {
-            handler = LaunchDelegateHandler()
-        }
-        
+        handler = LaunchDelegateHandler()
         handler.handleLaunch(self)
         return true
     }

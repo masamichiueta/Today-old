@@ -8,86 +8,80 @@
 
 import UIKit
 import TodayKit
+import UserNotifications
 
-class NotificationManager {
+class NotificationManager: NSObject {
     
     static let addTodayActionName = "AddTodayAction"
     static let addTodayCategoryName = "AddTodayCategory"
     static let addTodayNotificationName = "AddTodayNotification"
     
-    private static let notificationKey = "notificationKey"
+    fileprivate static let notificationKey = "notificationKey"
     
-    static func scheduleLocalNotification(_ fireDate: Date, withName name: String) {
-        let notification = UILocalNotification()
-        notification.fireDate = fireDate
-        notification.timeZone = TimeZone.default()
-        notification.alertBody = localize("How is your today?")
-        notification.alertAction = localize("Add Today")
-        notification.alertTitle = localize("Today")
-        notification.soundName = UILocalNotificationDefaultSoundName
-        notification.applicationIconBadgeNumber = 1
-        notification.repeatInterval = Calendar.Unit.day
-        notification.category = addTodayCategoryName
+    public static let shared = NotificationManager()
+    
+    func scheduleLocalNotification(_ fireDate: Date, withName name: String) {
         
-        var info = [NSObject: AnyObject]()
-        info[notificationKey] = name
-        notification.userInfo = info
+        let content = UNMutableNotificationContent()
+        content.title = localize("Today")
+        content.body = localize("How is your today?")
+        content.sound = UNNotificationSound.default()
         
-        UIApplication.shared().scheduleLocalNotification(notification)
+        let component = Calendar.current.dateComponents([.hour], from: fireDate)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: component, repeats: true)
+        
+        let request = UNNotificationRequest(identifier: name, content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        
     }
     
-    static func cancelScheduledLocalNotificationForName(_ name: String) {
-        guard let scheduledLocalNotifications = UIApplication.shared().scheduledLocalNotifications else {
-            return
-        }
+    func cancelScheduledLocalNotificationForName(_ name: String) {
         
-        for notification in scheduledLocalNotifications {
-            guard let notificationName = notification.userInfo?[notificationKey] as? String else {
-                continue
-            }
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [name])
+        
+    }
+    
+    func setupLocalNotificationSetting() {
+        
+        let addTodayAction = UNNotificationAction(identifier: NotificationManager.addTodayActionName, title: localize("Add Today"), options: .foreground)
+        
+        let addTodayCategory = UNNotificationCategory(identifier: NotificationManager.addTodayCategoryName, actions: [addTodayAction], intentIdentifiers: [], options: [])
+        
+        UNUserNotificationCenter.current().setNotificationCategories([addTodayCategory])
+        UNUserNotificationCenter.current().delegate = self
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: { granted, error in
+            var setting = Setting()
             
-            if notificationName == name {
-                UIApplication.shared().cancelLocalNotification(notification)
+            if !granted {
+                setting.notificationEnabled = false
+            } else {
+                let localNotificationFireDate = setting.notificationTime
+                self.scheduleLocalNotification(localNotificationFireDate, withName: NotificationManager.addTodayNotificationName)
             }
+        })
+    }
+}
+
+extension NotificationManager: UNUserNotificationCenterDelegate {
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Swift.Void) {
+        
+        let actionIdentifier = response.actionIdentifier
+        if actionIdentifier == NotificationManager.addTodayActionName {
+            let appDelegate = UIApplication.shared.delegate as? AppDelegate
+            let tabBarController = appDelegate?.window?.rootViewController as? UITabBarController
+            let navBarController = tabBarController?.childViewControllers.first as? UINavigationController
+            let todaysViewController = navBarController?.childViewControllers.first as? TodaysTableViewController
+            todaysViewController?.showAddTodayViewController(self)
         }
+        
+        completionHandler()
     }
     
-    static func scheduledLocalNotificationExistsForName(_ name: String) -> Bool {
-        guard let scheduledLocalNotifications = UIApplication.shared().scheduledLocalNotifications else {
-            return false
-        }
-        
-        for notification in scheduledLocalNotifications {
-            guard let notificationName = notification.userInfo?[notificationKey] as? String else {
-                continue
-            }
-            
-            if notificationName == name {
-                return true
-            }
-        }
-        
-        return false
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Swift.Void) {
+        completionHandler(.alert)
     }
     
-    static func setupLocalNotificationSetting() {
-        
-        let addTodayAction = UIMutableUserNotificationAction()
-        addTodayAction.identifier = NotificationManager.addTodayActionName
-        addTodayAction.title = localize("Add Today")
-        addTodayAction.activationMode = .foreground
-        addTodayAction.isDestructive = false
-        addTodayAction.isAuthenticationRequired = false
-        
-        let addTodayCategory = UIMutableUserNotificationCategory()
-        addTodayCategory.identifier = NotificationManager.addTodayCategoryName
-        addTodayCategory.setActions([addTodayAction], for: .default)
-        addTodayCategory.setActions([addTodayAction], for: .minimal)
-        
-        let categories = Set<UIUserNotificationCategory>(arrayLiteral: addTodayCategory)
-        
-        let types: UIUserNotificationType = [UIUserNotificationType.badge, UIUserNotificationType.alert, UIUserNotificationType.sound]
-        let mySettings = UIUserNotificationSettings(types: types, categories: categories)
-        UIApplication.shared().registerUserNotificationSettings(mySettings)
-    }
+    
 }

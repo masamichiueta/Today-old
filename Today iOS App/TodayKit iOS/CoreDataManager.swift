@@ -12,7 +12,7 @@ import CoreData
 //MARK: - CoreDataManger
 public final class CoreDataManager {
     
-    public static let sharedInstance = CoreDataManager()
+    public static let shared = CoreDataManager()
     
     public private(set) lazy var persistentContainer: NSPersistentContainer = {
         /*

@@ -12,12 +12,11 @@ import TodayKit
 
 final class ActivityTableViewController: UITableViewController, ManagedObjectContextSettable {
     
-    var managedObjectContext: NSManagedObjectContext!
+    var moc: NSManagedObjectContext!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        registerForiCloudNotifications()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -28,30 +27,27 @@ final class ActivityTableViewController: UITableViewController, ManagedObjectCon
         super.didReceiveMemoryWarning()
     }
     
-    deinit {
-        unregisterForiCloudNotifications()
-    }
     
     @IBAction func doneSettingTableViewController(_ segue: UIStoryboardSegue) {
         
     }
     
-    private func setupTableView() {
+    fileprivate func setupTableView() {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 44
         tableView.tableFooterView = UIView()
     }
     
-    private func createChartViewDataSource(_ periodType: ChartViewPeriodType) -> ScoreChartViewDataSource {
+    fileprivate func createChartViewDataSource(_ periodType: ChartViewPeriodType) -> ScoreChartViewDataSource {
         switch periodType {
         case .week:
             let datesFromLastWeekToNow = Date.previousWeekDatesFromDate(Date())
             let todaysInWeek = Today.todays(managedObjectContext, from: datesFromLastWeekToNow.first!, to: datesFromLastWeekToNow.last!)
             let chartData = datesFromLastWeekToNow.map {date -> ChartData in
                 let todayAtDate = todaysInWeek.filter {
-                    Calendar.current().isDate(date, inSameDayAs: $0.date)
+                    Calendar.current.isDate(date, inSameDayAs: $0.date)
                     }.first
-                let comp = Calendar.current().components([.year, .month, .day, .weekday], from: date)
+                let comp = Calendar.current.dateComponents([.year, .month, .day, .weekday], from: date)
                 let data: ChartData
                 if let todayAtDate = todayAtDate {
                     data = ChartData(xValue: "\(comp.day)", yValue: Int(todayAtDate.score))
@@ -66,9 +62,9 @@ final class ActivityTableViewController: UITableViewController, ManagedObjectCon
             let todaysInMonth = Today.todays(managedObjectContext, from: datesFromLastMonthToNow.first!, to: datesFromLastMonthToNow.last!)
             let chartData = datesFromLastMonthToNow.enumerated().map {(index, date) -> ChartData in
                 let todayAtDate = todaysInMonth.filter {
-                    Calendar.current().isDate(date, inSameDayAs: $0.date)
+                    Calendar.current.isDate(date, inSameDayAs: $0.date)
                     }.first
-                let comp = Calendar.current().components([.year, .month, .day, .weekday], from: date)
+                let comp = Calendar.current.dateComponents([.year, .month, .day, .weekday], from: date)
                 let data: ChartData
                 let xValue = index % 6 == 0 ? "\(comp.day)" : ""
                 if let todayAtDate = todayAtDate {
@@ -120,38 +116,5 @@ final class ActivityTableViewController: UITableViewController, ManagedObjectCon
             let cell = tableView.dequeueReusableCellWithCellIdentifier(.Cell, forIndexPath: indexPath)
             return cell
         }
-    }
-}
-
-//MARK: - iCloudRegistable
-extension ActivityTableViewController: ICloudRegistable {
-    
-    func registerForiCloudNotifications() {
-        ICloudRegister.regist(self)
-    }
-    
-    func unregisterForiCloudNotifications() {
-        ICloudRegister.unregister(self)
-    }
-    
-    func ubiquitousKeyValueStoreDidChangeExternally(_ notification: Notification) { }
-    
-    func storesWillChange(_ notification: Notification) { }
-    
-    func storesDidChange(_ notification: Notification) {
-        tableView.reloadData()
-    }
-    
-    func persistentStoreDidImportUbiquitousContentChanges(_ notification: Notification) { }
-}
-
-//MARK: - ChartTableViewCellDelegate
-extension ActivityTableViewController: ChartTableViewCellDelegate {
-    func periodTypeDidChanged(_ type: ChartViewPeriodType) {
-        guard let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? ChartTableViewCell else {
-            fatalError("Wrong cell type")
-        }
-        let dataSource = createChartViewDataSource(type)
-        cell.configureForObject(dataSource)
     }
 }

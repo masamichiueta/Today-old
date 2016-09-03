@@ -21,10 +21,8 @@ protocol ChartTableViewCellDelegate: class {
 
 class ChartTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var scoreChartView: ScoreChartView!
     @IBOutlet weak var periodSegmentedControl: UISegmentedControl!
     weak var delegate: ChartTableViewCellDelegate?
-    var scoreChartViewDataSource: ScoreChartViewDataSource?
     
     var periodType: ChartViewPeriodType = .week {
         didSet {
@@ -49,30 +47,7 @@ class ChartTableViewCell: UITableViewCell {
 
 //MARK: - ConfigurableCell
 extension ChartTableViewCell: ConfigurableCell {
-    func configureForObject(_ dataSource: ScoreChartViewDataSource) {
-        scoreChartViewDataSource = dataSource
-        scoreChartView.dataSource = scoreChartViewDataSource
-        scoreChartView.customMaxYValue = Today.maxMasterScore
-        scoreChartView.customMinYValue = Today.minMasterScore
+    func configureForObject(_ dataSource: AnyObject) {
         
-        switch periodType {
-        case .week:
-            scoreChartView.chartTitleLabel.text = localize("Weekly Summary")
-        case .month:
-            scoreChartView.chartTitleLabel.text = localize("Monthly Summary")
-        }
-        if let maxYValue = dataSource.maxYValue {
-            scoreChartView.highScoreNumberLabel.text = "\(maxYValue)"
-        } else {
-            scoreChartView.highScoreNumberLabel.text = "\(Today.minMasterScore)"
-        }
-        
-        if let minYValue = dataSource.minYValue {
-            scoreChartView.lowScoreNumberLabel.text = "\(minYValue)"
-        } else {
-            scoreChartView.lowScoreNumberLabel.text = "\(Today.minMasterScore)"
-        }
-        
-        scoreChartView.setNeedsDisplay()
     }
 }

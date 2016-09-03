@@ -16,10 +16,10 @@ class TodayTableViewCell: UITableViewCell {
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
     
-    private let dateFormatter: DateFormatter = {
+    fileprivate let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateStyle = .mediumStyle
-        formatter.timeStyle = .noStyle
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
         formatter.doesRelativeDateFormatting = true
         return formatter
     }()

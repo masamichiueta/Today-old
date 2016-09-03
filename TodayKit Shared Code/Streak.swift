@@ -14,7 +14,7 @@ public final class Streak: NSManagedObject {
     @NSManaged public internal(set) var to: Date
     @NSManaged public internal(set) var streakNumber: Int64
     
-    @nonobjc class func fetchRequest() -> NSFetchRequest<Streak> {
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<Streak> {
         return NSFetchRequest<Streak>(entityName: "Streak");
     }
     

@@ -15,7 +15,7 @@ public final class Today: NSManagedObject {
     @NSManaged public internal(set) var date: Date
     @NSManaged public internal(set) var score: Int64
     
-    @nonobjc class func fetchRequest() -> NSFetchRequest<Today> {
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<Today> {
         return NSFetchRequest<Today>(entityName: "Today");
     }
     

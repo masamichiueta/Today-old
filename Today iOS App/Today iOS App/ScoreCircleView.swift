@@ -32,8 +32,7 @@ import TodayKit
                     })
             } else {
                 progressCircleLayer.strokeEnd = CGFloat(score)/CGFloat(Today.maxMasterScore)
-                progressCircleLayer.strokeColor = toStrokeColor.cgColor
-                backCircleLayer.strokeColor = CGColor(copyWithAlphaColor: toStrokeColor.cgColor, alpha: backgroundOpacity)
+                progressCircleLayer.strokeColor = toStrokeColor.cgColor.copy(alpha: backgroundOpacity)
                 progressCircleColor = toStrokeColor
             }
         }
@@ -42,13 +41,13 @@ import TodayKit
     var animated: Bool = true
     var animationDuration = 0.2
     
-    private let minDuration = 0.2
-    private let backgroundOpacity: CGFloat = 0.15
+    fileprivate let minDuration = 0.2
+    fileprivate let backgroundOpacity: CGFloat = 0.15
     
-    private let progressCircleLayer: CAShapeLayer = CAShapeLayer()
-    private let backCircleLayer: CAShapeLayer = CAShapeLayer()
-    private var circleCenter: CGPoint = CGPoint(x: 0, y: 0)
-    private var radius: CGFloat {
+    fileprivate let progressCircleLayer: CAShapeLayer = CAShapeLayer()
+    fileprivate let backCircleLayer: CAShapeLayer = CAShapeLayer()
+    fileprivate var circleCenter: CGPoint = CGPoint(x: 0, y: 0)
+    fileprivate var radius: CGFloat {
         return CGFloat((self.frame.size.width - progressBorderWidth/2.0)/2.0)
     }
     
@@ -79,7 +78,7 @@ import TodayKit
             y: self.frame.size.height/2.0 )
     }
     
-    private func drawBackCircle() {
+    fileprivate func drawBackCircle() {
         let path = UIBezierPath(
             arcCenter: circleCenter,
             radius: radius,
@@ -87,13 +86,13 @@ import TodayKit
             endAngle: CGFloat(M_PI * 2),
             clockwise: true)
         backCircleLayer.path = path.cgPath
-        backCircleLayer.strokeColor = CGColor(copyWithAlphaColor: progressCircleColor.cgColor, alpha: backgroundOpacity)
+        backCircleLayer.strokeColor = progressCircleColor.cgColor.copy(alpha: backgroundOpacity)
         backCircleLayer.fillColor = nil
         backCircleLayer.lineWidth = progressBorderWidth
         
     }
     
-    private func drawProgressCircle() {
+    fileprivate func drawProgressCircle() {
         let startAngle = CGFloat(-M_PI_2)
         let endAngle = CGFloat(M_PI + M_PI_2)
         let path = UIBezierPath(
@@ -111,7 +110,7 @@ import TodayKit
         progressCircleLayer.strokeEnd = CGFloat(score)/CGFloat(Today.maxMasterScore)
     }
     
-    private func animateProgressFromScore(_ fromScore: Int, toScore: Int, fromStrokeColor: UIColor, toStrokeColor: UIColor, completion: () -> ()) {
+    fileprivate func animateProgressFromScore(_ fromScore: Int, toScore: Int, fromStrokeColor: UIColor, toStrokeColor: UIColor, completion: (() -> Void)?) {
         let fromStrokeEnd = CGFloat(fromScore)/CGFloat(Today.maxMasterScore)
         let toStrokeEnd = CGFloat(toScore)/CGFloat(Today.maxMasterScore)
         
@@ -138,11 +137,11 @@ import TodayKit
         let backgroundStrokeColorAnimation = CABasicAnimation(keyPath: "strokeColor")
         backgroundStrokeColorAnimation.duration = animationDuration
         backgroundStrokeColorAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-        backgroundStrokeColorAnimation.fromValue = CGColor(copyWithAlphaColor: fromStrokeColor.cgColor, alpha: backgroundOpacity)
-        backgroundStrokeColorAnimation.toValue = CGColor(copyWithAlphaColor: toStrokeColor.cgColor, alpha: backgroundOpacity)
-        backCircleLayer.strokeColor = CGColor(copyWithAlphaColor: toStrokeColor.cgColor, alpha: backgroundOpacity)
+        backgroundStrokeColorAnimation.fromValue = fromStrokeColor.cgColor.copy(alpha: backgroundOpacity)
+        backgroundStrokeColorAnimation.toValue = toStrokeColor.cgColor.copy(alpha: backgroundOpacity)
+        backCircleLayer.strokeColor = toStrokeColor.cgColor.copy(alpha: backgroundOpacity)
         backCircleLayer.add(backgroundStrokeColorAnimation, forKey: "backgroundCircle")
-        
+                
         CATransaction.setCompletionBlock(completion)
         CATransaction.commit()
     }

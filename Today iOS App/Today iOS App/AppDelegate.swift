@@ -9,17 +9,27 @@
 import UIKit
 import CoreData
 import TodayKit
+import WatchConnectivity
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    var handler: DelegateHandler!
+    var session: WCSession!
+    let wcSessionHandler: TodayWCSessionHandler = TodayWCSessionHandler()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
+        
         Setting.setupDefaultSetting()
-        handler = LaunchDelegateHandler()
-        handler.handleLaunch(self)
+        
+        if WCSession.isSupported() {
+            session = WCSession.default()
+            session.delegate = wcSessionHandler
+            session.activate()
+        }
+        
+        NotificationManager.shared.setupLocalNotificationSetting()
+
         return true
     }
 
@@ -29,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
-        updateAppGroupSharedData(CoreDataManager.sharedInstance.persistentContainer.viewContext)
+        updateAppGroupSharedData(CoreDataManager.shared.persistentContainer.viewContext)
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -42,29 +52,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationWillTerminate(_ application: UIApplication) {
         do {
-            try CoreDataManager.sharedInstance.persistentContainer.viewContext.save()
+            try CoreDataManager.shared.persistentContainer.viewContext.save()
         } catch {
-            CoreDataManager.sharedInstance.persistentContainer.viewContext.rollback()
+            CoreDataManager.shared.persistentContainer.viewContext.rollback()
         }
     }
     
-    func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
-        
-        var setting = Setting()
-        
-        //Notification off
-        if notificationSettings.types == UIUserNotificationType() {
-            setting.notificationEnabled = false
-        }
-        
-        if !NotificationManager.scheduledLocalNotificationExistsForName(NotificationManager.addTodayNotificationName) {
-            let localNotificationFireDate = setting.notificationTime
-            NotificationManager.scheduleLocalNotification(localNotificationFireDate, withName: NotificationManager.addTodayNotificationName)
-        }
-    }
-    
-    
-    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         
         if url.scheme == appGroupURLScheme {
             guard let host = url.host else {
@@ -79,26 +73,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             return true
         }
+        
         return false
     }
     
-    func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, for notification: UILocalNotification, completionHandler: () -> Void) {
-        
-        defer {
-            completionHandler()
-        }
-        
-        guard let identifier = identifier else {
-            return
-        }
-        
-        if identifier == NotificationManager.addTodayActionName {
-            let tabBarController = window?.rootViewController as? UITabBarController
-            let navBarController = tabBarController?.childViewControllers.first as? UINavigationController
-            let todaysTVC = navBarController?.childViewControllers.first as? TodaysTableViewController
-            todaysTVC?.showAddTodayViewController(self)
-        }
-    }
     
     //MARK: - Helper
     func updateAppGroupSharedData(_ moc: NSManagedObjectContext) {

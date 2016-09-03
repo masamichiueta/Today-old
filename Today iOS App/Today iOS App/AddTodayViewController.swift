@@ -40,12 +40,12 @@ final class AddTodayViewController: UIViewController {
         }
     }
     
-    private let thinProgressBorderGroup: [Device] = [.iPhone4, .iPhone4s, .simulator(.iPhone4), .simulator(.iPhone4s)]
-    private let device = Device()
-    private let thinProgressBorderWidth: CGFloat = 5.0
-    private let defaultProgressBorderWidth: CGFloat = 10.0
-    private let smallScoreFont = UIFont.systemFont(ofSize: 50, weight: UIFontWeightThin)
-    private let defaultScoreFont = UIFont.systemFont(ofSize: 100, weight: UIFontWeightThin)
+    fileprivate let thinProgressBorderGroup: [Device] = [.iPhone4, .iPhone4s, .simulator(.iPhone4), .simulator(.iPhone4s)]
+    fileprivate let device = Device()
+    fileprivate let thinProgressBorderWidth: CGFloat = 5.0
+    fileprivate let defaultProgressBorderWidth: CGFloat = 10.0
+    fileprivate let smallScoreFont = UIFont.systemFont(ofSize: 50, weight: UIFontWeightThin)
+    fileprivate let defaultScoreFont = UIFont.systemFont(ofSize: 100, weight: UIFontWeightThin)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,7 +71,7 @@ final class AddTodayViewController: UIViewController {
         }
     }
     
-    private func setupProgressBorderWidth() {
+    fileprivate func setupProgressBorderWidth() {
         let compactHeightCollection = UITraitCollection(verticalSizeClass: .compact)
         if traitCollection.containsTraits(in: compactHeightCollection) || device.isOneOf(thinProgressBorderGroup) {
             scoreCircleView.progressBorderWidth = thinProgressBorderWidth

@@ -17,10 +17,10 @@ class StreakTableViewCell: UITableViewCell {
     @IBOutlet weak var currentStreakLabel: UILabel!
     @IBOutlet weak var currentStreakDateLabel: UILabel!
     
-    private let dateFormatter: DateFormatter = {
+    fileprivate let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateStyle = .mediumStyle
-        formatter.timeStyle = .noStyle
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
         return formatter
     }()
     

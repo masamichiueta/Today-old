@@ -72,7 +72,7 @@ extension NotificationManager: UNUserNotificationCenterDelegate {
             let appDelegate = UIApplication.shared.delegate as? AppDelegate
             let tabBarController = appDelegate?.window?.rootViewController as? UITabBarController
             let navBarController = tabBarController?.childViewControllers.first as? UINavigationController
-            let todaysViewController = navBarController?.childViewControllers.first as? TodaysTableViewController
+            let todaysViewController = navBarController?.childViewControllers.first as? TodaysViewController
             todaysViewController?.showAddTodayViewController(self)
         }
         

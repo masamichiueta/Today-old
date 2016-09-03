@@ -9,92 +9,42 @@
     </dependencies>
     <scenes>
         <!--Todays-->
-        <scene sceneID="TSF-1I-Ylr">
+        <scene sceneID="gPU-gX-mKb">
             <objects>
-                <tableViewController id="SUI-Vy-fB2" customClass="TodaysTableViewController" customModule="Today" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="5iC-Or-Y0n">
+                <viewController id="Ish-Ti-9Jp" customClass="TodaysViewController" customModule="Today" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VMr-py-B6g"/>
+                        <viewControllerLayoutGuide type="bottom" id="7hh-sr-vQy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="AwX-Lu-ePr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TodayCell" id="EQP-hK-U12" customClass="TodayTableViewCell" customModule="Today" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EQP-hK-U12" id="8k5-Vl-Sqi">
-                                    <frame key="frameInset" width="375" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fxf-YS-mKn" customClass="ScoreCircleView" customModule="Today" customModuleProvider="target">
-                                            <constraints>
-                                                <constraint firstAttribute="width" secondItem="Fxf-YS-mKn" secondAttribute="height" multiplier="1:1" id="XrR-iN-PX2"/>
-                                                <constraint firstAttribute="height" constant="24" id="fve-Qe-3qG"/>
-                                                <constraint firstAttribute="width" constant="24" id="wqn-DA-lAt"/>
-                                            </constraints>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="progressBorderWidth">
-                                                    <real key="value" value="3"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                        </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lE6-Zb-u3g">
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="good_face_icon_28" translatesAutoresizingMaskIntoConstraints="NO" id="ELN-dq-C6b">
-                                            <frame key="frameInset" minX="286" minY="8" width="28" height="28"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" secondItem="ELN-dq-C6b" secondAttribute="height" multiplier="1:1" id="u8z-mB-lcD"/>
-                                            </constraints>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="2015/12/15" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="929-qH-vF5">
-                                            <frame key="frameInset" minX="498" minY="11" width="84" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="929-qH-vF5" firstAttribute="centerY" secondItem="8k5-Vl-Sqi" secondAttribute="centerY" id="3fq-gx-PUL"/>
-                                        <constraint firstItem="Fxf-YS-mKn" firstAttribute="leading" secondItem="8k5-Vl-Sqi" secondAttribute="leadingMargin" constant="15" id="QCP-dp-wsk"/>
-                                        <constraint firstItem="ELN-dq-C6b" firstAttribute="centerY" secondItem="8k5-Vl-Sqi" secondAttribute="centerY" id="VQw-Zg-adm"/>
-                                        <constraint firstItem="Fxf-YS-mKn" firstAttribute="centerY" secondItem="8k5-Vl-Sqi" secondAttribute="centerY" id="aSR-XC-mZM"/>
-                                        <constraint firstItem="lE6-Zb-u3g" firstAttribute="leading" secondItem="Fxf-YS-mKn" secondAttribute="trailing" constant="15" id="arI-ai-i0u"/>
-                                        <constraint firstItem="lE6-Zb-u3g" firstAttribute="centerY" secondItem="8k5-Vl-Sqi" secondAttribute="centerY" id="fSN-sK-DAe"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="929-qH-vF5" secondAttribute="trailing" constant="10" id="vH1-er-LxI"/>
-                                        <constraint firstItem="ELN-dq-C6b" firstAttribute="centerX" secondItem="8k5-Vl-Sqi" secondAttribute="centerX" id="xia-MX-G7p"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="dateLabel" destination="929-qH-vF5" id="L8R-4G-2GR"/>
-                                    <outlet property="iconImageView" destination="ELN-dq-C6b" id="jJE-CW-Ohk"/>
-                                    <outlet property="scoreCircleView" destination="Fxf-YS-mKn" id="Yan-95-4bE"/>
-                                    <outlet property="scoreLabel" destination="lE6-Zb-u3g" id="SkA-LR-Vfs"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="SUI-Vy-fB2" id="5Jh-4G-Zug"/>
-                            <outlet property="delegate" destination="SUI-Vy-fB2" id="Wqg-cf-iaJ"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Todays" id="hqx-GF-Dkr">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="4DH-jb-BqP">
-                            <connections>
-                                <action selector="showAddTodayViewController:" destination="SUI-Vy-fB2" id="iAR-ZN-zuS"/>
-                            </connections>
-                        </barButtonItem>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NIC-bU-Vw1" customClass="RSDFDatePickerView">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="NIC-bU-Vw1" secondAttribute="trailing" id="8DI-ro-pf9"/>
+                            <constraint firstItem="NIC-bU-Vw1" firstAttribute="top" secondItem="AwX-Lu-ePr" secondAttribute="top" id="WUf-Eh-ctZ"/>
+                            <constraint firstItem="NIC-bU-Vw1" firstAttribute="leading" secondItem="AwX-Lu-ePr" secondAttribute="leading" id="X1C-eb-bei"/>
+                            <constraint firstAttribute="bottom" secondItem="NIC-bU-Vw1" secondAttribute="bottom" id="pKJ-68-gI2"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Todays" id="2Ia-T9-KBy">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="osb-QP-LKU"/>
                     </navigationItem>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <segue destination="WzQ-rC-fZu" kind="popoverPresentation" identifier="showAddTodayViewController" popoverAnchorBarButtonItem="4DH-jb-BqP" id="SAh-zK-3hH">
+                        <outlet property="calendarView" destination="NIC-bU-Vw1" id="puN-3w-Dta"/>
+                        <segue destination="WzQ-rC-fZu" kind="popoverPresentation" identifier="showAddTodayViewController" popoverAnchorBarButtonItem="osb-QP-LKU" id="ys3-Kj-Pze">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                         </segue>
                     </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="IvV-dt-m8r" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="35q-dq-ZqZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1338" y="-968"/>
+            <point key="canvasLocation" x="1319" y="-968"/>
         </scene>
         <!--Todays-->
         <scene sceneID="O48-2O-yOx">
@@ -109,7 +59,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="SUI-Vy-fB2" kind="relationship" relationship="rootViewController" id="33l-az-413"/>
+                        <segue destination="Ish-Ti-9Jp" kind="relationship" relationship="rootViewController" id="K4j-9Z-CBD"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lbc-qz-qPp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -217,12 +167,12 @@
                     <navigationItem key="navigationItem" title="How is your today?" id="LTJ-Fh-X4Y">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="w4n-ao-Mmo">
                             <connections>
-                                <segue destination="K7h-35-e15" kind="unwind" unwindAction="cancelToTodaysTableViewController:" id="2mR-yr-0Ya"/>
+                                <segue destination="K7h-35-e15" kind="unwind" unwindAction="cancelToTodaysViewController:" id="u4X-5A-gp7"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="lb9-9X-YxO">
                             <connections>
-                                <segue destination="K7h-35-e15" kind="unwind" unwindAction="saveAddTodayViewController:" id="19u-Q1-gJf"/>
+                                <segue destination="K7h-35-e15" kind="unwind" unwindAction="saveAddTodayViewController:" id="1LL-GR-P55"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -240,7 +190,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="good_face_icon_28" width="28" height="28"/>
         <image name="good_face_icon_40" width="40" height="40"/>
         <image name="today_fill" width="30" height="30"/>
         <image name="today_outline" width="30" height="30"/>

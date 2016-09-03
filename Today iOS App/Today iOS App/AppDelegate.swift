@@ -68,8 +68,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if host == AppGroupURLHost.AddToday.rawValue {
                 let tabBarController = window?.rootViewController as? UITabBarController
                 let navBarController = tabBarController?.childViewControllers.first as? UINavigationController
-                let todaysTVC = navBarController?.childViewControllers.first as? TodaysTableViewController
-                todaysTVC?.showAddTodayViewController(self)
+                let todaysViewController = navBarController?.childViewControllers.first as? TodaysViewController
+                todaysViewController?.showAddTodayViewController(self)
             }
             return true
         }

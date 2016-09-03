@@ -54,6 +54,10 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (instancetype)initWithFrame:(CGRect)frame calendar:(nullable NSCalendar *)calendar startDate:(nullable NSDate *)startDate endDate:(nullable NSDate *)endDate;
 
+
+@property (nonatomic) UIEdgeInsets contentInsets;
+
+
 ///-----------------------------
 /// @name Accessing the Delegate
 ///-----------------------------
@@ -190,6 +194,7 @@ NS_ASSUME_NONNULL_BEGIN
  @discussion Can be overridden in subclasses for customization.
  */
 - (CGFloat)daysOfWeekViewHeight;
+
 
 @end
 

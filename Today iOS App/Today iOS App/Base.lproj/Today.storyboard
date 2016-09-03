@@ -33,7 +33,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Todays" id="2Ia-T9-KBy">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="osb-QP-LKU"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="osb-QP-LKU">
+                            <connections>
+                                <action selector="showAddTodayViewController:" destination="Ish-Ti-9Jp" id="0n2-Ea-Hqk"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="calendarView" destination="NIC-bU-Vw1" id="puN-3w-Dta"/>

@@ -13,6 +13,7 @@ import CoreData
 class TodaysViewController: UIViewController {
     
     var moc: NSManagedObjectContext!
+    var frc: NSFetchedResultsController<Today>!
 
     @IBOutlet weak var calendarView: RSDFDatePickerView!
     
@@ -21,6 +22,23 @@ class TodaysViewController: UIViewController {
         self.moc = CoreDataManager.shared.persistentContainer.viewContext
         self.calendarView.delegate = self
         self.calendarView.dataSource = self
+        
+        let topInset = self.navigationController?.navigationBar.frame.height ?? 44.0
+        self.calendarView.contentInsets = UIEdgeInsets(top: topInset, left: 0, bottom: 0, right: 0)
+        
+        let request: NSFetchRequest<Today> = Today.fetchRequest()
+        request.sortDescriptors = Today.defaultSortDescriptors
+        self.frc = NSFetchedResultsController<Today>(fetchRequest: request, managedObjectContext: self.moc, sectionNameKeyPath: nil, cacheName: nil)
+        self.frc.delegate = self
+        
+        do {
+            try self.frc.performFetch()
+        } catch {
+            fatalError()
+        }
+    
+        print(self.frc.fetchedObjects?.count)
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -44,10 +62,16 @@ class TodaysViewController: UIViewController {
             return
         }
         
-        moc.perform {
+        moc.perform { [unowned self] in
             //Create today
             let _ = Today.insertIntoContext(self.moc, score: Int64(vc.score), date: now)
             let _ = Streak.updateOrCreateCurrentStreak(self.moc, date: now)
+            
+            do {
+                try self.moc.save()
+            } catch {
+                self.moc.rollback()
+            }
         }
     }
     
@@ -64,18 +88,13 @@ class TodaysViewController: UIViewController {
         alert.addAction(UIAlertAction(title: localize("OK"), style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: completion)
     }
+}
 
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+extension TodaysViewController: NSFetchedResultsControllerDelegate {
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        self.calendarView.reloadData()
     }
-    */
-
 }
 
 extension TodaysViewController: RSDFDatePickerViewDelegate, RSDFDatePickerViewDataSource {
@@ -89,6 +108,19 @@ extension TodaysViewController: RSDFDatePickerViewDelegate, RSDFDatePickerViewDa
     
     func datePickerView(_ view: RSDFDatePickerView, didSelect date: Date) {
         print("select date")
+    }
+    
+    func datePickerView(_ view: RSDFDatePickerView, shouldMark date: Date) -> Bool {
+        
+        let today = self.frc.fetchedObjects?.filter({ today in
+            Calendar.current.isDate(today.date, inSameDayAs: date)
+        })
+        
+        return today?.count == 0 ? false : true
+    }
+    
+    func datePickerView(_ view: RSDFDatePickerView, markImageColorFor date: Date) -> UIColor {
+        return UIColor.todayBlueColor()
     }
     
     

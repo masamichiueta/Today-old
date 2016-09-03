@@ -23,35 +23,7 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uCX-ox-VGa" id="04S-o8-u6p">
                                     <frame key="frameInset" width="600" height="300"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="b1F-av-ov3">
-                                            <subviews>
-                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="W0p-1s-qbm">
-                                                    <segments>
-                                                        <segment title="Week"/>
-                                                        <segment title="Month"/>
-                                                    </segments>
-                                                    <connections>
-                                                        <action selector="periodDidChange:" destination="uCX-ox-VGa" eventType="valueChanged" id="86t-WL-O8K"/>
-                                                    </connections>
-                                                </segmentedControl>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="W0p-1s-qbm" firstAttribute="leading" secondItem="b1F-av-ov3" secondAttribute="leading" id="9CC-7m-nLd"/>
-                                                <constraint firstAttribute="trailing" secondItem="W0p-1s-qbm" secondAttribute="trailing" id="xIb-3m-tQj"/>
-                                            </constraints>
-                                        </stackView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="b1F-av-ov3" firstAttribute="leading" secondItem="04S-o8-u6p" secondAttribute="leadingMargin" id="PVh-SS-3fA"/>
-                                        <constraint firstItem="b1F-av-ov3" firstAttribute="trailing" secondItem="04S-o8-u6p" secondAttribute="trailingMargin" id="cNc-QS-fLy"/>
-                                        <constraint firstItem="b1F-av-ov3" firstAttribute="top" secondItem="04S-o8-u6p" secondAttribute="topMargin" id="ixU-ex-sVn"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="b1F-av-ov3" secondAttribute="bottom" id="q26-Fw-boh"/>
-                                    </constraints>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="periodSegmentedControl" destination="W0p-1s-qbm" id="b38-1f-H2W"/>
-                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ActivityAverageTotalCell" rowHeight="170" id="oTf-zP-7j9" customClass="AverageTotalTableViewCell" customModule="Today" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="392" width="600" height="170"/>

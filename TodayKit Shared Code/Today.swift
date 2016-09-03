@@ -45,28 +45,13 @@ public final class Today: NSManagedObject {
         return Today.masterScores.last!
     }
     
-    public static func average(_ moc: NSManagedObjectContext) -> Int {
-        let request: NSFetchRequest<Today> = Today.fetchRequest()
-        request.resultType = .dictionaryResultType
-        
-        let keyPathExpression = NSExpression(forKeyPath: "score")
-        let averageExpression = NSExpression(forFunction: "average:", arguments: [keyPathExpression])
-        let expressionDescription = NSExpressionDescription()
-        expressionDescription.name = "averageScore"
-        expressionDescription.expression = averageExpression
-        expressionDescription.expressionResultType = .integer64AttributeType
-        
-        request.propertiesToFetch = [expressionDescription]
-        
+    public static func count(_ moc: NSManagedObjectContext) -> Int {
+        let reqeust: NSFetchRequest<Today> = Today.fetchRequest()
         do {
-            let objects = try moc.fetch(request)
-            let object = objects[0]
-            guard let averageScore = object.value(forKey: "averageScore") as? Int else {
-                fatalError("Invalid key")
-            }
-            return averageScore
+            let count = try moc.count(for: reqeust)
+            return count
         } catch {
-            return 0
+            fatalError()
         }
     }
     

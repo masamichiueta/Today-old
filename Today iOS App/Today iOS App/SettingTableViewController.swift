@@ -185,7 +185,6 @@ extension SettingTableViewController: PickerTableViewCellDelegate {
         timeCell?.detailTextLabel?.text = dateFormatter.string(from: notificationTime)
         
         //Update notification
-        NotificationManager.cancelScheduledLocalNotificationForName(NotificationManager.addTodayNotificationName)
-        NotificationManager.scheduleLocalNotification(setting.notificationTime, withName: NotificationManager.addTodayNotificationName)
+        NotificationManager.shared.scheduleLocalNotification(setting.notificationTime, withName: NotificationManager.addTodayNotificationName)
     }
 }

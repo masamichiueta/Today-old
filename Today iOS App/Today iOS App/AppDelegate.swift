@@ -99,14 +99,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
-        let request: NSFetchRequest<Today> = Today.fetchRequest()
-        do {
-            let result = try moc.count(for: request)
-            appGroupSharedData.total = result
-        } catch {
-            print("failed to get count")
-        }
-        
+        appGroupSharedData.total = Today.count(moc)
         appGroupSharedData.longestStreak = Int(Streak.longestStreak(moc)?.streakNumber ?? 0)
         appGroupSharedData.currentStreak = Int(Streak.currentStreak(moc)?.streakNumber ?? 0)
     }

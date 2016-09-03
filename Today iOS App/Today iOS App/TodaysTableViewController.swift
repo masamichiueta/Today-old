@@ -10,12 +10,13 @@ import UIKit
 import CoreData
 import TodayKit
 
-final class TodaysTableViewController: UITableViewController, ManagedObjectContextSettable {
+final class TodaysTableViewController: UITableViewController {
     
     var moc: NSManagedObjectContext!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.moc = CoreDataManager.shared.persistentContainer.viewContext
         setupTableView()
     }
     

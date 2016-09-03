@@ -24,7 +24,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <RSDayFlow/RSDFDatePickerDate.h>
+#import "RSDFDatePickerDate.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

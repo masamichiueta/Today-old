@@ -732,10 +732,10 @@ import UIKit
         let actualMin = clamp(min - numberOfPointsOffscreen, min: minPossible, max: maxPossible)
         let actualMax = clamp(max + numberOfPointsOffscreen, min: minPossible, max: maxPossible)
         
-        return actualMin ... actualMax
+        return actualMin ..< actualMax + 1
     }
     
-    fileprivate func calculateRangeForActivePointsInterval(_ interval: Range<Int>) -> (min: Double, max: Double) {
+    fileprivate func calculateRangeForActivePointsInterval(_ interval: CountableRange<Int>) -> (min: Double, max: Double) {
         
         let dataForActivePoints = data[interval]
         
@@ -965,7 +965,7 @@ import UIKit
     // Update any paths with the new path based on visible data points.
     fileprivate func updatePaths() {
         
-        createLinePath()
+        let _ = createLinePath()
         
         if let drawingLayers = drawingView.layer.sublayers {
             for layer in drawingLayers {
@@ -1039,7 +1039,7 @@ import UIKit
         return Array(activatedPoints)
     }
     
-    fileprivate func setFromClosedRange(_ range: Range<Int>) -> Set<Int> {
+    fileprivate func setFromClosedRange(_ range: CountableRange<Int>) -> Set<Int> {
         var set = Set<Int>()
         for index in range.lowerBound...range.upperBound {
             set.insert(index)
@@ -1711,8 +1711,8 @@ private class ReferenceLineDrawingView : UIView {
         
         let numberFormatter = referenceNumberFormatter()
         
-        let maxString = numberFormatter.string(from: NSNumber(self.currentRange.max))! + units
-        let minString = numberFormatter.string(from: NSNumber(self.currentRange.min))! + units
+        let maxString = numberFormatter.string(from: NSNumber(value: self.currentRange.max))! + units
+        let minString = numberFormatter.string(from: NSNumber(value: self.currentRange.min))! + units
         
         addLineWithTag(maxString, from: maxLineStart, to: maxLineEnd, inPath: referenceLinePath)
         addLineWithTag(minString, from: minLineStart, to: minLineEnd, inPath: referenceLinePath)
@@ -1771,8 +1771,8 @@ private class ReferenceLineDrawingView : UIView {
             width: rect.size.width,
             height: rect.size.height / 2)
         
-        recursiveCreateIntermediateReferenceLines(topRect, width: width * intermediateLineWidthMultiplier, forPath: path, remainingPartitions: remainingPartitions - 1)
-        recursiveCreateIntermediateReferenceLines(bottomRect, width: width * intermediateLineWidthMultiplier, forPath: path, remainingPartitions: remainingPartitions - 1)
+        let _ = recursiveCreateIntermediateReferenceLines(topRect, width: width * intermediateLineWidthMultiplier, forPath: path, remainingPartitions: remainingPartitions - 1)
+        let _ = recursiveCreateIntermediateReferenceLines(bottomRect, width: width * intermediateLineWidthMultiplier, forPath: path, remainingPartitions: remainingPartitions - 1)
         
         return path
     }
@@ -1782,7 +1782,7 @@ private class ReferenceLineDrawingView : UIView {
             
             let value = calculateYAxisValueForPoint(lineStart)
             let numberFormatter = referenceNumberFormatter()
-            var valueString = numberFormatter.string(from: NSNumber(value))!
+            var valueString = numberFormatter.string(from: NSNumber(value: value))!
             
             if(shouldAddUnitsToIntermediateReferenceLineLabels) {
                 valueString += " \(units)"

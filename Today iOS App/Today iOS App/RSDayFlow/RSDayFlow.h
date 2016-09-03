@@ -30,14 +30,14 @@
 #ifndef RSDayFlow_RSDayFlow_h
 #define RSDayFlow_RSDayFlow_h
 
-#import <RSDayFlow/RSDFDatePickerView.h>
-#import <RSDayFlow/RSDFDatePickerView+Protected.h>
-#import <RSDayFlow/RSDFDatePickerDate.h>
-#import <RSDayFlow/RSDFDatePickerDaysOfWeekView.h>
-#import <RSDayFlow/RSDFDatePickerCollectionView.h>
-#import <RSDayFlow/RSDFDatePickerCollectionViewLayout.h>
-#import <RSDayFlow/RSDFDatePickerMonthHeader.h>
-#import <RSDayFlow/RSDFDatePickerDayCell.h>
-#import <RSDayFlow/NSCalendar+RSDFAdditions.h>
+#import "RSDFDatePickerView.h"
+#import "RSDFDatePickerView+Protected.h"
+#import "RSDFDatePickerDate.h"
+#import "RSDFDatePickerDaysOfWeekView.h"
+#import "RSDFDatePickerCollectionView.h"
+#import "RSDFDatePickerCollectionViewLayout.h"
+#import "RSDFDatePickerMonthHeader.h"
+#import "RSDFDatePickerDayCell.h"
+#import "NSCalendar+RSDFAdditions.h"
 
 #endif

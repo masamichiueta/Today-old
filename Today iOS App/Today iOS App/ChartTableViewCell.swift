@@ -9,27 +9,8 @@
 import UIKit
 import TodayKit
 
-enum ChartViewPeriodType: Int {
-    case week
-    case month
-}
-
-protocol ChartTableViewCellDelegate: class {
-    func periodTypeDidChanged(_ type: ChartViewPeriodType)
-}
-
-
 class ChartTableViewCell: UITableViewCell {
-    
-    @IBOutlet weak var periodSegmentedControl: UISegmentedControl!
-    weak var delegate: ChartTableViewCellDelegate?
-    
-    var periodType: ChartViewPeriodType = .week {
-        didSet {
-            delegate?.periodTypeDidChanged(periodType)
-        }
-    }
-    
+        
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -38,10 +19,6 @@ class ChartTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         
         // Configure the view for the selected state
-    }
-    
-    @IBAction func periodDidChange(_ sender: UISegmentedControl) {
-        periodType = ChartViewPeriodType(rawValue: sender.selectedSegmentIndex)!
     }
 }
 

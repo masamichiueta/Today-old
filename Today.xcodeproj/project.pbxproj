@@ -12,17 +12,14 @@
 		24030AEE1C1C821C004E68ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24030AED1C1C821C004E68ED /* Assets.xcassets */; };
 		24030AF11C1C821C004E68ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24030AEF1C1C821C004E68ED /* LaunchScreen.storyboard */; };
 		24095BD61C7C92F800CC970E /* AppGroupSharedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24095BD51C7C92F800CC970E /* AppGroupSharedData.swift */; };
-		241D65AC1C7B3E0E00938CE8 /* BorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2488C7081C6F686D00EF8F45 /* BorderButton.swift */; };
 		241D65AF1C7B43AC00938CE8 /* TodayExtensionTodayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D65AE1C7B43AC00938CE8 /* TodayExtensionTodayTableViewCell.swift */; };
 		2425BBA91C5E3A0E008AD9A4 /* StreakTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2425BBA81C5E3A0E008AD9A4 /* StreakTableViewCell.swift */; };
 		24338CF01C7BEBD9007FCAD1 /* TodayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24C6C1A51C54F9970041C31F /* TodayKit.framework */; };
-		2437C7D51CC527DD004F5C27 /* TodayDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2437C7D41CC527DD004F5C27 /* TodayDataTests.swift */; };
 		243CC6EF1CC5393900E41407 /* Today+iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243CC6EE1CC5393900E41407 /* Today+iOS.swift */; };
 		243CC6F11CC53A3400E41407 /* Streak+iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243CC6F01CC53A3400E41407 /* Streak+iOS.swift */; };
 		24444A5E1C30A02A00DC1579 /* AddTodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24444A5D1C30A02A00DC1579 /* AddTodayViewController.swift */; };
 		244631451C3AB8BA002BBD06 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244631441C3AB8BA002BBD06 /* PaddingLabel.swift */; };
 		244B9A671C7B50FA004AF2DC /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F984A1C49282200DBC64B /* NotificationManager.swift */; };
-		244B9A701C7B51F6004AF2DC /* ManagedObjectContextSettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F14771C2A9FD40003B2AF /* ManagedObjectContextSettable.swift */; };
 		244B9A721C7B5208004AF2DC /* ConfigurableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F9DC3E1C2EFD33003A6427 /* ConfigurableCell.swift */; };
 		244B9A771C7B5910004AF2DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 244B9A761C7B5910004AF2DC /* Assets.xcassets */; };
 		245464671C75FFEF0030EF82 /* WatchConnectivityActionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245464661C75FFEF0030EF82 /* WatchConnectivityActionType.swift */; };
@@ -33,7 +30,6 @@
 		246688561C1DB61100C5E5A0 /* Today.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 246688541C1DB61100C5E5A0 /* Today.storyboard */; };
 		246AC1811C5120FF0047AAE7 /* AddTodayInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246AC1801C5120FF0047AAE7 /* AddTodayInterfaceController.swift */; };
 		247E4D611C54FCB800C134DB /* Setting.plist in Resources */ = {isa = PBXBuildFile; fileRef = 24D4E3461C43E1D900F6DA6A /* Setting.plist */; };
-		2488C7091C6F686D00EF8F45 /* BorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2488C7081C6F686D00EF8F45 /* BorderButton.swift */; };
 		24A1CFE11C36D8FA00F0E9CE /* ScoreCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A1CFE01C36D8FA00F0E9CE /* ScoreCircleView.swift */; };
 		24A39ADA1C89C9C800DE0090 /* WatchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A39AD91C89C9C800DE0090 /* WatchData.swift */; };
 		24A487F51C5503C50015DB05 /* TodayWatchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24A487EE1C5503C50015DB05 /* TodayWatchKit.framework */; };
@@ -217,11 +213,10 @@
 		24030AFD1C1C821C004E68ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24095BD51C7C92F800CC970E /* AppGroupSharedData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppGroupSharedData.swift; sourceTree = "<group>"; };
 		240F14741C2A9CDE0003B2AF /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		240F14771C2A9FD40003B2AF /* ManagedObjectContextSettable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectContextSettable.swift; sourceTree = "<group>"; };
 		241D65AE1C7B43AC00938CE8 /* TodayExtensionTodayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayExtensionTodayTableViewCell.swift; sourceTree = "<group>"; };
 		2425BBA81C5E3A0E008AD9A4 /* StreakTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreakTableViewCell.swift; sourceTree = "<group>"; };
 		242F984A1C49282200DBC64B /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
-		2437C7D41CC527DD004F5C27 /* TodayDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayDataTests.swift; sourceTree = "<group>"; };
+		243095851D7B0B4A009343BE /* Today-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Today-Bridging-Header.h"; sourceTree = "<group>"; };
 		243CC6EE1CC5393900E41407 /* Today+iOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Today+iOS.swift"; sourceTree = "<group>"; };
 		243CC6F01CC53A3400E41407 /* Streak+iOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Streak+iOS.swift"; sourceTree = "<group>"; };
 		24444A5D1C30A02A00DC1579 /* AddTodayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTodayViewController.swift; sourceTree = "<group>"; };
@@ -241,7 +236,6 @@
 		246688501C1DB4ED00C5E5A0 /* TodaysTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodaysTableViewController.swift; sourceTree = "<group>"; };
 		246688551C1DB61100C5E5A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Today.storyboard; sourceTree = "<group>"; };
 		246AC1801C5120FF0047AAE7 /* AddTodayInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTodayInterfaceController.swift; sourceTree = "<group>"; };
-		2488C7081C6F686D00EF8F45 /* BorderButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderButton.swift; sourceTree = "<group>"; };
 		24A1CFE01C36D8FA00F0E9CE /* ScoreCircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreCircleView.swift; sourceTree = "<group>"; };
 		24A39AD91C89C9C800DE0090 /* WatchData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchData.swift; sourceTree = "<group>"; };
 		24A487EE1C5503C50015DB05 /* TodayWatchKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TodayWatchKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -417,7 +411,6 @@
 			isa = PBXGroup;
 			children = (
 				24030AFD1C1C821C004E68ED /* Info.plist */,
-				2437C7D41CC527DD004F5C27 /* TodayDataTests.swift */,
 			);
 			path = TodayTests;
 			sourceTree = "<group>";
@@ -425,7 +418,6 @@
 		240F14761C2A9FB60003B2AF /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				240F14771C2A9FD40003B2AF /* ManagedObjectContextSettable.swift */,
 				242F984A1C49282200DBC64B /* NotificationManager.swift */,
 				24FE134E1C7F49A700A573B8 /* TodayWCSessionHandler.swift */,
 			);
@@ -464,7 +456,6 @@
 			children = (
 				2466884D1C1DB45E00C5E5A0 /* Activity.storyboard */,
 				24D67C841C3EB54600A33DB7 /* AverageTotalTableViewCell.swift */,
-				2488C7081C6F686D00EF8F45 /* BorderButton.swift */,
 				24D82C2E1C5A5D880095FA47 /* ChartTableViewCell.swift */,
 				24030AEF1C1C821C004E68ED /* LaunchScreen.storyboard */,
 				24030AE71C1C821C004E68ED /* Main.storyboard */,
@@ -491,6 +482,7 @@
 				24C77EAD1C2A937600493C13 /* Today.entitlements */,
 				24B744EA1C873528000E0FFC /* Localizable.strings */,
 				246214BF1CC2739200009053 /* Settings.bundle */,
+				243095851D7B0B4A009343BE /* Today-Bridging-Header.h */,
 			);
 			path = "Today iOS App";
 			sourceTree = "<group>";
@@ -1040,7 +1032,6 @@
 				24444A5E1C30A02A00DC1579 /* AddTodayViewController.swift in Sources */,
 				2425BBA91C5E3A0E008AD9A4 /* StreakTableViewCell.swift in Sources */,
 				24D23EC81D79AF1A00C6E4AC /* RSDFDatePickerDaysOfWeekView.m in Sources */,
-				244B9A701C7B51F6004AF2DC /* ManagedObjectContextSettable.swift in Sources */,
 				24D67C851C3EB54600A33DB7 /* AverageTotalTableViewCell.swift in Sources */,
 				24D23ECF1D79AF5800C6E4AC /* ScrollableGraphView.swift in Sources */,
 				24D82C2F1C5A5D880095FA47 /* ChartTableViewCell.swift in Sources */,
@@ -1049,7 +1040,6 @@
 				24FFBB971C3D6AFA0053E261 /* SettingTableViewController.swift in Sources */,
 				24FE71311C3FFB8700A14B9D /* PickerTableViewCell.swift in Sources */,
 				24FE134F1C7F49A700A573B8 /* TodayWCSessionHandler.swift in Sources */,
-				2488C7091C6F686D00EF8F45 /* BorderButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1057,7 +1047,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2437C7D51CC527DD004F5C27 /* TodayDataTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1113,7 +1102,6 @@
 			files = (
 				24F21AB41C4FCFE900396A38 /* TodayExtensionViewController.swift in Sources */,
 				241D65AF1C7B43AC00938CE8 /* TodayExtensionTodayTableViewCell.swift in Sources */,
-				241D65AC1C7B3E0E00938CE8 /* BorderButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1363,6 +1351,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.Today;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Today iOS App/Today iOS App/Today-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -1383,6 +1372,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.Today;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Today iOS App/Today iOS App/Today-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

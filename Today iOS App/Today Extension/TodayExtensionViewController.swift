@@ -15,8 +15,8 @@ final class TodayExtensionViewController: UIViewController, NCWidgetProviding {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var buttonEffectView: UIVisualEffectView!
     
-    private let tableViewRowHeight: CGFloat = 44.0
-    private let rowNum = 4
+    fileprivate let tableViewRowHeight: CGFloat = 44.0
+    fileprivate let rowNum = 4
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,7 +63,7 @@ extension TodayExtensionViewController: UITableViewDelegate, UITableViewDataSour
         
         switch (indexPath as NSIndexPath).row {
         case 0:
-            guard let cell = tableView.dequeueReusableCellWithCellIdentifier(.TodayExtensionCell, forIndexPath: indexPath) as? TodayExtensionTodayTableViewCell else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "TodayExtensionCell", for: indexPath) as? TodayExtensionTodayTableViewCell else {
                 fatalError("Wrong cell type")
             }
             cell.configureForObject(sharedData.todayScore)
@@ -71,21 +71,21 @@ extension TodayExtensionViewController: UITableViewDelegate, UITableViewDataSour
             cell.backgroundView = UILabel()
             return cell
         case 1:
-            let cell = tableView.dequeueReusableCellWithCellIdentifier(.TodayExtensionKeyValueExtensionCell, forIndexPath: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TodayExtensionKeyValueExtensionCell", for: indexPath)
             cell.textLabel?.text = localize("Total")
             cell.detailTextLabel?.text = "\(sharedData.total) " + localize("days")
             //For tap bug
             cell.backgroundView = UILabel()
             return cell
         case 2:
-            let cell = tableView.dequeueReusableCellWithCellIdentifier(.TodayExtensionKeyValueExtensionCell, forIndexPath: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TodayExtensionKeyValueExtensionCell", for: indexPath)
             cell.textLabel?.text = localize("Longest streak")
             cell.detailTextLabel?.text = "\(sharedData.longestStreak) " + localize("days")
             //For tap bug
             cell.backgroundView = UILabel()
             return cell
         case 3:
-            let cell = tableView.dequeueReusableCellWithCellIdentifier(.TodayExtensionKeyValueExtensionCell, forIndexPath: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TodayExtensionKeyValueExtensionCell", for: indexPath)
             cell.textLabel?.text = localize("Current streak")
             cell.detailTextLabel?.text = "\(sharedData.currentStreak) " + localize("days")
             //For tap bug

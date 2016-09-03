@@ -26,92 +26,68 @@ extension UserDefaults {
     }
 }
 
-//extension URL {
-//    
-//    static func temporaryURL() -> URL {
-//        
-//        do {
-//            return try FileManager.default().urlForDirectory(.cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appendingPathComponent(UUID().uuidString)
-//        } catch {
-//            fatalError()
-//        }
-//    }
-//    
-//    static var documentsURL: URL {
-//        do {
-//            return try FileManager.default().urlForDirectory(.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-//        } catch {
-//            fatalError()
-//        }
-//    }
-//}
-//
-//extension Date {
-//    public static func numberOfDaysFromDateTime(_ fromDateTime: Date, toDateTime: Date, inTimeZone timeZone: TimeZone? = nil) -> Int {
-//        let calendar = Calendar.current()
-//        if let timeZone = timeZone {
-//            calendar.timeZone = timeZone
-//        }
-//        
-//        var fromDate: NSDate?, toDate: NSDate?
-//        
-//        calendar.range(of: .day, start: &fromDate, interval: nil, for: fromDateTime)
-//        calendar.range(of: .day, start: &toDate, interval: nil, for: toDateTime)
-//        let difference = calendar.components(.day, from: fromDate! as Date, to: toDate! as Date)
-//        
-//        return difference.day!
-//    }
-//    
-//    public static func nextWeekDatesFromDate(_ date: Date) -> [Date] {
-//        return [Int](0..<7).map { i -> Date in
-//            var comp =  Calendar.current().components([.year, .month, .day, .weekday, .hour, .minute, .second], from: date)
-//            comp.day = comp.day! + i
-//            return Calendar.current().date(from: comp)!
-//        }
-//    }
-//    
-//    public static func previousWeekDatesFromDate(_ date: Date) -> [Date] {
-//        return [Int](1...7).map { i -> Date in
-//            var comp =  Calendar.current().components([.year, .month, .day, .weekday, .hour, .minute, .second], from: date)
-//            comp.day = comp.day! - 7 + i
-//            return Calendar.current().date(from: comp)!
-//        }
-//    }
-//    
-//    public static func nextMonthDatesFromDate(_ date: Date) -> [Date] {
-//        var comp = Calendar.current().components([.year, .month, .day, .weekday, .hour, .minute, .second], from: date)
-//        comp.month = comp.month! + 1
-//        
-//        guard let toDateTime = Calendar.current().date(from: comp) else {
-//            fatalError("Wrong components")
-//        }
-//        
-//        let numberOfDaysToNextMonth = Date.numberOfDaysFromDateTime(date, toDateTime: toDateTime)
-//        
-//        return [Int](0..<numberOfDaysToNextMonth).map { i -> Date in
-//            var comp =  Calendar.current().components([.year, .month, .day, .weekday, .hour, .minute, .second], from: date)
-//            comp.day = comp.day! + i
-//            return Calendar.current().date(from: comp)!
-//        }
-//    }
-//    
-//    public static func previousMonthDatesFromDate(_ date: Date) -> [Date] {
-//        var comp = Calendar.current().components([.year, .month, .day, .weekday, .hour, .minute, .second], from: date)
-//        comp.month = comp.month! - 1
-//        
-//        guard let fromDateTime = Calendar.current().date(from: comp) else {
-//            fatalError("Wrong components")
-//        }
-//        let numberOfDaysFromLastMonth = Date.numberOfDaysFromDateTime(fromDateTime, toDateTime: date)        
-//        
-//        return [Int](1...numberOfDaysFromLastMonth).map { i -> Date in
-//            var comp =  Calendar.current().components([.year, .month, .day, .weekday, .hour, .minute, .second], from: date)
-//            comp.day = comp.day! - numberOfDaysFromLastMonth + i
-//            return Calendar.current().date(from: comp)!
-//        }
-//    }
-//    
-//}
+
+extension Date {
+    public static func numberOfDaysFromDateTime(_ fromDateTime: Date, toDateTime: Date, inTimeZone timeZone: TimeZone? = nil) -> Int {
+        var calendar = Calendar.current
+        if let timeZone = timeZone {
+            calendar.timeZone = timeZone
+        }
+        
+        let difference = calendar.dateComponents([.day], from: fromDateTime, to: toDateTime)
+        return difference.day!
+    }
+    
+    public static func nextWeekDatesFromDate(_ date: Date) -> [Date] {
+        return [Int](0..<7).map { i -> Date in
+            var comp =  Calendar.current.dateComponents([.year, .month, .day, .weekday, .hour, .minute, .second], from: date)
+            comp.day = comp.day! + i
+            return Calendar.current.date(from: comp)!
+        }
+    }
+    
+    public static func previousWeekDatesFromDate(_ date: Date) -> [Date] {
+        return [Int](1...7).map { i -> Date in
+            var comp =  Calendar.current.dateComponents([.year, .month, .day, .weekday, .hour, .minute, .second], from: date)
+            comp.day = comp.day! - 7 + i
+            return Calendar.current.date(from: comp)!
+        }
+    }
+    
+    public static func nextMonthDatesFromDate(_ date: Date) -> [Date] {
+        var comp = Calendar.current.dateComponents([.year, .month, .day, .weekday, .hour, .minute, .second], from: date)
+        comp.month = comp.month! + 1
+        
+        guard let toDateTime = Calendar.current.date(from: comp) else {
+            fatalError("Wrong components")
+        }
+        
+        let numberOfDaysToNextMonth = Date.numberOfDaysFromDateTime(date, toDateTime: toDateTime)
+        
+        return [Int](0..<numberOfDaysToNextMonth).map { i -> Date in
+            var comp =  Calendar.current.dateComponents([.year, .month, .day, .weekday, .hour, .minute, .second], from: date)
+            comp.day = comp.day! + i
+            return Calendar.current.date(from: comp)!
+        }
+    }
+    
+    public static func previousMonthDatesFromDate(_ date: Date) -> [Date] {
+        var comp = Calendar.current.dateComponents([.year, .month, .day, .weekday, .hour, .minute, .second], from: date)
+        comp.month = comp.month! - 1
+        
+        guard let fromDateTime = Calendar.current.date(from: comp) else {
+            fatalError("Wrong components")
+        }
+        let numberOfDaysFromLastMonth = Date.numberOfDaysFromDateTime(fromDateTime, toDateTime: date)        
+        
+        return [Int](1...numberOfDaysFromLastMonth).map { i -> Date in
+            var comp =  Calendar.current.dateComponents([.year, .month, .day, .weekday, .hour, .minute, .second], from: date)
+            comp.day = comp.day! - numberOfDaysFromLastMonth + i
+            return Calendar.current.date(from: comp)!
+        }
+    }
+    
+}
 
 extension UIColor {
     public static func defaultTintColor() -> UIColor {

@@ -14,29 +14,24 @@ public final class Streak: NSManagedObject {
     @NSManaged public internal(set) var to: Date
     @NSManaged public internal(set) var streakNumber: Int64
     
+    @nonobjc class func fetchRequest() -> NSFetchRequest<Streak> {
+        return NSFetchRequest<Streak>(entityName: "Streak");
+    }
+    
+    public static var defaultSortDescriptors: [NSSortDescriptor] {
+        return [NSSortDescriptor(key: "to", ascending: false)]
+    }
+
+    
     public override func awakeFromInsert() {
         let date = Date()
         from = date
         to = date
-        //streakNumber = Int64(Date.numberOfDaysFromDateTime(from, toDateTime: to) + 1)
+        streakNumber = Int64(Date.numberOfDaysFromDateTime(from, toDateTime: to) + 1)
     }
     
     public override func willSave() {
         //update streakNumber depending on from and to
-        
-        //TODO:
-        //self.setPrimitiveValue(NSNumber(value: Date.numberOfDaysFromDateTime(from, toDateTime: to) + 1), forKey: "streakNumber")
+        self.setPrimitiveValue(NSNumber(value: Date.numberOfDaysFromDateTime(from, toDateTime: to) + 1), forKey: "streakNumber")
     }
 }
-
-//MARK: - ManagedObjectType
-//extension Streak: ManagedObjectType {
-//    
-//    public static var entityName: String {
-//        return "Streak"
-//    }
-//    
-//    public static var defaultSortDescriptors: [SortDescriptor] {
-//        return [SortDescriptor(key: "to", ascending: false)]
-//    }
-//}

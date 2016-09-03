@@ -18,9 +18,9 @@ final class ScoreInterfaceController: WKInterfaceController {
     @IBOutlet var scoreIcon: WKInterfaceImage!
     @IBOutlet var cautionLabel: WKInterfaceLabel!
     
-    private var session: WCSession!
+    fileprivate var session: WCSession!
     
-    private var todayScore: Int = 0 {
+    fileprivate var todayScore: Int = 0 {
         didSet {
             
             if todayScore == oldValue {
@@ -47,7 +47,7 @@ final class ScoreInterfaceController: WKInterfaceController {
         }
     }
     
-    override func awake(withContext context: AnyObject?) {
+    override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
         let color = Today.type(todayScore).color()
@@ -66,16 +66,15 @@ final class ScoreInterfaceController: WKInterfaceController {
         cautionLabel.setHidden(true)
         var watchData = WatchData()
         
-        if let updatedAt = watchData.updatedAt where Calendar.current().isDate(updatedAt, inSameDayAs: Date()) {
-            todayScore = watchData.score
+        if let updatedAt = watchData.updatedAt  {
+            if Calendar.current.isDate(updatedAt, inSameDayAs: Date()) {
+                todayScore = watchData.score
+            }
         }
         
         if session.isReachable {
             sendMessageToGetWatchData()
         }
-        
-        
-        
     }
     
     override func didDeactivate() {
@@ -88,12 +87,12 @@ final class ScoreInterfaceController: WKInterfaceController {
         let today = Date()
         
         guard let updatedAt = watchData.updatedAt else {
-            presentController(.AddTodayInterfaceController, context: self)
+            presentController(withName: "AddTodayInterfaceController", context: self)
             return
         }
         
-        if !Calendar.current().isDate(updatedAt, inSameDayAs: today) {
-            presentController(.AddTodayInterfaceController, context: self)
+        if !Calendar.current.isDate(updatedAt, inSameDayAs: today) {
+            presentController(withName: "AddTodayInterfaceController", context: self)
         } else {
             cautionLabel.setHidden(false)
             animate(withDuration: 0.5, animations: {
@@ -110,44 +109,43 @@ final class ScoreInterfaceController: WKInterfaceController {
             })
     }
     
-    private func sendMessageToGetWatchData() {
+    fileprivate func sendMessageToGetWatchData() {
         session.sendMessage([watchConnectivityActionTypeKey: WatchConnectivityActionType.GetWatchData.rawValue],
-            replyHandler: {
-                (content: [String: AnyObject]) -> Void in
-                
-                var watchData = WatchData()
-                
-                let score = content[WatchConnectivityContentType.TodayScore.rawValue] as? Int
-                let currentStreak = content[WatchConnectivityContentType.CurrentStreak.rawValue] as? Int
-                
-                switch (score, currentStreak) {
-                case (let .some(score), let .some(currentStreak)):
-                    watchData.score = score
-                    watchData.currentStreak = currentStreak
-                    watchData.updatedAt = Date()
-                case (let .some(score), nil):
-                    watchData.score = score
-                    watchData.currentStreak = 0
-                    watchData.updatedAt = nil
-                case (nil, let .some(currentStreak)):
-                    watchData.score = 0
-                    watchData.currentStreak = currentStreak
-                    watchData.updatedAt = nil
-                case (nil, nil):
-                    watchData.score = 0
-                    watchData.currentStreak = 0
-                    watchData.updatedAt = nil
-                }
-                self.todayScore = watchData.score
+                            replyHandler: { content in
+                                
+                                var watchData = WatchData()
+                                
+                                let score = content[WatchConnectivityContentType.TodayScore.rawValue] as? Int
+                                let currentStreak = content[WatchConnectivityContentType.CurrentStreak.rawValue] as? Int
+                                
+                                switch (score, currentStreak) {
+                                case (let .some(score), let .some(currentStreak)):
+                                    watchData.score = score
+                                    watchData.currentStreak = currentStreak
+                                    watchData.updatedAt = Date()
+                                case (let .some(score), nil):
+                                    watchData.score = score
+                                    watchData.currentStreak = 0
+                                    watchData.updatedAt = nil
+                                case (nil, let .some(currentStreak)):
+                                    watchData.score = 0
+                                    watchData.currentStreak = currentStreak
+                                    watchData.updatedAt = nil
+                                case (nil, nil):
+                                    watchData.score = 0
+                                    watchData.currentStreak = 0
+                                    watchData.updatedAt = nil
+                                }
+                                self.todayScore = watchData.score
             },
-            errorHandler: nil)
+                            errorHandler: nil)
     }
 }
 
 //MARK: - WCSessionDelegate
 extension ScoreInterfaceController: WCSessionDelegate {
     
-    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: NSError?) {
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         
     }
     

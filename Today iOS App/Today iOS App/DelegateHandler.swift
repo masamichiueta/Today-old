@@ -15,17 +15,6 @@ protocol DelegateHandler: class {
     func handleLaunch(_ appDelegate: AppDelegate)
 }
 
-final class FirstLaunchDelegateHandler: NSObject, DelegateHandler {
-    func handleLaunch(_ appDelegate: AppDelegate) {
-        
-        let startStoryboard = UIStoryboard.storyboard(.GetStarted)
-        guard let vc = startStoryboard.instantiateInitialViewController() else {
-            fatalError("InitialViewController not found")
-        }
-        
-        appDelegate.window?.rootViewController = vc
-    }
-}
 
 final class LaunchDelegateHandler: NSObject, DelegateHandler {
     

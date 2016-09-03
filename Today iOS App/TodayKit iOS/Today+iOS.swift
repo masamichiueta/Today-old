@@ -11,38 +11,53 @@ import CoreData
 extension Today {
     
     public static func created(_ moc: NSManagedObjectContext, forDate date: Date) -> Bool {
-        var comp = Calendar.current().components([.year, .month, .day], from: date)
-        guard let from = Calendar.current().date(from: comp) else {
-            fatalError("Wrong components")
+        
+        var component = Calendar.current.dateComponents([.year, .month, .day], from: date)
+        guard let from = Calendar.current.date(from: component) else {
+            fatalError()
         }
         
-        comp.day = comp.day! + 1
-        guard let to = Calendar.current().date(from: comp) else {
-            fatalError("Wrong components")
+        component.day = component.day! + 1
+        
+        guard let to = Calendar.current.date(from: component) else {
+            fatalError()
         }
         
-        let todays = Today.fetchInContext(moc, configurationBlock: { request in
-            request.sortDescriptors = Today.defaultSortDescriptors
-            request.predicate = Predicate(format: "date => %@ && date < %@", from, to)
-            request.fetchLimit = 1
-        })
-        if todays.count == 0 {
-            return false
+        let request: NSFetchRequest<Today> = Today.fetchRequest()
+        request.sortDescriptors = Today.defaultSortDescriptors
+        request.predicate = NSPredicate(format:"date => %@ && date < %@", from as CVarArg, to as CVarArg)
+        request.fetchLimit = 1
+        
+        do {
+            let searchResults = try moc.fetch(request)
+            
+            guard let _ = searchResults.first else {
+                return false
+            }
+            
+            return true
+            
+        } catch {
+            fatalError()
         }
-        return true
     }
     
     public static func todays(_ moc: NSManagedObjectContext, from: Date, to: Date) -> [Today] {
-        let todays = Today.fetchInContext(moc, configurationBlock: { request in
-            request.sortDescriptors = Today.defaultSortDescriptors
-            request.predicate = Predicate(format: "date => %@ && date <= %@", from, to)
-        })
         
-        return todays
+        let request: NSFetchRequest<Today> = Today.fetchRequest()
+        request.sortDescriptors = Today.defaultSortDescriptors
+        request.predicate = NSPredicate(format:"date => %@ && date < %@", from as CVarArg, to as CVarArg)
+        
+        do {
+            let searchResults = try moc.fetch(request)
+            return searchResults
+        } catch {
+            fatalError()
+        }
     }
     
     public static func insertIntoContext(_ moc: NSManagedObjectContext, score: Int64, date: Date) -> Today {
-        let today: Today = moc.insertObject()
+        let today = Today(context: moc)
         today.score = score
         today.date = date
         return today

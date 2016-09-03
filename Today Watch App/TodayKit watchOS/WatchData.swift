@@ -10,7 +10,7 @@ import Foundation
 
 public struct WatchData {
     
-    private let defaults = UserDefaults.standard()
+    private let defaults = UserDefaults.standard
     
     //MARK: - Keys
     public enum WatchDataKey: String {

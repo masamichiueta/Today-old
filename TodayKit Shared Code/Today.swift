@@ -15,6 +15,14 @@ public final class Today: NSManagedObject {
     @NSManaged public internal(set) var date: Date
     @NSManaged public internal(set) var score: Int64
     
+    @nonobjc class func fetchRequest() -> NSFetchRequest<Today> {
+        return NSFetchRequest<Today>(entityName: "Today");
+    }
+    
+    public static var defaultSortDescriptors: [NSSortDescriptor] {
+        return [NSSortDescriptor(key: "date", ascending: false)]
+    }
+    
     public var type: TodayType {
         return Today.type(Int(score))
     }
@@ -38,7 +46,7 @@ public final class Today: NSManagedObject {
     }
     
     public static func average(_ moc: NSManagedObjectContext) -> Int {
-        let request = NSFetchRequest<Today>(entityName: Today.entityName)
+        let request: NSFetchRequest<Today> = Today.fetchRequest()
         request.resultType = .dictionaryResultType
         
         let keyPathExpression = NSExpression(forKeyPath: "score")
@@ -80,17 +88,6 @@ public final class Today: NSManagedObject {
         }
     }
 }
-
-////MARK: - ManagedObjectType
-//extension Today: ManagedObjectType {
-//    public static var entityName: String {
-//        return "Today"
-//    }
-//    
-//    public static var defaultSortDescriptors: [SortDescriptor] {
-//        return [SortDescriptor(key: "date", ascending: false)]
-//    }
-//}
 
 //MARK: - TodayType
 private let goodIconImageName = "good_face_icon_"

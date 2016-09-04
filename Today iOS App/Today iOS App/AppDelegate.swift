@@ -65,7 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 return true
             }
             
-            if host == AppGroupURLHost.AddToday.rawValue {
+            if host == AppGroupURLHost.addToday.rawValue {
                 let tabBarController = window?.rootViewController as? UITabBarController
                 let navBarController = tabBarController?.childViewControllers.first as? UINavigationController
                 let todaysViewController = navBarController?.childViewControllers.first as? TodaysViewController

@@ -11,14 +11,14 @@ import Foundation
 public let watchConnectivityActionTypeKey = "WatchConnectivityActionType"
 
 public enum WatchConnectivityActionType: String {
-    case AddToday
-    case GetWatchData
+    case addToday
+    case getWatchData
 }
 
 public enum WatchConnectivityContentType: String {
-    case AddedScore
-    case AddedDate
-    case TodayScore
-    case CurrentStreak
-    case Finished
+    case addedScore
+    case addedDate
+    case todayScore
+    case currentStreak
+    case finished
 }

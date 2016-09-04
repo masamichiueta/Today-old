@@ -33,7 +33,7 @@ extension AverageTotalTableViewCell: ConfigurableCell {
         scoreCircleView.score = average
         scoreLabel.text = "\(average)"
         scoreLabel.textColor = Today.type(average).color()
-        iconImageView.image = Today.type(average).icon(.Fourty)
+        iconImageView.image = Today.type(average).icon(.fourty)
         iconImageView.tintColor = Today.type(average).color()
         totalLabel.text = "\(total)"
     }

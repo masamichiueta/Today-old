@@ -35,7 +35,7 @@ final class TodayExtensionViewController: UIViewController, NCWidgetProviding {
     }
     
     @IBAction func addToday(_ sender: AnyObject) {
-        guard let url = URL(string: appGroupURLScheme + "://" + AppGroupURLHost.AddToday.rawValue) else {
+        guard let url = URL(string: appGroupURLScheme + "://" + AppGroupURLHost.addToday.rawValue) else {
             return
         }
         extensionContext?.open(url, completionHandler: nil)

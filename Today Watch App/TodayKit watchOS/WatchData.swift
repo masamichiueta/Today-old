@@ -14,33 +14,33 @@ public struct WatchData {
     
     //MARK: - Keys
     public enum WatchDataKey: String {
-        case Score
-        case CurrentStreak
-        case UpdatedAt
+        case score
+        case currentStreak
+        case updatedAt
     }
     
     public var score: Int {
         didSet {
-            defaults.set(score, forKey: WatchDataKey.Score.rawValue)
+            defaults.set(score, forKey: WatchDataKey.score.rawValue)
         }
     }
     
     public var currentStreak: Int {
         didSet {
-            defaults.set(currentStreak, forKey: WatchDataKey.CurrentStreak.rawValue)
+            defaults.set(currentStreak, forKey: WatchDataKey.currentStreak.rawValue)
         }
     }
     
     public var updatedAt: Date? {
         didSet {
-            defaults.set(updatedAt, forKey: WatchDataKey.UpdatedAt.rawValue)
+            defaults.set(updatedAt, forKey: WatchDataKey.updatedAt.rawValue)
         }
     }
     
     public init() {
-        score = defaults.integer(forKey: WatchDataKey.Score.rawValue)
-        currentStreak = defaults.integer(forKey: WatchDataKey.CurrentStreak.rawValue)
-        guard let savedUpdatedAt = defaults.object(forKey: WatchDataKey.UpdatedAt.rawValue) as? Date else {
+        score = defaults.integer(forKey: WatchDataKey.score.rawValue)
+        currentStreak = defaults.integer(forKey: WatchDataKey.currentStreak.rawValue)
+        guard let savedUpdatedAt = defaults.object(forKey: WatchDataKey.updatedAt.rawValue) as? Date else {
             return
         }
         updatedAt = savedUpdatedAt

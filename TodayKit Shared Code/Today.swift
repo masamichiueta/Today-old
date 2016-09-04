@@ -61,15 +61,15 @@ public final class Today: NSManagedObject {
         
         switch score {
         case 0...step:
-            return .Poor
+            return .poor
         case (step + 1)...(step * 2):
-            return .Fair
+            return .fair
         case (step * 2 + 1)...(step * 3):
-            return .Average
+            return .average
         case (step * 3 + 1)...(step * 4):
-            return .Good
+            return .good
         default:
-            return .Excellent
+            return .excellent
         }
     }
 }
@@ -80,30 +80,30 @@ private let averageIconImageName = "average_face_icon_"
 private let poorIconImageName = "poor_face_icon_"
 
 public enum TodayIconSize: String {
-    case TwentyEight = "28"
-    case Fourty = "40"
+    case twentyEight = "28"
+    case fourty = "40"
 }
 
 public enum TodayType: String {
-    case Excellent
-    case Good
-    case Average
-    case Fair
-    case Poor
+    case excellent
+    case good
+    case average
+    case fair
+    case poor
     
     static let count = 5
     
     public func color() -> UIColor {
         switch self {
-        case .Excellent:
+        case .excellent:
             return UIColor.todayRedColor()
-        case .Good:
+        case .good:
             return UIColor.todayOrangeColor()
-        case .Average:
+        case .average:
             return UIColor.todayYellowColor()
-        case .Fair:
+        case .fair:
             return UIColor.todayGreenColor()
-        case .Poor:
+        case .poor:
             return UIColor.todayBlueColor()
         }
     }
@@ -112,27 +112,27 @@ public enum TodayType: String {
         let locations: [CGFloat] = [0.0, 1.0]
         let colors: [CGColor]
         switch self {
-        case .Excellent:
+        case .excellent:
             colors = [
                 UIColor.todayGradientRedStartColor().cgColor,
                 UIColor.todayGradientRedEndColor().cgColor
             ]
-        case .Good:
+        case .good:
             colors = [
                 UIColor.todayGradientOrangeStartColor().cgColor,
                 UIColor.todayGradientOrangeEndColor().cgColor
             ]
-        case .Average:
+        case .average:
             colors = [
                 UIColor.todayGradientYellowStartColor().cgColor,
                 UIColor.todayGradientYellowEndColor().cgColor
             ]
-        case .Fair:
+        case .fair:
             colors = [
                 UIColor.todayGradientGreenStartColor().cgColor,
                 UIColor.todayGradientGreenEndColor().cgColor
             ]
-        case .Poor:
+        case .poor:
             colors = [
                 UIColor.todayGradientBlueStartColor().cgColor,
                 UIColor.todayGradientBlueEndColor().cgColor
@@ -143,17 +143,17 @@ public enum TodayType: String {
     
     public func icon(_ size: TodayIconSize) -> UIImage {
         switch self {
-        case .Excellent, .Good:
+        case .excellent, .good:
             guard let image = UIImage(named: goodIconImageName + size.rawValue) else {
                 fatalError("Wrong image name for good")
             }
             return image.withRenderingMode(.alwaysTemplate)
-        case .Average, .Fair:
+        case .average, .fair:
             guard let image = UIImage(named: averageIconImageName + size.rawValue) else {
                 fatalError("Wrong image name for average")
             }
             return image.withRenderingMode(.alwaysTemplate)
-        case .Poor:
+        case .poor:
             guard let image = UIImage(named: poorIconImageName + size.rawValue) else {
                 fatalError("Wrong image name for poor")
             }
@@ -163,11 +163,11 @@ public enum TodayType: String {
     
     public func iconName(_ size: TodayIconSize) -> String {
         switch self {
-        case .Excellent, .Good:
+        case .excellent, .good:
             return goodIconImageName + size.rawValue
-        case .Average, .Fair:
+        case .average, .fair:
             return averageIconImageName + size.rawValue
-        case .Poor:
+        case .poor:
             return poorIconImageName + size.rawValue
         }
     }

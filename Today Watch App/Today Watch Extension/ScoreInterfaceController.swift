@@ -41,7 +41,7 @@ final class ScoreInterfaceController: WKInterfaceController {
             let color = Today.type(todayScore).color()
             scoreLabel.setText("\(todayScore)")
             scoreLabel.setTextColor(color)
-            scoreIcon.setImageNamed(Today.type(todayScore).iconName(.TwentyEight))
+            scoreIcon.setImageNamed(Today.type(todayScore).iconName(.twentyEight))
             scoreIcon.setTintColor(color)
             
         }
@@ -110,13 +110,13 @@ final class ScoreInterfaceController: WKInterfaceController {
     }
     
     fileprivate func sendMessageToGetWatchData() {
-        session.sendMessage([watchConnectivityActionTypeKey: WatchConnectivityActionType.GetWatchData.rawValue],
+        session.sendMessage([watchConnectivityActionTypeKey: WatchConnectivityActionType.getWatchData.rawValue],
                             replyHandler: { content in
                                 
                                 var watchData = WatchData()
                                 
-                                let score = content[WatchConnectivityContentType.TodayScore.rawValue] as? Int
-                                let currentStreak = content[WatchConnectivityContentType.CurrentStreak.rawValue] as? Int
+                                let score = content[WatchConnectivityContentType.todayScore.rawValue] as? Int
+                                let currentStreak = content[WatchConnectivityContentType.currentStreak.rawValue] as? Int
                                 
                                 switch (score, currentStreak) {
                                 case (let .some(score), let .some(currentStreak)):

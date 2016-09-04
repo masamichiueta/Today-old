@@ -66,9 +66,9 @@ final class AddTodayInterfaceController: WKInterfaceController {
         if session.isReachable {
             let now = Date()
             
-            session.sendMessage([watchConnectivityActionTypeKey: WatchConnectivityActionType.AddToday.rawValue,
-                                 WatchConnectivityContentType.AddedScore.rawValue: score,
-                                 WatchConnectivityContentType.AddedDate.rawValue: now]
+            session.sendMessage([watchConnectivityActionTypeKey: WatchConnectivityActionType.addToday.rawValue,
+                                 WatchConnectivityContentType.addedScore.rawValue: score,
+                                 WatchConnectivityContentType.addedDate.rawValue: now]
                 , replyHandler: { content in
                     
                     var watchData = WatchData()

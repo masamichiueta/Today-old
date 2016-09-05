@@ -13,7 +13,6 @@ final class AddTodayViewController: UIViewController {
     
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var scoreCircleView: ScoreCircleView!
-    @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
     
     var score: Int =  Today.maxMasterScore {
@@ -22,16 +21,11 @@ final class AddTodayViewController: UIViewController {
             let animation = CATransition()
             animation.type = kCATransitionFade
             animation.duration = scoreCircleView.animationDuration
-            scoreLabel.layer.add(animation, forKey: nil)
-            self.scoreLabel.text = "\(self.score)"
-            let toStrokeColor = Today.type(score).color()
-            scoreLabel.textColor = toStrokeColor
-            iconImageView.tintColor = toStrokeColor
             UIView.transition(with: iconImageView,
                 duration: scoreCircleView.animationDuration,
                 options: UIViewAnimationOptions.transitionCrossDissolve,
                 animations: { [unowned self] in
-                    self.iconImageView.image = Today.type(self.score).icon(.fourty)
+                    self.iconImageView.image = Today.type(self.score).icon(.hundred)
                     self.view.layoutIfNeeded()
                 },
                 completion: { finished in
@@ -44,14 +38,11 @@ final class AddTodayViewController: UIViewController {
     fileprivate let device = Device()
     fileprivate let thinProgressBorderWidth: CGFloat = 5.0
     fileprivate let defaultProgressBorderWidth: CGFloat = 10.0
-    fileprivate let smallScoreFont = UIFont.systemFont(ofSize: 50, weight: UIFontWeightThin)
-    fileprivate let defaultScoreFont = UIFont.systemFont(ofSize: 100, weight: UIFontWeightThin)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupProgressBorderWidth()
-        scoreLabel.textColor = scoreCircleView.progressCircleColor
-        iconImageView.image = Today.type(score).icon(.fourty)
+        iconImageView.image = Today.type(score).icon(.hundred)
         iconImageView.tintColor = scoreCircleView.progressCircleColor
     }
     
@@ -64,10 +55,8 @@ final class AddTodayViewController: UIViewController {
         
         if traitCollection.containsTraits(in: compactHeightCollection) || device.isOneOf(thinProgressBorderGroup) {
             scoreCircleView.progressBorderWidth = thinProgressBorderWidth
-            scoreLabel.font = smallScoreFont
         } else {
             scoreCircleView.progressBorderWidth = defaultProgressBorderWidth
-            scoreLabel.font = defaultScoreFont
         }
     }
     
@@ -75,7 +64,6 @@ final class AddTodayViewController: UIViewController {
         let compactHeightCollection = UITraitCollection(verticalSizeClass: .compact)
         if traitCollection.containsTraits(in: compactHeightCollection) || device.isOneOf(thinProgressBorderGroup) {
             scoreCircleView.progressBorderWidth = thinProgressBorderWidth
-            scoreLabel.font = defaultScoreFont
         }
     }
 }

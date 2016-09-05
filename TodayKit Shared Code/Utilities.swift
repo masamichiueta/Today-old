@@ -12,12 +12,6 @@ public func localize(_ key: String) -> String {
     return NSLocalizedString(key, comment: "")
 }
 
-extension CGPoint {
-    public static func distanceBetween(_ p1: CGPoint, p2: CGPoint) -> CGFloat {
-        return sqrt(pow((p1.x - p2.x), 2) + pow((p1.y - p2.y), 2))
-    }
-}
-
 extension UserDefaults {
     public func clean() {
         for key in self.dictionaryRepresentation().keys {

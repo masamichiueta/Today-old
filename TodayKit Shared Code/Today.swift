@@ -75,13 +75,15 @@ public final class Today: NSManagedObject {
 }
 
 //MARK: - TodayType
+private let excellentIconImageName = "excellent_face_icon_"
 private let goodIconImageName = "good_face_icon_"
 private let averageIconImageName = "average_face_icon_"
+private let fairIconImageName = "fair_face_icon_"
 private let poorIconImageName = "poor_face_icon_"
 
 public enum TodayIconSize: String {
     case twentyEight = "28"
-    case fourty = "40"
+    case hundred = "100"
 }
 
 public enum TodayType: String {
@@ -143,30 +145,44 @@ public enum TodayType: String {
     
     public func icon(_ size: TodayIconSize) -> UIImage {
         switch self {
-        case .excellent, .good:
+        case .excellent:
+            guard let image = UIImage(named: excellentIconImageName + size.rawValue) else {
+                fatalError("Wrong image name for good")
+            }
+            return image
+        case .good:
             guard let image = UIImage(named: goodIconImageName + size.rawValue) else {
                 fatalError("Wrong image name for good")
             }
-            return image.withRenderingMode(.alwaysTemplate)
-        case .average, .fair:
+            return image
+        case .average:
             guard let image = UIImage(named: averageIconImageName + size.rawValue) else {
+                fatalError("Wrong image name for good")
+            }
+            return image
+        case .fair:
+            guard let image = UIImage(named: fairIconImageName + size.rawValue) else {
                 fatalError("Wrong image name for average")
             }
-            return image.withRenderingMode(.alwaysTemplate)
+            return image
         case .poor:
             guard let image = UIImage(named: poorIconImageName + size.rawValue) else {
                 fatalError("Wrong image name for poor")
             }
-            return image.withRenderingMode(.alwaysTemplate)
+            return image
         }
     }
     
     public func iconName(_ size: TodayIconSize) -> String {
         switch self {
-        case .excellent, .good:
+        case .excellent:
+            return excellentIconImageName + size.rawValue
+        case .good:
             return goodIconImageName + size.rawValue
-        case .average, .fair:
+        case .average:
             return averageIconImageName + size.rawValue
+        case .fair:
+            return fairIconImageName + size.rawValue
         case .poor:
             return poorIconImageName + size.rawValue
         }

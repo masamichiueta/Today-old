@@ -19,7 +19,7 @@ class StreakTableViewCell: UITableViewCell {
     
     fileprivate let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateStyle = .medium
+        formatter.dateStyle = .short
         formatter.timeStyle = .none
         return formatter
     }()
@@ -36,10 +36,9 @@ class StreakTableViewCell: UITableViewCell {
 
 //MARK: - ConfigurableCell 
 extension StreakTableViewCell: ConfigurableCell {
-    func configureForObject(_ longestAndCurrentStreaks: (Streak?, Streak?)) {
-        let (longestStreak, currentStreak) = longestAndCurrentStreaks
+    func configureForObject(_ dataSource: (longestStreak: Streak?, currentStreak: Streak?)) {
         
-        if let longestStreak = longestStreak {
+        if let longestStreak = dataSource.longestStreak {
             longestStreakLabel.text = "\(Int(longestStreak.streakNumber))"
             longestStreakDateLabel.text = "\(dateFormatter.string(from: longestStreak.from)) - \(dateFormatter.string(from: longestStreak.to))"
         } else {
@@ -47,7 +46,7 @@ extension StreakTableViewCell: ConfigurableCell {
             longestStreakDateLabel.text = ""
         }
         
-        if let currentStreak = currentStreak {
+        if let currentStreak = dataSource.currentStreak {
             currentStreakLabel.text = "\(Int(currentStreak.streakNumber))"
             currentStreakDateLabel.text = "\(dateFormatter.string(from: currentStreak.from)) - \(dateFormatter.string(from: currentStreak.to))"
         } else {

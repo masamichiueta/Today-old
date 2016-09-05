@@ -46,7 +46,7 @@ final class ActivityTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 2
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -56,21 +56,20 @@ final class ActivityTableViewController: UITableViewController {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ActivityChartCell", for: indexPath) as? ChartTableViewCell else {
                 fatalError("Wrong cell type")
             }
-            cell.configureForObject(NSObject())
+
+            let now = Date()
+            var component = Calendar.current.dateComponents([.year, .month, .day], from: now)
+            component.year = component.year! - 1
+            let yearAgo = Calendar.current.date(from: component)!
+            
+            cell.configureForObject((todays: Today.todays(moc, from: yearAgo, to: now), from: yearAgo, to: now))
+            
             return cell
         case 1:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ActivityAverageTotalCell", for: indexPath) as? AverageTotalTableViewCell else {
-                fatalError("Wrong cell type")
-            }
-            let average = 2
-            let total = Today.count(moc)
-            cell.configureForObject((average, total))
-            return cell
-        case 2:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ActivityStreakCell", for: indexPath) as? StreakTableViewCell else {
                 fatalError("Wrong cell type")
             }
-            cell.configureForObject((Streak.longestStreak(moc), Streak.currentStreak(moc)))
+            cell.configureForObject((longestStreak: Streak.longestStreak(moc), currentStreak: Streak.currentStreak(moc)))
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)

@@ -66,10 +66,8 @@ final class ScoreInterfaceController: WKInterfaceController {
         cautionLabel.setHidden(true)
         var watchData = WatchData()
         
-        if let updatedAt = watchData.updatedAt  {
-            if Calendar.current.isDate(updatedAt, inSameDayAs: Date()) {
-                todayScore = watchData.score
-            }
+        if let updatedAt = watchData.updatedAt, Calendar.current.isDate(updatedAt, inSameDayAs: Date())  {
+            todayScore = watchData.score
         }
         
         if session.isReachable {

@@ -119,10 +119,6 @@ extension TodaysViewController: RSDFDatePickerViewDelegate, RSDFDatePickerViewDa
         return today?.count == 0 ? false : true
     }
     
-    func datePickerView(_ view: RSDFDatePickerView, markImageColorFor date: Date) -> UIColor {
-        return UIColor.todayBlueColor()
-    }
-    
     func datePickerView(_ view: RSDFDatePickerView, markImageFor date: Date) -> UIImage? {
         
         let today = self.frc.fetchedObjects?.filter { today in

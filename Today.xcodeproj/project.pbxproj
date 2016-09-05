@@ -58,7 +58,6 @@
 		24D23ECA1D79AF1A00C6E4AC /* RSDFDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 24D23EC31D79AF1A00C6E4AC /* RSDFDatePickerView.m */; };
 		24D23ECF1D79AF5800C6E4AC /* ScrollableGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D23ECE1D79AF5800C6E4AC /* ScrollableGraphView.swift */; };
 		24D23F0F1D79B14900C6E4AC /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D23F0D1D79B13700C6E4AC /* Device.swift */; };
-		24D67C851C3EB54600A33DB7 /* AverageTotalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D67C841C3EB54600A33DB7 /* AverageTotalTableViewCell.swift */; };
 		24D82C2F1C5A5D880095FA47 /* ChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D82C2E1C5A5D880095FA47 /* ChartTableViewCell.swift */; };
 		24D8E3DC1C54FC4F005BA35B /* TodayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24C6C1A51C54F9970041C31F /* TodayKit.framework */; };
 		24D8E3DD1C54FC4F005BA35B /* TodayKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24C6C1A51C54F9970041C31F /* TodayKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -276,7 +275,6 @@
 		24D23ECE1D79AF5800C6E4AC /* ScrollableGraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollableGraphView.swift; sourceTree = "<group>"; };
 		24D23F0D1D79B13700C6E4AC /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		24D4E3461C43E1D900F6DA6A /* Setting.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Setting.plist; sourceTree = "<group>"; };
-		24D67C841C3EB54600A33DB7 /* AverageTotalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AverageTotalTableViewCell.swift; sourceTree = "<group>"; };
 		24D82C2E1C5A5D880095FA47 /* ChartTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartTableViewCell.swift; sourceTree = "<group>"; };
 		24DBB5901C2C367100E1C042 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		24E538D81C49E22900B781D8 /* Streak.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Streak.swift; sourceTree = "<group>"; };
@@ -455,7 +453,6 @@
 			isa = PBXGroup;
 			children = (
 				2466884D1C1DB45E00C5E5A0 /* Activity.storyboard */,
-				24D67C841C3EB54600A33DB7 /* AverageTotalTableViewCell.swift */,
 				24D82C2E1C5A5D880095FA47 /* ChartTableViewCell.swift */,
 				24030AEF1C1C821C004E68ED /* LaunchScreen.storyboard */,
 				24030AE71C1C821C004E68ED /* Main.storyboard */,
@@ -1031,7 +1028,6 @@
 				24444A5E1C30A02A00DC1579 /* AddTodayViewController.swift in Sources */,
 				2425BBA91C5E3A0E008AD9A4 /* StreakTableViewCell.swift in Sources */,
 				24D23EC81D79AF1A00C6E4AC /* RSDFDatePickerDaysOfWeekView.m in Sources */,
-				24D67C851C3EB54600A33DB7 /* AverageTotalTableViewCell.swift in Sources */,
 				24D23ECF1D79AF5800C6E4AC /* ScrollableGraphView.swift in Sources */,
 				24D82C2F1C5A5D880095FA47 /* ChartTableViewCell.swift in Sources */,
 				243095871D7B123F009343BE /* TodaysViewController.swift in Sources */,

@@ -55,7 +55,7 @@ extension Today {
             fatalError()
         }
     }
-    
+  
     public static func insertIntoContext(_ moc: NSManagedObjectContext, score: Int64, date: Date) -> Today {
         let today = Today(context: moc)
         today.score = score

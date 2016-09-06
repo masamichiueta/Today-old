@@ -98,15 +98,15 @@ public enum TodayType: String {
     public func color() -> UIColor {
         switch self {
         case .excellent:
-            return UIColor.todayRedColor()
+            return UIColor.applicationColor(type: .red)
         case .good:
-            return UIColor.todayOrangeColor()
+            return UIColor.applicationColor(type: .orange)
         case .average:
-            return UIColor.todayYellowColor()
+            return UIColor.applicationColor(type: .yellow)
         case .fair:
-            return UIColor.todayGreenColor()
+            return UIColor.applicationColor(type: .green)
         case .poor:
-            return UIColor.todayBlueColor()
+            return UIColor.applicationColor(type: .blue)
         }
     }
     
@@ -116,28 +116,28 @@ public enum TodayType: String {
         switch self {
         case .excellent:
             colors = [
-                UIColor.todayGradientRedStartColor().cgColor,
-                UIColor.todayGradientRedEndColor().cgColor
+                UIColor.applicationColor(type: .gradientRedStart).cgColor,
+                UIColor.applicationColor(type: .gradientRedEnd).cgColor
             ]
         case .good:
             colors = [
-                UIColor.todayGradientOrangeStartColor().cgColor,
-                UIColor.todayGradientOrangeEndColor().cgColor
+                UIColor.applicationColor(type: .gradientOrangeStart).cgColor,
+                UIColor.applicationColor(type: .gradientOrangeEnd).cgColor
             ]
         case .average:
             colors = [
-                UIColor.todayGradientYellowStartColor().cgColor,
-                UIColor.todayGradientYellowEndColor().cgColor
+                UIColor.applicationColor(type: .gradientYellowStart).cgColor,
+                UIColor.applicationColor(type: .gradientYellowEnd).cgColor
             ]
         case .fair:
             colors = [
-                UIColor.todayGradientGreenStartColor().cgColor,
-                UIColor.todayGradientGreenEndColor().cgColor
+                UIColor.applicationColor(type: .gradientGreenStart).cgColor,
+                UIColor.applicationColor(type: .gradientGreenEnd).cgColor
             ]
         case .poor:
             colors = [
-                UIColor.todayGradientBlueStartColor().cgColor,
-                UIColor.todayGradientBlueEndColor().cgColor
+                UIColor.applicationColor(type: .gradientBlueStart).cgColor,
+                UIColor.applicationColor(type: .gradientBlueEnd).cgColor
             ]
         }
         return CGGradient(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: colors as CFArray, locations: locations)!

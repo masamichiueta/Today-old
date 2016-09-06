@@ -22,11 +22,6 @@ final class SettingTableViewController: UITableViewController {
     
     fileprivate var pickerHidden: Bool = true
     
-    fileprivate var defaultDetailTextColor: UIColor? {
-        let sampleCell = UITableViewCell(style: UITableViewCellStyle.value1, reuseIdentifier: "sample")
-        return sampleCell.detailTextLabel?.textColor
-    }
-    
     fileprivate let reviewUrl = "itms-apps://itunes.apple.com/app/id1090660820"
     
     override func viewDidLoad() {
@@ -127,7 +122,7 @@ final class SettingTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SettingCell", for: indexPath)
             cell.textLabel?.text = localize("Notification Time")
             cell.detailTextLabel?.text = dateFormatter.string(from: setting.notificationTime)
-            cell.detailTextLabel?.textColor = pickerHidden ? defaultDetailTextColor : tableView.tintColor
+            cell.detailTextLabel?.textColor = pickerHidden ? UIColor.applicationColor(type: .darkDetailText) : tableView.tintColor
             return cell
         case ((pickerIndexPath as IndexPath).section, (pickerIndexPath as IndexPath).row): //(0, 2)
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "SettingPickerCell", for: indexPath) as? PickerTableViewCell else {
@@ -137,9 +132,8 @@ final class SettingTableViewController: UITableViewController {
             cell.delegate = self
             return cell
         case (1, 0):
-            let cell = UITableViewCell(style: .value1, reuseIdentifier: "cell")
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
             cell.textLabel?.text = localize("Rate Today")
-            cell.accessoryType = .disclosureIndicator
             return cell
         default:
             break
@@ -156,7 +150,7 @@ final class SettingTableViewController: UITableViewController {
             pickerHidden = !pickerHidden
             
             let cell = tableView.cellForRow(at: indexPath)
-            cell?.detailTextLabel?.textColor = pickerHidden ? defaultDetailTextColor : tableView.tintColor
+            cell?.detailTextLabel?.textColor = pickerHidden ? UIColor.applicationColor(type: .darkDetailText) : tableView.tintColor
             
             togglePickerCell(pickerHidden)
         case (1, 0):

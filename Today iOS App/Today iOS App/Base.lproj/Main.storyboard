@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11198.2" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="jGq-gi-jUG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11198.2" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="jGq-gi-jUG">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -10,7 +10,7 @@
         <scene sceneID="MUH-Er-D0r">
             <objects>
                 <tabBarController id="jGq-gi-jUG" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="KGt-MJ-tSW">
+                    <tabBar key="tabBar" contentMode="scaleToFill" barStyle="black" id="KGt-MJ-tSW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -28,7 +28,7 @@
         <scene sceneID="FjR-jD-SGb">
             <objects>
                 <viewControllerPlaceholder storyboardName="Activity" id="RMO-4r-U4T" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="sBL-TV-J12"/>
+                    <tabBarItem key="tabBarItem" title="Activity" image="activity_outline" selectedImage="activity_fill" id="sBL-TV-J12"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hj0-Es-u2R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -38,11 +38,17 @@
         <scene sceneID="nQn-f5-XpW">
             <objects>
                 <viewControllerPlaceholder storyboardName="Today" id="B6i-nc-eqw" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="rBk-tg-ruC"/>
+                    <tabBarItem key="tabBarItem" title="Todays" image="today_outline" selectedImage="today_fill" id="rBk-tg-ruC"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="boI-iY-Qxt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="526" y="-968"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="activity_fill" width="32" height="32"/>
+        <image name="activity_outline" width="32" height="32"/>
+        <image name="today_fill" width="30" height="30"/>
+        <image name="today_outline" width="30" height="30"/>
+    </resources>
 </document>

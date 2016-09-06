@@ -36,9 +36,6 @@ class TodaysViewController: UIViewController {
         } catch {
             fatalError()
         }
-    
-        print(self.frc.fetchedObjects?.count)
-        
     }
     
     override func didReceiveMemoryWarning() {

@@ -28,7 +28,7 @@ extension ChartTableViewCell: ConfigurableCell {
     func configureForObject(_ dataSource: (data: [Double], labels: [String])) {
         
         self.graphView.setData(dataSource.data, withLabels: dataSource.labels)
-        
+        self.graphView.contentOffset = CGPoint(x: self.graphView.contentSize.width - self.graphView.bounds.width, y: 0)
     }
     
 }

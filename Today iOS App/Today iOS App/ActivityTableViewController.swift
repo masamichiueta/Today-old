@@ -62,7 +62,29 @@ final class ActivityTableViewController: UITableViewController {
             component.year = component.year! - 1
             let yearAgo = Calendar.current.date(from: component)!
             
-            cell.configureForObject((todays: Today.todays(moc, from: yearAgo, to: now), from: yearAgo, to: now))
+            let todays = Today.todays(moc, from: yearAgo, to: now)
+            
+            var labels: [String] = []
+            var data: [Double] = []
+            var start = yearAgo
+            let formatter = DateFormatter()
+            formatter.dateFormat = "MMM d"
+            
+            while start.compare(now) != .orderedDescending {
+                
+                let today = todays.filter { Calendar.current.isDate($0.date, inSameDayAs: start) }
+                if today.count == 0 {
+                    data.append(0)
+                } else {
+                    data.append(Double(today[0].score))
+                }
+                
+                labels.append(formatter.string(from: start))
+                start = Calendar.current.date(byAdding: .day, value: 1, to: start)!
+            }
+            
+            
+            cell.configureForObject((data: data, labels: labels))
             
             return cell
         case 1:
@@ -76,4 +98,5 @@ final class ActivityTableViewController: UITableViewController {
             return cell
         }
     }
+    
 }

@@ -91,8 +91,4 @@ public struct Setting {
         
         Setting.defaults.register(defaults: defaultSettingDic)
     }
-    
-    public static func clean() {
-        Setting.defaults.clean()
-    }
 }

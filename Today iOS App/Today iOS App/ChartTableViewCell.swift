@@ -25,22 +25,10 @@ class ChartTableViewCell: UITableViewCell {
 
 //MARK: - ConfigurableCell
 extension ChartTableViewCell: ConfigurableCell {
-    func configureForObject(_ dataSource: (todays: [Today], from: Date, to: Date)) {
+    func configureForObject(_ dataSource: (data: [Double], labels: [String])) {
         
+        self.graphView.setData(dataSource.data, withLabels: dataSource.labels)
         
     }
     
-    func generateSequentialLabels(from: Date, to: Date) -> [String] {
-        var labels: [String] = []
-        var start = from
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MMM d"
-        
-        while start.compare(to) != .orderedDescending {
-            labels.append(formatter.string(from: from))
-            start = Calendar.current.date(byAdding: .day, value: 1, to: to)!
-        }
-        
-        return labels
-    }
 }

@@ -129,6 +129,7 @@ final class SettingTableViewController: UITableViewController {
                 fatalError("Wrong cell type")
             }
             cell.datePicker.date = setting.notificationTime
+            cell.datePicker.setValue(UIColor.white, forKey: "textColor")
             cell.delegate = self
             return cell
         case (1, 0):

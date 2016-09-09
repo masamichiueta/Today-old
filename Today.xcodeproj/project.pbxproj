@@ -39,7 +39,6 @@
 		24A488031C5505AF0015DB05 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DBB5901C2C367100E1C042 /* Utilities.swift */; };
 		24B744E81C873528000E0FFC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 24B744EA1C873528000E0FFC /* Localizable.strings */; };
 		24B744EF1C873882000E0FFC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 24B744F11C873882000E0FFC /* Localizable.strings */; };
-		24C6AE971C2831660048C4D1 /* TodayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C6AE961C2831660048C4D1 /* TodayTableViewCell.swift */; };
 		24C6C1AF1C54F9970041C31F /* TodayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24C6C1A51C54F9970041C31F /* TodayKit.framework */; };
 		24C6C1C21C54F9DB0041C31F /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FE71321C4245D400A14B9D /* Setting.swift */; };
 		24C6C1C41C54F9F60041C31F /* Streak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E538D81C49E22900B781D8 /* Streak.swift */; };
@@ -243,7 +242,6 @@
 		24B744EB1C873531000E0FFC /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		24B744EC1C8735B5000E0FFC /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		24B744F21C873883000E0FFC /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
-		24C6AE961C2831660048C4D1 /* TodayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayTableViewCell.swift; sourceTree = "<group>"; };
 		24C6C1A51C54F9970041C31F /* TodayKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TodayKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		24C6C1A91C54F9970041C31F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24C6C1AE1C54F9970041C31F /* TodayKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodayKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -459,7 +457,6 @@
 				24FE71301C3FFB8700A14B9D /* PickerTableViewCell.swift */,
 				24A1CFE01C36D8FA00F0E9CE /* ScoreCircleView.swift */,
 				2425BBA81C5E3A0E008AD9A4 /* StreakTableViewCell.swift */,
-				24C6AE961C2831660048C4D1 /* TodayTableViewCell.swift */,
 				246688541C1DB61100C5E5A0 /* Today.storyboard */,
 			);
 			name = View;
@@ -1019,7 +1016,6 @@
 				24D23EC91D79AF1A00C6E4AC /* RSDFDatePickerMonthHeader.m in Sources */,
 				24D23EC61D79AF1A00C6E4AC /* RSDFDatePickerCollectionViewLayout.m in Sources */,
 				24D23EC41D79AF1A00C6E4AC /* NSCalendar+RSDFAdditions.m in Sources */,
-				24C6AE971C2831660048C4D1 /* TodayTableViewCell.swift in Sources */,
 				24030AE41C1C821C004E68ED /* AppDelegate.swift in Sources */,
 				244B9A671C7B50FA004AF2DC /* NotificationManager.swift in Sources */,
 				24D23EC71D79AF1A00C6E4AC /* RSDFDatePickerDayCell.m in Sources */,

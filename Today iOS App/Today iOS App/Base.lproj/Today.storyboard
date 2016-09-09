@@ -44,6 +44,7 @@
                         <segue destination="WzQ-rC-fZu" kind="popoverPresentation" identifier="showAddTodayViewController" popoverAnchorBarButtonItem="osb-QP-LKU" id="ys3-Kj-Pze">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                         </segue>
+                        <segue destination="cGg-Cy-km7" kind="showDetail" identifier="ShowTodayDetailView" id="T9f-Nl-LwN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="35q-dq-ZqZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -88,6 +89,68 @@
             </objects>
             <point key="canvasLocation" x="2126" y="-968"/>
         </scene>
+        <!--Today-->
+        <scene sceneID="GRQ-UN-T6O">
+            <objects>
+                <viewController id="JeK-WG-IEd" customClass="TodayDetailViewController" customModule="Today" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YAu-wk-nOg"/>
+                        <viewControllerLayoutGuide type="bottom" id="Fe8-dc-Ct8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="avJ-M5-0Ah">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IG1-es-dkO" customClass="ScoreCircleView" customModule="Today" customModuleProvider="target">
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="excellent_face_icon_100" translatesAutoresizingMaskIntoConstraints="NO" id="KxY-xp-PU3">
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="KxY-xp-PU3" secondAttribute="height" multiplier="1:1" id="PQ6-Ko-62m"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.1450980392" green="0.14901960780000001" blue="0.19215686269999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="KxY-xp-PU3" firstAttribute="centerX" secondItem="IG1-es-dkO" secondAttribute="centerX" id="MtO-Nw-l8E"/>
+                                    <constraint firstItem="KxY-xp-PU3" firstAttribute="centerY" secondItem="IG1-es-dkO" secondAttribute="centerY" id="Zm0-TP-dwy"/>
+                                    <constraint firstAttribute="width" secondItem="IG1-es-dkO" secondAttribute="height" multiplier="1:1" id="bL0-m2-Zq6"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="progressCircleColor">
+                                        <color key="value" red="0.98039215686274506" green="0.066666666666666666" blue="0.30980392156862746" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="progressBorderWidth">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.1450980392" green="0.14901960780000001" blue="0.19215686269999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="IG1-es-dkO" firstAttribute="centerX" secondItem="avJ-M5-0Ah" secondAttribute="centerX" id="1hl-JI-iRh"/>
+                            <constraint firstItem="IG1-es-dkO" firstAttribute="leading" secondItem="avJ-M5-0Ah" secondAttribute="leading" constant="30" id="7On-76-brq"/>
+                            <constraint firstAttribute="trailing" secondItem="IG1-es-dkO" secondAttribute="trailing" constant="30" id="TPW-qW-dWf"/>
+                            <constraint firstItem="IG1-es-dkO" firstAttribute="centerY" secondItem="avJ-M5-0Ah" secondAttribute="centerY" id="fpT-IC-kc5"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="HQm-Nn-vqC"/>
+                        <barButtonItem systemItem="trash" id="PQi-IR-OEJ"/>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Today" id="7pe-IL-ygn">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="kjO-En-Jhn">
+                            <connections>
+                                <segue destination="4XG-y2-3FB" kind="unwind" unwindAction="cancelToTodaysViewController:" id="uMw-WU-9O6"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="Fxi-yD-Vxb"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bnr-8e-RTH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="4XG-y2-3FB" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="3036" y="-273.01349325337333"/>
+        </scene>
         <!--How is your today?-->
         <scene sceneID="gEs-OF-8qy">
             <objects>
@@ -111,7 +174,6 @@
                                 <constraints>
                                     <constraint firstItem="MxE-lK-Ef9" firstAttribute="centerY" secondItem="YcQ-ai-atA" secondAttribute="centerY" id="OSj-Il-JfK"/>
                                     <constraint firstItem="MxE-lK-Ef9" firstAttribute="centerX" secondItem="YcQ-ai-atA" secondAttribute="centerX" id="QR3-0x-dNZ"/>
-                                    <constraint firstAttribute="width" secondItem="YcQ-ai-atA" secondAttribute="height" multiplier="1:1" id="QiJ-F6-FWU"/>
                                     <constraint firstAttribute="width" secondItem="YcQ-ai-atA" secondAttribute="height" multiplier="1:1" id="Z5k-Lx-TXn"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -119,14 +181,9 @@
                                         <real key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="progressCircleColor">
-                                        <color key="value" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" red="0.98039215686274506" green="0.066666666666666666" blue="0.30980392156862746" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="QiJ-F6-FWU"/>
-                                    </mask>
-                                </variation>
                             </view>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b24-9R-gMp">
                                 <connections>
@@ -185,6 +242,28 @@
                 <exit id="K7h-35-e15" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2872" y="-968"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ozW-Kg-lN8">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="cGg-Cy-km7" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="sdr-ai-Zq9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" id="r52-N3-V9i">
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="JeK-WG-IEd" kind="relationship" relationship="rootViewController" id="ldc-e7-dUo"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qm1-qT-ebh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2096.8000000000002" y="-273.01349325337333"/>
         </scene>
     </scenes>
     <resources>

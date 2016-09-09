@@ -108,7 +108,7 @@ extension TodaysViewController: RSDFDatePickerViewDelegate, RSDFDatePickerViewDa
     }
     
     func datePickerView(_ view: RSDFDatePickerView, didSelect date: Date) {
-        print("select date")
+        self.performSegue(withIdentifier: "ShowTodayDetailView", sender: nil)
     }
     
     func datePickerView(_ view: RSDFDatePickerView, shouldMark date: Date) -> Bool {

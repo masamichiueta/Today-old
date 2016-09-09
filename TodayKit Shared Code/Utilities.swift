@@ -33,45 +33,23 @@ extension Date {
 }
 
 public enum ColorType {
-    case defaultTint, red, orange, yellow, green, blue, gradientRedStart, gradientRedEnd, gradientOrangeStart, gradientOrangeEnd, gradientYellowStart, gradientYellowEnd, gradientGreenStart, gradientGreenEnd, gradientBlueStart, gradientBlueEnd, darkViewBackground, darkCellBackground, darkSectionHeader, darkSeparator, darkDetailText, darkTextField, darkBar
+    case red, orange, yellow, green, blue, darkViewBackground, darkCellBackground, darkSectionHeader, darkSeparator, darkDetailText, darkTextField, darkBar
 }
 
 extension UIColor {
     
     public class func applicationColor(type: ColorType) -> UIColor {
         switch type {
-        case .defaultTint:
-            return UIColor(red: 0.0, green: 122.0/255.0, blue: 1.0, alpha: 1.0)
         case .red:
-            return UIColor(red: 255.0/255.0, green: 59.0/255.0, blue: 48.0/255.0, alpha: 1.0)
+            return UIColor(red: 250.0/255.0, green: 17.0/255.0, blue: 79.0/255.0, alpha: 1.0)
         case .orange:
-            return UIColor(red: 255.0/255.0, green: 149.0/255.0, blue: 0/255.0, alpha: 1.0)
-        case .yellow:
-            return UIColor(red: 255.0/255.0, green: 204.0/255.0, blue: 0/255.0, alpha: 1.0)
-        case .green:
-            return UIColor(red: 76.0/255.0, green: 217.0/255.0, blue: 100.0/255.0, alpha: 1.0)
-        case .blue:
-            return UIColor(red: 52.0/255.0, green: 170.0/255.0, blue: 220.0/255.0, alpha: 1.0)
-        case .gradientRedStart:
-            return UIColor(red: 255.0/255.0, green: 94.0/255.0, blue: 58.0/255.0, alpha: 1.0)
-        case .gradientRedEnd:
-            return UIColor(red: 255.0/255.0, green: 42.0/255.0, blue: 104.0/255.0, alpha: 1.0)
-        case .gradientOrangeStart:
             return UIColor(red: 255.0/255.0, green: 149.0/255.0, blue: 0.0/255.0, alpha: 1.0)
-        case .gradientOrangeEnd:
-            return UIColor(red: 255.0/255.0, green: 94.0/255.0, blue: 58.0/255.0, alpha: 1.0)
-        case .gradientYellowStart:
-            return UIColor(red: 255.0/255.0, green: 219.0/255.0, blue: 76.0/255.0, alpha: 1.0)
-        case .gradientYellowEnd:
-            return UIColor(red: 255.0/255.0, green: 205.0/255.0, blue: 2.0/255.0, alpha: 1.0)
-        case .gradientGreenStart:
-            return UIColor(red: 135.0/255.0, green: 252.0/255.0, blue: 112.0/255.0, alpha: 1.0)
-        case .gradientGreenEnd:
-            return UIColor(red: 11.0/255.0, green: 211.0/255.0, blue: 24.0/255.0, alpha: 1.0)
-        case .gradientBlueStart:
-            return UIColor(red: 26.0/255.0, green: 214.0/255.0, blue: 253.0/255.0, alpha: 1.0)
-        case .gradientBlueEnd:
-            return UIColor(red: 29.0/255.0, green: 98.0/255.0, blue: 240.0/255.0, alpha: 1.0)
+        case .yellow:
+            return UIColor(red: 255.0/255.0, green: 230.0/255.0, blue: 32.0/255.0, alpha: 1.0)
+        case .green:
+            return UIColor(red: 4.0/255.0, green: 222.0/255.0, blue: 113.0/255.0, alpha: 1.0)
+        case .blue:
+            return UIColor(red: 32.0/255.0, green: 148.0/255.0, blue: 250.0/255.0, alpha: 1.0)
         case .darkViewBackground:
             return UIColor(red: 37.0/255.0, green: 38.0/255.0, blue: 46.0/255.0, alpha: 1.0)
         case .darkCellBackground:

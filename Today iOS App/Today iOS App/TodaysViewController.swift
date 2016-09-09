@@ -19,13 +19,9 @@ class TodaysViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureCalendarView()
+        
         self.moc = CoreDataManager.shared.persistentContainer.viewContext
-        self.calendarView.delegate = self
-        self.calendarView.dataSource = self
-        
-        let topInset = self.navigationController?.navigationBar.frame.height ?? 44.0
-        self.calendarView.contentInsets = UIEdgeInsets(top: topInset, left: 0, bottom: 0, right: 0)
-        
         let request: NSFetchRequest<Today> = Today.fetchRequest()
         request.sortDescriptors = Today.defaultSortDescriptors
         self.frc = NSFetchedResultsController<Today>(fetchRequest: request, managedObjectContext: self.moc, sectionNameKeyPath: nil, cacheName: nil)
@@ -40,7 +36,14 @@ class TodaysViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    }
+    
+    private func configureCalendarView() {
+        self.calendarView.delegate = self
+        self.calendarView.dataSource = self
+        
+        let topInset = self.navigationController?.navigationBar.frame.height ?? 44.0
+        self.calendarView.contentInsets = UIEdgeInsets(top: topInset, left: 0, bottom: 0, right: 0)
     }
     
     @IBAction func cancelToTodaysViewController(_ segue: UIStoryboardSegue) {
@@ -66,6 +69,7 @@ class TodaysViewController: UIViewController {
             
             do {
                 try self.moc.save()
+                (UIApplication.shared.delegate as! AppDelegate).applyDesign()
             } catch {
                 self.moc.rollback()
             }

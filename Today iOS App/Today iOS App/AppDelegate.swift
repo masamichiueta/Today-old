@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
         
+        applyDesign()
         Setting.setupDefaultSetting()
         
         if WCSession.isSupported() {
@@ -29,6 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         NotificationManager.shared.setupLocalNotificationSetting()
+        
+
 
         return true
     }
@@ -79,6 +82,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     //MARK: - Helper
+    func applyDesign() {
+        let tintColor = Today.lastColor(CoreDataManager.shared.persistentContainer.viewContext)
+        UITabBar.appearance().tintColor = tintColor
+        UINavigationBar.appearance().tintColor = tintColor
+    }
+    
     func updateAppGroupSharedData(_ moc: NSManagedObjectContext) {
         var appGroupSharedData = AppGroupSharedData()
         let now = Date()

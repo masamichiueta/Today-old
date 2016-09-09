@@ -20,11 +20,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NIC-bU-Vw1" customClass="RSDFDatePickerView">
-                                <color key="backgroundColor" red="0.1450980392" green="0.14901960780000001" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NIC-bU-Vw1" customClass="RSDFTodayDatePickerView" customModule="Today" customModuleProvider="target">
+                                <color key="backgroundColor" red="0.14509803921568626" green="0.14901960784313725" blue="0.19215686274509802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.14509803921568626" green="0.14901960784313725" blue="0.1803921568627451" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.14509803921568626" green="0.14901960784313725" blue="0.19215686274509802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="NIC-bU-Vw1" secondAttribute="trailing" id="8DI-ro-pf9"/>
                             <constraint firstItem="NIC-bU-Vw1" firstAttribute="top" secondItem="AwX-Lu-ePr" secondAttribute="top" id="WUf-Eh-ctZ"/>
@@ -119,7 +119,7 @@
                                         <real key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="progressCircleColor">
-                                        <color key="value" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="value" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <variation key="default">
@@ -135,7 +135,7 @@
                                 </connections>
                             </pickerView>
                         </subviews>
-                        <color key="backgroundColor" red="0.1450980392" green="0.14901960780000001" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.14509803921568626" green="0.14901960784313725" blue="0.19215686274509802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="jMd-gE-IMc" firstAttribute="top" secondItem="b24-9R-gMp" secondAttribute="bottom" id="6cP-ds-8nb"/>
                             <constraint firstItem="YcQ-ai-atA" firstAttribute="centerX" secondItem="OuH-8s-S5r" secondAttribute="centerX" id="6rI-Ml-j68"/>

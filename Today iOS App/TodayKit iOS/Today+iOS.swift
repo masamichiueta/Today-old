@@ -6,6 +6,7 @@
 //  Copyright © 2016 Masamichi Ueta. All rights reserved.
 //
 
+import UIKit
 import CoreData
 
 extension Today {
@@ -51,6 +52,22 @@ extension Today {
         do {
             let searchResults = try moc.fetch(request)
             return searchResults
+        } catch {
+            fatalError()
+        }
+    }
+    
+    public static func lastColor(_ moc: NSManagedObjectContext) -> UIColor {
+        let request: NSFetchRequest<Today> = Today.fetchRequest()
+        request.sortDescriptors = Today.defaultSortDescriptors
+        request.fetchLimit = 1
+        
+        do {
+            if let searchResult = try moc.fetch(request).first {
+                return Today.type(Int(searchResult.score)).color()
+            } else {
+                return UIColor.applicationColor(type: .orange)
+            }
         } catch {
             fatalError()
         }

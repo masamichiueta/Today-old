@@ -13,7 +13,6 @@
 		24030AF11C1C821C004E68ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24030AEF1C1C821C004E68ED /* LaunchScreen.storyboard */; };
 		24095BD61C7C92F800CC970E /* AppGroupSharedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24095BD51C7C92F800CC970E /* AppGroupSharedData.swift */; };
 		241D65AF1C7B43AC00938CE8 /* TodayExtensionTodayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D65AE1C7B43AC00938CE8 /* TodayExtensionTodayTableViewCell.swift */; };
-		2425BBA91C5E3A0E008AD9A4 /* StreakTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2425BBA81C5E3A0E008AD9A4 /* StreakTableViewCell.swift */; };
 		243095871D7B123F009343BE /* TodaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243095861D7B123F009343BE /* TodaysViewController.swift */; };
 		24338CF01C7BEBD9007FCAD1 /* TodayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24C6C1A51C54F9970041C31F /* TodayKit.framework */; };
 		243CC6EF1CC5393900E41407 /* Today+iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243CC6EE1CC5393900E41407 /* Today+iOS.swift */; };
@@ -60,6 +59,13 @@
 		24D82C2F1C5A5D880095FA47 /* ChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D82C2E1C5A5D880095FA47 /* ChartTableViewCell.swift */; };
 		24D8E3DC1C54FC4F005BA35B /* TodayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24C6C1A51C54F9970041C31F /* TodayKit.framework */; };
 		24D8E3DD1C54FC4F005BA35B /* TodayKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24C6C1A51C54F9970041C31F /* TodayKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		24E9B0471D830FBE002F1665 /* RSDFTodayDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E9B0461D830FBE002F1665 /* RSDFTodayDatePickerView.swift */; };
+		24E9B0491D8310A4002F1665 /* RSDFTodayDatePickerDaysOfWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E9B0481D8310A4002F1665 /* RSDFTodayDatePickerDaysOfWeekView.swift */; };
+		24E9B04B1D8310BF002F1665 /* RSDFTodayDatePickerCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E9B04A1D8310BF002F1665 /* RSDFTodayDatePickerCollectionView.swift */; };
+		24E9B04D1D8310E1002F1665 /* RSDFTodayDatePickerMonthHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E9B04C1D8310E1002F1665 /* RSDFTodayDatePickerMonthHeader.swift */; };
+		24E9B04F1D8310FC002F1665 /* RSDFTodayDatePickerDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E9B04E1D8310FC002F1665 /* RSDFTodayDatePickerDayCell.swift */; };
+		24E9B0511D8313EF002F1665 /* RSDFTodayDatePickerCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E9B0501D8313EF002F1665 /* RSDFTodayDatePickerCollectionViewLayout.swift */; };
+		24E9B0531D831A32002F1665 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E9B0521D831A32002F1665 /* ActivityViewController.swift */; };
 		24F21AB11C4FCFE900396A38 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24F21AB01C4FCFE900396A38 /* NotificationCenter.framework */; };
 		24F21AB41C4FCFE900396A38 /* TodayExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F21AB31C4FCFE900396A38 /* TodayExtensionViewController.swift */; };
 		24F21AB71C4FCFE900396A38 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24F21AB51C4FCFE900396A38 /* MainInterface.storyboard */; };
@@ -73,7 +79,6 @@
 		24FE134F1C7F49A700A573B8 /* TodayWCSessionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FE134E1C7F49A700A573B8 /* TodayWCSessionHandler.swift */; };
 		24FE71311C3FFB8700A14B9D /* PickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FE71301C3FFB8700A14B9D /* PickerTableViewCell.swift */; };
 		24FFBB971C3D6AFA0053E261 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FFBB961C3D6AFA0053E261 /* SettingTableViewController.swift */; };
-		24FFBB991C3D7AE50053E261 /* ActivityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FFBB981C3D7AE50053E261 /* ActivityTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -212,7 +217,6 @@
 		24095BD51C7C92F800CC970E /* AppGroupSharedData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppGroupSharedData.swift; sourceTree = "<group>"; };
 		240F14741C2A9CDE0003B2AF /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		241D65AE1C7B43AC00938CE8 /* TodayExtensionTodayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayExtensionTodayTableViewCell.swift; sourceTree = "<group>"; };
-		2425BBA81C5E3A0E008AD9A4 /* StreakTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreakTableViewCell.swift; sourceTree = "<group>"; };
 		242F984A1C49282200DBC64B /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		243095851D7B0B4A009343BE /* Today-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Today-Bridging-Header.h"; sourceTree = "<group>"; };
 		243095861D7B123F009343BE /* TodaysViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodaysViewController.swift; sourceTree = "<group>"; };
@@ -275,6 +279,13 @@
 		24D82C2E1C5A5D880095FA47 /* ChartTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartTableViewCell.swift; sourceTree = "<group>"; };
 		24DBB5901C2C367100E1C042 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		24E538D81C49E22900B781D8 /* Streak.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Streak.swift; sourceTree = "<group>"; };
+		24E9B0461D830FBE002F1665 /* RSDFTodayDatePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSDFTodayDatePickerView.swift; sourceTree = "<group>"; };
+		24E9B0481D8310A4002F1665 /* RSDFTodayDatePickerDaysOfWeekView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSDFTodayDatePickerDaysOfWeekView.swift; sourceTree = "<group>"; };
+		24E9B04A1D8310BF002F1665 /* RSDFTodayDatePickerCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSDFTodayDatePickerCollectionView.swift; sourceTree = "<group>"; };
+		24E9B04C1D8310E1002F1665 /* RSDFTodayDatePickerMonthHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSDFTodayDatePickerMonthHeader.swift; sourceTree = "<group>"; };
+		24E9B04E1D8310FC002F1665 /* RSDFTodayDatePickerDayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSDFTodayDatePickerDayCell.swift; sourceTree = "<group>"; };
+		24E9B0501D8313EF002F1665 /* RSDFTodayDatePickerCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSDFTodayDatePickerCollectionViewLayout.swift; sourceTree = "<group>"; };
+		24E9B0521D831A32002F1665 /* ActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		24F21AAF1C4FCFE900396A38 /* Today Today Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Today Today Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		24F21AB01C4FCFE900396A38 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		24F21AB31C4FCFE900396A38 /* TodayExtensionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayExtensionViewController.swift; sourceTree = "<group>"; };
@@ -294,7 +305,6 @@
 		24FE71301C3FFB8700A14B9D /* PickerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerTableViewCell.swift; sourceTree = "<group>"; };
 		24FE71321C4245D400A14B9D /* Setting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		24FFBB961C3D6AFA0053E261 /* SettingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
-		24FFBB981C3D7AE50053E261 /* ActivityTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -438,7 +448,7 @@
 		246688591C1EFC3E00C5E5A0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				24FFBB981C3D7AE50053E261 /* ActivityTableViewController.swift */,
+				24E9B0521D831A32002F1665 /* ActivityViewController.swift */,
 				24444A5D1C30A02A00DC1579 /* AddTodayViewController.swift */,
 				24FFBB961C3D6AFA0053E261 /* SettingTableViewController.swift */,
 				243095861D7B123F009343BE /* TodaysViewController.swift */,
@@ -449,6 +459,7 @@
 		2466885A1C1EFC5600C5E5A0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				24E9B0451D830F93002F1665 /* TodayDayFlow */,
 				2466884D1C1DB45E00C5E5A0 /* Activity.storyboard */,
 				24D82C2E1C5A5D880095FA47 /* ChartTableViewCell.swift */,
 				24030AEF1C1C821C004E68ED /* LaunchScreen.storyboard */,
@@ -456,7 +467,6 @@
 				244631441C3AB8BA002BBD06 /* PaddingLabel.swift */,
 				24FE71301C3FFB8700A14B9D /* PickerTableViewCell.swift */,
 				24A1CFE01C36D8FA00F0E9CE /* ScoreCircleView.swift */,
-				2425BBA81C5E3A0E008AD9A4 /* StreakTableViewCell.swift */,
 				246688541C1DB61100C5E5A0 /* Today.storyboard */,
 			);
 			name = View;
@@ -592,6 +602,19 @@
 				24D23ECE1D79AF5800C6E4AC /* ScrollableGraphView.swift */,
 			);
 			path = ScrollableGraphView;
+			sourceTree = "<group>";
+		};
+		24E9B0451D830F93002F1665 /* TodayDayFlow */ = {
+			isa = PBXGroup;
+			children = (
+				24E9B0461D830FBE002F1665 /* RSDFTodayDatePickerView.swift */,
+				24E9B0481D8310A4002F1665 /* RSDFTodayDatePickerDaysOfWeekView.swift */,
+				24E9B04A1D8310BF002F1665 /* RSDFTodayDatePickerCollectionView.swift */,
+				24E9B04C1D8310E1002F1665 /* RSDFTodayDatePickerMonthHeader.swift */,
+				24E9B04E1D8310FC002F1665 /* RSDFTodayDatePickerDayCell.swift */,
+				24E9B0501D8313EF002F1665 /* RSDFTodayDatePickerCollectionViewLayout.swift */,
+			);
+			name = TodayDayFlow;
 			sourceTree = "<group>";
 		};
 		24F21AB21C4FCFE900396A38 /* Today Extension */ = {
@@ -1012,21 +1035,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				24D23ECA1D79AF1A00C6E4AC /* RSDFDatePickerView.m in Sources */,
+				24E9B0511D8313EF002F1665 /* RSDFTodayDatePickerCollectionViewLayout.swift in Sources */,
 				244631451C3AB8BA002BBD06 /* PaddingLabel.swift in Sources */,
+				24E9B04D1D8310E1002F1665 /* RSDFTodayDatePickerMonthHeader.swift in Sources */,
+				24E9B0531D831A32002F1665 /* ActivityViewController.swift in Sources */,
+				24E9B04F1D8310FC002F1665 /* RSDFTodayDatePickerDayCell.swift in Sources */,
 				24D23EC91D79AF1A00C6E4AC /* RSDFDatePickerMonthHeader.m in Sources */,
 				24D23EC61D79AF1A00C6E4AC /* RSDFDatePickerCollectionViewLayout.m in Sources */,
 				24D23EC41D79AF1A00C6E4AC /* NSCalendar+RSDFAdditions.m in Sources */,
+				24E9B04B1D8310BF002F1665 /* RSDFTodayDatePickerCollectionView.swift in Sources */,
+				24E9B0471D830FBE002F1665 /* RSDFTodayDatePickerView.swift in Sources */,
 				24030AE41C1C821C004E68ED /* AppDelegate.swift in Sources */,
+				24E9B0491D8310A4002F1665 /* RSDFTodayDatePickerDaysOfWeekView.swift in Sources */,
 				244B9A671C7B50FA004AF2DC /* NotificationManager.swift in Sources */,
 				24D23EC71D79AF1A00C6E4AC /* RSDFDatePickerDayCell.m in Sources */,
 				24D23EC51D79AF1A00C6E4AC /* RSDFDatePickerCollectionView.m in Sources */,
 				24444A5E1C30A02A00DC1579 /* AddTodayViewController.swift in Sources */,
-				2425BBA91C5E3A0E008AD9A4 /* StreakTableViewCell.swift in Sources */,
 				24D23EC81D79AF1A00C6E4AC /* RSDFDatePickerDaysOfWeekView.m in Sources */,
 				24D23ECF1D79AF5800C6E4AC /* ScrollableGraphView.swift in Sources */,
 				24D82C2F1C5A5D880095FA47 /* ChartTableViewCell.swift in Sources */,
 				243095871D7B123F009343BE /* TodaysViewController.swift in Sources */,
-				24FFBB991C3D7AE50053E261 /* ActivityTableViewController.swift in Sources */,
 				24A1CFE11C36D8FA00F0E9CE /* ScoreCircleView.swift in Sources */,
 				24FFBB971C3D6AFA0053E261 /* SettingTableViewController.swift in Sources */,
 				24FE71311C3FFB8700A14B9D /* PickerTableViewCell.swift in Sources */,

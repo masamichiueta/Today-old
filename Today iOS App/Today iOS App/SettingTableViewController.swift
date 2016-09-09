@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import CoreData
 import TodayKit
 
 final class SettingTableViewController: UITableViewController {
+    
+    var moc: NSManagedObjectContext!
     
     fileprivate let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -26,6 +29,7 @@ final class SettingTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.moc = CoreDataManager.shared.persistentContainer.viewContext
         setupTableView()
     }
     
@@ -122,7 +126,7 @@ final class SettingTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SettingCell", for: indexPath)
             cell.textLabel?.text = localize("Notification Time")
             cell.detailTextLabel?.text = dateFormatter.string(from: setting.notificationTime)
-            cell.detailTextLabel?.textColor = pickerHidden ? UIColor.applicationColor(type: .darkDetailText) : tableView.tintColor
+            cell.detailTextLabel?.textColor = pickerHidden ? UIColor.applicationColor(type: .darkDetailText) : Today.lastColor(moc)
             return cell
         case ((pickerIndexPath as IndexPath).section, (pickerIndexPath as IndexPath).row): //(0, 2)
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "SettingPickerCell", for: indexPath) as? PickerTableViewCell else {
@@ -151,7 +155,7 @@ final class SettingTableViewController: UITableViewController {
             pickerHidden = !pickerHidden
             
             let cell = tableView.cellForRow(at: indexPath)
-            cell?.detailTextLabel?.textColor = pickerHidden ? UIColor.applicationColor(type: .darkDetailText) : tableView.tintColor
+            cell?.detailTextLabel?.textColor = pickerHidden ? UIColor.applicationColor(type: .darkDetailText) : Today.lastColor(moc)
             
             togglePickerCell(pickerHidden)
         case (1, 0):

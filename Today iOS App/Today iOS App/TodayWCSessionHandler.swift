@@ -44,15 +44,19 @@ class TodayWCSessionHandler: NSObject, WCSessionDelegate {
                 return
             }
             
-            
-
             //Create today
             if !Today.created(moc, forDate: now) {
                 
-                moc.perform {
+                moc.performAndWait {
                     
                     let _ = Today.insertIntoContext(moc, score: Int64(score), date: now)
                     let _ = Streak.updateOrCreateCurrentStreak(moc, date: now)
+                    
+                    do {
+                        try moc.save()
+                    } catch {
+                        fatalError()
+                    }
                 }
 
                 replyHandler([WatchConnectivityContentType.finished.rawValue: true])

@@ -66,14 +66,13 @@ class TodaysViewController: UIViewController {
             return
         }
         
-        moc.perform {
+        moc.performAndWait {
             //Create today
             let _ = Today.insertIntoContext(self.moc, score: Int64(vc.score), date: now)
             let _ = Streak.updateOrCreateCurrentStreak(self.moc, date: now)
             
             do {
                 try self.moc.save()
-                (UIApplication.shared.delegate as! AppDelegate).applyDesign()
             } catch {
                 self.moc.rollback()
             }
@@ -142,16 +141,15 @@ extension TodaysViewController: RSDFDatePickerViewDelegate, RSDFDatePickerViewDa
             }
             
             alert.addAction(UIAlertAction(title: localize("Delete"), style: .destructive, handler: { action in
-                self.moc.perform {
+                self.moc.performAndWait {
                     self.moc.delete(today)
-                }
-                
-                let _ = Streak.updateOrCreateCurrentStreak(self.moc, date: date)
-                
-                do {
-                    try self.moc.save()
-                } catch {
-                    fatalError()
+                    let _ = Streak.updateOrCreateCurrentStreak(self.moc, date: date)
+                    
+                    do {
+                        try self.moc.save()
+                    } catch {
+                        self.moc.rollback()
+                    }
                 }
             }))
             alert.addAction(UIAlertAction(title: localize("Cancel"), style: .cancel, handler: nil))

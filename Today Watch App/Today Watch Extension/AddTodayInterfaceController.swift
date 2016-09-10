@@ -36,16 +36,7 @@ final class AddTodayInterfaceController: WKInterfaceController {
         
         let pickerItems: [WKPickerItem] = Today.masterScores.map {
             let pickerItem = WKPickerItem()
-            
-            let watchSize = getWatchSize()
-            
-            switch watchSize {
-            case .thirtyEight:
-                pickerItem.contentImage = WKImage(imageName: "score_select_circle_38_\($0).png")
-            case .fourtyTwo:
-                pickerItem.contentImage = WKImage(imageName: "score_select_circle_42_\($0).png")
-            }
-            
+            pickerItem.title = "\($0)"
             return pickerItem
         }
         

@@ -13,46 +13,24 @@ import TodayWatchKit
 
 final class ScoreInterfaceController: WKInterfaceController {
     
-    @IBOutlet var scoreGroup: WKInterfaceGroup!
-    @IBOutlet var scoreLabel: WKInterfaceLabel!
     @IBOutlet var scoreIcon: WKInterfaceImage!
     @IBOutlet var cautionLabel: WKInterfaceLabel!
     
     fileprivate var session: WCSession!
     
-    fileprivate var todayScore: Int = 0 {
+    fileprivate var todayScore: Int = 8 {
         didSet {
             
             if todayScore == oldValue {
                 return
             }
             
-            let watchSize = getWatchSize()
-            switch watchSize {
-            case .thirtyEight:
-                scoreGroup.setBackgroundImageNamed("score_circle_38_")
-            case .fourtyTwo:
-                scoreGroup.setBackgroundImageNamed("score_circle_42_")
-            }
-            
-            let duration = 0.5
-            scoreGroup.startAnimatingWithImages(in: NSRange(location: 0, length: 6 * todayScore + 1), duration: duration, repeatCount: 1)
-            
-            let color = Today.type(todayScore).color()
-            scoreLabel.setText("\(todayScore)")
-            scoreLabel.setTextColor(color)
-            scoreIcon.setImageNamed(Today.type(todayScore).iconName(.twentyEight))
-            scoreIcon.setTintColor(color)
-            
+            scoreIcon.setImageNamed(Today.type(todayScore).iconName(.hundred))            
         }
     }
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
-        
-        let color = Today.type(todayScore).color()
-        scoreLabel.setTextColor(color)
-        scoreIcon.setTintColor(color)
         
         if WCSession.isSupported() {
             session = WCSession.default()
@@ -100,6 +78,7 @@ final class ScoreInterfaceController: WKInterfaceController {
         }
     }
     
+    
     func hideCautionLabel() {
         animate(withDuration: 0.5, animations: { [unowned self] in
             self.cautionLabel.setAlpha(0.0)
@@ -126,11 +105,11 @@ final class ScoreInterfaceController: WKInterfaceController {
                                     watchData.currentStreak = 0
                                     watchData.updatedAt = nil
                                 case (nil, let .some(currentStreak)):
-                                    watchData.score = 0
+                                    watchData.score = 8
                                     watchData.currentStreak = currentStreak
                                     watchData.updatedAt = nil
                                 case (nil, nil):
-                                    watchData.score = 0
+                                    watchData.score = 8
                                     watchData.currentStreak = 0
                                     watchData.updatedAt = nil
                                 }

@@ -59,22 +59,19 @@ extension Streak {
     }
     
     public static func deleteDateFromStreak(_ moc: NSManagedObjectContext, date: Date) {
-        let component = Calendar.current.dateComponents([.year, .month, .day], from: date)
-        
         var nextDateCompoennt = Calendar.current.dateComponents([.year, .month, .day], from: date)
         nextDateCompoennt.day = nextDateCompoennt.day! + 1
         
         var previousDateCompoennt = Calendar.current.dateComponents([.year, .month, .day], from: date)
         previousDateCompoennt.day = previousDateCompoennt.day! - 1
         
-        guard let noTimeDate = Calendar.current.date(from: component),
-            let nextDate = Calendar.current.date(from: nextDateCompoennt),
+        guard let nextDate = Calendar.current.date(from: nextDateCompoennt),
             let previousDate = Calendar.current.date(from: previousDateCompoennt) else {
                 fatalError()
         }
         
         let request: NSFetchRequest<Streak> = Streak.fetchRequest()
-        request.predicate = NSPredicate(format: "from <= %@ AND to >= %@", noTimeDate as CVarArg, noTimeDate as CVarArg)
+        request.predicate = NSPredicate(format: "from <= %@ AND to >= %@", date as CVarArg, date as CVarArg)
         request.returnsObjectsAsFaults = false
         request.fetchLimit = 1
         do {

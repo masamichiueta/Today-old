@@ -132,7 +132,7 @@ extension TodaysViewController: RSDFDatePickerViewDelegate, RSDFDatePickerViewDa
             if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeTwitter) {
                 alert.addAction(UIAlertAction(title: localize("Share to Twitter"), style: .default, handler: { action in
                     let vc = SLComposeViewController(forServiceType: SLServiceTypeTwitter)!
-                    vc.setInitialText(localize("Today's Score is \(today.score)"))
+                    vc.setInitialText(localize("Today's Score is") +  "\(today.score)")
                     let image = Today.type(Int(today.score)).icon(.hundred)
                     vc.add(image)
                     vc.add(URL(string: "http://uetamasamichi.com/TodayWeb/"))

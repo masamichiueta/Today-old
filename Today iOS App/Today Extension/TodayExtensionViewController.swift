@@ -13,17 +13,14 @@ import NotificationCenter
 final class TodayExtensionViewController: UIViewController, NCWidgetProviding {
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var buttonEffectView: UIVisualEffectView!
     
     fileprivate let tableViewRowHeight: CGFloat = 44.0
     fileprivate let rowNum = 4
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        buttonEffectView.layer.cornerRadius = 5
-        buttonEffectView.clipsToBounds = true
         setupTableView()
-        preferredContentSize = CGSize(width: tableView.frame.width, height: tableViewRowHeight * 4 + buttonEffectView.frame.height)
+        preferredContentSize = CGSize(width: tableView.frame.width, height: tableViewRowHeight * 4)
     }
     
     override func didReceiveMemoryWarning() {
@@ -32,13 +29,6 @@ final class TodayExtensionViewController: UIViewController, NCWidgetProviding {
     
     func widgetPerformUpdate(completionHandler: @escaping (NCUpdateResult) -> Void) {
         completionHandler(NCUpdateResult.newData)
-    }
-    
-    @IBAction func addToday(_ sender: AnyObject) {
-        guard let url = URL(string: appGroupURLScheme + "://" + AppGroupURLHost.addToday.rawValue) else {
-            return
-        }
-        extensionContext?.open(url, completionHandler: nil)
     }
     
     private func setupTableView() {

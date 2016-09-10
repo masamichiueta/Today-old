@@ -46,7 +46,6 @@
 		24C6C1C71C54FA010041C31F /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F14741C2A9CDE0003B2AF /* CoreDataManager.swift */; };
 		24C6C1CA1C54FA0A0041C31F /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DBB5901C2C367100E1C042 /* Utilities.swift */; };
 		24C7ACD01C5656D8002B203C /* WatchUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C7ACCF1C5656D8002B203C /* WatchUtilities.swift */; };
-		24CA036F1D83320900B106F3 /* TodayDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CA036E1D83320900B106F3 /* TodayDetailViewController.swift */; };
 		24D210331C79EE2F00F69478 /* CurrentStreakInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D210321C79EE2F00F69478 /* CurrentStreakInterfaceController.swift */; };
 		24D23EC41D79AF1A00C6E4AC /* NSCalendar+RSDFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 24D23EB41D79AF1A00C6E4AC /* NSCalendar+RSDFAdditions.m */; };
 		24D23EC51D79AF1A00C6E4AC /* RSDFDatePickerCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 24D23EB71D79AF1A00C6E4AC /* RSDFDatePickerCollectionView.m */; };
@@ -255,7 +254,6 @@
 		24C77EA81C2A8C6F00493C13 /* Today.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Today.swift; sourceTree = "<group>"; };
 		24C77EAD1C2A937600493C13 /* Today.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Today.entitlements; sourceTree = "<group>"; };
 		24C7ACCF1C5656D8002B203C /* WatchUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchUtilities.swift; sourceTree = "<group>"; };
-		24CA036E1D83320900B106F3 /* TodayDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayDetailViewController.swift; sourceTree = "<group>"; };
 		24D210321C79EE2F00F69478 /* CurrentStreakInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentStreakInterfaceController.swift; sourceTree = "<group>"; };
 		24D23EB21D79AF1A00C6E4AC /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		24D23EB31D79AF1A00C6E4AC /* NSCalendar+RSDFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSCalendar+RSDFAdditions.h"; sourceTree = "<group>"; };
@@ -454,7 +452,6 @@
 				24444A5D1C30A02A00DC1579 /* AddTodayViewController.swift */,
 				24FFBB961C3D6AFA0053E261 /* SettingTableViewController.swift */,
 				243095861D7B123F009343BE /* TodaysViewController.swift */,
-				24CA036E1D83320900B106F3 /* TodayDetailViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -1048,7 +1045,6 @@
 				24D23EC41D79AF1A00C6E4AC /* NSCalendar+RSDFAdditions.m in Sources */,
 				24E9B04B1D8310BF002F1665 /* RSDFTodayDatePickerCollectionView.swift in Sources */,
 				24E9B0471D830FBE002F1665 /* RSDFTodayDatePickerView.swift in Sources */,
-				24CA036F1D83320900B106F3 /* TodayDetailViewController.swift in Sources */,
 				24030AE41C1C821C004E68ED /* AppDelegate.swift in Sources */,
 				24E9B0491D8310A4002F1665 /* RSDFTodayDatePickerDaysOfWeekView.swift in Sources */,
 				244B9A671C7B50FA004AF2DC /* NotificationManager.swift in Sources */,

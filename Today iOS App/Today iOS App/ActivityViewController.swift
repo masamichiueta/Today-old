@@ -32,8 +32,6 @@ class ActivityViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.moc = CoreDataManager.shared.persistentContainer.viewContext
-        self.configureGraphView()
-        
         self.loadData()
     }
     
@@ -48,44 +46,7 @@ class ActivityViewController: UIViewController {
     }
     
     func loadData() {
-        let now = Date()
-        var component = Calendar.current.dateComponents([.year, .month, .day], from: now)
-        component.year = component.year! - 1
-        let yearAgo = Calendar.current.date(from: component)!
-        
-        let todays = Today.todays(moc, from: yearAgo, to: now)
-        
-        var labels: [String] = []
-        var data: [Double] = []
-        var start = yearAgo
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MMM d"
-        
-        while start.compare(now) != .orderedDescending {
-            
-            let today = todays.filter { Calendar.current.isDate($0.date, inSameDayAs: start) }
-            if today.count == 0 {
-                data.append(0)
-            } else {
-                data.append(Double(today[0].score))
-            }
-            
-            labels.append(formatter.string(from: start))
-            start = Calendar.current.date(byAdding: .day, value: 1, to: start)!
-        }
-        
-        if Today.count(moc) != 0 {
-            self.graphView.shouldFill = true
-            self.graphView.fillType = .gradient
-            self.graphView.fillGradientType = .linear
-            self.graphView.fillGradientStartColor = Today.lastColor(moc)
-            self.graphView.fillGradientEndColor = UIColor.applicationColor(type: .darkViewBackground)
-            self.graphView.dataPointLabelColor = UIColor.white
-        }
-        
-        self.graphView.setData(data, withLabels: labels)
-        
-        self.graphView.setNeedsLayout()
+        configureGraphView()
         
         if let longestStreak = Streak.longestStreak(moc) {
             longestStreakLabel.text = "\(Int(longestStreak.streakNumber))"
@@ -124,6 +85,45 @@ class ActivityViewController: UIViewController {
         self.graphView.bottomMargin = 24
         self.graphView.direction = .rightToLeft
         self.graphView.contentOffset = CGPoint(x: self.graphView.contentSize.width - self.graphView.bounds.width, y: 0)
+        
+        let now = Date()
+        var component = Calendar.current.dateComponents([.year, .month, .day], from: now)
+        component.year = component.year! - 1
+        let yearAgo = Calendar.current.date(from: component)!
+        
+        let todays = Today.todays(moc, from: yearAgo, to: now)
+        
+        var labels: [String] = []
+        var data: [Double] = []
+        var start = yearAgo
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d"
+        
+        while start.compare(now) != .orderedDescending {
+            
+            let today = todays.filter { Calendar.current.isDate($0.date, inSameDayAs: start) }
+            if today.count == 0 {
+                data.append(0)
+            } else {
+                data.append(Double(today[0].score))
+            }
+            
+            labels.append(formatter.string(from: start))
+            start = Calendar.current.date(byAdding: .day, value: 1, to: start)!
+        }
+        
+        if Today.count(moc) != 0 {
+            self.graphView.shouldFill = true
+            self.graphView.fillType = .gradient
+            self.graphView.fillGradientType = .linear
+            self.graphView.lineColor = Today.lastColor(moc)
+            self.graphView.fillGradientStartColor = Today.lastColor(moc)
+            self.graphView.fillGradientEndColor = UIColor.applicationColor(type: .darkViewBackground)
+            self.graphView.dataPointLabelColor = UIColor.white
+        }
+        
+        self.graphView.setData(data, withLabels: labels)
+
     }
     
     @IBAction func doneSettingTableViewController(_ segue: UIStoryboardSegue) {

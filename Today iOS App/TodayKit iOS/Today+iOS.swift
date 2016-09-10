@@ -43,6 +43,33 @@ extension Today {
         }
     }
     
+    public static func today(_ moc: NSManagedObjectContext, date: Date) -> Today? {
+        var component = Calendar.current.dateComponents([.year, .month, .day], from: date)
+        guard let from = Calendar.current.date(from: component) else {
+            fatalError()
+        }
+        
+        component.day = component.day! + 1
+        
+        guard let to = Calendar.current.date(from: component) else {
+            fatalError()
+        }
+        
+        let request: NSFetchRequest<Today> = Today.fetchRequest()
+        request.sortDescriptors = Today.defaultSortDescriptors
+        request.predicate = NSPredicate(format:"date => %@ && date < %@", from as CVarArg, to as CVarArg)
+        request.fetchLimit = 1
+        
+        do {
+            let searchResults = try moc.fetch(request)
+            
+            return searchResults.first
+            
+        } catch {
+            fatalError()
+        }
+    }
+    
     public static func todays(_ moc: NSManagedObjectContext, from: Date, to: Date) -> [Today] {
         
         let request: NSFetchRequest<Today> = Today.fetchRequest()

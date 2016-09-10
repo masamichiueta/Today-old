@@ -9,6 +9,7 @@
 import UIKit
 import TodayKit
 import CoreData
+import Social
 
 class TodaysViewController: UIViewController {
     
@@ -41,9 +42,12 @@ class TodaysViewController: UIViewController {
     private func configureCalendarView() {
         self.calendarView.delegate = self
         self.calendarView.dataSource = self
-        
         let topInset = self.navigationController?.navigationBar.frame.height ?? 44.0
         self.calendarView.contentInsets = UIEdgeInsets(top: topInset, left: 0, bottom: 0, right: 0)
+    }
+    
+    @IBAction func scrollToTodayButtonDidTap(_ sender: AnyObject) {
+        self.calendarView.scroll(toToday: true)
     }
     
     @IBAction func cancelToTodaysViewController(_ segue: UIStoryboardSegue) {
@@ -62,7 +66,7 @@ class TodaysViewController: UIViewController {
             return
         }
         
-        moc.perform { [unowned self] in
+        moc.perform {
             //Create today
             let _ = Today.insertIntoContext(self.moc, score: Int64(vc.score), date: now)
             let _ = Streak.updateOrCreateCurrentStreak(self.moc, date: now)
@@ -108,7 +112,51 @@ extension TodaysViewController: RSDFDatePickerViewDelegate, RSDFDatePickerViewDa
     }
     
     func datePickerView(_ view: RSDFDatePickerView, didSelect date: Date) {
-        self.performSegue(withIdentifier: "ShowTodayDetailView", sender: nil)
+        if let today = Today.today(moc, date: date) {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .medium
+            dateFormatter.timeStyle = .none
+            
+            let alert = UIAlertController(title: dateFormatter.string(from: date), message: nil, preferredStyle: .actionSheet)
+            
+            if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook) {
+                alert.addAction(UIAlertAction(title: localize("Share to Facebook"), style: .default, handler: { action in
+                    let vc = SLComposeViewController(forServiceType: SLServiceTypeFacebook)!
+                    vc.setInitialText(localize("Today's Score is \(today.score)"))
+                    let image = Today.type(Int(today.score)).icon(.hundred)
+                    vc.add(image)
+                    vc.add(URL(string: "http://uetamasamichi.com/TodayWeb/"))
+                    self.present(vc, animated: true, completion: nil)
+                }))
+            }
+            
+            if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeTwitter) {
+                alert.addAction(UIAlertAction(title: localize("Share to Twitter"), style: .default, handler: { action in
+                    let vc = SLComposeViewController(forServiceType: SLServiceTypeTwitter)!
+                    vc.setInitialText(localize("Today's Score is \(today.score)"))
+                    let image = Today.type(Int(today.score)).icon(.hundred)
+                    vc.add(image)
+                    vc.add(URL(string: "http://uetamasamichi.com/TodayWeb/"))
+                    self.present(vc, animated: true, completion: nil)
+                }))
+            }
+            
+            alert.addAction(UIAlertAction(title: localize("Delete"), style: .destructive, handler: { action in
+                self.moc.perform {
+                    self.moc.delete(today)
+                }
+                
+                let _ = Streak.updateOrCreateCurrentStreak(self.moc, date: date)
+                
+                do {
+                    try self.moc.save()
+                } catch {
+                    fatalError()
+                }
+            }))
+            alert.addAction(UIAlertAction(title: localize("Cancel"), style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     func datePickerView(_ view: RSDFDatePickerView, shouldMark date: Date) -> Bool {

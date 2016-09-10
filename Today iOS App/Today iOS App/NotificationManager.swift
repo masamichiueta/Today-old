@@ -12,6 +12,8 @@ import UserNotifications
 
 class NotificationManager: NSObject {
     
+    static let updateTintColorNotificationName = "updateTintColorNotificationName"
+    
     static let addTodayActionName = "AddTodayAction"
     static let addTodayCategoryName = "AddTodayCategory"
     static let addTodayNotificationName = "AddTodayNotification"

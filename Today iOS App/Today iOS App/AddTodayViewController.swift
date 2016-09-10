@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 import TodayKit
 
 final class AddTodayViewController: UIViewController {
@@ -14,6 +15,8 @@ final class AddTodayViewController: UIViewController {
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var scoreCircleView: ScoreCircleView!
     @IBOutlet weak var iconImageView: UIImageView!
+    
+    var moc: NSManagedObjectContext!
     
     var score: Int =  Today.maxMasterScore {
         didSet {
@@ -41,9 +44,15 @@ final class AddTodayViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.moc = CoreDataManager.shared.persistentContainer.viewContext
         setupProgressBorderWidth()
         iconImageView.image = Today.type(score).icon(.hundred)
         iconImageView.tintColor = scoreCircleView.progressCircleColor
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateTintColor()
     }
     
     override func didReceiveMemoryWarning() {
@@ -58,6 +67,12 @@ final class AddTodayViewController: UIViewController {
         } else {
             scoreCircleView.progressBorderWidth = defaultProgressBorderWidth
         }
+    }
+    
+    func updateTintColor() {
+        let color = Today.lastColor(moc)
+        self.tabBarController?.tabBar.tintColor = color
+        self.navigationController?.navigationBar.tintColor = color
     }
     
     fileprivate func setupProgressBorderWidth() {

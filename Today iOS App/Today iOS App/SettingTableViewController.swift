@@ -33,8 +33,19 @@ final class SettingTableViewController: UITableViewController {
         setupTableView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateTintColor()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func updateTintColor() {
+        let color = Today.lastColor(moc)
+        self.tabBarController?.tabBar.tintColor = color
+        self.navigationController?.navigationBar.tintColor = color
     }
     
     fileprivate func setupTableView() {

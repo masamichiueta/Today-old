@@ -30,7 +30,7 @@ final class TodayExtensionViewController: UIViewController, NCWidgetProviding {
         super.didReceiveMemoryWarning()
     }
     
-    func widgetPerformUpdate(completionHandler: ((NCUpdateResult) -> Void)) {
+    func widgetPerformUpdate(completionHandler: @escaping (NCUpdateResult) -> Void) {
         completionHandler(NCUpdateResult.newData)
     }
     

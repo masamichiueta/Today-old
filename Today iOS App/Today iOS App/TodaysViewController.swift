@@ -143,7 +143,7 @@ extension TodaysViewController: RSDFDatePickerViewDelegate, RSDFDatePickerViewDa
             alert.addAction(UIAlertAction(title: localize("Delete"), style: .destructive, handler: { action in
                 self.moc.performAndWait {
                     self.moc.delete(today)
-                    let _ = Streak.updateOrCreateCurrentStreak(self.moc, date: date)
+                    Streak.deleteDateFromStreak(self.moc, date: today.date)
                     
                     do {
                         try self.moc.save()

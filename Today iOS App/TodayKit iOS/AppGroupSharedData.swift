@@ -10,10 +10,6 @@ import Foundation
 
 public let appGroupURLScheme = "Today"
 
-public enum AppGroupURLHost: String {
-    case addToday = "AddToday"
-}
-
 public struct AppGroupSharedData {
     
     public struct AppGroupSharedDataKey {

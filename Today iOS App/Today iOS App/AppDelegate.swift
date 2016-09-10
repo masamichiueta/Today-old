@@ -30,8 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         NotificationManager.shared.setupLocalNotificationSetting()
-        
-
 
         return true
     }
@@ -59,25 +57,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } catch {
             CoreDataManager.shared.persistentContainer.viewContext.rollback()
         }
-    }
-    
-    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        
-        if url.scheme == appGroupURLScheme {
-            guard let host = url.host else {
-                return true
-            }
-            
-            if host == AppGroupURLHost.addToday.rawValue {
-                let tabBarController = window?.rootViewController as? UITabBarController
-                let navBarController = tabBarController?.childViewControllers.first as? UINavigationController
-                let todaysViewController = navBarController?.childViewControllers.first as? TodaysViewController
-                todaysViewController?.showAddTodayViewController(self)
-            }
-            return true
-        }
-        
-        return false
     }
     
     

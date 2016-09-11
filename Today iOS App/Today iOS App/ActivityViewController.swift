@@ -69,21 +69,21 @@ class ActivityViewController: UIViewController {
     }
     
     private func configureGraphView() {
-        self.graphView.backgroundFillColor = UIColor.applicationColor(type: .darkViewBackground)
+        self.graphView.backgroundFillColor = UIColor.white
         self.graphView.lineWidth = 1
-        self.graphView.lineColor = UIColor.white
+        self.graphView.lineColor = UIColor.darkGray
         self.graphView.lineStyle = .smooth
-        self.graphView.dataPointFillColor = UIColor.white
+        self.graphView.dataPointFillColor = UIColor.darkGray
         self.graphView.shouldAnimateOnStartup = false
         self.graphView.shouldAnimateOnAdapt = false
         self.graphView.dataPointSize = 3
         self.graphView.rangeMin = 0
         self.graphView.rangeMax = 10
         self.graphView.shouldAutomaticallyDetectRange = false
-        self.graphView.referenceLineColor = UIColor.applicationColor(type: .darkSeparator)
+        self.graphView.referenceLineColor = UIColor.lightGray
         self.graphView.numberOfIntermediateReferenceLines = 1
-        self.graphView.referenceLineLabelColor = UIColor.applicationColor(type: .darkDetailText)
-        self.graphView.dataPointLabelColor = UIColor.applicationColor(type: .darkDetailText)
+        self.graphView.referenceLineLabelColor = UIColor.darkGray
+        self.graphView.dataPointLabelColor = UIColor.darkGray
         self.graphView.topMargin = 24
         self.graphView.bottomMargin = 24
         self.graphView.direction = .rightToLeft
@@ -121,8 +121,8 @@ class ActivityViewController: UIViewController {
             self.graphView.fillGradientType = .linear
             self.graphView.lineColor = Today.lastColor(moc)
             self.graphView.fillGradientStartColor = Today.lastColor(moc)
-            self.graphView.fillGradientEndColor = UIColor.applicationColor(type: .darkViewBackground)
-            self.graphView.dataPointLabelColor = UIColor.white
+            self.graphView.fillGradientEndColor = UIColor.white
+            self.graphView.dataPointLabelColor = UIColor.darkGray
         }
         
         self.graphView.setData(data, withLabels: labels)

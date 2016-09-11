@@ -10,8 +10,5 @@ import UIKit
 
 class RSDFTodayDatePickerCollectionView: RSDFDatePickerCollectionView {
     
-    override func selfBackgroundColor() -> UIColor {
-        return UIColor.applicationColor(type: .darkViewBackground)
-    }
 
 }

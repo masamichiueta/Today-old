@@ -133,14 +133,13 @@ final class SettingTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SettingCell", for: indexPath)
             cell.textLabel?.text = localize("Notification Time")
             cell.detailTextLabel?.text = dateFormatter.string(from: setting.notificationTime)
-            cell.detailTextLabel?.textColor = pickerHidden ? UIColor.applicationColor(type: .darkDetailText) : Today.lastColor(moc)
+            cell.detailTextLabel?.textColor = pickerHidden ? UIColor.darkGray : Today.lastColor(moc)
             return cell
         case ((pickerIndexPath as IndexPath).section, (pickerIndexPath as IndexPath).row): //(0, 2)
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "SettingPickerCell", for: indexPath) as? PickerTableViewCell else {
                 fatalError("Wrong cell type")
             }
             cell.datePicker.date = setting.notificationTime
-            cell.datePicker.setValue(UIColor.white, forKey: "textColor")
             cell.delegate = self
             return cell
         case (1, 0):
@@ -166,7 +165,7 @@ final class SettingTableViewController: UITableViewController {
             pickerHidden = !pickerHidden
             
             let cell = tableView.cellForRow(at: indexPath)
-            cell?.detailTextLabel?.textColor = pickerHidden ? UIColor.applicationColor(type: .darkDetailText) : Today.lastColor(moc)
+            cell?.detailTextLabel?.textColor = pickerHidden ? UIColor.darkGray : Today.lastColor(moc)
             
             togglePickerCell(pickerHidden)
         case (1, 0):

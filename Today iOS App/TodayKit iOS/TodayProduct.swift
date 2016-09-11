@@ -1,5 +1,5 @@
 //
-//  TodayProducts.swift
+//  TodayProduct.swift
 //  Today
 //
 //  Created by UetaMasamichi on 9/11/16.
@@ -7,15 +7,18 @@
 //
 
 import Foundation
+import StoreKit
 
-struct TodayProducts {
+struct TodayProduct {
     private static let Prefix = "com.uetamasamichi.Today."
     private static let Beer = Prefix + "Beer"
     
-    static let productIdentifiers: Set = [TodayProducts.Beer]
+    static let productIdentifiers: Set = [TodayProduct.Beer]
     
     static func resourceNameForProductIdentifier(productIdentifier: String) -> String? {
         return productIdentifier.components(separatedBy: ".").last
     }
-
+    
+    static let store = IAPManager(productIds: TodayProduct.productIdentifiers)
+    static var products: [SKProduct] = []
 }

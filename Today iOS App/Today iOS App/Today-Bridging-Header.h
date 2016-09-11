@@ -10,5 +10,6 @@
 #define Today_Bridging_Header_h
 
 #import "RSDayFlow.h"
+#import "KVNProgress.h"
 
 #endif /* Today_Bridging_Header_h */

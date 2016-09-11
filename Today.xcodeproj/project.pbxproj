@@ -13,8 +13,8 @@
 		24030AF11C1C821C004E68ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24030AEF1C1C821C004E68ED /* LaunchScreen.storyboard */; };
 		24095BD61C7C92F800CC970E /* AppGroupSharedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24095BD51C7C92F800CC970E /* AppGroupSharedData.swift */; };
 		241937AD1D8474D900903945 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 241937AC1D8474D900903945 /* StoreKit.framework */; };
-		241937AF1D84754B00903945 /* TodayProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241937AE1D84754B00903945 /* TodayProducts.swift */; };
-		241937B21D84766F00903945 /* IAPHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241937B11D84766F00903945 /* IAPHandler.swift */; };
+		241937AF1D84754B00903945 /* TodayProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241937AE1D84754B00903945 /* TodayProduct.swift */; };
+		241937B21D84766F00903945 /* IAPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241937B11D84766F00903945 /* IAPManager.swift */; };
 		241D095B1D85170F00CB660C /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D095A1D85170F00CB660C /* Utilities.swift */; };
 		241D65AF1C7B43AC00938CE8 /* TodayExtensionTodayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D65AE1C7B43AC00938CE8 /* TodayExtensionTodayTableViewCell.swift */; };
 		242AB0781D8454E1001566D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24F21AC61C4FD73C00396A38 /* Assets.xcassets */; };
@@ -35,6 +35,13 @@
 		246214C01CC2739200009053 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 246214BF1CC2739200009053 /* Settings.bundle */; };
 		2466884F1C1DB45E00C5E5A0 /* Activity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2466884D1C1DB45E00C5E5A0 /* Activity.storyboard */; };
 		246688561C1DB61100C5E5A0 /* Today.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 246688541C1DB61100C5E5A0 /* Today.storyboard */; };
+		24680FDA1D85411D00F9A0B4 /* KVNProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 24680FCE1D85411D00F9A0B4 /* KVNProgress.m */; };
+		24680FDB1D85411D00F9A0B4 /* KVNProgressConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 24680FD01D85411D00F9A0B4 /* KVNProgressConfiguration.m */; };
+		24680FDC1D85411D00F9A0B4 /* KVNProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24680FD11D85411D00F9A0B4 /* KVNProgressView.xib */; };
+		24680FDD1D85411D00F9A0B4 /* KVNRotationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24680FD31D85411D00F9A0B4 /* KVNRotationViewController.m */; };
+		24680FDE1D85411D00F9A0B4 /* UIColor+KVNContrast.m in Sources */ = {isa = PBXBuildFile; fileRef = 24680FD51D85411D00F9A0B4 /* UIColor+KVNContrast.m */; };
+		24680FDF1D85411D00F9A0B4 /* UIImage+KVNEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = 24680FD71D85411D00F9A0B4 /* UIImage+KVNEmpty.m */; };
+		24680FE01D85411D00F9A0B4 /* UIImage+KVNImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 24680FD91D85411D00F9A0B4 /* UIImage+KVNImageEffects.m */; };
 		246AC1811C5120FF0047AAE7 /* AddTodayInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246AC1801C5120FF0047AAE7 /* AddTodayInterfaceController.swift */; };
 		247E4D611C54FCB800C134DB /* Setting.plist in Resources */ = {isa = PBXBuildFile; fileRef = 24D4E3461C43E1D900F6DA6A /* Setting.plist */; };
 		24A1CFE11C36D8FA00F0E9CE /* ScoreCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A1CFE01C36D8FA00F0E9CE /* ScoreCircleView.swift */; };
@@ -221,8 +228,8 @@
 		24095BD51C7C92F800CC970E /* AppGroupSharedData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppGroupSharedData.swift; sourceTree = "<group>"; };
 		240F14741C2A9CDE0003B2AF /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		241937AC1D8474D900903945 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		241937AE1D84754B00903945 /* TodayProducts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TodayProducts.swift; path = "../TodayKit iOS/TodayProducts.swift"; sourceTree = "<group>"; };
-		241937B11D84766F00903945 /* IAPHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHandler.swift; sourceTree = "<group>"; };
+		241937AE1D84754B00903945 /* TodayProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TodayProduct.swift; path = "../TodayKit iOS/TodayProduct.swift"; sourceTree = "<group>"; };
+		241937B11D84766F00903945 /* IAPManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPManager.swift; sourceTree = "<group>"; };
 		241D095A1D85170F00CB660C /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		241D65AE1C7B43AC00938CE8 /* TodayExtensionTodayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayExtensionTodayTableViewCell.swift; sourceTree = "<group>"; };
 		242F984A1C49282200DBC64B /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
@@ -245,6 +252,19 @@
 		2463EBB51CC67B130082AA19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2466884E1C1DB45E00C5E5A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Activity.storyboard; sourceTree = "<group>"; };
 		246688551C1DB61100C5E5A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Today.storyboard; sourceTree = "<group>"; };
+		24680FCD1D85411D00F9A0B4 /* KVNProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KVNProgress.h; path = KVNProgress/KVNProgress.h; sourceTree = "<group>"; };
+		24680FCE1D85411D00F9A0B4 /* KVNProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KVNProgress.m; path = KVNProgress/KVNProgress.m; sourceTree = "<group>"; };
+		24680FCF1D85411D00F9A0B4 /* KVNProgressConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KVNProgressConfiguration.h; path = KVNProgress/KVNProgressConfiguration.h; sourceTree = "<group>"; };
+		24680FD01D85411D00F9A0B4 /* KVNProgressConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KVNProgressConfiguration.m; path = KVNProgress/KVNProgressConfiguration.m; sourceTree = "<group>"; };
+		24680FD11D85411D00F9A0B4 /* KVNProgressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KVNProgressView.xib; path = KVNProgress/KVNProgressView.xib; sourceTree = "<group>"; };
+		24680FD21D85411D00F9A0B4 /* KVNRotationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KVNRotationViewController.h; path = KVNProgress/KVNRotationViewController.h; sourceTree = "<group>"; };
+		24680FD31D85411D00F9A0B4 /* KVNRotationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KVNRotationViewController.m; path = KVNProgress/KVNRotationViewController.m; sourceTree = "<group>"; };
+		24680FD41D85411D00F9A0B4 /* UIColor+KVNContrast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+KVNContrast.h"; path = "KVNProgress/UIColor+KVNContrast.h"; sourceTree = "<group>"; };
+		24680FD51D85411D00F9A0B4 /* UIColor+KVNContrast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+KVNContrast.m"; path = "KVNProgress/UIColor+KVNContrast.m"; sourceTree = "<group>"; };
+		24680FD61D85411D00F9A0B4 /* UIImage+KVNEmpty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+KVNEmpty.h"; path = "KVNProgress/UIImage+KVNEmpty.h"; sourceTree = "<group>"; };
+		24680FD71D85411D00F9A0B4 /* UIImage+KVNEmpty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+KVNEmpty.m"; path = "KVNProgress/UIImage+KVNEmpty.m"; sourceTree = "<group>"; };
+		24680FD81D85411D00F9A0B4 /* UIImage+KVNImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+KVNImageEffects.h"; path = "KVNProgress/UIImage+KVNImageEffects.h"; sourceTree = "<group>"; };
+		24680FD91D85411D00F9A0B4 /* UIImage+KVNImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+KVNImageEffects.m"; path = "KVNProgress/UIImage+KVNImageEffects.m"; sourceTree = "<group>"; };
 		246AC1801C5120FF0047AAE7 /* AddTodayInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTodayInterfaceController.swift; sourceTree = "<group>"; };
 		24A1CFE01C36D8FA00F0E9CE /* ScoreCircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreCircleView.swift; sourceTree = "<group>"; };
 		24A39AD91C89C9C800DE0090 /* WatchData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchData.swift; sourceTree = "<group>"; };
@@ -430,20 +450,13 @@
 		240F14761C2A9FB60003B2AF /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				241937AE1D84754B00903945 /* TodayProduct.swift */,
+				241937B11D84766F00903945 /* IAPManager.swift */,
 				242F984A1C49282200DBC64B /* NotificationManager.swift */,
 				24FE134E1C7F49A700A573B8 /* TodayWCSessionHandler.swift */,
 				241D095A1D85170F00CB660C /* Utilities.swift */,
 			);
 			name = Helper;
-			sourceTree = "<group>";
-		};
-		241937B01D84763200903945 /* InAppPurchase */ = {
-			isa = PBXGroup;
-			children = (
-				241937AE1D84754B00903945 /* TodayProducts.swift */,
-				241937B11D84766F00903945 /* IAPHandler.swift */,
-			);
-			name = InAppPurchase;
 			sourceTree = "<group>";
 		};
 		2463EBB21CC67B130082AA19 /* TodayUITests */ = {
@@ -490,10 +503,29 @@
 			name = View;
 			sourceTree = "<group>";
 		};
+		24680FCC1D85411400F9A0B4 /* KVNProgress */ = {
+			isa = PBXGroup;
+			children = (
+				24680FCD1D85411D00F9A0B4 /* KVNProgress.h */,
+				24680FCE1D85411D00F9A0B4 /* KVNProgress.m */,
+				24680FCF1D85411D00F9A0B4 /* KVNProgressConfiguration.h */,
+				24680FD01D85411D00F9A0B4 /* KVNProgressConfiguration.m */,
+				24680FD11D85411D00F9A0B4 /* KVNProgressView.xib */,
+				24680FD21D85411D00F9A0B4 /* KVNRotationViewController.h */,
+				24680FD31D85411D00F9A0B4 /* KVNRotationViewController.m */,
+				24680FD41D85411D00F9A0B4 /* UIColor+KVNContrast.h */,
+				24680FD51D85411D00F9A0B4 /* UIColor+KVNContrast.m */,
+				24680FD61D85411D00F9A0B4 /* UIImage+KVNEmpty.h */,
+				24680FD71D85411D00F9A0B4 /* UIImage+KVNEmpty.m */,
+				24680FD81D85411D00F9A0B4 /* UIImage+KVNImageEffects.h */,
+				24680FD91D85411D00F9A0B4 /* UIImage+KVNImageEffects.m */,
+			);
+			name = KVNProgress;
+			sourceTree = "<group>";
+		};
 		24A487E51C55032E0015DB05 /* Today iOS App */ = {
 			isa = PBXGroup;
 			children = (
-				241937B01D84763200903945 /* InAppPurchase */,
 				24D23EB01D79AEEA00C6E4AC /* Library */,
 				246688591C1EFC3E00C5E5A0 /* Controller */,
 				240F14761C2A9FB60003B2AF /* Helper */,
@@ -583,6 +615,7 @@
 		24D23EB01D79AEEA00C6E4AC /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				24680FCC1D85411400F9A0B4 /* KVNProgress */,
 				24D23ECD1D79AF5800C6E4AC /* ScrollableGraphView */,
 				24D23EB11D79AF1A00C6E4AC /* RSDayFlow */,
 			);
@@ -979,6 +1012,7 @@
 				246214C01CC2739200009053 /* Settings.bundle in Resources */,
 				24030AF11C1C821C004E68ED /* LaunchScreen.storyboard in Resources */,
 				24030AEE1C1C821C004E68ED /* Assets.xcassets in Resources */,
+				24680FDC1D85411D00F9A0B4 /* KVNProgressView.xib in Resources */,
 				24030AE91C1C821C004E68ED /* Main.storyboard in Resources */,
 				24B744E81C873528000E0FFC /* Localizable.strings in Resources */,
 				246688561C1DB61100C5E5A0 /* Today.storyboard in Resources */,
@@ -1062,7 +1096,9 @@
 				244631451C3AB8BA002BBD06 /* PaddingLabel.swift in Sources */,
 				24E9B04D1D8310E1002F1665 /* RSDFTodayDatePickerMonthHeader.swift in Sources */,
 				24E9B0531D831A32002F1665 /* ActivityViewController.swift in Sources */,
+				24680FDA1D85411D00F9A0B4 /* KVNProgress.m in Sources */,
 				24E9B04F1D8310FC002F1665 /* RSDFTodayDatePickerDayCell.swift in Sources */,
+				24680FE01D85411D00F9A0B4 /* UIImage+KVNImageEffects.m in Sources */,
 				24D23EC91D79AF1A00C6E4AC /* RSDFDatePickerMonthHeader.m in Sources */,
 				24D23EC61D79AF1A00C6E4AC /* RSDFDatePickerCollectionViewLayout.m in Sources */,
 				24D23EC41D79AF1A00C6E4AC /* NSCalendar+RSDFAdditions.m in Sources */,
@@ -1072,18 +1108,22 @@
 				24E9B0491D8310A4002F1665 /* RSDFTodayDatePickerDaysOfWeekView.swift in Sources */,
 				244B9A671C7B50FA004AF2DC /* NotificationManager.swift in Sources */,
 				24D23EC71D79AF1A00C6E4AC /* RSDFDatePickerDayCell.m in Sources */,
+				24680FDD1D85411D00F9A0B4 /* KVNRotationViewController.m in Sources */,
+				24680FDF1D85411D00F9A0B4 /* UIImage+KVNEmpty.m in Sources */,
 				24D23EC51D79AF1A00C6E4AC /* RSDFDatePickerCollectionView.m in Sources */,
 				24444A5E1C30A02A00DC1579 /* AddTodayViewController.swift in Sources */,
 				24D23EC81D79AF1A00C6E4AC /* RSDFDatePickerDaysOfWeekView.m in Sources */,
+				24680FDE1D85411D00F9A0B4 /* UIColor+KVNContrast.m in Sources */,
 				24D23ECF1D79AF5800C6E4AC /* ScrollableGraphView.swift in Sources */,
 				24D82C2F1C5A5D880095FA47 /* ChartTableViewCell.swift in Sources */,
 				243095871D7B123F009343BE /* TodaysViewController.swift in Sources */,
 				24A1CFE11C36D8FA00F0E9CE /* ScoreCircleView.swift in Sources */,
-				241937B21D84766F00903945 /* IAPHandler.swift in Sources */,
+				241937B21D84766F00903945 /* IAPManager.swift in Sources */,
+				24680FDB1D85411D00F9A0B4 /* KVNProgressConfiguration.m in Sources */,
 				24FFBB971C3D6AFA0053E261 /* SettingTableViewController.swift in Sources */,
 				24FE71311C3FFB8700A14B9D /* PickerTableViewCell.swift in Sources */,
 				24FE134F1C7F49A700A573B8 /* TodayWCSessionHandler.swift in Sources */,
-				241937AF1D84754B00903945 /* TodayProducts.swift in Sources */,
+				241937AF1D84754B00903945 /* TodayProduct.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

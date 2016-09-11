@@ -29,6 +29,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         NotificationManager.shared.setupLocalNotificationSetting()
+        TodayProduct.store.requestProducts(completionHandler: { success, products in
+            if success {
+                TodayProduct.products = products!
+            }
+        })
 
         return true
     }

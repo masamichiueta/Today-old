@@ -26,6 +26,8 @@
 "Notification Setting" = "通知設定";
 "Notification Time" = "通知時間";
 "Rate Today" = "Todayを評価する";
+"In App Purchase is disabled" = "アプリ内課金の設定が無効になっています";
+"Thank you" = "ありがとうございます";
 
 //MARK: - TodaysViewController.swift
 "Let's start Today!" = "Todayを始めましょう！";

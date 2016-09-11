@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import TodayKit
+import StoreKit
 
 final class SettingTableViewController: UITableViewController {
     
@@ -106,7 +107,7 @@ final class SettingTableViewController: UITableViewController {
             }
             return 3
         case 1:
-            return 2
+            return 1 + TodayProduct.products.count
         default:
             break
         }
@@ -146,9 +147,9 @@ final class SettingTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
             cell.textLabel?.text = localize("Rate Today")
             return cell
-        case (1, 1):
+        case (1, let productIndex):
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-            cell.textLabel?.text = localize("Buy beer to developer")
+            cell.textLabel?.text = TodayProduct.products[productIndex - 1].localizedDescription
             return cell
         default:
             break
@@ -170,8 +171,22 @@ final class SettingTableViewController: UITableViewController {
             togglePickerCell(pickerHidden)
         case (1, 0):
             UIApplication.shared.open(URL(string: reviewUrl)!, options: [:], completionHandler: nil)
-        case (1, 1):
-            let store = IAPHandler(productIds: TodayProducts.productIdentifiers)
+        case (1, let productIndex):
+            if !IAPManager.canMakePayments() {
+                KVNProgress.showError(withStatus: localize("In App Purchase is disabled"))
+                return
+            }
+ 
+            TodayProduct.store.buyProduct(TodayProduct.products[productIndex - 1], productPaymentHandler: { state, error in
+                switch state {
+                case .purchased:
+                    KVNProgress.showSuccess(withStatus: localize("Thank you") + "😂")
+                case .failed:
+                    KVNProgress.showError(withStatus: error?.localizedDescription)
+                default:
+                    break
+                }
+            })
             
         default:
             break

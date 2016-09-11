@@ -1,0 +1,1882 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		24030AE41C1C821C004E68ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24030AE31C1C821C004E68ED /* AppDelegate.swift */; };
+		24030AE91C1C821C004E68ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24030AE71C1C821C004E68ED /* Main.storyboard */; };
+		24030AEE1C1C821C004E68ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24030AED1C1C821C004E68ED /* Assets.xcassets */; };
+		24030AF11C1C821C004E68ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24030AEF1C1C821C004E68ED /* LaunchScreen.storyboard */; };
+		24095BD61C7C92F800CC970E /* AppGroupSharedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24095BD51C7C92F800CC970E /* AppGroupSharedData.swift */; };
+		241937AD1D8474D900903945 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 241937AC1D8474D900903945 /* StoreKit.framework */; };
+		241937AF1D84754B00903945 /* TodayProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241937AE1D84754B00903945 /* TodayProduct.swift */; };
+		241937B21D84766F00903945 /* IAPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241937B11D84766F00903945 /* IAPManager.swift */; };
+		241D095B1D85170F00CB660C /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D095A1D85170F00CB660C /* Utilities.swift */; };
+		241D65AF1C7B43AC00938CE8 /* TodayExtensionTodayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D65AE1C7B43AC00938CE8 /* TodayExtensionTodayTableViewCell.swift */; };
+		242AB0781D8454E1001566D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24F21AC61C4FD73C00396A38 /* Assets.xcassets */; };
+		242AB0791D845643001566D9 /* TodayWatchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24A487EE1C5503C50015DB05 /* TodayWatchKit.framework */; };
+		242AB07A1D845643001566D9 /* TodayWatchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24A487EE1C5503C50015DB05 /* TodayWatchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		242AB07E1D845690001566D9 /* Today Watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 24F21ACD1C4FD73C00396A38 /* Today Watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		243095871D7B123F009343BE /* TodaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243095861D7B123F009343BE /* TodaysViewController.swift */; };
+		24338CF01C7BEBD9007FCAD1 /* TodayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24C6C1A51C54F9970041C31F /* TodayKit.framework */; };
+		243CC6EF1CC5393900E41407 /* Today+iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243CC6EE1CC5393900E41407 /* Today+iOS.swift */; };
+		243CC6F11CC53A3400E41407 /* Streak+iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243CC6F01CC53A3400E41407 /* Streak+iOS.swift */; };
+		24444A5E1C30A02A00DC1579 /* AddTodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24444A5D1C30A02A00DC1579 /* AddTodayViewController.swift */; };
+		244631451C3AB8BA002BBD06 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244631441C3AB8BA002BBD06 /* PaddingLabel.swift */; };
+		244B9A671C7B50FA004AF2DC /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F984A1C49282200DBC64B /* NotificationManager.swift */; };
+		244B9A721C7B5208004AF2DC /* ConfigurableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F9DC3E1C2EFD33003A6427 /* ConfigurableCell.swift */; };
+		244B9A771C7B5910004AF2DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 244B9A761C7B5910004AF2DC /* Assets.xcassets */; };
+		245464671C75FFEF0030EF82 /* WatchConnectivityActionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245464661C75FFEF0030EF82 /* WatchConnectivityActionType.swift */; };
+		245464681C75FFEF0030EF82 /* WatchConnectivityActionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245464661C75FFEF0030EF82 /* WatchConnectivityActionType.swift */; };
+		246214C01CC2739200009053 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 246214BF1CC2739200009053 /* Settings.bundle */; };
+		2466884F1C1DB45E00C5E5A0 /* Activity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2466884D1C1DB45E00C5E5A0 /* Activity.storyboard */; };
+		246688561C1DB61100C5E5A0 /* Today.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 246688541C1DB61100C5E5A0 /* Today.storyboard */; };
+		24680FDA1D85411D00F9A0B4 /* KVNProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 24680FCE1D85411D00F9A0B4 /* KVNProgress.m */; };
+		24680FDB1D85411D00F9A0B4 /* KVNProgressConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 24680FD01D85411D00F9A0B4 /* KVNProgressConfiguration.m */; };
+		24680FDC1D85411D00F9A0B4 /* KVNProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24680FD11D85411D00F9A0B4 /* KVNProgressView.xib */; };
+		24680FDD1D85411D00F9A0B4 /* KVNRotationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24680FD31D85411D00F9A0B4 /* KVNRotationViewController.m */; };
+		24680FDE1D85411D00F9A0B4 /* UIColor+KVNContrast.m in Sources */ = {isa = PBXBuildFile; fileRef = 24680FD51D85411D00F9A0B4 /* UIColor+KVNContrast.m */; };
+		24680FDF1D85411D00F9A0B4 /* UIImage+KVNEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = 24680FD71D85411D00F9A0B4 /* UIImage+KVNEmpty.m */; };
+		24680FE01D85411D00F9A0B4 /* UIImage+KVNImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 24680FD91D85411D00F9A0B4 /* UIImage+KVNImageEffects.m */; };
+		246AC1811C5120FF0047AAE7 /* AddTodayInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246AC1801C5120FF0047AAE7 /* AddTodayInterfaceController.swift */; };
+		247E4D611C54FCB800C134DB /* Setting.plist in Resources */ = {isa = PBXBuildFile; fileRef = 24D4E3461C43E1D900F6DA6A /* Setting.plist */; };
+		24A1CFE11C36D8FA00F0E9CE /* ScoreCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A1CFE01C36D8FA00F0E9CE /* ScoreCircleView.swift */; };
+		24A39ADA1C89C9C800DE0090 /* WatchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A39AD91C89C9C800DE0090 /* WatchData.swift */; };
+		24A487FA1C55045D0015DB05 /* Today.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C77EA81C2A8C6F00493C13 /* Today.swift */; };
+		24A487FC1C55054C0015DB05 /* Streak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E538D81C49E22900B781D8 /* Streak.swift */; };
+		24A488031C5505AF0015DB05 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DBB5901C2C367100E1C042 /* Utilities.swift */; };
+		24B744E81C873528000E0FFC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 24B744EA1C873528000E0FFC /* Localizable.strings */; };
+		24B744EF1C873882000E0FFC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 24B744F11C873882000E0FFC /* Localizable.strings */; };
+		24C6C1AF1C54F9970041C31F /* TodayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24C6C1A51C54F9970041C31F /* TodayKit.framework */; };
+		24C6C1C21C54F9DB0041C31F /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FE71321C4245D400A14B9D /* Setting.swift */; };
+		24C6C1C41C54F9F60041C31F /* Streak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E538D81C49E22900B781D8 /* Streak.swift */; };
+		24C6C1C51C54F9F90041C31F /* Today.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C77EA81C2A8C6F00493C13 /* Today.swift */; };
+		24C6C1C61C54F9FD0041C31F /* Today.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 24C77EA41C2A8C3400493C13 /* Today.xcdatamodeld */; };
+		24C6C1C71C54FA010041C31F /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F14741C2A9CDE0003B2AF /* CoreDataManager.swift */; };
+		24C6C1CA1C54FA0A0041C31F /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DBB5901C2C367100E1C042 /* Utilities.swift */; };
+		24D210331C79EE2F00F69478 /* CurrentStreakInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D210321C79EE2F00F69478 /* CurrentStreakInterfaceController.swift */; };
+		24D23EC41D79AF1A00C6E4AC /* NSCalendar+RSDFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 24D23EB41D79AF1A00C6E4AC /* NSCalendar+RSDFAdditions.m */; };
+		24D23EC51D79AF1A00C6E4AC /* RSDFDatePickerCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 24D23EB71D79AF1A00C6E4AC /* RSDFDatePickerCollectionView.m */; };
+		24D23EC61D79AF1A00C6E4AC /* RSDFDatePickerCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 24D23EB91D79AF1A00C6E4AC /* RSDFDatePickerCollectionViewLayout.m */; };
+		24D23EC71D79AF1A00C6E4AC /* RSDFDatePickerDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 24D23EBC1D79AF1A00C6E4AC /* RSDFDatePickerDayCell.m */; };
+		24D23EC81D79AF1A00C6E4AC /* RSDFDatePickerDaysOfWeekView.m in Sources */ = {isa = PBXBuildFile; fileRef = 24D23EBE1D79AF1A00C6E4AC /* RSDFDatePickerDaysOfWeekView.m */; };
+		24D23EC91D79AF1A00C6E4AC /* RSDFDatePickerMonthHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 24D23EC01D79AF1A00C6E4AC /* RSDFDatePickerMonthHeader.m */; };
+		24D23ECA1D79AF1A00C6E4AC /* RSDFDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 24D23EC31D79AF1A00C6E4AC /* RSDFDatePickerView.m */; };
+		24D23ECF1D79AF5800C6E4AC /* ScrollableGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D23ECE1D79AF5800C6E4AC /* ScrollableGraphView.swift */; };
+		24D23F0F1D79B14900C6E4AC /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D23F0D1D79B13700C6E4AC /* Device.swift */; };
+		24D82C2F1C5A5D880095FA47 /* ChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D82C2E1C5A5D880095FA47 /* ChartTableViewCell.swift */; };
+		24D8E3DC1C54FC4F005BA35B /* TodayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24C6C1A51C54F9970041C31F /* TodayKit.framework */; };
+		24D8E3DD1C54FC4F005BA35B /* TodayKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24C6C1A51C54F9970041C31F /* TodayKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		24E9B0471D830FBE002F1665 /* RSDFTodayDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E9B0461D830FBE002F1665 /* RSDFTodayDatePickerView.swift */; };
+		24E9B0491D8310A4002F1665 /* RSDFTodayDatePickerDaysOfWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E9B0481D8310A4002F1665 /* RSDFTodayDatePickerDaysOfWeekView.swift */; };
+		24E9B04B1D8310BF002F1665 /* RSDFTodayDatePickerCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E9B04A1D8310BF002F1665 /* RSDFTodayDatePickerCollectionView.swift */; };
+		24E9B04D1D8310E1002F1665 /* RSDFTodayDatePickerMonthHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E9B04C1D8310E1002F1665 /* RSDFTodayDatePickerMonthHeader.swift */; };
+		24E9B04F1D8310FC002F1665 /* RSDFTodayDatePickerDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E9B04E1D8310FC002F1665 /* RSDFTodayDatePickerDayCell.swift */; };
+		24E9B0511D8313EF002F1665 /* RSDFTodayDatePickerCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E9B0501D8313EF002F1665 /* RSDFTodayDatePickerCollectionViewLayout.swift */; };
+		24E9B0531D831A32002F1665 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E9B0521D831A32002F1665 /* ActivityViewController.swift */; };
+		24F21AB11C4FCFE900396A38 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24F21AB01C4FCFE900396A38 /* NotificationCenter.framework */; };
+		24F21AB41C4FCFE900396A38 /* TodayExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F21AB31C4FCFE900396A38 /* TodayExtensionViewController.swift */; };
+		24F21AB71C4FCFE900396A38 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24F21AB51C4FCFE900396A38 /* MainInterface.storyboard */; };
+		24F21ABB1C4FCFE900396A38 /* Today Today Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 24F21AAF1C4FCFE900396A38 /* Today Today Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		24F21AC51C4FD73C00396A38 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24F21AC31C4FD73C00396A38 /* Interface.storyboard */; };
+		24F21AC71C4FD73C00396A38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24F21AC61C4FD73C00396A38 /* Assets.xcassets */; };
+		24F21AD51C4FD73C00396A38 /* ScoreInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F21AD41C4FD73C00396A38 /* ScoreInterfaceController.swift */; };
+		24F21AD71C4FD73C00396A38 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F21AD61C4FD73C00396A38 /* ExtensionDelegate.swift */; };
+		24F21AE11C4FD73C00396A38 /* Today Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 24F21AC11C4FD73C00396A38 /* Today Watch App.app */; };
+		24FE134F1C7F49A700A573B8 /* TodayWCSessionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FE134E1C7F49A700A573B8 /* TodayWCSessionHandler.swift */; };
+		24FE71311C3FFB8700A14B9D /* PickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FE71301C3FFB8700A14B9D /* PickerTableViewCell.swift */; };
+		24FFBB971C3D6AFA0053E261 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FFBB961C3D6AFA0053E261 /* SettingTableViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		24030AF81C1C821C004E68ED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 24030AD81C1C821C004E68ED /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 24030ADF1C1C821C004E68ED;
+			remoteInfo = Today;
+		};
+		242AB07B1D845643001566D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 24030AD81C1C821C004E68ED /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 24A487ED1C5503C50015DB05;
+			remoteInfo = "TodayKit (watchOS)";
+		};
+		242AB07F1D845690001566D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 24030AD81C1C821C004E68ED /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 24F21ACC1C4FD73C00396A38;
+			remoteInfo = "Today Watch Extension";
+		};
+		2463EBB61CC67B130082AA19 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 24030AD81C1C821C004E68ED /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 24030ADF1C1C821C004E68ED;
+			remoteInfo = Today;
+		};
+		24C6C1B01C54F9970041C31F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 24030AD81C1C821C004E68ED /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 24C6C1A41C54F9970041C31F;
+			remoteInfo = TodayKit;
+		};
+		24C6C1B21C54F9970041C31F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 24030AD81C1C821C004E68ED /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 24030ADF1C1C821C004E68ED;
+			remoteInfo = Today;
+		};
+		24D8E3DE1C54FC50005BA35B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 24030AD81C1C821C004E68ED /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 24C6C1A41C54F9970041C31F;
+			remoteInfo = TodayKit;
+		};
+		24F21AB91C4FCFE900396A38 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 24030AD81C1C821C004E68ED /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 24F21AAE1C4FCFE900396A38;
+			remoteInfo = TodayExtension;
+		};
+		24F21ADF1C4FD73C00396A38 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 24030AD81C1C821C004E68ED /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 24F21AC01C4FD73C00396A38;
+			remoteInfo = TodayWatch;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		242AB07D1D845643001566D9 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				242AB07A1D845643001566D9 /* TodayWatchKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		242AB0811D845690001566D9 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				242AB07E1D845690001566D9 /* Today Watch Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		246688111C1D187A00C5E5A0 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				24D8E3DD1C54FC4F005BA35B /* TodayKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		246688231C1D189F00C5E5A0 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				24F21ABB1C4FCFE900396A38 /* Today Today Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		24F21AE91C4FD73E00396A38 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				24F21AE11C4FD73C00396A38 /* Today Watch App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		24030AE01C1C821C004E68ED /* Today.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Today.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		24030AE31C1C821C004E68ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		24030AE81C1C821C004E68ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		24030AED1C1C821C004E68ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		24030AF01C1C821C004E68ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		24030AF21C1C821C004E68ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24030AF71C1C821C004E68ED /* TodayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		24030AFD1C1C821C004E68ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24095BD51C7C92F800CC970E /* AppGroupSharedData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppGroupSharedData.swift; sourceTree = "<group>"; };
+		240F14741C2A9CDE0003B2AF /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		241937AC1D8474D900903945 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		241937AE1D84754B00903945 /* TodayProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TodayProduct.swift; path = "../TodayKit iOS/TodayProduct.swift"; sourceTree = "<group>"; };
+		241937B11D84766F00903945 /* IAPManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPManager.swift; sourceTree = "<group>"; };
+		241D095A1D85170F00CB660C /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		241D65AE1C7B43AC00938CE8 /* TodayExtensionTodayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayExtensionTodayTableViewCell.swift; sourceTree = "<group>"; };
+		242F984A1C49282200DBC64B /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		243095851D7B0B4A009343BE /* Today-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Today-Bridging-Header.h"; sourceTree = "<group>"; };
+		243095861D7B123F009343BE /* TodaysViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodaysViewController.swift; sourceTree = "<group>"; };
+		243CC6EE1CC5393900E41407 /* Today+iOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Today+iOS.swift"; sourceTree = "<group>"; };
+		243CC6F01CC53A3400E41407 /* Streak+iOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Streak+iOS.swift"; sourceTree = "<group>"; };
+		24444A5D1C30A02A00DC1579 /* AddTodayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTodayViewController.swift; sourceTree = "<group>"; };
+		244631441C3AB8BA002BBD06 /* PaddingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
+		244B21341C84A31E00E6D6E1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Interface.strings; sourceTree = "<group>"; };
+		244B21351C84A31E00E6D6E1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/MainInterface.strings; sourceTree = "<group>"; };
+		244B21361C84A31E00E6D6E1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Activity.strings; sourceTree = "<group>"; };
+		244B21371C84A31E00E6D6E1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		244B21381C84A31E00E6D6E1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
+		244B21391C84A31E00E6D6E1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Today.strings; sourceTree = "<group>"; };
+		244B9A761C7B5910004AF2DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		245464661C75FFEF0030EF82 /* WatchConnectivityActionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchConnectivityActionType.swift; sourceTree = "<group>"; };
+		246214BF1CC2739200009053 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		2463EBB11CC67B130082AA19 /* TodayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2463EBB51CC67B130082AA19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2466884E1C1DB45E00C5E5A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Activity.storyboard; sourceTree = "<group>"; };
+		246688551C1DB61100C5E5A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Today.storyboard; sourceTree = "<group>"; };
+		24680FCD1D85411D00F9A0B4 /* KVNProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KVNProgress.h; path = KVNProgress/KVNProgress.h; sourceTree = "<group>"; };
+		24680FCE1D85411D00F9A0B4 /* KVNProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KVNProgress.m; path = KVNProgress/KVNProgress.m; sourceTree = "<group>"; };
+		24680FCF1D85411D00F9A0B4 /* KVNProgressConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KVNProgressConfiguration.h; path = KVNProgress/KVNProgressConfiguration.h; sourceTree = "<group>"; };
+		24680FD01D85411D00F9A0B4 /* KVNProgressConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KVNProgressConfiguration.m; path = KVNProgress/KVNProgressConfiguration.m; sourceTree = "<group>"; };
+		24680FD11D85411D00F9A0B4 /* KVNProgressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KVNProgressView.xib; path = KVNProgress/KVNProgressView.xib; sourceTree = "<group>"; };
+		24680FD21D85411D00F9A0B4 /* KVNRotationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KVNRotationViewController.h; path = KVNProgress/KVNRotationViewController.h; sourceTree = "<group>"; };
+		24680FD31D85411D00F9A0B4 /* KVNRotationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KVNRotationViewController.m; path = KVNProgress/KVNRotationViewController.m; sourceTree = "<group>"; };
+		24680FD41D85411D00F9A0B4 /* UIColor+KVNContrast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+KVNContrast.h"; path = "KVNProgress/UIColor+KVNContrast.h"; sourceTree = "<group>"; };
+		24680FD51D85411D00F9A0B4 /* UIColor+KVNContrast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+KVNContrast.m"; path = "KVNProgress/UIColor+KVNContrast.m"; sourceTree = "<group>"; };
+		24680FD61D85411D00F9A0B4 /* UIImage+KVNEmpty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+KVNEmpty.h"; path = "KVNProgress/UIImage+KVNEmpty.h"; sourceTree = "<group>"; };
+		24680FD71D85411D00F9A0B4 /* UIImage+KVNEmpty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+KVNEmpty.m"; path = "KVNProgress/UIImage+KVNEmpty.m"; sourceTree = "<group>"; };
+		24680FD81D85411D00F9A0B4 /* UIImage+KVNImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+KVNImageEffects.h"; path = "KVNProgress/UIImage+KVNImageEffects.h"; sourceTree = "<group>"; };
+		24680FD91D85411D00F9A0B4 /* UIImage+KVNImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+KVNImageEffects.m"; path = "KVNProgress/UIImage+KVNImageEffects.m"; sourceTree = "<group>"; };
+		246AC1801C5120FF0047AAE7 /* AddTodayInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTodayInterfaceController.swift; sourceTree = "<group>"; };
+		24A1CFE01C36D8FA00F0E9CE /* ScoreCircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreCircleView.swift; sourceTree = "<group>"; };
+		24A39AD91C89C9C800DE0090 /* WatchData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchData.swift; sourceTree = "<group>"; };
+		24A487EE1C5503C50015DB05 /* TodayWatchKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TodayWatchKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		24A487F21C5503C50015DB05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24A9E9781C6CBDE700739226 /* Today Today Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Today Today Extension.entitlements"; sourceTree = "<group>"; };
+		24B744EC1C8735B5000E0FFC /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		24B744F21C873883000E0FFC /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		24C6C1A51C54F9970041C31F /* TodayKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TodayKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		24C6C1A91C54F9970041C31F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24C6C1AE1C54F9970041C31F /* TodayKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodayKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		24C6C1B71C54F9970041C31F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24C77EA51C2A8C3400493C13 /* Today.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Today.xcdatamodel; sourceTree = "<group>"; };
+		24C77EA81C2A8C6F00493C13 /* Today.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Today.swift; sourceTree = "<group>"; };
+		24C77EAD1C2A937600493C13 /* Today.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Today.entitlements; sourceTree = "<group>"; };
+		24D210321C79EE2F00F69478 /* CurrentStreakInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentStreakInterfaceController.swift; sourceTree = "<group>"; };
+		24D23EB21D79AF1A00C6E4AC /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		24D23EB31D79AF1A00C6E4AC /* NSCalendar+RSDFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSCalendar+RSDFAdditions.h"; sourceTree = "<group>"; };
+		24D23EB41D79AF1A00C6E4AC /* NSCalendar+RSDFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSCalendar+RSDFAdditions.m"; sourceTree = "<group>"; };
+		24D23EB51D79AF1A00C6E4AC /* RSDayFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSDayFlow.h; sourceTree = "<group>"; };
+		24D23EB61D79AF1A00C6E4AC /* RSDFDatePickerCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSDFDatePickerCollectionView.h; sourceTree = "<group>"; };
+		24D23EB71D79AF1A00C6E4AC /* RSDFDatePickerCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSDFDatePickerCollectionView.m; sourceTree = "<group>"; };
+		24D23EB81D79AF1A00C6E4AC /* RSDFDatePickerCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSDFDatePickerCollectionViewLayout.h; sourceTree = "<group>"; };
+		24D23EB91D79AF1A00C6E4AC /* RSDFDatePickerCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSDFDatePickerCollectionViewLayout.m; sourceTree = "<group>"; };
+		24D23EBA1D79AF1A00C6E4AC /* RSDFDatePickerDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSDFDatePickerDate.h; sourceTree = "<group>"; };
+		24D23EBB1D79AF1A00C6E4AC /* RSDFDatePickerDayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSDFDatePickerDayCell.h; sourceTree = "<group>"; };
+		24D23EBC1D79AF1A00C6E4AC /* RSDFDatePickerDayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSDFDatePickerDayCell.m; sourceTree = "<group>"; };
+		24D23EBD1D79AF1A00C6E4AC /* RSDFDatePickerDaysOfWeekView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSDFDatePickerDaysOfWeekView.h; sourceTree = "<group>"; };
+		24D23EBE1D79AF1A00C6E4AC /* RSDFDatePickerDaysOfWeekView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSDFDatePickerDaysOfWeekView.m; sourceTree = "<group>"; };
+		24D23EBF1D79AF1A00C6E4AC /* RSDFDatePickerMonthHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSDFDatePickerMonthHeader.h; sourceTree = "<group>"; };
+		24D23EC01D79AF1A00C6E4AC /* RSDFDatePickerMonthHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSDFDatePickerMonthHeader.m; sourceTree = "<group>"; };
+		24D23EC11D79AF1A00C6E4AC /* RSDFDatePickerView+Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RSDFDatePickerView+Protected.h"; sourceTree = "<group>"; };
+		24D23EC21D79AF1A00C6E4AC /* RSDFDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSDFDatePickerView.h; sourceTree = "<group>"; };
+		24D23EC31D79AF1A00C6E4AC /* RSDFDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSDFDatePickerView.m; sourceTree = "<group>"; };
+		24D23ECE1D79AF5800C6E4AC /* ScrollableGraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollableGraphView.swift; sourceTree = "<group>"; };
+		24D23F0D1D79B13700C6E4AC /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		24D4E3461C43E1D900F6DA6A /* Setting.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Setting.plist; sourceTree = "<group>"; };
+		24D82C2E1C5A5D880095FA47 /* ChartTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartTableViewCell.swift; sourceTree = "<group>"; };
+		24DBB5901C2C367100E1C042 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		24E538D81C49E22900B781D8 /* Streak.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Streak.swift; sourceTree = "<group>"; };
+		24E9B0461D830FBE002F1665 /* RSDFTodayDatePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSDFTodayDatePickerView.swift; sourceTree = "<group>"; };
+		24E9B0481D8310A4002F1665 /* RSDFTodayDatePickerDaysOfWeekView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSDFTodayDatePickerDaysOfWeekView.swift; sourceTree = "<group>"; };
+		24E9B04A1D8310BF002F1665 /* RSDFTodayDatePickerCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSDFTodayDatePickerCollectionView.swift; sourceTree = "<group>"; };
+		24E9B04C1D8310E1002F1665 /* RSDFTodayDatePickerMonthHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSDFTodayDatePickerMonthHeader.swift; sourceTree = "<group>"; };
+		24E9B04E1D8310FC002F1665 /* RSDFTodayDatePickerDayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSDFTodayDatePickerDayCell.swift; sourceTree = "<group>"; };
+		24E9B0501D8313EF002F1665 /* RSDFTodayDatePickerCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSDFTodayDatePickerCollectionViewLayout.swift; sourceTree = "<group>"; };
+		24E9B0521D831A32002F1665 /* ActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
+		24F21AAF1C4FCFE900396A38 /* Today Today Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Today Today Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		24F21AB01C4FCFE900396A38 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		24F21AB31C4FCFE900396A38 /* TodayExtensionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayExtensionViewController.swift; sourceTree = "<group>"; };
+		24F21AB61C4FCFE900396A38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		24F21AB81C4FCFE900396A38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24F21AC11C4FD73C00396A38 /* Today Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Today Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		24F21AC41C4FD73C00396A38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		24F21AC61C4FD73C00396A38 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		24F21AC81C4FD73C00396A38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24F21ACD1C4FD73C00396A38 /* Today Watch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Today Watch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		24F21AD31C4FD73C00396A38 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		24F21AD41C4FD73C00396A38 /* ScoreInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreInterfaceController.swift; sourceTree = "<group>"; };
+		24F21AD61C4FD73C00396A38 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		24F21ADE1C4FD73C00396A38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24F9DC3E1C2EFD33003A6427 /* ConfigurableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurableCell.swift; sourceTree = "<group>"; };
+		24FE134E1C7F49A700A573B8 /* TodayWCSessionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayWCSessionHandler.swift; sourceTree = "<group>"; };
+		24FE71301C3FFB8700A14B9D /* PickerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerTableViewCell.swift; sourceTree = "<group>"; };
+		24FE71321C4245D400A14B9D /* Setting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
+		24FFBB961C3D6AFA0053E261 /* SettingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		24030ADD1C1C821C004E68ED /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24D8E3DC1C54FC4F005BA35B /* TodayKit.framework in Frameworks */,
+				241937AD1D8474D900903945 /* StoreKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		24030AF41C1C821C004E68ED /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2463EBAE1CC67B130082AA19 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		24A487EA1C5503C50015DB05 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		24C6C1A11C54F9970041C31F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		24C6C1AB1C54F9970041C31F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24C6C1AF1C54F9970041C31F /* TodayKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		24F21AAC1C4FCFE900396A38 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24338CF01C7BEBD9007FCAD1 /* TodayKit.framework in Frameworks */,
+				24F21AB11C4FCFE900396A38 /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		24F21ACA1C4FD73C00396A38 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				242AB0791D845643001566D9 /* TodayWatchKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		24030AD71C1C821C004E68ED = {
+			isa = PBXGroup;
+			children = (
+				246688171C1D189F00C5E5A0 /* Frameworks */,
+				24030AE11C1C821C004E68ED /* Products */,
+				24F21AC21C4FD73C00396A38 /* Today Watch App */,
+				24030AE21C1C821C004E68ED /* Today iOS App */,
+				24C6C1A61C54F9970041C31F /* TodayKit Shared Code */,
+				24C6C1B41C54F9970041C31F /* TodayKitTests */,
+				24030AFA1C1C821C004E68ED /* TodayTests */,
+				2463EBB21CC67B130082AA19 /* TodayUITests */,
+			);
+			sourceTree = "<group>";
+		};
+		24030AE11C1C821C004E68ED /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				24030AE01C1C821C004E68ED /* Today.app */,
+				24030AF71C1C821C004E68ED /* TodayTests.xctest */,
+				24F21AAF1C4FCFE900396A38 /* Today Today Extension.appex */,
+				24F21AC11C4FD73C00396A38 /* Today Watch App.app */,
+				24F21ACD1C4FD73C00396A38 /* Today Watch Extension.appex */,
+				24C6C1A51C54F9970041C31F /* TodayKit.framework */,
+				24C6C1AE1C54F9970041C31F /* TodayKitTests.xctest */,
+				24A487EE1C5503C50015DB05 /* TodayWatchKit.framework */,
+				2463EBB11CC67B130082AA19 /* TodayUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		24030AE21C1C821C004E68ED /* Today iOS App */ = {
+			isa = PBXGroup;
+			children = (
+				24F21AB21C4FCFE900396A38 /* Today Extension */,
+				24A487E51C55032E0015DB05 /* Today iOS App */,
+				24A487E71C5503A10015DB05 /* TodayKit iOS */,
+			);
+			path = "Today iOS App";
+			sourceTree = "<group>";
+		};
+		24030AFA1C1C821C004E68ED /* TodayTests */ = {
+			isa = PBXGroup;
+			children = (
+				24030AFD1C1C821C004E68ED /* Info.plist */,
+			);
+			path = TodayTests;
+			sourceTree = "<group>";
+		};
+		240F14761C2A9FB60003B2AF /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				241937AE1D84754B00903945 /* TodayProduct.swift */,
+				241937B11D84766F00903945 /* IAPManager.swift */,
+				242F984A1C49282200DBC64B /* NotificationManager.swift */,
+				24FE134E1C7F49A700A573B8 /* TodayWCSessionHandler.swift */,
+				241D095A1D85170F00CB660C /* Utilities.swift */,
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
+		2463EBB21CC67B130082AA19 /* TodayUITests */ = {
+			isa = PBXGroup;
+			children = (
+				2463EBB51CC67B130082AA19 /* Info.plist */,
+			);
+			path = TodayUITests;
+			sourceTree = "<group>";
+		};
+		246688171C1D189F00C5E5A0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				241937AC1D8474D900903945 /* StoreKit.framework */,
+				24F21AB01C4FCFE900396A38 /* NotificationCenter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		246688591C1EFC3E00C5E5A0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				24E9B0521D831A32002F1665 /* ActivityViewController.swift */,
+				24444A5D1C30A02A00DC1579 /* AddTodayViewController.swift */,
+				24FFBB961C3D6AFA0053E261 /* SettingTableViewController.swift */,
+				243095861D7B123F009343BE /* TodaysViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		2466885A1C1EFC5600C5E5A0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				24E9B0451D830F93002F1665 /* TodayDayFlow */,
+				2466884D1C1DB45E00C5E5A0 /* Activity.storyboard */,
+				24D82C2E1C5A5D880095FA47 /* ChartTableViewCell.swift */,
+				24030AEF1C1C821C004E68ED /* LaunchScreen.storyboard */,
+				24030AE71C1C821C004E68ED /* Main.storyboard */,
+				244631441C3AB8BA002BBD06 /* PaddingLabel.swift */,
+				24FE71301C3FFB8700A14B9D /* PickerTableViewCell.swift */,
+				24A1CFE01C36D8FA00F0E9CE /* ScoreCircleView.swift */,
+				246688541C1DB61100C5E5A0 /* Today.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		24680FCC1D85411400F9A0B4 /* KVNProgress */ = {
+			isa = PBXGroup;
+			children = (
+				24680FCD1D85411D00F9A0B4 /* KVNProgress.h */,
+				24680FCE1D85411D00F9A0B4 /* KVNProgress.m */,
+				24680FCF1D85411D00F9A0B4 /* KVNProgressConfiguration.h */,
+				24680FD01D85411D00F9A0B4 /* KVNProgressConfiguration.m */,
+				24680FD11D85411D00F9A0B4 /* KVNProgressView.xib */,
+				24680FD21D85411D00F9A0B4 /* KVNRotationViewController.h */,
+				24680FD31D85411D00F9A0B4 /* KVNRotationViewController.m */,
+				24680FD41D85411D00F9A0B4 /* UIColor+KVNContrast.h */,
+				24680FD51D85411D00F9A0B4 /* UIColor+KVNContrast.m */,
+				24680FD61D85411D00F9A0B4 /* UIImage+KVNEmpty.h */,
+				24680FD71D85411D00F9A0B4 /* UIImage+KVNEmpty.m */,
+				24680FD81D85411D00F9A0B4 /* UIImage+KVNImageEffects.h */,
+				24680FD91D85411D00F9A0B4 /* UIImage+KVNImageEffects.m */,
+			);
+			name = KVNProgress;
+			sourceTree = "<group>";
+		};
+		24A487E51C55032E0015DB05 /* Today iOS App */ = {
+			isa = PBXGroup;
+			children = (
+				24D23EB01D79AEEA00C6E4AC /* Library */,
+				246688591C1EFC3E00C5E5A0 /* Controller */,
+				240F14761C2A9FB60003B2AF /* Helper */,
+				2466885A1C1EFC5600C5E5A0 /* View */,
+				24030AE31C1C821C004E68ED /* AppDelegate.swift */,
+				24030AED1C1C821C004E68ED /* Assets.xcassets */,
+				24030AF21C1C821C004E68ED /* Info.plist */,
+				24C77EAD1C2A937600493C13 /* Today.entitlements */,
+				24B744EA1C873528000E0FFC /* Localizable.strings */,
+				246214BF1CC2739200009053 /* Settings.bundle */,
+				243095851D7B0B4A009343BE /* Today-Bridging-Header.h */,
+			);
+			path = "Today iOS App";
+			sourceTree = "<group>";
+		};
+		24A487E61C5503600015DB05 /* Today Watch App */ = {
+			isa = PBXGroup;
+			children = (
+				24F21AC61C4FD73C00396A38 /* Assets.xcassets */,
+				24F21AC81C4FD73C00396A38 /* Info.plist */,
+				24F21AC31C4FD73C00396A38 /* Interface.storyboard */,
+			);
+			path = "Today Watch App";
+			sourceTree = "<group>";
+		};
+		24A487E71C5503A10015DB05 /* TodayKit iOS */ = {
+			isa = PBXGroup;
+			children = (
+				24095BD51C7C92F800CC970E /* AppGroupSharedData.swift */,
+				24F9DC3E1C2EFD33003A6427 /* ConfigurableCell.swift */,
+				240F14741C2A9CDE0003B2AF /* CoreDataManager.swift */,
+				24C6C1A91C54F9970041C31F /* Info.plist */,
+				24D4E3461C43E1D900F6DA6A /* Setting.plist */,
+				24FE71321C4245D400A14B9D /* Setting.swift */,
+				24D23F0D1D79B13700C6E4AC /* Device.swift */,
+				243CC6EE1CC5393900E41407 /* Today+iOS.swift */,
+				243CC6F01CC53A3400E41407 /* Streak+iOS.swift */,
+			);
+			path = "TodayKit iOS";
+			sourceTree = "<group>";
+		};
+		24A487E81C5503AD0015DB05 /* TodayKit watchOS */ = {
+			isa = PBXGroup;
+			children = (
+				24A487F21C5503C50015DB05 /* Info.plist */,
+				24A39AD91C89C9C800DE0090 /* WatchData.swift */,
+			);
+			path = "TodayKit watchOS";
+			sourceTree = "<group>";
+		};
+		24C6C1A61C54F9970041C31F /* TodayKit Shared Code */ = {
+			isa = PBXGroup;
+			children = (
+				24C77EA31C2A8BF000493C13 /* Helper */,
+				24C77EA71C2A8C5F00493C13 /* Model */,
+			);
+			path = "TodayKit Shared Code";
+			sourceTree = "<group>";
+		};
+		24C6C1B41C54F9970041C31F /* TodayKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				24C6C1B71C54F9970041C31F /* Info.plist */,
+			);
+			path = TodayKitTests;
+			sourceTree = "<group>";
+		};
+		24C77EA31C2A8BF000493C13 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				24DBB5901C2C367100E1C042 /* Utilities.swift */,
+				245464661C75FFEF0030EF82 /* WatchConnectivityActionType.swift */,
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
+		24C77EA71C2A8C5F00493C13 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				24E538D81C49E22900B781D8 /* Streak.swift */,
+				24C77EA81C2A8C6F00493C13 /* Today.swift */,
+				24C77EA41C2A8C3400493C13 /* Today.xcdatamodeld */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		24D23EB01D79AEEA00C6E4AC /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				24680FCC1D85411400F9A0B4 /* KVNProgress */,
+				24D23ECD1D79AF5800C6E4AC /* ScrollableGraphView */,
+				24D23EB11D79AF1A00C6E4AC /* RSDayFlow */,
+			);
+			name = Library;
+			sourceTree = "<group>";
+		};
+		24D23EB11D79AF1A00C6E4AC /* RSDayFlow */ = {
+			isa = PBXGroup;
+			children = (
+				24D23EB21D79AF1A00C6E4AC /* module.modulemap */,
+				24D23EB31D79AF1A00C6E4AC /* NSCalendar+RSDFAdditions.h */,
+				24D23EB41D79AF1A00C6E4AC /* NSCalendar+RSDFAdditions.m */,
+				24D23EB51D79AF1A00C6E4AC /* RSDayFlow.h */,
+				24D23EB61D79AF1A00C6E4AC /* RSDFDatePickerCollectionView.h */,
+				24D23EB71D79AF1A00C6E4AC /* RSDFDatePickerCollectionView.m */,
+				24D23EB81D79AF1A00C6E4AC /* RSDFDatePickerCollectionViewLayout.h */,
+				24D23EB91D79AF1A00C6E4AC /* RSDFDatePickerCollectionViewLayout.m */,
+				24D23EBA1D79AF1A00C6E4AC /* RSDFDatePickerDate.h */,
+				24D23EBB1D79AF1A00C6E4AC /* RSDFDatePickerDayCell.h */,
+				24D23EBC1D79AF1A00C6E4AC /* RSDFDatePickerDayCell.m */,
+				24D23EBD1D79AF1A00C6E4AC /* RSDFDatePickerDaysOfWeekView.h */,
+				24D23EBE1D79AF1A00C6E4AC /* RSDFDatePickerDaysOfWeekView.m */,
+				24D23EBF1D79AF1A00C6E4AC /* RSDFDatePickerMonthHeader.h */,
+				24D23EC01D79AF1A00C6E4AC /* RSDFDatePickerMonthHeader.m */,
+				24D23EC11D79AF1A00C6E4AC /* RSDFDatePickerView+Protected.h */,
+				24D23EC21D79AF1A00C6E4AC /* RSDFDatePickerView.h */,
+				24D23EC31D79AF1A00C6E4AC /* RSDFDatePickerView.m */,
+			);
+			path = RSDayFlow;
+			sourceTree = "<group>";
+		};
+		24D23ECD1D79AF5800C6E4AC /* ScrollableGraphView */ = {
+			isa = PBXGroup;
+			children = (
+				24D23ECE1D79AF5800C6E4AC /* ScrollableGraphView.swift */,
+			);
+			path = ScrollableGraphView;
+			sourceTree = "<group>";
+		};
+		24E9B0451D830F93002F1665 /* TodayDayFlow */ = {
+			isa = PBXGroup;
+			children = (
+				24E9B0461D830FBE002F1665 /* RSDFTodayDatePickerView.swift */,
+				24E9B0481D8310A4002F1665 /* RSDFTodayDatePickerDaysOfWeekView.swift */,
+				24E9B04A1D8310BF002F1665 /* RSDFTodayDatePickerCollectionView.swift */,
+				24E9B04C1D8310E1002F1665 /* RSDFTodayDatePickerMonthHeader.swift */,
+				24E9B04E1D8310FC002F1665 /* RSDFTodayDatePickerDayCell.swift */,
+				24E9B0501D8313EF002F1665 /* RSDFTodayDatePickerCollectionViewLayout.swift */,
+			);
+			name = TodayDayFlow;
+			sourceTree = "<group>";
+		};
+		24F21AB21C4FCFE900396A38 /* Today Extension */ = {
+			isa = PBXGroup;
+			children = (
+				244B9A761C7B5910004AF2DC /* Assets.xcassets */,
+				24F21AB81C4FCFE900396A38 /* Info.plist */,
+				24F21AB51C4FCFE900396A38 /* MainInterface.storyboard */,
+				24A9E9781C6CBDE700739226 /* Today Today Extension.entitlements */,
+				241D65AE1C7B43AC00938CE8 /* TodayExtensionTodayTableViewCell.swift */,
+				24F21AB31C4FCFE900396A38 /* TodayExtensionViewController.swift */,
+				24B744F11C873882000E0FFC /* Localizable.strings */,
+			);
+			path = "Today Extension";
+			sourceTree = "<group>";
+		};
+		24F21AC21C4FD73C00396A38 /* Today Watch App */ = {
+			isa = PBXGroup;
+			children = (
+				24A487E61C5503600015DB05 /* Today Watch App */,
+				24F21AD11C4FD73C00396A38 /* Today Watch Extension */,
+				24A487E81C5503AD0015DB05 /* TodayKit watchOS */,
+			);
+			path = "Today Watch App";
+			sourceTree = "<group>";
+		};
+		24F21AD11C4FD73C00396A38 /* Today Watch Extension */ = {
+			isa = PBXGroup;
+			children = (
+				24F21AD21C4FD73C00396A38 /* Supporting Files */,
+				246AC1801C5120FF0047AAE7 /* AddTodayInterfaceController.swift */,
+				24D210321C79EE2F00F69478 /* CurrentStreakInterfaceController.swift */,
+				24F21AD61C4FD73C00396A38 /* ExtensionDelegate.swift */,
+				24F21ADE1C4FD73C00396A38 /* Info.plist */,
+				24F21AD41C4FD73C00396A38 /* ScoreInterfaceController.swift */,
+			);
+			path = "Today Watch Extension";
+			sourceTree = "<group>";
+		};
+		24F21AD21C4FD73C00396A38 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				24F21AD31C4FD73C00396A38 /* PushNotificationPayload.apns */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		24A487EB1C5503C50015DB05 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		24C6C1A21C54F9970041C31F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		24030ADF1C1C821C004E68ED /* Today */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 24030B0B1C1C821C004E68ED /* Build configuration list for PBXNativeTarget "Today" */;
+			buildPhases = (
+				24030ADC1C1C821C004E68ED /* Sources */,
+				24030ADD1C1C821C004E68ED /* Frameworks */,
+				24030ADE1C1C821C004E68ED /* Resources */,
+				246688111C1D187A00C5E5A0 /* Embed Frameworks */,
+				246688231C1D189F00C5E5A0 /* Embed App Extensions */,
+				24F21AE91C4FD73E00396A38 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				24F21ABA1C4FCFE900396A38 /* PBXTargetDependency */,
+				24F21AE01C4FD73C00396A38 /* PBXTargetDependency */,
+				24D8E3DF1C54FC50005BA35B /* PBXTargetDependency */,
+			);
+			name = Today;
+			productName = Today;
+			productReference = 24030AE01C1C821C004E68ED /* Today.app */;
+			productType = "com.apple.product-type.application";
+		};
+		24030AF61C1C821C004E68ED /* TodayTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 24030B0E1C1C821C004E68ED /* Build configuration list for PBXNativeTarget "TodayTests" */;
+			buildPhases = (
+				24030AF31C1C821C004E68ED /* Sources */,
+				24030AF41C1C821C004E68ED /* Frameworks */,
+				24030AF51C1C821C004E68ED /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				24030AF91C1C821C004E68ED /* PBXTargetDependency */,
+			);
+			name = TodayTests;
+			productName = TodayTests;
+			productReference = 24030AF71C1C821C004E68ED /* TodayTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		2463EBB01CC67B130082AA19 /* TodayUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2463EBB81CC67B130082AA19 /* Build configuration list for PBXNativeTarget "TodayUITests" */;
+			buildPhases = (
+				2463EBAD1CC67B130082AA19 /* Sources */,
+				2463EBAE1CC67B130082AA19 /* Frameworks */,
+				2463EBAF1CC67B130082AA19 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2463EBB71CC67B130082AA19 /* PBXTargetDependency */,
+			);
+			name = TodayUITests;
+			productName = TodayUITests;
+			productReference = 2463EBB11CC67B130082AA19 /* TodayUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		24A487ED1C5503C50015DB05 /* TodayKit (watchOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 24A487F71C5503C50015DB05 /* Build configuration list for PBXNativeTarget "TodayKit (watchOS)" */;
+			buildPhases = (
+				24A487E91C5503C50015DB05 /* Sources */,
+				24A487EA1C5503C50015DB05 /* Frameworks */,
+				24A487EB1C5503C50015DB05 /* Headers */,
+				24A487EC1C5503C50015DB05 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "TodayKit (watchOS)";
+			productName = "TodayKit (watchOS)";
+			productReference = 24A487EE1C5503C50015DB05 /* TodayWatchKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		24C6C1A41C54F9970041C31F /* TodayKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 24C6C1BC1C54F99A0041C31F /* Build configuration list for PBXNativeTarget "TodayKit" */;
+			buildPhases = (
+				24C6C1A01C54F9970041C31F /* Sources */,
+				24C6C1A11C54F9970041C31F /* Frameworks */,
+				24C6C1A21C54F9970041C31F /* Headers */,
+				24C6C1A31C54F9970041C31F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TodayKit;
+			productName = TodayKit;
+			productReference = 24C6C1A51C54F9970041C31F /* TodayKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		24C6C1AD1C54F9970041C31F /* TodayKitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 24C6C1BF1C54F99A0041C31F /* Build configuration list for PBXNativeTarget "TodayKitTests" */;
+			buildPhases = (
+				24C6C1AA1C54F9970041C31F /* Sources */,
+				24C6C1AB1C54F9970041C31F /* Frameworks */,
+				24C6C1AC1C54F9970041C31F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				24C6C1B11C54F9970041C31F /* PBXTargetDependency */,
+				24C6C1B31C54F9970041C31F /* PBXTargetDependency */,
+			);
+			name = TodayKitTests;
+			productName = TodayKitTests;
+			productReference = 24C6C1AE1C54F9970041C31F /* TodayKitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		24F21AAE1C4FCFE900396A38 /* Today Today Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 24F21ABC1C4FCFEB00396A38 /* Build configuration list for PBXNativeTarget "Today Today Extension" */;
+			buildPhases = (
+				24F21AAB1C4FCFE900396A38 /* Sources */,
+				24F21AAC1C4FCFE900396A38 /* Frameworks */,
+				24F21AAD1C4FCFE900396A38 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Today Today Extension";
+			productName = TodayExtension;
+			productReference = 24F21AAF1C4FCFE900396A38 /* Today Today Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		24F21AC01C4FD73C00396A38 /* Today Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 24F21AE61C4FD73E00396A38 /* Build configuration list for PBXNativeTarget "Today Watch App" */;
+			buildPhases = (
+				24F21ABF1C4FD73C00396A38 /* Resources */,
+				242AB0811D845690001566D9 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				242AB0801D845690001566D9 /* PBXTargetDependency */,
+			);
+			name = "Today Watch App";
+			productName = TodayWatch;
+			productReference = 24F21AC11C4FD73C00396A38 /* Today Watch App.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		24F21ACC1C4FD73C00396A38 /* Today Watch Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 24F21AE21C4FD73E00396A38 /* Build configuration list for PBXNativeTarget "Today Watch Extension" */;
+			buildPhases = (
+				24F21AC91C4FD73C00396A38 /* Sources */,
+				24F21ACA1C4FD73C00396A38 /* Frameworks */,
+				24F21ACB1C4FD73C00396A38 /* Resources */,
+				242AB07D1D845643001566D9 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				242AB07C1D845643001566D9 /* PBXTargetDependency */,
+			);
+			name = "Today Watch Extension";
+			productName = "TodayWatch Extension";
+			productReference = 24F21ACD1C4FD73C00396A38 /* Today Watch Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		24030AD81C1C821C004E68ED /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = "Masamichi Ueta";
+				TargetAttributes = {
+					24030ADF1C1C821C004E68ED = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = A9WB53K8XM;
+						LastSwiftMigration = 0800;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
+					};
+					24030AF61C1C821C004E68ED = {
+						CreatedOnToolsVersion = 7.2;
+						LastSwiftMigration = 0800;
+						TestTargetID = 24030ADF1C1C821C004E68ED;
+					};
+					2463EBB01CC67B130082AA19 = {
+						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0800;
+						TestTargetID = 24030ADF1C1C821C004E68ED;
+					};
+					24A487ED1C5503C50015DB05 = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = A9WB53K8XM;
+						DevelopmentTeamName = "Masamichi Ueta";
+						LastSwiftMigration = 0800;
+					};
+					24C6C1A41C54F9970041C31F = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = A9WB53K8XM;
+						LastSwiftMigration = 0800;
+					};
+					24C6C1AD1C54F9970041C31F = {
+						CreatedOnToolsVersion = 7.2;
+						LastSwiftMigration = 0800;
+						TestTargetID = 24030ADF1C1C821C004E68ED;
+					};
+					24F21AAE1C4FCFE900396A38 = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = A9WB53K8XM;
+						LastSwiftMigration = 0800;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 0;
+							};
+						};
+					};
+					24F21AC01C4FD73C00396A38 = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = A9WB53K8XM;
+						LastSwiftMigration = 0800;
+					};
+					24F21ACC1C4FD73C00396A38 = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = A9WB53K8XM;
+						LastSwiftMigration = 0800;
+					};
+				};
+			};
+			buildConfigurationList = 24030ADB1C1C821C004E68ED /* Build configuration list for PBXProject "Today" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				ja,
+			);
+			mainGroup = 24030AD71C1C821C004E68ED;
+			productRefGroup = 24030AE11C1C821C004E68ED /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				24030ADF1C1C821C004E68ED /* Today */,
+				24030AF61C1C821C004E68ED /* TodayTests */,
+				24F21AAE1C4FCFE900396A38 /* Today Today Extension */,
+				24F21AC01C4FD73C00396A38 /* Today Watch App */,
+				24F21ACC1C4FD73C00396A38 /* Today Watch Extension */,
+				24C6C1A41C54F9970041C31F /* TodayKit */,
+				24C6C1AD1C54F9970041C31F /* TodayKitTests */,
+				24A487ED1C5503C50015DB05 /* TodayKit (watchOS) */,
+				2463EBB01CC67B130082AA19 /* TodayUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		24030ADE1C1C821C004E68ED /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				246214C01CC2739200009053 /* Settings.bundle in Resources */,
+				24030AF11C1C821C004E68ED /* LaunchScreen.storyboard in Resources */,
+				24030AEE1C1C821C004E68ED /* Assets.xcassets in Resources */,
+				24680FDC1D85411D00F9A0B4 /* KVNProgressView.xib in Resources */,
+				24030AE91C1C821C004E68ED /* Main.storyboard in Resources */,
+				24B744E81C873528000E0FFC /* Localizable.strings in Resources */,
+				246688561C1DB61100C5E5A0 /* Today.storyboard in Resources */,
+				2466884F1C1DB45E00C5E5A0 /* Activity.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		24030AF51C1C821C004E68ED /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2463EBAF1CC67B130082AA19 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		24A487EC1C5503C50015DB05 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		24C6C1A31C54F9970041C31F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				247E4D611C54FCB800C134DB /* Setting.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		24C6C1AC1C54F9970041C31F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		24F21AAD1C4FCFE900396A38 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				244B9A771C7B5910004AF2DC /* Assets.xcassets in Resources */,
+				24B744EF1C873882000E0FFC /* Localizable.strings in Resources */,
+				24F21AB71C4FCFE900396A38 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		24F21ABF1C4FD73C00396A38 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24F21AC71C4FD73C00396A38 /* Assets.xcassets in Resources */,
+				24F21AC51C4FD73C00396A38 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		24F21ACB1C4FD73C00396A38 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				242AB0781D8454E1001566D9 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		24030ADC1C1C821C004E68ED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24D23ECA1D79AF1A00C6E4AC /* RSDFDatePickerView.m in Sources */,
+				24E9B0511D8313EF002F1665 /* RSDFTodayDatePickerCollectionViewLayout.swift in Sources */,
+				241D095B1D85170F00CB660C /* Utilities.swift in Sources */,
+				244631451C3AB8BA002BBD06 /* PaddingLabel.swift in Sources */,
+				24E9B04D1D8310E1002F1665 /* RSDFTodayDatePickerMonthHeader.swift in Sources */,
+				24E9B0531D831A32002F1665 /* ActivityViewController.swift in Sources */,
+				24680FDA1D85411D00F9A0B4 /* KVNProgress.m in Sources */,
+				24E9B04F1D8310FC002F1665 /* RSDFTodayDatePickerDayCell.swift in Sources */,
+				24680FE01D85411D00F9A0B4 /* UIImage+KVNImageEffects.m in Sources */,
+				24D23EC91D79AF1A00C6E4AC /* RSDFDatePickerMonthHeader.m in Sources */,
+				24D23EC61D79AF1A00C6E4AC /* RSDFDatePickerCollectionViewLayout.m in Sources */,
+				24D23EC41D79AF1A00C6E4AC /* NSCalendar+RSDFAdditions.m in Sources */,
+				24E9B04B1D8310BF002F1665 /* RSDFTodayDatePickerCollectionView.swift in Sources */,
+				24E9B0471D830FBE002F1665 /* RSDFTodayDatePickerView.swift in Sources */,
+				24030AE41C1C821C004E68ED /* AppDelegate.swift in Sources */,
+				24E9B0491D8310A4002F1665 /* RSDFTodayDatePickerDaysOfWeekView.swift in Sources */,
+				244B9A671C7B50FA004AF2DC /* NotificationManager.swift in Sources */,
+				24D23EC71D79AF1A00C6E4AC /* RSDFDatePickerDayCell.m in Sources */,
+				24680FDD1D85411D00F9A0B4 /* KVNRotationViewController.m in Sources */,
+				24680FDF1D85411D00F9A0B4 /* UIImage+KVNEmpty.m in Sources */,
+				24D23EC51D79AF1A00C6E4AC /* RSDFDatePickerCollectionView.m in Sources */,
+				24444A5E1C30A02A00DC1579 /* AddTodayViewController.swift in Sources */,
+				24D23EC81D79AF1A00C6E4AC /* RSDFDatePickerDaysOfWeekView.m in Sources */,
+				24680FDE1D85411D00F9A0B4 /* UIColor+KVNContrast.m in Sources */,
+				24D23ECF1D79AF5800C6E4AC /* ScrollableGraphView.swift in Sources */,
+				24D82C2F1C5A5D880095FA47 /* ChartTableViewCell.swift in Sources */,
+				243095871D7B123F009343BE /* TodaysViewController.swift in Sources */,
+				24A1CFE11C36D8FA00F0E9CE /* ScoreCircleView.swift in Sources */,
+				241937B21D84766F00903945 /* IAPManager.swift in Sources */,
+				24680FDB1D85411D00F9A0B4 /* KVNProgressConfiguration.m in Sources */,
+				24FFBB971C3D6AFA0053E261 /* SettingTableViewController.swift in Sources */,
+				24FE71311C3FFB8700A14B9D /* PickerTableViewCell.swift in Sources */,
+				24FE134F1C7F49A700A573B8 /* TodayWCSessionHandler.swift in Sources */,
+				241937AF1D84754B00903945 /* TodayProduct.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		24030AF31C1C821C004E68ED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2463EBAD1CC67B130082AA19 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		24A487E91C5503C50015DB05 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24A487FC1C55054C0015DB05 /* Streak.swift in Sources */,
+				245464681C75FFEF0030EF82 /* WatchConnectivityActionType.swift in Sources */,
+				24A39ADA1C89C9C800DE0090 /* WatchData.swift in Sources */,
+				24A488031C5505AF0015DB05 /* Utilities.swift in Sources */,
+				24A487FA1C55045D0015DB05 /* Today.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		24C6C1A01C54F9970041C31F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				244B9A721C7B5208004AF2DC /* ConfigurableCell.swift in Sources */,
+				243CC6F11CC53A3400E41407 /* Streak+iOS.swift in Sources */,
+				24D23F0F1D79B14900C6E4AC /* Device.swift in Sources */,
+				24C6C1C71C54FA010041C31F /* CoreDataManager.swift in Sources */,
+				243CC6EF1CC5393900E41407 /* Today+iOS.swift in Sources */,
+				24C6C1C21C54F9DB0041C31F /* Setting.swift in Sources */,
+				24095BD61C7C92F800CC970E /* AppGroupSharedData.swift in Sources */,
+				245464671C75FFEF0030EF82 /* WatchConnectivityActionType.swift in Sources */,
+				24C6C1C51C54F9F90041C31F /* Today.swift in Sources */,
+				24C6C1C41C54F9F60041C31F /* Streak.swift in Sources */,
+				24C6C1CA1C54FA0A0041C31F /* Utilities.swift in Sources */,
+				24C6C1C61C54F9FD0041C31F /* Today.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		24C6C1AA1C54F9970041C31F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		24F21AAB1C4FCFE900396A38 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24F21AB41C4FCFE900396A38 /* TodayExtensionViewController.swift in Sources */,
+				241D65AF1C7B43AC00938CE8 /* TodayExtensionTodayTableViewCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		24F21AC91C4FD73C00396A38 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				246AC1811C5120FF0047AAE7 /* AddTodayInterfaceController.swift in Sources */,
+				24F21AD71C4FD73C00396A38 /* ExtensionDelegate.swift in Sources */,
+				24F21AD51C4FD73C00396A38 /* ScoreInterfaceController.swift in Sources */,
+				24D210331C79EE2F00F69478 /* CurrentStreakInterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		24030AF91C1C821C004E68ED /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 24030ADF1C1C821C004E68ED /* Today */;
+			targetProxy = 24030AF81C1C821C004E68ED /* PBXContainerItemProxy */;
+		};
+		242AB07C1D845643001566D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 24A487ED1C5503C50015DB05 /* TodayKit (watchOS) */;
+			targetProxy = 242AB07B1D845643001566D9 /* PBXContainerItemProxy */;
+		};
+		242AB0801D845690001566D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 24F21ACC1C4FD73C00396A38 /* Today Watch Extension */;
+			targetProxy = 242AB07F1D845690001566D9 /* PBXContainerItemProxy */;
+		};
+		2463EBB71CC67B130082AA19 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 24030ADF1C1C821C004E68ED /* Today */;
+			targetProxy = 2463EBB61CC67B130082AA19 /* PBXContainerItemProxy */;
+		};
+		24C6C1B11C54F9970041C31F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 24C6C1A41C54F9970041C31F /* TodayKit */;
+			targetProxy = 24C6C1B01C54F9970041C31F /* PBXContainerItemProxy */;
+		};
+		24C6C1B31C54F9970041C31F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 24030ADF1C1C821C004E68ED /* Today */;
+			targetProxy = 24C6C1B21C54F9970041C31F /* PBXContainerItemProxy */;
+		};
+		24D8E3DF1C54FC50005BA35B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 24C6C1A41C54F9970041C31F /* TodayKit */;
+			targetProxy = 24D8E3DE1C54FC50005BA35B /* PBXContainerItemProxy */;
+		};
+		24F21ABA1C4FCFE900396A38 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 24F21AAE1C4FCFE900396A38 /* Today Today Extension */;
+			targetProxy = 24F21AB91C4FCFE900396A38 /* PBXContainerItemProxy */;
+		};
+		24F21AE01C4FD73C00396A38 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 24F21AC01C4FD73C00396A38 /* Today Watch App */;
+			targetProxy = 24F21ADF1C4FD73C00396A38 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		24030AE71C1C821C004E68ED /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				24030AE81C1C821C004E68ED /* Base */,
+				244B21381C84A31E00E6D6E1 /* ja */,
+			);
+			name = Main.storyboard;
+			path = .;
+			sourceTree = "<group>";
+		};
+		24030AEF1C1C821C004E68ED /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				24030AF01C1C821C004E68ED /* Base */,
+				244B21371C84A31E00E6D6E1 /* ja */,
+			);
+			name = LaunchScreen.storyboard;
+			path = .;
+			sourceTree = "<group>";
+		};
+		2466884D1C1DB45E00C5E5A0 /* Activity.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2466884E1C1DB45E00C5E5A0 /* Base */,
+				244B21361C84A31E00E6D6E1 /* ja */,
+			);
+			name = Activity.storyboard;
+			path = .;
+			sourceTree = "<group>";
+		};
+		246688541C1DB61100C5E5A0 /* Today.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				246688551C1DB61100C5E5A0 /* Base */,
+				244B21391C84A31E00E6D6E1 /* ja */,
+			);
+			name = Today.storyboard;
+			path = .;
+			sourceTree = "<group>";
+		};
+		24B744EA1C873528000E0FFC /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				24B744EC1C8735B5000E0FFC /* ja */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		24B744F11C873882000E0FFC /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				24B744F21C873883000E0FFC /* ja */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		24F21AB51C4FCFE900396A38 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				24F21AB61C4FCFE900396A38 /* Base */,
+				244B21351C84A31E00E6D6E1 /* ja */,
+			);
+			name = MainInterface.storyboard;
+			path = .;
+			sourceTree = "<group>";
+		};
+		24F21AC31C4FD73C00396A38 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				24F21AC41C4FD73C00396A38 /* Base */,
+				244B21341C84A31E00E6D6E1 /* ja */,
+			);
+			name = Interface.storyboard;
+			path = .;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		24030B091C1C821C004E68ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		24030B0A1C1C821C004E68ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		24030B0C1C1C821C004E68ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = app_icon;
+				CODE_SIGN_ENTITLEMENTS = "Today iOS App/Today iOS App/Today.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				INFOPLIST_FILE = "Today iOS App/Today iOS App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "-D DEBUG";
+				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.Today;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Today iOS App/Today iOS App/Today-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		24030B0D1C1C821C004E68ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = app_icon;
+				CODE_SIGN_ENTITLEMENTS = "Today iOS App/Today iOS App/Today.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				INFOPLIST_FILE = "Today iOS App/Today iOS App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.Today;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Today iOS App/Today iOS App/Today-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		24030B0F1C1C821C004E68ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = TodayTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.TodayTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Today.app/Today";
+			};
+			name = Debug;
+		};
+		24030B101C1C821C004E68ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = TodayTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.TodayTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Today.app/Today";
+			};
+			name = Release;
+		};
+		2463EBB91CC67B130082AA19 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				BUNDLE_LOADER = "";
+				CLANG_ANALYZER_NONNULL = YES;
+				INFOPLIST_FILE = TodayUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.TodayUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = Today;
+			};
+			name = Debug;
+		};
+		2463EBBA1CC67B130082AA19 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				BUNDLE_LOADER = "";
+				CLANG_ANALYZER_NONNULL = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = TodayUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.TodayUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = Today;
+			};
+			name = Release;
+		};
+		24A487F81C5503C50015DB05 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Today Watch App/TodayKit watchOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.uetamasamichi.TodayKit--watchOS-";
+				PRODUCT_NAME = TodayWatchKit;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
+			};
+			name = Debug;
+		};
+		24A487F91C5503C50015DB05 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Today Watch App/TodayKit watchOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.uetamasamichi.TodayKit--watchOS-";
+				PRODUCT_NAME = TodayWatchKit;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
+			};
+			name = Release;
+		};
+		24C6C1BD1C54F99A0041C31F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = "Today iOS App/TodayKit iOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.TodayKit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		24C6C1BE1C54F99A0041C31F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = "Today iOS App/TodayKit iOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.TodayKit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		24C6C1C01C54F99A0041C31F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = TodayKitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.TodayKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Today.app/Today";
+			};
+			name = Debug;
+		};
+		24C6C1C11C54F99A0041C31F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = TodayKitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.TodayKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Today.app/Today";
+			};
+			name = Release;
+		};
+		24F21ABD1C4FCFEB00396A38 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Today iOS App/Today Extension/Today Today Extension.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = "Today iOS App/Today Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.Today.TodayExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		24F21ABE1C4FCFEB00396A38 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Today iOS App/Today Extension/Today Today Extension.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				INFOPLIST_FILE = "Today iOS App/Today Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.Today.TodayExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		24F21AE31C4FD73E00396A38 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = "Today Watch App/Today Watch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.Today.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
+			};
+			name = Debug;
+		};
+		24F21AE41C4FD73E00396A38 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = "Today Watch App/Today Watch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.Today.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
+			};
+			name = Release;
+		};
+		24F21AE71C4FD73E00396A38 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = watch_app_icon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				IBSC_MODULE = TodayWatch_Extension;
+				INFOPLIST_FILE = "Today Watch App/Today Watch App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.Today.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
+			};
+			name = Debug;
+		};
+		24F21AE81C4FD73E00396A38 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = watch_app_icon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				IBSC_MODULE = TodayWatch_Extension;
+				INFOPLIST_FILE = "Today Watch App/Today Watch App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.uetamasamichi.Today.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		24030ADB1C1C821C004E68ED /* Build configuration list for PBXProject "Today" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				24030B091C1C821C004E68ED /* Debug */,
+				24030B0A1C1C821C004E68ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		24030B0B1C1C821C004E68ED /* Build configuration list for PBXNativeTarget "Today" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				24030B0C1C1C821C004E68ED /* Debug */,
+				24030B0D1C1C821C004E68ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		24030B0E1C1C821C004E68ED /* Build configuration list for PBXNativeTarget "TodayTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				24030B0F1C1C821C004E68ED /* Debug */,
+				24030B101C1C821C004E68ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2463EBB81CC67B130082AA19 /* Build configuration list for PBXNativeTarget "TodayUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2463EBB91CC67B130082AA19 /* Debug */,
+				2463EBBA1CC67B130082AA19 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		24A487F71C5503C50015DB05 /* Build configuration list for PBXNativeTarget "TodayKit (watchOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				24A487F81C5503C50015DB05 /* Debug */,
+				24A487F91C5503C50015DB05 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		24C6C1BC1C54F99A0041C31F /* Build configuration list for PBXNativeTarget "TodayKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				24C6C1BD1C54F99A0041C31F /* Debug */,
+				24C6C1BE1C54F99A0041C31F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		24C6C1BF1C54F99A0041C31F /* Build configuration list for PBXNativeTarget "TodayKitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				24C6C1C01C54F99A0041C31F /* Debug */,
+				24C6C1C11C54F99A0041C31F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		24F21ABC1C4FCFEB00396A38 /* Build configuration list for PBXNativeTarget "Today Today Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				24F21ABD1C4FCFEB00396A38 /* Debug */,
+				24F21ABE1C4FCFEB00396A38 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		24F21AE21C4FD73E00396A38 /* Build configuration list for PBXNativeTarget "Today Watch Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				24F21AE31C4FD73E00396A38 /* Debug */,
+				24F21AE41C4FD73E00396A38 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		24F21AE61C4FD73E00396A38 /* Build configuration list for PBXNativeTarget "Today Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				24F21AE71C4FD73E00396A38 /* Debug */,
+				24F21AE81C4FD73E00396A38 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		24C77EA41C2A8C3400493C13 /* Today.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				24C77EA51C2A8C3400493C13 /* Today.xcdatamodel */,
+			);
+			currentVersion = 24C77EA51C2A8C3400493C13 /* Today.xcdatamodel */;
+			path = Today.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 24030AD81C1C821C004E68ED /* Project object */;
+}

@@ -52,7 +52,8 @@ final class AddTodayViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        updateTintColor()
+        let color = Today.lastColor(moc)
+        updateTintColor(color)
     }
     
     override func didReceiveMemoryWarning() {
@@ -67,12 +68,6 @@ final class AddTodayViewController: UIViewController {
         } else {
             scoreCircleView.progressBorderWidth = defaultProgressBorderWidth
         }
-    }
-    
-    func updateTintColor() {
-        let color = Today.lastColor(moc)
-        self.tabBarController?.tabBar.tintColor = color
-        self.navigationController?.navigationBar.tintColor = color
     }
     
     fileprivate func setupProgressBorderWidth() {

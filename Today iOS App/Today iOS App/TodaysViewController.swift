@@ -37,17 +37,12 @@ class TodaysViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        updateTintColor()
+        let color = Today.lastColor(moc)
+        updateTintColor(color)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-    
-    func updateTintColor() {
-        let color = Today.lastColor(moc)
-        self.tabBarController?.tabBar.tintColor = color
-        self.navigationController?.navigationBar.tintColor = color
     }
     
     private func configureCalendarView() {
@@ -84,7 +79,8 @@ class TodaysViewController: UIViewController {
             
             do {
                 try self.moc.save()
-                self.updateTintColor()
+                let color = Today.lastColor(self.moc)
+                self.updateTintColor(color)
             } catch {
                 self.moc.rollback()
             }
@@ -159,7 +155,8 @@ extension TodaysViewController: RSDFDatePickerViewDelegate, RSDFDatePickerViewDa
                     
                     do {
                         try self.moc.save()
-                        self.updateTintColor()
+                        let color = Today.lastColor(self.moc)
+                        self.updateTintColor(color)
                     } catch {
                         self.moc.rollback()
                     }

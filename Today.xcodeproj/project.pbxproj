@@ -12,6 +12,10 @@
 		24030AEE1C1C821C004E68ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24030AED1C1C821C004E68ED /* Assets.xcassets */; };
 		24030AF11C1C821C004E68ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24030AEF1C1C821C004E68ED /* LaunchScreen.storyboard */; };
 		24095BD61C7C92F800CC970E /* AppGroupSharedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24095BD51C7C92F800CC970E /* AppGroupSharedData.swift */; };
+		241937AD1D8474D900903945 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 241937AC1D8474D900903945 /* StoreKit.framework */; };
+		241937AF1D84754B00903945 /* TodayProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241937AE1D84754B00903945 /* TodayProducts.swift */; };
+		241937B21D84766F00903945 /* IAPHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241937B11D84766F00903945 /* IAPHandler.swift */; };
+		241D095B1D85170F00CB660C /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D095A1D85170F00CB660C /* Utilities.swift */; };
 		241D65AF1C7B43AC00938CE8 /* TodayExtensionTodayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D65AE1C7B43AC00938CE8 /* TodayExtensionTodayTableViewCell.swift */; };
 		242AB0781D8454E1001566D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24F21AC61C4FD73C00396A38 /* Assets.xcassets */; };
 		242AB0791D845643001566D9 /* TodayWatchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24A487EE1C5503C50015DB05 /* TodayWatchKit.framework */; };
@@ -216,6 +220,10 @@
 		24030AFD1C1C821C004E68ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24095BD51C7C92F800CC970E /* AppGroupSharedData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppGroupSharedData.swift; sourceTree = "<group>"; };
 		240F14741C2A9CDE0003B2AF /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		241937AC1D8474D900903945 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		241937AE1D84754B00903945 /* TodayProducts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TodayProducts.swift; path = "../TodayKit iOS/TodayProducts.swift"; sourceTree = "<group>"; };
+		241937B11D84766F00903945 /* IAPHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHandler.swift; sourceTree = "<group>"; };
+		241D095A1D85170F00CB660C /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		241D65AE1C7B43AC00938CE8 /* TodayExtensionTodayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayExtensionTodayTableViewCell.swift; sourceTree = "<group>"; };
 		242F984A1C49282200DBC64B /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		243095851D7B0B4A009343BE /* Today-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Today-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -311,6 +319,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				24D8E3DC1C54FC4F005BA35B /* TodayKit.framework in Frameworks */,
+				241937AD1D8474D900903945 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,8 +432,18 @@
 			children = (
 				242F984A1C49282200DBC64B /* NotificationManager.swift */,
 				24FE134E1C7F49A700A573B8 /* TodayWCSessionHandler.swift */,
+				241D095A1D85170F00CB660C /* Utilities.swift */,
 			);
 			name = Helper;
+			sourceTree = "<group>";
+		};
+		241937B01D84763200903945 /* InAppPurchase */ = {
+			isa = PBXGroup;
+			children = (
+				241937AE1D84754B00903945 /* TodayProducts.swift */,
+				241937B11D84766F00903945 /* IAPHandler.swift */,
+			);
+			name = InAppPurchase;
 			sourceTree = "<group>";
 		};
 		2463EBB21CC67B130082AA19 /* TodayUITests */ = {
@@ -438,6 +457,7 @@
 		246688171C1D189F00C5E5A0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				241937AC1D8474D900903945 /* StoreKit.framework */,
 				24F21AB01C4FCFE900396A38 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
@@ -473,6 +493,7 @@
 		24A487E51C55032E0015DB05 /* Today iOS App */ = {
 			isa = PBXGroup;
 			children = (
+				241937B01D84763200903945 /* InAppPurchase */,
 				24D23EB01D79AEEA00C6E4AC /* Library */,
 				246688591C1EFC3E00C5E5A0 /* Controller */,
 				240F14761C2A9FB60003B2AF /* Helper */,
@@ -864,6 +885,9 @@
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
 							};
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
 							com.apple.iCloud = {
 								enabled = 1;
 							};
@@ -1034,6 +1058,7 @@
 			files = (
 				24D23ECA1D79AF1A00C6E4AC /* RSDFDatePickerView.m in Sources */,
 				24E9B0511D8313EF002F1665 /* RSDFTodayDatePickerCollectionViewLayout.swift in Sources */,
+				241D095B1D85170F00CB660C /* Utilities.swift in Sources */,
 				244631451C3AB8BA002BBD06 /* PaddingLabel.swift in Sources */,
 				24E9B04D1D8310E1002F1665 /* RSDFTodayDatePickerMonthHeader.swift in Sources */,
 				24E9B0531D831A32002F1665 /* ActivityViewController.swift in Sources */,
@@ -1054,9 +1079,11 @@
 				24D82C2F1C5A5D880095FA47 /* ChartTableViewCell.swift in Sources */,
 				243095871D7B123F009343BE /* TodaysViewController.swift in Sources */,
 				24A1CFE11C36D8FA00F0E9CE /* ScoreCircleView.swift in Sources */,
+				241937B21D84766F00903945 /* IAPHandler.swift in Sources */,
 				24FFBB971C3D6AFA0053E261 /* SettingTableViewController.swift in Sources */,
 				24FE71311C3FFB8700A14B9D /* PickerTableViewCell.swift in Sources */,
 				24FE134F1C7F49A700A573B8 /* TodayWCSessionHandler.swift in Sources */,
+				241937AF1D84754B00903945 /* TodayProducts.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -37,7 +37,8 @@ class ActivityViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.updateTintColor()
+        let color = Today.lastColor(moc)
+        self.updateTintColor(color)
         self.loadData()
     }
     
@@ -46,11 +47,7 @@ class ActivityViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func updateTintColor() {
-        let color = Today.lastColor(moc)
-        self.tabBarController?.tabBar.tintColor = color
-        self.navigationController?.navigationBar.tintColor = color
-    }
+    
     func loadData() {
         configureGraphView()
         

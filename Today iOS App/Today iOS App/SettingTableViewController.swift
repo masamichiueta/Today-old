@@ -35,17 +35,12 @@ final class SettingTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        updateTintColor()
+        let color = Today.lastColor(moc)
+        updateTintColor(color)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-    
-    func updateTintColor() {
-        let color = Today.lastColor(moc)
-        self.tabBarController?.tabBar.tintColor = color
-        self.navigationController?.navigationBar.tintColor = color
     }
     
     fileprivate func setupTableView() {
@@ -111,7 +106,7 @@ final class SettingTableViewController: UITableViewController {
             }
             return 3
         case 1:
-            return 1
+            return 2
         default:
             break
         }
@@ -151,11 +146,15 @@ final class SettingTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
             cell.textLabel?.text = localize("Rate Today")
             return cell
+        case (1, 1):
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+            cell.textLabel?.text = localize("Buy beer to developer")
+            return cell
         default:
             break
         }
         
-        let cell = UITableViewCell(style: .value1, reuseIdentifier: "cell")
+        let cell = UITableViewCell(style: .value1, reuseIdentifier: "Cell")
         return cell
     }
     
@@ -171,6 +170,9 @@ final class SettingTableViewController: UITableViewController {
             togglePickerCell(pickerHidden)
         case (1, 0):
             UIApplication.shared.open(URL(string: reviewUrl)!, options: [:], completionHandler: nil)
+        case (1, 1):
+            let store = IAPHandler(productIds: TodayProducts.productIdentifiers)
+            
         default:
             break
         }

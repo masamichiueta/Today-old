@@ -180,8 +180,12 @@ final class SettingTableViewController: UITableViewController {
             TodayProduct.store.buyProduct(TodayProduct.products[productIndex - 1], productPaymentHandler: { state, error in
                 switch state {
                 case .purchased:
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
                     KVNProgress.showSuccess(withStatus: localize("Thank you") + "😂")
+                case .purchasing:
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = true
                 case .failed:
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
                     KVNProgress.showError(withStatus: error?.localizedDescription)
                 default:
                     break

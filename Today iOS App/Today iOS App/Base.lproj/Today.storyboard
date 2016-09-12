@@ -30,7 +30,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Todays" id="2Ia-T9-KBy">
-                        <barButtonItem key="leftBarButtonItem" title="today" id="cTD-ZC-6R4">
+                        <barButtonItem key="leftBarButtonItem" title="Today" id="cTD-ZC-6R4">
                             <connections>
                                 <action selector="scrollToTodayButtonDidTap:" destination="Ish-Ti-9Jp" id="37S-wP-sux"/>
                             </connections>
@@ -59,7 +59,7 @@
                     <tabBarItem key="tabBarItem" title="Todays" image="today_outline" selectedImage="today_fill" id="jhP-Ks-5WW"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Z5E-cO-Fxo">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Z5E-cO-Fxo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -77,7 +77,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WzQ-rC-fZu" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="rBu-tX-fcj">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rBu-tX-fcj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

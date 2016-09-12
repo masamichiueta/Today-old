@@ -70,6 +70,8 @@ class ActivityViewController: UIViewController {
     
     private func configureGraphView() {
         self.graphView.backgroundFillColor = UIColor.white
+        self.graphView.fillType = .solid
+        self.graphView.fillColor = UIColor.white
         self.graphView.lineWidth = 1
         self.graphView.lineColor = UIColor.darkGray
         self.graphView.lineStyle = .smooth
@@ -116,13 +118,20 @@ class ActivityViewController: UIViewController {
         }
         
         if Today.count(moc) != 0 {
+            let lastColor = Today.lastColor(moc)
+
+            self.graphView.backgroundFillColor = lastColor
             self.graphView.shouldFill = true
             self.graphView.fillType = .gradient
             self.graphView.fillGradientType = .linear
-            self.graphView.lineColor = Today.lastColor(moc)
-            self.graphView.fillGradientStartColor = Today.lastColor(moc)
-            self.graphView.fillGradientEndColor = UIColor.white
-            self.graphView.dataPointLabelColor = UIColor.darkGray
+            self.graphView.lineColor = UIColor.white
+            self.graphView.fillGradientStartColor = UIColor.white
+            self.graphView.fillGradientEndColor = lastColor
+            self.graphView.dataPointLabelColor = UIColor.white
+            self.graphView.dataPointFillColor = UIColor.white
+            self.graphView.referenceLineColor = UIColor.white
+            self.graphView.referenceLineLabelColor = UIColor.white
+            
         }
         
         self.graphView.setData(data, withLabels: labels)

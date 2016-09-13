@@ -37,3 +37,6 @@
 "Share to Facebook" = "Facebookで共有";
 "Share to Twitter" = "Twitterで共有";
 "Today's Score is" = "今日のスコアは";
+
+//MARK: - ActivityViewController.swift
+"Loading Data" = "データを読み込んでいます";

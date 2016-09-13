@@ -23,6 +23,7 @@ class TodaysViewController: UIViewController {
         configureCalendarView()
         
         self.moc = CoreDataManager.shared.persistentContainer.viewContext
+        
         let request: NSFetchRequest<Today> = Today.fetchRequest()
         request.sortDescriptors = Today.defaultSortDescriptors
         self.frc = NSFetchedResultsController<Today>(fetchRequest: request, managedObjectContext: self.moc, sectionNameKeyPath: nil, cacheName: nil)

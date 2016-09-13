@@ -12,11 +12,13 @@ import TodayKit
 
 class ActivityViewController: UIViewController {
     
-    @IBOutlet weak var graphView: ScrollableGraphView!
+    var graphView: ScrollableGraphView!
+    var graphConstraints: [NSLayoutConstraint] = []
+    var contentOffset: CGPoint?
     
+    @IBOutlet weak var graphPlaceholderView: UIView!
     @IBOutlet weak var longestStreakLabel: UILabel!
     @IBOutlet weak var longestStreakDateLabel: UILabel!
-    
     @IBOutlet weak var currentStreakLabel: UILabel!
     @IBOutlet weak var currentStreakDateLabel: UILabel!
     
@@ -32,24 +34,60 @@ class ActivityViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.moc = CoreDataManager.shared.persistentContainer.viewContext
-        self.loadData()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let color = Today.lastColor(moc)
         self.updateTintColor(color)
-        self.loadData()
+        self.reloadData()
     }
-    
+   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     
-    func loadData() {
-        configureGraphView()
+    func reloadData() {
+        
+        if self.graphPlaceholderView.subviews.count == 0 {
+            KVNProgress.show(withStatus: localize("Loading Data"))
+            self.graphView = ScrollableGraphView(frame: self.graphPlaceholderView.bounds)
+        }
+        
+        self.configureGraphView()
+        
+        DispatchQueue.global(qos: .default).async {
+            
+            let (labels, data) = self.loadData()
+            
+            DispatchQueue.main.async {
+                
+                if self.graphPlaceholderView.subviews.count == 0 {
+                    
+                    self.graphPlaceholderView.addSubview(self.graphView)
+                    
+                    let topConstraint = NSLayoutConstraint(item: self.graphView, attribute: .top, relatedBy: .equal, toItem: self.graphPlaceholderView, attribute: .top, multiplier: 1, constant: 0)
+                    let leadingConstraint = NSLayoutConstraint(item: self.graphView, attribute: .leading, relatedBy: .equal, toItem: self.graphPlaceholderView, attribute: .leading, multiplier: 1, constant: 0)
+                    let trailingConstraint = NSLayoutConstraint(item: self.graphView, attribute: .trailing, relatedBy: .equal, toItem: self.graphPlaceholderView, attribute: .trailing, multiplier: 1, constant: 0)
+                    let bottomConstraint = NSLayoutConstraint(item: self.graphView, attribute: .bottom, relatedBy: .equal, toItem: self.graphPlaceholderView, attribute: .bottom, multiplier: 1, constant: 0)
+                    self.graphConstraints.append(topConstraint)
+                    self.graphConstraints.append(leadingConstraint)
+                    self.graphConstraints.append(trailingConstraint)
+                    self.graphConstraints.append(bottomConstraint)
+                    self.view.addConstraints(self.graphConstraints)
+                    
+                    self.graphView.setData(data, withLabels: labels)
+                    KVNProgress.dismiss()
+                } else {
+                    let currentOffset = self.graphView.contentOffset
+                    self.graphView.setData(data, withLabels: labels)
+                    self.graphView.contentOffset = currentOffset
+                }
+            }
+        }
+        
         
         if let longestStreak = Streak.longestStreak(moc) {
             longestStreakLabel.text = "\(Int(longestStreak.streakNumber))"
@@ -69,6 +107,8 @@ class ActivityViewController: UIViewController {
     }
     
     private func configureGraphView() {
+        
+        self.graphView.translatesAutoresizingMaskIntoConstraints = false
         self.graphView.backgroundFillColor = UIColor.white
         self.graphView.fillType = .solid
         self.graphView.fillColor = UIColor.white
@@ -89,8 +129,26 @@ class ActivityViewController: UIViewController {
         self.graphView.topMargin = 24
         self.graphView.bottomMargin = 24
         self.graphView.direction = .rightToLeft
-        self.graphView.contentOffset = CGPoint(x: self.graphView.contentSize.width - self.graphView.bounds.width, y: 0)
         
+        if Today.count(self.moc) != 0 {
+            let lastColor = Today.lastColor(self.moc)
+            self.graphView.backgroundFillColor = lastColor
+            self.graphView.shouldFill = true
+            self.graphView.fillType = .gradient
+            self.graphView.fillGradientType = .linear
+            self.graphView.lineColor = UIColor.white
+            self.graphView.fillGradientStartColor = UIColor.white
+            self.graphView.fillGradientEndColor = lastColor
+            self.graphView.dataPointLabelColor = UIColor.white
+            self.graphView.dataPointFillColor = UIColor.white
+            self.graphView.referenceLineColor = UIColor.white
+            self.graphView.referenceLineLabelColor = UIColor.white
+            
+        }
+
+    }
+    
+    private func loadData() -> (labels: [String], data: [Double]) {
         let now = Date()
         var component = Calendar.current.dateComponents([.year, .month, .day], from: now)
         component.year = component.year! - 1
@@ -117,25 +175,7 @@ class ActivityViewController: UIViewController {
             start = Calendar.current.date(byAdding: .day, value: 1, to: start)!
         }
         
-        if Today.count(moc) != 0 {
-            let lastColor = Today.lastColor(moc)
-
-            self.graphView.backgroundFillColor = lastColor
-            self.graphView.shouldFill = true
-            self.graphView.fillType = .gradient
-            self.graphView.fillGradientType = .linear
-            self.graphView.lineColor = UIColor.white
-            self.graphView.fillGradientStartColor = UIColor.white
-            self.graphView.fillGradientEndColor = lastColor
-            self.graphView.dataPointLabelColor = UIColor.white
-            self.graphView.dataPointFillColor = UIColor.white
-            self.graphView.referenceLineColor = UIColor.white
-            self.graphView.referenceLineLabelColor = UIColor.white
-            
-        }
-        
-        self.graphView.setData(data, withLabels: labels)
-
+        return (labels: labels, data: data)
     }
     
     @IBAction func doneSettingTableViewController(_ segue: UIStoryboardSegue) {

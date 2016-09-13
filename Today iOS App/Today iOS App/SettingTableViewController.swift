@@ -148,7 +148,7 @@ final class SettingTableViewController: UITableViewController {
             return cell
         case (1, let productIndex):
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-            cell.textLabel?.text = TodayProduct.products[productIndex - 1].localizedDescription
+            cell.textLabel?.text = localize(TodayProduct.products[productIndex - 1].localizedDescription)
             return cell
         default:
             break

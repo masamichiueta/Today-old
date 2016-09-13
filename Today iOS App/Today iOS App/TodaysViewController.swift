@@ -127,6 +127,13 @@ extension TodaysViewController: RSDFDatePickerViewDelegate, RSDFDatePickerViewDa
             
             let alert = UIAlertController(title: dateFormatter.string(from: date), message: nil, preferredStyle: .actionSheet)
             
+            if let popoverPresentationController = alert.popoverPresentationController {
+                popoverPresentationController.sourceView = self.view
+                popoverPresentationController.sourceRect = CGRect(x: self.view.bounds.width / 2.0, y: self.view.bounds.height / 2.0, width: 1.0, height: 1.0)
+                popoverPresentationController.permittedArrowDirections = .init(rawValue: 0)
+            }
+        
+            
             if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook) {
                 alert.addAction(UIAlertAction(title: localize("Share to Facebook"), style: .default, handler: { action in
                     let vc = SLComposeViewController(forServiceType: SLServiceTypeFacebook)!

@@ -62,7 +62,7 @@ final class SettingTableViewController: UITableViewController {
     }
     
     func notificationSwitchValueDidChange(_ sender: UISwitch) {
-        var setting = Setting()
+        var setting = Setting.shared
         setting.notificationEnabled = sender.isOn
         
         let indexPaths = pickerHidden ? [IndexPath(row: (pickerIndexPath as NSIndexPath).row - 1, section: (pickerIndexPath as NSIndexPath).section)] : [IndexPath(row: (pickerIndexPath as NSIndexPath).row - 1, section: (pickerIndexPath as NSIndexPath).section), pickerIndexPath]
@@ -95,7 +95,7 @@ final class SettingTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let setting = Setting()
+        let setting = Setting.shared
         switch section {
         case 0:
             if !setting.notificationEnabled {
@@ -118,7 +118,7 @@ final class SettingTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let setting = Setting()
+        let setting = Setting.shared
         switch ((indexPath as NSIndexPath).section, (indexPath as NSIndexPath).row) {
         case (0, 0):
             let cell = tableView.dequeueReusableCell(withIdentifier: "SettingSwitchCell", for: indexPath)
@@ -206,7 +206,7 @@ extension SettingTableViewController: PickerTableViewCellDelegate {
         let notificationTime = Calendar.current.date(from: component)!
         
         //Update setting ans save
-        var setting = Setting()
+        var setting = Setting.shared
         setting.notificationHour = component.hour!
         setting.notificationMinute = component.minute!
         

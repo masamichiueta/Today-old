@@ -10,7 +10,7 @@
         <scene sceneID="MUH-Er-D0r">
             <objects>
                 <tabBarController id="jGq-gi-jUG" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" barStyle="black" id="KGt-MJ-tSW">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="KGt-MJ-tSW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>

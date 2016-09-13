@@ -11,14 +11,6 @@ import TodayKit
 
 class RSDFTodayDatePickerMonthHeader: RSDFDatePickerMonthHeader {
 
-    override func selfBackgroundColor() -> UIColor {
-        return UIColor.applicationColor(type: .darkSectionHeader)
-    }
-    
-    override func monthLabelTextColor() -> UIColor {
-        return UIColor.white
-    }
-        
     override func currentMonthLabelTextColor() -> UIColor {
         return Today.lastColor(CoreDataManager.shared.persistentContainer.viewContext)
     }

@@ -11,14 +11,7 @@ import TodayKit
 
 class RSDFTodayDatePickerDayCell: RSDFDatePickerDayCell {
 
-    override func dayLabelTextColor() -> UIColor {
-        return UIColor.white
-    }
-    
-    override func dayOffLabelTextColor() -> UIColor {
-        return UIColor.applicationColor(type: .darkDetailText)
-    }
-    
+   
     override func todayLabelTextColor() -> UIColor {
         return Today.lastColor(CoreDataManager.shared.persistentContainer.viewContext)
     }
@@ -35,8 +28,5 @@ class RSDFTodayDatePickerDayCell: RSDFDatePickerDayCell {
         return Today.lastColor(CoreDataManager.shared.persistentContainer.viewContext)
     }
     
-    override func dividerImageColor() -> UIColor {
-        return UIColor.applicationColor(type: .darkSeparator)
-    }
 
 }

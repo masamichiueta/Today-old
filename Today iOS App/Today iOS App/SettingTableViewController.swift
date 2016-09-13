@@ -62,7 +62,7 @@ final class SettingTableViewController: UITableViewController {
     }
     
     func notificationSwitchValueDidChange(_ sender: UISwitch) {
-        var setting = Setting()
+        var setting = Setting.shared
         setting.notificationEnabled = sender.isOn
         
         let indexPaths = pickerHidden ? [IndexPath(row: (pickerIndexPath as NSIndexPath).row - 1, section: (pickerIndexPath as NSIndexPath).section)] : [IndexPath(row: (pickerIndexPath as NSIndexPath).row - 1, section: (pickerIndexPath as NSIndexPath).section), pickerIndexPath]
@@ -95,7 +95,7 @@ final class SettingTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let setting = Setting()
+        let setting = Setting.shared
         switch section {
         case 0:
             if !setting.notificationEnabled {
@@ -118,7 +118,7 @@ final class SettingTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let setting = Setting()
+        let setting = Setting.shared
         switch ((indexPath as NSIndexPath).section, (indexPath as NSIndexPath).row) {
         case (0, 0):
             let cell = tableView.dequeueReusableCell(withIdentifier: "SettingSwitchCell", for: indexPath)
@@ -133,14 +133,13 @@ final class SettingTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SettingCell", for: indexPath)
             cell.textLabel?.text = localize("Notification Time")
             cell.detailTextLabel?.text = dateFormatter.string(from: setting.notificationTime)
-            cell.detailTextLabel?.textColor = pickerHidden ? UIColor.applicationColor(type: .darkDetailText) : Today.lastColor(moc)
+            cell.detailTextLabel?.textColor = pickerHidden ? UIColor.darkGray : Today.lastColor(moc)
             return cell
         case ((pickerIndexPath as IndexPath).section, (pickerIndexPath as IndexPath).row): //(0, 2)
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "SettingPickerCell", for: indexPath) as? PickerTableViewCell else {
                 fatalError("Wrong cell type")
             }
             cell.datePicker.date = setting.notificationTime
-            cell.datePicker.setValue(UIColor.white, forKey: "textColor")
             cell.delegate = self
             return cell
         case (1, 0):
@@ -149,7 +148,7 @@ final class SettingTableViewController: UITableViewController {
             return cell
         case (1, let productIndex):
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-            cell.textLabel?.text = TodayProduct.products[productIndex - 1].localizedDescription
+            cell.textLabel?.text = localize(TodayProduct.products[productIndex - 1].localizedDescription)
             return cell
         default:
             break
@@ -166,7 +165,7 @@ final class SettingTableViewController: UITableViewController {
             pickerHidden = !pickerHidden
             
             let cell = tableView.cellForRow(at: indexPath)
-            cell?.detailTextLabel?.textColor = pickerHidden ? UIColor.applicationColor(type: .darkDetailText) : Today.lastColor(moc)
+            cell?.detailTextLabel?.textColor = pickerHidden ? UIColor.darkGray : Today.lastColor(moc)
             
             togglePickerCell(pickerHidden)
         case (1, 0):
@@ -180,8 +179,12 @@ final class SettingTableViewController: UITableViewController {
             TodayProduct.store.buyProduct(TodayProduct.products[productIndex - 1], productPaymentHandler: { state, error in
                 switch state {
                 case .purchased:
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
                     KVNProgress.showSuccess(withStatus: localize("Thank you") + "😂")
+                case .purchasing:
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = true
                 case .failed:
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
                     KVNProgress.showError(withStatus: error?.localizedDescription)
                 default:
                     break
@@ -203,7 +206,7 @@ extension SettingTableViewController: PickerTableViewCellDelegate {
         let notificationTime = Calendar.current.date(from: component)!
         
         //Update setting ans save
-        var setting = Setting()
+        var setting = Setting.shared
         setting.notificationHour = component.hour!
         setting.notificationMinute = component.minute!
         

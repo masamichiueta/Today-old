@@ -28,6 +28,7 @@
 "Rate Today" = "Todayを評価する";
 "In App Purchase is disabled" = "アプリ内課金の設定が無効になっています";
 "Thank you" = "ありがとうございます";
+"Buy beer to developer" = "開発者にビールをおごる";
 
 //MARK: - TodaysViewController.swift
 "Let's start Today!" = "Todayを始めましょう！";

@@ -12,18 +12,15 @@ public struct Setting {
     
     private static let defaults = UserDefaults.standard
     
+    public static var shared = Setting()
+    
     //MARK: - Keys
     public struct SettingKey {
         public static let notificationEnabled = "NotificationEnabled"
         public static let notificationHour = "NotificationHour"
         public static let notificationMinute = "NotificationMinute"
+        public static let migratedV1ToV2 = "MigratedV1ToV2"
         public static let version = "CFBundleShortVersionString"
-        
-        public static let syncTargetKeys = [
-            SettingKey.notificationEnabled,
-            SettingKey.notificationHour,
-            SettingKey.notificationMinute,
-        ]
     }
     
     //MARK: - Values
@@ -45,18 +42,13 @@ public struct Setting {
         }
     }
     
-    public var version: String
-    
-    //MARK: -
-    public init() {
-        notificationEnabled = Setting.defaults.bool(forKey: SettingKey.notificationEnabled)
-        notificationHour = Setting.defaults.integer(forKey: SettingKey.notificationHour)
-        notificationMinute = Setting.defaults.integer(forKey: SettingKey.notificationMinute)
-        guard let settingVersion = Bundle.main.object(forInfoDictionaryKey: SettingKey.version) as? String else {
-            fatalError("Invalid setting")
+    public var migratedV1ToV2: Bool {
+        didSet {
+            Setting.defaults.set(migratedV1ToV2, forKey: SettingKey.migratedV1ToV2)
         }
-        version = settingVersion
     }
+    
+    public var version: String
     
     public var notificationTime: Date {
         var comps = DateComponents()
@@ -66,18 +58,20 @@ public struct Setting {
         return calendar.date(from: comps)!
     }
     
-    public var dictionaryRepresentation: [String : AnyObject] {
-        get {
-            return [
-                SettingKey.notificationEnabled: notificationEnabled as AnyObject,
-                SettingKey.notificationHour: notificationHour as AnyObject,
-                SettingKey.notificationMinute: notificationMinute as AnyObject,
-                SettingKey.version: version as AnyObject
-            ]
+    //MARK: -
+    private init() {
+        Setting.setupDefaultSetting()
+        notificationEnabled = Setting.defaults.bool(forKey: SettingKey.notificationEnabled)
+        notificationHour = Setting.defaults.integer(forKey: SettingKey.notificationHour)
+        notificationMinute = Setting.defaults.integer(forKey: SettingKey.notificationMinute)
+        migratedV1ToV2 = Setting.defaults.bool(forKey: SettingKey.migratedV1ToV2)
+        guard let settingVersion = Bundle.main.object(forInfoDictionaryKey: SettingKey.version) as? String else {
+            fatalError("Invalid setting")
         }
+        version = settingVersion
     }
     
-    public static func setupDefaultSetting() {
+    private static func setupDefaultSetting() {
         
         let settingBundle = Bundle(for: Today.self)
         

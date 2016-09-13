@@ -20,11 +20,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NIC-bU-Vw1" customClass="RSDFTodayDatePickerView" customModule="Today" customModuleProvider="target">
-                                <color key="backgroundColor" red="0.14509803921568626" green="0.14901960784313725" blue="0.19215686274509802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NIC-bU-Vw1" customClass="RSDFTodayDatePickerView" customModule="Today" customModuleProvider="target"/>
                         </subviews>
-                        <color key="backgroundColor" red="0.14509803921568626" green="0.14901960784313725" blue="0.19215686274509802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="NIC-bU-Vw1" secondAttribute="trailing" id="8DI-ro-pf9"/>
                             <constraint firstItem="NIC-bU-Vw1" firstAttribute="top" secondItem="AwX-Lu-ePr" secondAttribute="top" id="WUf-Eh-ctZ"/>
@@ -33,7 +30,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Todays" id="2Ia-T9-KBy">
-                        <barButtonItem key="leftBarButtonItem" title="today" id="cTD-ZC-6R4">
+                        <barButtonItem key="leftBarButtonItem" title="Today" id="cTD-ZC-6R4">
                             <connections>
                                 <action selector="scrollToTodayButtonDidTap:" destination="Ish-Ti-9Jp" id="37S-wP-sux"/>
                             </connections>
@@ -62,7 +59,7 @@
                     <tabBarItem key="tabBarItem" title="Todays" image="today_outline" selectedImage="today_fill" id="jhP-Ks-5WW"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="Z5E-cO-Fxo">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Z5E-cO-Fxo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -80,7 +77,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WzQ-rC-fZu" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="rBu-tX-fcj">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rBu-tX-fcj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -134,7 +131,7 @@
                                 </connections>
                             </pickerView>
                         </subviews>
-                        <color key="backgroundColor" red="0.14509803921568626" green="0.14901960784313725" blue="0.19215686274509802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="jMd-gE-IMc" firstAttribute="top" secondItem="b24-9R-gMp" secondAttribute="bottom" id="6cP-ds-8nb"/>
                             <constraint firstItem="YcQ-ai-atA" firstAttribute="centerX" secondItem="OuH-8s-S5r" secondAttribute="centerX" id="6rI-Ml-j68"/>

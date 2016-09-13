@@ -92,8 +92,7 @@ extension AddTodayViewController: UIPickerViewDataSource, UIPickerViewDelegate {
         score = Today.masterScores[row]
     }
     
-    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        let attributedString = NSAttributedString(string: "\(Today.masterScores[row])", attributes: [NSForegroundColorAttributeName: UIColor.white])
-        return attributedString
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return "\(Today.masterScores[row])"
     }
 }

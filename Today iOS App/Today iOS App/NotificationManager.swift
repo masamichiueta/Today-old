@@ -28,6 +28,7 @@ class NotificationManager: NSObject {
         content.title = localize("Today")
         content.body = localize("How is your today?")
         content.sound = UNNotificationSound.default()
+        content.categoryIdentifier = NotificationManager.addTodayCategoryName
         
         let component = Calendar.current.dateComponents([.hour], from: fireDate)
         let trigger = UNCalendarNotificationTrigger(dateMatching: component, repeats: true)

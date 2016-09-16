@@ -27,7 +27,6 @@ class TodayExtensionTodayTableViewCell: UITableViewCell {
 extension TodayExtensionTodayTableViewCell: ConfigurableCell {
     func configureForObject(_ score: Int) {
         scoreLabel.text = "\(score)"
-        iconImageView.tintColor = UIColor.white
-        iconImageView.image = Today.type(score).icon(.twentyEight).withRenderingMode(.alwaysTemplate)
+        iconImageView.image = Today.type(score).icon(.twentyEight)
     }
 }

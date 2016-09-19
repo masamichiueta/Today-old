@@ -54,7 +54,8 @@ class NotificationManager: NSObject {
         UNUserNotificationCenter.current().delegate = self
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: { granted, error in
-            var setting = Setting.shared
+            
+            let setting = Setting.shared
             
             if !granted {
                 setting.notificationEnabled = false

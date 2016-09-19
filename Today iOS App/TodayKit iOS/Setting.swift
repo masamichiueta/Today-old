@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Setting {
+public class Setting {
     
     private static let defaults = UserDefaults.standard
     
@@ -71,7 +71,7 @@ public struct Setting {
         version = settingVersion
     }
     
-    private static func setupDefaultSetting() {
+    private class func setupDefaultSetting() {
         
         let settingBundle = Bundle(for: Today.self)
         

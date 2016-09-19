@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Setting {
+public final class Setting {
     
     private static let defaults = UserDefaults.standard
     

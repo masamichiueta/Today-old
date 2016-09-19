@@ -20,7 +20,8 @@ final class TodayExtensionViewController: UIViewController, NCWidgetProviding {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        preferredContentSize = CGSize(width: tableView.frame.width, height: tableViewRowHeight * 4)
+        self.extensionContext?.widgetLargestAvailableDisplayMode = .expanded
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -29,6 +30,14 @@ final class TodayExtensionViewController: UIViewController, NCWidgetProviding {
     
     func widgetPerformUpdate(completionHandler: @escaping (NCUpdateResult) -> Void) {
         completionHandler(NCUpdateResult.newData)
+    }
+    
+    func widgetActiveDisplayModeDidChange(_ activeDisplayMode: NCWidgetDisplayMode, withMaximumSize maxSize: CGSize) {
+        if activeDisplayMode == .compact {
+            self.preferredContentSize = maxSize
+        } else {
+            self.preferredContentSize = CGSize(width: tableView.frame.width, height: tableViewRowHeight * 4)
+        }
     }
     
     private func setupTableView() {
@@ -49,7 +58,7 @@ extension TodayExtensionViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let sharedData = AppGroupSharedData()
+        let sharedData = AppGroupSharedData.shared
         
         switch (indexPath as NSIndexPath).row {
         case 0:

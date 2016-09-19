@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import TodayKit
 
-class MigrationManager {
+final class MigrationManager {
     
     class func migrateFromV1ToV2() {
         let iCloudEnabled = UserDefaults.standard.bool(forKey: "ICloudEnabled")

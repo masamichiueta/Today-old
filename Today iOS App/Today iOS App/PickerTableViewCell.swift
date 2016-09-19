@@ -12,7 +12,7 @@ protocol PickerTableViewCellDelegate: class {
     func dateDidChange(_ date: Date)
 }
 
-class PickerTableViewCell: UITableViewCell {
+final class PickerTableViewCell: UITableViewCell {
     
     weak var delegate: PickerTableViewCellDelegate?
     @IBOutlet weak var datePicker: UIDatePicker!

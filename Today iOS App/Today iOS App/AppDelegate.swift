@@ -69,7 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     //MARK: - Helper
     func updateAppGroupSharedData(_ moc: NSManagedObjectContext) {
-        var appGroupSharedData = AppGroupSharedData()
+        let appGroupSharedData = AppGroupSharedData.shared
         let now = Date()
         
         if !Calendar.current.isDate(appGroupSharedData.todayDate, inSameDayAs: now) {

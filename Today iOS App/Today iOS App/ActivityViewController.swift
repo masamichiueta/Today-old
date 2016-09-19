@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import TodayKit
 
-class ActivityViewController: UIViewController {
+final class ActivityViewController: UIViewController {
     
     var graphView: ScrollableGraphView!
     var graphConstraints: [NSLayoutConstraint] = []

@@ -13,7 +13,7 @@ public typealias ProductIdentifier = String
 public typealias ProductsRequestCompletionHandler = (_ success: Bool, _ products: [SKProduct]?) -> ()
 public typealias ProductPaymentHandler = (_ state: SKPaymentTransactionState, _ error: Error?) -> ()
 
-public class IAPManager : NSObject  {
+public final class IAPManager : NSObject  {
     
     fileprivate let productIdentifiers: Set<ProductIdentifier>
     fileprivate var purchasedProductIdentifiers = Set<ProductIdentifier>()

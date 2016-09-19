@@ -11,7 +11,7 @@ import TodayKit
 import CoreData
 import Social
 
-class TodaysViewController: UIViewController {
+final class TodaysViewController: UIViewController {
     
     var moc: NSManagedObjectContext!
     var frc: NSFetchedResultsController<Today>!

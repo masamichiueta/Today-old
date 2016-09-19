@@ -10,7 +10,7 @@ import Foundation
 
 public let appGroupURLScheme = "Today"
 
-public struct AppGroupSharedData {
+public final class AppGroupSharedData {
     
     public struct AppGroupSharedDataKey {
         public static let todayScore = "TodayScore"
@@ -21,6 +21,8 @@ public struct AppGroupSharedData {
     }
     
     private static let defaults = UserDefaults(suiteName: "group.com.uetamasamichi.todaygroup")
+    
+    public static var shared = AppGroupSharedData()
     
     //MARK: - Values
     public var todayScore: Int {

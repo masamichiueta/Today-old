@@ -9,7 +9,7 @@
 import UIKit
 import TodayKit
 
-@IBDesignable class ScoreCircleView: UIView {
+@IBDesignable final class ScoreCircleView: UIView {
     
     @IBInspectable var progressCircleColor: UIColor = Today.type(Today.masterScores.max()!).color() {
         didSet {

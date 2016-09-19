@@ -9,7 +9,7 @@
 import UIKit
 import TodayKit
 
-class TodayExtensionTodayTableViewCell: UITableViewCell {
+final class TodayExtensionTodayTableViewCell: UITableViewCell {
     
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!

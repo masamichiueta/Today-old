@@ -10,7 +10,7 @@ import UIKit
 import TodayKit
 import WatchConnectivity
 
-class TodayWCSessionHandler: NSObject, WCSessionDelegate {
+final class TodayWCSessionHandler: NSObject, WCSessionDelegate {
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         

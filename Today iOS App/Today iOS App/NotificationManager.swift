@@ -18,8 +18,6 @@ class NotificationManager: NSObject {
     static let addTodayCategoryName = "AddTodayCategory"
     static let addTodayNotificationName = "AddTodayNotification"
     
-    fileprivate static let notificationKey = "notificationKey"
-    
     public static let shared = NotificationManager()
     
     func scheduleLocalNotification(_ fireDate: Date, withName name: String) {
@@ -30,7 +28,7 @@ class NotificationManager: NSObject {
         content.sound = UNNotificationSound.default()
         content.categoryIdentifier = NotificationManager.addTodayCategoryName
         
-        let component = Calendar.current.dateComponents([.hour], from: fireDate)
+        let component = Calendar.current.dateComponents([.hour, .minute], from: fireDate)
         let trigger = UNCalendarNotificationTrigger(dateMatching: component, repeats: true)
         
         let request = UNNotificationRequest(identifier: name, content: content, trigger: trigger)

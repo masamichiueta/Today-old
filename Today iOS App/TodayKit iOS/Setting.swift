@@ -19,7 +19,6 @@ public final class Setting {
         public static let notificationEnabled = "NotificationEnabled"
         public static let notificationHour = "NotificationHour"
         public static let notificationMinute = "NotificationMinute"
-        public static let migratedV1ToV2 = "MigratedV1ToV2"
         public static let version = "CFBundleShortVersionString"
     }
     
@@ -42,12 +41,6 @@ public final class Setting {
         }
     }
     
-    public var migratedV1ToV2: Bool {
-        didSet {
-            Setting.defaults.set(migratedV1ToV2, forKey: SettingKey.migratedV1ToV2)
-        }
-    }
-    
     public var version: String
     
     public var notificationTime: Date {
@@ -64,7 +57,6 @@ public final class Setting {
         notificationEnabled = Setting.defaults.bool(forKey: SettingKey.notificationEnabled)
         notificationHour = Setting.defaults.integer(forKey: SettingKey.notificationHour)
         notificationMinute = Setting.defaults.integer(forKey: SettingKey.notificationMinute)
-        migratedV1ToV2 = Setting.defaults.bool(forKey: SettingKey.migratedV1ToV2)
         guard let settingVersion = Bundle.main.object(forInfoDictionaryKey: SettingKey.version) as? String else {
             fatalError("Invalid setting")
         }

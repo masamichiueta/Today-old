@@ -20,10 +20,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
         
-        let setting = Setting.shared
-        if !setting.migratedV1ToV2 {
-            MigrationManager.migrateFromV1ToV2()
-            setting.migratedV1ToV2 = true
+        if let depricatedLocalNotifications = UIApplication.shared.scheduledLocalNotifications {
+            for notification in depricatedLocalNotifications {
+                guard let notificationName = notification.userInfo?["notificationKey"] as? String else {
+                    continue
+                }
+                
+                if notificationName == NotificationManager.addTodayNotificationName {
+                    UIApplication.shared.cancelLocalNotification(notification)
+                }
+            }
         }
         
         if WCSession.isSupported() {
